@@ -1,0 +1,28 @@
+{
+  "etapa": "B",
+  "celula": "controle-de-pragas x São Luís/MA",
+  "rota": "CATSER canônico 8531 (Serviço de Desinfecção e Exterminação) + filtro CNPJ São Luís",
+  "endpoint": "/v1/pca/?codigoClassificacaoSuperior=8531",
+  "anos_pca": [
+    2025,
+    2026
+  ],
+  "catser_celula": [
+    8531
+  ],
+  "parcial": true,
+  "n_registros_nacionais_8531": {
+    "8531/2025": 109
+  },
+  "presenca_pca_celula": false,
+  "n_itens_celula": 0,
+  "g1_preview": {
+    "itens_celula": 0,
+    "itens_com_4_campos": 0,
+    "pct": null
+  },
+  "por_orgao": [],
+  "outros_orgaos_ma_revisar": [],
+  "falhas": [],
+  "itens_celula": []
+}
