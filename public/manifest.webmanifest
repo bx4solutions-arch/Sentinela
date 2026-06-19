@@ -1,0 +1,14 @@
+{
+  "name": "Sentinela · Inteligência de Licitações",
+  "short_name": "Sentinela",
+  "description": "Veja a licitação meses antes de o edital sair.",
+  "start_url": "/radar",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#0b2d89",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
