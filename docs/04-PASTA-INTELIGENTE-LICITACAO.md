@@ -79,3 +79,65 @@ O storage vira plano, mas o limite **não é só GB** — é **inteligência con
 
 ## Sequência (não pular a fundação)
 Esta é a spec do **Bloco 3** — registrada agora pra construir certo. **Não abandona o caminho:** terminamos **Bloco 1** (Minha Empresa, no gate) → **Bloco 2** (Radar) → **Bloco 3** (esta pasta inteligente, em 3a/3b/3c). A empolgação não fura a fila — mas a fundação (schema, ingestão, ficha) já nasce pronta pra receber o workspace.
+
+---
+
+## ADENDO — Resumo Executivo: schema PADRÃO-OURO + nossos diferenciais
+*(baseado no output real da ConLicitação — exemplo salvo em `docs/concorrentes/conlicitacao/findings/exemplo-resumo-edital-19050554.md`)*
+
+**Template de saída da IA (replicar — é table-stakes):**
+1. **Topo:** Valor estimado · Modalidade · Data da sessão (countdown "em X dias").
+2. **Identificação:** objeto, número, UASG, portal, contratação, regulamentação.
+3. **Sessão Pública:** data, horário, modo de disputa, intervalo mínimo.
+4. **Órgão:** nome, e-mail/telefone institucional, endereço, **CAPAG** (nota + 3 sub-indicadores: Endividamento, Poupança corrente, Liquidez Relativa) — fonte Tesouro.
+5. **Detalhes:** valor, prazo/vigência, margem de preferência (cita decreto/lei), visita técnica, amostra, critério de julgamento, ME/EPP, regionalidade, prova de conceito.
+6. **Seguro Garantia** (4 tipos, cada um com motivo/cláusula).
+7. **Prazos importantes (grid):** documentação complementar, recurso/contrarrazões (3+3 dias), **limite para impugnação (com artigo)**, propostas, vigência.
+8. **Critérios da Proposta e Julgamento:** validade, desempate (ME/EPP + regional), exigências.
+9. **Resumo dos Itens:** total, descrição, valor unitário/total máximo.
+10. **Documentos de habilitação (lista completa)** + Atestado de capacidade técnica.
+11. **Legislação aplicável** (leis/decretos citados).
+12. **Anexos e declarações** (I…VII).
+13. **Outras informações:** consórcio, subcontratação, **Fiscal/decisor do contrato**, LGPD, prazo de assinatura, dotação, contatos institucionais.
+14. **Condições de pagamento.**
+15. **Penalidades e multas** (destaque vermelho).
+16. **Análise crítica:** conflito objeto×minuta, conflito de prazos, reajuste, renovação (limite art. 106).
+
+**NOSSOS DIFERENCIAIS por cima (o que eles NÃO fazem — o wedge):**
+- **Empresa × Edital:** apto / ressalvas / não apto — cruzar a lista de habilitação (item 10) com certidões/CNAE/atestados da empresa ("faltam X docs").
+- **Veredito calibrado** (probabilístico + disclaimer): vale entrar? por quê?
+- **Prontidão deste edital** (quais docs faltam pra ESTE).
+- **Decisores:** extrair pregoeiro/fiscal/ordenador do texto (ex.: "Fiscal: ADRIANA VIVIANI") → CRM (LGPD institucional).
+- **Antecipação:** PCA / contrato vencendo / recorrência — eles não têm.
+- **Consultor unificado:** lê o edital + cita lei/jurisprudência + **teses dinâmicas** daquele edital (não 3 ferramentas separadas).
+
+**Perguntas Estratégicas** (chips no Consultor da pasta, 6 categorias): Proposta · Objeto · Habilitação · Pagamentos · Riscos/Penalidades · Contrato.
+
+**Ações / Export (igualar — REQUISITO da Pasta):** Baixar Edital Completo (PDF) · Enviar por e-mail · Gerar Word (.docx) · Imprimir · Salvar (PDF). Disclaimer fixo.
+
+---
+
+## ARQUITETURA — Resumo é PRÉ-COMPUTADO e CACHEADO (NÃO é IA ao vivo no clique)
+Observação do Bione (confirmada pelo artefato real, que traz "Emitido em DD/MM às HH:MM" = carimbo de geração): o resumo da ConLicitação abre em ~3s — rápido demais para LLM ao vivo. É artefato **armazenado** e servido por *cache-hit*.
+
+**Regras para o Sentinela:**
+1. **Gerar UMA vez, cachear, servir instantâneo.** O resumo fica em `licitacao.resumo_json`; o clique "Analisar/Resumo" é leitura do banco — **zero custo de IA por visualização**.
+2. **Determinístico primeiro:** campos estruturados (valor, datas, modalidade, órgão, portal) vêm do **metadado PNCP**; **CAPAG** vem de lookup no **Tesouro** — sem LLM.
+3. **LLM só na camada interpretativa** (objeto resumido, habilitação/prazos extraídos do documento, garantias, análise crítica, riscos, veredito, Empresa×Edital) — e **uma vez por edital**, salvo.
+4. **Quando gerar:** ao **adicionar à análise / baixar os documentos** (em background), não no clique de visualização.
+5. **Reuso entre usuários:** mesmo edital aberto por N clientes = gera 1 vez, todos reusam (economia de célula). Regenera só se o edital mudar (novo anexo/republicação).
+6. **Efeito:** rápido (UX) + custo pago **uma vez por edital** (não por clique nem por usuário) — desarma o custo de IA, ainda mais com BYOK.
+
+---
+
+## AÇÕES DE GERENCIAMENTO DA LICITAÇÃO (card/workspace) — validado vs ConLicitação
+Quando o licitante decide acompanhar uma licitação, o card/workspace tem estas ações (confirmado no print da ConLicitação):
+- **Adicionar Tarefa** — responsável, prazo, prioridade (checklist de execução). *(já specado)*
+- **Adicionar Andamento** — **registro manual na linha do tempo** (movimentações que o usuário acompanha: "enviei proposta", "ganhei na fase de lances", "entrou recurso"). Separado das tarefas. ← **novo**
+- **Anotações** — notas/comentários livres na licitação.
+- **Favoritar / Acompanhar** (estrela/olho) — marca de interesse.
+- **Colaboradores** — mais de uma pessoa gerencia a mesma licitação (equipe; badge nº de pessoas). ← **novo** (feature de time)
+- **Remover do Gerenciamento** — tira do Kanban **SEM apagar** a licitação (≠ deletar o workspace inteiro, que é ação deliberada). Dois níveis: sair do acompanhamento (leve) vs destruir a pasta (pesado).
+- Atalhos já previstos no card: Ver itens · Baixar Edital · Resumo do Edital · Pergunte ao Edital · Acessar a licitação (link do portal) · status (NOVA/…).
+
+Liga no **Bloco 4 (Kanban)** + **Pasta Inteligente**. "Andamento" e "Colaboradores" são os dois que faltavam.

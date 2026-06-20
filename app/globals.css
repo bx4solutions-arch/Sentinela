@@ -27,10 +27,11 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84% 50%;
+    --destructive: 0 73% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 142 72% 29%;
+    /* "success"/positivo SEM VERDE → azul de ação (#3C83F6). Regra do Bione: zero verde. */
+    --success: 217 91% 60%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
@@ -70,9 +71,9 @@
     --muted-foreground: 215 20% 65%;
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 96%;
-    --destructive: 0 63% 31%;
+    --destructive: 0 73% 51%;
     --destructive-foreground: 210 40% 96%;
-    --success: 142 72% 29%;
+    --success: 217 91% 60%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;

@@ -1,77 +1,112 @@
 import Link from "next/link";
-import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles } from "lucide-react";
+import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Badge, Button } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
+import { municipiosDaUf } from "@/lib/ibge";
 import { dataBR } from "@/lib/utils";
-import { monitorar, descartar, reverter, analisar } from "./actions";
+import { monitorar, descartar, reverter, analisar, monitorarCidade, removerCidade } from "./actions";
+import { CityPicker } from "./city-picker";
 
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
 
 type Edital = {
-  numero_controle_pncp: string;
-  objeto: string | null;
-  valor_estimado: number | null;
-  situacao_nome: string | null;
-  modalidade_nome: string | null;
-  data_publicacao: string | null;
-  link_origem: string | null;
-  cidade: string | null;
-  orgao: { razao_social: string | null } | null;
+  numero_controle_pncp: string; objeto: string | null; valor_estimado: number | null;
+  situacao_nome: string | null; modalidade_nome: string | null; data_publicacao: string | null;
+  link_origem: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
 };
 
 export default async function RadarPage() {
   const supabase = await createClient();
-  const { data: company } = await supabase
-    .from("company")
-    .select("segmentos, municipio, uf")
-    .maybeSingle();
-
+  const { data: company } = await supabase.from("company").select("segmentos, municipio, uf").maybeSingle();
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
   const uf: string | null = company?.uf ?? null;
 
   if (segmentos.length === 0 || !uf) {
-    return (
-      <EmptyState
-        titulo="Defina um nicho para o Radar"
-        texto="Seu CNAE foi classificado como genérico (ou faltou UF). Ajuste os nichos em Minha Empresa para o Radar cruzar editais do seu segmento."
-      />
-    );
+    return <EmptyState titulo="Defina um nicho para o Radar" texto="Seu CNAE foi classificado como genérico (ou faltou UF). Ajuste em Minha Empresa." />;
   }
 
-  // Editais reais em andamento do nicho, no MESMO estado (UF) da empresa
-  const { data: rows } = await supabase
-    .from("raw_editais")
+  // Células do tenant + status de coleta
+  const { data: celulas } = await supabase.from("celula").select("codigo_ibge, municipio");
+  const codigos = (celulas ?? []).map((c) => c.codigo_ibge);
+  let coletas: { codigo_ibge: string; status: string }[] = [];
+  if (codigos.length) {
+    const { data } = await supabase.from("cidade_coletada").select("codigo_ibge, status").in("codigo_ibge", codigos);
+    coletas = data ?? [];
+  }
+  const statusBy: Record<string, string> = Object.fromEntries(coletas.map((c) => [c.codigo_ibge, c.status]));
+  const cidadesMonitoradas = (celulas ?? []).map((c) => ({ ...c, status: statusBy[c.codigo_ibge] ?? "pendente" }));
+  const prontas = cidadesMonitoradas.filter((c) => c.status === "pronta").map((c) => c.municipio);
+  const coletando = cidadesMonitoradas.filter((c) => c.status !== "pronta").map((c) => c.municipio);
+
+  const cidadeEmpresaMonitorada = cidadesMonitoradas.some((c) => (c.municipio ?? "").toLowerCase() === (company?.municipio ?? "").toLowerCase());
+
+  // Escopo: cidades prontas (preciso) OU fallback por UF (honesto, enquanto coleta)
+  const usandoFallbackUf = prontas.length === 0;
+  let q = supabase.from("raw_editais")
     .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
-    .overlaps("segmentos", segmentos)
-    .eq("orgao.uf_sigla", uf)
-    .is("valor_homologado", null)
-    .order("data_publicacao", { ascending: false })
-    .limit(60);
+    .overlaps("segmentos", segmentos).is("valor_homologado", null);
+  q = usandoFallbackUf ? q.eq("orgao.uf_sigla", uf) : q.in("cidade", prontas);
+  const { data: rows } = await q.order("data_publicacao", { ascending: false }).limit(60);
   const editais = (rows ?? []) as unknown as Edital[];
 
   const { data: oports } = await supabase.from("oportunidade").select("numero_controle_pncp, stage");
   const stageBy: Record<string, string> = {};
   for (const o of oports ?? []) stageBy[o.numero_controle_pncp] = o.stage;
-
   const visiveis = editais.filter((e) => stageBy[e.numero_controle_pncp] !== "descartado");
-  const monitorando = visiveis.filter((e) => stageBy[e.numero_controle_pncp] === "monitorando").length;
+
+  const municipios = await municipiosDaUf(uf);
 
   return (
     <div className="space-y-4">
+      {/* Escopo de cidades */}
       <Card>
-        <CardContent className="flex flex-wrap items-center gap-2 p-4 text-sm">
-          <RadarIcon className="size-4 text-primary" />
-          <span className="font-medium">Sinais do seu recorte</span>
-          <span className="flex items-center gap-1 text-muted-foreground"><MapPin className="size-3" /> {uf}</span>
-          {segmentos.map((s) => <Badge key={s} variant="secondary">{SEG_LABEL[s] ?? s}</Badge>)}
-          <span className="ml-auto text-muted-foreground">{visiveis.length} em andamento{monitorando ? ` · ${monitorando} monitorando` : ""}</span>
+        <CardContent className="space-y-3 p-4">
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            <RadarIcon className="size-4 text-primary" />
+            <span className="font-medium">Sinais do seu recorte</span>
+            {segmentos.map((s) => <Badge key={s} variant="secondary">{SEG_LABEL[s] ?? s}</Badge>)}
+            <span className="ml-auto text-muted-foreground">{visiveis.length} em andamento</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs text-muted-foreground">Cidades:</span>
+            {cidadesMonitoradas.length === 0 && <span className="text-xs text-muted-foreground">nenhuma — mostrando o estado {uf}</span>}
+            {cidadesMonitoradas.map((c) => (
+              <span key={c.codigo_ibge} className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs">
+                <MapPin className="size-3" /> {c.municipio}
+                {c.status === "pronta"
+                  ? <Badge variant="success">pronta</Badge>
+                  : <Badge variant="warning"><Loader2 className="mr-1 size-3 animate-spin" />coletando</Badge>}
+                <form action={removerCidade}><input type="hidden" name="codigo_ibge" value={c.codigo_ibge} />
+                  <button type="submit" aria-label="Remover cidade" className="text-muted-foreground hover:text-destructive"><X className="size-3" /></button>
+                </form>
+              </span>
+            ))}
+            {!cidadeEmpresaMonitorada && company?.municipio && (
+              <form action={monitorarCidade}>
+                <input type="hidden" name="municipio" value={company.municipio} />
+                <input type="hidden" name="uf" value={uf} />
+                <Button type="submit" size="sm" variant="outline"><Plus className="size-4" /> Monitorar {company.municipio}</Button>
+              </form>
+            )}
+            <CityPicker uf={uf} municipios={municipios} />
+          </div>
+          {coletando.length > 0 && (
+            <p className="flex items-center gap-2 rounded-md border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-foreground">
+              <Loader2 className="size-3 animate-spin" /> Carregando histórico de {coletando.join(", ")}… os editais aparecem aqui assim que a coleta terminar.
+            </p>
+          )}
+          {usandoFallbackUf && (
+            <p className="text-xs text-muted-foreground">
+              Mostrando o <strong>estado {uf}</strong> enquanto suas cidades são coletadas. Ao concluir, o Radar foca nas suas cidades.
+            </p>
+          )}
         </CardContent>
       </Card>
 
       {visiveis.length === 0 ? (
-        <EmptyState titulo="Nenhum edital em andamento agora" texto={`Não há editais abertos do seu nicho em ${uf} no momento. Eles aparecem aqui assim que forem publicados.`} />
+        <EmptyState titulo="Nenhum edital em andamento agora" texto={`Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
       ) : (
         <div className="space-y-3">
           {visiveis.map((e) => {
@@ -89,39 +124,24 @@ export default async function RadarPage() {
                     {mon && <Badge variant="success">Monitorando</Badge>}
                     <span className="ml-auto">{e.data_publicacao ? dataBR(e.data_publicacao.slice(0, 10)) : ""}</span>
                   </div>
-
                   <p className="mt-2 line-clamp-2 text-sm">{e.objeto}</p>
-
                   <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
                     <span className="font-semibold text-foreground">{valor ?? "Valor não informado"}</span>
-                    {e.link_origem && (
-                      <a href={e.link_origem} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline">
-                        <ExternalLink className="size-3" /> Origem
-                      </a>
-                    )}
+                    {e.link_origem && <a href={e.link_origem} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline"><ExternalLink className="size-3" /> Origem</a>}
                     <span className="text-muted-foreground">{e.numero_controle_pncp}</span>
                   </div>
-
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     {mon ? (
-                      <form action={reverter}>
-                        <input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                        <Button type="submit" size="sm" variant="outline"><Undo2 className="size-4" /> Deixar de monitorar</Button>
-                      </form>
+                      <form action={reverter}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                        <Button type="submit" size="sm" variant="outline"><Undo2 className="size-4" /> Deixar de monitorar</Button></form>
                     ) : (
-                      <form action={monitorar}>
-                        <input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                        <Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button>
-                      </form>
+                      <form action={monitorar}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                        <Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
                     )}
-                    <form action={descartar}>
-                      <input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /> Descartar</Button>
-                    </form>
-                    <form action={analisar} className="ml-auto">
-                      <input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                      <Button type="submit" size="sm"><Sparkles className="size-4" /> Adicionar à análise</Button>
-                    </form>
+                    <form action={descartar}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /> Descartar</Button></form>
+                    <form action={analisar} className="ml-auto"><input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                      <Button type="submit" size="sm"><Sparkles className="size-4" /> Adicionar à análise</Button></form>
                   </div>
                 </CardContent>
               </Card>
