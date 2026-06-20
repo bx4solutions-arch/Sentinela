@@ -20,8 +20,8 @@ const NAV: NavItem[] = [
   { href: "/radar", label: "Radar", icon: Radar },
   { href: "/kanban", label: "Kanban", icon: KanbanSquare },
   { href: "/empresa", label: "Minha Empresa", icon: Building2 },
-  { href: "/roadmap", label: "Consultor", icon: MessagesSquare, roadmap: true },
-  { href: "/roadmap", label: "Configurações", icon: Settings, roadmap: true },
+  { href: "/consultor", label: "Consultor", icon: MessagesSquare },
+  { href: "/configuracoes", label: "Configurações", icon: Settings },
 ];
 
 const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
@@ -29,6 +29,8 @@ const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
+  { test: (p) => p.startsWith("/consultor"), title: "Consultor IA", sub: "Converse sobre cada licitação com o contexto da pasta" },
+  { test: (p) => p.startsWith("/configuracoes"), title: "Configurações", sub: "Provedor e modelo de IA (sua própria chave — BYOK)" },
   { test: (p) => p.startsWith("/empresa"), title: "Minha Empresa", sub: "Raio-X por CNPJ, certidões e Vigia de Documentos" },
   { test: (p) => p.startsWith("/onboarding"), title: "Configurar empresa", sub: "Raio-X por CNPJ" },
   { test: (p) => p.startsWith("/roadmap"), title: "Em breve", sub: "Funcionalidade no roadmap" },

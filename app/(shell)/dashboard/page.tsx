@@ -8,9 +8,6 @@ import { CERTIDAO_LABEL, diasAteVencer, statusCertidao } from "@/lib/certidoes";
 import { itensAplicaveis, calcProntidao } from "@/lib/habilitacao";
 import { dataBR } from "@/lib/utils";
 
-const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().trim();
-const CITY_MAP: Record<string, string> = { "SAO PAULO": "São Paulo", TERESINA: "Teresina" };
-
 const STAGES = [
   { key: "nova", label: "Nova" },
   { key: "monitorando", label: "Monitorando" },
@@ -37,13 +34,13 @@ export default async function DashboardPage() {
   const { data: company } = await supabase.from("company").select("razao_social, segmentos, municipio, uf").maybeSingle();
 
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
-  const cidade = company?.municipio ? CITY_MAP[norm(company.municipio)] ?? company.municipio : null;
-  const temNicho = segmentos.length > 0 && !!cidade;
+  const uf: string | null = company?.uf ?? null;
+  const temNicho = segmentos.length > 0 && !!uf;
 
-  // KPI: editais abertos do nicho + publicados em 90d
+  // KPI: editais abertos do nicho no estado (UF) + publicados em 90d
   let abertos = 0, pub90 = 0;
   if (temNicho) {
-    const base = () => supabase.from("raw_editais").select("numero_controle_pncp", { count: "exact", head: true }).overlaps("segmentos", segmentos).eq("cidade", cidade).is("valor_homologado", null);
+    const base = () => supabase.from("raw_editais").select("numero_controle_pncp, orgao:cnpj_orgao!inner(uf_sigla)", { count: "exact", head: true }).overlaps("segmentos", segmentos).eq("orgao.uf_sigla", uf).is("valor_homologado", null);
     // Server Component (renderiza 1× por request) — Date.now é determinístico aqui.
     // eslint-disable-next-line react-hooks/purity
     const d90 = new Date(Date.now() - 90 * 86400000).toISOString();
@@ -74,8 +71,8 @@ export default async function DashboardPage() {
   let atacar: { numero_controle_pncp: string; objeto: string | null; data_publicacao: string | null; orgao: { razao_social: string | null } | null }[] = [];
   if (temNicho) {
     const { data } = await supabase.from("raw_editais")
-      .select("numero_controle_pncp, objeto, data_publicacao, orgao:cnpj_orgao(razao_social)")
-      .overlaps("segmentos", segmentos).eq("cidade", cidade).is("valor_homologado", null)
+      .select("numero_controle_pncp, objeto, data_publicacao, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
+      .overlaps("segmentos", segmentos).eq("orgao.uf_sigla", uf).is("valor_homologado", null)
       .order("data_publicacao", { ascending: false }).limit(8);
     atacar = ((data ?? []) as unknown as typeof atacar).filter((e) => !descartados.has(e.numero_controle_pncp)).slice(0, 5);
   }
@@ -84,7 +81,7 @@ export default async function DashboardPage() {
     <div className="space-y-5">
       {/* KPIs reais */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
-        <Kpi icon={RadarIcon} label="Editais abertos (nicho)" value={abertos} hint={cidade ?? "defina nicho"} href="/radar" />
+        <Kpi icon={RadarIcon} label="Editais abertos (nicho)" value={abertos} hint={uf ? `estado ${uf}` : "defina nicho"} href="/radar" />
         <Kpi icon={Flame} label="Novos em 90 dias" value={pub90} hint="publicados recentemente" href="/radar" />
         <Kpi icon={Eye} label="Monitorando" value={monitorando} hint={`${noFunil} no funil`} href="/radar" />
         <Kpi icon={Gauge} label="Prontidão" value={`${pct}%`} hint="habilitação (Lei 14.133)" href="/empresa" />

@@ -9,9 +9,6 @@ import { monitorar, descartar, reverter, analisar } from "./actions";
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
 
-const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().trim();
-const CITY_MAP: Record<string, string> = { "SAO PAULO": "São Paulo", TERESINA: "Teresina" };
-
 type Edital = {
   numero_controle_pncp: string;
   objeto: string | null;
@@ -32,30 +29,28 @@ export default async function RadarPage() {
     .maybeSingle();
 
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
-  const cidade = company?.municipio ? CITY_MAP[norm(company.municipio)] ?? company.municipio : null;
+  const uf: string | null = company?.uf ?? null;
 
-  // Sem nicho específico → nada a casar (honesto)
-  if (segmentos.length === 0) {
+  if (segmentos.length === 0 || !uf) {
     return (
       <EmptyState
         titulo="Defina um nicho para o Radar"
-        texto="Seu CNAE foi classificado como genérico. Edite os nichos em Minha Empresa para o Radar cruzar editais do seu segmento."
+        texto="Seu CNAE foi classificado como genérico (ou faltou UF). Ajuste os nichos em Minha Empresa para o Radar cruzar editais do seu segmento."
       />
     );
   }
 
-  // Editais reais em andamento do nicho + cidade do perfil
+  // Editais reais em andamento do nicho, no MESMO estado (UF) da empresa
   const { data: rows } = await supabase
     .from("raw_editais")
-    .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, link_origem, cidade, orgao:cnpj_orgao(razao_social)")
+    .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
     .overlaps("segmentos", segmentos)
-    .eq("cidade", cidade)
+    .eq("orgao.uf_sigla", uf)
     .is("valor_homologado", null)
     .order("data_publicacao", { ascending: false })
     .limit(60);
   const editais = (rows ?? []) as unknown as Edital[];
 
-  // Estado do funil por tenant (monitorando/descartado)
   const { data: oports } = await supabase.from("oportunidade").select("numero_controle_pncp, stage");
   const stageBy: Record<string, string> = {};
   for (const o of oports ?? []) stageBy[o.numero_controle_pncp] = o.stage;
@@ -65,19 +60,18 @@ export default async function RadarPage() {
 
   return (
     <div className="space-y-4">
-      {/* Filtro ativo */}
       <Card>
         <CardContent className="flex flex-wrap items-center gap-2 p-4 text-sm">
           <RadarIcon className="size-4 text-primary" />
           <span className="font-medium">Sinais do seu recorte</span>
-          <span className="flex items-center gap-1 text-muted-foreground"><MapPin className="size-3" /> {cidade}</span>
+          <span className="flex items-center gap-1 text-muted-foreground"><MapPin className="size-3" /> {uf}</span>
           {segmentos.map((s) => <Badge key={s} variant="secondary">{SEG_LABEL[s] ?? s}</Badge>)}
           <span className="ml-auto text-muted-foreground">{visiveis.length} em andamento{monitorando ? ` · ${monitorando} monitorando` : ""}</span>
         </CardContent>
       </Card>
 
       {visiveis.length === 0 ? (
-        <EmptyState titulo="Nenhum edital em andamento agora" texto="Não há editais abertos do seu nicho nesta cidade no momento. Eles aparecem aqui assim que forem publicados." />
+        <EmptyState titulo="Nenhum edital em andamento agora" texto={`Não há editais abertos do seu nicho em ${uf} no momento. Eles aparecem aqui assim que forem publicados.`} />
       ) : (
         <div className="space-y-3">
           {visiveis.map((e) => {
@@ -89,6 +83,7 @@ export default async function RadarPage() {
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <Building2 className="size-3.5" />
                     <span className="font-medium text-foreground">{e.orgao?.razao_social ?? "Órgão"}</span>
+                    {e.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {e.cidade}</span>}
                     {e.modalidade_nome && <Badge variant="outline">{e.modalidade_nome}</Badge>}
                     {e.situacao_nome && <Badge variant="muted">{e.situacao_nome}</Badge>}
                     {mon && <Badge variant="success">Monitorando</Badge>}
@@ -107,7 +102,7 @@ export default async function RadarPage() {
                     <span className="text-muted-foreground">{e.numero_controle_pncp}</span>
                   </div>
 
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
                     {mon ? (
                       <form action={reverter}>
                         <input type="hidden" name="numero" value={e.numero_controle_pncp} />

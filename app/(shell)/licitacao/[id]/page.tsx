@@ -5,9 +5,18 @@ import {
   FileSearch, Scale, MessagesSquare, ListChecks, DollarSign, Landmark, Swords, Lock,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { Card, CardContent, Badge, Button, Input, Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui";
 import { dataBR } from "@/lib/utils";
-import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao } from "./actions";
+import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
+
+type Parecer = {
+  resumo?: string;
+  riscos?: { nivel?: string; texto?: string }[];
+  veredito?: { recomendacao?: string; probabilidade?: string; justificativa?: string; prontidao_pct?: number };
+  empresa_edital?: { status?: string; faltam?: string[] };
+  erro?: string;
+};
 
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
@@ -53,7 +62,15 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
     .eq("licitacao_id", id)
     .order("criado_em", { ascending: false });
 
-  const aiMsg = "Disponível ao ligar a análise de IA (defina o modelo — gate de gasto).";
+  // IA configurada? (admin, server-only) + parecer existente
+  const { data: { user } } = await supabase.auth.getUser();
+  const admin = createAdminClient();
+  const { data: cfg } = await admin.from("tenant_ai_config").select("provider, model, api_key_encrypted").eq("tenant_id", user?.id ?? "").maybeSingle();
+  const hasAI = !!cfg && (cfg.provider === "mock" || !!cfg.api_key_encrypted);
+  const { data: analiseRow } = await supabase.from("analise").select("conteudo, modelo").eq("licitacao_id", id).eq("tipo", "completa").maybeSingle();
+  const p = (analiseRow?.conteudo ?? null) as Parecer | null;
+
+  const aiMsg = hasAI ? "Clique em “Analisar com IA” no topo para gerar." : "Configure o provedor e o modelo de IA em Configurações para ligar a análise.";
 
   return (
     <div className="space-y-4">
@@ -80,8 +97,15 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             </div>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
-            <Button size="sm" disabled title="Defina o modelo de IA (gate de gasto) para ligar a análise"><Sparkles className="size-4" /> Analisar com IA</Button>
-            <span className="text-xs text-muted-foreground">IA desligada até a definição do modelo.</span>
+            {hasAI ? (
+              <form action={analisarComIA}>
+                <input type="hidden" name="licitacao_id" value={lic.id} />
+                <Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button>
+              </form>
+            ) : (
+              <Button asChild size="sm" variant="outline"><Link href="/configuracoes"><Sparkles className="size-4" /> Ligar IA (Configurações)</Link></Button>
+            )}
+            {analiseRow?.modelo && <span className="text-xs text-muted-foreground">modelo: {analiseRow.modelo}</span>}
             <form action={excluirLicitacao} className="ml-auto">
               <input type="hidden" name="id" value={lic.id} />
               <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir análise</Button>
@@ -107,10 +131,51 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         </div>
 
         <div className="mt-4">
-          <TabsContent value="resumo"><EmBreve icon={FileSearch} titulo="Resumo Executivo" motivo={aiMsg} /></TabsContent>
-          <TabsContent value="empresa"><EmBreve icon={Building2} titulo="Minha Empresa × Edital" motivo={aiMsg} /></TabsContent>
-          <TabsContent value="riscos"><EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo={aiMsg} /></TabsContent>
-          <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo={aiMsg} /></TabsContent>
+          <TabsContent value="resumo">
+            {p?.resumo || p?.veredito ? (
+              <div className="space-y-4">
+                <Card><CardContent className="p-4">
+                  <p className="mb-1 text-sm font-semibold">Resumo Executivo</p>
+                  <p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo ?? "—"}</p>
+                </CardContent></Card>
+                {p.veredito && (
+                  <Card><CardContent className="p-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-sm font-semibold">Veredito calibrado</p>
+                      {p.veredito.probabilidade && <Badge variant="secondary">probabilidade {p.veredito.probabilidade}</Badge>}
+                      {typeof p.veredito.prontidao_pct === "number" && <Badge variant="muted">{p.veredito.prontidao_pct}% pronto</Badge>}
+                    </div>
+                    <p className="mt-1 text-sm font-medium">{p.veredito.recomendacao}</p>
+                    <p className="text-sm text-muted-foreground">{p.veredito.justificativa}</p>
+                    <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Recomendação calibrada (probabilística) — não é garantia de resultado. Decisão e responsabilidade são suas.</p>
+                  </CardContent></Card>
+                )}
+                {p.erro && <p className="text-sm text-destructive">Falha na análise: {p.erro}</p>}
+              </div>
+            ) : <EmBreve icon={FileSearch} titulo="Resumo Executivo" motivo={aiMsg} />}
+          </TabsContent>
+          <TabsContent value="empresa">
+            {p?.empresa_edital ? (
+              <Card><CardContent className="p-4">
+                <div className="flex items-center gap-2"><p className="text-sm font-semibold">Minha Empresa × Edital</p>
+                  <Badge variant={p.empresa_edital.status === "apto" ? "success" : p.empresa_edital.status === "nao_apto" ? "destructive" : "warning"}>{p.empresa_edital.status}</Badge></div>
+                {(p.empresa_edital.faltam?.length ?? 0) > 0 && <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">{p.empresa_edital.faltam!.map((f, i) => <li key={i}>{f}</li>)}</ul>}
+              </CardContent></Card>
+            ) : <EmBreve icon={Building2} titulo="Minha Empresa × Edital" motivo={aiMsg} />}
+          </TabsContent>
+          <TabsContent value="riscos">
+            {(p?.riscos?.length ?? 0) > 0 ? (
+              <Card><CardContent className="space-y-2 p-4">
+                {p!.riscos!.map((r, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm">
+                    <Badge variant={r.nivel === "vermelho" ? "destructive" : r.nivel === "verde" ? "success" : "warning"}>{r.nivel}</Badge>
+                    <span>{r.texto}</span>
+                  </div>
+                ))}
+              </CardContent></Card>
+            ) : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo={aiMsg} />}
+          </TabsContent>
+          <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo="Chat com contexto da pasta — chega no próximo incremento (Bloco 3b)." /></TabsContent>
           <TabsContent value="plano"><EmBreve icon={ListChecks} titulo="Plano de Ação" motivo={aiMsg} /></TabsContent>
 
           <TabsContent value="documentos">
