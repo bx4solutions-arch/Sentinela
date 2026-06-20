@@ -123,7 +123,7 @@ export function Shell({
           </div>
         </header>
         {/* Banner "mock" só nas telas que ainda usam dado ilustrativo. Rotas com dado real não mostram. */}
-        {!["/empresa", "/radar", "/dashboard"].some((p) => pathname.startsWith(p)) && <MockBanner />}
+        {!["/empresa", "/radar", "/dashboard", "/kanban", "/licitacao"].some((p) => pathname.startsWith(p)) && <MockBanner />}
         <main className="flex-1 px-4 py-5 pb-24 md:px-6 md:pb-8">{children}</main>
       </div>
 
