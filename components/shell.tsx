@@ -28,6 +28,7 @@ const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/dashboard"), title: "Dashboard Sentinela", sub: "Inteligência antecipada de oportunidades públicas" },
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
+  { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
   { test: (p) => p.startsWith("/empresa"), title: "Minha Empresa", sub: "Raio-X por CNPJ, certidões e Vigia de Documentos" },
   { test: (p) => p.startsWith("/onboarding"), title: "Configurar empresa", sub: "Raio-X por CNPJ" },
   { test: (p) => p.startsWith("/roadmap"), title: "Em breve", sub: "Funcionalidade no roadmap" },

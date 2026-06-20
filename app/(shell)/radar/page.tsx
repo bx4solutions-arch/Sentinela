@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight } from "lucide-react";
+import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Badge, Button } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { dataBR } from "@/lib/utils";
-import { monitorar, descartar, reverter } from "./actions";
+import { monitorar, descartar, reverter, analisar } from "./actions";
 
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
@@ -123,9 +123,10 @@ export default async function RadarPage() {
                       <input type="hidden" name="numero" value={e.numero_controle_pncp} />
                       <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /> Descartar</Button>
                     </form>
-                    <Button size="sm" variant="ghost" className="ml-auto text-muted-foreground/60" disabled title="Em breve — Bloco 3 (Pasta Inteligente)">
-                      Adicionar à análise <ArrowRight className="size-4" />
-                    </Button>
+                    <form action={analisar} className="ml-auto">
+                      <input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                      <Button type="submit" size="sm"><Sparkles className="size-4" /> Adicionar à análise</Button>
+                    </form>
                   </div>
                 </CardContent>
               </Card>
