@@ -1,7 +1,36 @@
 // Autoteste E2E do Bloco 1 — dirige o fluxo real e coleta evidências.
 // Uso: node e2e/autotest.mjs  (dev server em :3001)
 import { chromium } from "playwright";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
+
+// Lê credenciais do .env.local (só p/ limpar a PRÓPRIA conta de teste no fim).
+function readEnv() {
+  const env = {};
+  for (const line of readFileSync(".env.local", "utf8").split("\n")) {
+    const t = line.trim();
+    if (t && !t.startsWith("#") && t.includes("=")) {
+      const [k, ...v] = t.split("=");
+      env[k.trim()] = v.join("=").trim().replace(/^['"]|['"]$/g, "");
+    }
+  }
+  return env;
+}
+
+// Apaga SOMENTE a conta de teste criada por este run (nunca contas reais).
+async function cleanupTestAccount(testEmail) {
+  try {
+    const e = readEnv();
+    const url = e.SUPABASE_URL.replace(/\/$/, "");
+    const sr = e.SUPABASE_SERVICE_ROLE_KEY;
+    const h = { apikey: sr, Authorization: `Bearer ${sr}` };
+    const list = await (await fetch(`${url}/auth/v1/admin/users`, { headers: h })).json();
+    for (const u of list.users || []) {
+      if (u.email === testEmail && u.email.endsWith("@sentinela.test")) {
+        await fetch(`${url}/auth/v1/admin/users/${u.id}`, { method: "DELETE", headers: h });
+      }
+    }
+  } catch { /* limpeza best-effort */ }
+}
 
 const BASE = "http://localhost:3001";
 const SHOTS = "e2e/shots";
@@ -99,6 +128,7 @@ try {
   await page.screenshot({ path: `${SHOTS}/ERRO.png`, fullPage: true }).catch(() => {});
 } finally {
   await browser.close();
+  await cleanupTestAccount(email); // limpa só a própria conta qa_*@sentinela.test
 }
 
 console.log("\n===== RESULTADO AUTOTESTE =====");
