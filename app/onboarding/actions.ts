@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { consultarBrasilApi, raioxToCompanyRow, type RaioX, type ConsultaResult } from "@/lib/brasilapi";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { resolveMunicipio } from "@/lib/ibge";
 
 export type ConsultaState = ConsultaResult | { ok: false; error?: undefined };
 
@@ -60,6 +62,20 @@ export async function concluirOnboarding(formData: FormData) {
     }));
   if (validCerts.length) {
     await supabase.from("documento").upsert(validCerts, { onConflict: "company_id,tipo" });
+  }
+
+  // Escopo: monitora automaticamente a cidade da empresa (enfileira coleta se nova).
+  if (raiox.municipio && raiox.uf) {
+    const m = await resolveMunicipio(raiox.uf, raiox.municipio);
+    if (m) {
+      await supabase.from("celula").upsert(
+        { tenant_id: user.id, codigo_ibge: m.codigo_ibge, municipio: m.nome, uf: raiox.uf },
+        { onConflict: "tenant_id,codigo_ibge" }
+      );
+      const admin = createAdminClient();
+      const { data: cc } = await admin.from("cidade_coletada").select("status").eq("codigo_ibge", m.codigo_ibge).maybeSingle();
+      if (!cc) await admin.from("cidade_coletada").insert({ codigo_ibge: m.codigo_ibge, municipio: m.nome, uf: raiox.uf, status: "pendente" });
+    }
   }
 
   revalidatePath("/", "layout");
