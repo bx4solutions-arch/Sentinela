@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   BarChart3, Flame, CalendarClock, Clock, AlertTriangle, ArrowUpRight, ArrowDownRight,
-  Building2, ArrowRight, CheckSquare, Eye, Plus,
+  Building2, CheckSquare, Eye, Plus,
 } from "lucide-react";
 import { Card, CardContent, Badge, Button } from "@/components/ui";
 import { ScoreRing } from "@/components/charts";

@@ -73,13 +73,13 @@ export default async function EmpresaPage() {
           <div className="grid size-11 shrink-0 place-items-center rounded-md bg-primary/10 text-primary"><Building2 className="size-6" /></div>
           <div className="min-w-0 flex-1">
             <CardTitle className="truncate text-lg">{company.razao_social}</CardTitle>
-            <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+            <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
               <MapPin className="size-3" /> {company.municipio}/{company.uf} · {company.cnpj}
               {company.matriz_filial && <Badge variant="muted">{company.matriz_filial}</Badge>}
               {company.situacao_cadastral && (
                 <Badge variant={company.situacao_cadastral === "ATIVA" ? "success" : "warning"}>{company.situacao_cadastral}</Badge>
               )}
-            </p>
+            </div>
           </div>
           <div className="flex shrink-0 items-center gap-1">
             <form action={atualizarEmpresa}>

@@ -50,3 +50,6 @@ _config_check.json
 ruvector.db
 *.db
 __pycache__/
+
+# Artefatos de autoteste (screenshots)
+e2e/shots/

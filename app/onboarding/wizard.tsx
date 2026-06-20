@@ -1,9 +1,9 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import {
-  ShieldCheck, Search, Loader2, Building2, MapPin, CheckCircle2, ArrowRight, ArrowLeft, BadgeCheck,
+  ShieldCheck, Search, Loader2, Building2, MapPin, CheckCircle2, ArrowRight, ArrowLeft,
 } from "lucide-react";
 import { Button, Input, Label, Badge, Card } from "@/components/ui";
 import { SEGMENTOS, SEG_LABEL, formatCnae } from "@/lib/segmentos";
@@ -51,12 +51,14 @@ export function Wizard({ userEmail, trocar = false }: { userEmail: string; troca
 
   const [state, formAction] = useActionState<ConsultaState, FormData>(consultarCnpjAction, { ok: false });
 
-  useEffect(() => {
-    if (state.ok && state.data) {
-      setRaiox(state.data);
-      setNichos(state.data.segmentosSugeridos);
-    }
-  }, [state]);
+  // Quando a consulta retorna um novo resultado, inicializa raiox/nichos
+  // (padrão React: ajustar estado no render comparando com o último visto).
+  const [lastData, setLastData] = useState<RaioX | null>(null);
+  if (state.ok && state.data && state.data !== lastData) {
+    setLastData(state.data);
+    setRaiox(state.data);
+    setNichos(state.data.segmentosSugeridos);
+  }
 
   const toggleNicho = (k: string) =>
     setNichos((cur) => (cur.includes(k) ? cur.filter((x) => x !== k) : [...cur, k]));
@@ -133,12 +135,12 @@ export function Wizard({ userEmail, trocar = false }: { userEmail: string; troca
                   <div className="grid size-10 shrink-0 place-items-center rounded-md bg-primary/10 text-primary"><Building2 className="size-5" /></div>
                   <div className="min-w-0">
                     <p className="truncate font-medium">{raiox.razaoSocial}</p>
-                    <p className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
                       <MapPin className="size-3" /> {raiox.municipio}/{raiox.uf} · {raiox.cnpj}
                       {raiox.situacaoCadastral && (
                         <Badge variant={raiox.situacaoCadastral === "ATIVA" ? "success" : "warning"} className="ml-1">{raiox.situacaoCadastral}</Badge>
                       )}
-                    </p>
+                    </div>
                     <p className="mt-1 text-xs text-muted-foreground">
                       {raiox.cnaePrincipal ? formatCnae(raiox.cnaePrincipal) : ""} {raiox.cnaePrincipalDesc}
                     </p>

@@ -55,12 +55,40 @@ function fmtCep(c: string | null | undefined): string | null {
   return d.length === 8 ? `${d.slice(0, 5)}-${d.slice(5)}` : c || null;
 }
 
+interface BrasilApiCnpj {
+  razao_social?: string | null;
+  nome_fantasia?: string | null;
+  descricao_identificador_matriz_filial?: string | null;
+  descricao_situacao_cadastral?: string | null;
+  data_situacao_cadastral?: string | null;
+  data_inicio_atividade?: string | null;
+  natureza_juridica?: string | null;
+  porte?: string | null;
+  capital_social?: number | string | null;
+  opcao_pelo_simples?: boolean | null;
+  opcao_pelo_mei?: boolean | null;
+  logradouro?: string | null;
+  numero?: string | null;
+  complemento?: string | null;
+  bairro?: string | null;
+  municipio?: string | null;
+  uf?: string | null;
+  cep?: string | null;
+  ddd_telefone_1?: string | null;
+  email?: string | null;
+  cnae_fiscal?: number | null;
+  cnae_fiscal_descricao?: string | null;
+  cnaes_secundarios?: { codigo: number; descricao: string }[];
+  qsa?: { nome_socio?: string; qualificacao_socio?: string; data_entrada_sociedade?: string }[];
+  [k: string]: unknown;
+}
+
 /** Consulta a BrasilAPI (pública) e mapeia a ficha completa. */
 export async function consultarBrasilApi(cnpjRaw: string): Promise<ConsultaResult> {
   const cnpj = String(cnpjRaw ?? "").replace(/\D/g, "");
   if (cnpj.length !== 14) return { ok: false, error: "CNPJ deve ter 14 dígitos." };
 
-  let j: Record<string, any>;
+  let j: BrasilApiCnpj;
   try {
     const r = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`, {
       headers: { "User-Agent": "sentinela/1.0" },
@@ -69,18 +97,18 @@ export async function consultarBrasilApi(cnpjRaw: string): Promise<ConsultaResul
     if (r.status === 404) return { ok: false, error: "CNPJ não encontrado na Receita Federal." };
     if (r.status === 429) return { ok: false, error: "Muitas consultas seguidas. Aguarde alguns segundos." };
     if (!r.ok) return { ok: false, error: `Falha na consulta (HTTP ${r.status}).` };
-    j = await r.json();
+    j = (await r.json()) as BrasilApiCnpj;
   } catch {
     return { ok: false, error: "Não foi possível consultar a BrasilAPI agora. Tente novamente." };
   }
 
-  const sec = (j.cnaes_secundarios as { codigo: number; descricao: string }[] | undefined) ?? [];
+  const sec = j.cnaes_secundarios ?? [];
   const cnaesSecundarios = sec
     .filter((c) => c && c.codigo)
     .map((c) => ({ codigo: String(c.codigo), descricao: c.descricao }));
   const cnaePrincipal = j.cnae_fiscal != null ? String(j.cnae_fiscal) : null;
   const porte = (j.porte as string | null) ?? null;
-  const qsa: Socio[] = ((j.qsa as any[] | undefined) ?? []).map((s) => ({
+  const qsa: Socio[] = (j.qsa ?? []).map((s) => ({
     nome: s.nome_socio ?? "—",
     qualificacao: s.qualificacao_socio ?? null,
     entrada: s.data_entrada_sociedade ?? null,
@@ -137,6 +165,8 @@ export function raioxToCompanyRow(p: RaioX) {
     numero: p.numero,
     complemento: p.complemento,
     bairro: p.bairro,
+    municipio: p.municipio,
+    uf: p.uf,
     cep: p.cep,
     telefone: p.telefone,
     email: p.email,

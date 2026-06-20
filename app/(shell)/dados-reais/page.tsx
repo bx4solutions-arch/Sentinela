@@ -56,7 +56,7 @@ function Pipeline({ et }: { et: Etapas }) {
 
 export default function DadosReaisPage() {
   const d = data as unknown as {
-    gerado_em: string; fonte: string; config: any;
+    gerado_em: string; fonte: string; config: { n_fatias_concluidas?: number; concluido?: boolean };
     totais: Record<string, number>;
     por_cidade_segmento: { cidade: string; segmento: string; n: number; pca: number; pca_antes: number; com_ata: number; com_contrato: number; valor_total: number }[];
     oportunidades: Op[];
