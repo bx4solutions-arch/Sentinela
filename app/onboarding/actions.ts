@@ -21,12 +21,18 @@ export async function concluirOnboarding(formData: FormData) {
     redirect("/onboarding?error=" + encodeURIComponent("Dados inválidos. Refaça."));
   }
   const segmentos = formData.getAll("segmentos").map(String).filter(Boolean);
+  const trocar = String(formData.get("trocar") ?? "") === "1";
 
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
+
+  // Trocar empresa = ação deliberada: apaga a empresa atual (cascade nos documentos) e recria do zero.
+  if (trocar) {
+    await supabase.from("company").delete().eq("tenant_id", user.id);
+  }
 
   const row = {
     ...raioxToCompanyRow(raiox),
@@ -47,12 +53,13 @@ export async function concluirOnboarding(formData: FormData) {
     .filter((c) => c.tipo && c.vencimento)
     .map((c) => ({
       company_id: comp.id,
+      escopo: "company",
       tipo: c.tipo,
       vencimento: c.vencimento,
       emissao: c.emissao || null,
     }));
   if (validCerts.length) {
-    await supabase.from("certidao").upsert(validCerts, { onConflict: "company_id,tipo" });
+    await supabase.from("documento").upsert(validCerts, { onConflict: "company_id,tipo" });
   }
 
   revalidatePath("/", "layout");

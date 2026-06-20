@@ -42,7 +42,7 @@ function ConcluirBtn() {
 
 const STEPS = ["Empresa", "Nichos", "Certidões"];
 
-export function Wizard({ userEmail }: { userEmail: string }) {
+export function Wizard({ userEmail, trocar = false }: { userEmail: string; trocar?: boolean }) {
   const [step, setStep] = useState(0);
   const [raiox, setRaiox] = useState<RaioX | null>(null);
   const [nichos, setNichos] = useState<string[]>([]);
@@ -101,6 +101,13 @@ export function Wizard({ userEmail }: { userEmail: string }) {
             </li>
           ))}
         </ol>
+
+        {trocar && (
+          <div className="mb-4 rounded-md border border-warning/30 bg-warning/10 px-3 py-2 text-sm text-foreground">
+            Você está <strong>trocando a empresa monitorada</strong>. Ao concluir, a empresa atual e tudo que
+            conhecemos dela serão substituídos pelo novo CNPJ.
+          </div>
+        )}
 
         {/* Passo 1 — CNPJ */}
         {step === 0 && (
@@ -197,6 +204,7 @@ export function Wizard({ userEmail }: { userEmail: string }) {
             <form action={concluirOnboarding} className="mt-5 flex items-center justify-between">
               <input type="hidden" name="raiox" value={JSON.stringify(raiox)} />
               <input type="hidden" name="certidoes" value={certidoesJson} />
+              {trocar && <input type="hidden" name="trocar" value="1" />}
               {nichos.map((n) => <input key={n} type="hidden" name="segmentos" value={n} />)}
               <Button type="button" variant="outline" onClick={() => setStep(1)}><ArrowLeft className="size-4" /> Voltar</Button>
               <ConcluirBtn />

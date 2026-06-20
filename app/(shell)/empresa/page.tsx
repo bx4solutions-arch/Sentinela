@@ -1,16 +1,16 @@
 import Link from "next/link";
 import {
   Building2, ShieldCheck, MapPin, Trash2, ArrowRight, Gauge, RefreshCw,
-  Phone, Mail, Calendar, Landmark, Users, FileText, Plus,
+  Phone, Mail, Landmark, Users, FileText, Plus,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { Card, CardHeader, CardTitle, CardContent, Badge, Button, Input, Label, Select, Progress } from "@/components/ui";
+import { Card, CardHeader, CardTitle, CardContent, Badge, Button, Input, Progress } from "@/components/ui";
 import { SEG_LABEL, formatCnae } from "@/lib/segmentos";
-import { CERTIDAO_TIPOS, CERTIDAO_LABEL } from "@/lib/certidoes";
-import { diasAteVencer } from "@/lib/certidoes";
+import { CERTIDAO_TIPOS, CERTIDAO_LABEL, diasAteVencer } from "@/lib/certidoes";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { dataBR } from "@/lib/utils";
-import { addCertidao, deleteCertidao, atualizarEmpresa } from "./actions";
+import { addDocumento, deleteDocumento, atualizarEmpresa } from "./actions";
+import { AddDocForm, TrocarEmpresaButton } from "./client";
 
 const brl = (n: number | null) =>
   n == null ? "—" : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
@@ -23,6 +23,8 @@ function Field({ label, value }: { label: string; value: React.ReactNode }) {
     </div>
   );
 }
+
+type Doc = { id: string; tipo: string; tipo_label: string | null; vencimento: string };
 
 export default async function EmpresaPage() {
   const supabase = await createClient();
@@ -41,17 +43,17 @@ export default async function EmpresaPage() {
     );
   }
 
-  const { data: certs } = await supabase.from("certidao").select("*").order("vencimento", { ascending: true });
-  const certidoes = certs ?? [];
-  const certByTipo: Record<string, { vencimento: string; id: string }> = {};
-  for (const c of certidoes) certByTipo[c.tipo] = c;
+  const { data: docs } = await supabase.from("documento").select("*").order("vencimento", { ascending: true });
+  const documentos: Doc[] = docs ?? [];
+  const docByTipo: Record<string, Doc> = {};
+  for (const d of documentos) docByTipo[d.tipo] = d;
 
   const segmentos: string[] = company.segmentos ?? [];
   const secundarios: { codigo: string; descricao: string }[] = company.cnaes_secundarios ?? [];
-  const qsa: { nome: string; qualificacao: string | null; entrada: string | null }[] = company.qsa ?? [];
+  const qsa: { nome: string; qualificacao: string | null }[] = company.qsa ?? [];
 
   const aplicaveis = itensAplicaveis(segmentos);
-  const { pct, validos, total } = calcProntidao(aplicaveis, certByTipo);
+  const { pct, validos, total } = calcProntidao(aplicaveis, docByTipo);
   const prontTone = pct >= 80 ? "text-success" : pct >= 50 ? "text-warning" : "text-destructive";
 
   const endereco = [
@@ -59,8 +61,9 @@ export default async function EmpresaPage() {
     company.bairro, company.municipio && `${company.municipio}/${company.uf}`, company.cep && `CEP ${company.cep}`,
   ].filter(Boolean).join(", ");
 
-  const extras = certidoes.filter((c) => !aplicaveis.some((a) => a.key === c.tipo));
+  const extras = documentos.filter((d) => !aplicaveis.some((a) => a.key === d.tipo));
   const tiposExtras = CERTIDAO_TIPOS.filter((t) => !aplicaveis.some((a) => a.key === t.key));
+  const docLabel = (d: Doc) => d.tipo_label || CERTIDAO_LABEL[d.tipo] || d.tipo;
 
   return (
     <div className="space-y-5">
@@ -78,14 +81,16 @@ export default async function EmpresaPage() {
               )}
             </p>
           </div>
-          <form action={atualizarEmpresa}>
-            <Button type="submit" variant="outline" size="sm"><RefreshCw className="size-4" /> Atualizar</Button>
-          </form>
+          <div className="flex shrink-0 items-center gap-1">
+            <form action={atualizarEmpresa}>
+              <Button type="submit" variant="outline" size="sm"><RefreshCw className="size-4" /> Atualizar</Button>
+            </form>
+            <TrocarEmpresaButton />
+          </div>
         </CardHeader>
       </Card>
 
       <div className="grid gap-5 lg:grid-cols-3">
-        {/* Coluna principal */}
         <div className="space-y-5 lg:col-span-2">
           {/* Identificação */}
           <Card>
@@ -180,14 +185,17 @@ export default async function EmpresaPage() {
       {/* Habilitação — checklist obrigatória */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-base"><ShieldCheck className="size-4 text-primary" /> Habilitação (checklist obrigatória)</CardTitle>
-          <p className="text-sm text-muted-foreground">Cada item aplicável aos seus nichos. Ausente conta como gap na prontidão.</p>
+          <CardTitle className="flex items-center gap-2 text-base"><ShieldCheck className="size-4 text-primary" /> Vigia de documentos</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            Cadastre suas certidões e licenças. Não emitimos automaticamente ainda — emissão assistida em breve.
+            O que faltar aparece como <span className="font-medium text-destructive">Ausente</span> e conta como gap na prontidão.
+          </p>
         </CardHeader>
         <CardContent>
           <ul className="divide-y rounded-md border">
             {aplicaveis.map((it) => {
-              const cert = certByTipo[it.key];
-              const st = statusItem(cert);
+              const doc = docByTipo[it.key];
+              const st = statusItem(doc);
               const meta = ITEM_STATUS_META[st];
               return (
                 <li key={it.key} className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center">
@@ -195,16 +203,16 @@ export default async function EmpresaPage() {
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium">{it.label}</p>
                     <p className="text-xs text-muted-foreground">
-                      {cert ? `Vence ${dataBR(cert.vencimento)} · ${diasAteVencer(cert.vencimento) < 0 ? `há ${-diasAteVencer(cert.vencimento)}d` : `em ${diasAteVencer(cert.vencimento)}d`}` : it.orgao}
+                      {doc ? `Vence ${dataBR(doc.vencimento)} · ${diasAteVencer(doc.vencimento) < 0 ? `há ${-diasAteVencer(doc.vencimento)}d` : `em ${diasAteVencer(doc.vencimento)}d`}` : it.orgao}
                     </p>
                   </div>
-                  {cert ? (
-                    <form action={deleteCertidao}>
-                      <input type="hidden" name="id" value={cert.id} />
+                  {doc ? (
+                    <form action={deleteDocumento}>
+                      <input type="hidden" name="id" value={doc.id} />
                       <button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button>
                     </form>
                   ) : (
-                    <form action={addCertidao} className="flex items-center gap-2">
+                    <form action={addDocumento} className="flex items-center gap-2">
                       <input type="hidden" name="tipo" value={it.key} />
                       <Input type="date" name="vencimento" required className="w-40" />
                       <Button type="submit" size="sm" variant="outline"><Plus className="size-4" /> Cadastrar</Button>
@@ -215,23 +223,23 @@ export default async function EmpresaPage() {
             })}
           </ul>
 
-          {/* Outros documentos */}
+          {/* Outros documentos (extensível) */}
           <div className="mt-5">
             <p className="mb-2 text-sm font-semibold">Outros documentos</p>
             {extras.length > 0 && (
               <ul className="mb-3 divide-y rounded-md border">
-                {extras.map((c) => {
-                  const st = statusItem(c);
+                {extras.map((d) => {
+                  const st = statusItem(d);
                   const meta = ITEM_STATUS_META[st];
                   return (
-                    <li key={c.id} className="flex items-center gap-3 p-3">
+                    <li key={d.id} className="flex items-center gap-3 p-3">
                       <Badge variant={meta.badge}>{meta.label}</Badge>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium">{CERTIDAO_LABEL[c.tipo] ?? c.tipo}</p>
-                        <p className="text-xs text-muted-foreground">Vence {dataBR(c.vencimento)}</p>
+                        <p className="truncate text-sm font-medium">{docLabel(d)}</p>
+                        <p className="text-xs text-muted-foreground">Vence {dataBR(d.vencimento)}</p>
                       </div>
-                      <form action={deleteCertidao}>
-                        <input type="hidden" name="id" value={c.id} />
+                      <form action={deleteDocumento}>
+                        <input type="hidden" name="id" value={d.id} />
                         <button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button>
                       </form>
                     </li>
@@ -239,22 +247,7 @@ export default async function EmpresaPage() {
                 })}
               </ul>
             )}
-            <form action={addCertidao} className="grid gap-3 rounded-md border bg-muted/30 p-4 sm:grid-cols-4">
-              <div className="space-y-1.5 sm:col-span-2">
-                <Label htmlFor="tipo-extra">Tipo</Label>
-                <Select id="tipo-extra" name="tipo" required defaultValue="">
-                  <option value="" disabled>Selecione…</option>
-                  {tiposExtras.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
-                </Select>
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="venc-extra">Vencimento</Label>
-                <Input id="venc-extra" name="vencimento" type="date" required />
-              </div>
-              <div className="flex items-end">
-                <Button type="submit" className="w-full"><Plus className="size-4" /> Adicionar</Button>
-              </div>
-            </form>
+            <AddDocForm tipos={tiposExtras} />
           </div>
         </CardContent>
       </Card>
