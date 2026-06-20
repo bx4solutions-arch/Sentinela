@@ -18,7 +18,7 @@ type NavItem = { href: string; label: string; icon: React.ElementType; roadmap?:
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/radar", label: "Radar", icon: Radar },
-  { href: "/roadmap", label: "Kanban", icon: KanbanSquare, roadmap: true },
+  { href: "/kanban", label: "Kanban", icon: KanbanSquare },
   { href: "/empresa", label: "Minha Empresa", icon: Building2 },
   { href: "/roadmap", label: "Consultor", icon: MessagesSquare, roadmap: true },
   { href: "/roadmap", label: "Configurações", icon: Settings, roadmap: true },
@@ -27,6 +27,7 @@ const NAV: NavItem[] = [
 const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/dashboard"), title: "Dashboard Sentinela", sub: "Inteligência antecipada de oportunidades públicas" },
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
+  { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/empresa"), title: "Minha Empresa", sub: "Raio-X por CNPJ, certidões e Vigia de Documentos" },
   { test: (p) => p.startsWith("/onboarding"), title: "Configurar empresa", sub: "Raio-X por CNPJ" },
   { test: (p) => p.startsWith("/roadmap"), title: "Em breve", sub: "Funcionalidade no roadmap" },
