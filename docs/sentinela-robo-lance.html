@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sala de Disputa — Robô de Lance (mockup)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ :root{--navy:#0F1729;--primary:#0B2D89;--accent:#3C83F6;--bg:#0b1220;--card:#161f33;--bd:#26314c;--fg:#e7edf7;--muted:#8a97b5;--ok:#34d399;--warn:#fbbf24;--danger:#f87171}
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--fg);font-size:14px}
+ .wrap{max-width:1080px;margin:0 auto;padding:18px}
+ .warn{background:#3a1d1d;border:1px solid #7f3a3a;color:#fda;border-radius:9px;padding:9px 13px;font-size:12px;font-weight:600;margin-bottom:14px}
+ .top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+ .top .logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+ .top h1{font-size:18px;font-weight:600}
+ .top .sub{font-size:12px;color:var(--muted)}
+ .live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--ok)}
+ .live .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 #34d39966;animation:p 1.4s infinite}
+ @keyframes p{0%{box-shadow:0 0 0 0 #34d39966}70%{box-shadow:0 0 0 8px #34d39900}100%{box-shadow:0 0 0 0 #34d39900}}
+ .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+ .card{background:var(--card);border:1px solid var(--bd);border-radius:13px;padding:16px 18px;margin-bottom:14px}
+ .obj{font-size:15px;font-weight:600}.org{font-size:12px;color:var(--muted);margin-bottom:14px}
+ .price{display:flex;gap:24px;align-items:flex-end;margin-bottom:14px}
+ .price .lab{font-size:11px;color:var(--muted)}
+ .price .big{font-size:30px;font-weight:700;letter-spacing:-1px}
+ .price .me{font-size:22px;font-weight:700;color:var(--accent)}
+ .rank{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:14px}
+ .pos{font-size:13px;font-weight:700;padding:3px 11px;border-radius:20px}
+ .pos.p1{background:#10331f;color:var(--ok)} .pos.p2{background:#3a2e10;color:var(--warn)}
+ .timer{background:#0b1220;border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;margin-bottom:14px}
+ .timer .t{font-size:26px;font-weight:700;color:var(--warn);font-variant-numeric:tabular-nums}
+ .timer .l{font-size:11px;color:var(--muted)}
+ .toggle{display:flex;align-items:center;gap:10px;background:#10331f;border:1px solid #1f5b39;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+ .sw{width:42px;height:24px;border-radius:14px;background:var(--ok);position:relative;flex-shrink:0}
+ .sw::after{content:"";position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+ .toggle b{font-size:13px}.toggle small{display:block;font-size:11px;color:var(--muted);font-weight:400}
+ .field{margin-bottom:11px}.field label{font-size:11px;color:var(--muted);display:block;margin-bottom:4px}
+ .field .val{background:#0b1220;border:1px solid var(--bd);border-radius:8px;padding:8px 11px;font-size:14px;font-weight:600;display:flex;justify-content:space-between}
+ .strat{display:flex;gap:6px;flex-wrap:wrap}
+ .chip{font-size:11px;font-weight:600;padding:5px 10px;border-radius:8px;background:#0b1220;border:1px solid var(--bd);color:var(--muted)}
+ .chip.on{background:var(--primary);border-color:var(--primary);color:#fff}
+ .chat{height:230px;overflow:hidden;display:flex;flex-direction:column;gap:9px}
+ .msg{font-size:12px;line-height:1.4}.msg .who{font-weight:700;color:var(--accent)}
+ .msg.sys{color:var(--muted)}.msg.bot .who{color:var(--ok)}
+ .ph{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px}
+</style></head><body><div class="wrap">
+ <div class="warn">⚠ MOCKUP ILUSTRATIVO · módulo "Robô de Lance" — operação de sessão (régua #3). Risco legal/ToS dos portais. Produto separado, com parecer jurídico ANTES.</div>
+ <div class="top">
+   <div class="logo">S</div>
+   <div><h1>Sala de Disputa</h1><div class="sub">Pregão 90033/2026 · Comprasnet</div></div>
+   <div class="live"><span class="pulse"></span>AO VIVO</div>
+ </div>
+ <div class="grid">
+   <div>
+     <div class="card">
+       <div class="obj">Dedetização e controle de pragas — escolas municipais</div>
+       <div class="org">SEMED São Luís/MA · item 1 de 1</div>
+       <div class="price">
+         <div><div class="lab">Melhor lance atual</div><div class="big">R$ 487.500</div></div>
+         <div><div class="lab">Seu último lance</div><div class="me">R$ 487.000</div></div>
+       </div>
+       <div class="rank">Sua posição: <span class="pos p1">1º LUGAR</span> · gap para o 2º: R$ 500 (0,1%)</div>
+       <div class="timer"><div class="t">00:02:14</div><div class="l">tempo restante (modo aberto)</div></div>
+       <div class="toggle"><div class="sw"></div><div><b>Robô ATIVO</b><small>dá lance automático respeitando seu limite</small></div></div>
+     </div>
+     <div class="card">
+       <div class="ph">Mensagens do pregoeiro</div>
+       <div class="chat">
+         <div class="msg sys">— Sessão iniciada · 3 fornecedores habilitados</div>
+         <div class="msg"><span class="who">Pregoeiro:</span> Aberta a fase de lances para o item 1.</div>
+         <div class="msg bot"><span class="who">Robô Sentinela:</span> lance enviado R$ 487.000 (decremento mín. R$ 500).</div>
+         <div class="msg"><span class="who">Fornecedor B:</span> lance R$ 487.500.</div>
+         <div class="msg bot"><span class="who">Robô Sentinela:</span> aguardando — você está em 1º, dentro da margem.</div>
+         <div class="msg sys">— Faltam 2 min · modo aberto</div>
+       </div>
+     </div>
+   </div>
+   <div>
+     <div class="card">
+       <div class="ph">Parâmetros do robô</div>
+       <div class="field"><label>Preço mínimo (não passa disto)</label><div class="val"><span>R$ 470.000</span><span style="color:var(--muted)">limite</span></div></div>
+       <div class="field"><label>Decremento mínimo</label><div class="val"><span>R$ 500</span><span style="color:var(--muted)">ou 0,1%</span></div></div>
+       <div class="field"><label>Estratégia</label>
+         <div class="strat"><span class="chip on">Empate R$ 0,01</span><span class="chip on">Agressivo no final</span><span class="chip">Por tempo</span></div>
+       </div>
+       <div class="field"><label>Margem na posição atual</label><div class="val"><span style="color:var(--ok)">R$ 17.000 (3,6%)</span><span style="color:var(--muted)">até o limite</span></div></div>
+     </div>
+     <div class="card">
+       <div class="ph">Outras disputas hoje</div>
+       <div style="font-size:13px;line-height:1.9">
+         <div>Sanitização Câmara · <span style="color:var(--warn)">2º lugar</span> · 14:00</div>
+         <div>Controle vetores Hospital · <span style="color:var(--ok)">1º lugar</span> · 15:30</div>
+         <div>Dedetização creches · <span style="color:var(--muted)">aguardando · 16:00</span></div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div></body></html>

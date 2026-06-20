@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossiê — Sentinela</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F1729;--navy2:#16203a;--primary:#0B2D89;--primary2:#1E44AE;--accent:#3C83F6;
+    --bg:#F1F5F9;--card:#FFFFFF;--bd:#E2E8F0;--bd2:#CBD5E1;--fg:#0F1729;--muted:#64748B;--muted2:#94A3B8;
+    --ok:#157F3C;--okbg:#E7F5EC;--warn:#B45309;--warnbg:#FEF3E2;--danger:#DC2626;--dangerbg:#FCEBEB;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);font-size:14px;-webkit-font-smoothing:antialiased}
+  .app{display:flex;min-height:100vh}
+  .side{width:62px;background:var(--navy);display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px;flex-shrink:0}
+  .side .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--primary2),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:14px}
+  .side a{width:40px;height:40px;border-radius:9px;color:#8493b5;display:flex;align-items:center;justify-content:center;font-size:18px;text-decoration:none}
+  .side a.on,.side a:hover{background:var(--primary);color:#fff}
+  .main{flex:1;min-width:0;padding:18px 26px 40px;max-width:1180px}
+  .crumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:14px}
+  .crumb a{color:var(--primary2);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:5px}
+  .mock{font-size:11px;color:var(--warn);background:var(--warnbg);border:1px solid #f3d9a8;border-radius:8px;padding:7px 12px;margin-bottom:14px;font-weight:600}
+  .panel{background:var(--card);border:1px solid var(--bd);border-radius:13px;padding:16px 18px;margin-bottom:16px}
+  .ph{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--fg);margin-bottom:12px}
+  .ph .i{color:var(--primary)}
+  /* hero */
+  .hero{display:flex;gap:20px;align-items:flex-start}
+  .hero .info{flex:1;min-width:0}
+  .hero h1{font-size:21px;font-weight:700;line-height:1.2}
+  .hero .org{font-size:13px;color:var(--primary2);font-weight:500;margin:4px 0 12px}
+  .facts{display:flex;flex-wrap:wrap;gap:18px}
+  .fact .k{font-size:11px;color:var(--muted);font-weight:500}
+  .fact .v{font-size:15px;font-weight:700}
+  .fact .v.big{font-size:20px;color:var(--primary)}
+  .fact .v.ok{color:var(--ok)}
+  .scores{display:flex;gap:18px;flex-shrink:0;align-items:center}
+  .ringbox{text-align:center}
+  .ringbox .lab{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:3px}
+  .imbadge{font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;background:var(--warnbg);color:var(--warn);text-align:center}
+  .im-alta{background:#FDEAD7;color:#B45309}
+  /* stepper */
+  .rail{display:flex;align-items:center;margin:2px 0}
+  .st{flex:1;display:flex;flex-direction:column;align-items:center;position:relative}
+  .st .dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;z-index:2;border:2px solid var(--bd)}
+  .st.done .dot{background:var(--ok);border-color:var(--ok);color:#fff}
+  .st.now .dot{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 0 0 4px #0b2d8922}
+  .st.todo .dot{background:#fff;color:var(--muted2)}
+  .st .lbl{font-size:11px;margin-top:6px;font-weight:600}
+  .st.todo .lbl{color:var(--muted2)}
+  .st .ln{position:absolute;top:13px;left:50%;width:100%;height:2px;background:var(--bd);z-index:1}
+  .st.done .ln{background:var(--ok)}
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;font-size:13px;border-bottom:1px solid #f1f5f9}
+  .row:last-child{border:0}
+  .row .k{color:var(--muted)} .row .v{font-weight:600;text-align:right}
+  .v.alvo{color:var(--primary)}
+  .hist{border:1px solid var(--bd);border-radius:9px;padding:10px 12px;margin-bottom:8px}
+  .hist .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+  .hist .top .vl{color:var(--primary)}
+  .hist small{color:var(--muted);font-size:11.5px}
+  /* prontidao */
+  .pront .bar{height:10px;border-radius:6px;background:#eef2f7;overflow:hidden;margin:6px 0 10px}
+  .pront .bar i{display:block;height:100%;width:74%;background:linear-gradient(90deg,var(--ok),#34a853)}
+  .pront .pct{font-size:24px;font-weight:700;color:var(--ok)}
+  .chk{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:3px 0}
+  .chk .ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+  .ic.ok{background:var(--okbg);color:var(--ok)} .ic.no{background:var(--dangerbg);color:var(--danger)} .ic.wr{background:var(--warnbg);color:var(--warn)}
+  .badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;background:#EEF2F7;color:var(--muted)}
+  .badge.g{background:var(--okbg);color:var(--ok)}
+  .dec{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12.5px;border-bottom:1px solid #f1f5f9}
+  .dec:last-child{border:0}
+  .dec a{color:var(--primary2);text-decoration:none}
+  .acts ul{list-style:none;margin:8px 0}
+  .acts li{display:flex;align-items:center;gap:8px;font-size:13px;padding:3px 0}
+  .acts li .d{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+  .btn{height:36px;padding:0 16px;border-radius:9px;border:none;background:var(--primary);color:#fff;font-weight:600;font-size:13px;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+  .btn.gho{background:#fff;border:1px solid var(--bd2);color:var(--fg)}
+  .srcs{display:flex;flex-wrap:wrap;gap:8px}
+  .srcs a{font-size:12px;color:var(--primary2);text-decoration:none;border:1px solid var(--bd);border-radius:8px;padding:5px 10px}
+  .jur{position:fixed;right:22px;bottom:22px;background:var(--primary);color:#fff;border-radius:30px;padding:12px 18px;font-weight:600;font-size:13px;box-shadow:0 6px 18px #0b2d8944;display:flex;align-items:center;gap:8px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.hero{flex-direction:column}}
+</style></head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo">S</div>
+    <a>◧</a><a class="on">◎</a><a>⛓</a><a>🏢</a><a>⚙</a>
+  </aside>
+  <main class="main">
+    <div class="crumb"><a href="#">‹ Voltar ao Dashboard</a> · Dossiê da oportunidade</div>
+    <div class="mock">⚠ Dados ILUSTRATIVOS (mock) — Dedetização das escolas · SEMED São Luís/MA.</div>
+
+    <!-- HERO -->
+    <div class="panel hero">
+      <div class="info">
+        <h1>Dedetização e controle de pragas — escolas municipais</h1>
+        <div class="org">🏢 Prefeitura de São Luís · Secretaria Municipal de Educação (SEMED) · São Luís/MA</div>
+        <div class="facts">
+          <div class="fact"><div class="k">Valor previsto</div><div class="v big">R$ 520 mil</div></div>
+          <div class="fact"><div class="k">Janela provável</div><div class="v">set – out 2026</div></div>
+          <div class="fact"><div class="k">Antecedência</div><div class="v ok">208 dias antes do edital</div></div>
+          <div class="fact"><div class="k">Contrato atual</div><div class="v">vence em 74 dias</div></div>
+        </div>
+      </div>
+      <div class="scores">
+        <div class="ringbox">
+          <svg width="74" height="74" viewBox="0 0 74 74"><circle cx="37" cy="37" r="31" fill="none" stroke="#EEF2F7" stroke-width="7"/><circle cx="37" cy="37" r="31" fill="none" stroke="#157F3C" stroke-width="7" stroke-linecap="round" stroke-dasharray="194.8" stroke-dashoffset="21.4" transform="rotate(-90 37 37)"/><text x="37" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0F1729">89</text></svg>
+          <div class="lab">Chance</div>
+        </div>
+        <div class="ringbox">
+          <div class="imbadge im-alta">IMINÊNCIA<br>ALTA</div>
+          <div class="lab" style="margin-top:8px">Prontidão 74%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTEIRA stepper -->
+    <div class="panel">
+      <div class="ph"><span class="i">⛓</span> Esteira do processo</div>
+      <div class="rail">
+        <div class="st done"><span class="ln"></span><div class="dot">✓</div><div class="lbl">PCA</div></div>
+        <div class="st done"><span class="ln"></span><div class="dot">✓</div><div class="lbl">DFD</div></div>
+        <div class="st now"><span class="ln"></span><div class="dot">●</div><div class="lbl">ETP</div></div>
+        <div class="st todo"><span class="ln"></span><div class="dot">○</div><div class="lbl">IRP</div></div>
+        <div class="st todo"><span class="ln"></span><div class="dot">○</div><div class="lbl">TR</div></div>
+        <div class="st todo"><span class="ln"></span><div class="dot">○</div><div class="lbl">Edital</div></div>
+        <div class="st todo"><div class="dot">○</div><div class="lbl">Contrato</div></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">Estágio atual: <strong style="color:var(--fg)">ETP publicado há 9 dias</strong> — especificação já definida. <a href="#" style="color:var(--primary2);text-decoration:none">Ver linha do tempo →</a></p>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+      <div>
+        <div class="panel">
+          <div class="ph"><span class="i">⏱</span> Incumbente & histórico</div>
+          <div class="hist"><div class="top"><span>2023 · Empresa X</span><span class="vl">R$ 480 mil</span></div><small>Vigência 24m · +1 aditivo (25%)</small></div>
+          <div class="hist"><div class="top"><span>2021 · Empresa X</span><span class="vl">R$ 410 mil</span></div><small>Vigência 24m · sem aditivo</small></div>
+          <p style="font-size:12px;color:var(--warn);font-weight:600;margin-top:4px">→ Mesmo fornecedor há 4 anos. Contrato vence em 74 dias.</p>
+        </div>
+        <div class="panel">
+          <div class="ph"><span class="i">$</span> Preço</div>
+          <div class="row"><span class="k">Preço-alvo do órgão (ETP)</span><span class="v alvo">R$ 510k – 540k</span></div>
+          <div class="row"><span class="k">Preço médio histórico</span><span class="v">R$ 445 mil</span></div>
+          <div class="row"><span class="k">Menor preço (vencedor)</span><span class="v">R$ 480 mil</span></div>
+          <div class="row"><span class="k">Faixa de lances</span><span class="v">R$ 470k – 560k</span></div>
+          <div class="row"><span class="k">Margem provável</span><span class="badge">MÉDIA</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel pront">
+          <div class="ph"><span class="i">🛡</span> Prontidão para esta oportunidade</div>
+          <div class="pct">74% pronto</div>
+          <div class="bar"><i></i></div>
+          <div class="chk"><span class="ic ok">✓</span> CND federal · contrato social · balanço</div>
+          <div class="chk"><span class="ic wr">!</span> CND estadual — vence em 12 dias</div>
+          <div class="chk"><span class="ic wr">!</span> CNDT (trabalhista) a renovar</div>
+          <div class="chk"><span class="ic no">✕</span> Atestado técnico ≥ R$ 300k — falta</div>
+          <button class="btn" style="margin-top:10px">＋ Montar kit da proposta</button>
+        </div>
+        <div class="panel">
+          <div class="ph"><span class="i">◇</span> Concorrência</div>
+          <div class="row"><span class="k">Nº médio de participantes</span><span class="v">2</span></div>
+          <div class="row"><span class="k">Gap 1º–2º</span><span class="v">4%</span></div>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:6px">Incumbente forte, mas <strong style="color:var(--fg)">disputa rasa = espaço para entrar</strong>. Empresa X: sem sanção · atua em 3 órgãos da região.</p>
+        </div>
+        <div class="panel">
+          <div class="ph"><span class="i">🏢</span> Órgão</div>
+          <div class="row"><span class="k">Capacidade de pagamento</span><span class="badge g">BOA (Siconfi)</span></div>
+          <div class="row"><span class="k">Prazo médio de pagamento</span><span class="v">45 dias</span></div>
+          <div class="row"><span class="k">Recorrência</span><span class="v">compra todo ano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- decisores + plano + fontes -->
+    <div class="panel">
+      <div class="ph"><span class="i">⚖</span> Decisores (canal institucional — sem dado pessoal · LGPD)</div>
+      <div class="dec"><span><strong>Agente de contratação</strong> · Comissão de Licitação</span><a href="#">licitacao@semed.saoluis.ma.gov.br</a></div>
+      <div class="dec"><span><strong>Ordenador de despesa</strong> · Secretaria de Educação</span><a href="#">gabinete@semed.saoluis.ma.gov.br</a></div>
+    </div>
+    <div class="panel acts">
+      <div class="ph"><span class="i">☑</span> Plano de ação</div>
+      <ul>
+        <li><span class="d"></span>Renovar CND estadual (vence em 12 dias)</li>
+        <li><span class="d"></span>Providenciar atestado técnico ≥ R$ 300k</li>
+        <li><span class="d"></span>Revisar a proposta de 2023 da Empresa X</li>
+      </ul>
+      <div style="display:flex;gap:8px;margin-top:8px"><button class="btn">＋ Adicionar ao Pipeline</button><button class="btn gho">◉ Monitorar órgão</button></div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="i">🔗</span> Fontes oficiais (cada dado tem link)</div>
+      <div class="srcs"><a href="#">PNCP ⧉</a><a href="#">Compras.gov ⧉</a><a href="#">Transparência ⧉</a><a href="#">Siconfi ⧉</a></div>
+    </div>
+  </main>
+</div>
+<div class="jur">⚖ Consultor jurídico — pergunte sobre este edital</div>
+</body></html>

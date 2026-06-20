@@ -40,3 +40,13 @@ coverage/
 # Dados do harvester (vão para o Supabase, nunca para o git)
 worker/harvester/pncp_data/
 *.jsonl
+.secrets/
+_config_check.json
+.env.local
+.env*
+.claude-flow/
+.swarm/
+.claude/
+ruvector.db
+*.db
+__pycache__/

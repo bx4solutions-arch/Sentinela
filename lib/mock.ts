@@ -116,6 +116,9 @@ export interface Demand {
   org: Organization;
   estagioAtual: StageKey;
   ganho?: boolean; // p/ contratos acompanhados (ganho/perdido)
+  // Score = PRIORIDADE (0-100) + porquês. NÃO é "% de chance" (espera backtest).
+  prioridade: number;
+  porques: string[];
   indices: { iminencia: Iminencia; chance: number };
   financeiro: { valorPrevisto: number; janelaInicio: string; janelaFim: string };
   esteira: StageEvent[];
@@ -242,6 +245,8 @@ function demand(p: Partial<Demand> & Pick<Demand, "id" | "titulo" | "org" | "est
   const im = iminenciaFromStage(p.estagioAtual);
   return {
     objeto: "Controle de pragas / dedetização",
+    prioridade: 62,
+    porques: ["recorrência anual do órgão", "histórico de contrato local"],
     indices: { iminencia: im, chance: 62 },
     financeiro: { valorPrevisto: 520000, janelaInicio: "2026-09-01", janelaFim: "2026-10-31" },
     esteira: esteiraAte(p.estagioAtual, base),
@@ -267,6 +272,8 @@ export const DEMANDS: Demand[] = [
     titulo: "Dedetização das escolas municipais",
     org: PREF_SL,
     estagioAtual: "ETP",
+    prioridade: 89,
+    porques: ["contrato do incumbente vence em 74 dias", "recorrência anual da rede escolar", "ETP publicado — preço-alvo já visível"],
     indices: { iminencia: "MÉDIA", chance: 68 },
     alerta: "Contrato do incumbente vence em 74 dias",
   }),
@@ -275,6 +282,8 @@ export const DEMANDS: Demand[] = [
     titulo: "Controle de vetores em unidades de saúde",
     org: PREF_SL_SAUDE,
     estagioAtual: "IRP",
+    prioridade: 82,
+    porques: ["IRP aberta — janela muito próxima", "recorrência anual em saúde", "preço-alvo já no ETP"],
     indices: { iminencia: "ALTA", chance: 71 },
     financeiro: { valorPrevisto: 310000, janelaInicio: "2026-08-01", janelaFim: "2026-09-15" },
     porqueApareceu: "IRP aberta (cotação) — janela muito próxima.",
@@ -287,6 +296,8 @@ export const DEMANDS: Demand[] = [
     titulo: "Sanitização do prédio da Câmara",
     org: CAMARA_SL,
     estagioAtual: "TR",
+    prioridade: 76,
+    porques: ["TR publicado — edital quase certo", "prédio único, baixa concorrência"],
     indices: { iminencia: "ALTA", chance: 58 },
     financeiro: { valorPrevisto: 180000, janelaInicio: "2026-07-15", janelaFim: "2026-08-20" },
     porqueApareceu: "TR publicado — edital quase certo.",
@@ -299,6 +310,8 @@ export const DEMANDS: Demand[] = [
     org: PREF_SL,
     estagioAtual: "VIGENCIA",
     ganho: false,
+    prioridade: 64,
+    porques: ["contrato do concorrente vence em 151 dias", "sua próxima janela de recompra"],
     indices: { iminencia: "MÉDIA", chance: 64 },
     porqueApareceu: "Contrato vigente do concorrente — sua próxima janela de recompra.",
     acaoDeHoje: "Monitorar vencimento (recompra) — vence em ~5 meses.",
@@ -310,6 +323,8 @@ export const DEMANDS: Demand[] = [
     titulo: "Imunização — intenção no PCA 2026",
     org: PREF_SL_SAUDE,
     estagioAtual: "PCA",
+    prioridade: 49,
+    porques: ["aparece no PCA (intenção)", "sinal frio — radar antecipado"],
     indices: { iminencia: "BAIXA", chance: 49 },
     porqueApareceu: "Aparece no PCA do órgão (intenção) — sinal frio, mas é o seu radar antecipado.",
     acaoDeHoje: "Acompanhar evolução para DFD/ETP.",
@@ -320,6 +335,8 @@ export const DEMANDS: Demand[] = [
     org: PREF_SL,
     estagioAtual: "CONTRATO",
     ganho: true,
+    prioridade: 55,
+    porques: ["contrato ganho em execução", "monitorar aditivos e vencimento (recompra)"],
     indices: { iminencia: "MÉDIA", chance: 100 },
     porqueApareceu: "Você venceu — contrato em execução.",
     acaoDeHoje: "Acompanhar aditivos e vencimento para a próxima recompra.",

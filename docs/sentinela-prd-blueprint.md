@@ -468,3 +468,30 @@ Um agente por conta acompanha os processos assinados e **interage todo dia** —
 ---
 
 *Próximo: refletir A1–A10 nas seções do PRD fundador (merge) quando aprovado, e ajustar o work order do F0 para capturar `codigoUnidadeAdministrativa` (prova de filtro por unidade).*
+
+---
+
+## 16. ARQUITETURA DE DUAS CAMADAS — Radar (inteligência passiva) + Kanban (ação comercial)
+
+O Sentinela não é só radar. São **duas camadas separadas** — e separá-las é o que evita virar lixo.
+
+**Camada 1 — Radar inteligente (passivo, automático).** O sistema *descobre* oportunidades compatíveis (CNPJ/CNAE/nicho/certidões/região × sinais públicos: contrato vencendo, PCA/DFD/ETP/TR/IRP, atas, dispensa recorrente, dinheiro novo). Responde "o que existe que combina comigo?". Curado (5–15/dia).
+
+**Camada 2 — Kanban comercial (intencional).** Só vira card quando o **usuário decide**. **Regra inviolável: nada vira card automaticamente** (senão o Kanban vira lixo). Radar = automático; Kanban = escolha. Ações em cada oportunidade do Radar: `[Descartar] [Monitorar] [Adicionar ao Kanban] [Ver dossiê]`. "Monitorar" = vigia órgão+objeto; "Adicionar" = vira card.
+
+**Prontidão / Passaporte Licitatório (feature-âncora — justifica o plano premium).** Cruza a oportunidade × os documentos da empresa (Vigia, §6 Tela 5) → **"Você está X% pronto para esta oportunidade"** + o que falta (licença/atestado/CNAE/certidão). Dashboard ganha: "Prontidão para oportunidades quentes" (4 prontas · 2 exigem doc · 1 exige licença) e "Documentos vencendo que travam participação". Razão: o cliente não quer só saber que a oportunidade existe — quer saber **se está pronto para ganhar**.
+
+**Ficha do órgão + Órgãos favoritos (concretiza o eixo alvo × objeto, A2).** Dossiê institucional do comprador (histórico de compras, secretarias, contratos vencendo, fracassadas, contatos institucionais, **tempo médio sinal→edital**, perfil de pagamento). "Órgãos favoritos" = o usuário vigia entes específicos; qualquer sinal no nicho dele dispara alerta.
+
+**Estágios do Kanban (CRM de venda ao governo):** Novas detectadas → Em análise → Monitorando órgão → Preparação documental → Pré-edital quente → Edital publicado → Participação → Resultado → Recompra futura.
+
+**A LINHA QUE NÃO BORRA (régua #3, reforçada):** o Kanban pode *rastrear o status* até "em disputa / resultado" como CRM, mas o Sentinela **NÃO constrói ferramenta de operação de sessão** (robô de lances, monitor de chat de pregão, segunda-chance operacional). Rastrear estado = sim; **operar a sessão = corte.** O valor é antecipação + prontidão + acompanhamento, não a disputa ao vivo (terreno comoditizado da Effecti).
+
+**Dossiê expandido (abas):** Resumo · Linha do tempo · Órgão · Pessoas institucionais (só público; nunca CPF/pessoal) · Contrato anterior (incumbente, vigência, risco de recompra) · Concorrentes · Meus documentos (prontidão) · Plano de ação · Fontes oficiais. Construir as abas **progressivamente, conforme a fonte de cada uma for validada** (V1–V5) — não todas de uma vez sobre dado não-provado.
+
+**MVP vs roadmap (régua #5 — não construir sobre matéria-prima não validada):**
+- **MVP-núcleo** (sobre o dado-limpo PROVADO — os 23 editais + recompra): Radar curado, promoção→Kanban, Prontidão, Ficha do órgão, Dossiê com as abas alimentáveis pelo PNCP (resumo, linha do tempo, contrato anterior, concorrentes, fontes, meus documentos).
+- **Roadmap (gated em validação):** aba de pessoas institucionais (diários, V5); dinheiro novo (Transparência, V3); esteira pré-edital plena (federal, V4).
+- **Corte:** operação de sessão (lances/chat).
+
+**Posicionamento:** "Do primeiro sinal público ao contrato ganho." · "Você não recebe só alertas — acompanha cada oportunidade como uma venda." (Sempre **inteligência pública antecipada**, nunca "informação privilegiada".)

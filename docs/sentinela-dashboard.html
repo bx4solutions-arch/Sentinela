@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Sentinela — Inteligência pública antecipada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1729; --navy2:#16203a; --primary:#0B2D89; --primary2:#1E44AE; --accent:#3C83F6;
+    --bg:#F1F5F9; --card:#FFFFFF; --bd:#E2E8F0; --bd2:#CBD5E1;
+    --fg:#0F1729; --muted:#64748B; --muted2:#94A3B8;
+    --ok:#157F3C; --okbg:#E7F5EC; --warn:#B45309; --warnbg:#FEF3E2; --danger:#DC2626; --dangerbg:#FCEBEB;
+    --r:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);font-size:14px;-webkit-font-smoothing:antialiased}
+  .app{display:flex;min-height:100vh}
+  /* sidebar */
+  .side{width:248px;background:var(--navy);color:#cbd5e1;display:flex;flex-direction:column;flex-shrink:0;padding:18px 14px}
+  .brand{display:flex;align-items:center;gap:10px;padding:6px 8px 20px}
+  .brand .logo{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--primary2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+  .brand b{color:#fff;font-size:17px;font-weight:600;letter-spacing:.2px}
+  .brand span{display:block;font-size:11px;color:#7c89a6;font-weight:500}
+  .nav{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+  .nav a{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:8px;color:#aab6cf;text-decoration:none;font-size:13.5px;font-weight:500}
+  .nav a .i{width:18px;text-align:center;opacity:.85}
+  .nav a:hover{background:var(--navy2);color:#fff}
+  .nav a.on{background:var(--primary);color:#fff}
+  .nav .tag{margin-left:auto;font-size:10px;background:#33415c;color:#aeb9d1;padding:1px 6px;border-radius:20px;font-weight:600}
+  .nav .new{background:#1f6f43;color:#bff0d2}
+  .side .grow{flex:1}
+  .plan{background:var(--navy2);border-radius:10px;padding:13px;margin-top:10px}
+  .plan p{font-size:12px;color:#9fb0cf}
+  .plan b{color:#fff;font-size:13px;font-weight:600}
+  .bar{height:6px;background:#27324d;border-radius:6px;margin:9px 0 6px;overflow:hidden}
+  .bar i{display:block;height:100%;width:82%;background:linear-gradient(90deg,var(--accent),var(--primary2))}
+  .plan a{color:#7fb0ff;font-size:12px;font-weight:600;text-decoration:none}
+  .user{display:flex;align-items:center;gap:10px;margin-top:14px;padding:8px}
+  .ava{width:34px;height:34px;border-radius:50%;background:var(--primary2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
+  .user p{color:#fff;font-size:13px;font-weight:600}
+  .user span{color:#7c89a6;font-size:11px}
+  /* main */
+  .main{flex:1;min-width:0;padding:20px 26px 40px}
+  .top{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+  .top h1{font-size:21px;font-weight:700}
+  .top .sub{font-size:12.5px;color:var(--muted);margin-top:1px}
+  .search{margin-left:auto;position:relative}
+  .search input{width:340px;height:38px;border:1px solid var(--bd);border-radius:9px;padding:0 14px 0 36px;font-size:13px;background:var(--card);font-family:inherit}
+  .search .si{position:absolute;left:12px;top:11px;color:var(--muted2)}
+  .ic{width:38px;height:38px;border-radius:9px;border:1px solid var(--bd);background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted);position:relative;cursor:pointer}
+  .ic .dot{position:absolute;top:-4px;right:-4px;background:var(--danger);color:#fff;font-size:10px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  /* thesis banner */
+  .thesis{background:linear-gradient(100deg,#0F1729,#15214a 60%,#1b2c63);border-radius:14px;padding:18px 22px;color:#fff;margin-bottom:18px}
+  .thesis .h{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .thesis .h b{font-size:15px;font-weight:600}
+  .thesis .h .pill{font-size:10.5px;background:#22345f;color:#9fc0ff;padding:3px 9px;border-radius:20px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+  .thesis p{font-size:12.5px;color:#aab8d6;margin-bottom:15px;max-width:760px}
+  .rail{display:flex;align-items:flex-end;gap:0;position:relative;margin:6px 4px 4px}
+  .stg{flex:1;text-align:center;position:relative}
+  .stg .nd{height:9px;border-radius:5px;margin:0 3px;background:#2a3a63}
+  .stg.s1 .nd{background:#2b4a8f}.stg.s2 .nd{background:#345fb3}.stg.s3 .nd{background:#3f74d1}
+  .stg.s4 .nd{background:#f0a93a}.stg.s5 .nd{background:#f59f0a}.stg.s6 .nd{background:#9aa6c2}
+  .stg label{display:block;font-size:11px;color:#cdd8ef;margin-top:7px;font-weight:500}
+  .stg small{display:block;font-size:10px;color:#7e8db0}
+  .zone{position:absolute;top:-9px;height:9px;border-radius:6px;border:1.5px dashed #4f6bb0;pointer-events:none}
+  .mk{display:flex;justify-content:space-between;margin-top:13px}
+  .mk div{font-size:11px;color:#9fc0ff;font-weight:600;display:flex;align-items:center;gap:6px}
+  .mk .right{color:#f0a93a}
+  /* kpi */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;margin-bottom:18px}
+  .kpi{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:14px 15px}
+  .kpi .lab{font-size:11.5px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:7px}
+  .kpi .lab .b{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .kpi .v{font-size:25px;font-weight:700;margin:9px 0 3px;letter-spacing:-.5px}
+  .kpi .v small{font-size:14px;font-weight:600;color:var(--muted)}
+  .kpi .d{font-size:11.5px;font-weight:600;display:flex;align-items:center;gap:4px}
+  .up{color:var(--ok)} .down{color:var(--danger)} .flat{color:var(--muted)}
+  .kpi .d span{color:var(--muted2);font-weight:500}
+  .b-blue{background:#E6EEFB;color:#1E44AE}.b-fire{background:#FEF0E6;color:#C2410C}.b-cal{background:#E8F0FE;color:#2563EB}
+  .b-clock{background:#FEF6E6;color:#B45309}.b-time{background:#EAF6EF;color:#157F3C}.b-alert{background:#FCECEC;color:#DC2626}
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-bottom:18px;align-items:start}
+  .panel{background:var(--card);border:1px solid var(--bd);border-radius:13px;padding:16px 18px}
+  .ph{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .ph b{font-size:15px;font-weight:600}
+  .ph .ico{color:var(--primary)}
+  .ph a{margin-left:auto;font-size:12px;color:var(--primary2);text-decoration:none;font-weight:600}
+  /* atacar hoje cards */
+  .opps{display:flex;flex-direction:column;gap:12px}
+  .opp{border:1px solid var(--bd);border-radius:11px;padding:14px 15px;display:flex;gap:14px}
+  .opp.hot{border-color:#f0c98a;background:#FFFBF4}
+  .opp .body{flex:1;min-width:0}
+  .opp .org{font-size:14px;font-weight:600}
+  .opp .loc{font-size:12px;color:var(--primary2);font-weight:500;margin:1px 0 3px}
+  .opp .obj{font-size:13px;color:var(--fg);margin-bottom:9px;font-weight:500}
+  .opp .meta{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:12px}
+  .opp .meta .k{color:var(--muted);display:flex;align-items:center;gap:6px}
+  .opp .meta .val{font-weight:600;text-align:right}
+  .opp .stage{color:var(--warn);font-weight:600}
+  .ring{width:62px;flex-shrink:0;text-align:center}
+  .ring svg{display:block;margin:0 auto}
+  .ring .lab{font-size:10px;color:var(--muted);margin-top:2px;font-weight:600}
+  .acts{display:flex;gap:8px;margin-top:12px}
+  .btn{flex:1;height:34px;border-radius:8px;border:1px solid var(--bd2);background:var(--card);font-size:12.5px;font-weight:600;color:var(--fg);display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-family:inherit}
+  .btn.pri{background:var(--primary);border-color:var(--primary);color:#fff}
+  /* timeline */
+  .tl{display:flex;flex-direction:column;gap:0}
+  .ev{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #F1F5F9}
+  .ev:last-child{border:0}
+  .ev .dt{width:9px;height:9px;border-radius:50%;margin-top:5px;flex-shrink:0}
+  .ev .tx{flex:1;font-size:12.5px;line-height:1.45}
+  .ev .tx b{font-weight:600}
+  .ev .ant{font-size:11px;font-weight:600;color:var(--primary2);background:#EEF3FE;padding:1px 7px;border-radius:20px;display:inline-block;margin-top:3px}
+  .ev .tm{font-size:11px;color:var(--muted2);white-space:nowrap;margin-top:2px}
+  /* plano */
+  .task{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #F1F5F9;font-size:13px}
+  .task:last-child{border:0}
+  .task .cb{width:16px;height:16px;border:1.5px solid var(--bd2);border-radius:5px;flex-shrink:0}
+  .task .t{flex:1}
+  .task .due{font-size:11px;color:var(--muted);white-space:nowrap}
+  .prio{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px}
+  .p-alta{background:var(--dangerbg);color:var(--danger)}.p-med{background:var(--warnbg);color:var(--warn)}.p-baixa{background:#EEF2F7;color:var(--muted)}
+  /* pipeline */
+  .pipe{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+  .col{border:1px solid var(--bd);border-radius:9px;overflow:hidden;text-align:center}
+  .col .hd{font-size:10.5px;font-weight:700;padding:6px 4px;color:#fff;letter-spacing:.2px}
+  .col .n{font-size:21px;font-weight:700;margin:9px 0 1px}
+  .col .vl{font-size:11px;color:var(--muted);font-weight:600}
+  .col .pc{font-size:10px;color:var(--muted2);margin:3px 0 9px}
+  /* charts */
+  .charts{display:grid;grid-template-columns:1fr 1.4fr;gap:18px}
+  .leg{display:flex;flex-direction:column;gap:6px;font-size:12px}
+  .leg .row{display:flex;align-items:center;gap:8px}
+  .leg .sw{width:11px;height:11px;border-radius:3px}
+  .leg .nm{color:var(--fg);font-weight:500}
+  .leg .vv{margin-left:auto;color:var(--muted);font-weight:600}
+  .donutwrap{display:flex;align-items:center;gap:18px}
+  .mock{font-size:11px;color:var(--warn);background:var(--warnbg);border:1px solid #f3d9a8;border-radius:8px;padding:8px 12px;margin-bottom:16px;display:flex;align-items:center;gap:8px;font-weight:600}
+  @media(max-width:1180px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.charts{grid-template-columns:1fr}.pipe{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div><b>Sentinela</b><span>Inteligência pública antecipada</span></div>
+    </div>
+    <nav class="nav">
+      <a class="on"><span class="i">◧</span> Dashboard</a>
+      <a><span class="i">◎</span> Oportunidades</a>
+      <a><span class="i">⛓</span> Esteira de Sinais <span class="tag new">novo</span></a>
+      <a><span class="i">◐</span> Radar de Sinais</a>
+      <a><span class="i">⏳</span> Contratos Vencendo <span class="tag">18</span></a>
+      <a><span class="i">$</span> Dinheiro Novo <span class="tag new">novo</span></a>
+      <a><span class="i">⚑</span> Segunda Chance</a>
+      <a><span class="i">◇</span> Concorrentes</a>
+      <a><span class="i">▤</span> Documentos</a>
+      <a><span class="i">▦</span> Relatórios</a>
+      <a><span class="i">⚙</span> Configurações</a>
+    </nav>
+    <div class="grow"></div>
+    <div class="plan">
+      <b>Plano Sala de Guerra</b>
+      <p>válido até 12/06/2026</p>
+      <div class="bar"><i></i></div>
+      <p>82% de uso · <a href="#">Ver planos</a></p>
+    </div>
+    <div class="user">
+      <div class="ava">DM</div>
+      <div><p>Dedetizadora Maranhense</p><span>contato@dedetma.com.br</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div>
+        <h1>Dashboard Sentinela</h1>
+        <div class="sub">Inteligência pública antecipada de contratações — sinais oficiais, pré-edital</div>
+      </div>
+      <div class="search"><span class="si">⌕</span><input placeholder="Buscar órgão, objeto, cidade, CNPJ…"></div>
+      <div class="ic">?</div>
+      <div class="ic">🔔<span class="dot">3</span></div>
+    </div>
+
+    <div class="mock">⚠ Dados ILUSTRATIVOS (mock) — célula Prefeitura de São Luís × controle de pragas. Aguardando validação V1–V5.</div>
+
+    <section class="thesis">
+      <div class="h"><b>O mercado avisa quando o edital sai. O Sentinela mostra a contratação se formando antes.</b><span class="pill">a inovação</span></div>
+      <p>Cada órgão deixa rastros oficiais meses antes do edital. Monitoramos essa esteira e transformamos sinais soltos em dossiê de oportunidade — vantagem temporal baseada em dado público.</p>
+      <div class="rail">
+        <div class="zone" style="left:0;width:71.4%"></div>
+        <div class="stg s1"><div class="nd"></div><label>PCA</label><small>intenção</small></div>
+        <div class="stg s2"><div class="nd"></div><label>DFD</label><small>demanda</small></div>
+        <div class="stg s3"><div class="nd"></div><label>ETP</label><small>estudo</small></div>
+        <div class="stg s3"><div class="nd"></div><label>Preço</label><small>cotação</small></div>
+        <div class="stg s4"><div class="nd"></div><label>TR</label><small>especif.</small></div>
+        <div class="stg s5"><div class="nd"></div><label>IRP</label><small>iminente</small></div>
+        <div class="stg s6"><div class="nd"></div><label>Edital</label><small>público</small></div>
+        <div class="stg s6"><div class="nd"></div><label>Contrato</label><small>recompra</small></div>
+      </div>
+      <div class="mk">
+        <div>◀ Sentinela detecta aqui — vantagem mediana ~120 dias</div>
+        <div class="right">Mercado só acorda aqui ▶</div>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi"><div class="lab"><span class="b b-blue">▤</span> Pipeline monitorado</div><div class="v">R$ 4,8 <small>Mi</small></div><div class="d up">▲ 18% <span>vs. mês anterior</span></div></div>
+      <div class="kpi"><div class="lab"><span class="b b-fire">◓</span> Oportunidades quentes</div><div class="v">12</div><div class="d up">▲ 20% <span>vs. mês anterior</span></div></div>
+      <div class="kpi"><div class="lab"><span class="b b-time">◷</span> Antecedência média</div><div class="v">118 <small>dias</small></div><div class="d up">▲ 9 d <span>antes do edital</span></div></div>
+      <div class="kpi"><div class="lab"><span class="b b-cal">▦</span> Editais prováveis 90d</div><div class="v">7</div><div class="d up">▲ 40% <span>vs. mês anterior</span></div></div>
+      <div class="kpi"><div class="lab"><span class="b b-clock">⏳</span> Contratos vencendo</div><div class="v">18</div><div class="d up">▲ 12% <span>próximos 180d</span></div></div>
+      <div class="kpi"><div class="lab"><span class="b b-alert">⚠</span> Ações urgentes</div><div class="v">5</div><div class="d down">▲ 25% <span>esta semana</span></div></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="ph"><span class="ico">◎</span><b>Atacar hoje</b><a href="#">Ver todas →</a></div>
+        <div class="opps">
+          <div class="opp hot">
+            <div class="body">
+              <div class="org">Secretaria Municipal de Saúde — SEMUS</div>
+              <div class="loc">São Luís/MA</div>
+              <div class="obj">Controle de vetores em unidades de saúde</div>
+              <div class="meta">
+                <div class="k">◷ Antecedência</div><div class="val" style="color:#157F3C">142 dias antes do edital</div>
+                <div class="k">⛓ Estágio</div><div class="val stage">IRP aberta · muito quente</div>
+                <div class="k">▤ Valor estimado</div><div class="val">R$ 310 mil</div>
+                <div class="k">⚑ Ação recomendada</div><div class="val">preparar atestado técnico</div>
+              </div>
+              <div class="acts"><button class="btn">◉ Ver dossiê</button><button class="btn pri">＋ Criar tarefa</button></div>
+            </div>
+            <div class="ring">
+              <svg width="62" height="62" viewBox="0 0 62 62"><circle cx="31" cy="31" r="26" fill="none" stroke="#EEF2F7" stroke-width="6"/><circle cx="31" cy="31" r="26" fill="none" stroke="#157F3C" stroke-width="6" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="29.4" transform="rotate(-90 31 31)"/><text x="31" y="35" text-anchor="middle" font-size="17" font-weight="700" fill="#0F1729">82</text></svg>
+              <div class="lab">prioridade</div>
+            </div>
+          </div>
+          <div class="opp">
+            <div class="body">
+              <div class="org">Câmara Municipal de São Luís</div>
+              <div class="loc">São Luís/MA</div>
+              <div class="obj">Sanitização do prédio da Câmara</div>
+              <div class="meta">
+                <div class="k">◷ Antecedência</div><div class="val" style="color:#B45309">78 dias antes do edital</div>
+                <div class="k">⛓ Estágio</div><div class="val stage">TR publicado · edital quase certo</div>
+                <div class="k">▤ Valor estimado</div><div class="val">R$ 180 mil</div>
+                <div class="k">⚑ Ação recomendada</div><div class="val">revisar edital anterior</div>
+              </div>
+              <div class="acts"><button class="btn">◉ Ver dossiê</button><button class="btn pri">＋ Criar tarefa</button></div>
+            </div>
+            <div class="ring">
+              <svg width="62" height="62" viewBox="0 0 62 62"><circle cx="31" cy="31" r="26" fill="none" stroke="#EEF2F7" stroke-width="6"/><circle cx="31" cy="31" r="26" fill="none" stroke="#F59F0A" stroke-width="6" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="68.6" transform="rotate(-90 31 31)"/><text x="31" y="35" text-anchor="middle" font-size="17" font-weight="700" fill="#0F1729">58</text></svg>
+              <div class="lab">prioridade</div>
+            </div>
+          </div>
+          <div class="opp">
+            <div class="body">
+              <div class="org">Secretaria Municipal de Educação — SEMED</div>
+              <div class="loc">São Luís/MA</div>
+              <div class="obj">Dedetização das escolas — contrato vencendo</div>
+              <div class="meta">
+                <div class="k">◷ Antecedência</div><div class="val" style="color:#157F3C">208 dias (recompra prevista)</div>
+                <div class="k">⛓ Estágio</div><div class="val stage">Contrato vence em 74d · incumbente Empresa X</div>
+                <div class="k">▤ Valor estimado</div><div class="val">R$ 520 mil</div>
+                <div class="k">⚑ Ação recomendada</div><div class="val">atualizar certidões + atestado</div>
+              </div>
+              <div class="acts"><button class="btn">◉ Ver dossiê</button><button class="btn pri">＋ Criar tarefa</button></div>
+            </div>
+            <div class="ring">
+              <svg width="62" height="62" viewBox="0 0 62 62"><circle cx="31" cy="31" r="26" fill="none" stroke="#EEF2F7" stroke-width="6"/><circle cx="31" cy="31" r="26" fill="none" stroke="#157F3C" stroke-width="6" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="18" transform="rotate(-90 31 31)"/><text x="31" y="35" text-anchor="middle" font-size="17" font-weight="700" fill="#0F1729">89</text></svg>
+              <div class="lab">prioridade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="ph"><span class="ico">⚡</span><b>Linha do tempo de sinais oficiais</b><a href="#">Ver tudo →</a></div>
+        <div class="tl">
+          <div class="ev"><div class="dt" style="background:#2563EB"></div><div class="tx"><b>DFD detectado</b> — Sec. Saúde São Luís, controle de vetores<br><span class="ant">142 dias antes do provável edital</span></div><div class="tm">hoje 09:32</div></div>
+          <div class="ev"><div class="dt" style="background:#B45309"></div><div class="tx"><b>Contrato vencendo</b> — dedetização escolas (SEMED)<br><span class="ant">vence em 74 dias · recompra provável</span></div><div class="tm">hoje 08:41</div></div>
+          <div class="ev"><div class="dt" style="background:#7C3AED"></div><div class="tx"><b>ETP publicado</b> — manutenção predial, Câmara<br><span class="ant">~90 dias de antecedência</span></div><div class="tm">ontem 17:26</div></div>
+          <div class="ev"><div class="dt" style="background:#0891B2"></div><div class="tx"><b>IRP aberta</b> — controle de pragas hospitalar<br><span class="ant">muito quente · janela próxima</span></div><div class="tm">ontem 14:05</div></div>
+          <div class="ev"><div class="dt" style="background:#157F3C"></div><div class="tx"><b>Dinheiro novo</b> — emenda p/ saúde, Prefeitura São Luís<br><span class="ant">verba vinculada ao seu segmento</span></div><div class="tm">ontem 11:10</div></div>
+          <div class="ev"><div class="dt" style="background:#DC2626"></div><div class="tx"><b>Licitação fracassada</b> — sanitização creches, republicação provável</div><div class="tm">2 dias atrás</div></div>
+          <div class="ev"><div class="dt" style="background:#94A3B8"></div><div class="tx"><b>Concorrente sancionado</b> — CEIS/CNEP, atua na região</div><div class="tm">3 dias atrás</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="ph"><span class="ico">⛓</span><b>Pipeline por estágio da contratação</b><a href="#">Esteira →</a></div>
+        <div class="pipe">
+          <div class="col"><div class="hd" style="background:#3b82f6">PCA</div><div class="n">9</div><div class="vl">R$ 1,1 Mi</div><div class="pc">intenção</div></div>
+          <div class="col"><div class="hd" style="background:#2563eb">DFD</div><div class="n">6</div><div class="vl">R$ 820 mil</div><div class="pc">demanda</div></div>
+          <div class="col"><div class="hd" style="background:#7c3aed">ETP</div><div class="n">5</div><div class="vl">R$ 760 mil</div><div class="pc">estudo</div></div>
+          <div class="col"><div class="hd" style="background:#0891b2">IRP</div><div class="n">4</div><div class="vl">R$ 540 mil</div><div class="pc">iminente</div></div>
+          <div class="col"><div class="hd" style="background:#b45309">TR</div><div class="n">3</div><div class="vl">R$ 410 mil</div><div class="pc">especif.</div></div>
+          <div class="col"><div class="hd" style="background:#64748b">Edital</div><div class="n">8</div><div class="vl">R$ 610 mil</div><div class="pc">público</div></div>
+          <div class="col"><div class="hd" style="background:#157f3c">Recompra</div><div class="n">18</div><div class="vl">R$ 1,2 Mi</div><div class="pc">vencendo</div></div>
+        </div>
+        <div class="charts" style="margin-top:18px">
+          <div>
+            <div class="ph"><b style="font-size:13px">Pipeline por segmento</b></div>
+            <div class="donutwrap">
+              <div style="position:relative;width:130px;height:130px"><canvas id="donut" role="img" aria-label="Pipeline por segmento"></canvas></div>
+              <div class="leg">
+                <div class="row"><span class="sw" style="background:#1E44AE"></span><span class="nm">Controle de pragas</span><span class="vv">34%</span></div>
+                <div class="row"><span class="sw" style="background:#3C83F6"></span><span class="nm">Limpeza/conservação</span><span class="vv">23%</span></div>
+                <div class="row"><span class="sw" style="background:#0891B2"></span><span class="nm">Manutenção predial</span><span class="vv">18%</span></div>
+                <div class="row"><span class="sw" style="background:#7C3AED"></span><span class="nm">Sanitização hospitalar</span><span class="vv">13%</span></div>
+                <div class="row"><span class="sw" style="background:#94A3B8"></span><span class="nm">Outros</span><span class="vv">12%</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ph"><b style="font-size:13px">Sinais pré-edital vs. editais publicados</b></div>
+            <div style="position:relative;height:150px"><canvas id="line" role="img" aria-label="Tendência de sinais pré-edital versus editais publicados"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="ph"><span class="ico">☑</span><b>Plano de ação da semana</b><a href="#">Tudo →</a></div>
+        <div>
+          <div class="task"><span class="cb"></span><span class="t">Atualizar CND Estadual (SEFAZ-MA)</span><span class="prio p-alta">alta</span><span class="due">vence 11d</span></div>
+          <div class="task"><span class="cb"></span><span class="t">Preparar atestado técnico — SEMUS</span><span class="prio p-alta">alta</span><span class="due">até 18/06</span></div>
+          <div class="task"><span class="cb"></span><span class="t">Revisar edital anterior — Câmara</span><span class="prio p-med">média</span><span class="due">até 19/06</span></div>
+          <div class="task"><span class="cb"></span><span class="t">Renovar CNDT (trabalhista)</span><span class="prio p-med">média</span><span class="due">até 04/07</span></div>
+          <div class="task"><span class="cb"></span><span class="t">Monitorar IRP aberta — hospitalar</span><span class="prio p-baixa">baixa</span><span class="due">sexta</span></div>
+        </div>
+        <div class="ph" style="margin-top:18px"><span class="ico">🛡</span><b>Vigia de documentos</b></div>
+        <div>
+          <div class="task"><span class="cb" style="border:none;background:var(--ok)"></span><span class="t">CND Federal (RFB/PGFN)</span><span class="prio p-baixa" style="background:var(--okbg);color:var(--ok)">ativo</span><span class="due">104d</span></div>
+          <div class="task"><span class="cb" style="border:none;background:var(--warn)"></span><span class="t">CND Estadual (SEFAZ-MA)</span><span class="prio p-med">renovar</span><span class="due">11d</span></div>
+          <div class="task"><span class="cb" style="border:none;background:var(--warn)"></span><span class="t">CNDT (trabalhista)</span><span class="prio p-med">renovar</span><span class="due">16d</span></div>
+          <div class="task"><span class="cb" style="border:none;background:var(--ok)"></span><span class="t">Licença Sanitária Municipal</span><span class="prio p-baixa" style="background:var(--okbg);color:var(--ok)">ativo</span><span class="due">205d</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('donut'),{type:'doughnut',data:{labels:['Controle de pragas','Limpeza','Manutenção','Sanitização','Outros'],datasets:[{data:[34,23,18,13,12],backgroundColor:['#1E44AE','#3C83F6','#0891B2','#7C3AED','#94A3B8'],borderWidth:0}]},options:{cutout:'68%',plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false}});
+new Chart(document.getElementById('line'),{type:'line',data:{labels:['Dez','Jan','Fev','Mar','Abr','Mai'],datasets:[{label:'Sinais pré-edital',data:[12,18,21,28,33,41],borderColor:'#1E44AE',backgroundColor:'rgba(30,68,174,.08)',fill:true,tension:.4,pointRadius:3},{label:'Editais publicados',data:[8,9,11,12,14,16],borderColor:'#94A3B8',borderDash:[5,4],backgroundColor:'transparent',tension:.4,pointRadius:3}]},options:{plugins:{legend:{display:true,labels:{boxWidth:10,font:{size:11}}}},scales:{y:{beginAtZero:true,ticks:{font:{size:10}}},x:{ticks:{font:{size:10}}}},responsive:true,maintainAspectRatio:false}});
+</script>
+</body>
+</html>
