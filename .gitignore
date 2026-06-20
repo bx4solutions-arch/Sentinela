@@ -36,3 +36,7 @@ Thumbs.db
 .cache/
 tmp/
 coverage/
+
+# Dados do harvester (vão para o Supabase, nunca para o git)
+worker/harvester/pncp_data/
+*.jsonl
