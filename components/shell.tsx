@@ -120,8 +120,8 @@ export function Shell({
             <div className="grid size-8 place-items-center rounded-full bg-primary text-xs font-bold text-primary-foreground">{initials}</div>
           </div>
         </header>
-        {/* Banner "mock" só nas telas que ainda usam dado ilustrativo (não em /empresa, dado real) */}
-        {!pathname.startsWith("/empresa") && <MockBanner />}
+        {/* Banner "mock" só nas telas que ainda usam dado ilustrativo. Rotas com dado real não mostram. */}
+        {!["/empresa", "/radar"].some((p) => pathname.startsWith(p)) && <MockBanner />}
         <main className="flex-1 px-4 py-5 pb-24 md:px-6 md:pb-8">{children}</main>
       </div>
 
