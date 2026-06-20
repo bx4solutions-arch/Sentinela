@@ -1,13 +1,13 @@
 import { ShieldCheck } from "lucide-react";
 import { Button, Input, Label } from "@/components/ui";
-import { signIn, signUp } from "./actions";
+import { authenticate } from "./actions";
 
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; msg?: string }>;
 }) {
-  const { error } = await searchParams;
+  const { error, msg } = await searchParams;
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
@@ -53,8 +53,13 @@ export default async function LoginPage({
               {error}
             </p>
           )}
+          {msg && (
+            <p className="mt-4 rounded-md border border-success/30 bg-success/10 px-3 py-2 text-sm text-success">
+              {msg}
+            </p>
+          )}
 
-          <form className="mt-5 space-y-4">
+          <form action={authenticate} className="mt-5 space-y-4">
             <div className="space-y-1.5">
               <Label htmlFor="email">E-mail</Label>
               <Input id="email" name="email" type="email" required autoComplete="email" placeholder="voce@empresa.com.br" />
@@ -64,8 +69,8 @@ export default async function LoginPage({
               <Input id="password" name="password" type="password" required minLength={6} autoComplete="current-password" placeholder="mínimo 6 caracteres" />
             </div>
             <div className="flex flex-col gap-2 pt-1">
-              <Button formAction={signIn} className="w-full">Entrar</Button>
-              <Button formAction={signUp} variant="outline" className="w-full">Criar conta</Button>
+              <Button type="submit" name="intent" value="signin" className="w-full">Entrar</Button>
+              <Button type="submit" name="intent" value="signup" variant="outline" className="w-full">Criar conta</Button>
             </div>
           </form>
         </div>
