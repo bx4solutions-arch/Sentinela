@@ -1,81 +1,170 @@
-import { Card, CardContent, Button, Badge } from "@/components/ui";
-import { DonutSegmento, LineTendencia } from "@/components/charts";
+import Link from "next/link";
 import {
-  KpiCard, AtacarHojeCard, PlanoAcaoList, SinaisTimeline, PipelineEstagio, topDemandsAtacarHoje,
-} from "@/components/dashboard";
-import { KPIS, SINAIS, TAREFAS } from "@/lib/dashboard-mock";
-import { DEMANDS } from "@/lib/mock";
-import { CalendarDays, SlidersHorizontal, Target, CheckCircle2, GitBranch, Activity, PieChart, TrendingUp, ArrowRight } from "lucide-react";
+  Radar as RadarIcon, Eye, CalendarClock, Gauge, ShieldAlert, Building2, ArrowRight, Flame, GitBranch,
+} from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Progress } from "@/components/ui";
+import { CERTIDAO_LABEL, diasAteVencer, statusCertidao } from "@/lib/certidoes";
+import { itensAplicaveis, calcProntidao } from "@/lib/habilitacao";
+import { dataBR } from "@/lib/utils";
 
-function SectionCard({ icon: Icon, title, sub, action, children, className = "" }: { icon: React.ElementType; title: string; sub?: string; action?: React.ReactNode; children: React.ReactNode; className?: string }) {
-  return (
-    <Card className={`border-border/60 shadow-sm ${className}`}>
-      <div className="flex items-start justify-between gap-2 px-4 pt-4">
-        <div className="flex items-center gap-2">
-          <Icon className="size-4 text-primary" />
-          <div>
-            <h2 className="text-sm font-semibold leading-none">{title}</h2>
-            {sub && <p className="mt-1 text-xs text-muted-foreground">{sub}</p>}
-          </div>
-        </div>
-        {action}
-      </div>
-      <CardContent className="p-4">{children}</CardContent>
+const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().trim();
+const CITY_MAP: Record<string, string> = { "SAO PAULO": "São Paulo", TERESINA: "Teresina" };
+
+const STAGES = [
+  { key: "nova", label: "Nova" },
+  { key: "monitorando", label: "Monitorando" },
+  { key: "preparacao", label: "Preparação" },
+  { key: "edital", label: "Edital" },
+  { key: "resultado", label: "Resultado" },
+];
+
+function Kpi({ icon: Icon, label, value, hint, href }: { icon: React.ElementType; label: string; value: React.ReactNode; hint?: string; href?: string }) {
+  const inner = (
+    <Card className="h-full transition hover:border-primary/40">
+      <CardContent className="p-4">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground"><Icon className="size-4 text-primary" /> {label}</div>
+        <p className="mt-1.5 text-2xl font-extrabold">{value}</p>
+        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      </CardContent>
     </Card>
   );
+  return href ? <Link href={href}>{inner}</Link> : inner;
 }
 
-export default function DashboardPage() {
-  const atacar = topDemandsAtacarHoje(DEMANDS, 3);
+export default async function DashboardPage() {
+  const supabase = await createClient();
+  const { data: company } = await supabase.from("company").select("razao_social, segmentos, municipio, uf").maybeSingle();
+
+  const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
+  const cidade = company?.municipio ? CITY_MAP[norm(company.municipio)] ?? company.municipio : null;
+  const temNicho = segmentos.length > 0 && !!cidade;
+
+  // KPI: editais abertos do nicho + publicados em 90d
+  let abertos = 0, pub90 = 0;
+  if (temNicho) {
+    const base = () => supabase.from("raw_editais").select("numero_controle_pncp", { count: "exact", head: true }).overlaps("segmentos", segmentos).eq("cidade", cidade).is("valor_homologado", null);
+    // Server Component (renderiza 1× por request) — Date.now é determinístico aqui.
+    // eslint-disable-next-line react-hooks/purity
+    const d90 = new Date(Date.now() - 90 * 86400000).toISOString();
+    abertos = (await base()).count ?? 0;
+    pub90 = (await base().gte("data_publicacao", d90)).count ?? 0;
+  }
+
+  // Pipeline (oportunidades por estágio)
+  const { data: oports } = await supabase.from("oportunidade").select("stage, numero_controle_pncp");
+  const stageCount: Record<string, number> = {};
+  for (const o of oports ?? []) stageCount[o.stage] = (stageCount[o.stage] ?? 0) + 1;
+  const monitorando = stageCount["monitorando"] ?? 0;
+  const noFunil = (oports ?? []).filter((o) => o.stage !== "descartado").length;
+
+  // Documentos: prontidão + vencendo ≤30d
+  const { data: docs } = await supabase.from("documento").select("tipo, tipo_label, vencimento");
+  const docByTipo: Record<string, { vencimento: string }> = {};
+  for (const d of docs ?? []) docByTipo[d.tipo] = d;
+  const aplicaveis = itensAplicaveis(segmentos.length ? segmentos : ["generico"]);
+  const { pct } = calcProntidao(aplicaveis, docByTipo);
+  const vencendo = (docs ?? [])
+    .map((d) => ({ ...d, dias: diasAteVencer(d.vencimento), st: statusCertidao(d.vencimento) }))
+    .filter((d) => d.st !== "ATIVO")
+    .sort((a, b) => a.dias - b.dias);
+
+  // Atacar hoje: top abertos do nicho (excluindo descartados)
+  const descartados = new Set((oports ?? []).filter((o) => o.stage === "descartado").map((o) => o.numero_controle_pncp));
+  let atacar: { numero_controle_pncp: string; objeto: string | null; data_publicacao: string | null; orgao: { razao_social: string | null } | null }[] = [];
+  if (temNicho) {
+    const { data } = await supabase.from("raw_editais")
+      .select("numero_controle_pncp, objeto, data_publicacao, orgao:cnpj_orgao(razao_social)")
+      .overlaps("segmentos", segmentos).eq("cidade", cidade).is("valor_homologado", null)
+      .order("data_publicacao", { ascending: false }).limit(8);
+    atacar = ((data ?? []) as unknown as typeof atacar).filter((e) => !descartados.has(e.numero_controle_pncp)).slice(0, 5);
+  }
 
   return (
-    <div className="space-y-4">
-      {/* Filtro de data + Filtros */}
-      <div className="flex items-center justify-end gap-2">
-        <Button variant="outline" size="sm"><CalendarDays className="size-4" />Hoje (19/06/2026)</Button>
-        <Button variant="outline" size="sm"><SlidersHorizontal className="size-4" />Filtros</Button>
+    <div className="space-y-5">
+      {/* KPIs reais */}
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+        <Kpi icon={RadarIcon} label="Editais abertos (nicho)" value={abertos} hint={cidade ?? "defina nicho"} href="/radar" />
+        <Kpi icon={Flame} label="Novos em 90 dias" value={pub90} hint="publicados recentemente" href="/radar" />
+        <Kpi icon={Eye} label="Monitorando" value={monitorando} hint={`${noFunil} no funil`} href="/radar" />
+        <Kpi icon={Gauge} label="Prontidão" value={`${pct}%`} hint="habilitação (Lei 14.133)" href="/empresa" />
+        <Kpi icon={ShieldAlert} label="Docs vencendo" value={vencendo.length} hint="≤30 dias ou vencidos" href="/empresa" />
       </div>
 
-      {/* KPIs */}
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-        {KPIS.map((k) => <KpiCard key={k.key} kpi={k} />)}
+      <div className="grid gap-5 lg:grid-cols-3">
+        {/* Atacar hoje */}
+        <Card className="lg:col-span-2">
+          <CardHeader className="flex-row items-center justify-between space-y-0">
+            <CardTitle className="flex items-center gap-2 text-base"><Flame className="size-4 text-primary" /> Atacar hoje</CardTitle>
+            <Button asChild variant="ghost" size="sm"><Link href="/radar">Ver Radar <ArrowRight className="size-4" /></Link></Button>
+          </CardHeader>
+          <CardContent>
+            {!temNicho ? (
+              <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Defina seu nicho em Minha Empresa para ver oportunidades.</p>
+            ) : atacar.length === 0 ? (
+              <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Sem editais abertos do seu nicho agora.</p>
+            ) : (
+              <ul className="divide-y">
+                {atacar.map((e) => (
+                  <li key={e.numero_controle_pncp} className="flex items-start gap-3 py-2.5">
+                    <Building2 className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium">{e.orgao?.razao_social ?? "Órgão"}</p>
+                      <p className="line-clamp-1 text-xs text-muted-foreground">{e.objeto}</p>
+                    </div>
+                    <span className="shrink-0 text-xs text-muted-foreground">{e.data_publicacao ? dataBR(e.data_publicacao.slice(0, 10)) : ""}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Pipeline por estágio */}
+        <Card>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-base"><GitBranch className="size-4 text-primary" /> Pipeline</CardTitle></CardHeader>
+          <CardContent className="space-y-2">
+            {STAGES.map((s) => (
+              <div key={s.key} className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">{s.label}</span>
+                <Badge variant={stageCount[s.key] ? "secondary" : "muted"}>{stageCount[s.key] ?? 0}</Badge>
+              </div>
+            ))}
+            {noFunil === 0 && <p className="pt-1 text-xs text-muted-foreground">Monitore editais no Radar para preencher o funil.</p>}
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Atacar Hoje + Plano de Ação */}
-      <div className="grid gap-4 lg:grid-cols-3">
-        <SectionCard className="lg:col-span-2" icon={Target} title="Atacar Hoje" sub="Oportunidades prioritárias para ação imediata"
-          action={<Button variant="link" size="sm" className="h-auto p-0 text-primary">Ver todas <ArrowRight className="size-3.5" /></Button>}>
-          <div className="grid gap-3 md:grid-cols-3">
-            {atacar.map((d) => <AtacarHojeCard key={d.id} demand={d} />)}
-          </div>
-        </SectionCard>
+      {/* Documentos vencendo + Prontidão */}
+      <div className="grid gap-5 lg:grid-cols-3">
+        <Card className="lg:col-span-2">
+          <CardHeader><CardTitle className="flex items-center gap-2 text-base"><CalendarClock className="size-4 text-primary" /> Documentos a renovar</CardTitle></CardHeader>
+          <CardContent>
+            {vencendo.length === 0 ? (
+              <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum documento vencido ou a vencer nos próximos 30 dias.</p>
+            ) : (
+              <ul className="divide-y">
+                {vencendo.map((d) => (
+                  <li key={d.tipo} className="flex items-center gap-3 py-2.5">
+                    <Badge variant={d.st === "VENCIDO" ? "destructive" : "warning"}>{d.st === "VENCIDO" ? "Vencido" : "A renovar"}</Badge>
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium">{d.tipo_label || CERTIDAO_LABEL[d.tipo] || d.tipo}</span>
+                    <span className="shrink-0 text-xs text-muted-foreground">{dataBR(d.vencimento)} · {d.dias < 0 ? `há ${-d.dias}d` : `em ${d.dias}d`}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CardContent>
+        </Card>
 
-        <SectionCard icon={CheckCircle2} title="Plano de Ação da Semana" sub={`${TAREFAS.length} tarefas`}>
-          <PlanoAcaoList tarefas={TAREFAS} />
-          <Button variant="link" size="sm" className="mt-2 h-auto p-0 text-primary">Ver todas as tarefas <ArrowRight className="size-3.5" /></Button>
-        </SectionCard>
-      </div>
-
-      {/* Pipeline por Estágio + Sinais */}
-      <div className="grid gap-4 lg:grid-cols-3">
-        <SectionCard className="lg:col-span-2" icon={GitBranch} title="Pipeline por Estágio" sub="Total monitorado: R$ 4,82 Mi em 102 oportunidades">
-          <PipelineEstagio />
-        </SectionCard>
-        <SectionCard icon={Activity} title="Linha do Tempo de Sinais Oficiais"
-          action={<Button variant="link" size="sm" className="h-auto p-0 text-primary">Ver todo</Button>}>
-          <SinaisTimeline sinais={SINAIS} />
-        </SectionCard>
-      </div>
-
-      {/* Donut + Linha */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        <SectionCard icon={PieChart} title="Pipeline por Segmento"
-          action={<Badge variant="muted" className="text-[10px]">R$ 4,82 Mi</Badge>}>
-          <DonutSegmento />
-        </SectionCard>
-        <SectionCard icon={TrendingUp} title="Tendência de Oportunidades" sub="Identificadas × editais publicados · últimos 6 meses">
-          <LineTendencia />
-        </SectionCard>
+        <Card>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-base"><Gauge className="size-4 text-primary" /> Prontidão</CardTitle></CardHeader>
+          <CardContent>
+            <p className={`text-4xl font-extrabold ${pct >= 80 ? "text-success" : pct >= 50 ? "text-warning" : "text-destructive"}`}>{pct}%</p>
+            <p className="mt-1 text-sm text-muted-foreground">habilitação obrigatória</p>
+            <Progress value={pct} className="mt-3" />
+            <Button asChild variant="outline" size="sm" className="mt-3 w-full"><Link href="/empresa">Completar documentos</Link></Button>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
