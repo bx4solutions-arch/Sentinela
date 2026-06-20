@@ -29,7 +29,7 @@ export async function authenticate(formData: FormData) {
       redirect(`/login?msg=${encodeURIComponent("Conta criada. Agora faça login.")}`);
     }
     revalidatePath("/", "layout");
-    redirect("/dashboard");
+    redirect("/onboarding"); // primeiro acesso → wizard guiado
   }
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
