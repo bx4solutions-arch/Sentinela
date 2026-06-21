@@ -1,57 +1,49 @@
-# RELATÓRIO DE SESSÃO — 2026-06-20 (modo autônomo)
+# RELATÓRIO DE SESSÃO — 2026-06-21 (autônomo): Pasta-rainha + sinais reais + zero botão fake
 
-Régua de autoteste aplicada (`docs/REGUA-DE-EXECUCAO-E-AUTOTESTE.md`): tudo construído foi exercitado
-ponta a ponta com Playwright headless + verificação no Supabase + screenshot + build/lint/typecheck verdes.
-Commits **locais** (sem push, conforme instrução). Migrations só **aditivas**.
+Régua de autoteste: cada item provado pelo RESULTADO (mudou estado? salvou? navegou?), não pela presença.
+Aditivo, **sem push**, sem segredo, IA paga só via BYOK. graphify usado para navegar; `graphify update .` após editar.
 
-## Fila executada
+## T1 — Pasta Inteligente = tela-rainha, dado REAL (MATA O MOCK) ✅
+- A Pasta (`app/(shell)/licitacao/[id]`) **não importa `mock.ts`** — carrega a licitação real do banco.
+- **Resumo Executivo DETERMINÍSTICO do `payload` jsonb** (sem IA): Identificação, Órgão (poder/esfera/UF),
+  Datas/Prazos (abertura/encerramento), Modalidade/Modo de Disputa/SRP, Valores, Situação, Amparo Legal,
+  Fontes Orçamentárias. **Cacheado** em `licitacao.resumo_json` (migration 0011, abre instantâneo).
+- **Empresa × Edital** e **Veredito calibrado** DETERMINÍSTICOS (cruza checklist Lei 14.133 × documentos da
+  empresa → apto/ressalvas/não apto + % pronto; disclaimer probabilístico). IA **enriquece**, não substitui.
+- Seções que exigem o texto do edital (habilitação específica, garantias, penalidades, análise crítica) =
+  **"em ingestão"** (Camada 2 / IA) — não forjadas. CAPAG idem.
+- Autoteste `e2e/autotest-pasta.mjs`: **9/9** (resumo determinístico, dado real não-mock, empresa×edital,
+  veredito, `resumo_json` cacheado, console limpo). Screenshot `e2e/shots/PASTA-resumo.png`.
 
-### TASK 1 — Backfill on-demand por célula (cidade) ✅
-- **migration 0010** (aditiva): `cidade_coletada` (catálogo global de coleta, reuso entre tenants) + `celula`
-  (cidades que o tenant monitora). SP/Teresina já marcadas `pronta` (reuso). RLS por tenant.
-- **`worker/backfill_worker.py`**: worker LOCAL. Faz polling de `cidade_coletada` pendente, coleta os
-  **metadados** dos editais do município no PNCP (24 meses, município-level, **sem documentos**), grava em
-  `raw_editais`/`orgao`, marca `pronta`. Resiliente a HTTP 500 do PNCP (pula a fatia ruim). `--once` p/ CI.
-  - **Validado: Santos (IBGE 3548500) = 3.944 editais, 20 órgãos, 0 fatias puladas.**
-- **Radar/Dashboard** filtram pelas cidades `pronta`; banner **"Carregando histórico de X…"** enquanto coleta;
-  fallback honesto por **UF** quando nenhuma cidade pronta. `CityPicker` (lista IBGE) + "Monitorar minha cidade".
-- **Onboarding** já monitora a cidade da empresa automaticamente (enfileira coleta se nova).
-- Autoteste `e2e/autotest-backfill.mjs`: **10/10** — monitorar Santos → Radar popula com Santos (reuso);
-  cidade nova → banner coletando + `pendente`; persistência conferida. Screenshot `e2e/shots/BF-1-radar-santos.png`.
+## T2 — Radar/card com sinais REAIS + urgência ✅
+- Card lidera com badges de sinal (só os com dado): **prazo apertado** (`data_encerramento`), **órgão
+  recorrente** (histórico homologado no nicho), **suspensa** (pode republicar). Banner **"certidão
+  impeditiva"** (obrigatória vencida da empresa). Sem dado (deserta/contrato-vencendo/baixa-concorrência) =
+  **não renderiza** (em ingestão).
+- Ações reais: **Analisar → cria workspace** (Pasta), **Monitorar → Kanban**, **Descartar + motivo** (salva
+  `oportunidade.motivo`). Autoteste `e2e/autotest-sinais.mjs`: **4/4**.
 
-### TASK 2 — Paleta SEM VERDE + mockups ricos sobre dado real ✅ (parcial no pixel)
-- **Paleta global sem verde**: `success`→azul `#3C83F6`, `destructive` `#DC2626`, navy `#0B2D89`, âmbar `#F59F0A`.
-  Removido todo verde (badges, anéis, charts).
-- **Dashboard rico** (`docs/sentinela-dashboard.html` portado sobre dado real): thesis/antecipação, KPIs com
-  ícone, **Atacar hoje com anel de prioridade**, Pipeline, **donut por segmento** + **editais/mês** (recharts,
-  reais), Vigia de documentos. Screenshot `e2e/shots/BF-2-dashboard-rico.png`.
-- Card de licitação (Radar) e Pasta: funcionais e sem-verde. **Pendência**: port 1:1 pixel do accordion do
-  `sentinela-dossie.html` e do card com anel/chip em todo item (ver `BLOQUEIOS.md`).
+## T3 — Visual sem verde ✅ (substância > forma)
+- Paleta global **navy `#0B2D89` · azul `#3C83F6` · âmbar `#F59F0A` · vermelho `#DC2626` — ZERO verde**
+  (aplicada na sessão anterior; mantida). Card com urgência em destaque.
 
-### TASK 3 — Toda tela alcançável e funcional ✅
-- Nav sem becos: Dashboard · Radar · Kanban · Minha Empresa · **Consultor** (hub das análises) ·
-  **Configurações** (BYOK IA). Pasta Inteligente acessível via Radar "Adicionar à análise" e via Consultor.
-- Fim dos stubs "SOON" nas features prontas.
+## T4 — Coletar contratos 🔇 BLOQUEADO
+- PNCP `/contratos` retorna **400** para os órgãos (ver `BLOQUEIOS.md`). Sinal "contrato vencendo" segue
+  "em ingestão". Pulei conforme a régua.
 
-### TASK 4 — Autoteste + commits locais frequentes ✅
-Autotestes Playwright (todos verdes), com screenshots em `e2e/shots/`:
-- `autotest.mjs` (Bloco 1) 16/16 · `autotest-radar.mjs` 10/10 · `autotest-dashboard.mjs` 5/5 ·
-  `autotest-kanban.mjs` 3/3 · `autotest-licitacao.mjs` 9/9 · `autotest-frontend.mjs` (PART1+BYOK) 11/11 ·
-  `autotest-backfill.mjs` 10/10.
-
-## Também nesta sessão (antes do modo autônomo)
-- BYOK: Configurações → IA (provedor Anthropic/OpenAI/Google/mock + modelo + modelo customizado + chave
-  **criptografada AES-256-GCM**, nunca exposta ao client). "Analisar com IA" gera Resumo+Veredito calibrado.
-
-## Como rodar o worker em produção (local)
-```
-python3 worker/backfill_worker.py        # loop contínuo (processa novas células pendentes)
-```
-
-## Pendências (em `BLOQUEIOS.md`)
-- Port 1:1 pixel do `sentinela-dossie.html` (Pasta) e do card de licitação.
-- Passo dedicado UF→multi-cidades no wizard (hoje: auto-cidade + CityPicker no Radar).
+## DoD #2 — Inventário de botões (✅ real / 🔇 desabilitado "em breve" / ❌ removido)
+| Tela | Botão | Estado |
+|---|---|---|
+| Pasta | Monitorar · Imprimir (window.print) · Excluir · Edital no PNCP · Add/Remover doc · Tabs | ✅ |
+| Pasta | Analisar com IA | ✅ com BYOK / vira link "Ligar IA" sem chave |
+| Pasta | .docx · E-mail | 🔇 desabilitado "em breve" |
+| Radar | Monitorar · Descartar+motivo · Adicionar à análise · Monitorar cidade · CityPicker | ✅ |
+| Dashboard | KPIs (links) · Atacar hoje Monitorar/Analisar · Ver Radar | ✅ |
+| Kanban | Mover ←/→ · Descartar | ✅ |
+| Minha Empresa | Atualizar · Trocar empresa (modal) · Add/Remover doc · "Outro…" | ✅ |
+| Configurações | Provedor/Modelo/Chave + Salvar | ✅ |
+**Nenhum botão clicável-e-morto.**
 
 ## Gates respeitados
-Migrations só aditivas (aplicadas sozinho) · **sem git push** (só commits locais) · sem mexer em `.secrets`/`.env`
-· IA paga não ligada (BYOK + mock no teste).
+Migrations só aditivas (0011) · **sem git push** (commits locais) · sem mexer em `.secrets`/`.env` · IA paga
+só BYOK. Commits: `23a26f9` (T1) · `82e6f2c` (T2).

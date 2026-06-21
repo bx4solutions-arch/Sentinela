@@ -1,21 +1,18 @@
-# BLOQUEIOS — sessão autônoma 2026-06-20
+# BLOQUEIOS — sessões autônomas
 
-Nenhum bloqueio duro impediu a fila. Registros de contornos e pendências:
+## 2026-06-21 — T4 contratos: BLOQUEADO (PNCP /contratos → HTTP 400)
+- O endpoint PNCP `/v1/contratos?cnpjOrgao=…&dataInicial=…&dataFinal=…` retorna **400** para os órgãos
+  municipais coletados (Santos etc.), mesmo com janela ≤364 dias. O harvester original já registrava
+  **contratos: 0** no `_meta.json` — a fonte não está fluindo para esses órgãos.
+- **Impacto:** o sinal **"contrato vencendo / recompra"** fica **"em ingestão"** (não forjado).
+- **Pulei** (régua: anotar e seguir). **Próximo:** investigar a variante correta do endpoint de contratos
+  do PNCP (possível `/contratos/atualizacao` ou parâmetros distintos) ou outra fonte (Transparência/SIASG).
 
-## Contornado
-- **PNCP devolve HTTP 500 em algumas fatias** (ex.: modalidade 11 / janelas específicas). O worker
-  abortava a cidade inteira. **Corrigido**: `backfill_worker.py` agora pula a fatia ruim e continua;
-  só marca `erro` se NENHUMA fatia coletar. Santos coletou 3.944 editais com 0 fatias puladas.
+## Contornado (sessão 2026-06-20)
+- PNCP HTTP 500 em fatias do backfill → worker pula a fatia e continua (Santos: 3.944 editais, 0 puladas).
 
-## Pendências (não bloqueiam — qualidade/escopo, ficaram para a próxima)
-- **Port 1:1 pixel do `docs/sentinela-dossie.html`** na Pasta: a Pasta está funcional (abas Resumo/Veredito/
-  Riscos/Empresa×Edital/Documentos + análise IA real), com a paleta sem-verde, mas **não** está pixel-a-pixel
-  com o accordion de 16 seções do mockup. Próximo passo: portar o accordion denso.
-- **Card de licitação 1:1**: o card do Radar é funcional e sem-verde, com órgão/objeto/valor/cidade/situação/
-  origem + ações. Falta o tratamento pixel do mockup (anel de score em todo card, chip de veredito, linha de
-  ações IA "Resumo/Pergunte ao Edital"). As ações de IA dependem de baixar o documento (Camada 2 / Q5).
-- **Passo dedicado UF→multi-cidades no wizard**: entregue de forma equivalente (a cidade da empresa entra
-  automática no onboarding + `CityPicker` no Radar para adicionar outras). Um passo visual dedicado no wizard
-  é polish.
-- **Worker em loop contínuo**: rodei `--once` (valida). Para produção, deixar `python3 worker/backfill_worker.py`
-  rodando ao lado do dev para processar novas células `pendente` automaticamente.
+## Pendências de polish (não bloqueiam)
+- Port 1:1 pixel do `sentinela-dossie.html` (a Pasta está rica e funcional, sem-verde, mas não pixel-a-pixel).
+- Filtros do Radar (modalidade, faixa de valor, tipo de sinal) — hoje: nicho + cidade. Próximo incremento.
+- Pilar "Antecipação (PCA)" no Radar — PCA (17k) ainda não renderizado (dado fino p/ alguns nichos).
+- Worker de backfill em loop contínuo (hoje rodado `--once`; produção: `python3 worker/backfill_worker.py`).
