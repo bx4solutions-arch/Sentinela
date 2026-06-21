@@ -1,82 +1,92 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Building2, MapPin, ExternalLink, Sparkles, Trash2, FileText, Plus,
-  FileSearch, Scale, MessagesSquare, ListChecks, DollarSign, Landmark, Swords, Lock,
+  Building2, MapPin, ExternalLink, Sparkles, Trash2, FileText, Plus, Eye,
+  FileSearch, Scale, MessagesSquare, DollarSign, Landmark, Lock, Gauge,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { Card, CardContent, Badge, Button, Input, Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui";
+import { Card, CardContent, Badge, Button, Input, Progress, Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui";
 import { dataBR } from "@/lib/utils";
+import { buildResumo, type ResumoEdital } from "@/lib/resumo-edital";
+import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
+import { monitorar } from "../../radar/actions";
+import { PastaActions } from "./pasta-actions";
 
 type Parecer = {
-  resumo?: string;
-  riscos?: { nivel?: string; texto?: string }[];
+  resumo?: string; riscos?: { nivel?: string; texto?: string }[];
   veredito?: { recomendacao?: string; probabilidade?: string; justificativa?: string; prontidao_pct?: number };
-  empresa_edital?: { status?: string; faltam?: string[] };
-  erro?: string;
+  empresa_edital?: { status?: string; faltam?: string[] }; erro?: string;
 };
+const brl = (n: number | null) => !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
+const dtBR = (s: string | null) => s ? dataBR(s.slice(0, 10)) : "—";
 
-const brl = (n: number | null) =>
-  !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
-
-type Lic = {
-  id: string;
-  numero_controle_pncp: string;
-  titulo: string | null;
-  raw_editais: {
-    objeto: string | null; valor_estimado: number | null; situacao_nome: string | null;
-    data_publicacao: string | null; modalidade_nome: string | null; cidade: string | null;
-    link_origem: string | null; orgao: { razao_social: string | null } | null;
-  } | null;
-};
+type Lic = { id: string; numero_controle_pncp: string; titulo: string | null; resumo_json: ResumoEdital | null;
+  raw_editais: { objeto: string | null; valor_estimado: number | null; situacao_nome: string | null; data_publicacao: string | null; modalidade_nome: string | null; cidade: string | null; link_origem: string | null; payload: unknown; orgao: { razao_social: string | null } | null } | null; };
 
 function EmBreve({ icon: Icon, titulo, motivo }: { icon: React.ElementType; titulo: string; motivo: string }) {
   return (
     <div className="flex flex-col items-center gap-2 rounded-lg border border-dashed p-8 text-center">
-      <Icon className="size-6 text-muted-foreground/60" />
-      <p className="font-medium">{titulo}</p>
-      <Badge variant="muted">em breve</Badge>
-      <p className="max-w-md text-sm text-muted-foreground">{motivo}</p>
+      <Icon className="size-6 text-muted-foreground/60" /><p className="font-medium">{titulo}</p>
+      <Badge variant="muted">em ingestão</Badge><p className="max-w-md text-sm text-muted-foreground">{motivo}</p>
     </div>
   );
+}
+function Campo({ label, value }: { label: string; value: React.ReactNode }) {
+  return (<div><p className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</p><div className="text-sm font-medium">{value || "—"}</div></div>);
+}
+function Secao({ titulo, children }: { titulo: string; children: React.ReactNode }) {
+  return (<Card><CardContent className="p-4"><p className="mb-3 text-sm font-semibold">{titulo}</p><div className="grid grid-cols-2 gap-4 sm:grid-cols-3">{children}</div></CardContent></Card>);
 }
 
 export default async function LicitacaoPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const supabase = await createClient();
-
   const { data } = await supabase
     .from("licitacao")
-    .select("id, numero_controle_pncp, titulo, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, modalidade_nome, cidade, link_origem, orgao:cnpj_orgao(razao_social))")
-    .eq("id", id)
-    .maybeSingle();
+    .select("id, numero_controle_pncp, titulo, resumo_json, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, modalidade_nome, cidade, link_origem, payload, orgao:cnpj_orgao(razao_social))")
+    .eq("id", id).maybeSingle();
   const lic = data as unknown as Lic | null;
   if (!lic) notFound();
-
   const ed = lic.raw_editais;
-  const { data: docs } = await supabase
-    .from("documento")
-    .select("id, tipo, tipo_label, criado_em")
-    .eq("licitacao_id", id)
-    .order("criado_em", { ascending: false });
 
-  // IA configurada? (admin, server-only) + parecer existente
-  const { data: { user } } = await supabase.auth.getUser();
   const admin = createAdminClient();
-  const { data: cfg } = await admin.from("tenant_ai_config").select("provider, model, api_key_encrypted").eq("tenant_id", user?.id ?? "").maybeSingle();
+  // Resumo Executivo determinístico (cacheado em resumo_json — gera 1x)
+  let resumo = lic.resumo_json;
+  if (!resumo && ed?.payload) {
+    resumo = buildResumo(ed.payload);
+    await admin.from("licitacao").update({ resumo_json: resumo }).eq("id", id);
+  }
+
+  // Empresa × Edital (determinístico: checklist Lei 14.133 × documentos da empresa)
+  const { data: company } = await supabase.from("company").select("segmentos, razao_social").maybeSingle();
+  const { data: cdocs } = await supabase.from("documento").select("tipo, vencimento").eq("escopo", "company");
+  const docByTipo: Record<string, { vencimento: string }> = {};
+  for (const d of cdocs ?? []) if (d.vencimento) docByTipo[d.tipo] = { vencimento: d.vencimento };
+  const aplicaveis = itensAplicaveis(company?.segmentos?.length ? company.segmentos : ["generico"]);
+  const itensStatus = aplicaveis.map((it) => ({ ...it, st: statusItem(docByTipo[it.key]) }));
+  const faltam = itensStatus.filter((i) => i.st === "ausente" || i.st === "vencida");
+  const { pct } = calcProntidao(aplicaveis, docByTipo);
+  const statusEmp = faltam.length === 0 ? "apto" : pct >= 50 ? "ressalvas" : "nao_apto";
+  const statusEmpLabel = { apto: "Apto", ressalvas: "Com ressalvas", nao_apto: "Não apto" }[statusEmp];
+  const prob = pct >= 80 ? "alta" : pct >= 50 ? "média" : "baixa";
+  const recomendacao = statusEmp === "apto" ? "Forte candidato — você atende a habilitação típica deste tipo de certame." : statusEmp === "ressalvas" ? "Avaliável — você atende parte da habilitação típica; resolva os documentos faltantes." : "Atenção — habilitação típica incompleta; prepare os documentos antes de disputar.";
+
+  // IA (BYOK) + parecer existente (enriquece, não substitui o determinístico)
+  const { data: { user } } = await supabase.auth.getUser();
+  const { data: cfg } = await admin.from("tenant_ai_config").select("provider, api_key_encrypted").eq("tenant_id", user?.id ?? "").maybeSingle();
   const hasAI = !!cfg && (cfg.provider === "mock" || !!cfg.api_key_encrypted);
   const { data: analiseRow } = await supabase.from("analise").select("conteudo, modelo").eq("licitacao_id", id).eq("tipo", "completa").maybeSingle();
   const p = (analiseRow?.conteudo ?? null) as Parecer | null;
 
-  const aiMsg = hasAI ? "Clique em “Analisar com IA” no topo para gerar." : "Configure o provedor e o modelo de IA em Configurações para ligar a análise.";
+  const { data: docs } = await supabase.from("documento").select("id, tipo, tipo_label").eq("licitacao_id", id).order("criado_em", { ascending: false });
 
   return (
     <div className="space-y-4">
       <Button asChild variant="ghost" size="sm"><Link href="/radar">← Voltar ao Radar</Link></Button>
 
-      {/* Cabeçalho da pasta */}
+      {/* Cabeçalho */}
       <Card>
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
@@ -86,144 +96,160 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                 <Building2 className="size-3.5" /><span className="font-medium text-foreground">{ed?.orgao?.razao_social ?? "Órgão"}</span>
                 {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}</Badge>}
                 {ed?.situacao_nome && <Badge variant="muted">{ed.situacao_nome}</Badge>}
+                <Badge variant={statusEmp === "apto" ? "success" : statusEmp === "nao_apto" ? "destructive" : "warning"}>{pct}% pronto · {statusEmpLabel}</Badge>
               </div>
               <p className="mt-1 line-clamp-2 text-sm font-medium">{lic.titulo || ed?.objeto}</p>
               <div className="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 {ed?.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {ed.cidade}</span>}
                 <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "Valor não informado"}</span>
-                {ed?.data_publicacao && <span>{dataBR(ed.data_publicacao.slice(0, 10))}</span>}
-                {ed?.link_origem && <a href={ed.link_origem} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline"><ExternalLink className="size-3" /> Origem</a>}
+                {resumo?.datas.encerramento && <span>encerra {dtBR(resumo.datas.encerramento)}</span>}
               </div>
             </div>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
+            <form action={monitorar}><input type="hidden" name="numero" value={lic.numero_controle_pncp} /><Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
             {hasAI ? (
-              <form action={analisarComIA}>
-                <input type="hidden" name="licitacao_id" value={lic.id} />
-                <Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button>
-              </form>
+              <form action={analisarComIA}><input type="hidden" name="licitacao_id" value={lic.id} /><Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button></form>
             ) : (
               <Button asChild size="sm" variant="outline"><Link href="/configuracoes"><Sparkles className="size-4" /> Ligar IA (Configurações)</Link></Button>
             )}
-            {analiseRow?.modelo && <span className="text-xs text-muted-foreground">modelo: {analiseRow.modelo}</span>}
-            <form action={excluirLicitacao} className="ml-auto">
-              <input type="hidden" name="id" value={lic.id} />
-              <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir análise</Button>
-            </form>
+            <PastaActions />
+            {ed?.link_origem && <Button asChild size="sm" variant="ghost"><a href={ed.link_origem} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Edital no PNCP</a></Button>}
+            <form action={excluirLicitacao} className="ml-auto"><input type="hidden" name="id" value={lic.id} /><Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir</Button></form>
           </div>
         </CardContent>
       </Card>
 
-      {/* Abas do workspace */}
-      <Tabs defaultValue="documentos">
+      <Tabs defaultValue="resumo">
         <div className="overflow-x-auto">
           <TabsList className="w-max">
             <TabsTrigger value="resumo">Resumo</TabsTrigger>
             <TabsTrigger value="empresa">Empresa × Edital</TabsTrigger>
+            <TabsTrigger value="veredito">Veredito</TabsTrigger>
+            <TabsTrigger value="plano">Plano de Ação</TabsTrigger>
+            <TabsTrigger value="documentos">Documentos</TabsTrigger>
             <TabsTrigger value="riscos">Riscos</TabsTrigger>
             <TabsTrigger value="consultor">Consultor IA</TabsTrigger>
-            <TabsTrigger value="plano">Plano</TabsTrigger>
-            <TabsTrigger value="documentos">Documentos</TabsTrigger>
             <TabsTrigger value="precos">Preços</TabsTrigger>
             <TabsTrigger value="orgao">Órgão</TabsTrigger>
-            <TabsTrigger value="concorrentes">Concorrentes</TabsTrigger>
           </TabsList>
         </div>
 
         <div className="mt-4">
+          {/* RESUMO — determinístico do payload (sempre disponível, sem IA) */}
           <TabsContent value="resumo">
-            {p?.resumo || p?.veredito ? (
+            {resumo ? (
               <div className="space-y-4">
+                <Secao titulo="Identificação">
+                  <div className="col-span-2 sm:col-span-3"><Campo label="Objeto" value={resumo.identificacao.objeto} /></div>
+                  <Campo label="Nº controle PNCP" value={resumo.identificacao.numero_controle} />
+                  <Campo label="Nº da compra" value={resumo.identificacao.numero_compra} />
+                  <Campo label="Processo" value={resumo.identificacao.processo} />
+                  <Campo label="UASG / unidade" value={resumo.identificacao.uasg} />
+                  <Campo label="Instrumento" value={resumo.identificacao.tipo_instrumento} />
+                </Secao>
+                <Secao titulo="Órgão responsável">
+                  <Campo label="Órgão" value={resumo.orgao.razao_social} />
+                  <Campo label="Poder" value={resumo.orgao.poder} />
+                  <Campo label="Esfera" value={resumo.orgao.esfera} />
+                  <Campo label="Município/UF" value={resumo.orgao.municipio ? `${resumo.orgao.municipio}/${resumo.orgao.uf}` : null} />
+                  <Campo label="CAPAG" value={<Badge variant="muted">em ingestão</Badge>} />
+                </Secao>
+                <Secao titulo="Datas e prazos">
+                  <Campo label="Publicação" value={dtBR(resumo.datas.publicacao)} />
+                  <Campo label="Abertura de propostas" value={dtBR(resumo.datas.abertura)} />
+                  <Campo label="Encerramento" value={dtBR(resumo.datas.encerramento)} />
+                </Secao>
+                <Secao titulo="Modalidade, valores e amparo">
+                  <Campo label="Modalidade" value={resumo.modalidade.modalidade} />
+                  <Campo label="Modo de disputa" value={resumo.modalidade.modo_disputa} />
+                  <Campo label="Registro de preços (SRP)" value={resumo.modalidade.srp == null ? "—" : resumo.modalidade.srp ? "Sim" : "Não"} />
+                  <Campo label="Valor estimado" value={brl(resumo.valores.estimado)} />
+                  <Campo label="Valor homologado" value={brl(resumo.valores.homologado)} />
+                  <Campo label="Situação" value={resumo.situacao} />
+                  <div className="col-span-2 sm:col-span-3"><Campo label="Amparo legal" value={resumo.amparo_legal.nome} /></div>
+                  {resumo.info_complementar && <div className="col-span-2 sm:col-span-3"><Campo label="Informação complementar" value={resumo.info_complementar} /></div>}
+                </Secao>
                 <Card><CardContent className="p-4">
-                  <p className="mb-1 text-sm font-semibold">Resumo Executivo</p>
-                  <p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo ?? "—"}</p>
+                  <p className="text-sm font-semibold">Seções que dependem do texto do edital</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Habilitação específica, garantias, penalidades, prazos de recurso e análise crítica entram ao <strong>baixar o documento</strong> (PNCP <code>/arquivos</code>) e/ou via <strong>Analisar com IA</strong>. Não inventamos esse conteúdo.</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">{resumo.em_ingestao.map((s) => <Badge key={s} variant="muted">{s}</Badge>)}</div>
                 </CardContent></Card>
-                {p.veredito && (
-                  <Card><CardContent className="p-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <p className="text-sm font-semibold">Veredito calibrado</p>
-                      {p.veredito.probabilidade && <Badge variant="secondary">probabilidade {p.veredito.probabilidade}</Badge>}
-                      {typeof p.veredito.prontidao_pct === "number" && <Badge variant="muted">{p.veredito.prontidao_pct}% pronto</Badge>}
-                    </div>
-                    <p className="mt-1 text-sm font-medium">{p.veredito.recomendacao}</p>
-                    <p className="text-sm text-muted-foreground">{p.veredito.justificativa}</p>
-                    <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Recomendação calibrada (probabilística) — não é garantia de resultado. Decisão e responsabilidade são suas.</p>
-                  </CardContent></Card>
-                )}
-                {p.erro && <p className="text-sm text-destructive">Falha na análise: {p.erro}</p>}
+                {p?.resumo && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Resumo interpretativo (IA)</p></div><p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo}</p></CardContent></Card>}
               </div>
-            ) : <EmBreve icon={FileSearch} titulo="Resumo Executivo" motivo={aiMsg} />}
+            ) : <EmBreve icon={FileSearch} titulo="Resumo Executivo" motivo="Sem payload do edital para montar o resumo." />}
           </TabsContent>
+
+          {/* EMPRESA × EDITAL — determinístico */}
           <TabsContent value="empresa">
-            {p?.empresa_edital ? (
+            <Card><CardContent className="p-4">
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-semibold">{company?.razao_social ?? "Sua empresa"} × Edital</p>
+                <Badge variant={statusEmp === "apto" ? "success" : statusEmp === "nao_apto" ? "destructive" : "warning"}>{statusEmpLabel}</Badge>
+                <Badge variant="muted">{pct}% pronto</Badge>
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">Cruzamento com a <strong>habilitação típica da Lei 14.133</strong> aplicável aos seus nichos. A exigência específica deste edital entra com o documento.</p>
+              <ul className="mt-3 divide-y rounded-md border">
+                {itensStatus.map((it) => { const m = ITEM_STATUS_META[it.st]; return (
+                  <li key={it.key} className="flex items-center gap-3 p-2.5"><Badge variant={m.badge}>{m.label}</Badge><span className="flex-1 text-sm">{it.label}</span><span className="text-xs text-muted-foreground">{it.orgao}</span></li>);
+                })}
+              </ul>
+              {faltam.length > 0 && <p className="mt-2 text-sm text-destructive">Faltam {faltam.length} documento(s): {faltam.map((f) => f.label).join(", ")}.</p>}
+            </CardContent></Card>
+          </TabsContent>
+
+          {/* VEREDITO — calibrado determinístico (+ IA se houver) */}
+          <TabsContent value="veredito">
+            <div className="space-y-4">
               <Card><CardContent className="p-4">
-                <div className="flex items-center gap-2"><p className="text-sm font-semibold">Minha Empresa × Edital</p>
-                  <Badge variant={p.empresa_edital.status === "apto" ? "success" : p.empresa_edital.status === "nao_apto" ? "destructive" : "warning"}>{p.empresa_edital.status}</Badge></div>
-                {(p.empresa_edital.faltam?.length ?? 0) > 0 && <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">{p.empresa_edital.faltam!.map((f, i) => <li key={i}>{f}</li>)}</ul>}
+                <div className="flex flex-wrap items-center gap-2"><Gauge className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito calibrado</p>
+                  <Badge variant="secondary">probabilidade {prob}</Badge><Badge variant="muted">{pct}% pronto</Badge></div>
+                <p className="mt-2 text-sm font-medium">{recomendacao}</p>
+                <Progress value={pct} className="mt-2" />
+                <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Recomendação calibrada (probabilística) com base na sua prontidão documental — <strong>não é garantia de resultado</strong>. Decisão e responsabilidade são suas.</p>
               </CardContent></Card>
-            ) : <EmBreve icon={Building2} titulo="Minha Empresa × Edital" motivo={aiMsg} />}
+              {p?.veredito && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito interpretativo (IA)</p></div>
+                <p className="text-sm font-medium">{p.veredito.recomendacao}</p><p className="text-sm text-muted-foreground">{p.veredito.justificativa}</p></CardContent></Card>}
+            </div>
           </TabsContent>
-          <TabsContent value="riscos">
-            {(p?.riscos?.length ?? 0) > 0 ? (
-              <Card><CardContent className="space-y-2 p-4">
-                {p!.riscos!.map((r, i) => (
-                  <div key={i} className="flex items-start gap-2 text-sm">
-                    <Badge variant={r.nivel === "vermelho" ? "destructive" : r.nivel === "verde" ? "success" : "warning"}>{r.nivel}</Badge>
-                    <span>{r.texto}</span>
-                  </div>
-                ))}
-              </CardContent></Card>
-            ) : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo={aiMsg} />}
-          </TabsContent>
-          <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo="Chat com contexto da pasta — chega no próximo incremento (Bloco 3b)." /></TabsContent>
-          <TabsContent value="plano"><EmBreve icon={ListChecks} titulo="Plano de Ação" motivo={aiMsg} /></TabsContent>
 
+          {/* PLANO DE AÇÃO — derivado dos gaps */}
+          <TabsContent value="plano">
+            <Card><CardContent className="p-4">
+              <p className="mb-2 text-sm font-semibold">Plano de ação</p>
+              {faltam.length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Habilitação típica completa. Acompanhe os prazos do edital.</p> : (
+                <ul className="space-y-2">{faltam.map((f) => (
+                  <li key={f.key} className="flex items-center gap-2 rounded-md border p-2.5 text-sm"><span className="size-2 rounded-full bg-destructive" /><span className="flex-1">Providenciar <strong>{f.label}</strong> ({f.orgao})</span><Button asChild size="sm" variant="ghost"><Link href="/empresa">Resolver</Link></Button></li>))}
+                </ul>)}
+            </CardContent></Card>
+          </TabsContent>
+
+          {/* DOCUMENTOS */}
           <TabsContent value="documentos">
-            <Card>
-              <CardContent className="p-4">
-                <div className="mb-3 flex items-center gap-2">
-                  <FileText className="size-4 text-primary" />
-                  <p className="text-sm font-semibold">Documentos do processo</p>
-                </div>
-                <p className="mb-3 text-xs text-muted-foreground">
-                  Adicione edital, DFD/ETP, TR e anexos. Download automático do PNCP (<code>/arquivos</code>) chega num próximo incremento.
-                </p>
-                {(docs ?? []).length === 0 ? (
-                  <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum documento ainda.</p>
-                ) : (
-                  <ul className="mb-3 divide-y rounded-md border">
-                    {(docs ?? []).map((d) => (
-                      <li key={d.id} className="flex items-center gap-3 p-3">
-                        <FileText className="size-4 text-muted-foreground" />
-                        <span className="min-w-0 flex-1 truncate text-sm font-medium">{d.tipo_label}</span>
-                        <Badge variant="muted">{d.tipo}</Badge>
-                        <form action={deleteDocLicitacao}>
-                          <input type="hidden" name="id" value={d.id} />
-                          <input type="hidden" name="licitacao_id" value={lic.id} />
-                          <button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button>
-                        </form>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <form action={addDocLicitacao} className="flex flex-col gap-2 rounded-md border bg-muted/30 p-3 sm:flex-row">
-                  <input type="hidden" name="licitacao_id" value={lic.id} />
-                  <Input name="nome" placeholder="Nome do documento (ex.: Edital, TR, ETP)" required className="flex-1" />
-                  <Button type="submit"><Plus className="size-4" /> Adicionar</Button>
-                </form>
-              </CardContent>
-            </Card>
+            <Card><CardContent className="p-4">
+              <div className="mb-3 flex items-center gap-2"><FileText className="size-4 text-primary" /><p className="text-sm font-semibold">Documentos do processo</p></div>
+              <p className="mb-3 text-xs text-muted-foreground">Adicione edital, DFD/ETP, TR e anexos. Download automático do PNCP (<code>/arquivos</code>) chega num próximo incremento.</p>
+              {(docs ?? []).length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum documento ainda.</p> : (
+                <ul className="mb-3 divide-y rounded-md border">{(docs ?? []).map((d) => (
+                  <li key={d.id} className="flex items-center gap-3 p-3"><FileText className="size-4 text-muted-foreground" /><span className="min-w-0 flex-1 truncate text-sm font-medium">{d.tipo_label}</span><Badge variant="muted">{d.tipo}</Badge>
+                    <form action={deleteDocLicitacao}><input type="hidden" name="id" value={d.id} /><input type="hidden" name="licitacao_id" value={lic.id} /><button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button></form>
+                  </li>))}
+                </ul>)}
+              <form action={addDocLicitacao} className="flex flex-col gap-2 rounded-md border bg-muted/30 p-3 sm:flex-row"><input type="hidden" name="licitacao_id" value={lic.id} /><Input name="nome" placeholder="Nome do documento (ex.: Edital, TR, ETP)" required className="flex-1" /><Button type="submit"><Plus className="size-4" /> Adicionar</Button></form>
+            </CardContent></Card>
           </TabsContent>
 
-          <TabsContent value="precos"><EmBreve icon={DollarSign} titulo="Preços & Inteligência Comercial" motivo="Exige atas/contratos ingeridos (hoje 0) + sanções CEIS/CNEP. Não forjamos dado." /></TabsContent>
-          <TabsContent value="orgao"><EmBreve icon={Landmark} titulo="Histórico do Órgão" motivo="Exige atas/contratos + perfil do órgão. Em ingestão." /></TabsContent>
-          <TabsContent value="concorrentes"><EmBreve icon={Swords} titulo="Mapa de Concorrentes" motivo="Exige atas/contratos + sanções. Em ingestão." /></TabsContent>
+          <TabsContent value="riscos">
+            {(p?.riscos?.length ?? 0) > 0 ? <Card><CardContent className="space-y-2 p-4">{p!.riscos!.map((r, i) => (<div key={i} className="flex items-start gap-2 text-sm"><Badge variant={r.nivel === "vermelho" ? "destructive" : "warning"}>{r.nivel}</Badge><span>{r.texto}</span></div>))}</CardContent></Card>
+              : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo="A análise de riscos do texto do edital entra via Analisar com IA (BYOK)." />}
+          </TabsContent>
+          <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo="Chat com contexto da pasta — próximo incremento." /></TabsContent>
+          <TabsContent value="precos"><EmBreve icon={DollarSign} titulo="Preços & Inteligência Comercial" motivo="Exige atas/contratos ingeridos + sanções CEIS/CNEP. Não forjamos dado." /></TabsContent>
+          <TabsContent value="orgao"><EmBreve icon={Landmark} titulo="Histórico do Órgão / Decisores" motivo="Exige atas/contratos + 2ª fonte (diário/transparência). Em ingestão." /></TabsContent>
         </div>
       </Tabs>
 
-      <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground">
-        <Lock className="size-3" /> Peça processual (impugnação/recurso) fica travada — exige validação jurídica.
-      </p>
+      <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground"><Lock className="size-3" /> Peça processual (impugnação/recurso) fica travada — exige validação jurídica.</p>
     </div>
   );
 }
