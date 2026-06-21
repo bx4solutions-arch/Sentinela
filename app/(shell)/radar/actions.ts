@@ -44,21 +44,15 @@ export async function removerCidade(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
-async function setStage(numero: string, stage: string) {
+async function setStage(numero: string, stage: string, motivo?: string) {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user || !numero) return;
-  await supabase.from("oportunidade").upsert(
-    {
-      tenant_id: user.id,
-      numero_controle_pncp: numero,
-      stage,
-      atualizado_em: new Date().toISOString(),
-    },
-    { onConflict: "tenant_id,numero_controle_pncp" }
-  );
+  const row: Record<string, unknown> = { tenant_id: user.id, numero_controle_pncp: numero, stage, atualizado_em: new Date().toISOString() };
+  if (motivo) row.motivo = motivo;
+  await supabase.from("oportunidade").upsert(row, { onConflict: "tenant_id,numero_controle_pncp" });
   revalidatePath("/radar");
 }
 
@@ -67,7 +61,7 @@ export async function monitorar(formData: FormData) {
 }
 
 export async function descartar(formData: FormData) {
-  await setStage(String(formData.get("numero") ?? ""), "descartado");
+  await setStage(String(formData.get("numero") ?? ""), "descartado", String(formData.get("motivo") ?? "") || undefined);
 }
 
 export async function analisar(formData: FormData) {

@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus } from "lucide-react";
+import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus, ShieldAlert, AlarmClock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent, Badge, Button } from "@/components/ui";
+import { Card, CardContent, Badge, Button, Select } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { municipiosDaUf } from "@/lib/ibge";
+import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
+import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
 import { dataBR } from "@/lib/utils";
 import { monitorar, descartar, reverter, analisar, monitorarCidade, removerCidade } from "./actions";
 import { CityPicker } from "./city-picker";
@@ -14,6 +16,7 @@ const brl = (n: number | null) =>
 type Edital = {
   numero_controle_pncp: string; objeto: string | null; valor_estimado: number | null;
   situacao_nome: string | null; modalidade_nome: string | null; data_publicacao: string | null;
+  data_encerramento: string | null; cnpj_orgao: string | null;
   link_origem: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
 };
 
@@ -45,11 +48,26 @@ export default async function RadarPage() {
   // Escopo: cidades prontas (preciso) OU fallback por UF (honesto, enquanto coleta)
   const usandoFallbackUf = prontas.length === 0;
   let q = supabase.from("raw_editais")
-    .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
+    .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, data_encerramento, cnpj_orgao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
     .overlaps("segmentos", segmentos).is("valor_homologado", null);
   q = usandoFallbackUf ? q.eq("orgao.uf_sigla", uf) : q.in("cidade", prontas);
   const { data: rows } = await q.order("data_publicacao", { ascending: false }).limit(60);
   const editais = (rows ?? []) as unknown as Edital[];
+
+  // Sinal "órgão recorrente": órgãos com histórico homologado no nicho
+  const orgaosVisiveis = [...new Set(editais.map((e) => e.cnpj_orgao).filter(Boolean) as string[])];
+  const recorrentes = new Set<string>();
+  if (orgaosVisiveis.length) {
+    const { data: rec } = await supabase.from("raw_editais")
+      .select("cnpj_orgao").overlaps("segmentos", segmentos).in("cnpj_orgao", orgaosVisiveis).not("valor_homologado", "is", null).limit(2000);
+    for (const r of rec ?? []) if (r.cnpj_orgao) recorrentes.add(r.cnpj_orgao);
+  }
+
+  // Sinal "certidão impeditiva": empresa tem obrigatória VENCIDA
+  const { data: cdocs } = await supabase.from("documento").select("tipo, vencimento").eq("escopo", "company");
+  const docByTipo: Record<string, { vencimento: string }> = {};
+  for (const d of cdocs ?? []) if (d.vencimento) docByTipo[d.tipo] = { vencimento: d.vencimento };
+  const vencidas = itensAplicaveis(segmentos).filter((it) => statusItem(docByTipo[it.key]) === "vencida");
 
   const { data: oports } = await supabase.from("oportunidade").select("numero_controle_pncp, stage");
   const stageBy: Record<string, string> = {};
@@ -105,6 +123,18 @@ export default async function RadarPage() {
         </CardContent>
       </Card>
 
+      {vencidas.length > 0 && (
+        <Card className="border-destructive/40 bg-destructive/5">
+          <CardContent className="flex flex-wrap items-center gap-2 p-3 text-sm">
+            <ShieldAlert className="size-4 text-destructive" />
+            <span className="font-medium">Certidão impeditiva:</span>
+            <span className="text-muted-foreground">você tem documento(s) obrigatório(s) <strong className="text-destructive">vencido(s)</strong> — pode te impedir de habilitar:</span>
+            {vencidas.map((v) => <Badge key={v.key} variant="destructive">{v.label}</Badge>)}
+            <Link href="/empresa" className="ml-auto text-xs font-medium text-primary hover:underline">Renovar →</Link>
+          </CardContent>
+        </Card>
+      )}
+
       {visiveis.length === 0 ? (
         <EmptyState titulo="Nenhum edital em andamento agora" texto={`Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
       ) : (
@@ -112,9 +142,19 @@ export default async function RadarPage() {
           {visiveis.map((e) => {
             const valor = brl(e.valor_estimado);
             const mon = stageBy[e.numero_controle_pncp] === "monitorando";
+            const sinais = sinaisEdital(e, recorrentes);
             return (
               <Card key={e.numero_controle_pncp} className={mon ? "border-primary/40" : ""}>
                 <CardContent className="p-4">
+                  {sinais.length > 0 && (
+                    <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                      {sinais.map((s) => (
+                        <Badge key={s.tipo} variant={SINAL_BADGE[s.tone]} className="gap-1">
+                          {s.tipo === "prazo" && <AlarmClock className="size-3" />}{s.label}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <Building2 className="size-3.5" />
                     <span className="font-medium text-foreground">{e.orgao?.razao_social ?? "Órgão"}</span>
@@ -138,8 +178,15 @@ export default async function RadarPage() {
                       <form action={monitorar}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
                         <Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
                     )}
-                    <form action={descartar}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /> Descartar</Button></form>
+                    <form action={descartar} className="flex items-center gap-1"><input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                      <Select name="motivo" defaultValue="" className="h-8 w-36 text-xs" aria-label="Motivo do descarte">
+                        <option value="">Descartar por…</option>
+                        <option value="fora_escopo">Fora do escopo</option>
+                        <option value="ja_participei">Já participei</option>
+                        <option value="prazo_passou">Prazo passou</option>
+                        <option value="sem_interesse">Sem interesse</option>
+                      </Select>
+                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /></Button></form>
                     <form action={analisar} className="ml-auto"><input type="hidden" name="numero" value={e.numero_controle_pncp} />
                       <Button type="submit" size="sm"><Sparkles className="size-4" /> Adicionar à análise</Button></form>
                   </div>
