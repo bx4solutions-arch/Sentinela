@@ -144,7 +144,7 @@ export default async function RadarPage() {
             const mon = stageBy[e.numero_controle_pncp] === "monitorando";
             const sinais = sinaisEdital(e, recorrentes);
             return (
-              <Card key={e.numero_controle_pncp} className={mon ? "border-primary/40" : ""}>
+              <Card key={e.numero_controle_pncp} data-testid="edital-card" className={mon ? "border-primary/40" : ""}>
                 <CardContent className="p-4">
                   {sinais.length > 0 && (
                     <div className="mb-2 flex flex-wrap items-center gap-1.5">
