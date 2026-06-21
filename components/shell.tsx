@@ -4,11 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Radar, KanbanSquare, Building2, MessagesSquare, Settings,
-  ShieldCheck, Search, HelpCircle, LogOut,
+  ShieldCheck, Search, HelpCircle, LogOut, Bell,
 } from "lucide-react";
-import { NotificationBell, MockBanner } from "@/components/sentinela";
 import { Progress } from "@/components/ui";
-import { NOTIFICATIONS } from "@/lib/mock";
 import { signOut } from "@/app/(auth)/login/actions";
 import { cn } from "@/lib/utils";
 
@@ -119,13 +117,12 @@ export function Shell({
               <Search className="size-4" />
               <input placeholder="Buscar órgãos, objetos, cidades…" className="w-56 bg-transparent outline-none" />
             </div>
-            <NotificationBell items={NOTIFICATIONS} />
+            <button className="grid size-9 place-items-center rounded-md text-muted-foreground hover:bg-accent" aria-label="Notificações" title="Notificações"><Bell className="size-5" /></button>
             <button className="grid size-9 place-items-center rounded-md text-muted-foreground hover:bg-accent" aria-label="Ajuda"><HelpCircle className="size-5" /></button>
             <div className="grid size-8 place-items-center rounded-full bg-primary text-xs font-bold text-primary-foreground">{initials}</div>
           </div>
         </header>
         {/* Banner "mock" só nas telas que ainda usam dado ilustrativo. Rotas com dado real não mostram. */}
-        {!["/empresa", "/radar", "/dashboard", "/kanban", "/licitacao", "/configuracoes", "/consultor"].some((p) => pathname.startsWith(p)) && <MockBanner />}
         <main className="flex-1 px-4 py-5 pb-24 md:px-6 md:pb-8">{children}</main>
       </div>
 

@@ -1,4 +1,7 @@
 # PROJETO SENTINELA — PRD + BLUEPRINT
+
+> ⚙️ **RÉGUA-MÃE DE EXECUÇÃO:** o terminal CONSTRÓI, AUTOTESTA com suas ferramentas (dev server, browser headless, queries no banco, console, screenshot, build) e só entrega o que JÁ FUNCIONA. Não devolve fragmento pro Bione testar. PARA apenas em 4 gates: schema antes do db push · git push · gasto/cobrança · peça processual jurídica. Detalhe: `docs/REGUA-DE-EXECUCAO-E-AUTOTESTE.md` (tem precedência sobre o STOP-por-bloco).
+
 ### Inteligência Antecipatória de Contratações Públicas
 *Documento fundador e fonte única de verdade. Codinome de trabalho.*
 

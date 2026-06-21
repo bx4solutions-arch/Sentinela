@@ -92,3 +92,31 @@ Seguindo a tela que você desenhou — quais blocos nascem com **dado validado**
 ## 6. Próximo passo
 
 Rodar **V1–V3** (contrato vencendo, recorrência, verba nova) na mesma célula São Luís — é o F0 refeito no sinal certo, e valida o coração do MVP. V4–V5 em seguida para dimensionar o federal e o diário. Só então se liga dado real nas telas.
+
+---
+
+## 5. SINAIS ESTRATÉGICOS (ConLicitação) + ESTADO DE INGESTÃO (jun/2026)
+*Decisão do Bione: a antecipação é QUALQUER sinal pré-edital + ciclo de contrato (já no mapa mestre §1). Esta seção adiciona os sinais oportunísticos/estratégicos da ConLicitação e mapeia cada um ao que JÁ dá pra ligar com o dado ingerido hoje — sem forjar.*
+
+### 5.1 Catálogo consolidado × estado do dado
+| Sinal | O que é | Dado necessário | Estado HOJE |
+|---|---|---|---|
+| **Prazo apertado** ("encerra em Xd") | urgência de encerramento (alerta laranja + alarme) | `data_encerramento` (34k editais) | ✅ **liga já** |
+| **PCA antecipação** | demanda planejada antes do edital | `raw_pca` (17k) | ✅ liga (com classificação nicho) |
+| **Recorrência** | mesmo órgão+objeto compra todo ciclo | homologados (43k) | ✅ liga |
+| **Deserta / fracassada / republicação** | fracassou → segunda chance / vai sair de novo | `situacao` do edital | ✅ liga (se o campo trouxer o valor) |
+| **Certidão vencendo** | empresa perde a habilitação | Vigia (já existe) | ✅ liga |
+| **Contrato vencendo** | vigência acabando → vai recomprar (sinal nº1) | tabela `contratos` (`dataVigenciaFim`) | ⛔ **precisa ingerir** (0 hoje) |
+| **Iminência de deserta** | aberta, prazo curto, poucos interessados | participação + republicação + prazo | 🟡 **aproxima** (republicação + prazo curto + histórico) |
+| **Baixa concorrência** | histórico de poucos participantes no objeto/órgão | participação histórica | ⛔ precisa ingerir |
+| **Concorrente sancionado** | concorrente fora = vaga aberta | CEIS/CNEP | ⛔ precisa ingerir |
+| **Verba nova** | emenda/transferência antecede a contratação | Transparência/Transferegov | ⛔ precisa ingerir |
+
+### 5.2 Régua de execução (anti-dispersão)
+Ligar **primeiro os ✅** — prazo apertado, PCA, recorrência, deserta/republicação, certidão. **Isso já coloca o Sentinela à frente da ConLicitação em antecipação**, com dado que já está no banco. Os 🟡/⛔ entram **na ordem de coletar a fonte** (próxima prioridade de harvest: `contratos` → destrava o contrato-vencendo, o sinal mais forte). Nada forjado: o que não tem fonte aparece como "em ingestão" com o motivo.
+
+### 5.3 UX do sinal no card (lição do print ConLicitação)
+O card tem que **liderar com o badge do sinal + a urgência**, não só os dados. Ex.: `[Iminência de deserta]` + `Prazo 22/06 08:10 · 1 dia para encerrar` (laranja + alarme). O sinal é o que torna o card "vivo" e vendável — é o que o olho do licitante busca primeiro.
+
+### 5.4 Taxonomia de segmentos (onboarding)
+A ConLicitação usa um catálogo amplo de segmentos (Agropecuário, Alimentação, Armazenagem, Assessorias, Cartões, Combustíveis, Comunicação, Concessões… 20+). O Sentinela tem só 3 nichos (pragas/hospitalar/expediente). **Para o lançamento geral, expandir o catálogo de segmentos** (mapeado do CNAE) para cobrir qualquer empresa. No teste de Santos, mantém os 3.
