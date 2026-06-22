@@ -29,15 +29,16 @@ try {
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
   ok("add à análise cria workspace (/licitacao/:id)", /\/licitacao\//.test(page.url()));
   const body = await page.locator("body").innerText();
-  ok("workspace: abas presentes (Resumo/Documentos/Concorrentes)", body.includes("Resumo") && body.includes("Documentos") && body.includes("Concorrentes"));
-  ok("workspace: 'Analisar com IA' presente e desligado", await page.locator("button:has-text('Analisar com IA')").isDisabled());
+  ok("workspace: abas reais (Resumo/Empresa×Edital/Veredito/Documentos)", body.includes("Resumo") && body.includes("Empresa × Edital") && body.includes("Veredito") && body.includes("Documentos"));
+  // SEM BYOK → IA inerte: link "Ligar IA (Configurações)", não botão "Analisar" habilitado
+  ok("sem BYOK: IA inerte (link 'Ligar IA'), não 'Analisar' habilitado", (await page.locator("text=Ligar IA").count()) > 0 && (await page.locator("button:has-text('Analisar com IA')").count()) === 0);
   await page.screenshot({ path: `${SHOTS}/licitacao-01.png`, fullPage: true });
 
-  // aba pesada → selo 'em breve' (Radix só monta a aba ativa)
+  // aba pesada → selo 'em ingestão' (Radix só monta a aba ativa)
   await page.locator("button[role=tab]:has-text('Preços')").click();
   await page.waitForTimeout(400);
   const bodyPrecos = await page.locator("body").innerText();
-  ok("workspace: aba pesada (Preços) com selo 'em breve'", bodyPrecos.toLowerCase().includes("em breve"));
+  ok("workspace: aba pesada (Preços) com selo 'em ingestão'", bodyPrecos.toLowerCase().includes("em ingestão"));
 
   // volta pra Documentos e adiciona um doc
   await page.locator("button[role=tab]:has-text('Documentos')").click();
@@ -50,8 +51,16 @@ try {
   ok("persistência: documento escopo=licitacao", Number(dbDoc?.[0]?.n ?? 0) >= 1, `db=${dbDoc?.[0]?.n}`);
   await page.screenshot({ path: `${SHOTS}/licitacao-02-doc.png`, fullPage: true });
 
+  // COM BYOK → "Analisar com IA" habilitado (testa o outro caminho do botão)
+  const pastaUrl = page.url();
+  await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
+  await page.selectOption("#provider", "mock"); await page.waitForTimeout(200); await page.selectOption("#model", "mock-1");
+  await page.click("button:has-text('Salvar configuração')"); await page.waitForTimeout(1000);
+  await page.goto(pastaUrl, { waitUntil: "networkidle" });
+  ok("com BYOK: 'Analisar com IA' habilitado", await page.locator("button:has-text('Analisar com IA')").first().isEnabled());
+
   // excluir workspace → some tudo
-  await page.locator("button:has-text('Excluir análise')").click();
+  await page.locator("button:has-text('Excluir')").first().click();
   await page.waitForURL("**/radar", { timeout: 15000 });
   const dbLic = await adminQuery(`select count(*) n from licitacao l join auth.users u on u.id=l.tenant_id where u.email='${email}';`);
   ok("excluir workspace remove tudo (cascade)", Number(dbLic?.[0]?.n ?? 0) === 0, `licitacoes restantes=${dbLic?.[0]?.n}`);

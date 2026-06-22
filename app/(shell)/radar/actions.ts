@@ -4,16 +4,17 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { resolveMunicipio } from "@/lib/ibge";
+import { resolveMunicipio, tituloCidade } from "@/lib/ibge";
 
 /** Passa a monitorar uma cidade: cria a célula do tenant e enfileira a coleta global (se nova). */
 export async function monitorarCidade(formData: FormData) {
   let codigo_ibge = String(formData.get("codigo_ibge") ?? "");
-  const municipio = String(formData.get("municipio") ?? "");
+  const municipioRaw = String(formData.get("municipio") ?? "");
   const uf = String(formData.get("uf") ?? "");
-  if (!codigo_ibge && municipio && uf) {
-    const m = await resolveMunicipio(uf, municipio);
-    if (m) codigo_ibge = m.codigo_ibge;
+  let municipio = tituloCidade(municipioRaw); // normaliza (trim + Title Case)
+  if (!codigo_ibge && municipioRaw && uf) {
+    const m = await resolveMunicipio(uf, municipioRaw);
+    if (m) { codigo_ibge = m.codigo_ibge; municipio = m.nome; } // nome oficial do IBGE
   }
   if (!codigo_ibge) return;
 

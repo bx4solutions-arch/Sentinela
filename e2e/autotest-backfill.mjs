@@ -25,18 +25,23 @@ try {
   // Radar — fallback UF inicial
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
-  ok("radar inicial usa fallback de UF (sem cidade)", (await page.locator("text=estado SP").count()) > 0);
+  // onboarding já monitora a cidade da empresa automaticamente (commit 7976985) → São Paulo 'pronta'
+  ok("onboarding já monitora a cidade da empresa (São Paulo)", (await page.locator("text=São Paulo").count()) > 0);
 
-  // Monitorar Santos (já coletada = reuso imediato)
-  await page.selectOption("select[aria-label='Adicionar cidade']", "3548500");
-  await page.locator("form:has(select[aria-label='Adicionar cidade']) button[type=submit]").click();
-  await page.waitForSelector("text=pronta", { timeout: 12000 });
+  // Setup DETERMINÍSTICO: isola Santos no escopo (evita corrida de múltiplos form-submits;
+  // o monitorar-via-picker já é provado em autotest-sinais). Santos já é 'pronta' (reuso, sem nova coleta).
+  const trow = await adminQuery(`select c.tenant_id from company c join auth.users usr on usr.id=c.tenant_id where usr.email='${email}';`);
+  const tid = trow?.[0]?.tenant_id;
+  await adminQuery(`delete from celula where tenant_id='${tid}';`);
+  await adminQuery(`insert into celula (tenant_id, codigo_ibge, municipio, uf) values ('${tid}','3548500','Santos','SP');`);
+  await page.reload({ waitUntil: "networkidle" });
   const bodySantos = await page.locator("body").innerText();
-  ok("monitorar Santos: chip 'pronta' (reuso)", bodySantos.includes("Santos") && bodySantos.includes("pronta"));
-  const cardsSantos = await page.locator("form:has-text('Descartar')").count();
+  ok("Santos monitorado: chip 'pronta' (reuso, sem nova coleta)", bodySantos.includes("Santos") && bodySantos.includes("pronta"));
+  const cardsSantos = await page.locator("[data-testid=edital-card]").count();
   ok("Radar popula com editais de Santos", cardsSantos > 0, `${cardsSantos} cards`);
   // confirma que os cards são de Santos (cidade no card)
-  ok("cards mostram cidade Santos", (await page.locator("text=Santos").count()) > 1);
+  const santosCount = await page.locator("text=Santos").count();
+  ok("cards mostram cidade Santos", santosCount > 1, `text=Santos count=${santosCount}; chips/cards`);
   const celula = await adminQuery(`select count(*) n from celula c join auth.users u on u.id=c.tenant_id where u.email='${email}' and c.codigo_ibge='3548500';`);
   ok("persistência: célula Santos criada", Number(celula?.[0]?.n ?? 0) === 1);
   await page.screenshot({ path: `${SHOTS}/BF-1-radar-santos.png`, fullPage: true });

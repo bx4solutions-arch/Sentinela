@@ -14,6 +14,14 @@ export async function municipiosDaUf(uf: string): Promise<Municipio[]> {
   }
 }
 
+/** Normaliza nome de cidade: trim + Title Case (conectores em minúscula). */
+export function tituloCidade(nome: string): string {
+  const min = new Set(["de", "da", "do", "das", "dos", "e"]);
+  return (nome ?? "").trim().toLowerCase().split(/\s+/).filter(Boolean)
+    .map((w, i) => (i > 0 && min.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+}
+
 /** Resolve o código IBGE de um município pelo nome (case/acento-insensível). */
 export async function resolveMunicipio(uf: string, nome: string): Promise<Municipio | null> {
   const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();

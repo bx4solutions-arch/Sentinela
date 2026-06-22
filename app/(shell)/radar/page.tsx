@@ -108,7 +108,7 @@ export default async function RadarPage() {
                 <Button type="submit" size="sm" variant="outline"><Plus className="size-4" /> Monitorar {company.municipio}</Button>
               </form>
             )}
-            <CityPicker uf={uf} municipios={municipios} />
+            <CityPicker uf={uf} municipios={municipios} monitoradas={codigos} />
           </div>
           {coletando.length > 0 && (
             <p className="flex items-center gap-2 rounded-md border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-foreground">
@@ -176,7 +176,7 @@ export default async function RadarPage() {
                         <Button type="submit" size="sm" variant="outline"><Undo2 className="size-4" /> Deixar de monitorar</Button></form>
                     ) : (
                       <form action={monitorar}><input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                        <Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
+                        <Button type="submit" size="sm" variant="outline" data-testid="card-monitorar"><Eye className="size-4" /> Monitorar</Button></form>
                     )}
                     <form action={descartar} className="flex items-center gap-1"><input type="hidden" name="numero" value={e.numero_controle_pncp} />
                       <Select name="motivo" defaultValue="" className="h-8 w-36 text-xs" aria-label="Motivo do descarte">
@@ -186,9 +186,9 @@ export default async function RadarPage() {
                         <option value="prazo_passou">Prazo passou</option>
                         <option value="sem_interesse">Sem interesse</option>
                       </Select>
-                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground"><X className="size-4" /></Button></form>
+                      <Button type="submit" size="sm" variant="ghost" className="text-muted-foreground" data-testid="card-descartar"><X className="size-4" /></Button></form>
                     <form action={analisar} className="ml-auto"><input type="hidden" name="numero" value={e.numero_controle_pncp} />
-                      <Button type="submit" size="sm"><Sparkles className="size-4" /> Adicionar à análise</Button></form>
+                      <Button type="submit" size="sm" data-testid="card-analisar"><Sparkles className="size-4" /> Adicionar à análise</Button></form>
                   </div>
                 </CardContent>
               </Card>

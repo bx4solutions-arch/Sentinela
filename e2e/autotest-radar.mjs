@@ -79,18 +79,19 @@ try {
   await page.screenshot({ path: `${SHOTS}/radar-01-lista.png`, fullPage: true });
 
   // Monitorar primeiro card
-  await page.locator("button:has-text('Monitorar')").first().click();
+  await page.locator("[data-testid=card-monitorar]").first().click();
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
   ok("radar: monitorar marca 'Monitorando'", true);
   const mon = await adminQuery(`select count(*) n from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${email}' and o.stage='monitorando';`);
   ok("persistência: oportunidade stage=monitorando", Number(mon?.[0]?.n ?? 0) >= 1, `db=${mon?.[0]?.n}`);
 
-  // Descartar um card → some
-  const antes = await page.locator("form:has-text('Descartar')").count();
-  await page.locator("button:has-text('Descartar')").first().click();
+  // Descartar um card → o numero ESPECÍFICO some (limit 60 refila, então conta não basta)
+  const cardD = page.locator("[data-testid=edital-card]").nth(1);
+  const numD = ((await cardD.innerText()).match(/\d{14}-\d-\d{6}\/\d{4}/) || [])[0];
+  await cardD.locator("[data-testid=card-descartar]").click();
   await page.waitForTimeout(1500);
-  const depois = await page.locator("form:has-text('Descartar')").count();
-  ok("radar: descartar remove o card", depois < antes, `${antes}→${depois}`);
+  await page.reload({ waitUntil: "networkidle" });
+  ok("radar: descartar remove o card (numero some)", !!numD && (await page.locator(`text=${numD}`).count()) === 0, `num=${numD}`);
   const desc = await adminQuery(`select count(*) n from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${email}' and o.stage='descartado';`);
   ok("persistência: oportunidade stage=descartado", Number(desc?.[0]?.n ?? 0) >= 1, `db=${desc?.[0]?.n}`);
   await page.screenshot({ path: `${SHOTS}/radar-02-pos-acoes.png`, fullPage: true });

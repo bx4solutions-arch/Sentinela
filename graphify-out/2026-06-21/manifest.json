@@ -39,11 +39,6 @@
     "ast_hash": "d747f0e33551b2279b68cfba2e47b3ac",
     "semantic_hash": "d747f0e33551b2279b68cfba2e47b3ac"
   },
-  "app/(shell)/dossie/[id]/page.tsx": {
-    "mtime": 1781898900.4424562,
-    "ast_hash": "ae6bc9b93fd4c96d43d05b60a164dac1",
-    "semantic_hash": "ae6bc9b93fd4c96d43d05b60a164dac1"
-  },
   "app/(shell)/empresa/actions.ts": {
     "mtime": 1781979500.1161067,
     "ast_hash": "1bb07470a82ecb8502fbc2c7fe0f3f2c",
@@ -58,16 +53,6 @@
     "mtime": 1781980575.4419382,
     "ast_hash": "0fd8b8a078131c1bb6112452bde6f497",
     "semantic_hash": "0fd8b8a078131c1bb6112452bde6f497"
-  },
-  "app/(shell)/esteira/[id]/page.tsx": {
-    "mtime": 1781898932.1528041,
-    "ast_hash": "44b6dda85d478181d859951526bb414b",
-    "semantic_hash": "44b6dda85d478181d859951526bb414b"
-  },
-  "app/(shell)/esteira/page.tsx": {
-    "mtime": 1781898919.420046,
-    "ast_hash": "0d80ca2ed793cd645c7a28024811ec7c",
-    "semantic_hash": "0d80ca2ed793cd645c7a28024811ec7c"
   },
   "app/(shell)/kanban/actions.ts": {
     "mtime": 1781983580.2004354,
@@ -144,15 +129,10 @@
     "ast_hash": "0f0675d3ae57459a932f04480843b091",
     "semantic_hash": "0f0675d3ae57459a932f04480843b091"
   },
-  "components/sentinela.tsx": {
-    "mtime": 1781898800.698759,
-    "ast_hash": "f93a305b029cba02343c5c7fe9da9181",
-    "semantic_hash": "f93a305b029cba02343c5c7fe9da9181"
-  },
   "components/shell.tsx": {
-    "mtime": 1781992904.6926699,
-    "ast_hash": "64efbe38d7d7844f1398e878157761a5",
-    "semantic_hash": "64efbe38d7d7844f1398e878157761a5"
+    "mtime": 1782081861.6293924,
+    "ast_hash": "1d6c7c84be95553efc5e3ceed81cf422",
+    "semantic_hash": ""
   },
   "components/ui.tsx": {
     "mtime": 1781979488.3176527,
@@ -254,11 +234,6 @@
     "ast_hash": "ec47f5c4f9873fa98bbbfe669abfe055",
     "semantic_hash": "ec47f5c4f9873fa98bbbfe669abfe055"
   },
-  "lib/mock.ts": {
-    "mtime": 1781902103.8393548,
-    "ast_hash": "d75a746a422e5158be64e7a6b38d1ef4",
-    "semantic_hash": "d75a746a422e5158be64e7a6b38d1ef4"
-  },
   "lib/real-data.json": {
     "mtime": 1781958943.0137327,
     "ast_hash": "d55121faabc65d26ff80e0e82bbc22fe",
@@ -300,7 +275,7 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782078814.494784,
+    "mtime": 1782081929.485228,
     "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
     "semantic_hash": "d0f8375ae1199dc7acd3977fc33b78b8"
   },
@@ -445,9 +420,9 @@
     "semantic_hash": "1797f72f4797fbd8aa3f959950311cc5"
   },
   "BLOQUEIOS.md": {
-    "mtime": 1781993093.9104204,
-    "ast_hash": "9cc497dffb025335068937b37c8188c1",
-    "semantic_hash": "9cc497dffb025335068937b37c8188c1"
+    "mtime": 1782079109.7683234,
+    "ast_hash": "5d37ced22a58ec543dcb6794b7cc6bc8",
+    "semantic_hash": ""
   },
   "CLAUDE.md": {
     "mtime": 1782044579.4361613,
@@ -455,9 +430,9 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "RELATORIO-SESSAO.md": {
-    "mtime": 1781993131.4375107,
-    "ast_hash": "54879f41e9dd78e65191842d51c0fb28",
-    "semantic_hash": "54879f41e9dd78e65191842d51c0fb28"
+    "mtime": 1782079135.7043197,
+    "ast_hash": "05ef2975fb11be53c2f837f1f9174662",
+    "semantic_hash": ""
   },
   "SKILL.md": {
     "mtime": 1781920273.8179066,
@@ -817,6 +792,11 @@
   "lib/sinais.ts": {
     "mtime": 1782078653.9109435,
     "ast_hash": "6579a6afee739e1a54bcd3cdb9a963cb",
+    "semantic_hash": ""
+  },
+  "docs/prompt-integracao-100-sem-mock.md": {
+    "mtime": 1782080835.2338264,
+    "ast_hash": "a4a2f4138b8612dd1997f3a08c227ecb",
     "semantic_hash": ""
   }
 }

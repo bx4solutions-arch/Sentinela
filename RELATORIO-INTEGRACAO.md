@@ -57,3 +57,25 @@ Provado por `e2e/autotest-integracao.mjs` (**12/12**) + autotestes por tela. Cad
 
 ## Build/qualidade
 tsc + lint + build **verdes** · console limpo · network limpo. Commits locais (sem push).
+
+---
+
+## SUÍTE INTEIRA VERDE — atualização 2026-06-22 (FIX 6)
+
+O **teste principal (integração) sempre passou**. O que estava vermelho eram **testes velhos virando falso-negativo** (clicavam no botão errado / esperavam UI antiga) + **2 bugs reais** (Recharts, dedupe de cidade). Tudo corrigido; a **suíte INTEIRA** agora roda verde por um runner agregador.
+
+**Como rodar (cole a saída):** `node e2e/run-all.mjs` (dev server em `:3001`). Resultado atual: **10/10 verdes · ~195s** — `autotest` (empresa/onboarding), `radar`, `kanban`, `dashboard`, `frontend`, `licitacao`, `backfill`, `pasta`, `sinais`, `integracao`. Console limpo **incluindo ZERO warning Recharts (-1)** (assertado em `autotest-dashboard.mjs`).
+
+### Qual teste estava velho × o que foi corrigido
+| Teste | Estava velho/bug | Correção | Prova |
+|---|---|---|---|
+| `autotest-radar / kanban / dashboard / frontend` | `button:has-text('Monitorar').first()` pegava o botão **"Monitorar cidade"** (antes dos cards) → "Monitorando" nunca aparecia (FIX 1) | seletor escopado ao card: `[data-testid=card-monitorar]` | 4 testes verdes; clica no card certo |
+| `autotest-licitacao` | esperava aba "Concorrentes" + `'Analisar com IA'.isDisabled()` (UI antiga) (FIX 2) | abas reais (Resumo/Empresa×Edital/Veredito/Documentos) + 2 estados de IA: **sem BYOK → "Ligar IA"** inerte · **com BYOK → "Analisar com IA"** habilitado | verde nos dois caminhos |
+| `autotest-backfill` | esperava "estado SP fallback (sem cidade)"; onboarding já monitora a cidade da empresa (FIX 3) | espera cidade da empresa já monitorada (São Paulo pronta) + cidade nova → "Carregando" | verde |
+| `components/charts.tsx` (`dashboard`) | `ResponsiveContainer height="100%"` media **-1** no 1º paint → warning Recharts no console (FIX 4 — **bug real**) | `useChartWidth` (ResizeObserver) + dimensões **numéricas** no ResponsiveContainer; só renderiza com `width>0` | `autotest-dashboard`: "console: ZERO warning Recharts (-1)" ✅ |
+| `celula` / `monitorarCidade` | `upsert(onConflict:"tenant_id,codigo_ibge")` sem a UNIQUE → dedupe podia falhar/duplicar; município não normalizado (FIX 5 — **bug real**) | `UNIQUE (tenant_id, codigo_ibge)` (migration 0010) + `tituloCidade`/`resolveMunicipio` (trim+Title Case, acento-insensível); CityPicker não duplica | `autotest-backfill` + `autotest-radar` verdes |
+
+### O que "100%" significa (honestidade)
+**"100%" = 100% das CONEXÕES EXISTENTES** (toda tela/botão ligado lê/grava o registro/rota certo, dado real, zero mock) — **não** "produto completo". As fontes de dado abaixo ainda estão **em ingestão / na fila** (a feature liga quando o dado entra; nunca forja antes):
+- **Contratos** (`/contratos` PNCP — destrava "contrato vencendo") · **Atas de registro de preço** (`/atas` — preço/carona) · **Resultado/participação** (quem ganhou, nº de participantes, lances — "vida do concorrente") · **Sanções CEIS/CNEP** · **Decisores**.
+- **Descoberta nacional (Camada 1):** harvester diário nacional em construção (Etapa 1) — hoje a coleta é por-cidade; ao ligar, destrava buscar qualquer cidade/nicho + o teste de aceitação nº1 ("vetor/dengue no PI").

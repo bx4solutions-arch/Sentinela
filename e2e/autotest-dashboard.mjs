@@ -28,12 +28,18 @@ async function cleanup(email) {
 
 const email = `qa_dash_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
+const rechartsWarnings = []; // FIX 4: warning "width(-1)/height(-1)" é console.warn, não error
+const RECHARTS_RE = /width\(-1\)|height\(-1\)|of chart should be greater than 0/i;
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
 
 const browser = await chromium.launch();
 const page = await browser.newPage();
-page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(m.text()); });
+page.on("console", (m) => {
+  const t = m.text();
+  if (m.type() === "error") consoleErrors.push(t);
+  if (RECHARTS_RE.test(t)) rechartsWarnings.push(t);
+});
 page.on("pageerror", (e) => consoleErrors.push("pageerror: " + e.message));
 
 try {
@@ -56,7 +62,7 @@ try {
   // monitora 1 edital (p/ pipeline)
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
-  await page.locator("button:has-text('Monitorar')").first().click();
+  await page.locator("[data-testid=card-monitorar]").first().click();
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
 
   // dashboard
@@ -71,6 +77,7 @@ try {
   ok("dashboard: 'Atacar hoje' com itens reais", (await page.locator("text=Atacar hoje").count()) > 0 && body.includes("Prontidão"));
   ok("dashboard: SEM banner mock", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
+  ok("console: ZERO warning Recharts (-1)", rechartsWarnings.length === 0, rechartsWarnings.slice(0, 3).join(" | "));
   await page.screenshot({ path: `${SHOTS}/dashboard-01.png`, fullPage: true });
 } catch (e) {
   ok("FLUXO DASHBOARD", false, String(e));

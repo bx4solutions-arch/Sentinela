@@ -25,7 +25,7 @@ try {
   // promover do radar
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
-  await page.locator("button:has-text('Monitorar')").first().click();
+  await page.locator("[data-testid=card-monitorar]").first().click();
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
 
   // kanban

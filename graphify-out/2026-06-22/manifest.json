@@ -80,18 +80,18 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
-    "mtime": 1782083720.358923,
-    "ast_hash": "fb09a73bd18fa0d45d781ac3b8fa25f8",
+    "mtime": 1782078626.7199202,
+    "ast_hash": "4db0468860619ce188797c241a458285",
     "semantic_hash": ""
   },
   "app/(shell)/radar/city-picker.tsx": {
-    "mtime": 1782083739.932789,
-    "ast_hash": "546f2d0a114bcb74a00e4686aae70f7e",
-    "semantic_hash": ""
+    "mtime": 1781990844.146457,
+    "ast_hash": "844caac4f0b1ff99bd7f76b73574cbba",
+    "semantic_hash": "844caac4f0b1ff99bd7f76b73574cbba"
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782083788.4489076,
-    "ast_hash": "3f62c2bbe8f9828747b538eabd1ee1ad",
+    "mtime": 1782082146.9544108,
+    "ast_hash": "91eac29c78b38cde4d2222ddf64a899d",
     "semantic_hash": ""
   },
   "app/(shell)/roadmap/page.tsx": {
@@ -125,9 +125,9 @@
     "semantic_hash": "cfd4842cc6996290e7d8ef4b709fcecd"
   },
   "components/charts.tsx": {
-    "mtime": 1782162915.3299024,
-    "ast_hash": "ca2df431cbdcfa283c6ce687fa29d351",
-    "semantic_hash": ""
+    "mtime": 1781992594.590029,
+    "ast_hash": "0f0675d3ae57459a932f04480843b091",
+    "semantic_hash": "0f0675d3ae57459a932f04480843b091"
   },
   "components/shell.tsx": {
     "mtime": 1782081861.6293924,
@@ -160,34 +160,34 @@
     "semantic_hash": "53ed74d556af55f9b8dfaaf0f9022f10"
   },
   "e2e/autotest-backfill.mjs": {
-    "mtime": 1782085313.162989,
-    "ast_hash": "ae51bed4b1e6c5c37ee67a841824256d",
-    "semantic_hash": ""
+    "mtime": 1781992842.9821663,
+    "ast_hash": "c29d458fb9656e3a2e8330ea79a386e4",
+    "semantic_hash": "c29d458fb9656e3a2e8330ea79a386e4"
   },
   "e2e/autotest-dashboard.mjs": {
-    "mtime": 1782162789.6492596,
-    "ast_hash": "d734394ae2e19465b190200d3eae9f47",
-    "semantic_hash": ""
+    "mtime": 1781983296.051163,
+    "ast_hash": "ea8398850ba1258e2b6c735c614d4520",
+    "semantic_hash": "ea8398850ba1258e2b6c735c614d4520"
   },
   "e2e/autotest-frontend.mjs": {
-    "mtime": 1782084590.3205032,
-    "ast_hash": "c1f034b8d88d2cd1f3863accdf380182",
-    "semantic_hash": ""
+    "mtime": 1781986228.8309247,
+    "ast_hash": "db86b7576d67576a66198411b16d6465",
+    "semantic_hash": "db86b7576d67576a66198411b16d6465"
   },
   "e2e/autotest-kanban.mjs": {
-    "mtime": 1782083770.0799804,
-    "ast_hash": "86487e814851467df504fefe3e0381d2",
-    "semantic_hash": ""
+    "mtime": 1781983645.2174711,
+    "ast_hash": "fa829a237129c9cd467599a97a7bd9b8",
+    "semantic_hash": "fa829a237129c9cd467599a97a7bd9b8"
   },
   "e2e/autotest-licitacao.mjs": {
-    "mtime": 1782084596.4847367,
-    "ast_hash": "c230c0727e0a2e974c873498fe2f850d",
-    "semantic_hash": ""
+    "mtime": 1781984512.8016992,
+    "ast_hash": "efce380420ac7a926723ac2ec2899959",
+    "semantic_hash": "efce380420ac7a926723ac2ec2899959"
   },
   "e2e/autotest-radar.mjs": {
-    "mtime": 1782084825.738204,
-    "ast_hash": "c0ad4cee68b90a099f07b3d4cda1aea1",
-    "semantic_hash": ""
+    "mtime": 1781982787.7002938,
+    "ast_hash": "d920f750b33c3eeeb211519ef3b6f399",
+    "semantic_hash": "d920f750b33c3eeeb211519ef3b6f399"
   },
   "e2e/autotest.mjs": {
     "mtime": 1781981696.7711234,
@@ -225,9 +225,9 @@
     "semantic_hash": "4108bcfd103ad95263e1e2f3c748437f"
   },
   "lib/ibge.ts": {
-    "mtime": 1782083700.0812476,
-    "ast_hash": "8e2be2ae9c98072051a3f2d9cb7ae8ba",
-    "semantic_hash": ""
+    "mtime": 1781990797.2331939,
+    "ast_hash": "20e516fc80556d49d05500bd6e5fc6bb",
+    "semantic_hash": "20e516fc80556d49d05500bd6e5fc6bb"
   },
   "lib/llm.ts": {
     "mtime": 1781985903.3197594,
@@ -275,9 +275,9 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782163234.9348307,
-    "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
-    "semantic_hash": ""
+    "mtime": 1782082170.4518347,
+    "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
+    "semantic_hash": "d0f8375ae1199dc7acd3977fc33b78b8"
   },
   "next.config.ts": {
     "mtime": 1781899236.4537258,
@@ -805,38 +805,8 @@
     "semantic_hash": ""
   },
   "RELATORIO-INTEGRACAO.md": {
-    "mtime": 1782163207.0843735,
-    "ast_hash": "3eb762460353772a918f153a64de39af",
-    "semantic_hash": ""
-  },
-  "e2e/run-all.mjs": {
-    "mtime": 1782162515.8643813,
-    "ast_hash": "361775731b944c3126daf5dcb21c69b0",
-    "semantic_hash": ""
-  },
-  "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
-    "mtime": 1782160860.15224,
-    "ast_hash": "5e158e0a965e90426c2dbcf0e7821fce",
-    "semantic_hash": ""
-  },
-  "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md": {
-    "mtime": 1782155578.1769667,
-    "ast_hash": "481a864edb321f6b6e244fd2a1fbe35b",
-    "semantic_hash": ""
-  },
-  "docs/SENTINELA-RESUMO-EXECUTIVO.md": {
-    "mtime": 1782144589.4619384,
-    "ast_hash": "5f888268b1f19a5800cfcec52a689880",
-    "semantic_hash": ""
-  },
-  "docs/prompt-fix-suite-100.md": {
-    "mtime": 1782083344.285489,
-    "ast_hash": "d75c9ddb102027ceea029f201587097f",
-    "semantic_hash": ""
-  },
-  "docs/prompt-kickoff-transformacao.md": {
-    "mtime": 1782160860.1542456,
-    "ast_hash": "30953ccf7d4dc85bf85bb91dbc6b1f19",
+    "mtime": 1782082317.020253,
+    "ast_hash": "942f56c147465731c1e88225eb9249b2",
     "semantic_hash": ""
   }
 }

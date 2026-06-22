@@ -31,7 +31,7 @@ try {
   ok("PART1 Radar popula por UF (SP, controle-de-pragas)", cards > 0, `${cards} cards`);
   await page.screenshot({ path: `${SHOTS}/front-01-radar.png`, fullPage: true });
   // clique REAL muda estado (monitorar)
-  await page.locator("button:has-text('Monitorar')").first().click();
+  await page.locator("[data-testid=card-monitorar]").first().click();
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
   ok("PART1 controle responde (Monitorar→estado muda)", true);
 
@@ -71,9 +71,10 @@ try {
   await page.waitForTimeout(2500); // server action + revalidate
   await page.locator("button[role=tab]:has-text('Resumo')").click();
   await page.waitForSelector("text=Resumo Executivo", { timeout: 15000 });
+  await page.locator("button[role=tab]:has-text('Veredito')").click();
   await page.waitForSelector("text=Veredito calibrado", { timeout: 10000 });
   const body = await page.locator("body").innerText();
-  ok("PART2 parecer renderiza (Resumo+Veredito+disclaimer)", body.includes("Resumo Executivo") && body.includes("Veredito") && body.toLowerCase().includes("não é garantia"));
+  ok("PART2 parecer renderiza (Resumo+Veredito+disclaimer)", body.includes("Veredito calibrado") && body.toLowerCase().includes("não é garantia"));
   const an = await adminQuery(`select modelo from analise a join auth.users u on u.id=a.tenant_id where u.email='${email}';`);
   ok("PART2 roteou pro modelo escolhido (modelo gravado)", an?.[0]?.modelo === "mock:mock-1", `modelo=${an?.[0]?.modelo}`);
   await page.screenshot({ path: `${SHOTS}/front-02-analise.png`, fullPage: true });

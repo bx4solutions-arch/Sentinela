@@ -130,7 +130,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "configuracoes_config_form_configform",
-      "community": 4,
+      "community": 3,
       "norm_label": "configform()"
     },
     {
@@ -140,7 +140,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_page",
-      "community": 4,
+      "community": 3,
       "norm_label": "page.tsx"
     },
     {
@@ -180,7 +180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "consultor_page_consultorpage",
-      "community": 4,
+      "community": 30,
       "norm_label": "consultorpage()"
     },
     {
@@ -320,48 +320,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "dashboard_page_dashboardpage",
-      "community": 129,
+      "community": 13,
       "norm_label": "dashboardpage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_shell_dossie_id_page_tsx_id_page",
-      "community": 2,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Section()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "id_page_section",
-      "community": 2,
-      "norm_label": "section()"
-    },
-    {
-      "label": "Row()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "id_page_row",
-      "community": 2,
-      "norm_label": "row()"
-    },
-    {
-      "label": "DossiePage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "id_page_dossiepage",
-      "community": 2,
-      "norm_label": "dossiepage()"
     },
     {
       "label": "actions.ts",
@@ -370,7 +330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 13,
+      "community": 30,
       "norm_label": "actions.ts"
     },
     {
@@ -380,7 +340,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 13,
+      "community": 30,
       "norm_label": "slug()"
     },
     {
@@ -390,7 +350,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 13,
+      "community": 30,
       "norm_label": "adddocumento()"
     },
     {
@@ -400,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 13,
+      "community": 30,
       "norm_label": "deletedocumento()"
     },
     {
@@ -430,7 +390,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "empresa_client_adddocform",
-      "community": 4,
+      "community": 13,
       "norm_label": "adddocform()"
     },
     {
@@ -440,7 +400,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "empresa_client_trocarempresabutton",
-      "community": 4,
+      "community": 13,
       "norm_label": "trocarempresabutton()"
     },
     {
@@ -492,46 +452,6 @@
       "id": "empresa_page_empresapage",
       "community": 13,
       "norm_label": "empresapage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_shell_esteira_id_page_tsx_id_page",
-      "community": 2,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "EsteiraProcessoPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "id_page_esteiraprocessopage",
-      "community": 2,
-      "norm_label": "esteiraprocessopage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "esteira_page",
-      "community": 2,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "EsteiraBoardPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "esteira_page_esteiraboardpage",
-      "community": 2,
-      "norm_label": "esteiraboardpage()"
     },
     {
       "label": "actions.ts",
@@ -670,7 +590,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "id_actions_adddoclicitacao",
-      "community": 18,
+      "community": 3,
       "norm_label": "adddoclicitacao()"
     },
     {
@@ -680,7 +600,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 18,
+      "community": 3,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -690,7 +610,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 18,
+      "community": 3,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -699,7 +619,7 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_shell_licitacao_id_page_tsx_id_page",
+      "id": "id_page",
       "community": 18,
       "norm_label": "page.tsx"
     },
@@ -870,7 +790,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 129,
+      "community": 7,
       "norm_label": "analisar()"
     },
     {
@@ -1150,7 +1070,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 6,
+      "community": 13,
       "norm_label": "wizard()"
     },
     {
@@ -1254,170 +1174,60 @@
       "norm_label": "linetendencia()"
     },
     {
-      "label": "sentinela.tsx",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_sentinela",
-      "community": 2,
-      "norm_label": "sentinela.tsx"
-    },
-    {
-      "label": "MockBanner()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "components_sentinela_mockbanner",
-      "community": 2,
-      "norm_label": "mockbanner()"
-    },
-    {
-      "label": "imVariant",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "components_sentinela_imvariant",
-      "community": 2,
-      "norm_label": "imvariant"
-    },
-    {
-      "label": "ImminenceBadge()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "components_sentinela_imminencebadge",
-      "community": 2,
-      "norm_label": "imminencebadge()"
-    },
-    {
-      "label": "ChanceScore()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L35",
-      "_origin": "ast",
-      "id": "components_sentinela_chancescore",
-      "community": 2,
-      "norm_label": "chancescore()"
-    },
-    {
-      "label": "StageMiniRail()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "components_sentinela_stageminirail",
-      "community": 2,
-      "norm_label": "stageminirail()"
-    },
-    {
-      "label": "StageStepper()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L65",
-      "_origin": "ast",
-      "id": "components_sentinela_stagestepper",
-      "community": 2,
-      "norm_label": "stagestepper()"
-    },
-    {
-      "label": "StageKanban()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L159",
-      "_origin": "ast",
-      "id": "components_sentinela_stagekanban",
-      "community": 2,
-      "norm_label": "stagekanban()"
-    },
-    {
-      "label": "RadarCard()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L195",
-      "_origin": "ast",
-      "id": "components_sentinela_radarcard",
-      "community": 2,
-      "norm_label": "radarcard()"
-    },
-    {
-      "label": "SourceLinks()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L234",
-      "_origin": "ast",
-      "id": "components_sentinela_sourcelinks",
-      "community": 2,
-      "norm_label": "sourcelinks()"
-    },
-    {
-      "label": "NotificationBell()",
-      "file_type": "code",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L248",
-      "_origin": "ast",
-      "id": "components_sentinela_notificationbell",
-      "community": 2,
-      "norm_label": "notificationbell()"
-    },
-    {
       "label": "shell.tsx",
       "file_type": "code",
       "source_file": "components/shell.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 2,
+      "community": 4,
       "norm_label": "shell.tsx"
     },
     {
       "label": "NavItem",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L15",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 2,
+      "community": 4,
       "norm_label": "navitem"
     },
     {
       "label": "NAV",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L18",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 2,
+      "community": 4,
       "norm_label": "nav"
     },
     {
       "label": "TITLES",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L27",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 2,
+      "community": 4,
       "norm_label": "titles"
     },
     {
       "label": "NavLink()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L39",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 2,
+      "community": 4,
       "norm_label": "navlink()"
     },
     {
       "label": "Shell()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L53",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "components_shell_shell",
       "community": 30,
@@ -1460,7 +1270,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "components_ui_button",
-      "community": 18,
+      "community": 4,
       "norm_label": "button"
     },
     {
@@ -1550,7 +1360,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 7,
+      "community": 4,
       "norm_label": "select"
     },
     {
@@ -1580,7 +1390,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 4,
+      "community": 18,
       "norm_label": "tabslist"
     },
     {
@@ -1590,7 +1400,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "components_ui_tabstrigger",
-      "community": 4,
+      "community": 18,
       "norm_label": "tabstrigger"
     },
     {
@@ -1640,7 +1450,7 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "components_ui_separator",
-      "community": 2,
+      "community": 4,
       "norm_label": "separator()"
     },
     {
@@ -2820,7 +2630,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_certidoes_diasatevencer",
-      "community": 13,
+      "community": 30,
       "norm_label": "diasatevencer()"
     },
     {
@@ -2920,7 +2730,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 7,
+      "community": 13,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -2960,7 +2770,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 129,
+      "community": 13,
       "norm_label": "calcprontidao()"
     },
     {
@@ -3000,7 +2810,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_ibge_resolvemunicipio",
-      "community": 7,
+      "community": 6,
       "norm_label": "resolvemunicipio()"
     },
     {
@@ -3062,286 +2872,6 @@
       "id": "lib_llm_complete",
       "community": 3,
       "norm_label": "complete()"
-    },
-    {
-      "label": "mock.ts",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_mock",
-      "community": 2,
-      "norm_label": "mock.ts"
-    },
-    {
-      "label": "StageKey",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "lib_mock_stagekey",
-      "community": 2,
-      "norm_label": "stagekey"
-    },
-    {
-      "label": "StageDef",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "lib_mock_stagedef",
-      "community": 2,
-      "norm_label": "stagedef"
-    },
-    {
-      "label": "STAGES",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "lib_mock_stages",
-      "community": 2,
-      "norm_label": "stages"
-    },
-    {
-      "label": "stageIndex()",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "lib_mock_stageindex",
-      "community": 2,
-      "norm_label": "stageindex()"
-    },
-    {
-      "label": "Iminencia",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "lib_mock_iminencia",
-      "community": 2,
-      "norm_label": "iminencia"
-    },
-    {
-      "label": "iminenciaFromStage()",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L39",
-      "_origin": "ast",
-      "id": "lib_mock_iminenciafromstage",
-      "community": 2,
-      "norm_label": "iminenciafromstage()"
-    },
-    {
-      "label": "StageEvent",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "lib_mock_stageevent",
-      "community": 2,
-      "norm_label": "stageevent"
-    },
-    {
-      "label": "DocItem",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L54",
-      "_origin": "ast",
-      "id": "lib_mock_docitem",
-      "community": 2,
-      "norm_label": "docitem"
-    },
-    {
-      "label": "ContractHistory",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L62",
-      "_origin": "ast",
-      "id": "lib_mock_contracthistory",
-      "community": 2,
-      "norm_label": "contracthistory"
-    },
-    {
-      "label": "PriceIntel",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L73",
-      "_origin": "ast",
-      "id": "lib_mock_priceintel",
-      "community": 2,
-      "norm_label": "priceintel"
-    },
-    {
-      "label": "Competition",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L83",
-      "_origin": "ast",
-      "id": "lib_mock_competition",
-      "community": 2,
-      "norm_label": "competition"
-    },
-    {
-      "label": "Organization",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L92",
-      "_origin": "ast",
-      "id": "lib_mock_organization",
-      "community": 2,
-      "norm_label": "organization"
-    },
-    {
-      "label": "DecisionMaker",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L106",
-      "_origin": "ast",
-      "id": "lib_mock_decisionmaker",
-      "community": 2,
-      "norm_label": "decisionmaker"
-    },
-    {
-      "label": "Demand",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L112",
-      "_origin": "ast",
-      "id": "lib_mock_demand",
-      "community": 2,
-      "norm_label": "demand"
-    },
-    {
-      "label": "Certificate",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L137",
-      "_origin": "ast",
-      "id": "lib_mock_certificate",
-      "community": 2,
-      "norm_label": "certificate"
-    },
-    {
-      "label": "Company",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L146",
-      "_origin": "ast",
-      "id": "lib_mock_company",
-      "community": 2,
-      "norm_label": "company"
-    },
-    {
-      "label": "NotificationItem",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L156",
-      "_origin": "ast",
-      "id": "lib_mock_notificationitem",
-      "community": 2,
-      "norm_label": "notificationitem"
-    },
-    {
-      "label": "PREF_SL",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L166",
-      "_origin": "ast",
-      "id": "lib_mock_pref_sl",
-      "community": 2,
-      "norm_label": "pref_sl"
-    },
-    {
-      "label": "PREF_SL_SAUDE",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L179",
-      "_origin": "ast",
-      "id": "lib_mock_pref_sl_saude",
-      "community": 2,
-      "norm_label": "pref_sl_saude"
-    },
-    {
-      "label": "CAMARA_SL",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L185",
-      "_origin": "ast",
-      "id": "lib_mock_camara_sl",
-      "community": 2,
-      "norm_label": "camara_sl"
-    },
-    {
-      "label": "esteiraAte()",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L199",
-      "_origin": "ast",
-      "id": "lib_mock_esteiraate",
-      "community": 2,
-      "norm_label": "esteiraate()"
-    },
-    {
-      "label": "docsPara()",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L212",
-      "_origin": "ast",
-      "id": "lib_mock_docspara",
-      "community": 2,
-      "norm_label": "docspara()"
-    },
-    {
-      "label": "decisoresSEMED",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L238",
-      "_origin": "ast",
-      "id": "lib_mock_decisoressemed",
-      "community": 2,
-      "norm_label": "decisoressemed"
-    },
-    {
-      "label": "DEMANDS",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L269",
-      "_origin": "ast",
-      "id": "lib_mock_demands",
-      "community": 2,
-      "norm_label": "demands"
-    },
-    {
-      "label": "getDemand()",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L347",
-      "_origin": "ast",
-      "id": "lib_mock_getdemand",
-      "community": 2,
-      "norm_label": "getdemand()"
-    },
-    {
-      "label": "NOTIFICATIONS",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L366",
-      "_origin": "ast",
-      "id": "lib_mock_notifications",
-      "community": 2,
-      "norm_label": "notifications"
-    },
-    {
-      "label": "SOURCES",
-      "file_type": "code",
-      "source_file": "lib/mock.ts",
-      "source_location": "L373",
-      "_origin": "ast",
-      "id": "lib_mock_sources",
-      "community": 2,
-      "norm_label": "sources"
     },
     {
       "label": "resumo-edital.ts",
@@ -3440,7 +2970,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 6,
+      "community": 13,
       "norm_label": "formatcnae()"
     },
     {
@@ -3600,7 +3130,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 2,
+      "community": 4,
       "norm_label": "utils.ts"
     },
     {
@@ -3620,7 +3150,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 2,
+      "community": 4,
       "norm_label": "brl()"
     },
     {
@@ -3630,7 +3160,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_utils_databr",
-      "community": 2,
+      "community": 18,
       "norm_label": "databr()"
     },
     {
@@ -6204,34 +5734,44 @@
       "norm_label": "bloqueios.md"
     },
     {
-      "label": "BLOQUEIOS \u2014 sess\u00e3o aut\u00f4noma 2026-06-20",
+      "label": "BLOQUEIOS \u2014 sess\u00f5es aut\u00f4nomas",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "bloqueios_bloqueios_sess\u00e3o_aut\u00f4noma_2026_06_20",
+      "id": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
       "community": 107,
-      "norm_label": "bloqueios \u2014 sessao autonoma 2026-06-20"
+      "norm_label": "bloqueios \u2014 sessoes autonomas"
     },
     {
-      "label": "Contornado",
+      "label": "2026-06-21 \u2014 T4 contratos: BLOQUEADO (PNCP /contratos \u2192 HTTP 400)",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L5",
+      "source_location": "L3",
       "_origin": "ast",
-      "id": "bloqueios_contornado",
+      "id": "bloqueios_2026_06_21_t4_contratos_bloqueado_pncp_contratos_http_400",
       "community": 107,
-      "norm_label": "contornado"
+      "norm_label": "2026-06-21 \u2014 t4 contratos: bloqueado (pncp /contratos \u2192 http 400)"
     },
     {
-      "label": "Pend\u00eancias (n\u00e3o bloqueiam \u2014 qualidade/escopo, ficaram para a pr\u00f3xima)",
+      "label": "Contornado (sess\u00e3o 2026-06-20)",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast",
-      "id": "bloqueios_pend\u00eancias_n\u00e3o_bloqueiam_qualidade_escopo_ficaram_para_a_pr\u00f3xima",
+      "id": "bloqueios_contornado_sess\u00e3o_2026_06_20",
       "community": 107,
-      "norm_label": "pendencias (nao bloqueiam \u2014 qualidade/escopo, ficaram para a proxima)"
+      "norm_label": "contornado (sessao 2026-06-20)"
+    },
+    {
+      "label": "Pend\u00eancias de polish (n\u00e3o bloqueiam)",
+      "file_type": "document",
+      "source_file": "BLOQUEIOS.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "bloqueios_pend\u00eancias_de_polish_n\u00e3o_bloqueiam",
+      "community": 107,
+      "norm_label": "pendencias de polish (nao bloqueiam)"
     },
     {
       "label": "CLAUDE.md",
@@ -6264,100 +5804,70 @@
       "norm_label": "relatorio-sessao.md"
     },
     {
-      "label": "RELAT\u00d3RIO DE SESS\u00c3O \u2014 2026-06-20 (modo aut\u00f4nomo)",
+      "label": "RELAT\u00d3RIO DE SESS\u00c3O \u2014 2026-06-21 (aut\u00f4nomo): Pasta-rainha + sinais reais + zero bot\u00e3o fake",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
+      "id": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
       "community": 81,
-      "norm_label": "relatorio de sessao \u2014 2026-06-20 (modo autonomo)"
+      "norm_label": "relatorio de sessao \u2014 2026-06-21 (autonomo): pasta-rainha + sinais reais + zero botao fake"
     },
     {
-      "label": "Fila executada",
+      "label": "T1 \u2014 Pasta Inteligente = tela-rainha, dado REAL (MATA O MOCK) \u2705",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L7",
+      "source_location": "L6",
       "_origin": "ast",
-      "id": "relatorio_sessao_fila_executada",
+      "id": "relatorio_sessao_t1_pasta_inteligente_tela_rainha_dado_real_mata_o_mock",
       "community": 81,
-      "norm_label": "fila executada"
+      "norm_label": "t1 \u2014 pasta inteligente = tela-rainha, dado real (mata o mock) \u2705"
     },
     {
-      "label": "TASK 1 \u2014 Backfill on-demand por c\u00e9lula (cidade) \u2705",
+      "label": "T2 \u2014 Radar/card com sinais REAIS + urg\u00eancia \u2705",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L9",
+      "source_location": "L18",
       "_origin": "ast",
-      "id": "relatorio_sessao_task_1_backfill_on_demand_por_c\u00e9lula_cidade",
+      "id": "relatorio_sessao_t2_radar_card_com_sinais_reais_urg\u00eancia",
       "community": 81,
-      "norm_label": "task 1 \u2014 backfill on-demand por celula (cidade) \u2705"
+      "norm_label": "t2 \u2014 radar/card com sinais reais + urgencia \u2705"
     },
     {
-      "label": "TASK 2 \u2014 Paleta SEM VERDE + mockups ricos sobre dado real \u2705 (parcial no pixel)",
+      "label": "T3 \u2014 Visual sem verde \u2705 (subst\u00e2ncia > forma)",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L22",
+      "source_location": "L26",
       "_origin": "ast",
-      "id": "relatorio_sessao_task_2_paleta_sem_verde_mockups_ricos_sobre_dado_real_parcial_no_pixel",
+      "id": "relatorio_sessao_t3_visual_sem_verde_subst\u00e2ncia_forma",
       "community": 81,
-      "norm_label": "task 2 \u2014 paleta sem verde + mockups ricos sobre dado real \u2705 (parcial no pixel)"
+      "norm_label": "t3 \u2014 visual sem verde \u2705 (substancia > forma)"
     },
     {
-      "label": "TASK 3 \u2014 Toda tela alcan\u00e7\u00e1vel e funcional \u2705",
+      "label": "T4 \u2014 Coletar contratos \ud83d\udd07 BLOQUEADO",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L31",
+      "source_location": "L30",
       "_origin": "ast",
-      "id": "relatorio_sessao_task_3_toda_tela_alcan\u00e7\u00e1vel_e_funcional",
+      "id": "relatorio_sessao_t4_coletar_contratos_bloqueado",
       "community": 81,
-      "norm_label": "task 3 \u2014 toda tela alcancavel e funcional \u2705"
+      "norm_label": "t4 \u2014 coletar contratos \ud83d\udd07 bloqueado"
     },
     {
-      "label": "TASK 4 \u2014 Autoteste + commits locais frequentes \u2705",
+      "label": "DoD #2 \u2014 Invent\u00e1rio de bot\u00f5es (\u2705 real / \ud83d\udd07 desabilitado \"em breve\" / \u274c removido)",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L36",
+      "source_location": "L34",
       "_origin": "ast",
-      "id": "relatorio_sessao_task_4_autoteste_commits_locais_frequentes",
+      "id": "relatorio_sessao_dod_2_invent\u00e1rio_de_bot\u00f5es_real_desabilitado_em_breve_removido",
       "community": 81,
-      "norm_label": "task 4 \u2014 autoteste + commits locais frequentes \u2705"
-    },
-    {
-      "label": "Tamb\u00e9m nesta sess\u00e3o (antes do modo aut\u00f4nomo)",
-      "file_type": "document",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "relatorio_sessao_tamb\u00e9m_nesta_sess\u00e3o_antes_do_modo_aut\u00f4nomo",
-      "community": 81,
-      "norm_label": "tambem nesta sessao (antes do modo autonomo)"
-    },
-    {
-      "label": "Como rodar o worker em produ\u00e7\u00e3o (local)",
-      "file_type": "document",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "relatorio_sessao_como_rodar_o_worker_em_produ\u00e7\u00e3o_local",
-      "community": 81,
-      "norm_label": "como rodar o worker em producao (local)"
-    },
-    {
-      "label": "Pend\u00eancias (em `BLOQUEIOS.md`)",
-      "file_type": "document",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "relatorio_sessao_pend\u00eancias_em_bloqueios_md",
-      "community": 81,
-      "norm_label": "pendencias (em `bloqueios.md`)"
+      "norm_label": "dod #2 \u2014 inventario de botoes (\u2705 real / \ud83d\udd07 desabilitado \"em breve\" / \u274c removido)"
     },
     {
       "label": "Gates respeitados",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L55",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "relatorio_sessao_gates_respeitados",
       "community": 81,
@@ -8942,6 +8452,86 @@
       "id": "docs_prompt_ingestao_supabase_n\u00e3o_fazer_agora",
       "community": 88,
       "norm_label": "nao fazer agora"
+    },
+    {
+      "label": "prompt-integracao-100-sem-mock.md",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock",
+      "community": 2,
+      "norm_label": "prompt-integracao-100-sem-mock.md"
+    },
+    {
+      "label": "PROMPT \u2014 INTEGRA\u00c7\u00c3O BACK \u2194 FRONT 100% SEM MOCK + PROVA DE CADA CONEX\u00c3O E BOT\u00c3O",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "community": 2,
+      "norm_label": "prompt \u2014 integracao back \u2194 front 100% sem mock + prova de cada conexao e botao"
+    },
+    {
+      "label": "PARTE 0 \u2014 Matar o mock DE VEZ",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_parte_0_matar_o_mock_de_vez",
+      "community": 2,
+      "norm_label": "parte 0 \u2014 matar o mock de vez"
+    },
+    {
+      "label": "PARTE 1 \u2014 MATRIZ DE CONEX\u00d5ES (todo dado do front vem do back real)",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_parte_1_matriz_de_conex\u00f5es_todo_dado_do_front_vem_do_back_real",
+      "community": 2,
+      "norm_label": "parte 1 \u2014 matriz de conexoes (todo dado do front vem do back real)"
+    },
+    {
+      "label": "PARTE 2 \u2014 MATRIZ DE BOT\u00d5ES/A\u00c7\u00d5ES (nada no lugar errado)",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_parte_2_matriz_de_bot\u00f5es_a\u00e7\u00f5es_nada_no_lugar_errado",
+      "community": 2,
+      "norm_label": "parte 2 \u2014 matriz de botoes/acoes (nada no lugar errado)"
+    },
+    {
+      "label": "PARTE 3 \u2014 AUTOTESTE E2E QUE PROVA (n\u00e3o seleciona)",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_parte_3_autoteste_e2e_que_prova_n\u00e3o_seleciona",
+      "community": 2,
+      "norm_label": "parte 3 \u2014 autoteste e2e que prova (nao seleciona)"
+    },
+    {
+      "label": "ENTREGA / EVID\u00caNCIA (o que comprova 100%)",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_entrega_evid\u00eancia_o_que_comprova_100",
+      "community": 2,
+      "norm_label": "entrega / evidencia (o que comprova 100%)"
+    },
+    {
+      "label": "R\u00e9gua anti-falsa-confian\u00e7a (a li\u00e7\u00e3o das vezes anteriores)",
+      "file_type": "document",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "docs_prompt_integracao_100_sem_mock_r\u00e9gua_anti_falsa_confian\u00e7a_a_li\u00e7\u00e3o_das_vezes_anteriores",
+      "community": 2,
+      "norm_label": "regua anti-falsa-confianca (a licao das vezes anteriores)"
     },
     {
       "label": "prompt-kickoff-construcao.md",
@@ -11681,7 +11271,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "f0 \u2014 investigacao: cenario c foi falso negativo de ferramenta",
       "id": "f0_investigacao_falso_negativo"
     },
@@ -11694,7 +11284,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "catser \u2014 catalogo de servicos (compras governamentais)",
       "id": "concept_catser"
     },
@@ -11707,7 +11297,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "dado-limpo (editais + contratos + historico como materia-prima)",
       "id": "concept_dado_limpo"
     },
@@ -11720,7 +11310,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "f0 \u2014 relatorio de veredito \u00b7 controle-de-pragas \u00d7 sao luis/ma",
       "id": "f0_report"
     },
@@ -11733,7 +11323,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "pncp \u2014 portal nacional de contratacoes publicas",
       "id": "concept_pncp"
     },
@@ -11746,7 +11336,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 33,
       "norm_label": "pca \u2014 plano de contratacoes anuais",
       "id": "concept_pca"
     },
@@ -13176,7 +12766,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 5,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -13189,7 +12779,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -13202,7 +12792,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -13605,7 +13195,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -15122,256 +14712,6 @@
       "target": "supabase_server_createclient"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_sentinela"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_sentinela_chancescore"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_sentinela_imminencebadge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_sentinela_sourcelinks"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_sentinela_stageminirail"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_cardheader"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_cardtitle"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "components_ui_separator"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "id_page_dossiepage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "id_page_row"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "id_page_section"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "lib_mock"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "lib_mock_getdemand"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "lib_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "lib_utils_brl"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_dossie_id_page_tsx_id_page",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "id_page_dossiepage",
-      "target": "lib_mock_getdemand"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/(shell)/dossie/[id]/page.tsx",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "id_page_dossiepage",
-      "target": "lib_utils_databr"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/empresa/actions.ts",
@@ -16121,180 +15461,6 @@
       "target": "supabase_server_createclient"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "components_sentinela"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "components_sentinela_imminencebadge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "components_sentinela_stagestepper"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "id_page_esteiraprocessopage"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "lib_mock"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "lib_mock_getdemand"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "lib_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_esteira_id_page_tsx_id_page",
-      "target": "lib_utils_brl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/(shell)/esteira/[id]/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "id_page_esteiraprocessopage",
-      "target": "lib_mock_getdemand"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "esteira_page",
-      "target": "components_sentinela"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "esteira_page",
-      "target": "components_sentinela_stagekanban"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "esteira_page",
-      "target": "esteira_page_esteiraboardpage"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "esteira_page",
-      "target": "lib_mock"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/esteira/page.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "esteira_page",
-      "target": "lib_mock_demands"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/kanban/actions.ts",
@@ -16629,17 +15795,6 @@
       "target": "supabase_server_createclient"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_actions"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/actions.ts",
@@ -16789,15 +15944,15 @@
       "target": "supabase_server_createclient"
     },
     {
-      "relation": "imports",
+      "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_actions_analisarcomia"
+      "source": "id_page",
+      "target": "id_actions",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16848,11 +16003,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_actions_adddoclicitacao"
+      "source": "id_page",
+      "target": "id_actions_analisarcomia",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16870,11 +16025,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_actions_deletedoclicitacao"
+      "source": "id_page",
+      "target": "id_actions_adddoclicitacao",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16892,11 +16047,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_actions_excluirlicitacao"
+      "source": "id_page",
+      "target": "id_actions_deletedoclicitacao",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16910,15 +16065,26 @@
       "target": "supabase_server_createclient"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "id_actions_excluirlicitacao",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui"
+      "source": "id_page",
+      "target": "components_ui",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16927,9 +16093,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_badge"
+      "source": "id_page",
+      "target": "components_ui_badge",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16938,9 +16104,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_button"
+      "source": "id_page",
+      "target": "components_ui_button",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16949,9 +16115,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_card"
+      "source": "id_page",
+      "target": "components_ui_card",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16960,9 +16126,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_cardcontent"
+      "source": "id_page",
+      "target": "components_ui_cardcontent",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16971,9 +16137,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_input"
+      "source": "id_page",
+      "target": "components_ui_input",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16982,9 +16148,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_progress"
+      "source": "id_page",
+      "target": "components_ui_progress",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16993,9 +16159,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_tabslist"
+      "source": "id_page",
+      "target": "components_ui_tabslist",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17004,19 +16170,19 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "components_ui_tabstrigger"
+      "source": "id_page",
+      "target": "components_ui_tabstrigger",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_brl"
+      "source": "id_page",
+      "target": "id_page_brl",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17024,9 +16190,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_campo"
+      "source": "id_page",
+      "target": "id_page_campo",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17034,49 +16200,49 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_dtbr"
+      "source": "id_page",
+      "target": "id_page_dtbr",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L35",
+      "source_location": "L28",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_embreve"
+      "source": "id_page",
+      "target": "id_page_embreve",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_lic"
+      "source": "id_page",
+      "target": "id_page_lic",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L46",
+      "source_location": "L43",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_licitacaopage"
+      "source": "id_page",
+      "target": "id_page_licitacaopage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L13",
+      "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_parecer"
+      "source": "id_page",
+      "target": "id_page_parecer",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17084,9 +16250,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L39",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_page_secao"
+      "source": "id_page",
+      "target": "id_page_secao",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17095,9 +16261,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_pasta_actions"
+      "source": "id_page",
+      "target": "id_pasta_actions",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17106,9 +16272,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "id_pasta_actions_pastaactions"
+      "source": "id_page",
+      "target": "id_pasta_actions_pastaactions",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17117,9 +16283,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_habilitacao"
+      "source": "id_page",
+      "target": "lib_habilitacao",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17128,9 +16294,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_habilitacao_calcprontidao"
+      "source": "id_page",
+      "target": "lib_habilitacao_calcprontidao",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17139,9 +16305,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_habilitacao_item_status_meta"
+      "source": "id_page",
+      "target": "lib_habilitacao_item_status_meta",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17150,9 +16316,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_habilitacao_itensaplicaveis"
+      "source": "id_page",
+      "target": "lib_habilitacao_itensaplicaveis",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17161,9 +16327,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_habilitacao_statusitem"
+      "source": "id_page",
+      "target": "lib_habilitacao_statusitem",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17172,9 +16338,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_resumo_edital"
+      "source": "id_page",
+      "target": "lib_resumo_edital",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17183,9 +16349,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_resumo_edital_buildresumo"
+      "source": "id_page",
+      "target": "lib_resumo_edital_buildresumo",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17194,9 +16360,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_resumo_edital_resumoedital"
+      "source": "id_page",
+      "target": "lib_resumo_edital_resumoedital",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17205,9 +16371,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_utils"
+      "source": "id_page",
+      "target": "lib_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17216,9 +16382,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "lib_utils_databr"
+      "source": "id_page",
+      "target": "lib_utils_databr",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17227,9 +16393,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "radar_actions"
+      "source": "id_page",
+      "target": "radar_actions",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17238,9 +16404,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "radar_actions_monitorar"
+      "source": "id_page",
+      "target": "radar_actions_monitorar",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17249,9 +16415,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "supabase_admin"
+      "source": "id_page",
+      "target": "supabase_admin",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17260,9 +16426,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "supabase_admin_createadminclient"
+      "source": "id_page",
+      "target": "supabase_admin_createadminclient",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17271,9 +16437,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "supabase_server"
+      "source": "id_page",
+      "target": "supabase_server",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17282,9 +16448,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_shell_licitacao_id_page_tsx_id_page",
-      "target": "supabase_server_createclient"
+      "source": "id_page",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -17373,6 +16539,17 @@
       "weight": 1.0,
       "source": "id_page_licitacaopage",
       "target": "supabase_admin_createadminclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "id_page_licitacaopage",
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "imports_from",
@@ -17889,9 +17066,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "components_ui_select",
-      "confidence_score": 1.0
+      "target": "components_ui_select"
     },
     {
       "relation": "imports_from",
@@ -17900,9 +17077,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_habilitacao",
-      "confidence_score": 1.0
+      "target": "lib_habilitacao"
     },
     {
       "relation": "imports",
@@ -17911,9 +17088,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_habilitacao_itensaplicaveis",
-      "confidence_score": 1.0
+      "target": "lib_habilitacao_itensaplicaveis"
     },
     {
       "relation": "imports",
@@ -17922,9 +17099,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_habilitacao_statusitem",
-      "confidence_score": 1.0
+      "target": "lib_habilitacao_statusitem"
     },
     {
       "relation": "imports_from",
@@ -17977,9 +17154,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_sinais",
-      "confidence_score": 1.0
+      "target": "lib_sinais"
     },
     {
       "relation": "imports",
@@ -17988,9 +17165,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_sinais_sinaisedital",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinaisedital"
     },
     {
       "relation": "imports",
@@ -17999,9 +17176,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_sinais_sinal_badge",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinal_badge"
     },
     {
       "relation": "imports_from",
@@ -18870,392 +18047,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_chancescore"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_imminencebadge"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_imvariant"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_mockbanner"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L248",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_notificationbell"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L195",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_radarcard"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L234",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_sourcelinks"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L159",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_stagekanban"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_stageminirail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L65",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_sentinela_stagestepper"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_ui_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_demand"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_iminencia"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_notificationitem"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_sources"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_stagekey"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_mock_stages"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_utils_brl"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_utils_cn"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_sentinela",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/shell.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_shell",
-      "target": "components_sentinela"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/shell.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_shell",
-      "target": "components_sentinela_mockbanner"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "components_sentinela_chancescore",
-      "target": "lib_utils_cn"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "components_sentinela_stageminirail",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L66",
-      "weight": 1.0,
-      "source": "components_sentinela_stagestepper",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L116",
-      "weight": 1.0,
-      "source": "components_sentinela_stagestepper",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L216",
-      "weight": 1.0,
-      "source": "components_sentinela_radarcard",
-      "target": "lib_utils_brl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/sentinela.tsx",
-      "source_location": "L217",
-      "weight": 1.0,
-      "source": "components_sentinela_radarcard",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/shell.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_shell",
-      "target": "components_sentinela_notificationbell"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "components/shell.tsx",
       "source_location": "L18",
       "weight": 1.0,
@@ -19324,28 +18115,6 @@
       "confidence_score": 1.0,
       "source": "components_shell",
       "target": "components_ui_progress"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/shell.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_shell",
-      "target": "lib_mock"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/shell.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_shell",
-      "target": "lib_mock_notifications"
     },
     {
       "relation": "imports_from",
@@ -20527,9 +19296,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_adminquery",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_adminquery"
     },
     {
       "relation": "contains",
@@ -20537,9 +19306,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_cleanup",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_cleanup"
     },
     {
       "relation": "contains",
@@ -20547,9 +19316,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_consoleerrors",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_consoleerrors"
     },
     {
       "relation": "contains",
@@ -20557,9 +19326,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_e",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_e"
     },
     {
       "relation": "contains",
@@ -20567,9 +19336,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_h",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_h"
     },
     {
       "relation": "contains",
@@ -20577,9 +19346,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_ok",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_ok"
     },
     {
       "relation": "contains",
@@ -20587,9 +19356,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_readenv",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_readenv"
     },
     {
       "relation": "contains",
@@ -20597,9 +19366,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_results",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_results"
     },
     {
       "relation": "contains",
@@ -20607,9 +19376,9 @@
       "source_file": "e2e/autotest-sinais.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_sinais",
-      "target": "e2e_autotest_sinais_sb",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_sinais_sb"
     },
     {
       "relation": "contains",
@@ -21207,342 +19976,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L185",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_camara_sl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L137",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_certificate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L349",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_company"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L83",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_competition"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L62",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_contracthistory"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L106",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_decisionmaker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L238",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_decisoressemed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L243",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_demand"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L269",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_demands"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L54",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_docitem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L212",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_docspara"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L199",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_esteiraate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L347",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_getdemand"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_iminencia"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L39",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_iminenciafromstage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L156",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_notificationitem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L366",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_notifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L92",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_organization"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L166",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_pref_sl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L179",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_pref_sl_saude"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L73",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_priceintel"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L373",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_sources"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_stagedef"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_stageevent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_stagekey"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock",
-      "target": "lib_mock_stages"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L213",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_docspara",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L200",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_esteiraate",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_iminenciafromstage",
-      "target": "lib_mock_stageindex"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L245",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_demand",
-      "target": "lib_mock_iminenciafromstage"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L253",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_demand",
-      "target": "lib_mock_docspara"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/mock.ts",
-      "source_location": "L252",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_mock_demand",
-      "target": "lib_mock_esteiraate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "lib/resumo-edital.ts",
       "source_location": "L23",
       "weight": 1.0,
@@ -21636,9 +20069,9 @@
       "source_file": "lib/sinais.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sinais",
-      "target": "lib_sinais_editalsinal",
-      "confidence_score": 1.0
+      "target": "lib_sinais_editalsinal"
     },
     {
       "relation": "contains",
@@ -21646,9 +20079,9 @@
       "source_file": "lib/sinais.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sinais",
-      "target": "lib_sinais_sinaisedital",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinaisedital"
     },
     {
       "relation": "contains",
@@ -21656,9 +20089,9 @@
       "source_file": "lib/sinais.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sinais",
-      "target": "lib_sinais_sinal",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinal"
     },
     {
       "relation": "contains",
@@ -21666,9 +20099,9 @@
       "source_file": "lib/sinais.ts",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sinais",
-      "target": "lib_sinais_sinal_badge",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinal_badge"
     },
     {
       "relation": "contains",
@@ -21676,9 +20109,9 @@
       "source_file": "lib/sinais.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_sinais",
-      "target": "lib_sinais_sinaltone",
-      "confidence_score": 1.0
+      "target": "lib_sinais_sinaltone"
     },
     {
       "relation": "contains",
@@ -24871,29 +23304,39 @@
       "source_file": "BLOQUEIOS.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "bloqueios",
-      "target": "bloqueios_bloqueios_sess\u00e3o_aut\u00f4noma_2026_06_20"
+      "target": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L5",
+      "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bloqueios_bloqueios_sess\u00e3o_aut\u00f4noma_2026_06_20",
-      "target": "bloqueios_contornado"
+      "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
+      "target": "bloqueios_2026_06_21_t4_contratos_bloqueado_pncp_contratos_http_400",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bloqueios_bloqueios_sess\u00e3o_aut\u00f4noma_2026_06_20",
-      "target": "bloqueios_pend\u00eancias_n\u00e3o_bloqueiam_qualidade_escopo_ficaram_para_a_pr\u00f3xima"
+      "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
+      "target": "bloqueios_contornado_sess\u00e3o_2026_06_20",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BLOQUEIOS.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
+      "target": "bloqueios_pend\u00eancias_de_polish_n\u00e3o_bloqueiam",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24911,99 +23354,69 @@
       "source_file": "RELATORIO-SESSAO.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_sessao",
-      "target": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo"
+      "target": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L46",
+      "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
-      "target": "relatorio_sessao_como_rodar_o_worker_em_produ\u00e7\u00e3o_local"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_dod_2_invent\u00e1rio_de_bot\u00f5es_real_desabilitado_em_breve_removido",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L7",
+      "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
-      "target": "relatorio_sessao_fila_executada"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_gates_respeitados",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L55",
+      "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
-      "target": "relatorio_sessao_gates_respeitados"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_t1_pasta_inteligente_tela_rainha_dado_real_mata_o_mock",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L51",
+      "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
-      "target": "relatorio_sessao_pend\u00eancias_em_bloqueios_md"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_t2_radar_card_com_sinais_reais_urg\u00eancia",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L42",
+      "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_20_modo_aut\u00f4nomo",
-      "target": "relatorio_sessao_tamb\u00e9m_nesta_sess\u00e3o_antes_do_modo_aut\u00f4nomo"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_t3_visual_sem_verde_subst\u00e2ncia_forma",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L9",
+      "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_fila_executada",
-      "target": "relatorio_sessao_task_1_backfill_on_demand_por_c\u00e9lula_cidade"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_fila_executada",
-      "target": "relatorio_sessao_task_2_paleta_sem_verde_mockups_ricos_sobre_dado_real_parcial_no_pixel"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_fila_executada",
-      "target": "relatorio_sessao_task_3_toda_tela_alcan\u00e7\u00e1vel_e_funcional"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-SESSAO.md",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "relatorio_sessao_fila_executada",
-      "target": "relatorio_sessao_task_4_autoteste_commits_locais_frequentes"
+      "source": "relatorio_sessao_relat\u00f3rio_de_sess\u00e3o_2026_06_21_aut\u00f4nomo_pasta_rainha_sinais_reais_zero_bot\u00e3o_fake",
+      "target": "relatorio_sessao_t4_coletar_contratos_bloqueado",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -26941,9 +25354,9 @@
       "source_file": "docs/prompt-construcao-pasta-radar.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_construcao_pasta_radar_prompt_de_constru\u00e7\u00e3o_pasta_tela_rainha_sinais_reais_zero_bot\u00e3o_fake",
-      "target": "docs_prompt_construcao_pasta_radar_tarefa_5_gerenciar_licita\u00e7\u00f5es_hub_de_acompanhamento_evolu\u00e7\u00e3o_do_kanban_depois_de_1_3",
-      "confidence_score": 1.0
+      "target": "docs_prompt_construcao_pasta_radar_tarefa_5_gerenciar_licita\u00e7\u00f5es_hub_de_acompanhamento_evolu\u00e7\u00e3o_do_kanban_depois_de_1_3"
     },
     {
       "relation": "contains",
@@ -27334,6 +25747,76 @@
       "confidence_score": 1.0,
       "source": "docs_prompt_ingestao_supabase_prompt_para_o_terminal_ingest\u00e3o_do_harvest_no_supabase_staging_cru",
       "target": "docs_prompt_ingestao_supabase_schema_staging_migration_stop_para_aprovar_antes_do_push"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock",
+      "target": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_entrega_evid\u00eancia_o_que_comprova_100",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_parte_0_matar_o_mock_de_vez",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_parte_1_matriz_de_conex\u00f5es_todo_dado_do_front_vem_do_back_real",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_parte_2_matriz_de_bot\u00f5es_a\u00e7\u00f5es_nada_no_lugar_errado",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_parte_3_autoteste_e2e_que_prova_n\u00e3o_seleciona",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-integracao-100-sem-mock.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "docs_prompt_integracao_100_sem_mock_prompt_integra\u00e7\u00e3o_back_front_100_sem_mock_prova_de_cada_conex\u00e3o_e_bot\u00e3o",
+      "target": "docs_prompt_integracao_100_sem_mock_r\u00e9gua_anti_falsa_confian\u00e7a_a_li\u00e7\u00e3o_das_vezes_anteriores",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -32917,5 +31400,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "82e6f2cc2789a4e0ae8ef3a53feb94b558632fed"
+  "built_at_commit": "83bd7186a02c7fa26e895378f0f173faee1fecdf"
 }

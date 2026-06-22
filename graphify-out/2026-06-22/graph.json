@@ -10,7 +10,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_actions",
-      "community": 4,
+      "community": 35,
       "norm_label": "actions.ts"
     },
     {
@@ -20,7 +20,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "login_actions_traduzerro",
-      "community": 4,
+      "community": 35,
       "norm_label": "traduzerro()"
     },
     {
@@ -30,7 +30,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "login_actions_authenticate",
-      "community": 4,
+      "community": 35,
       "norm_label": "authenticate()"
     },
     {
@@ -40,7 +40,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "login_actions_signout",
-      "community": 4,
+      "community": 35,
       "norm_label": "signout()"
     },
     {
@@ -80,7 +80,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "configuracoes_actions_aiconfigview",
-      "community": 3,
+      "community": 4,
       "norm_label": "aiconfigview"
     },
     {
@@ -110,7 +110,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_config_form",
-      "community": 3,
+      "community": 4,
       "norm_label": "config-form.tsx"
     },
     {
@@ -120,7 +120,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "configuracoes_config_form_salvarbtn",
-      "community": 3,
+      "community": 4,
       "norm_label": "salvarbtn()"
     },
     {
@@ -130,7 +130,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "configuracoes_config_form_configform",
-      "community": 3,
+      "community": 4,
       "norm_label": "configform()"
     },
     {
@@ -140,7 +140,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_page",
-      "community": 3,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -160,7 +160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "consultor_page",
-      "community": 30,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -170,7 +170,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "consultor_page_lic",
-      "community": 30,
+      "community": 4,
       "norm_label": "lic"
     },
     {
@@ -180,7 +180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "consultor_page_consultorpage",
-      "community": 30,
+      "community": 7,
       "norm_label": "consultorpage()"
     },
     {
@@ -190,7 +190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dados_reais_page",
-      "community": 30,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -200,7 +200,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "dados_reais_page_etapas",
-      "community": 30,
+      "community": 4,
       "norm_label": "etapas"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dados_reais_page_op",
-      "community": 30,
+      "community": 4,
       "norm_label": "op"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dados_reais_page_brl",
-      "community": 30,
+      "community": 4,
       "norm_label": "brl()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dados_reais_page_kpi",
-      "community": 30,
+      "community": 4,
       "norm_label": "kpi()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "dados_reais_page_steps",
-      "community": 30,
+      "community": 4,
       "norm_label": "steps"
     },
     {
@@ -250,7 +250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "dados_reais_page_pipeline",
-      "community": 30,
+      "community": 4,
       "norm_label": "pipeline()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "dados_reais_page_dadosreaispage",
-      "community": 30,
+      "community": 4,
       "norm_label": "dadosreaispage()"
     },
     {
@@ -270,7 +270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_page",
-      "community": 13,
+      "community": 129,
       "norm_label": "page.tsx"
     },
     {
@@ -280,7 +280,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "dashboard_page_brl",
-      "community": 13,
+      "community": 129,
       "norm_label": "brl()"
     },
     {
@@ -290,7 +290,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dashboard_page_meses",
-      "community": 13,
+      "community": 129,
       "norm_label": "meses"
     },
     {
@@ -300,7 +300,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "dashboard_page_stages",
-      "community": 13,
+      "community": 129,
       "norm_label": "stages"
     },
     {
@@ -310,7 +310,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "dashboard_page_kpi",
-      "community": 13,
+      "community": 129,
       "norm_label": "kpi()"
     },
     {
@@ -460,7 +460,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kanban_actions",
-      "community": 13,
+      "community": 30,
       "norm_label": "actions.ts"
     },
     {
@@ -470,7 +470,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "kanban_actions_stages",
-      "community": 13,
+      "community": 30,
       "norm_label": "stages"
     },
     {
@@ -480,7 +480,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "kanban_actions_moverstage",
-      "community": 13,
+      "community": 30,
       "norm_label": "moverstage()"
     },
     {
@@ -490,7 +490,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "kanban_actions_descartarcard",
-      "community": 13,
+      "community": 30,
       "norm_label": "descartarcard()"
     },
     {
@@ -500,7 +500,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kanban_page",
-      "community": 13,
+      "community": 30,
       "norm_label": "page.tsx"
     },
     {
@@ -510,7 +510,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "kanban_page_stages",
-      "community": 13,
+      "community": 30,
       "norm_label": "stages"
     },
     {
@@ -520,7 +520,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kanban_page_oport",
-      "community": 13,
+      "community": 30,
       "norm_label": "oport"
     },
     {
@@ -530,7 +530,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "kanban_page_kanbanpage",
-      "community": 13,
+      "community": 30,
       "norm_label": "kanbanpage()"
     },
     {
@@ -540,7 +540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shell_layout",
-      "community": 7,
+      "community": 35,
       "norm_label": "layout.tsx"
     },
     {
@@ -550,7 +550,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "shell_layout_shelllayout",
-      "community": 7,
+      "community": 35,
       "norm_label": "shelllayout()"
     },
     {
@@ -640,7 +640,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "id_page_brl",
-      "community": 13,
+      "community": 3,
       "norm_label": "brl()"
     },
     {
@@ -710,7 +710,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_pasta_actions",
-      "community": 4,
+      "community": 3,
       "norm_label": "pasta-actions.tsx"
     },
     {
@@ -720,7 +720,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "id_pasta_actions_pastaactions",
-      "community": 4,
+      "community": 3,
       "norm_label": "pastaactions()"
     },
     {
@@ -747,7 +747,7 @@
       "label": "removerCidade()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L39",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "radar_actions_removercidade",
       "community": 7,
@@ -757,7 +757,7 @@
       "label": "setStage()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L48",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "radar_actions_setstage",
       "community": 7,
@@ -767,7 +767,7 @@
       "label": "monitorar()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L60",
+      "source_location": "L59",
       "_origin": "ast",
       "id": "radar_actions_monitorar",
       "community": 7,
@@ -777,7 +777,7 @@
       "label": "descartar()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L64",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "radar_actions_descartar",
       "community": 7,
@@ -787,7 +787,7 @@
       "label": "analisar()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L68",
+      "source_location": "L67",
       "_origin": "ast",
       "id": "radar_actions_analisar",
       "community": 7,
@@ -797,7 +797,7 @@
       "label": "reverter()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L87",
+      "source_location": "L86",
       "_origin": "ast",
       "id": "radar_actions_reverter",
       "community": 7,
@@ -880,7 +880,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "roadmap_page",
-      "community": 30,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -890,7 +890,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "roadmap_page_lentes",
-      "community": 30,
+      "community": 4,
       "norm_label": "lentes"
     },
     {
@@ -900,7 +900,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "roadmap_page_roadmappage",
-      "community": 30,
+      "community": 4,
       "norm_label": "roadmappage()"
     },
     {
@@ -990,7 +990,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "onboarding_actions_concluironboarding",
-      "community": 6,
+      "community": 7,
       "norm_label": "concluironboarding()"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "onboarding_page",
-      "community": 6,
+      "community": 30,
       "norm_label": "page.tsx"
     },
     {
@@ -1010,7 +1010,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "onboarding_page_onboardingpage",
-      "community": 6,
+      "community": 30,
       "norm_label": "onboardingpage()"
     },
     {
@@ -1070,7 +1070,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 6,
+      "community": 13,
       "norm_label": "wizard()"
     },
     {
@@ -1104,20 +1104,10 @@
       "norm_label": "charts.tsx"
     },
     {
-      "label": "useChartWidth()",
-      "file_type": "code",
-      "source_file": "components/charts.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "components_charts_usechartwidth",
-      "community": 129,
-      "norm_label": "usechartwidth()"
-    },
-    {
       "label": "ringColor()",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L38",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "components_charts_ringcolor",
       "community": 129,
@@ -1127,7 +1117,7 @@
       "label": "ScoreRing()",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L45",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "components_charts_scorering",
       "community": 129,
@@ -1137,7 +1127,7 @@
       "label": "DonutDatum",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L65",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "components_charts_donutdatum",
       "community": 129,
@@ -1147,7 +1137,7 @@
       "label": "DONUT_CORES",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L66",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "components_charts_donut_cores",
       "community": 129,
@@ -1157,7 +1147,7 @@
       "label": "DonutSegmento()",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L69",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "components_charts_donutsegmento",
       "community": 129,
@@ -1167,7 +1157,7 @@
       "label": "TrendDatum",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L103",
+      "source_location": "L74",
       "_origin": "ast",
       "id": "components_charts_trenddatum",
       "community": 129,
@@ -1177,7 +1167,7 @@
       "label": "LineTendencia()",
       "file_type": "code",
       "source_file": "components/charts.tsx",
-      "source_location": "L106",
+      "source_location": "L77",
       "_origin": "ast",
       "id": "components_charts_linetendencia",
       "community": 129,
@@ -1190,7 +1180,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 4,
+      "community": 35,
       "norm_label": "shell.tsx"
     },
     {
@@ -1200,7 +1190,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 4,
+      "community": 35,
       "norm_label": "navitem"
     },
     {
@@ -1210,7 +1200,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 4,
+      "community": 35,
       "norm_label": "nav"
     },
     {
@@ -1220,7 +1210,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 4,
+      "community": 35,
       "norm_label": "titles"
     },
     {
@@ -1230,7 +1220,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 4,
+      "community": 35,
       "norm_label": "navlink()"
     },
     {
@@ -1240,7 +1230,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "components_shell_shell",
-      "community": 7,
+      "community": 35,
       "norm_label": "shell()"
     },
     {
@@ -1290,7 +1280,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "components_ui_card",
-      "community": 30,
+      "community": 4,
       "norm_label": "card()"
     },
     {
@@ -1330,7 +1320,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "components_ui_cardcontent",
-      "community": 30,
+      "community": 4,
       "norm_label": "cardcontent()"
     },
     {
@@ -1370,7 +1360,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 4,
+      "community": 7,
       "norm_label": "select"
     },
     {
@@ -1380,7 +1370,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "components_ui_badgevariants",
-      "community": 30,
+      "community": 4,
       "norm_label": "badgevariants"
     },
     {
@@ -1390,7 +1380,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "components_ui_badge",
-      "community": 30,
+      "community": 4,
       "norm_label": "badge()"
     },
     {
@@ -1724,20 +1714,10 @@
       "norm_label": "consoleerrors"
     },
     {
-      "label": "rechartsWarnings",
-      "file_type": "code",
-      "source_file": "e2e/autotest-dashboard.mjs",
-      "source_location": "L31",
-      "_origin": "ast",
-      "id": "e2e_autotest_dashboard_rechartswarnings",
-      "community": 24,
-      "norm_label": "rechartswarnings"
-    },
-    {
       "label": "results",
       "file_type": "code",
       "source_file": "e2e/autotest-dashboard.mjs",
-      "source_location": "L33",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "e2e_autotest_dashboard_results",
       "community": 24,
@@ -1747,7 +1727,7 @@
       "label": "ok()",
       "file_type": "code",
       "source_file": "e2e/autotest-dashboard.mjs",
-      "source_location": "L34",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "e2e_autotest_dashboard_ok",
       "community": 24,
@@ -2544,56 +2524,6 @@
       "norm_label": "ok()"
     },
     {
-      "label": "run-all.mjs",
-      "file_type": "code",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "e2e_run_all",
-      "community": 137,
-      "norm_label": "run-all.mjs"
-    },
-    {
-      "label": "SUITE",
-      "file_type": "code",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "e2e_run_all_suite",
-      "community": 137,
-      "norm_label": "suite"
-    },
-    {
-      "label": "summary",
-      "file_type": "code",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "e2e_run_all_summary",
-      "community": 137,
-      "norm_label": "summary"
-    },
-    {
-      "label": "t0",
-      "file_type": "code",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "e2e_run_all_t0",
-      "community": 137,
-      "norm_label": "t0"
-    },
-    {
-      "label": "total",
-      "file_type": "code",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "e2e_run_all_total",
-      "community": 137,
-      "norm_label": "total"
-    },
-    {
       "label": "tour.mjs",
       "file_type": "code",
       "source_file": "e2e/tour.mjs",
@@ -2780,7 +2710,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_certidoes",
-      "community": 13,
+      "community": 30,
       "norm_label": "certidoes.ts"
     },
     {
@@ -2790,7 +2720,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "lib_certidoes_certidao_tipos",
-      "community": 13,
+      "community": 30,
       "norm_label": "certidao_tipos"
     },
     {
@@ -2800,7 +2730,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "lib_certidoes_certidao_label",
-      "community": 13,
+      "community": 30,
       "norm_label": "certidao_label"
     },
     {
@@ -2810,7 +2740,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_certidoes_semaforostatus",
-      "community": 13,
+      "community": 30,
       "norm_label": "semaforostatus"
     },
     {
@@ -2830,7 +2760,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_certidoes_diasatevencer",
-      "community": 13,
+      "community": 30,
       "norm_label": "diasatevencer()"
     },
     {
@@ -2840,7 +2770,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "lib_certidoes_status_meta",
-      "community": 13,
+      "community": 30,
       "norm_label": "status_meta"
     },
     {
@@ -3004,23 +2934,13 @@
       "norm_label": "municipiosdauf()"
     },
     {
-      "label": "tituloCidade()",
+      "label": "resolveMunicipio()",
       "file_type": "code",
       "source_file": "lib/ibge.ts",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "lib_ibge_titulocidade",
-      "community": 7,
-      "norm_label": "titulocidade()"
-    },
-    {
-      "label": "resolveMunicipio()",
-      "file_type": "code",
-      "source_file": "lib/ibge.ts",
-      "source_location": "L26",
-      "_origin": "ast",
       "id": "lib_ibge_resolvemunicipio",
-      "community": 6,
+      "community": 7,
       "norm_label": "resolvemunicipio()"
     },
     {
@@ -3050,7 +2970,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_llm_providers",
-      "community": 3,
+      "community": 4,
       "norm_label": "providers"
     },
     {
@@ -3090,7 +3010,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_edital",
-      "community": 18,
+      "community": 3,
       "norm_label": "resumo-edital.ts"
     },
     {
@@ -3100,7 +3020,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_resumo_edital_poder",
-      "community": 18,
+      "community": 3,
       "norm_label": "poder"
     },
     {
@@ -3110,7 +3030,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_resumo_edital_esfera",
-      "community": 18,
+      "community": 3,
       "norm_label": "esfera"
     },
     {
@@ -3120,7 +3040,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_edital_resumoedital",
-      "community": 18,
+      "community": 3,
       "norm_label": "resumoedital"
     },
     {
@@ -3130,7 +3050,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "lib_resumo_edital_buildresumo",
-      "community": 18,
+      "community": 3,
       "norm_label": "buildresumo()"
     },
     {
@@ -3180,7 +3100,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 6,
+      "community": 13,
       "norm_label": "formatcnae()"
     },
     {
@@ -3320,7 +3240,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "supabase_server",
-      "community": 3,
+      "community": 30,
       "norm_label": "server.ts"
     },
     {
@@ -3340,7 +3260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 4,
+      "community": 13,
       "norm_label": "utils.ts"
     },
     {
@@ -3360,7 +3280,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 4,
+      "community": 13,
       "norm_label": "brl()"
     },
     {
@@ -6084,36 +6004,6 @@
       "norm_label": "build/qualidade"
     },
     {
-      "label": "SU\u00cdTE INTEIRA VERDE \u2014 atualiza\u00e7\u00e3o 2026-06-22 (FIX 6)",
-      "file_type": "document",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "relatorio_integracao_su\u00edte_inteira_verde_atualiza\u00e7\u00e3o_2026_06_22_fix_6",
-      "community": 131,
-      "norm_label": "suite inteira verde \u2014 atualizacao 2026-06-22 (fix 6)"
-    },
-    {
-      "label": "Qual teste estava velho \u00d7 o que foi corrigido",
-      "file_type": "document",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L69",
-      "_origin": "ast",
-      "id": "relatorio_integracao_qual_teste_estava_velho_o_que_foi_corrigido",
-      "community": 131,
-      "norm_label": "qual teste estava velho \u00d7 o que foi corrigido"
-    },
-    {
-      "label": "O que \"100%\" significa (honestidade)",
-      "file_type": "document",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L78",
-      "_origin": "ast",
-      "id": "relatorio_integracao_o_que_100_significa_honestidade",
-      "community": 131,
-      "norm_label": "o que \"100%\" significa (honestidade)"
-    },
-    {
       "label": "RELATORIO-SESSAO.md",
       "file_type": "document",
       "source_file": "RELATORIO-SESSAO.md",
@@ -6362,156 +6252,6 @@
       "id": "docs_00_comece_aqui_5_primeiro_comando_de_amanh\u00e3_terminal",
       "community": 96,
       "norm_label": "5. primeiro comando de amanha (terminal)"
-    },
-    {
-      "label": "00-PLANO-MESTRE-CONSTRUCAO.md",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao",
-      "community": 35,
-      "norm_label": "00-plano-mestre-construcao.md"
-    },
-    {
-      "label": "PLANO MESTRE DE CONSTRU\u00c7\u00c3O \u2014 SENTINELA",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "community": 35,
-      "norm_label": "plano mestre de construcao \u2014 sentinela"
-    },
-    {
-      "label": "Fonte de verdade da execu\u00e7\u00e3o. Para o Claude Code ler e seguir, etapa por etapa. jun/2026",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_fonte_de_verdade_da_execu\u00e7\u00e3o_para_o_claude_code_ler_e_seguir_etapa_por_etapa_jun_2026",
-      "community": 35,
-      "norm_label": "fonte de verdade da execucao. para o claude code ler e seguir, etapa por etapa. jun/2026"
-    },
-    {
-      "label": "PRINC\u00cdPIO (decis\u00e3o do Bione)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_princ\u00edpio_decis\u00e3o_do_bione",
-      "community": 35,
-      "norm_label": "principio (decisao do bione)"
-    },
-    {
-      "label": "ESTADO ATUAL (funda\u00e7\u00e3o)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_estado_atual_funda\u00e7\u00e3o",
-      "community": 35,
-      "norm_label": "estado atual (fundacao)"
-    },
-    {
-      "label": "TRILHA A \u2014 DADOS (construir as fontes que faltam)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_trilha_a_dados_construir_as_fontes_que_faltam",
-      "community": 35,
-      "norm_label": "trilha a \u2014 dados (construir as fontes que faltam)"
-    },
-    {
-      "label": "TRILHA B \u2014 M\u00d3DULOS (telas, ligando o dado conforme A entrega)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_trilha_b_m\u00f3dulos_telas_ligando_o_dado_conforme_a_entrega",
-      "community": 35,
-      "norm_label": "trilha b \u2014 modulos (telas, ligando o dado conforme a entrega)"
-    },
-    {
-      "label": "TRILHA C \u2014 PESQUISA / LIBERDADE (poder ao fornecedor)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_trilha_c_pesquisa_liberdade_poder_ao_fornecedor",
-      "community": 35,
-      "norm_label": "trilha c \u2014 pesquisa / liberdade (poder ao fornecedor)"
-    },
-    {
-      "label": "MIGRA\u00c7\u00c3O MeuJur\u00eddico (motores \u2014 trilha paralela, funda\u00e7\u00e3o)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_migra\u00e7\u00e3o_meujur\u00eddico_motores_trilha_paralela_funda\u00e7\u00e3o",
-      "community": 35,
-      "norm_label": "migracao meujuridico (motores \u2014 trilha paralela, fundacao)"
-    },
-    {
-      "label": "SEQU\u00caNCIA (etapa por etapa \u2014 maximiza valor, respeita depend\u00eancias)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L61",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_sequ\u00eancia_etapa_por_etapa_maximiza_valor_respeita_depend\u00eancias",
-      "community": 35,
-      "norm_label": "sequencia (etapa por etapa \u2014 maximiza valor, respeita dependencias)"
-    },
-    {
-      "label": "R\u00c9GUAS (todas as etapas)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L75",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_r\u00e9guas_todas_as_etapas",
-      "community": 35,
-      "norm_label": "reguas (todas as etapas)"
-    },
-    {
-      "label": "NOTA \u2014 naming",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L86",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_nota_naming",
-      "community": 35,
-      "norm_label": "nota \u2014 naming"
-    },
-    {
-      "label": "ARQUITETURA DE DADOS \u2014 3 CAMADAS (resolve \"como baixar sem explodir o banco\")",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L91",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_arquitetura_de_dados_3_camadas_resolve_como_baixar_sem_explodir_o_banco",
-      "community": 35,
-      "norm_label": "arquitetura de dados \u2014 3 camadas (resolve \"como baixar sem explodir o banco\")"
-    },
-    {
-      "label": "TESTE DE ACEITA\u00c7\u00c3O N\u00ba1 (Defini\u00e7\u00e3o de Pronto do produto)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L100",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_teste_de_aceita\u00e7\u00e3o_no1_defini\u00e7\u00e3o_de_pronto_do_produto",
-      "community": 35,
-      "norm_label": "teste de aceitacao no1 (definicao de pronto do produto)"
-    },
-    {
-      "label": "SEQU\u00caNCIA (revisada \u2014 come\u00e7a agora)",
-      "file_type": "document",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L105",
-      "_origin": "ast",
-      "id": "docs_00_plano_mestre_construcao_sequ\u00eancia_revisada_come\u00e7a_agora",
-      "community": 35,
-      "norm_label": "sequencia (revisada \u2014 comeca agora)"
     },
     {
       "label": "01-PLANO-DE-EXECUCAO.md",
@@ -7234,106 +6974,6 @@
       "norm_label": "5. sequencia dos mockups (alvo-pixel \u2014 proxima etapa, apos aprovar esta arquitetura)"
     },
     {
-      "label": "PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela",
-      "community": 134,
-      "norm_label": "plano-migracao-meujuridico-sentinela.md"
-    },
-    {
-      "label": "PLANO DE MIGRA\u00c7\u00c3O \u2014 MeuJur\u00eddico \u2192 Sentinela (consolida\u00e7\u00e3o de produtos)",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "community": 134,
-      "norm_label": "plano de migracao \u2014 meujuridico \u2192 sentinela (consolidacao de produtos)"
-    },
-    {
-      "label": "Princ\u00edpio",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_princ\u00edpio",
-      "community": 134,
-      "norm_label": "principio"
-    },
-    {
-      "label": "1. INVENT\u00c1RIO \u2014 o que migra (motor por motor)",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_1_invent\u00e1rio_o_que_migra_motor_por_motor",
-      "community": 134,
-      "norm_label": "1. inventario \u2014 o que migra (motor por motor)"
-    },
-    {
-      "label": "2. M\u00d3DULO NOVO \u2014 Kit de Participa\u00e7\u00e3o (gerado pelo motor herdado)",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_2_m\u00f3dulo_novo_kit_de_participa\u00e7\u00e3o_gerado_pelo_motor_herdado",
-      "community": 134,
-      "norm_label": "2. modulo novo \u2014 kit de participacao (gerado pelo motor herdado)"
-    },
-    {
-      "label": "3. As necessidades do fornecedor \u2192 de onde v\u00eam",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_3_as_necessidades_do_fornecedor_de_onde_v\u00eam",
-      "community": 134,
-      "norm_label": "3. as necessidades do fornecedor \u2192 de onde vem"
-    },
-    {
-      "label": "4. Travas (s\u00f3cio cr\u00edtico)",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L54",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_4_travas_s\u00f3cio_cr\u00edtico",
-      "community": 134,
-      "norm_label": "4. travas (socio critico)"
-    },
-    {
-      "label": "5. ORDEM DE MIGRA\u00c7\u00c3O",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_5_ordem_de_migra\u00e7\u00e3o",
-      "community": 134,
-      "norm_label": "5. ordem de migracao"
-    },
-    {
-      "label": "6. PONTOS DE INTEGRA\u00c7\u00c3O com o Sentinela atual",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L71",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_6_pontos_de_integra\u00e7\u00e3o_com_o_sentinela_atual",
-      "community": 134,
-      "norm_label": "6. pontos de integracao com o sentinela atual"
-    },
-    {
-      "label": "7. Veredito",
-      "file_type": "document",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L77",
-      "_origin": "ast",
-      "id": "docs_plano_migracao_meujuridico_sentinela_7_veredito",
-      "community": 134,
-      "norm_label": "7. veredito"
-    },
-    {
       "label": "REGUA-DE-EXECUCAO-E-AUTOTESTE.md",
       "file_type": "document",
       "source_file": "docs/REGUA-DE-EXECUCAO-E-AUTOTESTE.md",
@@ -7412,116 +7052,6 @@
       "id": "docs_regua_de_execucao_e_autoteste_resumo_em_uma_linha",
       "community": 98,
       "norm_label": "resumo em uma linha"
-    },
-    {
-      "label": "SENTINELA-RESUMO-EXECUTIVO.md",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo",
-      "community": 133,
-      "norm_label": "sentinela-resumo-executivo.md"
-    },
-    {
-      "label": "SENTINELA \u2014 RESUMO EXECUTIVO",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "community": 133,
-      "norm_label": "sentinela \u2014 resumo executivo"
-    },
-    {
-      "label": "1. O que \u00e9",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_1_o_que_\u00e9",
-      "community": 133,
-      "norm_label": "1. o que e"
-    },
-    {
-      "label": "2. A tese (o diferencial defens\u00e1vel)",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_2_a_tese_o_diferencial_defens\u00e1vel",
-      "community": 133,
-      "norm_label": "2. a tese (o diferencial defensavel)"
-    },
-    {
-      "label": "3. Mercado e concorr\u00eancia",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_3_mercado_e_concorr\u00eancia",
-      "community": 133,
-      "norm_label": "3. mercado e concorrencia"
-    },
-    {
-      "label": "4. Arquitetura",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_4_arquitetura",
-      "community": 133,
-      "norm_label": "4. arquitetura"
-    },
-    {
-      "label": "5. Estado atual (honesto)",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_5_estado_atual_honesto",
-      "community": 133,
-      "norm_label": "5. estado atual (honesto)"
-    },
-    {
-      "label": "6. Riscos e r\u00e9guas inegoci\u00e1veis",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_6_riscos_e_r\u00e9guas_inegoci\u00e1veis",
-      "community": 133,
-      "norm_label": "6. riscos e reguas inegociaveis"
-    },
-    {
-      "label": "7. Roadmap",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_7_roadmap",
-      "community": 133,
-      "norm_label": "7. roadmap"
-    },
-    {
-      "label": "8. Modelo de neg\u00f3cio",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_8_modelo_de_neg\u00f3cio",
-      "community": 133,
-      "norm_label": "8. modelo de negocio"
-    },
-    {
-      "label": "9. Veredito estrat\u00e9gico",
-      "file_type": "document",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L54",
-      "_origin": "ast",
-      "id": "docs_sentinela_resumo_executivo_9_veredito_estrat\u00e9gico",
-      "community": 133,
-      "norm_label": "9. veredito estrategico"
     },
     {
       "label": "conlicitacao-teardown.md",
@@ -8924,106 +8454,6 @@
       "norm_label": "entrega final (o que o bione vai testar de uma vez)"
     },
     {
-      "label": "prompt-fix-suite-100.md",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100",
-      "community": 135,
-      "norm_label": "prompt-fix-suite-100.md"
-    },
-    {
-      "label": "PROMPT \u2014 SU\u00cdTE 100% VERDE + BUGS REAIS (auditoria do Codex CONFIRMADA por evid\u00eancia)",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "community": 135,
-      "norm_label": "prompt \u2014 suite 100% verde + bugs reais (auditoria do codex confirmada por evidencia)"
-    },
-    {
-      "label": "FIX 1 \u2014 Testes velhos clicam no bot\u00e3o ERRADO (falso-negativo)",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_1_testes_velhos_clicam_no_bot\u00e3o_errado_falso_negativo",
-      "community": 135,
-      "norm_label": "fix 1 \u2014 testes velhos clicam no botao errado (falso-negativo)"
-    },
-    {
-      "label": "FIX 2 \u2014 `autotest-licitacao` desatualizado",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_2_autotest_licitacao_desatualizado",
-      "community": 135,
-      "norm_label": "fix 2 \u2014 `autotest-licitacao` desatualizado"
-    },
-    {
-      "label": "FIX 3 \u2014 `autotest-backfill` desatualizado",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_3_autotest_backfill_desatualizado",
-      "community": 135,
-      "norm_label": "fix 3 \u2014 `autotest-backfill` desatualizado"
-    },
-    {
-      "label": "FIX 4 \u2014 Recharts width/height -1 (bug visual real)",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_4_recharts_width_height_1_bug_visual_real",
-      "community": 135,
-      "norm_label": "fix 4 \u2014 recharts width/height -1 (bug visual real)"
-    },
-    {
-      "label": "FIX 5 \u2014 Duplica\u00e7\u00e3o / normaliza\u00e7\u00e3o de cidade",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_5_duplica\u00e7\u00e3o_normaliza\u00e7\u00e3o_de_cidade",
-      "community": 135,
-      "norm_label": "fix 5 \u2014 duplicacao / normalizacao de cidade"
-    },
-    {
-      "label": "FIX 6 \u2014 `RELATORIO-INTEGRACAO.md` honesto",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_fix_6_relatorio_integracao_md_honesto",
-      "community": 135,
-      "norm_label": "fix 6 \u2014 `relatorio-integracao.md` honesto"
-    },
-    {
-      "label": "DoD \u2014 a SU\u00cdTE INTEIRA verde (n\u00e3o s\u00f3 a integra\u00e7\u00e3o)",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L39",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_dod_a_su\u00edte_inteira_verde_n\u00e3o_s\u00f3_a_integra\u00e7\u00e3o",
-      "community": 135,
-      "norm_label": "dod \u2014 a suite inteira verde (nao so a integracao)"
-    },
-    {
-      "label": "Anti-falsa-confian\u00e7a",
-      "file_type": "document",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "docs_prompt_fix_suite_100_anti_falsa_confian\u00e7a",
-      "community": 135,
-      "norm_label": "anti-falsa-confianca"
-    },
-    {
       "label": "prompt-frontend-e-modelos.md",
       "file_type": "document",
       "source_file": "docs/prompt-frontend-e-modelos.md",
@@ -9401,66 +8831,6 @@
       "_origin": "ast",
       "id": "docs_prompt_kickoff_construcao_n\u00e3o_fazer_agora",
       "community": 89,
-      "norm_label": "nao fazer agora"
-    },
-    {
-      "label": "prompt-kickoff-transformacao.md",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao",
-      "community": 136,
-      "norm_label": "prompt-kickoff-transformacao.md"
-    },
-    {
-      "label": "PROMPT DE KICKOFF \u2014 IN\u00cdCIO DA TRANSFORMA\u00c7\u00c3O (Claude Code)",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "community": 136,
-      "norm_label": "prompt de kickoff \u2014 inicio da transformacao (claude code)"
-    },
-    {
-      "label": "ETAPA 0 \u2014 ESTABILIZAR (antes de qualquer feature nova)",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao_etapa_0_estabilizar_antes_de_qualquer_feature_nova",
-      "community": 136,
-      "norm_label": "etapa 0 \u2014 estabilizar (antes de qualquer feature nova)"
-    },
-    {
-      "label": "ETAPA 1 \u2014 CAMADA 1: HARVESTER DI\u00c1RIO NACIONAL (Descoberta)",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao_etapa_1_camada_1_harvester_di\u00e1rio_nacional_descoberta",
-      "community": 136,
-      "norm_label": "etapa 1 \u2014 camada 1: harvester diario nacional (descoberta)"
-    },
-    {
-      "label": "Depois (s\u00f3 pra voc\u00ea saber a dire\u00e7\u00e3o \u2014 n\u00e3o construir ainda)",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao_depois_s\u00f3_pra_voc\u00ea_saber_a_dire\u00e7\u00e3o_n\u00e3o_construir_ainda",
-      "community": 136,
-      "norm_label": "depois (so pra voce saber a direcao \u2014 nao construir ainda)"
-    },
-    {
-      "label": "N\u00c3O fazer agora",
-      "file_type": "document",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "docs_prompt_kickoff_transformacao_n\u00e3o_fazer_agora",
-      "community": 136,
       "norm_label": "nao fazer agora"
     },
     {
@@ -12670,7 +12040,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 11,
       "norm_label": "irp - intencao de registro de precos",
       "id": "estudo_fontes_irp"
     },
@@ -12865,7 +12235,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "fonte: querido diario (okbr)",
       "id": "mapa_fontes_querido_diario"
     },
@@ -12943,7 +12313,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "validacao v5: cobertura querido diario",
       "id": "mapa_fontes_v5"
     },
@@ -13320,7 +12690,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "tela 4: esteira / acompanhamento",
       "id": "prd_tela4_esteira"
     },
@@ -13359,7 +12729,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "indice de iminencia",
       "id": "prd_indice_iminencia"
     },
@@ -13606,7 +12976,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 5,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -13619,7 +12989,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -13632,7 +13002,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -14035,7 +13405,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 5,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -14126,7 +13496,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "querido diario api",
       "id": "sentinela_validacao_workorder_querido_diario_api"
     },
@@ -17446,17 +16816,6 @@
       "target": "lib_ibge_resolvemunicipio"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "radar_actions",
-      "target": "lib_ibge_titulocidade",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/radar/actions.ts",
@@ -17602,17 +16961,6 @@
       "weight": 1.0,
       "source": "radar_actions_monitorarcidade",
       "target": "lib_ibge_resolvemunicipio"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/radar/actions.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "radar_actions_monitorarcidade",
-      "target": "lib_ibge_titulocidade"
     },
     {
       "relation": "calls",
@@ -18896,49 +18244,6 @@
       "target": "components_charts_trenddatum"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/charts.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "components_charts",
-      "target": "components_charts_usechartwidth",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "components/charts.tsx",
-      "source_location": "L70",
-      "weight": 1.0,
-      "source": "components_charts_donutsegmento",
-      "target": "components_charts_usechartwidth",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "components/charts.tsx",
-      "source_location": "L107",
-      "weight": 1.0,
-      "source": "components_charts_linetendencia",
-      "target": "components_charts_usechartwidth",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "components/charts.tsx",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "components_charts_scorering",
-      "target": "components_charts_usechartwidth",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -19731,16 +19036,6 @@
       "source_file": "e2e/autotest-dashboard.mjs",
       "source_location": "L31",
       "weight": 1.0,
-      "source": "e2e_autotest_dashboard",
-      "target": "e2e_autotest_dashboard_rechartswarnings",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-dashboard.mjs",
-      "source_location": "L31",
-      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "e2e_autotest_dashboard",
       "target": "e2e_autotest_dashboard_results"
@@ -19851,9 +19146,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_aq"
+      "target": "e2e_autotest_integracao_aq",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19861,9 +19156,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_consoleerrors"
+      "target": "e2e_autotest_integracao_consoleerrors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19871,9 +19166,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_deluser"
+      "target": "e2e_autotest_integracao_deluser",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19881,9 +19176,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_e"
+      "target": "e2e_autotest_integracao_e",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19891,9 +19186,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_h"
+      "target": "e2e_autotest_integracao_h",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19901,9 +19196,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_neterrors"
+      "target": "e2e_autotest_integracao_neterrors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19911,9 +19206,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_num"
+      "target": "e2e_autotest_integracao_num",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19921,9 +19216,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_ok"
+      "target": "e2e_autotest_integracao_ok",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19931,9 +19226,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_onboard"
+      "target": "e2e_autotest_integracao_onboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19941,9 +19236,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_readenv"
+      "target": "e2e_autotest_integracao_readenv",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19951,9 +19246,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_results"
+      "target": "e2e_autotest_integracao_results",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19961,9 +19256,9 @@
       "source_file": "e2e/autotest-integracao.mjs",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_integracao",
-      "target": "e2e_autotest_integracao_sb"
+      "target": "e2e_autotest_integracao_sb",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -20490,46 +19785,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "e2e_run_all",
-      "target": "e2e_run_all_suite",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "e2e_run_all",
-      "target": "e2e_run_all_summary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "e2e_run_all",
-      "target": "e2e_run_all_t0",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/run-all.mjs",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "e2e_run_all",
-      "target": "e2e_run_all_total",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "e2e/tour.mjs",
       "source_location": "L7",
       "weight": 1.0,
@@ -20986,16 +20241,6 @@
       "confidence_score": 1.0,
       "source": "lib_ibge",
       "target": "lib_ibge_resolvemunicipio"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/ibge.ts",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "lib_ibge",
-      "target": "lib_ibge_titulocidade",
-      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -24450,9 +23695,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao",
-      "target": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21"
+      "target": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24460,9 +23705,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L58",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_build_qualidade"
+      "target": "relatorio_integracao_build_qualidade",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24470,9 +23715,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_conex\u00f5es_100_8_8_bot\u00f5es_100_todos_reais_ou_honestamente_desabilitados"
+      "target": "relatorio_integracao_conex\u00f5es_100_8_8_bot\u00f5es_100_todos_reais_ou_honestamente_desabilitados",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24480,9 +23725,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_part_0_mock_morto_evid\u00eancia"
+      "target": "relatorio_integracao_part_0_mock_morto_evid\u00eancia",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24490,9 +23735,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_part_1_matriz_de_conex\u00f5es_todo_dado_vem_do_supabase_real"
+      "target": "relatorio_integracao_part_1_matriz_de_conex\u00f5es_todo_dado_vem_do_supabase_real",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24500,9 +23745,9 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L31",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_part_2_matriz_de_bot\u00f5es_a\u00e7\u00f5es_nada_no_lugar_errado"
+      "target": "relatorio_integracao_part_2_matriz_de_bot\u00f5es_a\u00e7\u00f5es_nada_no_lugar_errado",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24510,38 +23755,8 @@
       "source_file": "RELATORIO-INTEGRACAO.md",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_part_3_anti_falsa_confian\u00e7a_provas_duras"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "relatorio_integracao_relat\u00f3rio_de_integra\u00e7\u00e3o_back_front_2026_06_21",
-      "target": "relatorio_integracao_su\u00edte_inteira_verde_atualiza\u00e7\u00e3o_2026_06_22_fix_6",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L78",
-      "weight": 1.0,
-      "source": "relatorio_integracao_su\u00edte_inteira_verde_atualiza\u00e7\u00e3o_2026_06_22_fix_6",
-      "target": "relatorio_integracao_o_que_100_significa_honestidade",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RELATORIO-INTEGRACAO.md",
-      "source_location": "L69",
-      "weight": 1.0,
-      "source": "relatorio_integracao_su\u00edte_inteira_verde_atualiza\u00e7\u00e3o_2026_06_22_fix_6",
-      "target": "relatorio_integracao_qual_teste_estava_velho_o_que_foi_corrigido",
+      "target": "relatorio_integracao_part_3_anti_falsa_confian\u00e7a_provas_duras",
       "confidence_score": 1.0
     },
     {
@@ -24763,146 +23978,6 @@
       "confidence_score": 1.0,
       "source": "docs_00_comece_aqui_sentinela_comece_aqui",
       "target": "docs_00_comece_aqui_\u00edndice_da_base_documental_ordem_de_constru\u00e7\u00e3o_abrir_isto_primeiro"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao",
-      "target": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L91",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_arquitetura_de_dados_3_camadas_resolve_como_baixar_sem_explodir_o_banco",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_estado_atual_funda\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_fonte_de_verdade_da_execu\u00e7\u00e3o_para_o_claude_code_ler_e_seguir_etapa_por_etapa_jun_2026",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L51",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_migra\u00e7\u00e3o_meujur\u00eddico_motores_trilha_paralela_funda\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L86",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_nota_naming",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_princ\u00edpio_decis\u00e3o_do_bione",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L75",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_r\u00e9guas_todas_as_etapas",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L61",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_sequ\u00eancia_etapa_por_etapa_maximiza_valor_respeita_depend\u00eancias",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L105",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_sequ\u00eancia_revisada_come\u00e7a_agora",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L100",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_teste_de_aceita\u00e7\u00e3o_no1_defini\u00e7\u00e3o_de_pronto_do_produto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_trilha_a_dados_construir_as_fontes_que_faltam",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_trilha_b_m\u00f3dulos_telas_ligando_o_dado_conforme_a_entrega",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/00-PLANO-MESTRE-CONSTRUCAO.md",
-      "source_location": "L45",
-      "weight": 1.0,
-      "source": "docs_00_plano_mestre_construcao_plano_mestre_de_constru\u00e7\u00e3o_sentinela",
-      "target": "docs_00_plano_mestre_construcao_trilha_c_pesquisa_liberdade_poder_ao_fornecedor",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25577,96 +24652,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela",
-      "target": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_1_invent\u00e1rio_o_que_migra_motor_por_motor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_2_m\u00f3dulo_novo_kit_de_participa\u00e7\u00e3o_gerado_pelo_motor_herdado",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_3_as_necessidades_do_fornecedor_de_onde_v\u00eam",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_4_travas_s\u00f3cio_cr\u00edtico",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_5_ordem_de_migra\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L71",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_6_pontos_de_integra\u00e7\u00e3o_com_o_sentinela_atual",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L77",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_7_veredito",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "docs_plano_migracao_meujuridico_sentinela_plano_de_migra\u00e7\u00e3o_meujur\u00eddico_sentinela_consolida\u00e7\u00e3o_de_produtos",
-      "target": "docs_plano_migracao_meujuridico_sentinela_princ\u00edpio",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "docs/REGUA-DE-EXECUCAO-E-AUTOTESTE.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -25733,106 +24718,6 @@
       "confidence_score": 1.0,
       "source": "docs_regua_de_execucao_e_autoteste_r\u00e9gua_de_execu\u00e7\u00e3o_e_autoteste_governa_todo_o_trabalho_no_terminal",
       "target": "docs_regua_de_execucao_e_autoteste_resumo_em_uma_linha"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_1_o_que_\u00e9",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_2_a_tese_o_diferencial_defens\u00e1vel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_3_mercado_e_concorr\u00eancia",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_4_arquitetura",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_5_estado_atual_honesto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L38",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_6_riscos_e_r\u00e9guas_inegoci\u00e1veis",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_7_roadmap",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L51",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_8_modelo_de_neg\u00f3cio",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/SENTINELA-RESUMO-EXECUTIVO.md",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "docs_sentinela_resumo_executivo_sentinela_resumo_executivo",
-      "target": "docs_sentinela_resumo_executivo_9_veredito_estrat\u00e9gico",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27097,96 +25982,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100",
-      "target": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_anti_falsa_confian\u00e7a",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_dod_a_su\u00edte_inteira_verde_n\u00e3o_s\u00f3_a_integra\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_1_testes_velhos_clicam_no_bot\u00e3o_errado_falso_negativo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_2_autotest_licitacao_desatualizado",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_3_autotest_backfill_desatualizado",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_4_recharts_width_height_1_bug_visual_real",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_5_duplica\u00e7\u00e3o_normaliza\u00e7\u00e3o_de_cidade",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-fix-suite-100.md",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "docs_prompt_fix_suite_100_prompt_su\u00edte_100_verde_bugs_reais_auditoria_do_codex_confirmada_por_evid\u00eancia",
-      "target": "docs_prompt_fix_suite_100_fix_6_relatorio_integracao_md_honesto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "docs/prompt-frontend-e-modelos.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -27513,56 +26308,6 @@
       "confidence_score": 1.0,
       "source": "docs_prompt_kickoff_construcao_bloco_0_funda\u00e7\u00e3o_de_dados_fa\u00e7a_agora_em_2_passos",
       "target": "docs_prompt_kickoff_construcao_0_2_ingest\u00e3o_no_supabase_staging_cru"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_prompt_kickoff_transformacao",
-      "target": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "target": "docs_prompt_kickoff_transformacao_depois_s\u00f3_pra_voc\u00ea_saber_a_dire\u00e7\u00e3o_n\u00e3o_construir_ainda",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "target": "docs_prompt_kickoff_transformacao_etapa_0_estabilizar_antes_de_qualquer_feature_nova",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "target": "docs_prompt_kickoff_transformacao_etapa_1_camada_1_harvester_di\u00e1rio_nacional_descoberta",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/prompt-kickoff-transformacao.md",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "docs_prompt_kickoff_transformacao_prompt_de_kickoff_in\u00edcio_da_transforma\u00e7\u00e3o_claude_code",
-      "target": "docs_prompt_kickoff_transformacao_n\u00e3o_fazer_agora",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
