@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus, ShieldAlert, AlarmClock, Search } from "lucide-react";
+import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus, ShieldAlert, AlarmClock, Search, CalendarClock, Repeat } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Badge, Button, Select, Input } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { municipiosDaUf } from "@/lib/ibge";
 import { expandirBusca, ufDoTexto } from "@/lib/nichos";
+import { buscarPCA, buscarRecorrencia, type PcaItem, type RecorrenciaItem, type Filtro } from "@/lib/antecipacao";
 import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
 import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
 import { dataBR } from "@/lib/utils";
@@ -24,9 +25,10 @@ type Edital = {
   link_origem: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
 };
 
-export default async function RadarPage({ searchParams }: { searchParams: Promise<{ q?: string; uf?: string }> }) {
+export default async function RadarPage({ searchParams }: { searchParams: Promise<{ q?: string; uf?: string; pilar?: string }> }) {
   const sp = await searchParams;
   const busca = (sp.q ?? "").trim();
+  const pilar: "dia" | "antecipacao" = sp.pilar === "antecipacao" ? "antecipacao" : "dia";
   const supabase = await createClient();
   const { data: company } = await supabase.from("company").select("segmentos, municipio, uf").maybeSingle();
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
@@ -53,22 +55,22 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
 
   // Escopo: cidades prontas (preciso) OU fallback por UF (honesto, enquanto coleta)
   const usandoFallbackUf = prontas.length === 0;
-  const SELECT = "numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, data_encerramento, cnpj_orgao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)";
+  const SELECT = "numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, data_encerramento, cnpj_orgao, link_origem, cidade, orgao:cnpj_orgao(razao_social)";
   // UF da busca: explícita (?uf=), ou inferida do texto ("no Piauí"→PI), ou a UF da empresa.
   const ufBusca = busca ? (sp.uf || ufDoTexto(busca) || uf) : null;
 
   let q = supabase.from("raw_editais").select(SELECT).is("valor_homologado", null);
   if (busca) {
-    // Busca livre por nicho/objeto (SINÔNIMOS) numa UF — cruza o recorte da empresa.
+    // Busca livre por nicho/objeto (SINÔNIMOS) numa UF — uf_sigla denormalizado (índice) + trigram objeto.
     const termos = expandirBusca(busca);
     if (termos.length) q = q.or(termos.map((t) => `objeto.ilike.*${t}*`).join(","));
-    q = q.eq("orgao.uf_sigla", ufBusca!);
+    q = q.eq("uf_sigla", ufBusca!);
     // abertas/em andamento: exclui mortas + mantém prazo futuro OU desconhecido (honesto)
     q = q.not("situacao_nome", "in", '("Revogada","Anulada","Cancelada","Deserta","Fracassada")');
     q = q.or(`data_encerramento.is.null,data_encerramento.gte.${new Date().toISOString()}`);
   } else {
     q = q.overlaps("segmentos", segmentos);
-    q = usandoFallbackUf ? q.eq("orgao.uf_sigla", uf) : q.in("cidade", prontas);
+    q = usandoFallbackUf ? q.eq("uf_sigla", uf) : q.in("cidade", prontas);
   }
   const { data: rows } = await q.order("data_publicacao", { ascending: false }).limit(60);
   const editais = (rows ?? []) as unknown as Edital[];
@@ -92,6 +94,18 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const stageBy: Record<string, string> = {};
   for (const o of oports ?? []) stageBy[o.numero_controle_pncp] = o.stage;
   const visiveis = editais.filter((e) => stageBy[e.numero_controle_pncp] !== "descartado");
+
+  // Pilar 2 — Antecipação: PCA (planejado) + recorrência (homologados). Só busca se for a aba ativa.
+  const filtro: Filtro = { busca, segmentos, uf, prontas, usandoFallbackUf, ufBusca: ufBusca ?? uf };
+  let pca: PcaItem[] = [];
+  let recorrenciaItens: RecorrenciaItem[] = [];
+  if (pilar === "antecipacao") {
+    [pca, recorrenciaItens] = await Promise.all([buscarPCA(supabase, filtro), buscarRecorrencia(supabase, filtro)]);
+  }
+  // Links de aba preservando a busca atual.
+  const qsBusca = busca ? `q=${encodeURIComponent(busca)}&uf=${ufBusca ?? uf}&` : "";
+  const hrefDia = `/radar?${qsBusca}pilar=dia`;
+  const hrefAntec = `/radar?${qsBusca}pilar=antecipacao`;
 
   const municipios = await municipiosDaUf(uf);
 
@@ -122,6 +136,18 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
           )}
         </CardContent>
       </Card>
+
+      {/* 2 pilares: Licitação do Dia (aberto) × Antecipação (pré-edital) */}
+      <div className="inline-flex gap-1 rounded-lg bg-muted p-1 text-sm" data-testid="radar-pilares">
+        <Link href={hrefDia} data-testid="pilar-dia"
+          className={`rounded-md px-3 py-1 font-medium ${pilar === "dia" ? "bg-card text-foreground shadow" : "text-muted-foreground"}`}>
+          Licitação do Dia
+        </Link>
+        <Link href={hrefAntec} data-testid="pilar-antecipacao"
+          className={`inline-flex items-center gap-1 rounded-md px-3 py-1 font-medium ${pilar === "antecipacao" ? "bg-card text-foreground shadow" : "text-muted-foreground"}`}>
+          <CalendarClock className="size-3.5" /> Antecipação
+        </Link>
+      </div>
 
       {/* Escopo de cidades */}
       <Card>
@@ -180,7 +206,8 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
         </Card>
       )}
 
-      {visiveis.length === 0 ? (
+      {pilar === "dia" ? (
+        visiveis.length === 0 ? (
         <EmptyState titulo="Nenhum edital em andamento agora" texto={busca
           ? `Nenhum edital aberto para “${busca}” em ${ufBusca} agora — pode ser vazio verdadeiro (nem toda semana há licitação aberta desse nicho nesta UF).`
           : `Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
@@ -242,6 +269,70 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
             );
           })}
         </div>
+        )
+      ) : (
+        <AntecipacaoLista pca={pca} rec={recorrenciaItens} busca={busca} uf={ufBusca ?? uf} usandoFallbackUf={usandoFallbackUf} />
+      )}
+    </div>
+  );
+}
+
+function AntecipacaoLista({ pca, rec, busca, uf, usandoFallbackUf }:
+  { pca: PcaItem[]; rec: RecorrenciaItem[]; busca: string; uf: string; usandoFallbackUf: boolean }) {
+  const vazio = pca.length === 0 && rec.length === 0;
+  return (
+    <div className="space-y-3">
+      <p className="rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
+        <strong className="text-foreground">Antecipação:</strong> o que está se <strong>formando</strong> antes do edital —
+        itens <strong>planejados</strong> (PCA) e órgãos <strong>recorrentes</strong>. É <strong>probabilidade, não promessa</strong>:
+        “planejado / pode virar edital”, nunca “vai ter com certeza”.
+      </p>
+      {vazio ? (
+        <EmptyState titulo="Sem sinais de antecipação agora" texto={busca
+          ? `Nenhum PCA ou recorrência para “${busca}” em ${uf} — pode ser vazio verdadeiro (PCA municipal é raro; o sinal acende quando entrar).`
+          : `Sem PCA/recorrência do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento. Contrato vencendo entra quando a coleta de contratos ligar (em ingestão).`} />
+      ) : (
+        <>
+          {pca.map((p) => (
+            <Card key={p.id} data-testid="antecipacao-card">
+              <CardContent className="p-4">
+                <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                  <Badge variant="secondary" className="gap-1"><CalendarClock className="size-3" /> PCA {p.ano_pca ?? ""}</Badge>
+                  <Badge variant="muted">planejado — pode virar edital</Badge>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <Building2 className="size-3.5" />
+                  <span className="font-medium text-foreground">{p.orgao?.razao_social ?? "Órgão"}</span>
+                  {p.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {p.cidade}</span>}
+                  {p.data_desejada && <span className="ml-auto">desejada: {dataBR(p.data_desejada.slice(0, 10))}</span>}
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm">{p.descricao_item ?? "Item planejado"}</p>
+                <div className="mt-2 text-xs font-semibold text-foreground">{brl(p.valor_total) ?? "Valor planejado não informado"}</div>
+              </CardContent>
+            </Card>
+          ))}
+          {rec.map((r) => (
+            <Card key={r.numero_controle_pncp} data-testid="antecipacao-card">
+              <CardContent className="p-4">
+                <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                  <Badge variant="warning" className="gap-1"><Repeat className="size-3" /> recorrência</Badge>
+                  <Badge variant="muted">já contratou — tende a repetir</Badge>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <Building2 className="size-3.5" />
+                  <span className="font-medium text-foreground">{r.orgao?.razao_social ?? "Órgão"}</span>
+                  {r.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {r.cidade}</span>}
+                  <span className="ml-auto">{r.data_publicacao ? dataBR(r.data_publicacao.slice(0, 10)) : ""}</span>
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm">{r.objeto}</p>
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
+                  <span className="font-semibold text-foreground">{brl(r.valor_homologado) ?? "—"} <span className="font-normal text-muted-foreground">contratado antes</span></span>
+                  {r.link_origem && <a href={r.link_origem} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline"><ExternalLink className="size-3" /> Origem</a>}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </>
       )}
     </div>
   );

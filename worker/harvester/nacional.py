@@ -142,6 +142,7 @@ def to_rows(itens):
         ed_rows.append({
             "numero_controle_pncp": e.get("numeroControlePNCP"),
             "cnpj_orgao": cnpj,
+            "uf_sigla": uo.get("ufSigla"),
             "cidade": uo.get("municipioNome"),
             "segmentos": classificar(e.get("objetoCompra")),
             "objeto": e.get("objetoCompra"),

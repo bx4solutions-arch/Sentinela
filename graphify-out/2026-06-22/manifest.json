@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782083788.4489076,
-    "ast_hash": "3f62c2bbe8f9828747b538eabd1ee1ad",
+    "mtime": 1782164637.2677593,
+    "ast_hash": "8426f8d88425547386b940d027dbe843",
     "semantic_hash": ""
   },
   "app/(shell)/roadmap/page.tsx": {
@@ -800,8 +800,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-integracao.mjs": {
-    "mtime": 1782082157.7756727,
-    "ast_hash": "ca4c8d2066db29ff1fc2c4a694689e24",
+    "mtime": 1782165859.8251083,
+    "ast_hash": "9ffc23998fa7e71eee05794cd5d06d17",
     "semantic_hash": ""
   },
   "RELATORIO-INTEGRACAO.md": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782162515.8643813,
-    "ast_hash": "361775731b944c3126daf5dcb21c69b0",
+    "mtime": 1782164886.0917597,
+    "ast_hash": "86bb2f892fefb6905f1291f250fd40de",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -837,6 +837,41 @@
   "docs/prompt-kickoff-transformacao.md": {
     "mtime": 1782160860.1542456,
     "ast_hash": "30953ccf7d4dc85bf85bb91dbc6b1f19",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-harvester.mjs": {
+    "mtime": 1782164831.0482616,
+    "ast_hash": "81fffa9802fd36d79f353ec8f3e85126",
+    "semantic_hash": ""
+  },
+  "lib/nichos.ts": {
+    "mtime": 1782164477.817042,
+    "ast_hash": "11202b6fd64d1cb03e0303281bf2f877",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/0012_busca_objeto_trgm.sql": {
+    "mtime": 1782164456.2251635,
+    "ast_hash": "6e87289f9235cec93974b7e080672920",
+    "semantic_hash": ""
+  },
+  "worker/harvester/nacional.py": {
+    "mtime": 1782163600.212587,
+    "ast_hash": "ceb282603f84953ed25c745c6b91e5dd",
+    "semantic_hash": ""
+  },
+  "worker/harvester/probe_nacional.py": {
+    "mtime": 1782163397.991002,
+    "ast_hash": "f0a946d8c3c8da3be7cf86a57e3ae418",
+    "semantic_hash": ""
+  },
+  "worker/harvester/PROBE-NACIONAL.md": {
+    "mtime": 1782163512.2370672,
+    "ast_hash": "074f76b550f7b3abd8db7000cccc047f",
+    "semantic_hash": ""
+  },
+  "worker/harvester/RUNBOOK-NACIONAL.md": {
+    "mtime": 1782164778.925604,
+    "ast_hash": "afd28d55db21b539366678aa1a262139",
     "semantic_hash": ""
   }
 }

@@ -3,26 +3,24 @@
 // "dedetização", "controle de pragas". A semântica de verdade fica para a Etapa 2 (embeddings);
 // aqui é o conjunto de termos (OR de ilike). `ilike "mosquito"` sozinho volta vazio mesmo com dado.
 
-// Grupos de sinônimos por nicho. Se o termo digitado casar QUALQUER sinônimo do grupo,
-// a busca expande para o grupo inteiro.
+// Grupos de sinônimos por nicho — TOKENS DISTINTOS (substrings), sem plural/multi-palavra
+// redundante: "vetor" já casa "controle de vetores"/"vetores"; "praga" casa "pragas".
+// Menos termos = menos OR de ilike = busca rápida (cada termo é um bitmap no índice trigram).
 const SINONIMOS: string[][] = [
   // controle de vetores / pragas / endemias
-  ["vetor", "vetores", "dengue", "endemia", "endemias", "mosquito", "praga", "pragas",
-   "dedetiz", "desinsetiz", "desratiz", "descupiniz", "sanitiz", "controle de praga", "controle de vetor"],
+  ["vetor", "dengue", "endemia", "mosquito", "praga", "dedetiz", "desinsetiz", "desratiz", "descupiniz", "sanitiz"],
   // material hospitalar
-  ["hospitalar", "médico-hospitalar", "material médico", "seringa", "cateter", "curativo", "medicamento"],
+  ["hospitalar", "seringa", "cateter", "curativo", "medicamento", "odontolog"],
   // material de expediente
   ["expediente", "escritório", "papel a4", "toner", "cartucho", "almoxarifado"],
 ];
 
-/** Expande o termo digitado para os ilike a aplicar. Casa por substring nos dois sentidos. */
+/** Expande o termo digitado para os ilike a aplicar. Se casar um grupo, usa só o grupo (tight). */
 export function expandirBusca(q: string): string[] {
   const t = (q ?? "").trim().toLowerCase();
   if (!t) return [];
   for (const grupo of SINONIMOS) {
-    if (grupo.some((s) => t.includes(s) || s.includes(t))) {
-      return Array.from(new Set([t, ...grupo]));
-    }
+    if (grupo.some((s) => t.includes(s) || s.includes(t))) return grupo;
   }
   return [t];
 }

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import {
   Radar as RadarIcon, Eye, CalendarClock, Gauge, ShieldAlert, ArrowRight, Flame, GitBranch,
-  Clock, Sparkles, TrendingUp, MapPin,
+  Clock, Sparkles, TrendingUp, MapPin, Repeat, ExternalLink,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Progress } from "@/components/ui";
+import { buscarPCA, buscarRecorrencia, montarLinhaDoTempo, type Filtro, type RecorrenciaItem, type SinalLinha } from "@/lib/antecipacao";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { CERTIDAO_LABEL, diasAteVencer, statusCertidao } from "@/lib/certidoes";
 import { itensAplicaveis, calcProntidao } from "@/lib/habilitacao";
@@ -63,7 +64,7 @@ export default async function DashboardPage() {
   if (temNicho) {
     const sel = usaCidades
       ? supabase.from("raw_editais").select("data_publicacao, segmentos").in("cidade", prontas)
-      : supabase.from("raw_editais").select("data_publicacao, segmentos, orgao:cnpj_orgao!inner(uf_sigla)").eq("orgao.uf_sigla", uf!);
+      : supabase.from("raw_editais").select("data_publicacao, segmentos").eq("uf_sigla", uf!);
     const { data } = await sel.overlaps("segmentos", segmentos).is("valor_homologado", null).limit(3000);
     abertosRows = (data ?? []) as unknown as typeof abertosRows;
   }
@@ -108,6 +109,20 @@ export default async function DashboardPage() {
   }
   const prioridade = (pub: string | null) => { if (!pub) return 40; const dias = Math.floor((agora.getTime() - new Date(pub).getTime()) / 86400000); return Math.max(35, 100 - Math.min(dias, 65)); };
 
+  // Linha do Tempo de Sinais (Etapa 2) — só o que TEM dado: PCA + recorrência + republicação.
+  let timeline: SinalLinha[] = [];
+  if (temNicho) {
+    const filtroDash: Filtro = { busca: "", segmentos, uf: uf!, prontas, usandoFallbackUf: !usaCidades, ufBusca: null };
+    const [pcaD, recD] = await Promise.all([buscarPCA(supabase, filtroDash), buscarRecorrencia(supabase, filtroDash)]);
+    let repQ = supabase.from("raw_editais")
+      .select("numero_controle_pncp, objeto, valor_homologado, data_publicacao, cidade, cnpj_orgao, uf_sigla, link_origem, orgao:cnpj_orgao(razao_social)")
+      .overlaps("segmentos", segmentos).or("situacao_nome.ilike.*fracassad*,situacao_nome.ilike.*desert*");
+    repQ = usaCidades ? repQ.in("cidade", prontas) : repQ.eq("uf_sigla", uf!);
+    const { data: repD } = await repQ.order("data_publicacao", { ascending: false }).limit(10);
+    timeline = montarLinhaDoTempo(pcaD, recD, (repD ?? []) as unknown as RecorrenciaItem[]).slice(0, 14);
+  }
+  const seloTone: Record<SinalLinha["tone"], "secondary" | "warning" | "muted"> = { navy: "secondary", amber: "warning", slate: "muted" };
+
   return (
     <div className="space-y-5">
       {/* Thesis / antecipação (nosso diferencial) */}
@@ -119,6 +134,35 @@ export default async function DashboardPage() {
         </div>
         <p className="mt-1 text-xs text-sidebar-foreground/70">Sinais pré-edital (PCA→DFD→ETP→TR→Edital) entram com a ingestão de atas/PCA. Hoje: editais abertos do seu nicho em tempo real.</p>
       </div>
+
+      {/* Linha do Tempo de Sinais (Antecipação) — só o que tem dado */}
+      {timeline.length > 0 && (
+        <Card data-testid="linha-tempo-sinais">
+          <CardHeader className="flex-row items-center justify-between space-y-0">
+            <CardTitle className="flex items-center gap-2 text-base"><CalendarClock className="size-4 text-primary" /> Linha do Tempo de Sinais</CardTitle>
+            <Button asChild variant="ghost" size="sm"><Link href="/radar?pilar=antecipacao">Ver Antecipação <ArrowRight className="size-4" /></Link></Button>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-3 text-xs text-muted-foreground">Sinais reais do seu recorte — <strong>probabilidade, não promessa</strong>. Contrato vencendo entra quando a coleta de contratos ligar (em ingestão).</p>
+            <ol className="relative space-y-3 border-l pl-4">
+              {timeline.map((s, i) => (
+                <li key={i} className="relative" data-testid="sinal-item">
+                  <span className="absolute -left-[21px] top-1 size-2.5 rounded-full bg-primary" />
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                    <Badge variant={seloTone[s.tone]} className="gap-1">
+                      {s.tipo === "recorrencia" ? <Repeat className="size-3" /> : s.tipo === "pca" ? <CalendarClock className="size-3" /> : <Clock className="size-3" />}{s.selo}
+                    </Badge>
+                    <span className="font-medium text-foreground">{s.orgao}</span>
+                    {s.data && <span className="ml-auto">{dataBR(s.data)}</span>}
+                  </div>
+                  <p className="mt-1 line-clamp-1 text-sm">{s.titulo}</p>
+                  <p className="text-xs text-muted-foreground">{s.detalhe}{s.link && <> · <a href={s.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-primary hover:underline"><ExternalLink className="size-3" />fonte</a></>}</p>
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
+      )}
 
       {/* KPIs */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-6">
