@@ -7,6 +7,16 @@ const E = readEnv(); const SB = E.SUPABASE_URL.replace(/\/$/, ""); const H = { a
 async function aq(sql) { const ref = E.SUPABASE_PROJECT_REF || "ciupgqwsdmmmqpvbtyxx"; const r = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, { method: "POST", headers: { Authorization: `Bearer ${E.SUPABASE_ACCESS_TOKEN}`, "Content-Type": "application/json", "User-Agent": "x" }, body: JSON.stringify({ query: sql }) }); return r.json(); }
 async function delUser(email) { const list = await (await fetch(`${SB}/auth/v1/admin/users`, { headers: H })).json(); for (const u of list.users || []) if (u.email === email) await fetch(`${SB}/auth/v1/admin/users/${u.id}`, { method: "DELETE", headers: H }); }
 const NUM = (s) => (s.match(/\d{14}-\d-\d{6}\/\d{4}/) || [])[0] || null;
+// Espera a condição no banco (poll) em vez de sleep fixo — robusto sob carga da suíte.
+async function aqUntil(sql, pred, ms = 10000) {
+  const t0 = Date.now(); let last;
+  while (Date.now() - t0 < ms) { last = await aq(sql); if (pred(last)) return last; await new Promise((r) => setTimeout(r, 400)); }
+  return last;
+}
+// Espera um locator sumir do DOM (revalidação do Server Action) — em vez de sleep fixo.
+async function untilGone(locator, ms = 8000) {
+  const t0 = Date.now(); while (Date.now() - t0 < ms) { if ((await locator.count()) === 0) return true; await new Promise((r) => setTimeout(r, 300)); } return (await locator.count()) === 0;
+}
 
 const results = []; const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
 const consoleErrors = []; const netErrors = [];
@@ -60,8 +70,7 @@ try {
   const cardM = page.locator("[data-testid=edital-card]").nth(1);
   const numM = NUM(await cardM.innerText());
   await cardM.locator("form:has-text('Monitorar') button[type=submit]").first().click();
-  await page.waitForTimeout(1200);
-  const monDb = await aq(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`);
+  const monDb = await aqUntil(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`, (r) => r?.[0]?.stage === "monitorando");
   ok("MONITORAR muda o registro CERTO (X→monitorando)", monDb?.[0]?.stage === "monitorando", `num=${numM}`);
 
   // ---- DESCARTAR + motivo → registro CERTO + some ----
@@ -69,24 +78,22 @@ try {
   const numD = NUM(await cardD.innerText());
   await cardD.locator("select[aria-label='Motivo do descarte']").selectOption("prazo_passou");
   await cardD.locator("form:has(select[aria-label='Motivo do descarte']) button[type=submit]").click();
-  await page.waitForTimeout(1200);
-  const descDb = await aq(`select stage, motivo from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numD}';`);
+  const descDb = await aqUntil(`select stage, motivo from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numD}';`, (r) => r?.[0]?.stage === "descartado");
   ok("DESCARTAR salva registro CERTO + motivo", descDb?.[0]?.stage === "descartado" && descDb?.[0]?.motivo === "prazo_passou", `num=${numD}`);
-  ok("DESCARTAR: edital some do Radar", (await page.locator(`text=${numD}`).count()) === 0);
+  ok("DESCARTAR: edital some do Radar", await untilGone(page.locator(`text=${numD}`)));
 
   // ---- KANBAN: o monitorado aparece e move pro registro CERTO ----
   await page.goto(`${BASE}/kanban`, { waitUntil: "networkidle" });
   ok("KANBAN mostra o edital monitorado", (await page.locator("text=Monitorando").count()) > 0);
   await page.locator("button[aria-label='Avançar etapa']").first().click();
-  await page.waitForTimeout(1200);
-  const kanDb = await aq(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`);
+  const kanDb = await aqUntil(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`, (r) => r?.[0]?.stage === "preparacao");
   ok("KANBAN mover muda o registro CERTO (X→preparacao)", kanDb?.[0]?.stage === "preparacao");
 
   // ---- CONFIGURAÇÕES salva valores CERTOS ----
   await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
   await page.selectOption("#provider", "mock"); await page.waitForTimeout(200); await page.selectOption("#model", "mock-1");
-  await page.click("button:has-text('Salvar configuração')"); await page.waitForTimeout(1000);
-  const cfgDb = await aq(`select provider, model from tenant_ai_config c join auth.users u on u.id=c.tenant_id where u.email='${t1}';`);
+  await page.click("button:has-text('Salvar configuração')");
+  const cfgDb = await aqUntil(`select provider, model from tenant_ai_config c join auth.users u on u.id=c.tenant_id where u.email='${t1}';`, (r) => r?.[0]?.provider === "mock" && r?.[0]?.model === "mock-1");
   ok("CONFIG salva provedor/modelo CERTOS", cfgDb?.[0]?.provider === "mock" && cfgDb?.[0]?.model === "mock-1");
 
   // ---- RLS: tenant 2 NÃO vê as oportunidades do tenant 1 ----

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus, ShieldAlert, AlarmClock } from "lucide-react";
+import { Radar as RadarIcon, MapPin, Building2, ExternalLink, Eye, X, Undo2, ArrowRight, Sparkles, Loader2, Plus, ShieldAlert, AlarmClock, Search } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent, Badge, Button, Select } from "@/components/ui";
+import { Card, CardContent, Badge, Button, Select, Input } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { municipiosDaUf } from "@/lib/ibge";
+import { expandirBusca, ufDoTexto } from "@/lib/nichos";
 import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
 import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
 import { dataBR } from "@/lib/utils";
@@ -13,6 +14,9 @@ import { CityPicker } from "./city-picker";
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
 
+const UFS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
+  "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
+
 type Edital = {
   numero_controle_pncp: string; objeto: string | null; valor_estimado: number | null;
   situacao_nome: string | null; modalidade_nome: string | null; data_publicacao: string | null;
@@ -20,7 +24,9 @@ type Edital = {
   link_origem: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
 };
 
-export default async function RadarPage() {
+export default async function RadarPage({ searchParams }: { searchParams: Promise<{ q?: string; uf?: string }> }) {
+  const sp = await searchParams;
+  const busca = (sp.q ?? "").trim();
   const supabase = await createClient();
   const { data: company } = await supabase.from("company").select("segmentos, municipio, uf").maybeSingle();
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
@@ -47,10 +53,23 @@ export default async function RadarPage() {
 
   // Escopo: cidades prontas (preciso) OU fallback por UF (honesto, enquanto coleta)
   const usandoFallbackUf = prontas.length === 0;
-  let q = supabase.from("raw_editais")
-    .select("numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, data_encerramento, cnpj_orgao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)")
-    .overlaps("segmentos", segmentos).is("valor_homologado", null);
-  q = usandoFallbackUf ? q.eq("orgao.uf_sigla", uf) : q.in("cidade", prontas);
+  const SELECT = "numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, data_publicacao, data_encerramento, cnpj_orgao, link_origem, cidade, orgao:cnpj_orgao!inner(razao_social, uf_sigla)";
+  // UF da busca: explícita (?uf=), ou inferida do texto ("no Piauí"→PI), ou a UF da empresa.
+  const ufBusca = busca ? (sp.uf || ufDoTexto(busca) || uf) : null;
+
+  let q = supabase.from("raw_editais").select(SELECT).is("valor_homologado", null);
+  if (busca) {
+    // Busca livre por nicho/objeto (SINÔNIMOS) numa UF — cruza o recorte da empresa.
+    const termos = expandirBusca(busca);
+    if (termos.length) q = q.or(termos.map((t) => `objeto.ilike.*${t}*`).join(","));
+    q = q.eq("orgao.uf_sigla", ufBusca!);
+    // abertas/em andamento: exclui mortas + mantém prazo futuro OU desconhecido (honesto)
+    q = q.not("situacao_nome", "in", '("Revogada","Anulada","Cancelada","Deserta","Fracassada")');
+    q = q.or(`data_encerramento.is.null,data_encerramento.gte.${new Date().toISOString()}`);
+  } else {
+    q = q.overlaps("segmentos", segmentos);
+    q = usandoFallbackUf ? q.eq("orgao.uf_sigla", uf) : q.in("cidade", prontas);
+  }
   const { data: rows } = await q.order("data_publicacao", { ascending: false }).limit(60);
   const editais = (rows ?? []) as unknown as Edital[];
 
@@ -78,6 +97,32 @@ export default async function RadarPage() {
 
   return (
     <div className="space-y-4">
+      {/* Busca livre por nicho/objeto + UF (cruza o recorte; sinônimos) */}
+      <Card>
+        <CardContent className="p-4">
+          <form method="get" className="flex flex-wrap items-end gap-2">
+            <div className="flex-1 min-w-[200px]">
+              <label className="mb-1 block text-xs text-muted-foreground">Buscar por objeto / nicho</label>
+              <Input name="q" defaultValue={busca} data-testid="busca-objeto"
+                placeholder="ex.: controle de vetores, dengue, dedetização…" />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-muted-foreground">UF</label>
+              <Select name="uf" defaultValue={ufBusca ?? uf} data-testid="busca-uf" className="w-24">
+                {UFS.map((u) => <option key={u} value={u}>{u}</option>)}
+              </Select>
+            </div>
+            <Button type="submit" size="sm" data-testid="busca-submit"><Search className="size-4" /> Buscar</Button>
+            {busca && <Button asChild size="sm" variant="ghost"><Link href="/radar">limpar</Link></Button>}
+          </form>
+          {busca && (
+            <p className="mt-2 text-xs text-muted-foreground">
+              Busca livre: <strong>{busca}</strong> em <strong>{ufBusca}</strong> — editais abertos/em andamento (sinônimos do nicho).
+            </p>
+          )}
+        </CardContent>
+      </Card>
+
       {/* Escopo de cidades */}
       <Card>
         <CardContent className="space-y-3 p-4">
@@ -136,7 +181,9 @@ export default async function RadarPage() {
       )}
 
       {visiveis.length === 0 ? (
-        <EmptyState titulo="Nenhum edital em andamento agora" texto={`Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
+        <EmptyState titulo="Nenhum edital em andamento agora" texto={busca
+          ? `Nenhum edital aberto para “${busca}” em ${ufBusca} agora — pode ser vazio verdadeiro (nem toda semana há licitação aberta desse nicho nesta UF).`
+          : `Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
       ) : (
         <div className="space-y-3">
           {visiveis.map((e) => {

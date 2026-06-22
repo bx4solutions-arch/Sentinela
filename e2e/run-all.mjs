@@ -16,6 +16,7 @@ const SUITE = [
   "e2e/autotest-pasta.mjs",
   "e2e/autotest-sinais.mjs",
   "e2e/autotest-integracao.mjs",
+  "e2e/autotest-harvester.mjs",   // Camada 1 nacional + Teste de Aceitação nº1
 ];
 
 const summary = [];
