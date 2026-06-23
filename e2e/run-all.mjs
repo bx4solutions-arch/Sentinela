@@ -20,6 +20,7 @@ const SUITE = [
   "e2e/autotest-antecipacao.mjs", // Etapa 2: Antecipação (PCA + recorrência) + Linha do Tempo
   "e2e/autotest-contratos.mjs",   // Bloco 1: Camada 2 (contrato vencendo + quem ganhou)
   "e2e/autotest-sala.mjs",        // Bloco 2: Sala de Guerra (inteligência) + Dashboard (tarefas)
+  "e2e/autotest-pesquisa.mjs",    // Bloco 3: Pesquisa livre (concorrente/órgão/item)
 ];
 
 const summary = [];

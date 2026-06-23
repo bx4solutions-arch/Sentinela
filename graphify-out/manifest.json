@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "components/shell.tsx": {
-    "mtime": 1782081861.6293924,
-    "ast_hash": "1d6c7c84be95553efc5e3ceed81cf422",
+    "mtime": 1782178060.8541884,
+    "ast_hash": "4d2ecf11fd493e904c59e0c552e7f311",
     "semantic_hash": ""
   },
   "components/ui.tsx": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782177259.5326886,
-    "ast_hash": "75618e6e2e2dfdc7cabe485e45e4c75a",
+    "mtime": 1782178349.6014342,
+    "ast_hash": "fd14a5edb1200cc93639cee9cc2a5467",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -947,6 +947,21 @@
   "lib/inteligencia.ts": {
     "mtime": 1782177074.4911017,
     "ast_hash": "ef6e73156c8ece567dbec0cc9d0c1f72",
+    "semantic_hash": ""
+  },
+  "app/(shell)/pesquisa/page.tsx": {
+    "mtime": 1782178223.9636467,
+    "ast_hash": "6773efe089bd3893c7716750eb152d2e",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-pesquisa.mjs": {
+    "mtime": 1782178316.7158666,
+    "ast_hash": "a1ab7570b73ea90dfa68d4526e2a6fce",
+    "semantic_hash": ""
+  },
+  "lib/pesquisa.ts": {
+    "mtime": 1782178195.8483315,
+    "ast_hash": "114f8e849fc66e0204b950ba468c65d8",
     "semantic_hash": ""
   }
 }

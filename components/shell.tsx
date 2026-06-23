@@ -16,6 +16,7 @@ type NavItem = { href: string; label: string; icon: React.ElementType; roadmap?:
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/radar", label: "Radar", icon: Radar },
+  { href: "/pesquisa", label: "Pesquisa", icon: Search },
   { href: "/kanban", label: "Kanban", icon: KanbanSquare },
   { href: "/empresa", label: "Minha Empresa", icon: Building2 },
   { href: "/consultor", label: "Consultor", icon: MessagesSquare },
@@ -25,6 +26,7 @@ const NAV: NavItem[] = [
 const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/dashboard"), title: "Dashboard Sentinela", sub: "Inteligência antecipada de oportunidades públicas" },
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
+  { test: (p) => p.startsWith("/pesquisa"), title: "Pesquisa livre", sub: "Por órgão · item + cidade · concorrente por CNPJ" },
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
   { test: (p) => p.startsWith("/consultor"), title: "Consultor IA", sub: "Converse sobre cada licitação com o contexto da pasta" },
