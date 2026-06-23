@@ -22,6 +22,7 @@ const SUITE = [
   "e2e/autotest-sala.mjs",        // Bloco 2: Sala de Guerra (inteligência) + Dashboard (tarefas)
   "e2e/autotest-pesquisa.mjs",    // Bloco 3: Pesquisa livre (concorrente/órgão/item)
   "e2e/autotest-preco.mjs",       // Bloco 4/M2: Motor de Preço (faixa/CV/inexequibilidade)
+  "e2e/autotest-consultor.mjs",   // Bloco 5: Consultor determinístico citando Lei 14.133
 ];
 
 const summary = [];

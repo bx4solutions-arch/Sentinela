@@ -10,7 +10,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_actions",
-      "community": 144,
+      "community": 160,
       "norm_label": "actions.ts"
     },
     {
@@ -20,7 +20,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "login_actions_traduzerro",
-      "community": 144,
+      "community": 160,
       "norm_label": "traduzerro()"
     },
     {
@@ -30,7 +30,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "login_actions_authenticate",
-      "community": 144,
+      "community": 160,
       "norm_label": "authenticate()"
     },
     {
@@ -40,7 +40,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "login_actions_signout",
-      "community": 144,
+      "community": 160,
       "norm_label": "signout()"
     },
     {
@@ -50,7 +50,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_page",
-      "community": 144,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -60,7 +60,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 144,
+      "community": 4,
       "norm_label": "loginpage()"
     },
     {
@@ -140,7 +140,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_page",
-      "community": 4,
+      "community": 3,
       "norm_label": "page.tsx"
     },
     {
@@ -330,7 +330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 6,
+      "community": 144,
       "norm_label": "actions.ts"
     },
     {
@@ -340,7 +340,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 6,
+      "community": 144,
       "norm_label": "slug()"
     },
     {
@@ -350,7 +350,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 6,
+      "community": 144,
       "norm_label": "adddocumento()"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 6,
+      "community": 144,
       "norm_label": "deletedocumento()"
     },
     {
@@ -390,7 +390,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "empresa_client_adddocform",
-      "community": 13,
+      "community": 4,
       "norm_label": "adddocform()"
     },
     {
@@ -540,7 +540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shell_layout",
-      "community": 144,
+      "community": 160,
       "norm_label": "layout.tsx"
     },
     {
@@ -550,7 +550,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "shell_layout_shelllayout",
-      "community": 144,
+      "community": 160,
       "norm_label": "shelllayout()"
     },
     {
@@ -580,7 +580,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "id_actions_analisarcomia",
-      "community": 3,
+      "community": 30,
       "norm_label": "analisarcomia()"
     },
     {
@@ -627,7 +627,7 @@
       "label": "Parecer",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "id_page_parecer",
       "community": 30,
@@ -637,7 +637,7 @@
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "id_page_brl",
       "community": 30,
@@ -647,7 +647,7 @@
       "label": "dtBR()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "id_page_dtbr",
       "community": 30,
@@ -657,7 +657,7 @@
       "label": "Lic",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "id_page_lic",
       "community": 30,
@@ -667,7 +667,7 @@
       "label": "EmBreve()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "id_page_embreve",
       "community": 30,
@@ -677,7 +677,7 @@
       "label": "Campo()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "id_page_campo",
       "community": 30,
@@ -687,7 +687,7 @@
       "label": "Secao()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "id_page_secao",
       "community": 30,
@@ -697,7 +697,7 @@
       "label": "LicitacaoPage()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L45",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "id_page_licitacaopage",
       "community": 30,
@@ -737,7 +737,7 @@
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "pesquisa_page_brl",
       "community": 158,
@@ -747,7 +747,7 @@
       "label": "UFS",
       "file_type": "code",
       "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "pesquisa_page_ufs",
       "community": 158,
@@ -757,7 +757,7 @@
       "label": "SP",
       "file_type": "code",
       "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "pesquisa_page_sp",
       "community": 158,
@@ -767,7 +767,7 @@
       "label": "PesquisaPage()",
       "file_type": "code",
       "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "pesquisa_page_pesquisapage",
       "community": 158,
@@ -780,7 +780,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_actions",
-      "community": 129,
+      "community": 144,
       "norm_label": "actions.ts"
     },
     {
@@ -790,7 +790,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_actions_monitorarcidade",
-      "community": 129,
+      "community": 144,
       "norm_label": "monitorarcidade()"
     },
     {
@@ -800,7 +800,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "radar_actions_removercidade",
-      "community": 129,
+      "community": 144,
       "norm_label": "removercidade()"
     },
     {
@@ -810,7 +810,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "radar_actions_setstage",
-      "community": 129,
+      "community": 144,
       "norm_label": "setstage()"
     },
     {
@@ -820,7 +820,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "radar_actions_monitorar",
-      "community": 129,
+      "community": 144,
       "norm_label": "monitorar()"
     },
     {
@@ -830,7 +830,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "radar_actions_descartar",
-      "community": 129,
+      "community": 144,
       "norm_label": "descartar()"
     },
     {
@@ -840,7 +840,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 148,
+      "community": 144,
       "norm_label": "analisar()"
     },
     {
@@ -850,7 +850,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 129,
+      "community": 144,
       "norm_label": "reverter()"
     },
     {
@@ -860,7 +860,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_city_picker",
-      "community": 129,
+      "community": 4,
       "norm_label": "city-picker.tsx"
     },
     {
@@ -1140,7 +1140,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 13,
+      "community": 144,
       "norm_label": "wizard()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 4,
+      "community": 160,
       "norm_label": "shell.tsx"
     },
     {
@@ -1270,7 +1270,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 4,
+      "community": 160,
       "norm_label": "navitem"
     },
     {
@@ -1280,7 +1280,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 4,
+      "community": 160,
       "norm_label": "nav"
     },
     {
@@ -1290,7 +1290,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 4,
+      "community": 160,
       "norm_label": "titles"
     },
     {
@@ -1300,7 +1300,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 4,
+      "community": 160,
       "norm_label": "navlink()"
     },
     {
@@ -1310,7 +1310,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "components_shell_shell",
-      "community": 144,
+      "community": 160,
       "norm_label": "shell()"
     },
     {
@@ -1420,7 +1420,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "components_ui_input",
-      "community": 144,
+      "community": 4,
       "norm_label": "input"
     },
     {
@@ -1490,7 +1490,7 @@
       "source_location": "L163",
       "_origin": "ast",
       "id": "components_ui_progress",
-      "community": 4,
+      "community": 160,
       "norm_label": "progress()"
     },
     {
@@ -2944,6 +2944,96 @@
       "norm_label": "ok()"
     },
     {
+      "label": "autotest-preco.mjs",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco",
+      "community": 161,
+      "norm_label": "autotest-preco.mjs"
+    },
+    {
+      "label": "readEnv()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_readenv",
+      "community": 161,
+      "norm_label": "readenv()"
+    },
+    {
+      "label": "E",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_e",
+      "community": 161,
+      "norm_label": "e"
+    },
+    {
+      "label": "SB",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_sb",
+      "community": 161,
+      "norm_label": "sb"
+    },
+    {
+      "label": "H",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_h",
+      "community": 161,
+      "norm_label": "h"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_cleanup",
+      "community": 161,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "consoleErrors",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_consoleerrors",
+      "community": 161,
+      "norm_label": "consoleerrors"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_results",
+      "community": 161,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "e2e_autotest_preco_ok",
+      "community": 161,
+      "norm_label": "ok()"
+    },
+    {
       "label": "autotest-radar.mjs",
       "file_type": "code",
       "source_file": "e2e/autotest-radar.mjs",
@@ -3317,7 +3407,7 @@
       "label": "summary",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "e2e_run_all_summary",
       "community": 137,
@@ -3327,7 +3417,7 @@
       "label": "t0",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "e2e_run_all_t0",
       "community": 137,
@@ -3337,7 +3427,7 @@
       "label": "total",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L37",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "e2e_run_all_total",
       "community": 137,
@@ -3820,7 +3910,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 13,
+      "community": 129,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -3870,7 +3960,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_ibge",
-      "community": 129,
+      "community": 144,
       "norm_label": "ibge.ts"
     },
     {
@@ -3880,7 +3970,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_ibge_municipio",
-      "community": 129,
+      "community": 144,
       "norm_label": "municipio"
     },
     {
@@ -3890,7 +3980,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_ibge_municipiosdauf",
-      "community": 129,
+      "community": 144,
       "norm_label": "municipiosdauf()"
     },
     {
@@ -3900,7 +3990,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_ibge_titulocidade",
-      "community": 129,
+      "community": 144,
       "norm_label": "titulocidade()"
     },
     {
@@ -3910,7 +4000,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_ibge_resolvemunicipio",
-      "community": 129,
+      "community": 144,
       "norm_label": "resolvemunicipio()"
     },
     {
@@ -3920,67 +4010,57 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_inteligencia",
-      "community": 30,
+      "community": 158,
       "norm_label": "inteligencia.ts"
     },
     {
       "label": "SB",
       "file_type": "code",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "lib_inteligencia_sb",
-      "community": 30,
+      "community": 158,
       "norm_label": "sb"
     },
     {
       "label": "Concorrente",
       "file_type": "code",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "lib_inteligencia_concorrente",
-      "community": 30,
+      "community": 158,
       "norm_label": "concorrente"
     },
     {
       "label": "ContratoAtual",
       "file_type": "code",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "lib_inteligencia_contratoatual",
-      "community": 30,
+      "community": 158,
       "norm_label": "contratoatual"
     },
     {
       "label": "MercadoIntel",
       "file_type": "code",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "lib_inteligencia_mercadointel",
-      "community": 30,
+      "community": 158,
       "norm_label": "mercadointel"
-    },
-    {
-      "label": "mediana()",
-      "file_type": "code",
-      "source_file": "lib/inteligencia.ts",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "lib_inteligencia_mediana",
-      "community": 30,
-      "norm_label": "mediana()"
     },
     {
       "label": "inteligenciaMercado()",
       "file_type": "code",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L21",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "lib_inteligencia_inteligenciamercado",
-      "community": 30,
+      "community": 158,
       "norm_label": "inteligenciamercado()"
     },
     {
@@ -4090,7 +4170,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "lib_nichos_expandirbusca",
-      "community": 129,
+      "community": 158,
       "norm_label": "expandirbusca()"
     },
     {
@@ -4147,17 +4227,27 @@
       "label": "SB",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "lib_pesquisa_sb",
       "community": 158,
       "norm_label": "sb"
     },
     {
+      "label": "faixaItemCidade()",
+      "file_type": "code",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "lib_pesquisa_faixaitemcidade",
+      "community": 158,
+      "norm_label": "faixaitemcidade()"
+    },
+    {
       "label": "soDigitos()",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L6",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "lib_pesquisa_sodigitos",
       "community": 158,
@@ -4167,7 +4257,7 @@
       "label": "Vitoria",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L9",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "lib_pesquisa_vitoria",
       "community": 158,
@@ -4177,7 +4267,7 @@
       "label": "VidaConcorrente",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L10",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "lib_pesquisa_vidaconcorrente",
       "community": 158,
@@ -4187,7 +4277,7 @@
       "label": "vidaDoConcorrente()",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L15",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "lib_pesquisa_vidadoconcorrente",
       "community": 158,
@@ -4197,7 +4287,7 @@
       "label": "perfilOrgao",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L49",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "lib_pesquisa_perfilorgao",
       "community": 158,
@@ -4207,7 +4297,7 @@
       "label": "ItemAchado",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L75",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "lib_pesquisa_itemachado",
       "community": 158,
@@ -4217,11 +4307,71 @@
       "label": "buscarItem()",
       "file_type": "code",
       "source_file": "lib/pesquisa.ts",
-      "source_location": "L77",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "lib_pesquisa_buscaritem",
       "community": 158,
       "norm_label": "buscaritem()"
+    },
+    {
+      "label": "preco.ts",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_preco",
+      "community": 158,
+      "norm_label": "preco.ts"
+    },
+    {
+      "label": "Semaforo",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "lib_preco_semaforo",
+      "community": 158,
+      "norm_label": "semaforo"
+    },
+    {
+      "label": "FaixaPreco",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "lib_preco_faixapreco",
+      "community": 158,
+      "norm_label": "faixapreco"
+    },
+    {
+      "label": "percentil()",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "lib_preco_percentil",
+      "community": 158,
+      "norm_label": "percentil()"
+    },
+    {
+      "label": "motorPreco()",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "lib_preco_motorpreco",
+      "community": 158,
+      "norm_label": "motorpreco()"
+    },
+    {
+      "label": "SEMAFORO_LABEL",
+      "file_type": "code",
+      "source_file": "lib/preco.ts",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "lib_preco_semaforo_label",
+      "community": 158,
+      "norm_label": "semaforo_label"
     },
     {
       "label": "resumo-edital.ts",
@@ -4480,7 +4630,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 4,
+      "community": 30,
       "norm_label": "utils.ts"
     },
     {
@@ -4500,7 +4650,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 4,
+      "community": 30,
       "norm_label": "brl()"
     },
     {
@@ -14955,7 +15105,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "fonte: querido diario (okbr)",
       "id": "mapa_fontes_querido_diario"
     },
@@ -15033,7 +15183,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "validacao v5: cobertura querido diario",
       "id": "mapa_fontes_v5"
     },
@@ -15696,7 +15846,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 5,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -16216,7 +16366,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "querido diario api",
       "id": "sentinela_validacao_workorder_querido_diario_api"
     },
@@ -19442,6 +19592,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_preco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_preco_semaforo_label",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -19718,9 +19890,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui",
-      "confidence_score": 1.0
+      "target": "components_ui"
     },
     {
       "relation": "imports",
@@ -19729,9 +19901,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_badge",
-      "confidence_score": 1.0
+      "target": "components_ui_badge"
     },
     {
       "relation": "imports",
@@ -19740,9 +19912,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_button",
-      "confidence_score": 1.0
+      "target": "components_ui_button"
     },
     {
       "relation": "imports",
@@ -19751,9 +19923,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_card",
-      "confidence_score": 1.0
+      "target": "components_ui_card"
     },
     {
       "relation": "imports",
@@ -19762,9 +19934,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_cardcontent",
-      "confidence_score": 1.0
+      "target": "components_ui_cardcontent"
     },
     {
       "relation": "imports",
@@ -19773,9 +19945,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_input",
-      "confidence_score": 1.0
+      "target": "components_ui_input"
     },
     {
       "relation": "imports",
@@ -19784,9 +19956,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "components_ui_select",
-      "confidence_score": 1.0
+      "target": "components_ui_select"
     },
     {
       "relation": "imports_from",
@@ -19795,9 +19967,20 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_pesquisa",
-      "confidence_score": 1.0
+      "target": "lib_pesquisa"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/pesquisa/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pesquisa_page",
+      "target": "lib_pesquisa_buscaritem"
     },
     {
       "relation": "imports",
@@ -19807,7 +19990,7 @@
       "source_location": "L6",
       "weight": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_pesquisa_buscaritem",
+      "target": "lib_pesquisa_faixaitemcidade",
       "confidence_score": 1.0
     },
     {
@@ -19817,9 +20000,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_pesquisa_perfilorgao",
-      "confidence_score": 1.0
+      "target": "lib_pesquisa_perfilorgao"
     },
     {
       "relation": "imports",
@@ -19828,8 +20011,30 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_pesquisa_vidadoconcorrente",
+      "target": "lib_pesquisa_vidadoconcorrente"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/pesquisa/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "pesquisa_page",
+      "target": "lib_preco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/pesquisa/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "pesquisa_page",
+      "target": "lib_preco_semaforo_label",
       "confidence_score": 1.0
     },
     {
@@ -19839,9 +20044,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_utils",
-      "confidence_score": 1.0
+      "target": "lib_utils"
     },
     {
       "relation": "imports",
@@ -19850,9 +20055,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "lib_utils_databr",
-      "confidence_score": 1.0
+      "target": "lib_utils_databr"
     },
     {
       "relation": "contains",
@@ -19860,9 +20065,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "pesquisa_page_brl",
-      "confidence_score": 1.0
+      "target": "pesquisa_page_brl"
     },
     {
       "relation": "contains",
@@ -19870,9 +20075,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "pesquisa_page_pesquisapage",
-      "confidence_score": 1.0
+      "target": "pesquisa_page_pesquisapage"
     },
     {
       "relation": "contains",
@@ -19880,9 +20085,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "pesquisa_page_sp",
-      "confidence_score": 1.0
+      "target": "pesquisa_page_sp"
     },
     {
       "relation": "contains",
@@ -19890,9 +20095,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "pesquisa_page_ufs",
-      "confidence_score": 1.0
+      "target": "pesquisa_page_ufs"
     },
     {
       "relation": "imports_from",
@@ -19901,9 +20106,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "supabase_server",
-      "confidence_score": 1.0
+      "target": "supabase_server"
     },
     {
       "relation": "imports",
@@ -19912,9 +20117,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page",
-      "target": "supabase_server_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "calls",
@@ -19923,9 +20128,9 @@
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pesquisa_page_pesquisapage",
-      "target": "pesquisa_page_brl",
-      "confidence_score": 1.0
+      "target": "pesquisa_page_brl"
     },
     {
       "relation": "calls",
@@ -19937,6 +20142,17 @@
       "weight": 1.0,
       "source": "pesquisa_page_pesquisapage",
       "target": "lib_pesquisa_buscaritem"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/pesquisa/page.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "pesquisa_page_pesquisapage",
+      "target": "lib_pesquisa_faixaitemcidade"
     },
     {
       "relation": "calls",
@@ -23478,9 +23694,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_adminquery",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_adminquery"
     },
     {
       "relation": "contains",
@@ -23488,9 +23704,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_cleanup",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_cleanup"
     },
     {
       "relation": "contains",
@@ -23498,9 +23714,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_consoleerrors",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_consoleerrors"
     },
     {
       "relation": "contains",
@@ -23508,9 +23724,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_e",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_e"
     },
     {
       "relation": "contains",
@@ -23518,9 +23734,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_h",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_h"
     },
     {
       "relation": "contains",
@@ -23528,9 +23744,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_ok",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_ok"
     },
     {
       "relation": "contains",
@@ -23538,9 +23754,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_readenv",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_readenv"
     },
     {
       "relation": "contains",
@@ -23548,9 +23764,9 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_results",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_pesquisa_results"
     },
     {
       "relation": "contains",
@@ -23558,8 +23774,88 @@
       "source_file": "e2e/autotest-pesquisa.mjs",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_sb",
+      "target": "e2e_autotest_pesquisa_sb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_consoleerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_h",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_readenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-preco.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "e2e_autotest_preco",
+      "target": "e2e_autotest_preco_sb",
       "confidence_score": 1.0
     },
     {
@@ -24700,16 +24996,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/inteligencia.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_inteligencia",
-      "target": "lib_inteligencia_mediana"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/inteligencia.ts",
       "source_location": "L10",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -24725,6 +25011,39 @@
       "confidence_score": 1.0,
       "source": "lib_inteligencia",
       "target": "lib_inteligencia_sb"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/inteligencia.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_inteligencia",
+      "target": "lib_preco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/inteligencia.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_inteligencia",
+      "target": "lib_preco_faixapreco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/inteligencia.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_inteligencia",
+      "target": "lib_preco_motorpreco",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -24752,12 +25071,12 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "lib/inteligencia.ts",
-      "source_location": "L42",
-      "weight": 1.0,
       "confidence_score": 1.0,
+      "source_file": "lib/inteligencia.ts",
+      "source_location": "L40",
+      "weight": 1.0,
       "source": "lib_inteligencia_inteligenciamercado",
-      "target": "lib_inteligencia_mediana"
+      "target": "lib_preco_motorpreco"
     },
     {
       "relation": "contains",
@@ -24907,9 +25226,9 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa",
-      "target": "lib_nichos",
-      "confidence_score": 1.0
+      "target": "lib_nichos"
     },
     {
       "relation": "imports",
@@ -24918,9 +25237,9 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa",
-      "target": "lib_nichos_expandirbusca",
-      "confidence_score": 1.0
+      "target": "lib_nichos_expandirbusca"
     },
     {
       "relation": "calls",
@@ -24931,6 +25250,17 @@
       "source_location": "L78",
       "weight": 1.0,
       "source": "lib_pesquisa_buscaritem",
+      "target": "lib_nichos_expandirbusca"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "lib_pesquisa_faixaitemcidade",
       "target": "lib_nichos_expandirbusca"
     },
     {
@@ -24950,69 +25280,9 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa",
-      "target": "lib_pesquisa_buscaritem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L75",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_itemachado",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_perfilorgao",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_sb",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_sodigitos",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_vidaconcorrente",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/pesquisa.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "lib_pesquisa",
-      "target": "lib_pesquisa_vidadoconcorrente",
-      "confidence_score": 1.0
+      "target": "lib_pesquisa_buscaritem"
     },
     {
       "relation": "contains",
@@ -25021,7 +25291,110 @@
       "source_location": "L9",
       "weight": 1.0,
       "source": "lib_pesquisa",
-      "target": "lib_pesquisa_vitoria",
+      "target": "lib_pesquisa_faixaitemcidade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_itemachado"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_perfilorgao"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_sb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_sodigitos"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_vidaconcorrente"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_vidadoconcorrente"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_pesquisa_vitoria"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_preco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_preco_faixapreco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_pesquisa",
+      "target": "lib_preco_motorpreco",
       "confidence_score": 1.0
     },
     {
@@ -25031,9 +25404,9 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa",
-      "target": "supabase_server",
-      "confidence_score": 1.0
+      "target": "supabase_server"
     },
     {
       "relation": "imports",
@@ -25042,9 +25415,20 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa",
-      "target": "supabase_server_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_server_createclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/pesquisa.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_pesquisa_faixaitemcidade",
+      "target": "lib_preco_motorpreco"
     },
     {
       "relation": "calls",
@@ -25053,9 +25437,9 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa_perfilorgao",
-      "target": "lib_pesquisa_sodigitos",
-      "confidence_score": 1.0
+      "target": "lib_pesquisa_sodigitos"
     },
     {
       "relation": "calls",
@@ -25064,8 +25448,69 @@
       "source_file": "lib/pesquisa.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_pesquisa_vidadoconcorrente",
-      "target": "lib_pesquisa_sodigitos",
+      "target": "lib_pesquisa_sodigitos"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "lib_preco",
+      "target": "lib_preco_faixapreco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "lib_preco",
+      "target": "lib_preco_motorpreco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "lib_preco",
+      "target": "lib_preco_percentil",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_preco",
+      "target": "lib_preco_semaforo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "lib_preco",
+      "target": "lib_preco_semaforo_label",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/preco.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "lib_preco_motorpreco",
+      "target": "lib_preco_percentil",
       "confidence_score": 1.0
     },
     {
@@ -38195,5 +38640,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b854f48cd626a2227d52e78299a520cde2310e15"
+  "built_at_commit": "22d7b8dee18235fd29cf6a5ce90c0493a6e0edbe"
 }

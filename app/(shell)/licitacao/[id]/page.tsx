@@ -13,6 +13,7 @@ import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/
 import { tokensDosSegmentos } from "@/lib/nichos";
 import { inteligenciaMercado } from "@/lib/inteligencia";
 import { SEMAFORO_LABEL } from "@/lib/preco";
+import { consultarLicitacao } from "@/lib/consultor";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
@@ -88,6 +89,12 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   // Inteligência Comercial & de Mercado (Bloco 2) — quem ganha o nicho, faixa praticada, fornecedor atual do órgão.
   const intelTokens = tokensDosSegmentos(company?.segmentos?.length ? company.segmentos : []);
   const intel = await inteligenciaMercado(supabase, { tokens: intelTokens, uf: ed?.uf_sigla ?? null, cnpjOrgao: ed?.cnpj_orgao ?? null });
+
+  // Consultor (Bloco 5) — determinístico, citando a Lei 14.133.
+  const respostasConsultor = consultarLicitacao({
+    itens: itensStatus, faltam, pct, statusEmp,
+    valorEstimado: ed?.valor_estimado ?? null, modalidade: ed?.modalidade_nome ?? null, srp: resumo?.modalidade.srp ?? null,
+  });
 
   return (
     <div className="space-y-4">
@@ -250,7 +257,25 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             {(p?.riscos?.length ?? 0) > 0 ? <Card><CardContent className="space-y-2 p-4">{p!.riscos!.map((r, i) => (<div key={i} className="flex items-start gap-2 text-sm"><Badge variant={r.nivel === "vermelho" ? "destructive" : "warning"}>{r.nivel}</Badge><span>{r.texto}</span></div>))}</CardContent></Card>
               : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo="A análise de riscos do texto do edital entra via Analisar com IA (BYOK)." />}
           </TabsContent>
-          <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo="Chat com contexto da pasta — próximo incremento." /></TabsContent>
+          <TabsContent value="consultor">
+            <div className="space-y-3" data-testid="consultor">
+              <Card><CardContent className="p-4">
+                <div className="flex items-center gap-2"><MessagesSquare className="size-4 text-primary" /><p className="text-sm font-semibold">Consultor — habilitação & participação</p></div>
+                <p className="mt-1 text-xs text-muted-foreground">Respostas <strong>determinísticas</strong> com base na sua ficha × habilitação típica, <strong>citando a Lei 14.133</strong>. Interpretação do texto do edital: use “Analisar com IA” (BYOK). Corpus completo + jurisprudência entram na sequência.</p>
+              </CardContent></Card>
+              {respostasConsultor.map((r, i) => (
+                <Card key={i} data-testid="consultor-qa"><CardContent className="p-4">
+                  <p className="text-sm font-semibold">{r.pergunta}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{r.resposta}</p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <Badge variant={r.tom === "ok" ? "success" : r.tom === "alerta" ? "destructive" : "muted"}>{r.tom === "ok" ? "ok" : r.tom === "alerta" ? "atenção" : "info"}</Badge>
+                    <span className="text-xs text-muted-foreground" data-testid="consultor-fonte">Fonte: {r.fonte}</span>
+                  </div>
+                </CardContent></Card>
+              ))}
+              <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Orientação informativa baseada na habilitação típica — <strong>não é parecer jurídico</strong>. Peça processual (impugnação/recurso) fica travada (exige validação jurídica).</p>
+            </div>
+          </TabsContent>
           <TabsContent value="precos">
             {(intel.contratoAtual.length > 0 || intel.concorrentes.length > 0 || intel.faixa) ? (
               <div className="space-y-4" data-testid="sala-inteligencia">
