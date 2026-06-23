@@ -14,6 +14,8 @@ import { tokensDosSegmentos } from "@/lib/nichos";
 import { inteligenciaMercado } from "@/lib/inteligencia";
 import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
+import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
+import { PropostaGerador } from "./proposta-gerador";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
@@ -64,7 +66,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   }
 
   // Empresa × Edital (determinístico: checklist Lei 14.133 × documentos da empresa)
-  const { data: company } = await supabase.from("company").select("segmentos, razao_social").maybeSingle();
+  const { data: company } = await supabase.from("company").select("segmentos, razao_social, cnpj, municipio, uf").maybeSingle();
   const { data: cdocs } = await supabase.from("documento").select("tipo, vencimento").eq("escopo", "company");
   const docByTipo: Record<string, { vencimento: string }> = {};
   for (const d of cdocs ?? []) if (d.vencimento) docByTipo[d.tipo] = { vencimento: d.vencimento };
@@ -94,6 +96,17 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const respostasConsultor = consultarLicitacao({
     itens: itensStatus, faltam, pct, statusEmp,
     valorEstimado: ed?.valor_estimado ?? null, modalidade: ed?.modalidade_nome ?? null, srp: resumo?.modalidade.srp ?? null,
+  });
+
+  // Gerador de Proposta (Bloco 6) — seções pré-preenchidas + matriz de atendimento.
+  const secoesProposta = montarSecoes(
+    { razao: company?.razao_social ?? null, cnpj: company?.cnpj ?? null, municipio: company?.municipio ?? null, uf: company?.uf ?? null },
+    { numero: lic.numero_controle_pncp, objeto: ed?.objeto ?? null, orgao: ed?.orgao?.razao_social ?? null, modalidade: ed?.modalidade_nome ?? null, numeroCompra: resumo?.identificacao.numero_compra ?? null },
+    intel.faixa,
+  );
+  const matrizProposta = itensStatus.map((it) => {
+    const atendido = it.st !== "ausente" && it.st !== "vencida";
+    return { label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
   });
 
   return (
@@ -142,6 +155,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             <TabsTrigger value="veredito">Veredito</TabsTrigger>
             <TabsTrigger value="plano">Plano de Ação</TabsTrigger>
             <TabsTrigger value="documentos">Documentos</TabsTrigger>
+            <TabsTrigger value="proposta">Proposta</TabsTrigger>
             <TabsTrigger value="riscos">Riscos</TabsTrigger>
             <TabsTrigger value="consultor">Consultor IA</TabsTrigger>
             <TabsTrigger value="precos">Inteligência</TabsTrigger>
@@ -251,6 +265,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                 </ul>)}
               <form action={addDocLicitacao} className="flex flex-col gap-2 rounded-md border bg-muted/30 p-3 sm:flex-row"><input type="hidden" name="licitacao_id" value={lic.id} /><Input name="nome" placeholder="Nome do documento (ex.: Edital, TR, ETP)" required className="flex-1" /><Button type="submit"><Plus className="size-4" /> Adicionar</Button></form>
             </CardContent></Card>
+          </TabsContent>
+
+          <TabsContent value="proposta">
+            <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} />
           </TabsContent>
 
           <TabsContent value="riscos">

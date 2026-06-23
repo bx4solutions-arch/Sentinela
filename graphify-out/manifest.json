@@ -75,8 +75,8 @@
     "semantic_hash": "6160d3d48e776f4b34afa6b218643b4d"
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782180131.011255,
-    "ast_hash": "eaf638f89605cddc4869a58e77075b9f",
+    "mtime": 1782181762.107827,
+    "ast_hash": "4f0942e8cda16183236c2f440a4d2649",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -275,7 +275,7 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782180977.381772,
+    "mtime": 1782181979.7663827,
     "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
@@ -285,9 +285,9 @@
     "semantic_hash": "722b5c5d86acfa0ac5cf229371b84fdc"
   },
   "package.json": {
-    "mtime": 1781980399.9575953,
-    "ast_hash": "9e165af8b3e712b7bb36fd9626b1c3c8",
-    "semantic_hash": "9e165af8b3e712b7bb36fd9626b1c3c8"
+    "mtime": 1782181634.0610428,
+    "ast_hash": "d6be186a5ac3c95626c21b5c8c1961d8",
+    "semantic_hash": ""
   },
   "postcss.config.mjs": {
     "mtime": 1781898439.4438956,
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782180220.4747596,
-    "ast_hash": "b2614245fa7efd92f843fcd9cf50bdd0",
+    "mtime": 1782181965.3477223,
+    "ast_hash": "64bbd37f0895061bac9a902351219aff",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -982,6 +982,26 @@
   "lib/consultor.ts": {
     "mtime": 1782180159.2561834,
     "ast_hash": "734dbf33b3c962b88c1cb8efa634aa55",
+    "semantic_hash": ""
+  },
+  "app/(shell)/licitacao/[id]/proposta-gerador.tsx": {
+    "mtime": 1782181781.8883495,
+    "ast_hash": "0a8fcb500bb29a8039291b7fc0d87e48",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-proposta.mjs": {
+    "mtime": 1782181826.9135602,
+    "ast_hash": "210e0fe7aeb96bbec20733db3b645f7c",
+    "semantic_hash": ""
+  },
+  "e2e/run-prod.mjs": {
+    "mtime": 1782181150.8373978,
+    "ast_hash": "552bbec32776c0502a524ef47092b802",
+    "semantic_hash": ""
+  },
+  "lib/proposta.ts": {
+    "mtime": 1782181667.5099778,
+    "ast_hash": "155c3f477266f5beff6b64deaa29ee32",
     "semantic_hash": ""
   }
 }

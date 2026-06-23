@@ -50,7 +50,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_page",
-      "community": 4,
+      "community": 160,
       "norm_label": "page.tsx"
     },
     {
@@ -60,7 +60,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 4,
+      "community": 160,
       "norm_label": "loginpage()"
     },
     {
@@ -80,7 +80,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "configuracoes_actions_aiconfigview",
-      "community": 3,
+      "community": 4,
       "norm_label": "aiconfigview"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 6,
+      "community": 13,
       "norm_label": "deletedocumento()"
     },
     {
@@ -420,7 +420,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "empresa_page_brl",
-      "community": 6,
+      "community": 13,
       "norm_label": "brl()"
     },
     {
@@ -450,7 +450,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "empresa_page_empresapage",
-      "community": 6,
+      "community": 30,
       "norm_label": "empresapage()"
     },
     {
@@ -500,7 +500,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kanban_page",
-      "community": 13,
+      "community": 160,
       "norm_label": "page.tsx"
     },
     {
@@ -510,7 +510,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "kanban_page_stages",
-      "community": 13,
+      "community": 160,
       "norm_label": "stages"
     },
     {
@@ -520,7 +520,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kanban_page_oport",
-      "community": 13,
+      "community": 160,
       "norm_label": "oport"
     },
     {
@@ -530,7 +530,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "kanban_page_kanbanpage",
-      "community": 13,
+      "community": 160,
       "norm_label": "kanbanpage()"
     },
     {
@@ -627,7 +627,7 @@
       "label": "Parecer",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "id_page_parecer",
       "community": 30,
@@ -637,7 +637,7 @@
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "id_page_brl",
       "community": 30,
@@ -647,7 +647,7 @@
       "label": "dtBR()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "id_page_dtbr",
       "community": 30,
@@ -657,7 +657,7 @@
       "label": "Lic",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "id_page_lic",
       "community": 30,
@@ -667,7 +667,7 @@
       "label": "EmBreve()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "id_page_embreve",
       "community": 30,
@@ -677,7 +677,7 @@
       "label": "Campo()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "id_page_campo",
       "community": 30,
@@ -687,7 +687,7 @@
       "label": "Secao()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "id_page_secao",
       "community": 30,
@@ -697,7 +697,7 @@
       "label": "LicitacaoPage()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L47",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "id_page_licitacaopage",
       "community": 30,
@@ -724,13 +724,53 @@
       "norm_label": "pastaactions()"
     },
     {
+      "label": "proposta-gerador.tsx",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "id_proposta_gerador",
+      "community": 4,
+      "norm_label": "proposta-gerador.tsx"
+    },
+    {
+      "label": "Decl",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_decl",
+      "community": 4,
+      "norm_label": "decl"
+    },
+    {
+      "label": "MatrizItem",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_matrizitem",
+      "community": 4,
+      "norm_label": "matrizitem"
+    },
+    {
+      "label": "PropostaGerador()",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_propostagerador",
+      "community": 4,
+      "norm_label": "propostagerador()"
+    },
+    {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "app/(shell)/pesquisa/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "pesquisa_page",
-      "community": 4,
+      "community": 158,
       "norm_label": "page.tsx"
     },
     {
@@ -750,7 +790,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "pesquisa_page_ufs",
-      "community": 4,
+      "community": 158,
       "norm_label": "ufs"
     },
     {
@@ -760,7 +800,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "pesquisa_page_sp",
-      "community": 4,
+      "community": 158,
       "norm_label": "sp"
     },
     {
@@ -850,7 +890,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 160,
+      "community": 144,
       "norm_label": "reverter()"
     },
     {
@@ -1470,7 +1510,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 30,
+      "community": 4,
       "norm_label": "tabslist"
     },
     {
@@ -1480,7 +1520,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "components_ui_tabstrigger",
-      "community": 30,
+      "community": 4,
       "norm_label": "tabstrigger"
     },
     {
@@ -2560,7 +2600,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "e2e_autotest_integracao_num",
-      "community": 18,
+      "community": 30,
       "norm_label": "num()"
     },
     {
@@ -3124,6 +3164,96 @@
       "norm_label": "ok()"
     },
     {
+      "label": "autotest-proposta.mjs",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta",
+      "community": 162,
+      "norm_label": "autotest-proposta.mjs"
+    },
+    {
+      "label": "readEnv()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_readenv",
+      "community": 162,
+      "norm_label": "readenv()"
+    },
+    {
+      "label": "E",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_e",
+      "community": 162,
+      "norm_label": "e"
+    },
+    {
+      "label": "SB",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_sb",
+      "community": 162,
+      "norm_label": "sb"
+    },
+    {
+      "label": "H",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_h",
+      "community": 162,
+      "norm_label": "h"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_cleanup",
+      "community": 162,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "consoleErrors",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_consoleerrors",
+      "community": 162,
+      "norm_label": "consoleerrors"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_results",
+      "community": 162,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "e2e_autotest_proposta_ok",
+      "community": 162,
+      "norm_label": "ok()"
+    },
+    {
       "label": "autotest-radar.mjs",
       "file_type": "code",
       "source_file": "e2e/autotest-radar.mjs",
@@ -3487,7 +3617,7 @@
       "label": "SUITE",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L8",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "e2e_run_all_suite",
       "community": 137,
@@ -3497,7 +3627,7 @@
       "label": "summary",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L28",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "e2e_run_all_summary",
       "community": 137,
@@ -3507,7 +3637,7 @@
       "label": "t0",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L29",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "e2e_run_all_t0",
       "community": 137,
@@ -3517,11 +3647,61 @@
       "label": "total",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L45",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "e2e_run_all_total",
       "community": 137,
       "norm_label": "total"
+    },
+    {
+      "label": "run-prod.mjs",
+      "file_type": "code",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_run_prod",
+      "community": 163,
+      "norm_label": "run-prod.mjs"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "e2e_run_prod_log",
+      "community": 163,
+      "norm_label": "log()"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "e2e_run_prod_sleep",
+      "community": 163,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "up()",
+      "file_type": "code",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "e2e_run_prod_up",
+      "community": 163,
+      "norm_label": "up()"
+    },
+    {
+      "label": "srv",
+      "file_type": "code",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "e2e_run_prod_srv",
+      "community": 163,
+      "norm_label": "srv"
     },
     {
       "label": "tour.mjs",
@@ -4050,7 +4230,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 6,
+      "community": 30,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -4200,7 +4380,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "lib_inteligencia_inteligenciamercado",
-      "community": 30,
+      "community": 158,
       "norm_label": "inteligenciamercado()"
     },
     {
@@ -4300,7 +4480,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_nichos_tokensdossegmentos",
-      "community": 129,
+      "community": 30,
       "norm_label": "tokensdossegmentos()"
     },
     {
@@ -4512,6 +4692,76 @@
       "id": "lib_preco_semaforo_label",
       "community": 158,
       "norm_label": "semaforo_label"
+    },
+    {
+      "label": "proposta.ts",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_proposta",
+      "community": 30,
+      "norm_label": "proposta.ts"
+    },
+    {
+      "label": "SecaoProposta",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "lib_proposta_secaoproposta",
+      "community": 30,
+      "norm_label": "secaoproposta"
+    },
+    {
+      "label": "DadosEmpresa",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "lib_proposta_dadosempresa",
+      "community": 30,
+      "norm_label": "dadosempresa"
+    },
+    {
+      "label": "DadosEdital",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "lib_proposta_dadosedital",
+      "community": 30,
+      "norm_label": "dadosedital"
+    },
+    {
+      "label": "fmtBRL()",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_proposta_fmtbrl",
+      "community": 30,
+      "norm_label": "fmtbrl()"
+    },
+    {
+      "label": "DECLARACOES_TIPICAS",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "lib_proposta_declaracoes_tipicas",
+      "community": 30,
+      "norm_label": "declaracoes_tipicas"
+    },
+    {
+      "label": "montarSecoes()",
+      "file_type": "code",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "lib_proposta_montarsecoes",
+      "community": 30,
+      "norm_label": "montarsecoes()"
     },
     {
       "label": "resumo-edital.ts",
@@ -5074,10 +5324,20 @@
       "norm_label": "clsx"
     },
     {
-      "label": "lucide-react",
+      "label": "docx",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L23",
+      "_origin": "ast",
+      "id": "package_dependencies_docx",
+      "community": 1,
+      "norm_label": "docx"
+    },
+    {
+      "label": "lucide-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "package_dependencies_lucide_react",
       "community": 1,
@@ -5087,7 +5347,7 @@
       "label": "next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "package_dependencies_next",
       "community": 1,
@@ -5097,7 +5357,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "package_dependencies_react",
       "community": 1,
@@ -5107,7 +5367,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "package_dependencies_react_dom",
       "community": 1,
@@ -5117,7 +5377,7 @@
       "label": "recharts",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "package_dependencies_recharts",
       "community": 1,
@@ -5127,7 +5387,7 @@
       "label": "tailwind-merge",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "package_dependencies_tailwind_merge",
       "community": 1,
@@ -5137,7 +5397,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "package_devdependencies",
       "community": 1,
@@ -5147,7 +5407,7 @@
       "label": "@types/node",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "package_devdependencies_types_node",
       "community": 1,
@@ -5157,7 +5417,7 @@
       "label": "@types/react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "package_devdependencies_types_react",
       "community": 1,
@@ -5167,7 +5427,7 @@
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "package_devdependencies_types_react_dom",
       "community": 1,
@@ -5177,7 +5437,7 @@
       "label": "autoprefixer",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "package_devdependencies_autoprefixer",
       "community": 1,
@@ -5187,7 +5447,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "package_devdependencies_eslint",
       "community": 1,
@@ -5197,7 +5457,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "package_devdependencies_eslint_config_next",
       "community": 1,
@@ -5207,7 +5467,7 @@
       "label": "playwright",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "package_devdependencies_playwright",
       "community": 1,
@@ -5217,7 +5477,7 @@
       "label": "postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "package_devdependencies_postcss",
       "community": 1,
@@ -5227,7 +5487,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss",
       "community": 1,
@@ -5237,7 +5497,7 @@
       "label": "tailwindcss-animate",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss_animate",
       "community": 1,
@@ -5247,7 +5507,7 @@
       "label": "typescript",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "package_devdependencies_typescript",
       "community": 1,
@@ -15674,7 +15934,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "tela 2: radar (home / feed diario)",
       "id": "prd_tela2_radar"
     },
@@ -15999,7 +16259,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -16012,7 +16272,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -16415,7 +16675,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -19633,11 +19893,33 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "id_page",
-      "target": "lib_consultor",
+      "target": "id_proposta_gerador",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "id_proposta_gerador_propostagerador",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "id_page",
+      "target": "lib_consultor"
     },
     {
       "relation": "imports",
@@ -19646,9 +19928,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_consultor_consultarlicitacao",
-      "confidence_score": 1.0
+      "target": "lib_consultor_consultarlicitacao"
     },
     {
       "relation": "imports_from",
@@ -19770,6 +20052,39 @@
       "confidence_score": 1.0,
       "source": "id_page",
       "target": "lib_preco_semaforo_label"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_proposta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_proposta_declaracoes_tipicas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_proposta_montarsecoes",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -19983,6 +20298,17 @@
     {
       "relation": "calls",
       "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "id_page_licitacaopage",
+      "target": "lib_proposta_montarsecoes"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
@@ -20055,6 +20381,124 @@
       "confidence_score": 1.0,
       "source": "id_pasta_actions",
       "target": "id_pasta_actions_pastaactions"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui_card",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui_cardcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "components_ui_input",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_decl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_matrizitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_propostagerador",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "lib_proposta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "lib_proposta_secaoproposta",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -22935,9 +23379,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_cleanup",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_cleanup"
     },
     {
       "relation": "contains",
@@ -22945,9 +23389,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_consoleerrors",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_consoleerrors"
     },
     {
       "relation": "contains",
@@ -22955,9 +23399,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_e",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_e"
     },
     {
       "relation": "contains",
@@ -22965,9 +23409,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_h",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_h"
     },
     {
       "relation": "contains",
@@ -22975,9 +23419,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_ok",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_ok"
     },
     {
       "relation": "contains",
@@ -22985,9 +23429,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_readenv",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_readenv"
     },
     {
       "relation": "contains",
@@ -22995,9 +23439,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_results",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_results"
     },
     {
       "relation": "contains",
@@ -23005,9 +23449,9 @@
       "source_file": "e2e/autotest-consultor.mjs",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_sb",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_consultor_sb"
     },
     {
       "relation": "contains",
@@ -24114,6 +24558,86 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_consoleerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_h",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_readenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-proposta.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "e2e_autotest_proposta",
+      "target": "e2e_autotest_proposta_sb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "e2e/autotest-radar.mjs",
       "source_location": "L22",
       "weight": 1.0,
@@ -24471,6 +24995,57 @@
       "confidence_score": 1.0,
       "source": "e2e_run_all",
       "target": "e2e_run_all_total"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "e2e_run_prod",
+      "target": "e2e_run_prod_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "e2e_run_prod",
+      "target": "e2e_run_prod_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "e2e_run_prod",
+      "target": "e2e_run_prod_srv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "e2e_run_prod",
+      "target": "e2e_run_prod_up",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/run-prod.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "e2e_run_prod_up",
+      "target": "e2e_run_prod_sleep",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25038,9 +25613,9 @@
       "source_file": "lib/consultor.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_consultor",
-      "target": "lib_consultor_a",
-      "confidence_score": 1.0
+      "target": "lib_consultor_a"
     },
     {
       "relation": "contains",
@@ -25048,9 +25623,9 @@
       "source_file": "lib/consultor.ts",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_consultor",
-      "target": "lib_consultor_consultarlicitacao",
-      "confidence_score": 1.0
+      "target": "lib_consultor_consultarlicitacao"
     },
     {
       "relation": "contains",
@@ -25058,9 +25633,9 @@
       "source_file": "lib/consultor.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_consultor",
-      "target": "lib_consultor_itemhab",
-      "confidence_score": 1.0
+      "target": "lib_consultor_itemhab"
     },
     {
       "relation": "contains",
@@ -25068,9 +25643,9 @@
       "source_file": "lib/consultor.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_consultor",
-      "target": "lib_consultor_respostaconsultor",
-      "confidence_score": 1.0
+      "target": "lib_consultor_respostaconsultor"
     },
     {
       "relation": "calls",
@@ -25079,9 +25654,9 @@
       "source_file": "lib/consultor.ts",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_consultor_consultarlicitacao",
-      "target": "lib_consultor_a",
-      "confidence_score": 1.0
+      "target": "lib_consultor_a"
     },
     {
       "relation": "contains",
@@ -25807,6 +26382,28 @@
       "target": "lib_preco_semaforo_label"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_preco",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_preco_faixapreco",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -25816,6 +26413,77 @@
       "confidence_score": 1.0,
       "source": "lib_preco_motorpreco",
       "target": "lib_preco_percentil"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_dadosedital",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_dadosempresa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_declaracoes_tipicas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_fmtbrl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_montarsecoes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "lib_proposta",
+      "target": "lib_proposta_secaoproposta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/proposta.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "lib_proposta_montarsecoes",
+      "target": "lib_proposta_fmtbrl",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -26209,6 +26877,16 @@
       "confidence_score": 1.0,
       "source": "package_dependencies",
       "target": "package_dependencies_clsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_docx",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -38944,5 +39622,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d967e140ec2067d1a66c71d0e6cb9fc6abe11b43"
+  "built_at_commit": "0b842ae288f68dd3b0624f226208b755938092a4"
 }
