@@ -12,6 +12,7 @@ import { buildResumo, type ResumoEdital } from "@/lib/resumo-edital";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { tokensDosSegmentos } from "@/lib/nichos";
 import { inteligenciaMercado } from "@/lib/inteligencia";
+import { SEMAFORO_LABEL } from "@/lib/preco";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
@@ -288,12 +289,26 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                     </ul>
                   )}
                   {intel.faixa && (
-                    <div className="mt-3 rounded-md border bg-muted/30 p-3 text-sm" data-testid="faixa-valor">
-                      <p className="text-xs uppercase tracking-wide text-muted-foreground">Faixa praticada no nicho ({intel.faixa.n} contratos)</p>
-                      <p className="mt-1 font-semibold">{brl(intel.faixa.min)} <span className="font-normal text-muted-foreground">a</span> {brl(intel.faixa.max)} <span className="font-normal text-muted-foreground">· mediana</span> {brl(intel.faixa.mediana)}</p>
+                    <div className="mt-3 space-y-2 rounded-md border bg-muted/30 p-3" data-testid="faixa-valor">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <DollarSign className="size-4 text-primary" />
+                        <p className="text-sm font-semibold">Motor de preço — quanto cobrar</p>
+                        <Badge variant={intel.faixa.semaforo === "verde" ? "success" : intel.faixa.semaforo === "amarelo" ? "warning" : "destructive"} data-testid="cv-semaforo">CV {(intel.faixa.cv * 100).toFixed(0)}% · {SEMAFORO_LABEL[intel.faixa.semaforo]}</Badge>
+                        <span className="ml-auto text-xs text-muted-foreground">{intel.faixa.n} contratos</span>
+                      </div>
+                      {intel.faixa.confiavel ? (
+                        <div className="grid grid-cols-3 gap-2 text-center text-sm" data-testid="faixas-preco">
+                          <div className="rounded-md border bg-card p-2"><p className="text-[11px] uppercase text-muted-foreground">Vencedora</p><p className="font-semibold">{brl(intel.faixa.vencedora)}</p></div>
+                          <div className="rounded-md border bg-card p-2"><p className="text-[11px] uppercase text-muted-foreground">Segura</p><p className="font-semibold">{brl(intel.faixa.segura)}</p></div>
+                          <div className="rounded-md border bg-card p-2"><p className="text-[11px] uppercase text-muted-foreground">Agressiva</p><p className="font-semibold">{brl(intel.faixa.agressiva)}</p></div>
+                        </div>
+                      ) : (
+                        <p className="rounded border border-warning/40 bg-warning/10 px-2 py-1 text-xs" data-testid="recusa-honesta">⚠️ {intel.faixa.motivoRecusa}</p>
+                      )}
+                      <p className="text-xs text-muted-foreground">Piso de inexequibilidade (ref.): abaixo de <strong>{brl(intel.faixa.pisoInexequivel)}</strong> há risco de desclassificação (Lei 14.133, art. 59). Faixa observada {brl(intel.faixa.min)}–{brl(intel.faixa.max)} · mediana {brl(intel.faixa.mediana)}.</p>
                     </div>
                   )}
-                  <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Faixa de <strong>contratos firmados</strong> (referência de mercado), não recomendação de preço. <strong>Nº médio de participantes / lances</strong> entra com o resultado por item (em ingestão).</p>
+                  <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Referência de <strong>contratos firmados</strong> (PNCP), <strong>não recomendação de preço — a empresa decide</strong>. Nº de participantes/lances entra com o resultado por item (em ingestão).</p>
                 </CardContent></Card>
               </div>
             ) : <EmBreve icon={DollarSign} titulo="Inteligência Comercial & de Mercado" motivo="Sem contratos do seu nicho nesta UF na base atual. Acende conforme a coleta de contratos avança (em ingestão)." />}

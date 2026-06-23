@@ -1,8 +1,20 @@
 // Pesquisa livre (Bloco 3) — poder ao fornecedor. Só dado real.
 import type { createClient } from "@/lib/supabase/server";
 import { expandirBusca } from "@/lib/nichos";
+import { motorPreco, type FaixaPreco } from "@/lib/preco";
 
 type SB = Awaited<ReturnType<typeof createClient>>;
+
+/** Motor de preço para item+cidade: faixa saneada de contratos firmados do termo na UF. */
+export async function faixaItemCidade(sb: SB, termo: string, uf: string): Promise<FaixaPreco | null> {
+  const tokens = expandirBusca(termo);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let q: any = sb.from("contratos").select("valor_global");
+  if (tokens.length) q = q.or(tokens.map((t: string) => `objeto.ilike.*${t}*`).join(","));
+  if (uf) q = q.eq("uf_sigla", uf);
+  const { data } = await q.limit(300);
+  return motorPreco(((data ?? []) as { valor_global: number | null }[]).map((r) => r.valor_global));
+}
 export const soDigitos = (s: string) => (s ?? "").replace(/\D/g, "");
 
 // ---- C3: vida do concorrente (por CNPJ) ----

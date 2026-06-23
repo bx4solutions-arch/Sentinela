@@ -3,7 +3,8 @@ import { Search, Building2, Trophy, MapPin, Landmark, ExternalLink } from "lucid
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Badge, Button, Input, Select } from "@/components/ui";
 import { dataBR } from "@/lib/utils";
-import { vidaDoConcorrente, perfilOrgao, buscarItem } from "@/lib/pesquisa";
+import { vidaDoConcorrente, perfilOrgao, buscarItem, faixaItemCidade } from "@/lib/pesquisa";
+import { SEMAFORO_LABEL } from "@/lib/preco";
 
 const brl = (n: number | null) => !n ? "—" : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
 const UFS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
@@ -20,6 +21,7 @@ export default async function PesquisaPage({ searchParams }: { searchParams: Pro
   const vida = modo === "concorrente" && sp.cnpj ? await vidaDoConcorrente(supabase, sp.cnpj) : null;
   const orgaos = modo === "orgao" && sp.q ? await perfilOrgao(supabase, sp.q) : null;
   const itens = modo === "item" && sp.q ? await buscarItem(supabase, sp.q, ufDefault) : null;
+  const faixaItem = modo === "item" && sp.q ? await faixaItemCidade(supabase, sp.q, ufDefault) : null;
 
   const tabs: [string, string][] = [["concorrente", "Concorrente (CNPJ)"], ["orgao", "Órgão"], ["item", "Item + cidade"]];
 
@@ -143,6 +145,23 @@ export default async function PesquisaPage({ searchParams }: { searchParams: Pro
               <Button type="submit" data-testid="buscar"><Search className="size-4" /> Buscar</Button>
             </form>
           </CardContent></Card>
+          {faixaItem && (
+            <Card data-testid="faixa-item"><CardContent className="p-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-sm font-semibold">Motor de preço — {sp.q} em {ufDefault}</p>
+                <Badge variant={faixaItem.semaforo === "verde" ? "success" : faixaItem.semaforo === "amarelo" ? "warning" : "destructive"}>CV {(faixaItem.cv * 100).toFixed(0)}% · {SEMAFORO_LABEL[faixaItem.semaforo]}</Badge>
+                <span className="ml-auto text-xs text-muted-foreground">{faixaItem.n} contratos</span>
+              </div>
+              {faixaItem.confiavel ? (
+                <div className="mt-2 grid grid-cols-3 gap-2 text-center text-sm">
+                  <div className="rounded-md border p-2"><p className="text-[11px] uppercase text-muted-foreground">Vencedora</p><p className="font-semibold">{brl(faixaItem.vencedora)}</p></div>
+                  <div className="rounded-md border p-2"><p className="text-[11px] uppercase text-muted-foreground">Segura</p><p className="font-semibold">{brl(faixaItem.segura)}</p></div>
+                  <div className="rounded-md border p-2"><p className="text-[11px] uppercase text-muted-foreground">Agressiva</p><p className="font-semibold">{brl(faixaItem.agressiva)}</p></div>
+                </div>
+              ) : <p className="mt-2 rounded border border-warning/40 bg-warning/10 px-2 py-1 text-xs">⚠️ {faixaItem.motivoRecusa}</p>}
+              <p className="mt-2 text-xs text-muted-foreground">Piso de inexequibilidade (ref.): {brl(faixaItem.pisoInexequivel)} (Lei 14.133, art. 59). Referência de contratos firmados — a empresa decide o preço.</p>
+            </CardContent></Card>
+          )}
           {itens && (itens.length === 0 ? (
             <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum edital aberto para “{sp.q}” em {ufDefault} — vazio verdadeiro.</p>
           ) : (

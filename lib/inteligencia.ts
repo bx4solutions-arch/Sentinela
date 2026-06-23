@@ -2,6 +2,7 @@
 // Só o que TEM dado: contratos (quem ganhou/fornecedor atual/valor) + homologados (faixa).
 // nº médio de participantes/lances = DEFERIDO (endpoint de resultado rate-limited) → "em ingestão".
 import type { createClient } from "@/lib/supabase/server";
+import { motorPreco, type FaixaPreco } from "@/lib/preco";
 
 type SB = Awaited<ReturnType<typeof createClient>>;
 
@@ -9,12 +10,10 @@ export type Concorrente = { ni: string; nome: string | null; n: number; valorTot
 export type ContratoAtual = { nome: string | null; ni: string | null; valor: number | null; vigenciaFim: string | null; dias: number | null; objeto: string | null };
 export type MercadoIntel = {
   concorrentes: Concorrente[];
-  faixa: { min: number; mediana: number; max: number; n: number } | null;
+  faixa: FaixaPreco | null;   // motor de preço (IQR/CV/faixas/inexequibilidade)
   contratoAtual: ContratoAtual[];
   amostra: number;
 };
-
-const mediana = (xs: number[]) => xs.length ? xs[Math.floor((xs.length - 1) / 2)] : 0;
 
 /** Inteligência de Mercado para um edital: concorrentes (quem ganha o nicho na UF), faixa de valor
  *  praticada (contratos) e o fornecedor/contrato ATUAL do órgão deste edital. Tudo de dado real. */
@@ -37,9 +36,8 @@ export async function inteligenciaMercado(sb: SB, opts: { tokens: string[]; uf: 
   }
   const concorrentes = Object.values(byForn).sort((a, b) => b.n - a.n).slice(0, 6);
 
-  // faixa de valor praticada (contratos com valor > 0)
-  const valores = rows.map((r) => Number(r.valor_global)).filter((v) => v > 0).sort((a, b) => a - b);
-  const faixa = valores.length ? { min: valores[0], max: valores[valores.length - 1], mediana: mediana(valores), n: valores.length } : null;
+  // faixa de valor praticada → motor de preço (IQR/CV/faixas/inexequibilidade)
+  const faixa = motorPreco(rows.map((r) => r.valor_global));
 
   // contrato/fornecedor ATUAL do órgão deste edital (vencendo)
   let contratoAtual: ContratoAtual[] = [];

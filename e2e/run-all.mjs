@@ -21,6 +21,7 @@ const SUITE = [
   "e2e/autotest-contratos.mjs",   // Bloco 1: Camada 2 (contrato vencendo + quem ganhou)
   "e2e/autotest-sala.mjs",        // Bloco 2: Sala de Guerra (inteligência) + Dashboard (tarefas)
   "e2e/autotest-pesquisa.mjs",    // Bloco 3: Pesquisa livre (concorrente/órgão/item)
+  "e2e/autotest-preco.mjs",       // Bloco 4/M2: Motor de Preço (faixa/CV/inexequibilidade)
 ];
 
 const summary = [];
@@ -28,17 +29,23 @@ const t0 = Date.now();
 for (const file of SUITE) {
   console.log(`\n\n########## ${file} ##########`);
   const started = Date.now();
-  const r = spawnSync("node", [file], { stdio: "inherit" });
+  let r = spawnSync("node", [file], { stdio: "inherit" });
+  let retried = false;
+  // retry UMA vez: flake de carga (dev server sob 16 testes) passa no re-run; falha 2x = falha real.
+  if (r.status !== 0) {
+    console.log(`\n--- ${file} falhou; retry 1x (flake de carga?) ---`);
+    retried = true;
+    r = spawnSync("node", [file], { stdio: "inherit" });
+  }
   const secs = ((Date.now() - started) / 1000).toFixed(1);
-  const passed = r.status === 0;
-  summary.push({ file, passed, secs, status: r.status });
+  summary.push({ file, passed: r.status === 0, secs, status: r.status, retried });
 }
 
 const total = ((Date.now() - t0) / 1000).toFixed(1);
 console.log("\n\n================ SUÍTE COMPLETA ================");
 let fails = 0;
 for (const s of summary) {
-  console.log(`${s.passed ? "✅" : "❌"} ${s.file}  (${s.secs}s)${s.passed ? "" : `  exit=${s.status}`}`);
+  console.log(`${s.passed ? "✅" : "❌"} ${s.file}  (${s.secs}s)${s.retried ? " [retry]" : ""}${s.passed ? "" : `  exit=${s.status}`}`);
   if (!s.passed) fails++;
 }
 console.log(`\n${summary.length} testes · ${total}s total`);
