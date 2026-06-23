@@ -1,6 +1,9 @@
 // Runner agregador da suíte e2e — roda TODOS os autotests em sequência e falha
 // se qualquer um falhar. Régua: "rodar a suíte completa e colar a saída".
-// Uso: node e2e/run-all.mjs   (dev server em :3001)
+// Uso: node e2e/run-all.mjs   (servidor em :3001)
+// CONFIÁVEL (recomendado): `node e2e/run-prod.mjs` roda contra um BUILD DE PRODUÇÃO — estável sob
+// carga (o dev server/Turbopack degrada com HMR após muitas rodadas e gera flake). Este runner tem
+// retry-once para flake residual.
 import { spawnSync } from "node:child_process";
 
 // Ordem: fluxo base (empresa/onboarding) primeiro, depois as telas.
