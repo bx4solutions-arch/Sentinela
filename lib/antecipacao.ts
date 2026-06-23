@@ -4,7 +4,7 @@
 //   • Recorrência (raw_editais homologados) — órgão que já comprou o objeto tende a repetir.
 // Linguagem é PROBABILIDADE, nunca promessa (régua #1). Sem número de chance ainda.
 import type { createClient } from "@/lib/supabase/server";
-import { expandirBusca } from "@/lib/nichos";
+import { expandirBusca, tokensDosSegmentos } from "@/lib/nichos";
 
 type SB = Awaited<ReturnType<typeof createClient>>;
 
@@ -52,6 +52,42 @@ export async function buscarPCA(sb: SB, f: Filtro): Promise<PcaItem[]> {
   return (data ?? []) as unknown as PcaItem[];
 }
 
+export type ContratoVencendo = {
+  numero_controle_pncp: string; numero_controle_compra: string | null;
+  cnpj_orgao: string | null; uf_sigla: string | null; cidade: string | null;
+  objeto: string | null; ni_fornecedor: string | null; nome_fornecedor: string | null;
+  valor_global: number | null; data_vigencia_fim: string | null;
+  orgao: { razao_social: string | null } | null;
+};
+// `contratos` NÃO tem FK para orgao → não dá pra embeddar; o nome do órgão é resolvido em JS.
+const CONTR_SELECT = "numero_controle_pncp, numero_controle_compra, cnpj_orgao, uf_sigla, cidade, objeto, ni_fornecedor, nome_fornecedor, valor_global, data_vigencia_fim";
+
+/** Contratos VENCENDO (dataVigenciaFim entre hoje e +N dias) no nicho/escopo → janela de renovação/disputa.
+ *  contratos não tem coluna `segmentos` → filtra por tokens do nicho no objeto. Sem ORDER BY no banco. */
+export async function buscarContratosVencendo(sb: SB, f: Filtro, dias = 365): Promise<ContratoVencendo[]> {
+  const hoje = new Date();
+  const ini = hoje.toISOString().slice(0, 10);
+  const fim = new Date(hoje.getTime() + dias * 86400000).toISOString().slice(0, 10);
+  const tokens = f.busca ? expandirBusca(f.busca) : tokensDosSegmentos(f.segmentos);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let q: any = sb.from("contratos").select(CONTR_SELECT).gte("data_vigencia_fim", ini).lte("data_vigencia_fim", fim);
+  if (tokens.length) q = q.or(tokens.map((t: string) => `objeto.ilike.*${t}*`).join(","));
+  if (f.busca) q = q.eq("uf_sigla", f.ufBusca);
+  else q = f.usandoFallbackUf ? q.eq("uf_sigla", f.uf) : q.in("cidade", f.prontas);
+  const { data } = await q.limit(60);
+  const rows = (data ?? []).sort((a: ContratoVencendo, b: ContratoVencendo) =>
+    (a.data_vigencia_fim ?? "").localeCompare(b.data_vigencia_fim ?? "")).slice(0, 40) as ContratoVencendo[];
+  // Resolve o nome do órgão (sem FK/embed) numa query por cnpj.
+  const cnpjs = Array.from(new Set(rows.map((r) => r.cnpj_orgao).filter(Boolean))) as string[];
+  if (cnpjs.length) {
+    const { data: orgs } = await sb.from("orgao").select("cnpj, razao_social").in("cnpj", cnpjs);
+    const nome: Record<string, string | null> = {};
+    for (const o of orgs ?? []) nome[o.cnpj as string] = (o as { razao_social: string | null }).razao_social;
+    for (const r of rows) r.orgao = { razao_social: r.cnpj_orgao ? (nome[r.cnpj_orgao] ?? null) : null };
+  }
+  return rows;
+}
+
 /** Recorrência: homologados (já comprados) que casam o nicho/cidade ou a busca → tende a repetir.
  *  Sem ORDER BY no banco (caro sobre o conjunto homologado nacional — causa timeout em UF grande);
  *  ordena em memória após o limit. */
@@ -65,7 +101,7 @@ export async function buscarRecorrencia(sb: SB, f: Filtro): Promise<RecorrenciaI
 
 // ---- Linha do Tempo de Sinais (Dashboard) ----
 export type SinalLinha = {
-  tipo: "pca" | "recorrencia" | "republicacao";
+  tipo: "pca" | "recorrencia" | "republicacao" | "contrato_vencendo";
   selo: string; titulo: string; orgao: string; data: string | null; detalhe: string;
   tone: "navy" | "amber" | "slate"; link?: string | null;
 };
@@ -73,9 +109,20 @@ export type SinalLinha = {
 const anoOuData = (ano: number | null, data: string | null) =>
   data ? data.slice(0, 10) : (ano ? String(ano) : null);
 
-/** Converte PCA + recorrência em itens de timeline (calibrado: planejado/pode repetir, nunca "vai ter"). */
-export function montarLinhaDoTempo(pca: PcaItem[], rec: RecorrenciaItem[], republicadas: RecorrenciaItem[] = []): SinalLinha[] {
+export const diasAteVencer = (d: string | null): number | null =>
+  d ? Math.ceil((new Date(d + "T00:00:00").getTime() - Date.now()) / 86400000) : null;
+
+/** Converte PCA + recorrência + contrato vencendo em itens de timeline (calibrado: nunca "vai ter"). */
+export function montarLinhaDoTempo(pca: PcaItem[], rec: RecorrenciaItem[], republicadas: RecorrenciaItem[] = [], contratos: ContratoVencendo[] = []): SinalLinha[] {
   const linhas: SinalLinha[] = [];
+  for (const c of contratos.slice(0, 12)) {
+    const dias = diasAteVencer(c.data_vigencia_fim);
+    linhas.push({
+      tipo: "contrato_vencendo", selo: dias != null ? `vence em ${dias}d` : "contrato vencendo",
+      titulo: c.objeto ?? "Contrato", orgao: c.orgao?.razao_social ?? "Órgão", data: c.data_vigencia_fim,
+      detalhe: `Fornecedor atual: ${c.nome_fornecedor ?? "—"} — janela de renovação/nova disputa`, tone: "amber", link: null,
+    });
+  }
   for (const p of pca.slice(0, 12)) {
     linhas.push({
       tipo: "pca", selo: `PCA ${p.ano_pca ?? ""}`.trim(),

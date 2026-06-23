@@ -160,7 +160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "consultor_page",
-      "community": 144,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -170,7 +170,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "consultor_page_lic",
-      "community": 144,
+      "community": 4,
       "norm_label": "lic"
     },
     {
@@ -180,7 +180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "consultor_page_consultorpage",
-      "community": 144,
+      "community": 4,
       "norm_label": "consultorpage()"
     },
     {
@@ -190,7 +190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dados_reais_page",
-      "community": 148,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -200,7 +200,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "dados_reais_page_etapas",
-      "community": 148,
+      "community": 4,
       "norm_label": "etapas"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dados_reais_page_op",
-      "community": 148,
+      "community": 4,
       "norm_label": "op"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dados_reais_page_brl",
-      "community": 148,
+      "community": 4,
       "norm_label": "brl()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dados_reais_page_kpi",
-      "community": 148,
+      "community": 4,
       "norm_label": "kpi()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "dados_reais_page_steps",
-      "community": 148,
+      "community": 4,
       "norm_label": "steps"
     },
     {
@@ -250,7 +250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "dados_reais_page_pipeline",
-      "community": 148,
+      "community": 4,
       "norm_label": "pipeline()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "dados_reais_page_dadosreaispage",
-      "community": 148,
+      "community": 4,
       "norm_label": "dadosreaispage()"
     },
     {
@@ -270,7 +270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_page",
-      "community": 129,
+      "community": 148,
       "norm_label": "page.tsx"
     },
     {
@@ -280,7 +280,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dashboard_page_brl",
-      "community": 129,
+      "community": 148,
       "norm_label": "brl()"
     },
     {
@@ -290,7 +290,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "dashboard_page_meses",
-      "community": 129,
+      "community": 148,
       "norm_label": "meses"
     },
     {
@@ -300,7 +300,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dashboard_page_stages",
-      "community": 129,
+      "community": 148,
       "norm_label": "stages"
     },
     {
@@ -310,7 +310,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "dashboard_page_kpi",
-      "community": 129,
+      "community": 148,
       "norm_label": "kpi()"
     },
     {
@@ -330,7 +330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 6,
+      "community": 144,
       "norm_label": "actions.ts"
     },
     {
@@ -340,7 +340,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 6,
+      "community": 144,
       "norm_label": "slug()"
     },
     {
@@ -350,7 +350,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 6,
+      "community": 144,
       "norm_label": "adddocumento()"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 6,
+      "community": 144,
       "norm_label": "deletedocumento()"
     },
     {
@@ -420,7 +420,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "empresa_page_brl",
-      "community": 6,
+      "community": 13,
       "norm_label": "brl()"
     },
     {
@@ -450,7 +450,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "empresa_page_empresapage",
-      "community": 6,
+      "community": 13,
       "norm_label": "empresapage()"
     },
     {
@@ -500,7 +500,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "kanban_page",
-      "community": 13,
+      "community": 144,
       "norm_label": "page.tsx"
     },
     {
@@ -510,7 +510,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "kanban_page_stages",
-      "community": 13,
+      "community": 144,
       "norm_label": "stages"
     },
     {
@@ -520,7 +520,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "kanban_page_oport",
-      "community": 13,
+      "community": 144,
       "norm_label": "oport"
     },
     {
@@ -530,7 +530,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "kanban_page_kanbanpage",
-      "community": 13,
+      "community": 144,
       "norm_label": "kanbanpage()"
     },
     {
@@ -610,7 +610,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 144,
+      "community": 3,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -810,7 +810,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_city_picker",
-      "community": 7,
+      "community": 4,
       "norm_label": "city-picker.tsx"
     },
     {
@@ -820,7 +820,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_city_picker_citypicker",
-      "community": 7,
+      "community": 129,
       "norm_label": "citypicker()"
     },
     {
@@ -830,7 +830,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_page",
-      "community": 7,
+      "community": 129,
       "norm_label": "page.tsx"
     },
     {
@@ -840,7 +840,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "radar_page_brl",
-      "community": 7,
+      "community": 129,
       "norm_label": "brl()"
     },
     {
@@ -850,7 +850,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "radar_page_ufs",
-      "community": 7,
+      "community": 129,
       "norm_label": "ufs"
     },
     {
@@ -860,7 +860,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "radar_page_edital",
-      "community": 7,
+      "community": 129,
       "norm_label": "edital"
     },
     {
@@ -877,20 +877,20 @@
       "label": "AntecipacaoLista()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/page.tsx",
-      "source_location": "L280",
+      "source_location": "L283",
       "_origin": "ast",
       "id": "radar_page_antecipacaolista",
-      "community": 7,
+      "community": 129,
       "norm_label": "antecipacaolista()"
     },
     {
       "label": "EmptyState()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/page.tsx",
-      "source_location": "L341",
+      "source_location": "L368",
       "_origin": "ast",
       "id": "radar_page_emptystate",
-      "community": 7,
+      "community": 129,
       "norm_label": "emptystate()"
     },
     {
@@ -1020,7 +1020,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "onboarding_page",
-      "community": 144,
+      "community": 6,
       "norm_label": "page.tsx"
     },
     {
@@ -1030,7 +1030,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "onboarding_page_onboardingpage",
-      "community": 144,
+      "community": 6,
       "norm_label": "onboardingpage()"
     },
     {
@@ -1120,7 +1120,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_charts",
-      "community": 129,
+      "community": 148,
       "norm_label": "charts.tsx"
     },
     {
@@ -1130,7 +1130,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "components_charts_usechartwidth",
-      "community": 129,
+      "community": 148,
       "norm_label": "usechartwidth()"
     },
     {
@@ -1140,7 +1140,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "components_charts_ringcolor",
-      "community": 129,
+      "community": 148,
       "norm_label": "ringcolor()"
     },
     {
@@ -1150,7 +1150,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "components_charts_scorering",
-      "community": 129,
+      "community": 148,
       "norm_label": "scorering()"
     },
     {
@@ -1160,7 +1160,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "components_charts_donutdatum",
-      "community": 129,
+      "community": 148,
       "norm_label": "donutdatum"
     },
     {
@@ -1170,7 +1170,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "components_charts_donut_cores",
-      "community": 129,
+      "community": 148,
       "norm_label": "donut_cores"
     },
     {
@@ -1180,7 +1180,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "components_charts_donutsegmento",
-      "community": 129,
+      "community": 148,
       "norm_label": "donutsegmento()"
     },
     {
@@ -1190,7 +1190,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "components_charts_trenddatum",
-      "community": 129,
+      "community": 148,
       "norm_label": "trenddatum"
     },
     {
@@ -1200,7 +1200,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "components_charts_linetendencia",
-      "community": 129,
+      "community": 148,
       "norm_label": "linetendencia()"
     },
     {
@@ -1210,7 +1210,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 4,
+      "community": 144,
       "norm_label": "shell.tsx"
     },
     {
@@ -1220,7 +1220,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 4,
+      "community": 144,
       "norm_label": "navitem"
     },
     {
@@ -1230,7 +1230,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 4,
+      "community": 144,
       "norm_label": "nav"
     },
     {
@@ -1240,7 +1240,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 4,
+      "community": 144,
       "norm_label": "titles"
     },
     {
@@ -1250,7 +1250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 4,
+      "community": 144,
       "norm_label": "navlink()"
     },
     {
@@ -1310,7 +1310,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "components_ui_card",
-      "community": 13,
+      "community": 4,
       "norm_label": "card()"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "components_ui_cardcontent",
-      "community": 13,
+      "community": 4,
       "norm_label": "cardcontent()"
     },
     {
@@ -1390,7 +1390,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 7,
+      "community": 4,
       "norm_label": "select"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_location": "L163",
       "_origin": "ast",
       "id": "components_ui_progress",
-      "community": 4,
+      "community": 144,
       "norm_label": "progress()"
     },
     {
@@ -1802,6 +1802,156 @@
       "id": "e2e_autotest_backfill_ok",
       "community": 23,
       "norm_label": "ok()"
+    },
+    {
+      "label": "autotest-contratos.mjs",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos",
+      "community": 152,
+      "norm_label": "autotest-contratos.mjs"
+    },
+    {
+      "label": "readEnv()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_readenv",
+      "community": 152,
+      "norm_label": "readenv()"
+    },
+    {
+      "label": "E",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_e",
+      "community": 152,
+      "norm_label": "e"
+    },
+    {
+      "label": "SB",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_sb",
+      "community": 152,
+      "norm_label": "sb"
+    },
+    {
+      "label": "H",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_h",
+      "community": 152,
+      "norm_label": "h"
+    },
+    {
+      "label": "adminQuery()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_adminquery",
+      "community": 152,
+      "norm_label": "adminquery()"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_cleanup",
+      "community": 152,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "consoleErrors",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_consoleerrors",
+      "community": 152,
+      "norm_label": "consoleerrors"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_results",
+      "community": 152,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_ok",
+      "community": 152,
+      "norm_label": "ok()"
+    },
+    {
+      "label": "num()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_num",
+      "community": 152,
+      "norm_label": "num()"
+    },
+    {
+      "label": "totalContr",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_totalcontr",
+      "community": 152,
+      "norm_label": "totalcontr"
+    },
+    {
+      "label": "ufsContr",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_ufscontr",
+      "community": 152,
+      "norm_label": "ufscontr"
+    },
+    {
+      "label": "venc",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_venc",
+      "community": 152,
+      "norm_label": "venc"
+    },
+    {
+      "label": "vencForn",
+      "file_type": "code",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "e2e_autotest_contratos_vencforn",
+      "community": 152,
+      "norm_label": "vencforn"
     },
     {
       "label": "autotest-dashboard.mjs",
@@ -2270,7 +2420,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "e2e_autotest_integracao_num",
-      "community": 18,
+      "community": 30,
       "norm_label": "num()"
     },
     {
@@ -2927,7 +3077,7 @@
       "label": "summary",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "e2e_run_all_summary",
       "community": 137,
@@ -2937,7 +3087,7 @@
       "label": "t0",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "e2e_run_all_t0",
       "community": 137,
@@ -2947,7 +3097,7 @@
       "label": "total",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "e2e_run_all_total",
       "community": 137,
@@ -3104,10 +3254,30 @@
       "norm_label": "buscarpca()"
     },
     {
+      "label": "ContratoVencendo",
+      "file_type": "code",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "lib_antecipacao_contratovencendo",
+      "community": 129,
+      "norm_label": "contratovencendo"
+    },
+    {
+      "label": "buscarContratosVencendo()",
+      "file_type": "code",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "lib_antecipacao_buscarcontratosvencendo",
+      "community": 129,
+      "norm_label": "buscarcontratosvencendo()"
+    },
+    {
       "label": "buscarRecorrencia()",
       "file_type": "code",
       "source_file": "lib/antecipacao.ts",
-      "source_location": "L58",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "lib_antecipacao_buscarrecorrencia",
       "community": 129,
@@ -3117,27 +3287,37 @@
       "label": "SinalLinha",
       "file_type": "code",
       "source_file": "lib/antecipacao.ts",
-      "source_location": "L67",
+      "source_location": "L103",
       "_origin": "ast",
       "id": "lib_antecipacao_sinallinha",
-      "community": 129,
+      "community": 148,
       "norm_label": "sinallinha"
     },
     {
       "label": "anoOuData()",
       "file_type": "code",
       "source_file": "lib/antecipacao.ts",
-      "source_location": "L73",
+      "source_location": "L109",
       "_origin": "ast",
       "id": "lib_antecipacao_anooudata",
       "community": 129,
       "norm_label": "anooudata()"
     },
     {
+      "label": "diasAteVencer()",
+      "file_type": "code",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "lib_antecipacao_diasatevencer",
+      "community": 129,
+      "norm_label": "diasatevencer()"
+    },
+    {
       "label": "montarLinhaDoTempo()",
       "file_type": "code",
       "source_file": "lib/antecipacao.ts",
-      "source_location": "L77",
+      "source_location": "L116",
       "_origin": "ast",
       "id": "lib_antecipacao_montarlinhadotempo",
       "community": 129,
@@ -3400,7 +3580,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 6,
+      "community": 30,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -3440,7 +3620,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 129,
+      "community": 13,
       "norm_label": "calcprontidao()"
     },
     {
@@ -3564,20 +3744,40 @@
       "norm_label": "nichos.ts"
     },
     {
-      "label": "SINONIMOS",
+      "label": "NICHO_TOKENS",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
       "source_location": "L9",
+      "_origin": "ast",
+      "id": "lib_nichos_nicho_tokens",
+      "community": 129,
+      "norm_label": "nicho_tokens"
+    },
+    {
+      "label": "SINONIMOS",
+      "file_type": "code",
+      "source_file": "lib/nichos.ts",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "lib_nichos_sinonimos",
       "community": 129,
       "norm_label": "sinonimos"
     },
     {
+      "label": "tokensDosSegmentos()",
+      "file_type": "code",
+      "source_file": "lib/nichos.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "lib_nichos_tokensdossegmentos",
+      "community": 129,
+      "norm_label": "tokensdossegmentos()"
+    },
+    {
       "label": "expandirBusca()",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
-      "source_location": "L19",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "lib_nichos_expandirbusca",
       "community": 129,
@@ -3587,7 +3787,7 @@
       "label": "UF_POR_NOME",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
-      "source_location": "L29",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "lib_nichos_uf_por_nome",
       "community": 129,
@@ -3597,7 +3797,7 @@
       "label": "SIGLAS",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
-      "source_location": "L37",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "lib_nichos_siglas",
       "community": 129,
@@ -3607,7 +3807,7 @@
       "label": "semAcento()",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
-      "source_location": "L39",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "lib_nichos_semacento",
       "community": 129,
@@ -3617,7 +3817,7 @@
       "label": "ufDoTexto()",
       "file_type": "code",
       "source_file": "lib/nichos.ts",
-      "source_location": "L43",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "lib_nichos_ufdotexto",
       "community": 129,
@@ -3740,7 +3940,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_sinais",
-      "community": 7,
+      "community": 129,
       "norm_label": "sinais.ts"
     },
     {
@@ -3750,7 +3950,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_sinais_sinaltone",
-      "community": 7,
+      "community": 129,
       "norm_label": "sinaltone"
     },
     {
@@ -3760,7 +3960,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_sinais_sinal",
-      "community": 7,
+      "community": 129,
       "norm_label": "sinal"
     },
     {
@@ -3770,7 +3970,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_sinais_editalsinal",
-      "community": 7,
+      "community": 129,
       "norm_label": "editalsinal"
     },
     {
@@ -3780,7 +3980,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "lib_sinais_sinaisedital",
-      "community": 7,
+      "community": 129,
       "norm_label": "sinaisedital()"
     },
     {
@@ -3790,7 +3990,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "lib_sinais_sinal_badge",
-      "community": 7,
+      "community": 129,
       "norm_label": "sinal_badge"
     },
     {
@@ -4744,6 +4944,26 @@
       "norm_label": "raw_pca"
     },
     {
+      "label": "0016_contratos.sql",
+      "file_type": "code",
+      "source_file": "supabase/migrations/0016_contratos.sql",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "migrations_0016_contratos",
+      "community": 157,
+      "norm_label": "0016_contratos.sql"
+    },
+    {
+      "label": "contratos",
+      "file_type": "code",
+      "source_file": "supabase/migrations/0016_contratos.sql",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "migrations_0016_contratos_contratos",
+      "community": 157,
+      "norm_label": "contratos"
+    },
+    {
       "label": "tailwind.config.ts",
       "file_type": "code",
       "source_file": "tailwind.config.ts",
@@ -5584,6 +5804,116 @@
       "norm_label": "pagina a busca por objeto, filtrando municipio no servidor (municipios=<id>)."
     },
     {
+      "label": "contratos.py",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "harvester_contratos",
+      "community": 153,
+      "norm_label": "contratos.py"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "harvester_contratos_log",
+      "community": 153,
+      "norm_label": "log()"
+    },
+    {
+      "label": "load_env()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "harvester_contratos_load_env",
+      "community": 153,
+      "norm_label": "load_env()"
+    },
+    {
+      "label": "get()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "harvester_contratos_get",
+      "community": 153,
+      "norm_label": "get()"
+    },
+    {
+      "label": "janelas()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "harvester_contratos_janelas",
+      "community": 153,
+      "norm_label": "janelas()"
+    },
+    {
+      "label": "getpath()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "harvester_contratos_getpath",
+      "community": 153,
+      "norm_label": "getpath()"
+    },
+    {
+      "label": "to_rows()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "harvester_contratos_to_rows",
+      "community": 153,
+      "norm_label": "to_rows()"
+    },
+    {
+      "label": "upsert()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "harvester_contratos_upsert",
+      "community": 153,
+      "norm_label": "upsert()"
+    },
+    {
+      "label": "load_ck()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "harvester_contratos_load_ck",
+      "community": 153,
+      "norm_label": "load_ck()"
+    },
+    {
+      "label": "save_ck()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "harvester_contratos_save_ck",
+      "community": 153,
+      "norm_label": "save_ck()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "harvester_contratos_main",
+      "community": 153,
+      "norm_label": "main()"
+    },
+    {
       "label": "cruzamento.py",
       "file_type": "code",
       "source_file": "worker/harvester/cruzamento.py",
@@ -6092,6 +6422,36 @@
       "id": "harvester_pncp_harvester_rationale_279",
       "community": 9,
       "norm_label": "fase 2b: atas (cnpj=) e contratos (cnpjorgao=) por orgao da cidade \u00d7 janela 364d"
+    },
+    {
+      "label": "probe_contratos.py",
+      "file_type": "code",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "harvester_probe_contratos",
+      "community": 156,
+      "norm_label": "probe_contratos.py"
+    },
+    {
+      "label": "get()",
+      "file_type": "code",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "harvester_probe_contratos_get",
+      "community": 156,
+      "norm_label": "get()"
+    },
+    {
+      "label": "cen()",
+      "file_type": "code",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "harvester_probe_contratos_cen",
+      "community": 156,
+      "norm_label": "cen()"
     },
     {
       "label": "probe_nacional.py",
@@ -6764,10 +7124,20 @@
       "norm_label": "bloqueios \u2014 sessoes autonomas"
     },
     {
-      "label": "2026-06-21 \u2014 T4 contratos: BLOQUEADO (PNCP /contratos \u2192 HTTP 400)",
+      "label": "2026-06-22 \u2014 RESOLVIDO: contratos (Camada 2) + deferido: n\u00ba de participantes/lances",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
       "source_location": "L3",
+      "_origin": "ast",
+      "id": "bloqueios_2026_06_22_resolvido_contratos_camada_2_deferido_no_de_participantes_lances",
+      "community": 107,
+      "norm_label": "2026-06-22 \u2014 resolvido: contratos (camada 2) + deferido: no de participantes/lances"
+    },
+    {
+      "label": "2026-06-21 \u2014 T4 contratos: BLOQUEADO (PNCP /contratos \u2192 HTTP 400)",
+      "file_type": "document",
+      "source_file": "BLOQUEIOS.md",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "bloqueios_2026_06_21_t4_contratos_bloqueado_pncp_contratos_http_400",
       "community": 107,
@@ -6777,7 +7147,7 @@
       "label": "Contornado (sess\u00e3o 2026-06-20)",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L11",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "bloqueios_contornado_sess\u00e3o_2026_06_20",
       "community": 107,
@@ -6787,7 +7157,7 @@
       "label": "Pend\u00eancias de polish (n\u00e3o bloqueiam)",
       "file_type": "document",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L14",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "bloqueios_pend\u00eancias_de_polish_n\u00e3o_bloqueiam",
       "community": 107,
@@ -6911,6 +7281,106 @@
       "_origin": "ast",
       "id": "relatorio_etapa1_harvester_pr\u00f3ximo_n\u00e3o_nesta_etapa",
       "community": 147,
+      "norm_label": "proximo (nao nesta etapa)"
+    },
+    {
+      "label": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao",
+      "community": 155,
+      "norm_label": "relatorio-etapa2-antecipacao.md"
+    },
+    {
+      "label": "RELAT\u00d3RIO \u2014 ETAPA 2: Acender a Antecipa\u00e7\u00e3o (PCA \u2192 nicho + Linha do Tempo) \u2014 2026-06-22",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "community": 155,
+      "norm_label": "relatorio \u2014 etapa 2: acender a antecipacao (pca \u2192 nicho + linha do tempo) \u2014 2026-06-22"
+    },
+    {
+      "label": "T1 \u2014 PCA pesquis\u00e1vel por nicho",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_t1_pca_pesquis\u00e1vel_por_nicho",
+      "community": 155,
+      "norm_label": "t1 \u2014 pca pesquisavel por nicho"
+    },
+    {
+      "label": "T2 \u2014 Radar com 2 pilares",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_t2_radar_com_2_pilares",
+      "community": 155,
+      "norm_label": "t2 \u2014 radar com 2 pilares"
+    },
+    {
+      "label": "T3 \u2014 Linha do Tempo de Sinais (Dashboard)",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_t3_linha_do_tempo_de_sinais_dashboard",
+      "community": 155,
+      "norm_label": "t3 \u2014 linha do tempo de sinais (dashboard)"
+    },
+    {
+      "label": "Performance \u2014 busca nacional em escala (o trabalho duro desta etapa)",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_performance_busca_nacional_em_escala_o_trabalho_duro_desta_etapa",
+      "community": 155,
+      "norm_label": "performance \u2014 busca nacional em escala (o trabalho duro desta etapa)"
+    },
+    {
+      "label": "Prova (autoteste `e2e/autotest-antecipacao.mjs` \u2014 RESULTADO)",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_prova_autoteste_e2e_autotest_antecipacao_mjs_resultado",
+      "community": 155,
+      "norm_label": "prova (autoteste `e2e/autotest-antecipacao.mjs` \u2014 resultado)"
+    },
+    {
+      "label": "Su\u00edte",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_su\u00edte",
+      "community": 155,
+      "norm_label": "suite"
+    },
+    {
+      "label": "Honestidade / em ingest\u00e3o (n\u00e3o forjado)",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_honestidade_em_ingest\u00e3o_n\u00e3o_forjado",
+      "community": 155,
+      "norm_label": "honestidade / em ingestao (nao forjado)"
+    },
+    {
+      "label": "Pr\u00f3ximo (n\u00e3o nesta etapa)",
+      "file_type": "document",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "relatorio_etapa2_antecipacao_pr\u00f3ximo_n\u00e3o_nesta_etapa",
+      "community": 155,
       "norm_label": "proximo (nao nesta etapa)"
     },
     {
@@ -8432,6 +8902,106 @@
       "id": "docs_sentinela_resumo_executivo_9_veredito_estrat\u00e9gico",
       "community": 133,
       "norm_label": "9. veredito estrategico"
+    },
+    {
+      "label": "SEQUENCIA-PROMPTS-ENTREGA.md",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega",
+      "community": 154,
+      "norm_label": "sequencia-prompts-entrega.md"
+    },
+    {
+      "label": "SEQU\u00caNCIA DE PROMPTS \u2014 ENTREGA SENTINELA + MOTORES MeuJur\u00eddico",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "community": 154,
+      "norm_label": "sequencia de prompts \u2014 entrega sentinela + motores meujuridico"
+    },
+    {
+      "label": "Para o Claude Code executar EM ORDEM. Cada bloco: objetivo \u00b7 tarefas \u00b7 DoD (prova o RESULTADO) \u00b7 gate.",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_para_o_claude_code_executar_em_ordem_cada_bloco_objetivo_tarefas_dod_prova_o_resultado_gate",
+      "community": 154,
+      "norm_label": "para o claude code executar em ordem. cada bloco: objetivo \u00b7 tarefas \u00b7 dod (prova o resultado) \u00b7 gate."
+    },
+    {
+      "label": "BLOCO 1 \u2014 CAMADA 2: Contrato vencendo + Resultado/Participa\u00e7\u00e3o (DADO)",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_1_camada_2_contrato_vencendo_resultado_participa\u00e7\u00e3o_dado",
+      "community": 154,
+      "norm_label": "bloco 1 \u2014 camada 2: contrato vencendo + resultado/participacao (dado)"
+    },
+    {
+      "label": "BLOCO 2 \u2014 Dashboard completo + Sala de Guerra completa",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_2_dashboard_completo_sala_de_guerra_completa",
+      "community": 154,
+      "norm_label": "bloco 2 \u2014 dashboard completo + sala de guerra completa"
+    },
+    {
+      "label": "BLOCO 3 \u2014 Pesquisa livre (poder ao fornecedor)",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_3_pesquisa_livre_poder_ao_fornecedor",
+      "community": 154,
+      "norm_label": "bloco 3 \u2014 pesquisa livre (poder ao fornecedor)"
+    },
+    {
+      "label": "BLOCO 4 \u2014 Migra\u00e7\u00e3o MeuJur\u00eddico M1+M2: Infra VPS + Motor de Pre\u00e7o",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_4_migra\u00e7\u00e3o_meujur\u00eddico_m1_m2_infra_vps_motor_de_pre\u00e7o",
+      "community": 154,
+      "norm_label": "bloco 4 \u2014 migracao meujuridico m1+m2: infra vps + motor de preco"
+    },
+    {
+      "label": "BLOCO 5 \u2014 M3 Busca Sem\u00e2ntica + M4 Corpus Jur\u00eddico \u2192 Consultor",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_5_m3_busca_sem\u00e2ntica_m4_corpus_jur\u00eddico_consultor",
+      "community": 154,
+      "norm_label": "bloco 5 \u2014 m3 busca semantica + m4 corpus juridico \u2192 consultor"
+    },
+    {
+      "label": "BLOCO 6 \u2014 Gerente de Participa\u00e7\u00e3o (gerador SECCIONADO de proposta)",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_bloco_6_gerente_de_participa\u00e7\u00e3o_gerador_seccionado_de_proposta",
+      "community": 154,
+      "norm_label": "bloco 6 \u2014 gerente de participacao (gerador seccionado de proposta)"
+    },
+    {
+      "label": "Expectativa (honesta) e ordem",
+      "file_type": "document",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "docs_sequencia_prompts_entrega_expectativa_honesta_e_ordem",
+      "community": 154,
+      "norm_label": "expectativa (honesta) e ordem"
     },
     {
       "label": "conlicitacao-teardown.md",
@@ -13790,7 +14360,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 11,
       "norm_label": "irp - intencao de registro de precos",
       "id": "estudo_fontes_irp"
     },
@@ -16469,9 +17039,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao"
     },
     {
       "relation": "imports",
@@ -16481,7 +17051,7 @@
       "source_location": "L8",
       "weight": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_buscarpca",
+      "target": "lib_antecipacao_buscarcontratosvencendo",
       "confidence_score": 1.0
     },
     {
@@ -16491,9 +17061,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_buscarrecorrencia",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_buscarpca"
     },
     {
       "relation": "imports",
@@ -16502,9 +17072,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_filtro",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_buscarrecorrencia"
     },
     {
       "relation": "imports",
@@ -16513,9 +17083,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_montarlinhadotempo",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_filtro"
     },
     {
       "relation": "imports",
@@ -16524,9 +17094,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_recorrenciaitem",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_montarlinhadotempo"
     },
     {
       "relation": "imports",
@@ -16535,9 +17105,20 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "lib_antecipacao_sinallinha",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_recorrenciaitem"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/dashboard/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "dashboard_page",
+      "target": "lib_antecipacao_sinallinha"
     },
     {
       "relation": "imports_from",
@@ -16714,6 +17295,17 @@
       "confidence_score": 1.0,
       "source": "dashboard_page",
       "target": "supabase_server_createclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/dashboard/page.tsx",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "dashboard_page_dashboardpage",
+      "target": "lib_antecipacao_buscarcontratosvencendo"
     },
     {
       "relation": "calls",
@@ -19180,8 +19772,52 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_antecipacao",
+      "target": "lib_antecipacao"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/radar/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "radar_page",
+      "target": "lib_antecipacao_buscarcontratosvencendo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/radar/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "radar_page",
+      "target": "lib_antecipacao_buscarpca"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/radar/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "radar_page",
+      "target": "lib_antecipacao_buscarrecorrencia"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/radar/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "radar_page",
+      "target": "lib_antecipacao_contratovencendo",
       "confidence_score": 1.0
     },
     {
@@ -19192,7 +19828,7 @@
       "source_location": "L8",
       "weight": 1.0,
       "source": "radar_page",
-      "target": "lib_antecipacao_buscarpca",
+      "target": "lib_antecipacao_diasatevencer",
       "confidence_score": 1.0
     },
     {
@@ -19202,9 +19838,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_antecipacao_buscarrecorrencia",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_filtro"
     },
     {
       "relation": "imports",
@@ -19213,9 +19849,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_antecipacao_filtro",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_pcaitem"
     },
     {
       "relation": "imports",
@@ -19224,20 +19860,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_antecipacao_pcaitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/radar/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "radar_page",
-      "target": "lib_antecipacao_recorrenciaitem",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_recorrenciaitem"
     },
     {
       "relation": "imports_from",
@@ -19410,9 +20035,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L280",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "radar_page_antecipacaolista",
-      "confidence_score": 1.0
+      "target": "radar_page_antecipacaolista"
     },
     {
       "relation": "contains",
@@ -19485,6 +20110,17 @@
       "confidence_score": 1.0,
       "source": "radar_page",
       "target": "supabase_server_createclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/radar/page.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "radar_page_radarpage",
+      "target": "lib_antecipacao_buscarcontratosvencendo"
     },
     {
       "relation": "calls",
@@ -20964,9 +21600,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_adminquery",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_adminquery"
     },
     {
       "relation": "contains",
@@ -20974,9 +21610,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_cleanup",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_cleanup"
     },
     {
       "relation": "contains",
@@ -20984,9 +21620,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_consoleerrors",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_consoleerrors"
     },
     {
       "relation": "contains",
@@ -20994,9 +21630,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_e",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_e"
     },
     {
       "relation": "contains",
@@ -21004,9 +21640,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_h",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_h"
     },
     {
       "relation": "contains",
@@ -21014,9 +21650,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_num",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_num"
     },
     {
       "relation": "contains",
@@ -21024,9 +21660,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_ok",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_ok"
     },
     {
       "relation": "contains",
@@ -21034,9 +21670,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_pcapi",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_pcapi"
     },
     {
       "relation": "contains",
@@ -21044,9 +21680,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_pcavetorbr",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_pcavetorbr"
     },
     {
       "relation": "contains",
@@ -21054,9 +21690,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_readenv",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_readenv"
     },
     {
       "relation": "contains",
@@ -21064,9 +21700,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_recpi",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_recpi"
     },
     {
       "relation": "contains",
@@ -21074,9 +21710,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_results",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_results"
     },
     {
       "relation": "contains",
@@ -21084,9 +21720,9 @@
       "source_file": "e2e/autotest-antecipacao.mjs",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_antecipacao",
-      "target": "e2e_autotest_antecipacao_sb",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_antecipacao_sb"
     },
     {
       "relation": "contains",
@@ -21188,6 +21824,146 @@
       "confidence_score": 1.0,
       "source": "e2e_autotest_backfill_cleanup",
       "target": "e2e_autotest_backfill_adminquery"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_adminquery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_consoleerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_h",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_num",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_readenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_sb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_totalcontr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_ufscontr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_venc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-contratos.mjs",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "e2e_autotest_contratos",
+      "target": "e2e_autotest_contratos_vencforn",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -22328,9 +23104,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao",
-      "target": "lib_antecipacao_anooudata",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_anooudata"
     },
     {
       "relation": "contains",
@@ -22338,79 +23114,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao",
-      "target": "lib_antecipacao_aplicarfiltro",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_buscarpca",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_buscarrecorrencia",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_filtro",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L77",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_montarlinhadotempo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_pcaitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_recorrenciaitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/antecipacao.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "lib_antecipacao",
-      "target": "lib_antecipacao_sb",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_aplicarfiltro"
     },
     {
       "relation": "contains",
@@ -22419,8 +23125,108 @@
       "source_location": "L67",
       "weight": 1.0,
       "source": "lib_antecipacao",
-      "target": "lib_antecipacao_sinallinha",
+      "target": "lib_antecipacao_buscarcontratosvencendo",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_buscarpca"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_buscarrecorrencia"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_contratovencendo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_diasatevencer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_filtro"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_montarlinhadotempo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_pcaitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_recorrenciaitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_sb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_antecipacao_sinallinha"
     },
     {
       "relation": "imports_from",
@@ -22429,9 +23235,20 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao",
-      "target": "lib_nichos",
-      "confidence_score": 1.0
+      "target": "lib_nichos"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_antecipacao",
+      "target": "lib_nichos_expandirbusca"
     },
     {
       "relation": "imports",
@@ -22441,7 +23258,7 @@
       "source_location": "L7",
       "weight": 1.0,
       "source": "lib_antecipacao",
-      "target": "lib_nichos_expandirbusca",
+      "target": "lib_nichos_tokensdossegmentos",
       "confidence_score": 1.0
     },
     {
@@ -22451,9 +23268,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao",
-      "target": "supabase_server",
-      "confidence_score": 1.0
+      "target": "supabase_server"
     },
     {
       "relation": "imports",
@@ -22462,9 +23279,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao",
-      "target": "supabase_server_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "calls",
@@ -22473,9 +23290,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao_aplicarfiltro",
-      "target": "lib_nichos_expandirbusca",
-      "confidence_score": 1.0
+      "target": "lib_nichos_expandirbusca"
     },
     {
       "relation": "calls",
@@ -22484,9 +23301,9 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao_buscarpca",
-      "target": "lib_antecipacao_aplicarfiltro",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_aplicarfiltro"
     },
     {
       "relation": "calls",
@@ -22495,9 +23312,31 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao_buscarrecorrencia",
-      "target": "lib_antecipacao_aplicarfiltro",
-      "confidence_score": 1.0
+      "target": "lib_antecipacao_aplicarfiltro"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "lib_antecipacao_buscarcontratosvencendo",
+      "target": "lib_nichos_expandirbusca"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "lib_antecipacao_buscarcontratosvencendo",
+      "target": "lib_nichos_tokensdossegmentos"
     },
     {
       "relation": "calls",
@@ -22506,8 +23345,19 @@
       "source_file": "lib/antecipacao.ts",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_antecipacao_montarlinhadotempo",
-      "target": "lib_antecipacao_anooudata",
+      "target": "lib_antecipacao_anooudata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antecipacao.ts",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "lib_antecipacao_montarlinhadotempo",
+      "target": "lib_antecipacao_diasatevencer",
       "confidence_score": 1.0
     },
     {
@@ -23006,6 +23856,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/nichos.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "lib_nichos",
+      "target": "lib_nichos_nicho_tokens",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/nichos.ts",
       "source_location": "L41",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -23031,6 +23891,16 @@
       "confidence_score": 1.0,
       "source": "lib_nichos",
       "target": "lib_nichos_sinonimos"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/nichos.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "lib_nichos",
+      "target": "lib_nichos_tokensdossegmentos",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23942,9 +24812,9 @@
       "source_file": "supabase/migrations/0015_denormalizar_uf_sigla.sql",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "migrations_0015_denormalizar_uf_sigla",
-      "target": "migrations_0015_denormalizar_uf_sigla_raw_editais",
-      "confidence_score": 1.0
+      "target": "migrations_0015_denormalizar_uf_sigla_raw_editais"
     },
     {
       "relation": "contains",
@@ -23952,8 +24822,18 @@
       "source_file": "supabase/migrations/0015_denormalizar_uf_sigla.sql",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "migrations_0015_denormalizar_uf_sigla",
-      "target": "migrations_0015_denormalizar_uf_sigla_raw_pca",
+      "target": "migrations_0015_denormalizar_uf_sigla_raw_pca"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "supabase/migrations/0016_contratos.sql",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "migrations_0016_contratos",
+      "target": "migrations_0016_contratos_contratos",
       "confidence_score": 1.0
     },
     {
@@ -25118,6 +25998,205 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_getpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_janelas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_load_ck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_load_env",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_save_ck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_to_rows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "harvester_contratos",
+      "target": "harvester_contratos_upsert",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L202",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "harvester_contratos_load_env",
+      "target": "harvester_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L173",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_load_env",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "harvester_contratos_getpath",
+      "target": "harvester_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "harvester_contratos_to_rows",
+      "target": "harvester_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L204",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_janelas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_load_ck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/contratos.py",
+      "source_location": "L223",
+      "weight": 1.0,
+      "source": "harvester_contratos_main",
+      "target": "harvester_contratos_save_ck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "worker/harvester/cruzamento.py",
       "source_location": "L43",
       "weight": 1.0,
@@ -25603,9 +26682,9 @@
       "source_file": "worker/harvester/nacional.py",
       "source_location": "L208",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "harvester_nacional_rationale_208",
-      "target": "harvester_nacional_run_range",
-      "confidence_score": 1.0
+      "target": "harvester_nacional_run_range"
     },
     {
       "relation": "calls",
@@ -26248,6 +27327,37 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "harvester_probe_contratos",
+      "target": "harvester_probe_contratos_cen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "harvester_probe_contratos",
+      "target": "harvester_probe_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "worker/harvester/probe_contratos.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "harvester_probe_contratos_cen",
+      "target": "harvester_probe_contratos_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "worker/harvester/probe_nacional.py",
       "source_location": "L50",
       "weight": 1.0,
@@ -26842,6 +27952,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "BLOQUEIOS.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
+      "target": "bloqueios_2026_06_22_resolvido_contratos_camada_2_deferido_no_de_participantes_lances",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BLOQUEIOS.md",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -26874,9 +27994,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester",
-      "target": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22"
     },
     {
       "relation": "contains",
@@ -26884,9 +28004,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_1_1_probe_decis\u00e3o_de_arquitetura",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_1_1_probe_decis\u00e3o_de_arquitetura"
     },
     {
       "relation": "contains",
@@ -26894,9 +28014,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_1_2_harvester_nacional_worker_harvester_nacional_py",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_1_2_harvester_nacional_worker_harvester_nacional_py"
     },
     {
       "relation": "contains",
@@ -26904,9 +28024,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_1_3_backfill_cron",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_1_3_backfill_cron"
     },
     {
       "relation": "contains",
@@ -26914,9 +28034,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_1_4_radar_busca_por_nicho_situa\u00e7\u00e3o_migration_0012",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_1_4_radar_busca_por_nicho_situa\u00e7\u00e3o_migration_0012"
     },
     {
       "relation": "contains",
@@ -26924,9 +28044,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_1_5_prova_autoteste_e2e_autotest_harvester_mjs_resultado_n\u00e3o_presen\u00e7a",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_1_5_prova_autoteste_e2e_autotest_harvester_mjs_resultado_n\u00e3o_presen\u00e7a"
     },
     {
       "relation": "contains",
@@ -26934,9 +28054,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_pr\u00f3ximo_n\u00e3o_nesta_etapa",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_pr\u00f3ximo_n\u00e3o_nesta_etapa"
     },
     {
       "relation": "contains",
@@ -26944,9 +28064,9 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_relat\u00f3rio_etapa_1_camada_1_harvester_di\u00e1rio_nacional_2026_06_22",
-      "target": "relatorio_etapa1_harvester_su\u00edte",
-      "confidence_score": 1.0
+      "target": "relatorio_etapa1_harvester_su\u00edte"
     },
     {
       "relation": "contains",
@@ -26954,8 +28074,98 @@
       "source_file": "RELATORIO-ETAPA1-HARVESTER.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "relatorio_etapa1_harvester_1_5_prova_autoteste_e2e_autotest_harvester_mjs_resultado_n\u00e3o_presen\u00e7a",
-      "target": "relatorio_etapa1_harvester_crescimento_antes_depois_do_harvest_nacional",
+      "target": "relatorio_etapa1_harvester_crescimento_antes_depois_do_harvest_nacional"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao",
+      "target": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_honestidade_em_ingest\u00e3o_n\u00e3o_forjado",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_performance_busca_nacional_em_escala_o_trabalho_duro_desta_etapa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_prova_autoteste_e2e_autotest_antecipacao_mjs_resultado",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_pr\u00f3ximo_n\u00e3o_nesta_etapa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_su\u00edte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_t1_pca_pesquis\u00e1vel_por_nicho",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_t2_radar_com_2_pilares",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELATORIO-ETAPA2-ANTECIPACAO.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "relatorio_etapa2_antecipacao_relat\u00f3rio_etapa_2_acender_a_antecipa\u00e7\u00e3o_pca_nicho_linha_do_tempo_2026_06_22",
+      "target": "relatorio_etapa2_antecipacao_t3_linha_do_tempo_de_sinais_dashboard",
       "confidence_score": 1.0
     },
     {
@@ -28351,6 +29561,96 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega",
+      "target": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_1_camada_2_contrato_vencendo_resultado_participa\u00e7\u00e3o_dado",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_2_dashboard_completo_sala_de_guerra_completa",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_3_pesquisa_livre_poder_ao_fornecedor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_4_migra\u00e7\u00e3o_meujur\u00eddico_m1_m2_infra_vps_motor_de_pre\u00e7o",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_5_m3_busca_sem\u00e2ntica_m4_corpus_jur\u00eddico_consultor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_bloco_6_gerente_de_participa\u00e7\u00e3o_gerador_seccionado_de_proposta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_expectativa_honesta_e_ordem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SEQUENCIA-PROMPTS-ENTREGA.md",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "docs_sequencia_prompts_entrega_sequ\u00eancia_de_prompts_entrega_sentinela_motores_meujur\u00eddico",
+      "target": "docs_sequencia_prompts_entrega_para_o_claude_code_executar_em_ordem_cada_bloco_objetivo_tarefas_dod_prova_o_resultado_gate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "docs/concorrentes/conlicitacao/conlicitacao-teardown.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -29494,9 +30794,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao",
-      "target": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital"
     },
     {
       "relation": "contains",
@@ -29504,9 +30804,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_conceito_importante_n\u00e3o_\u00e9_pca",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_conceito_importante_n\u00e3o_\u00e9_pca"
     },
     {
       "relation": "contains",
@@ -29514,9 +30814,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_dod_prova_o_resultado_aceita\u00e7\u00e3o_n\u00edvel_antecipa\u00e7\u00e3o",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_dod_prova_o_resultado_aceita\u00e7\u00e3o_n\u00edvel_antecipa\u00e7\u00e3o"
     },
     {
       "relation": "contains",
@@ -29524,9 +30824,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_honestidade",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_honestidade"
     },
     {
       "relation": "contains",
@@ -29534,9 +30834,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_n\u00e3o_fazer_agora",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_n\u00e3o_fazer_agora"
     },
     {
       "relation": "contains",
@@ -29544,9 +30844,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_tarefa_1_esteira_pilar_antecipa\u00e7\u00e3o_no_radar",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_tarefa_1_esteira_pilar_antecipa\u00e7\u00e3o_no_radar"
     },
     {
       "relation": "contains",
@@ -29554,9 +30854,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_tarefa_2_acender_os_sinais_que_j\u00e1_t\u00eam_dado",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_tarefa_2_acender_os_sinais_que_j\u00e1_t\u00eam_dado"
     },
     {
       "relation": "contains",
@@ -29564,9 +30864,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_tarefa_3_coletar_contrato_vencendo_o_sinal_forte_que_falta",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_tarefa_3_coletar_contrato_vencendo_o_sinal_forte_que_falta"
     },
     {
       "relation": "contains",
@@ -29574,9 +30874,9 @@
       "source_file": "docs/prompt-etapa2-antecipacao.md",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_prompt_etapa2_antecipacao_prompt_etapa_2_acender_a_antecipa\u00e7\u00e3o_esteira_de_sinais_pr\u00e9_edital",
-      "target": "docs_prompt_etapa2_antecipacao_tarefa_4_linha_do_tempo_de_sinais_dashboard_sala_de_guerra",
-      "confidence_score": 1.0
+      "target": "docs_prompt_etapa2_antecipacao_tarefa_4_linha_do_tempo_de_sinais_dashboard_sala_de_guerra"
     },
     {
       "relation": "contains",
@@ -35760,5 +37060,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9776a7fc5fb0ec2f5e13b0bb80e85cab13a75b54"
+  "built_at_commit": "4681afa217e2e5ae195a042c684373e1f6cb7b80"
 }

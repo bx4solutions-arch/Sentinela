@@ -1,5 +1,18 @@
 # BLOQUEIOS — sessões autônomas
 
+## 2026-06-22 — RESOLVIDO: contratos (Camada 2) + deferido: nº de participantes/lances
+- **RESOLVIDO** o blocker T4 abaixo: o endpoint `/v1/contratos?dataInicial&dataFinal` funciona **NACIONAL por data**
+  (168.794 registros/mês). O 400 anterior era a variante `dataVigenciaInicial` (exige `dataInicial`) ou
+  `cnpjOrgao` com `tamanhoPagina` pequeno. Probe: `worker/harvester/probe_contratos.py`.
+- **Entregue (Bloco 1):** tabela `contratos` + harvester (`worker/harvester/contratos.py`) → **contrato vencendo**
+  (`dataVigenciaFim`) + **quem ganhou** (`niFornecedor`/fornecedor vencedor + valor). Liga ao edital via
+  `numeroControlePncpCompra`.
+- **DEFERIDO (em ingestão, não forjado):** **nº de participantes / lances / desconto** por item — exige o endpoint
+  de *resultado por item* do PNCP (`/contratacoes/{id}/itens/.../resultados`), que está **rate-limited (HTTP 429)**
+  e é por-id (pesado). Fica na fila; a inteligência de "quem ganhou + preço" já vem do `contratos`.
+- **Ligação edital↔contrato:** hoje baixa porque os contratos coletados (jun/2025) e os editais (recentes) são de
+  janelas diferentes; cresce quando as janelas se sobrepõem (backfill).
+
 ## 2026-06-21 — T4 contratos: BLOQUEADO (PNCP /contratos → HTTP 400)
 - O endpoint PNCP `/v1/contratos?cnpjOrgao=…&dataInicial=…&dataFinal=…` retorna **400** para os órgãos
   municipais coletados (Santos etc.), mesmo com janela ≤364 dias. O harvester original já registrava

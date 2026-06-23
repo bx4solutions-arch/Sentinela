@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Progress } from "@/components/ui";
-import { buscarPCA, buscarRecorrencia, montarLinhaDoTempo, type Filtro, type RecorrenciaItem, type SinalLinha } from "@/lib/antecipacao";
+import { buscarPCA, buscarRecorrencia, buscarContratosVencendo, montarLinhaDoTempo, type Filtro, type RecorrenciaItem, type SinalLinha } from "@/lib/antecipacao";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { CERTIDAO_LABEL, diasAteVencer, statusCertidao } from "@/lib/certidoes";
 import { itensAplicaveis, calcProntidao } from "@/lib/habilitacao";
@@ -113,13 +113,15 @@ export default async function DashboardPage() {
   let timeline: SinalLinha[] = [];
   if (temNicho) {
     const filtroDash: Filtro = { busca: "", segmentos, uf: uf!, prontas, usandoFallbackUf: !usaCidades, ufBusca: null };
-    const [pcaD, recD] = await Promise.all([buscarPCA(supabase, filtroDash), buscarRecorrencia(supabase, filtroDash)]);
+    const [pcaD, recD, contrD] = await Promise.all([
+      buscarPCA(supabase, filtroDash), buscarRecorrencia(supabase, filtroDash), buscarContratosVencendo(supabase, filtroDash),
+    ]);
     let repQ = supabase.from("raw_editais")
       .select("numero_controle_pncp, objeto, valor_homologado, data_publicacao, cidade, cnpj_orgao, uf_sigla, link_origem, orgao:cnpj_orgao(razao_social)")
       .overlaps("segmentos", segmentos).or("situacao_nome.ilike.*fracassad*,situacao_nome.ilike.*desert*");
     repQ = usaCidades ? repQ.in("cidade", prontas) : repQ.eq("uf_sigla", uf!);
     const { data: repD } = await repQ.order("data_publicacao", { ascending: false }).limit(10);
-    timeline = montarLinhaDoTempo(pcaD, recD, (repD ?? []) as unknown as RecorrenciaItem[]).slice(0, 14);
+    timeline = montarLinhaDoTempo(pcaD, recD, (repD ?? []) as unknown as RecorrenciaItem[], contrD).slice(0, 14);
   }
   const seloTone: Record<SinalLinha["tone"], "secondary" | "warning" | "muted"> = { navy: "secondary", amber: "warning", slate: "muted" };
 

@@ -18,6 +18,7 @@ const SUITE = [
   "e2e/autotest-integracao.mjs",
   "e2e/autotest-harvester.mjs",   // Camada 1 nacional + Teste de Aceitação nº1
   "e2e/autotest-antecipacao.mjs", // Etapa 2: Antecipação (PCA + recorrência) + Linha do Tempo
+  "e2e/autotest-contratos.mjs",   // Bloco 1: Camada 2 (contrato vencendo + quem ganhou)
 ];
 
 const summary = [];

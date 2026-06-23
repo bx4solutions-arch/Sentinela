@@ -35,8 +35,8 @@
     "semantic_hash": "7b188344bfeabab322db1d80155fe456"
   },
   "app/(shell)/dashboard/page.tsx": {
-    "mtime": 1782171071.3178759,
-    "ast_hash": "7a91245bbad87f3eddde7de2d12a5a00",
+    "mtime": 1782175317.8228874,
+    "ast_hash": "2db8e206c3ac44da8dadf7ef13ee708f",
     "semantic_hash": ""
   },
   "app/(shell)/empresa/actions.ts": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782171042.9856107,
-    "ast_hash": "b524624b9d89740150c46a589d1a521d",
+    "mtime": 1782175297.1225474,
+    "ast_hash": "b8e6271b5e46334d1edbb5f1fc950ab6",
     "semantic_hash": ""
   },
   "app/(shell)/roadmap/page.tsx": {
@@ -275,7 +275,7 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782163234.9348307,
+    "mtime": 1782176789.9148664,
     "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
@@ -420,8 +420,8 @@
     "semantic_hash": "1797f72f4797fbd8aa3f959950311cc5"
   },
   "BLOQUEIOS.md": {
-    "mtime": 1782079109.7683234,
-    "ast_hash": "5d37ced22a58ec543dcb6794b7cc6bc8",
+    "mtime": 1782176142.1635334,
+    "ast_hash": "3d81ae8134a621f08c78a1e233cac559",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782169209.3489153,
-    "ast_hash": "7244a2d8879afdbf85304aa53d46e13f",
+    "mtime": 1782176116.6458569,
+    "ast_hash": "bdf466ccc46e5ec4b16bb963e32b7c47",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -845,8 +845,8 @@
     "semantic_hash": ""
   },
   "lib/nichos.ts": {
-    "mtime": 1782169634.4412262,
-    "ast_hash": "406689b356e944bb9592672b8a4becb3",
+    "mtime": 1782175190.133852,
+    "ast_hash": "38a2693fd207f37ab61f1f6384fe15e9",
     "semantic_hash": ""
   },
   "supabase/migrations/0012_busca_objeto_trgm.sql": {
@@ -880,8 +880,8 @@
     "semantic_hash": ""
   },
   "lib/antecipacao.ts": {
-    "mtime": 1782171200.5390017,
-    "ast_hash": "19cff37400594876f9c853ca79449164",
+    "mtime": 1782176079.1275883,
+    "ast_hash": "fc9913ff6b5f18d87aaa4a48247222b3",
     "semantic_hash": ""
   },
   "supabase/migrations/0013_busca_pca_trgm.sql": {
@@ -907,6 +907,36 @@
   "docs/prompt-etapa2-antecipacao.md": {
     "mtime": 1782168554.0165987,
     "ast_hash": "924ba81fd711bcacf201ce1e9ebabc61",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-contratos.mjs": {
+    "mtime": 1782175792.8963962,
+    "ast_hash": "dcd34050c374981324edc4134eb2eb97",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/0016_contratos.sql": {
+    "mtime": 1782174621.8089936,
+    "ast_hash": "d09aa218bfc5adbe4fb860baaad375b2",
+    "semantic_hash": ""
+  },
+  "worker/harvester/contratos.py": {
+    "mtime": 1782175406.5003467,
+    "ast_hash": "38887e6282d8071b8107a541f350d833",
+    "semantic_hash": ""
+  },
+  "worker/harvester/probe_contratos.py": {
+    "mtime": 1782174481.0423753,
+    "ast_hash": "eb1249ca300766bd3b6654ab7ec8862b",
+    "semantic_hash": ""
+  },
+  "RELATORIO-ETAPA2-ANTECIPACAO.md": {
+    "mtime": 1782171634.4219573,
+    "ast_hash": "61c441fc53038f0daf74c9740d4de0c6",
+    "semantic_hash": ""
+  },
+  "docs/SEQUENCIA-PROMPTS-ENTREGA.md": {
+    "mtime": 1782174228.0152867,
+    "ast_hash": "f239399eff5bbe05e2017ff51762e6fc",
     "semantic_hash": ""
   }
 }

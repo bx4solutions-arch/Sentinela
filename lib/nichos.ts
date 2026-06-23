@@ -3,17 +3,20 @@
 // "dedetização", "controle de pragas". A semântica de verdade fica para a Etapa 2 (embeddings);
 // aqui é o conjunto de termos (OR de ilike). `ilike "mosquito"` sozinho volta vazio mesmo com dado.
 
-// Grupos de sinônimos por nicho — TOKENS DISTINTOS (substrings), sem plural/multi-palavra
-// redundante: "vetor" já casa "controle de vetores"/"vetores"; "praga" casa "pragas".
+// Tokens por nicho (segmento) — DISTINTOS (substrings), sem plural/multi-palavra redundante:
+// "vetor" já casa "controle de vetores"/"vetores"; "praga" casa "pragas".
 // Menos termos = menos OR de ilike = busca rápida (cada termo é um bitmap no índice trigram).
-const SINONIMOS: string[][] = [
-  // controle de vetores / pragas / endemias
-  ["vetor", "dengue", "endemia", "mosquito", "praga", "dedetiz", "desinsetiz", "desratiz", "descupiniz", "sanitiz"],
-  // material hospitalar
-  ["hospitalar", "seringa", "cateter", "curativo", "medicamento", "odontolog"],
-  // material de expediente
-  ["expediente", "escritório", "papel a4", "toner", "cartucho", "almoxarifado"],
-];
+export const NICHO_TOKENS: Record<string, string[]> = {
+  "controle-de-pragas": ["vetor", "dengue", "endemia", "mosquito", "praga", "dedetiz", "desinsetiz", "desratiz", "descupiniz", "sanitiz"],
+  "material-hospitalar": ["hospitalar", "seringa", "cateter", "curativo", "medicamento", "odontolog"],
+  "material-de-expediente": ["expediente", "escritório", "papel a4", "toner", "cartucho", "almoxarifado"],
+};
+const SINONIMOS: string[][] = Object.values(NICHO_TOKENS);
+
+/** Tokens de objeto para o(s) segmento(s) da empresa — p/ filtrar tabelas sem coluna `segmentos` (contratos). */
+export function tokensDosSegmentos(segs: string[]): string[] {
+  return Array.from(new Set(segs.flatMap((s) => NICHO_TOKENS[s] ?? [])));
+}
 
 /** Expande o termo digitado para os ilike a aplicar. Se casar um grupo, usa só o grupo (tight). */
 export function expandirBusca(q: string): string[] {

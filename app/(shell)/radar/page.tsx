@@ -5,7 +5,7 @@ import { Card, CardContent, Badge, Button, Select, Input } from "@/components/ui
 import { SEG_LABEL } from "@/lib/segmentos";
 import { municipiosDaUf } from "@/lib/ibge";
 import { expandirBusca, ufDoTexto } from "@/lib/nichos";
-import { buscarPCA, buscarRecorrencia, type PcaItem, type RecorrenciaItem, type Filtro } from "@/lib/antecipacao";
+import { buscarPCA, buscarRecorrencia, buscarContratosVencendo, diasAteVencer, type PcaItem, type RecorrenciaItem, type ContratoVencendo, type Filtro } from "@/lib/antecipacao";
 import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
 import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
 import { dataBR } from "@/lib/utils";
@@ -99,8 +99,11 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const filtro: Filtro = { busca, segmentos, uf, prontas, usandoFallbackUf, ufBusca: ufBusca ?? uf };
   let pca: PcaItem[] = [];
   let recorrenciaItens: RecorrenciaItem[] = [];
+  let contratosVenc: ContratoVencendo[] = [];
   if (pilar === "antecipacao") {
-    [pca, recorrenciaItens] = await Promise.all([buscarPCA(supabase, filtro), buscarRecorrencia(supabase, filtro)]);
+    [pca, recorrenciaItens, contratosVenc] = await Promise.all([
+      buscarPCA(supabase, filtro), buscarRecorrencia(supabase, filtro), buscarContratosVencendo(supabase, filtro),
+    ]);
   }
   // Links de aba preservando a busca atual.
   const qsBusca = busca ? `q=${encodeURIComponent(busca)}&uf=${ufBusca ?? uf}&` : "";
@@ -271,28 +274,52 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
         </div>
         )
       ) : (
-        <AntecipacaoLista pca={pca} rec={recorrenciaItens} busca={busca} uf={ufBusca ?? uf} usandoFallbackUf={usandoFallbackUf} />
+        <AntecipacaoLista pca={pca} rec={recorrenciaItens} contratos={contratosVenc} busca={busca} uf={ufBusca ?? uf} usandoFallbackUf={usandoFallbackUf} />
       )}
     </div>
   );
 }
 
-function AntecipacaoLista({ pca, rec, busca, uf, usandoFallbackUf }:
-  { pca: PcaItem[]; rec: RecorrenciaItem[]; busca: string; uf: string; usandoFallbackUf: boolean }) {
-  const vazio = pca.length === 0 && rec.length === 0;
+function AntecipacaoLista({ pca, rec, contratos, busca, uf, usandoFallbackUf }:
+  { pca: PcaItem[]; rec: RecorrenciaItem[]; contratos: ContratoVencendo[]; busca: string; uf: string; usandoFallbackUf: boolean }) {
+  const vazio = pca.length === 0 && rec.length === 0 && contratos.length === 0;
   return (
     <div className="space-y-3">
       <p className="rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
         <strong className="text-foreground">Antecipação:</strong> o que está se <strong>formando</strong> antes do edital —
-        itens <strong>planejados</strong> (PCA) e órgãos <strong>recorrentes</strong>. É <strong>probabilidade, não promessa</strong>:
-        “planejado / pode virar edital”, nunca “vai ter com certeza”.
+        <strong>contrato vencendo</strong>, itens <strong>planejados</strong> (PCA) e órgãos <strong>recorrentes</strong>.
+        É <strong>probabilidade, não promessa</strong>: “planejado / pode virar edital”, nunca “vai ter com certeza”.
       </p>
       {vazio ? (
         <EmptyState titulo="Sem sinais de antecipação agora" texto={busca
-          ? `Nenhum PCA ou recorrência para “${busca}” em ${uf} — pode ser vazio verdadeiro (PCA municipal é raro; o sinal acende quando entrar).`
-          : `Sem PCA/recorrência do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento. Contrato vencendo entra quando a coleta de contratos ligar (em ingestão).`} />
+          ? `Nenhum contrato vencendo, PCA ou recorrência para “${busca}” em ${uf} — pode ser vazio verdadeiro (o sinal acende quando o dado entrar).`
+          : `Sem sinais de antecipação do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
       ) : (
         <>
+          {contratos.map((c) => {
+            const dias = diasAteVencer(c.data_vigencia_fim);
+            return (
+              <Card key={c.numero_controle_pncp} data-testid="antecipacao-card">
+                <CardContent className="p-4">
+                  <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                    <Badge variant="destructive" className="gap-1"><AlarmClock className="size-3" /> {dias != null ? `contrato vence em ${dias}d` : "contrato vencendo"}</Badge>
+                    <Badge variant="muted">janela de renovação / nova disputa</Badge>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                    <Building2 className="size-3.5" />
+                    <span className="font-medium text-foreground">{c.orgao?.razao_social ?? "Órgão"}</span>
+                    {c.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {c.cidade}</span>}
+                    {c.data_vigencia_fim && <span className="ml-auto">vigência até {dataBR(c.data_vigencia_fim)}</span>}
+                  </div>
+                  <p className="mt-2 line-clamp-2 text-sm">{c.objeto}</p>
+                  <div className="mt-2 text-xs">
+                    <span className="font-semibold text-foreground">{brl(c.valor_global) ?? "—"}</span>
+                    <span className="text-muted-foreground"> · fornecedor atual: {c.nome_fornecedor ?? "—"}</span>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
           {pca.map((p) => (
             <Card key={p.id} data-testid="antecipacao-card">
               <CardContent className="p-4">
