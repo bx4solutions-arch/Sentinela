@@ -29,6 +29,7 @@ const SUITE = [
   "e2e/autotest-proposta.mjs",    // Bloco 6: Gerador de proposta seccionado + DOCX
   "e2e/autotest-space.mjs",       // Sidebar "Space" + rota-lista /space (Espaço Inteligente)
   "e2e/autotest-space-crm.mjs",   // Space CRM: cabeçalho + Resumo (visual protótipo) + link PNCP + trava real
+  "e2e/autotest-descoberta.mjs",  // Descoberta: recorte + escopo (cidade/estado/nacional) + Pesquisa completa
 ];
 
 const summary = [];

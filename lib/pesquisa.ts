@@ -2,8 +2,90 @@
 import type { createClient } from "@/lib/supabase/server";
 import { expandirBusca } from "@/lib/nichos";
 import { motorPreco, type FaixaPreco } from "@/lib/preco";
+import { nowISO, isoDiasAtras } from "@/lib/utils";
 
 type SB = Awaited<ReturnType<typeof createClient>>;
+
+// ---- Pesquisa COMPLETA: todos os campos que o nosso dado expõe (espelha o PNCP) ----
+// Opções fixas (refletem o que existe em raw_editais hoje).
+export const MODALIDADES = [
+  "Dispensa", "Pregão - Eletrônico", "Inexigibilidade", "Concorrência - Eletrônica",
+  "Credenciamento", "Pregão - Presencial", "Concorrência - Presencial", "Leilão - Eletrônico",
+];
+export const SITUACOES = ["Divulgada no PNCP", "Suspensa", "Revogada", "Anulada"];
+
+export type FiltrosCompleta = {
+  objeto?: string; exata?: boolean;
+  ufs?: string[]; cidade?: string; modalidades?: string[]; situacao?: string;
+  numero?: string; orgao?: string; segmentos?: string[];
+  valorMin?: number | null; valorMax?: number | null;
+  pubDe?: string; pubAte?: string; encDe?: string; encAte?: string;
+  soAbertas?: boolean; pagina?: number; tamanho?: number;
+};
+export type EditalCompleto = {
+  numero: string; objeto: string | null; valor: number | null; situacao: string | null;
+  modalidade: string | null; cidade: string | null; uf: string | null;
+  dataPub: string | null; dataEnc: string | null; cnpjOrgao: string | null; orgao: string | null;
+};
+export type ResultadoCompleta = { rows: EditalCompleto[]; total: number; pagina: number; tamanho: number; temFiltro: boolean };
+
+const MORTAS_COMPLETA = '("Revogada","Anulada","Cancelada","Deserta","Fracassada")';
+
+/** Pesquisa completa multi-campo sobre raw_editais. Default = só ABERTAS (reusa a trava de vencidas). */
+export async function pesquisaCompleta(sb: SB, f: FiltrosCompleta): Promise<ResultadoCompleta> {
+  const tamanho = Math.min(Math.max(f.tamanho ?? 25, 1), 50);
+  const pagina = Math.max(0, f.pagina ?? 0);
+  const temFiltro = !!(f.objeto || f.ufs?.length || f.cidade || f.modalidades?.length || f.situacao || f.numero || f.orgao || f.segmentos?.length || f.valorMin != null || f.valorMax != null || f.pubDe || f.pubAte || f.encDe || f.encAte);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let q: any = sb.from("raw_editais").select(
+    "numero_controle_pncp, objeto, valor_estimado, situacao_nome, modalidade_nome, cidade, uf_sigla, data_publicacao, data_encerramento, cnpj_orgao, orgao:cnpj_orgao(razao_social)",
+    { count: "exact" },
+  );
+
+  if (f.objeto) {
+    if (f.exata) q = q.ilike("objeto", `%${f.objeto}%`);
+    else { const termos = expandirBusca(f.objeto); if (termos.length) q = q.or(termos.map((t: string) => `objeto.ilike.*${t}*`).join(",")); }
+  }
+  if (f.ufs?.length) q = q.in("uf_sigla", f.ufs);
+  if (f.cidade) q = q.ilike("cidade", `%${f.cidade}%`);
+  if (f.modalidades?.length) q = q.in("modalidade_nome", f.modalidades);
+  if (f.situacao) q = q.eq("situacao_nome", f.situacao);
+  if (f.numero) q = q.ilike("numero_controle_pncp", `%${f.numero}%`);
+  if (f.segmentos?.length) q = q.overlaps("segmentos", f.segmentos);
+  if (f.valorMin != null) q = q.gte("valor_estimado", f.valorMin);
+  if (f.valorMax != null) q = q.lte("valor_estimado", f.valorMax);
+  if (f.pubDe) q = q.gte("data_publicacao", f.pubDe);
+  if (f.pubAte) q = q.lte("data_publicacao", f.pubAte);
+  if (f.encDe) q = q.gte("data_encerramento", f.encDe);
+  if (f.encAte) q = q.lte("data_encerramento", f.encAte);
+  if (f.orgao) {
+    const dig = soDigitos(f.orgao);
+    if (dig.length >= 8) q = q.eq("cnpj_orgao", dig);
+    else {
+      const { data: orgs } = await sb.from("orgao").select("cnpj").ilike("razao_social", `%${f.orgao}%`).limit(80);
+      const cnpjs = (orgs ?? []).map((o) => (o as { cnpj: string }).cnpj);
+      q = q.in("cnpj_orgao", cnpjs.length ? cnpjs : ["__sem_orgao__"]);
+    }
+  }
+  // Default: só ABERTAS (prazo vigente) — mesma trava da descoberta. Desligável p/ buscar histórico.
+  if (f.soAbertas !== false) {
+    q = q.is("valor_homologado", null)
+      .not("situacao_nome", "in", MORTAS_COMPLETA)
+      .or(`data_encerramento.gte.${nowISO()},and(data_encerramento.is.null,data_publicacao.gte.${isoDiasAtras(60)})`);
+  }
+
+  const from = pagina * tamanho;
+  const { data, count } = await q.order("data_publicacao", { ascending: false }).range(from, from + tamanho - 1);
+  const rows: EditalCompleto[] = ((data ?? []) as Record<string, unknown>[]).map((e) => ({
+    numero: e.numero_controle_pncp as string, objeto: (e.objeto as string) ?? null, valor: (e.valor_estimado as number) ?? null,
+    situacao: (e.situacao_nome as string) ?? null, modalidade: (e.modalidade_nome as string) ?? null,
+    cidade: (e.cidade as string) ?? null, uf: (e.uf_sigla as string) ?? null,
+    dataPub: (e.data_publicacao as string) ?? null, dataEnc: (e.data_encerramento as string) ?? null,
+    cnpjOrgao: (e.cnpj_orgao as string) ?? null, orgao: (e.orgao as { razao_social: string | null } | null)?.razao_social ?? null,
+  }));
+  return { rows, total: count ?? 0, pagina, tamanho, temFiltro };
+}
 
 /** Motor de preço para item+cidade: faixa saneada de contratos firmados do termo na UF. */
 export async function faixaItemCidade(sb: SB, termo: string, uf: string): Promise<FaixaPreco | null> {

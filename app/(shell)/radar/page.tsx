@@ -25,10 +25,17 @@ type Edital = {
   link_origem: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
 };
 
-export default async function RadarPage({ searchParams }: { searchParams: Promise<{ q?: string; uf?: string; pilar?: string }> }) {
+type Escopo = "cidade" | "estado" | "nacional";
+const ESCOPO_LABEL: Record<Escopo, string> = { cidade: "Minha cidade", estado: "Meu estado", nacional: "Nacional" };
+
+export default async function RadarPage({ searchParams }: { searchParams: Promise<{ q?: string; uf?: string; pilar?: string; escopo?: string; pag?: string }> }) {
   const sp = await searchParams;
   const busca = (sp.q ?? "").trim();
   const pilar: "dia" | "antecipacao" = sp.pilar === "antecipacao" ? "antecipacao" : "dia";
+  // Escopo geográfico DENTRO do segmento (amplia só o alcance). Default = recorte do cadastro (cidade/UF).
+  const escopo: Escopo = sp.escopo === "estado" ? "estado" : sp.escopo === "nacional" ? "nacional" : "cidade";
+  const pag = Math.max(0, parseInt(sp.pag ?? "0", 10) || 0);
+  const PAGE = 60;
   const supabase = await createClient();
   const { data: company } = await supabase.from("company").select("segmentos, municipio, uf").maybeSingle();
   const segmentos: string[] = (company?.segmentos ?? []).filter((s: string) => s !== "generico");
@@ -71,33 +78,53 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
     .or(`data_encerramento.gte.${AGORA},and(data_encerramento.is.null,data_publicacao.gte.${CORTE_RECENTE})`);
   const baseDescoberta = () => aplicarTrava(supabase.from("raw_editais").select(SELECT).is("valor_homologado", null));
 
+  // Filtro geográfico do escopo (DENTRO do segmento). cidade = recorte do cadastro (cidades prontas, ou UF
+  // honesto enquanto coleta); estado = a UF inteira; nacional = sem geo (metadado nacional, Camada 1).
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const escopoGeo = (qq: any) => {
+    if (escopo === "nacional") return qq;
+    if (escopo === "estado") return qq.eq("uf_sigla", uf);
+    return prontas.length ? qq.in("cidade", prontas) : qq.eq("uf_sigla", uf); // cidade (recorte)
+  };
+  // Recorte só faz fallback de UF no escopo "cidade" enquanto as cidades coletam.
+  const recorteFallbackUf = escopo === "cidade" && prontas.length === 0;
+
   let editais: Edital[];
+  let totalRecorte = 0;
   if (busca) {
     // Busca livre por nicho/objeto (SINÔNIMOS) numa UF — uf_sigla denormalizado (índice) + trigram objeto.
     let q = baseDescoberta().eq("uf_sigla", ufBusca!);
     const termos = expandirBusca(busca);
     if (termos.length) q = q.or(termos.map((t) => `objeto.ilike.*${t}*`).join(","));
-    const { data } = await q.order("data_publicacao", { ascending: false }).limit(60);
+    const { data } = await q.order("data_publicacao", { ascending: false }).limit(PAGE);
     editais = (data ?? []) as unknown as Edital[];
+    totalRecorte = editais.length;
   } else {
-    // Prioriza a CIDADE MONITORADA do usuário (não enterrá-la no top-60 da UF inteira) — mas só quando
-    // ela está no escopo ativo: fallback de UF (whole state) OU explicitamente entre as cidades prontas.
-    // Se o usuário restringiu o monitoramento a outras cidades, não injetamos a cidade-sede aqui.
-    const cidadePrioritaria = company?.municipio && (usandoFallbackUf || prontas.includes(company.municipio)) ? company.municipio : null;
-    let cidadeRows: Edital[] = [];
-    if (cidadePrioritaria) {
-      const { data } = await baseDescoberta().overlaps("segmentos", segmentos)
-        .eq("cidade", cidadePrioritaria).eq("uf_sigla", uf)
-        .order("data_publicacao", { ascending: false }).limit(30);
-      cidadeRows = (data ?? []) as unknown as Edital[];
+    // Total do recorte (abertas) p/ paginação + honestidade de cobertura.
+    const { count } = await escopoGeo(
+      aplicarTrava(supabase.from("raw_editais").select("numero_controle_pncp", { count: "exact", head: true }).is("valor_homologado", null).overlaps("segmentos", segmentos)),
+    );
+    totalRecorte = count ?? 0;
+    const baseRecorte = () => escopoGeo(baseDescoberta().overlaps("segmentos", segmentos));
+    if (pag === 0) {
+      // REUSA a priorização da cidade monitorada: traz a cidade-sede ao topo quando o escopo é mais amplo
+      // que ela (estado/nacional). No escopo "cidade" a própria cidade já é o recorte (não precisa injetar).
+      const cidadePrioritaria = company?.municipio && escopo !== "cidade" ? company.municipio : null;
+      let cidadeRows: Edital[] = [];
+      if (cidadePrioritaria) {
+        const { data } = await baseDescoberta().overlaps("segmentos", segmentos)
+          .eq("cidade", cidadePrioritaria).eq("uf_sigla", uf)
+          .order("data_publicacao", { ascending: false }).limit(30);
+        cidadeRows = (data ?? []) as unknown as Edital[];
+      }
+      const { data: restoData } = await baseRecorte().order("data_publicacao", { ascending: false }).limit(PAGE);
+      const resto = (restoData ?? []) as unknown as Edital[];
+      const jaTem = new Set(cidadeRows.map((e) => e.numero_controle_pncp));
+      editais = [...cidadeRows, ...resto.filter((e) => !jaTem.has(e.numero_controle_pncp))].slice(0, PAGE);
+    } else {
+      const { data } = await baseRecorte().order("data_publicacao", { ascending: false }).range(pag * PAGE, pag * PAGE + PAGE - 1);
+      editais = (data ?? []) as unknown as Edital[];
     }
-    const escopo = usandoFallbackUf
-      ? baseDescoberta().overlaps("segmentos", segmentos).eq("uf_sigla", uf)
-      : baseDescoberta().overlaps("segmentos", segmentos).in("cidade", prontas);
-    const { data: restoData } = await escopo.order("data_publicacao", { ascending: false }).limit(60);
-    const resto = (restoData ?? []) as unknown as Edital[];
-    const jaTem = new Set(cidadeRows.map((e) => e.numero_controle_pncp));
-    editais = [...cidadeRows, ...resto.filter((e) => !jaTem.has(e.numero_controle_pncp))].slice(0, 60);
   }
 
   // Sinal "órgão recorrente": órgãos com histórico homologado no nicho
@@ -177,6 +204,24 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
         </Link>
       </div>
 
+      {/* Escopo geográfico DENTRO do segmento — amplia só o alcance (default = recorte cidade/UF do cadastro). */}
+      {pilar === "dia" && !busca && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-muted-foreground">Escopo (no seu segmento):</span>
+          <div className="inline-flex gap-1 rounded-lg bg-muted p-1 text-sm" data-testid="radar-escopo">
+            {(["cidade", "estado", "nacional"] as Escopo[]).map((e) => (
+              <Link key={e} href={`/radar?pilar=dia&escopo=${e}`} data-testid={`escopo-${e}`}
+                className={`rounded-md px-3 py-1 font-medium ${escopo === e ? "bg-card text-foreground shadow" : "text-muted-foreground"}`}>
+                {ESCOPO_LABEL[e]}
+              </Link>
+            ))}
+          </div>
+          <span className="text-xs text-muted-foreground">
+            {escopo === "cidade" ? (recorteFallbackUf ? `coletando — mostrando ${uf}` : "suas cidades") : escopo === "estado" ? `estado ${uf}` : "Brasil (mesmo segmento)"}
+          </span>
+        </div>
+      )}
+
       {/* Escopo de cidades */}
       <Card>
         <CardContent className="space-y-3 p-4">
@@ -193,7 +238,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
               <span key={c.codigo_ibge} className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs">
                 <MapPin className="size-3" /> {c.municipio}
                 {c.status === "pronta"
-                  ? <Badge variant="success">pronta</Badge>
+                  ? <Badge variant="secondary">pronta</Badge>
                   : <Badge variant="warning"><Loader2 className="mr-1 size-3 animate-spin" />coletando</Badge>}
                 <form action={removerCidade}><input type="hidden" name="codigo_ibge" value={c.codigo_ibge} />
                   <button type="submit" aria-label="Remover cidade" className="text-muted-foreground hover:text-destructive"><X className="size-3" /></button>
@@ -235,12 +280,20 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
       )}
 
       {pilar === "dia" ? (
-        visiveis.length === 0 ? (
-        <EmptyState titulo="Nenhum edital em andamento agora" texto={busca
-          ? `Nenhum edital aberto para “${busca}” em ${ufBusca} agora — pode ser vazio verdadeiro (nem toda semana há licitação aberta desse nicho nesta UF).`
-          : `Sem editais abertos do seu nicho ${usandoFallbackUf ? `em ${uf}` : "nas suas cidades"} no momento.`} />
-      ) : (
         <div className="space-y-3">
+          {!busca && (
+            <div className="flex flex-wrap items-center gap-2 text-sm" data-testid="recorte-contagem">
+              <span className="font-medium">{totalRecorte} {totalRecorte === 1 ? "oportunidade aberta" : "oportunidades abertas"}</span>
+              <span className="text-muted-foreground">no escopo <strong>{ESCOPO_LABEL[escopo]}</strong> · segmento {segmentos.map((s) => SEG_LABEL[s] ?? s).join(", ")}</span>
+              {escopo === "nacional" && totalRecorte < 20 && <Badge variant="muted">cobertura nacional em ingestão</Badge>}
+            </div>
+          )}
+          {visiveis.length === 0 ? (
+            <EmptyState titulo="Nenhum edital em andamento agora" texto={busca
+              ? `Nenhum edital aberto para “${busca}” em ${ufBusca} agora — pode ser vazio verdadeiro (nem toda semana há licitação aberta desse nicho nesta UF).`
+              : `Sem editais abertos do seu segmento no escopo ${ESCOPO_LABEL[escopo]} agora — pode ser vazio verdadeiro. Tente ampliar o escopo (Meu estado / Nacional).`} />
+          ) : (
+            <div className="max-h-[72vh] space-y-3 overflow-y-auto pr-1" data-testid="recorte-lista">
           {visiveis.map((e) => {
             const valor = brl(e.valor_estimado);
             const mon = stageBy[e.numero_controle_pncp] === "monitorando";
@@ -296,8 +349,20 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
               </Card>
             );
           })}
+            </div>
+          )}
+          {!busca && (totalRecorte > PAGE || pag > 0) && (
+            <div className="flex items-center justify-between gap-2" data-testid="recorte-paginacao">
+              {pag > 0
+                ? <Button asChild size="sm" variant="outline"><Link href={`/radar?pilar=dia&escopo=${escopo}&pag=${pag - 1}`}>← Anterior</Link></Button>
+                : <Button size="sm" variant="outline" disabled>← Anterior</Button>}
+              <span className="text-xs text-muted-foreground">página {pag + 1} · mostrando {visiveis.length} de {totalRecorte}</span>
+              {(pag + 1) * PAGE < totalRecorte
+                ? <Button asChild size="sm" variant="outline"><Link href={`/radar?pilar=dia&escopo=${escopo}&pag=${pag + 1}`}>Próxima →</Link></Button>
+                : <Button size="sm" variant="outline" disabled>Próxima →</Button>}
+            </div>
+          )}
         </div>
-        )
       ) : (
         <AntecipacaoLista pca={pca} rec={recorrenciaItens} contratos={contratosVenc} busca={busca} uf={ufBusca ?? uf} usandoFallbackUf={usandoFallbackUf} />
       )}
