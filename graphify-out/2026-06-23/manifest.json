@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782242232.0749004,
-    "ast_hash": "5ca99c42116de7b4e4fbefb692e3492d",
+    "mtime": 1782245267.924357,
+    "ast_hash": "f6cf94a714466b1b321611ae070c924a",
     "semantic_hash": ""
   },
   "app/(shell)/roadmap/page.tsx": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782241456.1217434,
-    "ast_hash": "22254e9ccb5855a7618f314a2dff4962",
+    "mtime": 1782245557.7286422,
+    "ast_hash": "894e5db6e16dcb89a8806700871fdffc",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -950,8 +950,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/pesquisa/page.tsx": {
-    "mtime": 1782178957.1983488,
-    "ast_hash": "81c97e43c2f31a7eee7c79830c755ed1",
+    "mtime": 1782245450.9002879,
+    "ast_hash": "fd8f5d64d0d582f0b057c4a10a1a2053",
     "semantic_hash": ""
   },
   "e2e/autotest-pesquisa.mjs": {
@@ -960,8 +960,8 @@
     "semantic_hash": ""
   },
   "lib/pesquisa.ts": {
-    "mtime": 1782178925.90537,
-    "ast_hash": "d1c98fa298200f2f2bfebd9f4f92da24",
+    "mtime": 1782245308.3916063,
+    "ast_hash": "15f3c491bae9511a42019cce55f11bf2",
     "semantic_hash": ""
   },
   "e2e/autotest-preco.mjs": {
@@ -1027,6 +1027,11 @@
   "e2e/autotest-space-crm.mjs": {
     "mtime": 1782241449.4840589,
     "ast_hash": "be35da1fb4b8cbe7e89c59031bc30b2f",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-descoberta.mjs": {
+    "mtime": 1782246237.41112,
+    "ast_hash": "7dc11d9edf3ef6dd3eb3c0fde86cc9f1",
     "semantic_hash": ""
   }
 }

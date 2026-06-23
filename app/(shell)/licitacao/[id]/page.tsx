@@ -124,6 +124,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const cidadeUf = ed?.cidade ? `${ed.cidade}${ed.uf_sigla ? ` — ${ed.uf_sigla}` : ""}` : (resumo?.orgao.municipio ? `${resumo.orgao.municipio}${resumo.orgao.uf ? ` — ${resumo.orgao.uf}` : ""}` : null);
   const totalExig = aplicaveis.length;
   const atendeExig = totalExig - faltam.length;
+  // Contagem do Checklist Vivo (Exigências): você tem (azul) · vencendo (âmbar) · falta (vermelho).
+  const temN = itensStatus.filter((i) => i.st === "valida").length;
+  const venceN = itensStatus.filter((i) => i.st === "a_renovar").length;
+  const faltaN = itensStatus.filter((i) => i.st === "ausente" || i.st === "vencida").length;
   const objetoCurto = (ed?.objeto ?? lic.titulo ?? "").slice(0, 48);
 
   return (
@@ -218,6 +222,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         <div className="overflow-x-auto">
           <TabsList className="w-max">
             <TabsTrigger value="resumo">Resumo</TabsTrigger>
+            <TabsTrigger value="exigencias">Exigências</TabsTrigger>
             <TabsTrigger value="empresa">Empresa × Edital</TabsTrigger>
             <TabsTrigger value="veredito">Veredito</TabsTrigger>
             <TabsTrigger value="plano">Plano de Ação</TabsTrigger>
@@ -275,6 +280,51 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                 <EmBreve icon={FileSearch} titulo="Baixar documento para detalhar" motivo="Ainda não há payload do PNCP desta licitação para montar o resumo. Baixe o documento do edital para detalhar identificação e sessão." />
               </div>
             )}
+          </TabsContent>
+
+          {/* EXIGÊNCIAS — Checklist Vivo (determinístico: nicho × cofre). Sem IA. Azul/âmbar/vermelho. */}
+          <TabsContent value="exigencias">
+            <div className="space-y-4" data-testid="exigencias-tab">
+              <div>
+                <h2 className="text-lg font-bold leading-tight">Checklist Vivo de habilitação</h2>
+                <p className="text-sm text-muted-foreground">As exigências típicas do seu nicho (Lei 14.133) cruzadas com o seu cofre, em tempo real. Determinístico — sem IA.</p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2" data-testid="exigencias-contagem">
+                <Badge variant="default">✓ {temN} você tem</Badge>
+                <Badge variant="warning">⚠ {venceN} vencendo</Badge>
+                <Badge variant="destructive">✕ {faltaN} falta</Badge>
+                <span className="ml-auto text-xs text-muted-foreground">{pct}% pronto · {atendeExig} de {totalExig} exigências</span>
+              </div>
+              <Card><CardContent className="p-0">
+                <ul className="divide-y">
+                  {itensStatus.map((it) => {
+                    const venc = docByTipo[it.key]?.vencimento ?? null;
+                    const d = diasAte(venc);
+                    const tag = it.st === "valida" ? { v: "default" as const, t: "✓ você tem" }
+                      : it.st === "a_renovar" ? { v: "warning" as const, t: d != null ? `⚠ vence em ${d}d` : "⚠ vencendo" }
+                      : it.st === "vencida" ? { v: "destructive" as const, t: "✕ vencida" }
+                      : { v: "destructive" as const, t: "✕ falta" };
+                    const acao = it.st === "valida" ? "Ver no cofre" : it.st === "ausente" ? "Anexar" : "Renovar";
+                    return (
+                      <li key={it.key} className="flex flex-wrap items-center gap-x-3 gap-y-1.5 p-3" data-testid="exigencia-item">
+                        <Badge variant={tag.v} data-testid={`tag-${it.st}`}>{tag.t}</Badge>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-medium">{it.label}</p>
+                          <p className="text-xs text-muted-foreground">Fonte: habilitação típica · Lei 14.133 · emissor: {it.orgao}{venc ? ` · vence ${dtBR(venc)}` : ""}</p>
+                        </div>
+                        {it.st !== "valida" && sessaoISO && <span className="text-xs text-muted-foreground">resolver até a sessão {dtBR(sessaoISO)}</span>}
+                        <Button asChild size="sm" variant={it.st === "valida" ? "ghost" : "outline"}><Link href="/empresa">{acao}</Link></Button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </CardContent></Card>
+              <Card><CardContent className="p-4">
+                <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted" data-testid="exig-em-extracao">em extração</Badge></div>
+                <p className="mt-1 text-xs text-muted-foreground">As exigências do <strong>texto do edital</strong> (ex.: <em>atestado ≥ 100.000 m²</em>, índices contábeis, vistoria, amostra) entram quando a IA ler o documento (PNCP <code>/arquivos</code> — Camada 3). <strong>Não inventamos exigência que não lemos.</strong></p>
+              </CardContent></Card>
+              <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Prontidão é <strong>fato</strong> (cofre × habilitação típica da Lei 14.133), <strong>não “chance de ganhar”</strong>. O checklist se ajusta quando as exigências específicas forem extraídas.</p>
+            </div>
           </TabsContent>
 
           {/* EMPRESA × EDITAL — determinístico */}

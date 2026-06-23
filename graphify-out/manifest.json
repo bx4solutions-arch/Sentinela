@@ -75,8 +75,8 @@
     "semantic_hash": "6160d3d48e776f4b34afa6b218643b4d"
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782241307.7727308,
-    "ast_hash": "7200f294872ccd472acb4ec58f9f3d79",
+    "mtime": 1782250174.8339105,
+    "ast_hash": "0ce4731246578b517785966bcf214417",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782245557.7286422,
-    "ast_hash": "894e5db6e16dcb89a8806700871fdffc",
+    "mtime": 1782250286.4417663,
+    "ast_hash": "067724a4980a48f1778767d7317fc74d",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -1032,6 +1032,11 @@
   "e2e/autotest-descoberta.mjs": {
     "mtime": 1782246237.41112,
     "ast_hash": "7dc11d9edf3ef6dd3eb3c0fde86cc9f1",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-exigencias.mjs": {
+    "mtime": 1782250280.073668,
+    "ast_hash": "049dcc4fa07f161f0d962f1185a3c0ae",
     "semantic_hash": ""
   }
 }
