@@ -10,6 +10,8 @@ import { Card, CardContent, Badge, Button, Input, Progress, Tabs, TabsList, Tabs
 import { dataBR } from "@/lib/utils";
 import { buildResumo, type ResumoEdital } from "@/lib/resumo-edital";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
+import { tokensDosSegmentos } from "@/lib/nichos";
+import { inteligenciaMercado } from "@/lib/inteligencia";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
@@ -23,7 +25,7 @@ const brl = (n: number | null) => !n ? null : new Intl.NumberFormat("pt-BR", { s
 const dtBR = (s: string | null) => s ? dataBR(s.slice(0, 10)) : "—";
 
 type Lic = { id: string; numero_controle_pncp: string; titulo: string | null; resumo_json: ResumoEdital | null;
-  raw_editais: { objeto: string | null; valor_estimado: number | null; situacao_nome: string | null; data_publicacao: string | null; modalidade_nome: string | null; cidade: string | null; link_origem: string | null; payload: unknown; orgao: { razao_social: string | null } | null } | null; };
+  raw_editais: { objeto: string | null; valor_estimado: number | null; situacao_nome: string | null; data_publicacao: string | null; modalidade_nome: string | null; cidade: string | null; link_origem: string | null; cnpj_orgao: string | null; uf_sigla: string | null; payload: unknown; orgao: { razao_social: string | null } | null } | null; };
 
 function EmBreve({ icon: Icon, titulo, motivo }: { icon: React.ElementType; titulo: string; motivo: string }) {
   return (
@@ -45,7 +47,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const supabase = await createClient();
   const { data } = await supabase
     .from("licitacao")
-    .select("id, numero_controle_pncp, titulo, resumo_json, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, modalidade_nome, cidade, link_origem, payload, orgao:cnpj_orgao(razao_social))")
+    .select("id, numero_controle_pncp, titulo, resumo_json, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, modalidade_nome, cidade, link_origem, cnpj_orgao, uf_sigla, payload, orgao:cnpj_orgao(razao_social))")
     .eq("id", id).maybeSingle();
   const lic = data as unknown as Lic | null;
   if (!lic) notFound();
@@ -81,6 +83,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const p = (analiseRow?.conteudo ?? null) as Parecer | null;
 
   const { data: docs } = await supabase.from("documento").select("id, tipo, tipo_label").eq("licitacao_id", id).order("criado_em", { ascending: false });
+
+  // Inteligência Comercial & de Mercado (Bloco 2) — quem ganha o nicho, faixa praticada, fornecedor atual do órgão.
+  const intelTokens = tokensDosSegmentos(company?.segmentos?.length ? company.segmentos : []);
+  const intel = await inteligenciaMercado(supabase, { tokens: intelTokens, uf: ed?.uf_sigla ?? null, cnpjOrgao: ed?.cnpj_orgao ?? null });
 
   return (
     <div className="space-y-4">
@@ -130,7 +136,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             <TabsTrigger value="documentos">Documentos</TabsTrigger>
             <TabsTrigger value="riscos">Riscos</TabsTrigger>
             <TabsTrigger value="consultor">Consultor IA</TabsTrigger>
-            <TabsTrigger value="precos">Preços</TabsTrigger>
+            <TabsTrigger value="precos">Inteligência</TabsTrigger>
             <TabsTrigger value="orgao">Órgão</TabsTrigger>
           </TabsList>
         </div>
@@ -244,7 +250,54 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
               : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo="A análise de riscos do texto do edital entra via Analisar com IA (BYOK)." />}
           </TabsContent>
           <TabsContent value="consultor"><EmBreve icon={MessagesSquare} titulo="Consultor IA da Licitação" motivo="Chat com contexto da pasta — próximo incremento." /></TabsContent>
-          <TabsContent value="precos"><EmBreve icon={DollarSign} titulo="Preços & Inteligência Comercial" motivo="Exige atas/contratos ingeridos + sanções CEIS/CNEP. Não forjamos dado." /></TabsContent>
+          <TabsContent value="precos">
+            {(intel.contratoAtual.length > 0 || intel.concorrentes.length > 0 || intel.faixa) ? (
+              <div className="space-y-4" data-testid="sala-inteligencia">
+                {/* Inteligência Comercial — fornecedor/contrato ATUAL do órgão */}
+                <Card><CardContent className="p-4">
+                  <div className="mb-2 flex items-center gap-2"><DollarSign className="size-4 text-primary" /><p className="text-sm font-semibold">Inteligência Comercial — quem fornece hoje</p></div>
+                  {intel.contratoAtual.length === 0 ? (
+                    <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contrato vigente desse órgão no seu nicho na base atual (em ingestão).</p>
+                  ) : (
+                    <ul className="divide-y rounded-md border" data-testid="contrato-atual">
+                      {intel.contratoAtual.map((c, i) => (
+                        <li key={i} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
+                          <Badge variant="warning">{c.dias != null ? `vence em ${c.dias}d` : "vigente"}</Badge>
+                          <span className="font-medium">{c.nome ?? "Fornecedor"}</span>
+                          <span className="text-xs text-muted-foreground">{c.objeto?.slice(0, 60)}</span>
+                          <span className="ml-auto font-semibold">{brl(c.valor) ?? "—"}</span>
+                        </li>))}
+                    </ul>
+                  )}
+                  <p className="mt-2 text-xs text-muted-foreground">O contrato atual vencendo é a <strong>janela de entrada</strong>: o órgão tende a relicitar o objeto.</p>
+                </CardContent></Card>
+
+                {/* Inteligência de Mercado — concorrentes + faixa praticada */}
+                <Card><CardContent className="p-4">
+                  <div className="mb-2 flex items-center gap-2"><Building2 className="size-4 text-primary" /><p className="text-sm font-semibold">Inteligência de Mercado — seus concorrentes no nicho ({ed?.uf_sigla ?? "UF"})</p></div>
+                  {intel.concorrentes.length === 0 ? (
+                    <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contratos do nicho nesta UF na base atual.</p>
+                  ) : (
+                    <ul className="divide-y rounded-md border" data-testid="concorrentes">
+                      {intel.concorrentes.map((c) => (
+                        <li key={c.ni} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
+                          <span className="font-medium">{c.nome ?? c.ni}</span>
+                          <Badge variant="secondary">{c.n} contrato{c.n > 1 ? "s" : ""}</Badge>
+                          <span className="ml-auto text-xs text-muted-foreground">total {brl(c.valorTotal)}</span>
+                        </li>))}
+                    </ul>
+                  )}
+                  {intel.faixa && (
+                    <div className="mt-3 rounded-md border bg-muted/30 p-3 text-sm" data-testid="faixa-valor">
+                      <p className="text-xs uppercase tracking-wide text-muted-foreground">Faixa praticada no nicho ({intel.faixa.n} contratos)</p>
+                      <p className="mt-1 font-semibold">{brl(intel.faixa.min)} <span className="font-normal text-muted-foreground">a</span> {brl(intel.faixa.max)} <span className="font-normal text-muted-foreground">· mediana</span> {brl(intel.faixa.mediana)}</p>
+                    </div>
+                  )}
+                  <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Faixa de <strong>contratos firmados</strong> (referência de mercado), não recomendação de preço. <strong>Nº médio de participantes / lances</strong> entra com o resultado por item (em ingestão).</p>
+                </CardContent></Card>
+              </div>
+            ) : <EmBreve icon={DollarSign} titulo="Inteligência Comercial & de Mercado" motivo="Sem contratos do seu nicho nesta UF na base atual. Acende conforme a coleta de contratos avança (em ingestão)." />}
+          </TabsContent>
           <TabsContent value="orgao"><EmBreve icon={Landmark} titulo="Histórico do Órgão / Decisores" motivo="Exige atas/contratos + 2ª fonte (diário/transparência). Em ingestão." /></TabsContent>
         </div>
       </Tabs>

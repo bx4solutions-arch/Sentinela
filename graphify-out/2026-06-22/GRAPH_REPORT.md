@@ -1,16 +1,16 @@
 # Graph Report - Sentinela-Licitação  (2026-06-22)
 
 ## Corpus Check
-- 170 files · ~555,267 words
+- 176 files · ~559,540 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1474 nodes · 1983 edges · 152 communities (116 shown, 36 thin omitted)
+- 1531 nodes · 2054 edges · 158 communities (120 shown, 38 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 56 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9776a7fc`
+- Built from commit: `4681afa2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -159,6 +159,12 @@
 - [[_COMMUNITY_Community 147|Community 147]]
 - [[_COMMUNITY_Community 148|Community 148]]
 - [[_COMMUNITY_Community 149|Community 149]]
+- [[_COMMUNITY_Community 152|Community 152]]
+- [[_COMMUNITY_Community 153|Community 153]]
+- [[_COMMUNITY_Community 154|Community 154]]
+- [[_COMMUNITY_Community 155|Community 155]]
+- [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 157|Community 157]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `createClient()` - 44 edges
@@ -187,7 +193,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (152 total, 36 thin omitted)
+## Communities (158 total, 38 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -202,24 +208,24 @@ Cohesion: 0.25
 Nodes (7): ENTREGA / EVIDÊNCIA (o que comprova 100%), PARTE 0 — Matar o mock DE VEZ, PARTE 1 — MATRIZ DE CONEXÕES (todo dado do front vem do back real), PARTE 2 — MATRIZ DE BOTÕES/AÇÕES (nada no lugar errado), PARTE 3 — AUTOTESTE E2E QUE PROVA (não seleciona), PROMPT — INTEGRAÇÃO BACK ↔ FRONT 100% SEM MOCK + PROVA DE CADA CONEXÃO E BOTÃO, Régua anti-falsa-confiança (a lição das vezes anteriores)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.16
-Nodes (17): AiConfigView, getAiConfig(), saveAiConfig(), ConfiguracoesPage(), addDocLicitacao(), analisarComIA(), deleteDocLicitacao(), EditalCtx (+9 more)
+Cohesion: 0.15
+Nodes (18): AiConfigView, getAiConfig(), saveAiConfig(), ConfiguracoesPage(), addDocLicitacao(), analisarComIA(), deleteDocLicitacao(), EditalCtx (+10 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.12
-Nodes (23): NAV, NavItem, NavLink(), TITLES, Badge(), badgeVariants, Button, ButtonProps (+15 more)
+Cohesion: 0.10
+Nodes (26): Badge(), badgeVariants, Button, ButtonProps, buttonVariants, Card(), CardContent(), CardDescription() (+18 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.11
-Nodes (28): IRP - Intenção de Registro de Preços, Agente Consultor de IA (Fornecedor), Agente Diário (Concierge de Retenção), BoaMargem (simulador de preço), Conceito de Célula (setor × região), Design System (tokens do MeuJurídico), Sentinela PRD + Blueprint, Eixo de Assinatura (alvo granular) (+20 more)
+Cohesion: 0.12
+Nodes (27): Agente Consultor de IA (Fornecedor), Agente Diário (Concierge de Retenção), BoaMargem (simulador de preço), Conceito de Célula (setor × região), Design System (tokens do MeuJurídico), Sentinela PRD + Blueprint, Eixo de Assinatura (alvo granular), Eixo de Ingestão/Cache (célula) (+19 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.11
-Nodes (26): addDocumento(), atualizarEmpresa(), deleteDocumento(), slug(), brl(), EmpresaPage(), BrasilApiCnpj, consultarBrasilApi() (+18 more)
+Cohesion: 0.12
+Nodes (21): atualizarEmpresa(), BrasilApiCnpj, consultarBrasilApi(), ConsultaResult, fmtCep(), fmtTelefone(), PORTE_LABEL, RaioX (+13 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.13
-Nodes (20): Select, Municipio, municipiosDaUf(), resolveMunicipio(), tituloCidade(), EditalSinal, sinaisEdital(), Sinal (+12 more)
+Cohesion: 0.24
+Nodes (11): Municipio, municipiosDaUf(), resolveMunicipio(), tituloCidade(), analisar(), descartar(), monitorar(), monitorarCidade() (+3 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.14
@@ -234,16 +240,16 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.13
-Nodes (20): Canary: Sonda de Schema PNCP, Tabela: cell (objeto × ente), Tabela: competitor, Tabela: contract_history, DataLake (Supabase/Postgres + pgvector), Tabela: demand (máquina de estados), Sentinela Motor Build Spec, Funil Tier 1: Filtro Determinístico (+12 more)
+Cohesion: 0.12
+Nodes (21): Canary: Sonda de Schema PNCP, Tabela: cell (objeto × ente), Tabela: competitor, Tabela: contract_history, DataLake (Supabase/Postgres + pgvector), Tabela: demand (máquina de estados), Sentinela Motor Build Spec, Funil Tier 1: Filtro Determinístico (+13 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.05
 Nodes (36): 10. CATÁLOGO DE FEATURES (todas, priorizadas), 11. ROADMAP POR FASES, 12. MÉTRICAS DE SUCESSO, 13. RISCOS E RÉGUA, 14. Posicionamento (uma linha), 15. CONSOLIDADO v2 — DECISÕES INCORPORADAS, 16. ARQUITETURA DE DUAS CAMADAS — Radar (inteligência passiva) + Kanban (ação comercial), 1. Resumo executivo (+28 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.12
-Nodes (20): Card(), CardContent(), AddDocForm(), TrocarEmpresaButton(), Doc, KanbanPage(), Oport, STAGES (+12 more)
+Cohesion: 0.14
+Nodes (18): AddDocForm(), TrocarEmpresaButton(), brl(), Doc, EmpresaPage(), CERTIDAO_LABEL, CERTIDAO_TIPOS, diasAteVencer() (+10 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.18
@@ -262,8 +268,8 @@ Cohesion: 0.10
 Nodes (20): 10. GERENCIAR DOCUMENTOS (`/documentos`), 11. GERENCIAR PORTAIS (`/portais`), 12. MONITORAR CHAT (`/facilitadores/monitoramento`, assinatura), 13. ROBÔ DE LANCE INTELIGENTE (`/robo_lance`, assinatura), 1. RESUMO DO EDITAL (BETA), 2. PERGUNTE AO EDITAL, 3. CONSULTOR JURÍDICO (IA 2.0), 5. LICITAÇÕES ESTRATÉGICAS (`/iminencia`) (+12 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.14
-Nodes (9): aq(), aqUntil(), consoleErrors, E, H, netErrors, NUM(), results (+1 more)
+Cohesion: 0.15
+Nodes (8): aq(), aqUntil(), consoleErrors, E, H, netErrors, results, SB
 
 ### Community 19 - "Community 19"
 Cohesion: 0.17
@@ -310,8 +316,8 @@ Cohesion: 0.43
 Nodes (7): carrega(), g2_match(), jaccard(), main(), parse_data(), Casa cada item-PCA da célula a um edital. Regra explícita (correção #3)., tokens()
 
 ### Community 30 - "Community 30"
-Cohesion: 0.14
-Nodes (13): TabsList, TabsTrigger, brl(), dtBR(), Lic, LicitacaoPage(), Parecer, PastaActions() (+5 more)
+Cohesion: 0.13
+Nodes (15): TabsList, TabsTrigger, NUM(), brl(), dtBR(), Lic, LicitacaoPage(), Parecer (+7 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.39
@@ -526,8 +532,8 @@ Cohesion: 0.40
 Nodes (4): ⚠️ Decisão a revisitar — Tailwind v3.4 (não enshrine como stack de produção), Design System — Sentinela, Herança do MeuJurídico (1:1), Mapa de uso (Sentinela)
 
 ### Community 107 - "Community 107"
-Cohesion: 0.40
-Nodes (4): 2026-06-21 — T4 contratos: BLOQUEADO (PNCP /contratos → HTTP 400), BLOQUEIOS — sessões autônomas, Contornado (sessão 2026-06-20), Pendências de polish (não bloqueiam)
+Cohesion: 0.33
+Nodes (5): 2026-06-21 — T4 contratos: BLOQUEADO (PNCP /contratos → HTTP 400), 2026-06-22 — RESOLVIDO: contratos (Camada 2) + deferido: nº de participantes/lances, BLOQUEIOS — sessões autônomas, Contornado (sessão 2026-06-20), Pendências de polish (não bloqueiam)
 
 ### Community 108 - "Community 108"
 Cohesion: 0.83
@@ -547,7 +553,7 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 
 ### Community 129 - "Community 129"
 Cohesion: 0.10
-Nodes (29): DONUT_CORES, DonutDatum, DonutSegmento(), LineTendencia(), ringColor(), ScoreRing(), TrendDatum, useChartWidth() (+21 more)
+Nodes (30): DashboardPage(), anoOuData(), aplicarFiltro(), buscarContratosVencendo(), buscarPCA(), buscarRecorrencia(), ContratoVencendo, diasAteVencer() (+22 more)
 
 ### Community 130 - "Community 130"
 Cohesion: 0.20
@@ -602,8 +608,8 @@ Cohesion: 1.00
 Nodes (3): cenario(), get(), ufs_da_pagina()
 
 ### Community 144 - "Community 144"
-Cohesion: 0.18
-Nodes (13): Shell(), ConsultorPage(), Lic, excluirLicitacao(), descartarCard(), moverStage(), STAGES, authenticate() (+5 more)
+Cohesion: 0.13
+Nodes (20): NAV, NavItem, NavLink(), Shell(), TITLES, Progress(), addDocumento(), deleteDocumento() (+12 more)
 
 ### Community 145 - "Community 145"
 Cohesion: 0.14
@@ -618,28 +624,44 @@ Cohesion: 0.20
 Nodes (9): 1.1 Probe (decisão de arquitetura), 1.2 Harvester nacional (`worker/harvester/nacional.py`), 1.3 Backfill + cron, 1.4 Radar: busca por nicho + situação (migration 0012), 1.5 Prova (autoteste `e2e/autotest-harvester.mjs` — RESULTADO, não presença), Crescimento (antes → depois do harvest nacional), Próximo (não nesta etapa), RELATÓRIO — ETAPA 1: Camada 1 (Harvester Diário Nacional) — 2026-06-22 (+1 more)
 
 ### Community 148 - "Community 148"
-Cohesion: 0.25
-Nodes (3): Etapas, Op, STEPS
+Cohesion: 0.22
+Nodes (11): DONUT_CORES, DonutDatum, DonutSegmento(), LineTendencia(), ringColor(), ScoreRing(), TrendDatum, useChartWidth() (+3 more)
+
+### Community 152 - "Community 152"
+Cohesion: 0.13
+Nodes (9): consoleErrors, E, H, results, SB, totalContr, ufsContr, venc (+1 more)
+
+### Community 153 - "Community 153"
+Cohesion: 0.35
+Nodes (9): get(), getpath(), janelas(), load_ck(), load_env(), log(), main(), save_ck() (+1 more)
+
+### Community 154 - "Community 154"
+Cohesion: 0.20
+Nodes (9): BLOCO 1 — CAMADA 2: Contrato vencendo + Resultado/Participação (DADO), BLOCO 2 — Dashboard completo + Sala de Guerra completa, BLOCO 3 — Pesquisa livre (poder ao fornecedor), BLOCO 4 — Migração MeuJurídico M1+M2: Infra VPS + Motor de Preço, BLOCO 5 — M3 Busca Semântica + M4 Corpus Jurídico → Consultor, BLOCO 6 — Gerente de Participação (gerador SECCIONADO de proposta), Expectativa (honesta) e ordem, Para o Claude Code executar EM ORDEM. Cada bloco: objetivo · tarefas · DoD (prova o RESULTADO) · gate. (+1 more)
+
+### Community 155 - "Community 155"
+Cohesion: 0.20
+Nodes (9): Honestidade / em ingestão (não forjado), Performance — busca nacional em escala (o trabalho duro desta etapa), Prova (autoteste `e2e/autotest-antecipacao.mjs` — RESULTADO), Próximo (não nesta etapa), RELATÓRIO — ETAPA 2: Acender a Antecipação (PCA → nicho + Linha do Tempo) — 2026-06-22, Suíte, T1 — PCA pesquisável por nicho, T2 — Radar com 2 pilares (+1 more)
 
 ## Knowledge Gaps
-- **732 isolated node(s):** `Lic`, `Etapas`, `Op`, `STEPS`, `MESES` (+727 more)
+- **760 isolated node(s):** `Lic`, `Etapas`, `Op`, `STEPS`, `MESES` (+755 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **36 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Sentinela PRD + Blueprint` connect `Community 5` to `Community 32`, `Community 33`, `Community 11`, `Community 14`, `Community 16`, `Community 19`, `Community 21`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `PCA — Plano de Contratações Anuais` connect `Community 132` to `Community 33`, `Community 5`, `Community 11`, `Community 21`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Why does `Sentinela (Product Under Development)` connect `Community 0` to `Community 132`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **Why does `PCA — Plano de Contratações Anuais` connect `Community 132` to `Community 33`, `Community 5`, `Community 11`, `Community 21`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **Why does `Dado-Limpo (Editais + Contratos + Histórico como matéria-prima)` connect `Community 132` to `Community 0`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `Lic`, `Etapas`, `Op` to the rest of the system?**
-  _754 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _782 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.05189873417721519 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10220673635307782 - nodes in this community are weakly interconnected._

@@ -125,6 +125,14 @@ export default async function DashboardPage() {
   }
   const seloTone: Record<SinalLinha["tone"], "secondary" | "warning" | "muted"> = { navy: "secondary", amber: "warning", slate: "muted" };
 
+  // Tarefas do dia — ações derivadas do dado real (só o que tem o que fazer).
+  const nContratosVencendo = timeline.filter((s) => s.tipo === "contrato_vencendo").length;
+  const tarefas: { txt: string; href: string; tone: "red" | "amber" | "blue" }[] = [];
+  if (urgentes > 0) tarefas.push({ txt: `Renovar ${urgentes} documento(s) vencido(s) — pode te inabilitar`, href: "/empresa", tone: "red" });
+  if (vencendo.length > 0) tarefas.push({ txt: `Acompanhar ${vencendo.length} certidão(ões) vencendo em ≤30 dias`, href: "/empresa", tone: "amber" });
+  if (atacar.length > 0) tarefas.push({ txt: `Analisar ${atacar.length} edital(is) aberto(s) do seu nicho`, href: "/radar", tone: "blue" });
+  if (nContratosVencendo > 0) tarefas.push({ txt: `Preparar antecipação: ${nContratosVencendo} contrato(s) vencendo no seu nicho`, href: "/radar?pilar=antecipacao", tone: "amber" });
+
   return (
     <div className="space-y-5">
       {/* Thesis / antecipação (nosso diferencial) */}
@@ -175,6 +183,26 @@ export default async function DashboardPage() {
         <Kpi icon={CalendarClock} label="Docs vencendo" value={vencendo.length} hint="≤30d ou vencidos" href="/empresa" tone="amber" />
         <Kpi icon={ShieldAlert} label="Ações urgentes" value={urgentes} hint="docs vencidos" href="/empresa" tone="red" />
       </div>
+
+      {/* Tarefas do dia — derivadas do dado real */}
+      {tarefas.length > 0 && (
+        <Card data-testid="tarefas-do-dia">
+          <CardHeader className="flex-row items-center justify-between space-y-0">
+            <CardTitle className="flex items-center gap-2 text-base"><Flame className="size-4 text-primary" /> Tarefas do dia</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {tarefas.map((t, i) => (
+                <li key={i} data-testid="tarefa" className="flex items-center gap-2 rounded-md border p-2.5 text-sm">
+                  <span className={`size-2 rounded-full ${t.tone === "red" ? "bg-destructive" : t.tone === "amber" ? "bg-warning" : "bg-primary"}`} />
+                  <span className="flex-1">{t.txt}</span>
+                  <Button asChild size="sm" variant="ghost"><Link href={t.href}>Resolver <ArrowRight className="size-4" /></Link></Button>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
 
       <div className="grid gap-5 lg:grid-cols-3">
         {/* Atacar hoje */}

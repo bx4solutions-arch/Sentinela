@@ -34,11 +34,13 @@ try {
   ok("sem BYOK: IA inerte (link 'Ligar IA'), não 'Analisar' habilitado", (await page.locator("text=Ligar IA").count()) > 0 && (await page.locator("button:has-text('Analisar com IA')").count()) === 0);
   await page.screenshot({ path: `${SHOTS}/licitacao-01.png`, fullPage: true });
 
-  // aba pesada → selo 'em ingestão' (Radix só monta a aba ativa)
-  await page.locator("button[role=tab]:has-text('Preços')").click();
+  // aba Inteligência (Bloco 2): dado REAL (concorrentes/faixa) OU vazio honesto se o nicho/UF não tiver contrato
+  await page.locator("button[role=tab]:has-text('Inteligência')").click();
   await page.waitForTimeout(400);
-  const bodyPrecos = await page.locator("body").innerText();
-  ok("workspace: aba pesada (Preços) com selo 'em ingestão'", bodyPrecos.toLowerCase().includes("em ingestão"));
+  const bodyIntel = await page.locator("body").innerText();
+  const intelReal = (await page.locator("[data-testid=sala-inteligencia]").count()) > 0;
+  const intelVazio = /em ingest[aã]o/i.test(bodyIntel);
+  ok("workspace: aba Inteligência (Mercado real OU vazio honesto)", intelReal || intelVazio);
 
   // volta pra Documentos e adiciona um doc
   await page.locator("button[role=tab]:has-text('Documentos')").click();
