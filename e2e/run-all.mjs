@@ -31,6 +31,7 @@ const SUITE = [
   "e2e/autotest-space-crm.mjs",   // Space CRM: cabeçalho + Resumo (visual protótipo) + link PNCP + trava real
   "e2e/autotest-descoberta.mjs",  // Descoberta: recorte + escopo (cidade/estado/nacional) + Pesquisa completa
   "e2e/autotest-exigencias.mjs",  // Space: aba Exigências (Checklist Vivo: nicho × cofre, tags azul/âmbar/vermelho)
+  "e2e/autotest-resumo-profundo.mjs", // IA inclusa (chave nossa, server-side) + Resumo Profundo 18 seções + cache
 ];
 
 const summary = [];

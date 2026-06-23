@@ -41,42 +41,18 @@ try {
   await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
   ok("PART1 /configuracoes abre e funciona", (await page.locator("text=Inteligência Artificial").count()) > 0);
 
-  // PART2: BYOK — salva provedor+modelo+chave (OpenAI fake) e confere cripto/segurança
-  await page.selectOption("#provider", "openai");
-  await page.selectOption("#model", "gpt-4o-mini");
-  await page.fill("#apiKey", "sk-fake-test-CLAROtexto-123");
-  await page.click("button:has-text('Salvar configuração')");
-  await page.waitForTimeout(1500);
-  const enc = await adminQuery(`select provider, model, api_key_encrypted from tenant_ai_config c join auth.users u on u.id=c.tenant_id where u.email='${email}';`);
-  ok("PART2 config salva (provider/model)", enc?.[0]?.provider === "openai" && enc?.[0]?.model === "gpt-4o-mini");
-  ok("PART2 chave guardada CRIPTOGRAFADA (não texto plano)", !!enc?.[0]?.api_key_encrypted && !String(enc?.[0]?.api_key_encrypted).includes("CLAROtexto"));
-  // segurança: anon NÃO lê a config (sem policy)
-  const anonRead = await fetch(`${SB}/rest/v1/tenant_ai_config?select=api_key_encrypted`, { headers: { apikey: ANON, Authorization: `Bearer ${ANON}` } });
-  const anonRows = anonRead.ok ? await anonRead.json() : [];
-  ok("PART2 chave NUNCA exposta ao client (anon bloqueado)", Array.isArray(anonRows) && anonRows.length === 0, `anon rows=${anonRows.length}`);
+  // PART2: IA INCLUSA (chave nossa, server-side) — Configurações é informativo, SEM BYOK/sem campo de chave
+  ok("PART2 Configurações = IA inclusa (sem campo de chave / sem BYOK)", (await page.locator("[data-testid=config-ia]").count()) > 0 && (await page.locator("#apiKey").count()) === 0);
+  ok("PART2 status da IA exibido", (await page.locator("[data-testid=ia-status-on], [data-testid=ia-status-off]").count()) > 0);
+  const cfgHtml = await page.content();
+  ok("PART2 chave da IA não vaza no client (HTML da página)", !/sk-svcacct|SENTINELA_AI_KEY/.test(cfgHtml), "config sem segredo no HTML");
 
-  // troca p/ mock (roda análise sem custo) e confirma roteamento
-  await page.selectOption("#provider", "mock");
-  await page.waitForTimeout(200);
-  await page.selectOption("#model", "mock-1");
-  await page.click("button:has-text('Salvar configuração')");
-  await page.waitForTimeout(1200);
-
-  // PART2: Analisar com IA na Pasta
+  // Pasta: IA inclusa → "Analisar com IA" disponível. NÃO clicamos (evita custo real de IA neste teste).
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.locator("button:has-text('Adicionar à análise')").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
-  ok("PART2 'Analisar com IA' habilitado (IA configurada)", await page.locator("button:has-text('Analisar com IA')").first().isEnabled());
-  await page.locator("button:has-text('Analisar com IA')").first().click();
-  await page.waitForTimeout(2500); // server action + revalidate
-  await page.locator("button[role=tab]:has-text('Resumo')").click();
-  await page.waitForSelector("text=Resumo Executivo", { timeout: 15000 });
-  await page.locator("button[role=tab]:has-text('Veredito')").click();
-  await page.waitForSelector("text=Veredito calibrado", { timeout: 10000 });
-  const body = await page.locator("body").innerText();
-  ok("PART2 parecer renderiza (Resumo+Veredito+disclaimer)", body.includes("Veredito calibrado") && body.toLowerCase().includes("não é garantia"));
-  const an = await adminQuery(`select modelo from analise a join auth.users u on u.id=a.tenant_id where u.email='${email}';`);
-  ok("PART2 roteou pro modelo escolhido (modelo gravado)", an?.[0]?.modelo === "mock:mock-1", `modelo=${an?.[0]?.modelo}`);
+  ok("PART2 'Analisar com IA' disponível (IA inclusa, sem BYOK)", await page.locator("button:has-text('Analisar com IA')").first().isEnabled());
+  ok("PART2 não há mais 'Ligar IA' (BYOK removido)", (await page.locator("text=Ligar IA").count()) === 0);
   await page.screenshot({ path: `${SHOTS}/front-02-analise.png`, fullPage: true });
 
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));

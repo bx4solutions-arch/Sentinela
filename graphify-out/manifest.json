@@ -20,9 +20,9 @@
     "semantic_hash": "03655cef84b96cffa54d446a81e39e46"
   },
   "app/(shell)/configuracoes/page.tsx": {
-    "mtime": 1781985862.6321435,
-    "ast_hash": "4fd69a76bc3d2f28377fc822b11e8cae",
-    "semantic_hash": "4fd69a76bc3d2f28377fc822b11e8cae"
+    "mtime": 1782254174.18402,
+    "ast_hash": "10a3f10a271917ad736b810dce3bb2e9",
+    "semantic_hash": ""
   },
   "app/(shell)/consultor/page.tsx": {
     "mtime": 1781985621.4861023,
@@ -70,13 +70,13 @@
     "semantic_hash": "7e3cfeb5689ffa68aba9db04dc053679"
   },
   "app/(shell)/licitacao/[id]/actions.ts": {
-    "mtime": 1781985922.560955,
-    "ast_hash": "6160d3d48e776f4b34afa6b218643b4d",
-    "semantic_hash": "6160d3d48e776f4b34afa6b218643b4d"
+    "mtime": 1782253956.2602937,
+    "ast_hash": "eaa7951892cd8c57117d471141adb48d",
+    "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782250174.8339105,
-    "ast_hash": "0ce4731246578b517785966bcf214417",
+    "mtime": 1782254231.4167244,
+    "ast_hash": "87b362db3e89e875afb6cd21d5f13802",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "components/shell.tsx": {
-    "mtime": 1782237308.0200682,
-    "ast_hash": "c7fa2d4e916ce5a58dddc888531bb0d3",
+    "mtime": 1782254181.0057867,
+    "ast_hash": "b7b400e12a40c00b01fe72213f7d1dc0",
     "semantic_hash": ""
   },
   "components/ui.tsx": {
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-frontend.mjs": {
-    "mtime": 1782084590.3205032,
-    "ast_hash": "c1f034b8d88d2cd1f3863accdf380182",
+    "mtime": 1782254283.1733263,
+    "ast_hash": "0b26c6fc40a0019a1f083ad357ab13ab",
     "semantic_hash": ""
   },
   "e2e/autotest-kanban.mjs": {
@@ -180,8 +180,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-licitacao.mjs": {
-    "mtime": 1782177659.6028273,
-    "ast_hash": "fd4dc3487375778081ebd6180c4686bb",
+    "mtime": 1782254300.4355445,
+    "ast_hash": "c310b44b376320de5fb92e5b6f9c3bc7",
     "semantic_hash": ""
   },
   "e2e/autotest-radar.mjs": {
@@ -265,8 +265,8 @@
     "semantic_hash": "170548ae328f3db0bdb8c9f393449ed8"
   },
   "lib/utils.ts": {
-    "mtime": 1782241293.2687657,
-    "ast_hash": "3d1a1dbcd15e96169bd06875959a73aa",
+    "mtime": 1782253820.035646,
+    "ast_hash": "a2bf803e157d3e9177c0437b8307c9b6",
     "semantic_hash": ""
   },
   "middleware.ts": {
@@ -285,8 +285,8 @@
     "semantic_hash": "722b5c5d86acfa0ac5cf229371b84fdc"
   },
   "package.json": {
-    "mtime": 1782181634.0610428,
-    "ast_hash": "d6be186a5ac3c95626c21b5c8c1961d8",
+    "mtime": 1782253707.6081345,
+    "ast_hash": "17d5a5013b231db1742b6f8591ec4da6",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -800,8 +800,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-integracao.mjs": {
-    "mtime": 1782165859.8251083,
-    "ast_hash": "9ffc23998fa7e71eee05794cd5d06d17",
+    "mtime": 1782254313.0690498,
+    "ast_hash": "9c31bd0625169ac655eabc1af9a8a00d",
     "semantic_hash": ""
   },
   "RELATORIO-INTEGRACAO.md": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782250286.4417663,
-    "ast_hash": "067724a4980a48f1778767d7317fc74d",
+    "mtime": 1782254445.6986852,
+    "ast_hash": "d2c7dcba2e6dc6bec0eeb7f94b7b6cf2",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -1037,6 +1037,31 @@
   "e2e/autotest-exigencias.mjs": {
     "mtime": 1782250280.073668,
     "ast_hash": "049dcc4fa07f161f0d962f1185a3c0ae",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-resumo-profundo.mjs": {
+    "mtime": 1782255504.0958922,
+    "ast_hash": "d5f17703a12f4e888878804db533965d",
+    "semantic_hash": ""
+  },
+  "lib/ai-server.ts": {
+    "mtime": 1782253832.6427808,
+    "ast_hash": "4f8f46153ee48ddce5f6ce207a7676e0",
+    "semantic_hash": ""
+  },
+  "lib/pncp-arquivos.ts": {
+    "mtime": 1782253851.208518,
+    "ast_hash": "b23cc418e805079f5870d1337dcf389f",
+    "semantic_hash": ""
+  },
+  "lib/resumo-profundo.ts": {
+    "mtime": 1782253889.7182212,
+    "ast_hash": "fe1d7e7c737bc9299a099235b294ca27",
+    "semantic_hash": ""
+  },
+  "Resumo do Edital - Conlicitac\u0327a\u0303o 19061084.pdf": {
+    "mtime": 1782251511.609014,
+    "ast_hash": "fae52ed0fd3223771b46ec31ed3ac1eb",
     "semantic_hash": ""
   }
 }

@@ -48,3 +48,11 @@ export function pncpEditalUrl(numeroControlePNCP: string | null | undefined): st
   const seq = String(Number(sequencial)); // remove zeros à esquerda
   return `https://pncp.gov.br/app/editais/${cnpj}/${ano}/${seq}`;
 }
+
+/** Quebra o numeroControlePNCP em {cnpj, ano, seq} (seq sem zeros à esquerda). null se não casar. */
+export function pncpParts(numeroControlePNCP: string | null | undefined): { cnpj: string; ano: string; seq: string } | null {
+  if (!numeroControlePNCP) return null;
+  const m = numeroControlePNCP.trim().match(/^(\d{14})-\d+-(\d+)\/(\d{4})$/);
+  if (!m) return null;
+  return { cnpj: m[1], seq: String(Number(m[2])), ano: m[3] };
+}

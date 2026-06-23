@@ -10,6 +10,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { Card, CardContent, Badge, Button, Input, Progress, Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui";
 import { dataBR, pncpEditalUrl, diasAte } from "@/lib/utils";
 import { buildResumo, type ResumoEdital } from "@/lib/resumo-edital";
+import { temIA } from "@/lib/ai-server";
+import { SECOES, NAO_INFO, type ResumoProfundo } from "@/lib/resumo-profundo";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { tokensDosSegmentos } from "@/lib/nichos";
 import { inteligenciaMercado } from "@/lib/inteligencia";
@@ -17,7 +19,7 @@ import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
 import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
 import { PropostaGerador } from "./proposta-gerador";
-import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA } from "./actions";
+import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
 
@@ -81,12 +83,13 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const prob = pct >= 80 ? "alta" : pct >= 50 ? "média" : "baixa";
   const recomendacao = statusEmp === "apto" ? "Forte candidato — você atende a habilitação típica deste tipo de certame." : statusEmp === "ressalvas" ? "Avaliável — você atende parte da habilitação típica; resolva os documentos faltantes." : "Atenção — habilitação típica incompleta; prepare os documentos antes de disputar.";
 
-  // IA (BYOK) + parecer existente (enriquece, não substitui o determinístico)
-  const { data: { user } } = await supabase.auth.getUser();
-  const { data: cfg } = await admin.from("tenant_ai_config").select("provider, api_key_encrypted").eq("tenant_id", user?.id ?? "").maybeSingle();
-  const hasAI = !!cfg && (cfg.provider === "mock" || !!cfg.api_key_encrypted);
+  // IA INCLUSA (chave NOSSA no env, server-side) — não é BYOK. "Só funciona" quando a chave existe.
+  const hasAI = temIA();
   const { data: analiseRow } = await supabase.from("analise").select("conteudo, modelo").eq("licitacao_id", id).eq("tipo", "completa").maybeSingle();
   const p = (analiseRow?.conteudo ?? null) as Parecer | null;
+  // Resumo Profundo (18 seções) cacheado por edital
+  const { data: rpRow } = await supabase.from("analise").select("conteudo").eq("licitacao_id", id).eq("tipo", "resumo_profundo").maybeSingle();
+  const profundo = (rpRow?.conteudo ?? null) as ResumoProfundo | null;
 
   const { data: docs } = await supabase.from("documento").select("id, tipo, tipo_label").eq("licitacao_id", id).order("criado_em", { ascending: false });
 
@@ -186,9 +189,9 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
       <div className="flex flex-wrap items-center gap-2">
         <form action={monitorar}><input type="hidden" name="numero" value={lic.numero_controle_pncp} /><Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
         {hasAI ? (
-          <form action={analisarComIA}><input type="hidden" name="licitacao_id" value={lic.id} /><Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button></form>
+          <form action={analisarComIA}><input type="hidden" name="licitacao_id" value={lic.id} /><Button type="submit" size="sm" variant="outline"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button></form>
         ) : (
-          <Button asChild size="sm" variant="outline"><Link href="/configuracoes"><Sparkles className="size-4" /> Ligar IA (Configurações)</Link></Button>
+          <Badge variant="muted" data-testid="ia-indisponivel">IA temporariamente indisponível</Badge>
         )}
         <PastaActions />
         <form action={excluirLicitacao} className="ml-auto"><input type="hidden" name="id" value={lic.id} /><Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir</Button></form>
@@ -222,6 +225,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         <div className="overflow-x-auto">
           <TabsList className="w-max">
             <TabsTrigger value="resumo">Resumo</TabsTrigger>
+            <TabsTrigger value="profundo">Resumo Profundo</TabsTrigger>
             <TabsTrigger value="exigencias">Exigências</TabsTrigger>
             <TabsTrigger value="empresa">Empresa × Edital</TabsTrigger>
             <TabsTrigger value="veredito">Veredito</TabsTrigger>
@@ -282,6 +286,81 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             )}
           </TabsContent>
 
+          {/* RESUMO PROFUNDO — 18 seções extraídas do PDF pela IA (chave nossa). On-demand + cacheado. */}
+          <TabsContent value="profundo">
+            <div className="space-y-4" data-testid="profundo-tab">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2 className="text-lg font-bold leading-tight">Resumo Profundo do edital</h2>
+                  <p className="text-sm text-muted-foreground">As 18 seções extraídas do PDF real do edital. Cada campo é o que está no texto — ou “{NAO_INFO}”. Não inventamos.</p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "—"}</span>
+                  {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}{ed?.situacao_nome ? ` · ${ed.situacao_nome}` : ""}</Badge>}
+                  {sessaoISO && <span>sessão {dtBR(sessaoISO)}</span>}
+                </div>
+              </div>
+
+              {/* ação: gerar / regerar */}
+              <div className="flex flex-wrap items-center gap-2">
+                {hasAI ? (
+                  <form action={gerarResumoProfundo}><input type="hidden" name="licitacao_id" value={lic.id} />
+                    <Button type="submit" size="sm" data-testid="gerar-profundo"><Sparkles className="size-4" /> {profundo ? "Regerar resumo profundo" : "Gerar resumo profundo"}</Button>
+                  </form>
+                ) : (
+                  <Badge variant="muted" data-testid="profundo-ia-off">IA temporariamente indisponível — mostrando o determinístico</Badge>
+                )}
+                {profundo && <Badge variant="muted" data-testid="profundo-fonte">{profundo.fonte === "ia" ? `extraído por IA (${profundo.modelo})` : profundo.fonte === "cache" ? "reaproveitado do cache (sem novo custo)" : "determinístico (PNCP)"}</Badge>}
+                <Badge variant="muted">Exportar (.docx / e-mail / imprimir) — em breve</Badge>
+              </div>
+
+              {!profundo ? (
+                <div className="rounded-lg border border-dashed p-6 text-center" data-testid="profundo-vazio">
+                  <FileText className="mx-auto mb-2 size-6 text-muted-foreground/60" />
+                  <p className="text-sm font-medium">Ainda não geramos o resumo profundo desta licitação.</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{hasAI ? "Clique em “Gerar resumo profundo” — baixamos o edital do PNCP e extraímos as 18 seções (uma vez; depois fica em cache)." : "A IA está temporariamente indisponível. As seções determinísticas do PNCP estão no Resumo."}</p>
+                </div>
+              ) : (
+                <div className="space-y-4" data-testid="profundo-conteudo">
+                  {profundo.aviso && <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">{profundo.aviso}</p>}
+
+                  {/* CAPAG — capacidade fiscal do órgão (Tesouro) + disclaimer */}
+                  <Card data-testid="profundo-capag"><CardContent className="p-4">
+                    <div className="flex flex-wrap items-center gap-2"><Landmark className="size-4 text-primary" /><p className="text-sm font-semibold">Órgão & Nota CAPAG</p><Badge variant="muted">em ingestão (Tesouro/Siconfi)</Badge></div>
+                    <p className="mt-1.5 text-sm">{profundo.secoes.orgao_capag || NAO_INFO}</p>
+                    <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ CAPAG mede a <strong>saúde fiscal</strong> do ente (capacidade de pagamento) — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor.</p>
+                  </CardContent></Card>
+
+                  {/* 18 seções em accordions (fechados por padrão) */}
+                  <div className="space-y-2">
+                    {SECOES.map((sec) => {
+                      const val = profundo.secoes[sec.key] || NAO_INFO;
+                      const vazio = val === NAO_INFO;
+                      const borda = sec.tom === "vermelho" ? "border-destructive/40" : sec.tom === "ambar" ? "border-warning/40" : "";
+                      return (
+                        <details key={sec.key} className={`rounded-lg border ${borda} bg-card`} data-testid="profundo-secao">
+                          <summary className="flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm font-medium">
+                            {sec.tom === "vermelho" && <span className="text-destructive">●</span>}
+                            {sec.tom === "ambar" && <span className="text-warning">●</span>}
+                            <span className="flex-1">{sec.titulo}</span>
+                            {vazio && <Badge variant="muted">{NAO_INFO}</Badge>}
+                          </summary>
+                          <div className={`border-t px-4 py-3 text-sm ${sec.tom === "vermelho" ? "bg-destructive/5" : sec.tom === "ambar" ? "bg-warning/5" : ""}`}>
+                            <p className="whitespace-pre-line text-muted-foreground">{val}</p>
+                            {sec.key === "analise_critica" && <p className="mt-2 text-xs text-muted-foreground">⚠️ É uma <strong>análise</strong> (apoio à decisão), <strong>não um parecer jurídico</strong>.</p>}
+                            {sec.key === "atestado" && profundo.exigencias_especificas.length > 0 && (
+                              <ul className="mt-2 list-disc space-y-0.5 pl-5">{profundo.exigencias_especificas.map((e, i) => <li key={i}>{e}</li>)}</ul>
+                            )}
+                          </div>
+                        </details>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+
           {/* EXIGÊNCIAS — Checklist Vivo (determinístico: nicho × cofre). Sem IA. Azul/âmbar/vermelho. */}
           <TabsContent value="exigencias">
             <div className="space-y-4" data-testid="exigencias-tab">
@@ -320,8 +399,22 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                 </ul>
               </CardContent></Card>
               <Card><CardContent className="p-4">
-                <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted" data-testid="exig-em-extracao">em extração</Badge></div>
-                <p className="mt-1 text-xs text-muted-foreground">As exigências do <strong>texto do edital</strong> (ex.: <em>atestado ≥ 100.000 m²</em>, índices contábeis, vistoria, amostra) entram quando a IA ler o documento (PNCP <code>/arquivos</code> — Camada 3). <strong>Não inventamos exigência que não lemos.</strong></p>
+                {profundo && profundo.exigencias_especificas.length > 0 ? (
+                  <div data-testid="exig-especificas">
+                    <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted">extraídas do edital</Badge></div>
+                    <ul className="mt-2 space-y-1.5">
+                      {profundo.exigencias_especificas.map((e, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm"><Badge variant="outline">edital</Badge><span className="flex-1">{e}</span></li>
+                      ))}
+                    </ul>
+                    <p className="mt-2 text-xs text-muted-foreground">Lidas do texto do edital no Resumo Profundo. Cruze com o seu cofre conforme aplicável.</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted" data-testid="exig-em-extracao">em extração</Badge></div>
+                    <p className="mt-1 text-xs text-muted-foreground">As exigências do <strong>texto do edital</strong> (ex.: <em>atestado ≥ 100.000 m²</em>, índices contábeis, vistoria, amostra) entram ao gerar o <strong>Resumo Profundo</strong> (a IA lê o PDF — Camada 3). <strong>Não inventamos exigência que não lemos.</strong></p>
+                  </>
+                )}
               </CardContent></Card>
               <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Prontidão é <strong>fato</strong> (cofre × habilitação típica da Lei 14.133), <strong>não “chance de ganhar”</strong>. O checklist se ajusta quando as exigências específicas forem extraídas.</p>
             </div>

@@ -32,7 +32,7 @@ const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
   { test: (p) => p.startsWith("/consultor"), title: "Consultor IA", sub: "Converse sobre cada licitação com o contexto da pasta" },
-  { test: (p) => p.startsWith("/configuracoes"), title: "Configurações", sub: "Provedor e modelo de IA (sua própria chave — BYOK)" },
+  { test: (p) => p.startsWith("/configuracoes"), title: "Configurações", sub: "Inteligência Artificial inclusa (gerenciada pela Sentinela)" },
   { test: (p) => p.startsWith("/empresa"), title: "Minha Empresa", sub: "Raio-X por CNPJ, certidões e Vigia de Documentos" },
   { test: (p) => p.startsWith("/onboarding"), title: "Configurar empresa", sub: "Raio-X por CNPJ" },
   { test: (p) => p.startsWith("/roadmap"), title: "Em breve", sub: "Funcionalidade no roadmap" },

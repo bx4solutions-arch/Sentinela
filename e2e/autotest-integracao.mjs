@@ -89,12 +89,10 @@ try {
   const kanDb = await aqUntil(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`, (r) => r?.[0]?.stage === "preparacao");
   ok("KANBAN mover muda o registro CERTO (X→preparacao)", kanDb?.[0]?.stage === "preparacao");
 
-  // ---- CONFIGURAÇÕES salva valores CERTOS ----
+  // ---- CONFIGURAÇÕES: IA INCLUSA (sem BYOK / sem campo de chave) ----
   await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
-  await page.selectOption("#provider", "mock"); await page.waitForTimeout(200); await page.selectOption("#model", "mock-1");
-  await page.click("button:has-text('Salvar configuração')");
-  const cfgDb = await aqUntil(`select provider, model from tenant_ai_config c join auth.users u on u.id=c.tenant_id where u.email='${t1}';`, (r) => r?.[0]?.provider === "mock" && r?.[0]?.model === "mock-1");
-  ok("CONFIG salva provedor/modelo CERTOS", cfgDb?.[0]?.provider === "mock" && cfgDb?.[0]?.model === "mock-1");
+  await page.waitForSelector("[data-testid=config-ia]", { timeout: 10000 });
+  ok("CONFIG é IA inclusa (sem campo de chave / sem BYOK)", (await page.locator("#apiKey").count()) === 0 && (await page.locator("[data-testid=config-seguranca]").count()) > 0);
 
   // ---- RLS: tenant 2 NÃO vê as oportunidades do tenant 1 ----
   const page2 = await browser.newPage();
