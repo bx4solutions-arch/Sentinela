@@ -27,6 +27,7 @@ const SUITE = [
   "e2e/autotest-preco.mjs",       // Bloco 4/M2: Motor de Preço (faixa/CV/inexequibilidade)
   "e2e/autotest-consultor.mjs",   // Bloco 5: Consultor determinístico citando Lei 14.133
   "e2e/autotest-proposta.mjs",    // Bloco 6: Gerador de proposta seccionado + DOCX
+  "e2e/autotest-space.mjs",       // Sidebar "Space" + rota-lista /space (Espaço Inteligente)
 ];
 
 const summary = [];

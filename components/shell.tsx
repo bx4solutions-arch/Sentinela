@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Radar, KanbanSquare, Building2, MessagesSquare, Settings,
-  ShieldCheck, Search, HelpCircle, LogOut, Bell,
+  ShieldCheck, Search, HelpCircle, LogOut, Bell, Boxes,
 } from "lucide-react";
 import { Progress } from "@/components/ui";
 import { signOut } from "@/app/(auth)/login/actions";
@@ -16,6 +16,7 @@ type NavItem = { href: string; label: string; icon: React.ElementType; roadmap?:
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/radar", label: "Radar", icon: Radar },
+  { href: "/space", label: "Space", icon: Boxes },
   { href: "/pesquisa", label: "Pesquisa", icon: Search },
   { href: "/kanban", label: "Kanban", icon: KanbanSquare },
   { href: "/empresa", label: "Minha Empresa", icon: Building2 },
@@ -26,6 +27,7 @@ const NAV: NavItem[] = [
 const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/dashboard"), title: "Dashboard Sentinela", sub: "Inteligência antecipada de oportunidades públicas" },
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
+  { test: (p) => p.startsWith("/space"), title: "Espaço Inteligente", sub: "As licitações que você acompanha — cada uma abre o seu Space" },
   { test: (p) => p.startsWith("/pesquisa"), title: "Pesquisa livre", sub: "Por órgão · item + cidade · concorrente por CNPJ" },
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
