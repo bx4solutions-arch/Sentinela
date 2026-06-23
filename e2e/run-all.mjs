@@ -32,6 +32,7 @@ const SUITE = [
   "e2e/autotest-descoberta.mjs",  // Descoberta: recorte + escopo (cidade/estado/nacional) + Pesquisa completa
   "e2e/autotest-exigencias.mjs",  // Space: aba Exigências (Checklist Vivo: nicho × cofre, tags azul/âmbar/vermelho)
   "e2e/autotest-resumo-profundo.mjs", // IA inclusa (chave nossa, server-side) + Resumo Profundo 18 seções + cache
+  "e2e/autotest-resumo-upload.mjs", // Resumo Profundo: estado indisponível limpo + upload de PDF (caso Santos/BLL)
 ];
 
 const summary = [];

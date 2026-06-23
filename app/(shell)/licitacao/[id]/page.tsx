@@ -19,7 +19,7 @@ import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
 import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
 import { PropostaGerador } from "./proposta-gerador";
-import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo } from "./actions";
+import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo, gerarResumoProfundoUpload } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
 
@@ -87,9 +87,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const hasAI = temIA();
   const { data: analiseRow } = await supabase.from("analise").select("conteudo, modelo").eq("licitacao_id", id).eq("tipo", "completa").maybeSingle();
   const p = (analiseRow?.conteudo ?? null) as Parecer | null;
-  // Resumo Profundo (18 seções) cacheado por edital
+  // Resumo Profundo (18 seções) cacheado por edital. temExtracao = houve extração REAL (não só determinístico).
   const { data: rpRow } = await supabase.from("analise").select("conteudo").eq("licitacao_id", id).eq("tipo", "resumo_profundo").maybeSingle();
   const profundo = (rpRow?.conteudo ?? null) as ResumoProfundo | null;
+  const temExtracao = !!profundo && profundo.fonte !== "deterministico";
 
   const { data: docs } = await supabase.from("documento").select("id, tipo, tipo_label").eq("licitacao_id", id).order("criado_em", { ascending: false });
 
@@ -162,20 +163,20 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
 
           {/* Selo + breadcrumb + título (órgão) + objeto */}
           <div>
-            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-sidebar-foreground/70" data-testid="space-selo">
+            <p className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-sidebar-foreground/70" data-testid="space-selo">
               ⬢ Espaço Inteligente da Licitação
             </p>
-            <p className="mt-2 flex flex-wrap items-center gap-1 text-xs text-sidebar-foreground/60">
+            <p className="mt-2 flex flex-wrap items-center gap-1.5 text-sm text-sidebar-foreground/65">
               <Link href="/radar" className="hover:text-sidebar-foreground hover:underline">Radar</Link>
-              {cidadeUf && <><ChevronRight className="size-3" /> <span>{cidadeUf}</span></>}
-              {objetoCurto && <><ChevronRight className="size-3" /> <span className="truncate">{objetoCurto}{(ed?.objeto?.length ?? 0) > 48 ? "…" : ""}</span></>}
+              {cidadeUf && <><ChevronRight className="size-3.5" /> <span>{cidadeUf}</span></>}
+              {objetoCurto && <><ChevronRight className="size-3.5" /> <span className="truncate">{objetoCurto}{(ed?.objeto?.length ?? 0) > 48 ? "…" : ""}</span></>}
             </p>
-            <h1 className="mt-1.5 text-xl font-bold leading-tight md:text-2xl">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão responsável"}</h1>
-            <p className="mt-1.5 max-w-4xl text-sm leading-relaxed text-sidebar-foreground/80 md:text-base">{ed?.objeto ?? lic.titulo ?? "Objeto não informado"}</p>
+            <h1 className="mt-2 text-2xl font-bold leading-tight md:text-3xl">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão responsável"}</h1>
+            <p className="mt-2 max-w-4xl text-base leading-relaxed text-sidebar-foreground/85">{ed?.objeto ?? lic.titulo ?? "Objeto não informado"}</p>
           </div>
 
           {/* Faixa de metadados */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-white/10 pt-3 text-xs text-sidebar-foreground/80 md:text-sm">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-white/10 pt-3 text-sm text-sidebar-foreground/85">
             {cidadeUf && <span><span className="text-sidebar-foreground/55">Cidade:</span> {cidadeUf}</span>}
             {resumo?.identificacao.numero_compra && <span><span className="text-sidebar-foreground/55">Edital nº:</span> {resumo.identificacao.numero_compra}</span>}
             {ed?.modalidade_nome && <span><span className="text-sidebar-foreground/55">Modalidade:</span> {ed.modalidade_nome}</span>}
@@ -200,22 +201,22 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
       {/* KPIs (visual do protótipo) */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4" data-testid="space-kpis">
         <Card><CardContent className="p-4">
-          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Wallet className="size-3.5" /> Valor estimado</p>
+          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><Wallet className="size-3.5" /> Valor estimado</p>
           <p className="mt-1 text-2xl font-bold leading-none">{brl(ed?.valor_estimado ?? null) ?? "—"}</p>
           <p className="mt-1.5 text-xs text-muted-foreground">teto do órgão (PNCP)</p>
         </CardContent></Card>
         <Card><CardContent className="p-4">
-          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Flag className="size-3.5" /> Estágio</p>
+          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><Flag className="size-3.5" /> Estágio</p>
           <p className="mt-1 text-2xl font-bold leading-none">{encerrada ? "Encerrado" : "Edital aberto"}</p>
           <p className="mt-1.5 text-xs text-muted-foreground">{ed?.situacao_nome ?? "situação no PNCP"}</p>
         </CardContent></Card>
         <Card><CardContent className="p-4">
-          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Clock className="size-3.5" /> Prazo p/ proposta</p>
+          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><Clock className="size-3.5" /> Prazo p/ proposta</p>
           <p className="mt-1 text-2xl font-bold leading-none">{diasPrazo == null ? "—" : encerrada ? "Encerrado" : `${diasPrazo} dias`}</p>
           <p className="mt-1.5 text-xs text-muted-foreground">{encerramentoISO ? `encerra ${dtBR(encerramentoISO)}` : "prazo no edital"}</p>
         </CardContent></Card>
         <Card><CardContent className="p-4">
-          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Gauge className="size-3.5" /> Sua prontidão</p>
+          <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><Gauge className="size-3.5" /> Sua prontidão</p>
           <p className="mt-1 text-2xl font-bold leading-none">{pct}%</p>
           <p className="mt-1.5 text-xs text-muted-foreground">{atendeExig} de {totalExig} exigências · {statusEmpLabel}</p>
         </CardContent></Card>
@@ -291,10 +292,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             <div className="space-y-4" data-testid="profundo-tab">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-bold leading-tight">Resumo Profundo do edital</h2>
+                  <h2 className="text-xl font-bold leading-tight">Resumo Profundo do edital</h2>
                   <p className="text-sm text-muted-foreground">As 18 seções extraídas do PDF real do edital. Cada campo é o que está no texto — ou “{NAO_INFO}”. Não inventamos.</p>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                   <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "—"}</span>
                   {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}{ed?.situacao_nome ? ` · ${ed.situacao_nome}` : ""}</Badge>}
                   {sessaoISO && <span>sessão {dtBR(sessaoISO)}</span>}
@@ -305,20 +306,59 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
               <div className="flex flex-wrap items-center gap-2">
                 {hasAI ? (
                   <form action={gerarResumoProfundo}><input type="hidden" name="licitacao_id" value={lic.id} />
-                    <Button type="submit" size="sm" data-testid="gerar-profundo"><Sparkles className="size-4" /> {profundo ? "Regerar resumo profundo" : "Gerar resumo profundo"}</Button>
+                    <Button type="submit" size="sm" data-testid="gerar-profundo"><Sparkles className="size-4" /> {temExtracao ? "Regerar resumo profundo" : "Gerar resumo profundo (PNCP)"}</Button>
                   </form>
                 ) : (
                   <Badge variant="muted" data-testid="profundo-ia-off">IA temporariamente indisponível — mostrando o determinístico</Badge>
                 )}
-                {profundo && <Badge variant="muted" data-testid="profundo-fonte">{profundo.fonte === "ia" ? `extraído por IA (${profundo.modelo})` : profundo.fonte === "cache" ? "reaproveitado do cache (sem novo custo)" : "determinístico (PNCP)"}</Badge>}
+                {profundo && <Badge variant="muted" data-testid="profundo-fonte">{profundo.fonte === "ia" ? `extraído por IA (${profundo.modelo})` : profundo.fonte === "cache" ? "reaproveitado do cache (sem novo custo)" : "documento ainda não extraído"}</Badge>}
                 <Badge variant="muted">Exportar (.docx / e-mail / imprimir) — em breve</Badge>
               </div>
 
-              {!profundo ? (
-                <div className="rounded-lg border border-dashed p-6 text-center" data-testid="profundo-vazio">
-                  <FileText className="mx-auto mb-2 size-6 text-muted-foreground/60" />
-                  <p className="text-sm font-medium">Ainda não geramos o resumo profundo desta licitação.</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{hasAI ? "Clique em “Gerar resumo profundo” — baixamos o edital do PNCP e extraímos as 18 seções (uma vez; depois fica em cache)." : "A IA está temporariamente indisponível. As seções determinísticas do PNCP estão no Resumo."}</p>
+              {!temExtracao ? (
+                /* ESTADO "documento indisponível" LIMPO: aviso + determinístico bem apresentado + opções pra obter o PDF.
+                   NÃO renderiza 18 seções vazias. As 18 só aparecem quando há extração real. */
+                <div className="space-y-4" data-testid="profundo-indisponivel">
+                  <div className="rounded-lg border border-warning/30 bg-warning/10 p-4">
+                    <p className="flex items-center gap-2 text-sm font-semibold"><FileText className="size-4" /> Documento do edital ainda não extraído</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{profundo?.aviso ?? (hasAI ? "Clique em “Gerar resumo profundo (PNCP)” para tentar o documento no PNCP. Se o edital estiver só no portal de origem, baixe lá e envie o PDF." : "A IA está temporariamente indisponível. O resumo determinístico do PNCP segue abaixo.")}</p>
+                  </div>
+
+                  {/* opções pra obter o documento: (b) portal de origem em destaque + (c) upload manual */}
+                  {hasAI && (
+                    <Card><CardContent className="space-y-3 p-4">
+                      <p className="text-sm font-semibold">Como obter o documento</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        {portalUrl && (
+                          <Button asChild size="sm" data-testid="baixar-portal-origem">
+                            <a href={portalUrl} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Baixar no portal de origem{portalLabel ? ` (${portalLabel})` : ""}</a>
+                          </Button>
+                        )}
+                        <span className="text-xs text-muted-foreground">o edital costuma ficar no portal de origem (BLL/Compras) — baixe e envie aqui</span>
+                      </div>
+                      <form action={gerarResumoProfundoUpload} className="flex flex-wrap items-center gap-2 rounded-md border bg-muted/30 p-3" data-testid="form-upload-edital">
+                        <input type="hidden" name="licitacao_id" value={lic.id} />
+                        <input type="file" name="pdf" accept="application/pdf,.pdf" required data-testid="input-pdf"
+                          className="text-sm file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-foreground" />
+                        <Button type="submit" size="sm" variant="outline" data-testid="enviar-pdf"><FileDown className="size-4" /> Extrair do PDF enviado</Button>
+                      </form>
+                      <p className="text-xs text-muted-foreground">A captura automática do portal de origem (BLL/Compras) é roadmap — cada portal é uma integração própria. Por ora, o upload manual já desbloqueia a extração completa.</p>
+                    </CardContent></Card>
+                  )}
+
+                  {/* Resumo determinístico (PNCP) bem apresentado — não é "parede de vazio" */}
+                  {resumo && (
+                    <CardKV icon={FileSearch} titulo="Resumo determinístico (PNCP)">
+                      <KV label="Objeto" value={resumo.identificacao.objeto} />
+                      <KV label="Órgão" value={resumo.orgao.razao_social} />
+                      <KV label="Modalidade" value={resumo.modalidade.modalidade} />
+                      <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
+                      <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
+                      <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
+                      <KV label="Amparo legal" value={resumo.amparo_legal.nome} />
+                    </CardKV>
+                  )}
+                  <p className="text-xs text-muted-foreground">As 18 seções (habilitação, atestado, prazos, penalidades, análise crítica…) aparecem aqui após a extração real do PDF.</p>
                 </div>
               ) : (
                 <div className="space-y-4" data-testid="profundo-conteudo">

@@ -70,13 +70,13 @@
     "semantic_hash": "7e3cfeb5689ffa68aba9db04dc053679"
   },
   "app/(shell)/licitacao/[id]/actions.ts": {
-    "mtime": 1782253956.2602937,
-    "ast_hash": "eaa7951892cd8c57117d471141adb48d",
+    "mtime": 1782257615.221618,
+    "ast_hash": "db41f5738d824c0bc3bcb8ebadad16ff",
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782254231.4167244,
-    "ast_hash": "87b362db3e89e875afb6cd21d5f13802",
+    "mtime": 1782257673.381209,
+    "ast_hash": "0e10ca745db12dee98d5a3c0c1207ec8",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782254445.6986852,
-    "ast_hash": "d2c7dcba2e6dc6bec0eeb7f94b7b6cf2",
+    "mtime": 1782257847.434175,
+    "ast_hash": "855d0147c8004e8438a7a0234367d75b",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -1050,8 +1050,8 @@
     "semantic_hash": ""
   },
   "lib/pncp-arquivos.ts": {
-    "mtime": 1782253851.208518,
-    "ast_hash": "b23cc418e805079f5870d1337dcf389f",
+    "mtime": 1782257510.6603715,
+    "ast_hash": "1dbe7dc84cebb6181ddc69ed73c6fe17",
     "semantic_hash": ""
   },
   "lib/resumo-profundo.ts": {
@@ -1062,6 +1062,16 @@
   "Resumo do Edital - Conlicitac\u0327a\u0303o 19061084.pdf": {
     "mtime": 1782251511.609014,
     "ast_hash": "fae52ed0fd3223771b46ec31ed3ac1eb",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-resumo-upload.mjs": {
+    "mtime": 1782257947.502734,
+    "ast_hash": "f4eb20602e9b6c5c15073366f87662ac",
+    "semantic_hash": ""
+  },
+  "e2e/fixtures/edital-fixture.pdf": {
+    "mtime": 1782257741.4362004,
+    "ast_hash": "1877d6dde6bbd4c4285d157df115dd46",
     "semantic_hash": ""
   }
 }
