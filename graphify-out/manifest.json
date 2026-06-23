@@ -75,8 +75,8 @@
     "semantic_hash": "6160d3d48e776f4b34afa6b218643b4d"
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782181762.107827,
-    "ast_hash": "4f0942e8cda16183236c2f440a4d2649",
+    "mtime": 1782241307.7727308,
+    "ast_hash": "7200f294872ccd472acb4ec58f9f3d79",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782175297.1225474,
-    "ast_hash": "b8e6271b5e46334d1edbb5f1fc950ab6",
+    "mtime": 1782242232.0749004,
+    "ast_hash": "5ca99c42116de7b4e4fbefb692e3492d",
     "semantic_hash": ""
   },
   "app/(shell)/roadmap/page.tsx": {
@@ -160,8 +160,8 @@
     "semantic_hash": "53ed74d556af55f9b8dfaaf0f9022f10"
   },
   "e2e/autotest-backfill.mjs": {
-    "mtime": 1782085313.162989,
-    "ast_hash": "ae51bed4b1e6c5c37ee67a841824256d",
+    "mtime": 1782242257.0148978,
+    "ast_hash": "ef57f0c4620247ce099fcf4df6e87902",
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard.mjs": {
@@ -265,9 +265,9 @@
     "semantic_hash": "170548ae328f3db0bdb8c9f393449ed8"
   },
   "lib/utils.ts": {
-    "mtime": 1781898471.0414388,
-    "ast_hash": "9d7a36a21f0036d5e0ac8ac592efa6fb",
-    "semantic_hash": "9d7a36a21f0036d5e0ac8ac592efa6fb"
+    "mtime": 1782241293.2687657,
+    "ast_hash": "3d1a1dbcd15e96169bd06875959a73aa",
+    "semantic_hash": ""
   },
   "middleware.ts": {
     "mtime": 1781971039.2609673,
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-pasta.mjs": {
-    "mtime": 1782078300.63326,
-    "ast_hash": "ca02892801396c8a8df0b2362ea230bf",
+    "mtime": 1782242239.6925886,
+    "ast_hash": "1827388d0bd89d71485147c7f3d7f1f9",
     "semantic_hash": ""
   },
   "lib/resumo-edital.ts": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782237536.1177185,
-    "ast_hash": "2d031756160b511ac8ed076b3552949d",
+    "mtime": 1782241456.1217434,
+    "ast_hash": "22254e9ccb5855a7618f314a2dff4962",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -1005,8 +1005,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/space/page.tsx": {
-    "mtime": 1782237505.5969653,
-    "ast_hash": "bf77710a7e915c3d07f1a1fdb22ef2e3",
+    "mtime": 1782241341.6274328,
+    "ast_hash": "8f79ff7a2fd9efb2227941ecce2bfd15",
     "semantic_hash": ""
   },
   "e2e/autotest-space.mjs": {
@@ -1022,6 +1022,11 @@
   "Print do prototipo do Space.jpg": {
     "mtime": 1782237158.9407525,
     "ast_hash": "a74c20ee68dcc03738c7d6f6ef3b02f2",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-space-crm.mjs": {
+    "mtime": 1782241449.4840589,
+    "ast_hash": "be35da1fb4b8cbe7e89c59031bc30b2f",
     "semantic_hash": ""
   }
 }

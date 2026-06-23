@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Building2, MapPin, ExternalLink, Sparkles, Trash2, FileText, Plus, Eye,
+  Building2, ExternalLink, Sparkles, Trash2, FileText, Plus, Eye,
   FileSearch, Scale, MessagesSquare, DollarSign, Landmark, Lock, Gauge,
+  ChevronRight, Clock, Wallet, Flag, ArrowLeft, FileDown,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { Card, CardContent, Badge, Button, Input, Progress, Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui";
-import { dataBR } from "@/lib/utils";
+import { dataBR, pncpEditalUrl, diasAte } from "@/lib/utils";
 import { buildResumo, type ResumoEdital } from "@/lib/resumo-edital";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { tokensDosSegmentos } from "@/lib/nichos";
@@ -29,7 +30,7 @@ const brl = (n: number | null) => !n ? null : new Intl.NumberFormat("pt-BR", { s
 const dtBR = (s: string | null) => s ? dataBR(s.slice(0, 10)) : "—";
 
 type Lic = { id: string; numero_controle_pncp: string; titulo: string | null; resumo_json: ResumoEdital | null;
-  raw_editais: { objeto: string | null; valor_estimado: number | null; situacao_nome: string | null; data_publicacao: string | null; modalidade_nome: string | null; cidade: string | null; link_origem: string | null; cnpj_orgao: string | null; uf_sigla: string | null; payload: unknown; orgao: { razao_social: string | null } | null } | null; };
+  raw_editais: { objeto: string | null; valor_estimado: number | null; situacao_nome: string | null; data_publicacao: string | null; data_encerramento: string | null; modalidade_nome: string | null; cidade: string | null; link_origem: string | null; cnpj_orgao: string | null; uf_sigla: string | null; payload: unknown; orgao: { razao_social: string | null } | null } | null; };
 
 function EmBreve({ icon: Icon, titulo, motivo }: { icon: React.ElementType; titulo: string; motivo: string }) {
   return (
@@ -39,11 +40,12 @@ function EmBreve({ icon: Icon, titulo, motivo }: { icon: React.ElementType; titu
     </div>
   );
 }
-function Campo({ label, value }: { label: string; value: React.ReactNode }) {
-  return (<div><p className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</p><div className="text-sm font-medium">{value || "—"}</div></div>);
+// Linha chave→valor (kv) e card de kv — layout do protótipo (grande e legível).
+function KV({ label, value }: { label: string; value: React.ReactNode }) {
+  return (<div className="flex items-start justify-between gap-4 py-2.5"><span className="text-sm text-muted-foreground">{label}</span><span className="text-right text-sm font-medium">{value || "—"}</span></div>);
 }
-function Secao({ titulo, children }: { titulo: string; children: React.ReactNode }) {
-  return (<Card><CardContent className="p-4"><p className="mb-3 text-sm font-semibold">{titulo}</p><div className="grid grid-cols-2 gap-4 sm:grid-cols-3">{children}</div></CardContent></Card>);
+function CardKV({ icon: Icon, titulo, children }: { icon: React.ElementType; titulo: string; children: React.ReactNode }) {
+  return (<Card><CardContent className="p-4 md:p-5"><p className="mb-1 flex items-center gap-2 text-sm font-semibold"><Icon className="size-4 text-primary" /> {titulo}</p><div className="divide-y">{children}</div></CardContent></Card>);
 }
 
 export default async function LicitacaoPage({ params }: { params: Promise<{ id: string }> }) {
@@ -51,7 +53,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const supabase = await createClient();
   const { data } = await supabase
     .from("licitacao")
-    .select("id, numero_controle_pncp, titulo, resumo_json, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, modalidade_nome, cidade, link_origem, cnpj_orgao, uf_sigla, payload, orgao:cnpj_orgao(razao_social))")
+    .select("id, numero_controle_pncp, titulo, resumo_json, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, data_publicacao, data_encerramento, modalidade_nome, cidade, link_origem, cnpj_orgao, uf_sigla, payload, orgao:cnpj_orgao(razao_social))")
     .eq("id", id).maybeSingle();
   const lic = data as unknown as Lic | null;
   if (!lic) notFound();
@@ -109,43 +111,108 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
     return { label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
   });
 
+  // ---- Cabeçalho do Space (determinístico, visual do protótipo) ----
+  const pncpUrl = pncpEditalUrl(lic.numero_controle_pncp);          // link OFICIAL do PNCP (corrige o bug do link_origem)
+  const portalUrl = ed?.link_origem ?? resumo?.links.sistema_origem ?? null; // portal de ORIGEM (BLL/Compras.gov etc.)
+  const portalLabel = (() => { try { return portalUrl ? new URL(portalUrl).hostname.replace(/^www\./, "") : null; } catch { return null; } })();
+  const encerramentoISO = ed?.data_encerramento ?? resumo?.datas.encerramento ?? null;
+  const sessaoISO = resumo?.datas.abertura ?? null;
+  const diasPrazo = diasAte(encerramentoISO);
+  const encerrada = diasPrazo != null && diasPrazo < 0;
+  const diasSessao = diasAte(sessaoISO);
+  const recompraDias = intel.contratoAtual[0]?.dias ?? null;        // sinal de recompra (contrato do órgão vencendo)
+  const cidadeUf = ed?.cidade ? `${ed.cidade}${ed.uf_sigla ? ` — ${ed.uf_sigla}` : ""}` : (resumo?.orgao.municipio ? `${resumo.orgao.municipio}${resumo.orgao.uf ? ` — ${resumo.orgao.uf}` : ""}` : null);
+  const totalExig = aplicaveis.length;
+  const atendeExig = totalExig - faltam.length;
+  const objetoCurto = (ed?.objeto ?? lic.titulo ?? "").slice(0, 48);
+
   return (
     <div className="space-y-4">
-      <Button asChild variant="ghost" size="sm"><Link href="/radar">← Voltar ao Radar</Link></Button>
-
-      {/* Cabeçalho */}
-      <Card>
-        <CardContent className="p-4">
-          <div className="flex items-start gap-3">
-            <div className="grid size-10 shrink-0 place-items-center rounded-md bg-primary/10 text-primary"><FileSearch className="size-5" /></div>
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                <Building2 className="size-3.5" /><span className="font-medium text-foreground">{ed?.orgao?.razao_social ?? "Órgão"}</span>
-                {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}</Badge>}
-                {ed?.situacao_nome && <Badge variant="muted">{ed.situacao_nome}</Badge>}
-                <Badge variant={statusEmp === "apto" ? "success" : statusEmp === "nao_apto" ? "destructive" : "warning"}>{pct}% pronto · {statusEmpLabel}</Badge>
-              </div>
-              <p className="mt-1 line-clamp-2 text-sm font-medium">{lic.titulo || ed?.objeto}</p>
-              <div className="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                {ed?.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {ed.cidade}</span>}
-                <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "Valor não informado"}</span>
-                {resumo?.datas.encerramento && <span>encerra {dtBR(resumo.datas.encerramento)}</span>}
-              </div>
+      {/* ===== Cabeçalho — Espaço Inteligente da Licitação (visual do protótipo) ===== */}
+      <div className="overflow-hidden rounded-xl bg-gradient-to-br from-sidebar to-primary text-sidebar-foreground" data-testid="space-cabecalho">
+        <div className="space-y-4 p-5 md:p-6">
+          {/* Linha de topo: voltar + status + nº PNCP + links externos */}
+          <div className="flex flex-wrap items-center gap-2">
+            <Button asChild size="sm" variant="ghost" className="text-sidebar-foreground hover:bg-white/10 hover:text-sidebar-foreground">
+              <Link href="/radar"><ArrowLeft className="size-4" /> Voltar ao Radar</Link>
+            </Button>
+            <Badge variant={encerrada ? "destructive" : "secondary"} data-testid="space-situacao">{encerrada ? "Encerrada" : (ed?.situacao_nome ?? "Aberta")}</Badge>
+            {recompraDias != null && <Badge variant="warning">Sinal de recompra · contrato vence em {recompraDias}d</Badge>}
+            <Badge variant="secondary" className="bg-white/10 text-sidebar-foreground">Nº PNCP {lic.numero_controle_pncp}</Badge>
+            <div className="ml-auto flex flex-wrap items-center gap-2">
+              {pncpUrl && (
+                <Button asChild size="sm" variant="secondary" className="bg-white/10 text-sidebar-foreground hover:bg-white/20" data-testid="link-pncp">
+                  <a href={pncpUrl} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Ver no PNCP</a>
+                </Button>
+              )}
+              {portalUrl && (
+                <Button asChild size="sm" variant="secondary" className="bg-white/10 text-sidebar-foreground hover:bg-white/20" data-testid="link-portal-origem">
+                  <a href={portalUrl} target="_blank" rel="noopener noreferrer"><FileDown className="size-4" /> Portal de origem{portalLabel ? ` (${portalLabel})` : ""}</a>
+                </Button>
+              )}
             </div>
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
-            <form action={monitorar}><input type="hidden" name="numero" value={lic.numero_controle_pncp} /><Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
-            {hasAI ? (
-              <form action={analisarComIA}><input type="hidden" name="licitacao_id" value={lic.id} /><Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button></form>
-            ) : (
-              <Button asChild size="sm" variant="outline"><Link href="/configuracoes"><Sparkles className="size-4" /> Ligar IA (Configurações)</Link></Button>
-            )}
-            <PastaActions />
-            {ed?.link_origem && <Button asChild size="sm" variant="ghost"><a href={ed.link_origem} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Edital no PNCP</a></Button>}
-            <form action={excluirLicitacao} className="ml-auto"><input type="hidden" name="id" value={lic.id} /><Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir</Button></form>
+
+          {/* Selo + breadcrumb + título (órgão) + objeto */}
+          <div>
+            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-sidebar-foreground/70" data-testid="space-selo">
+              ⬢ Espaço Inteligente da Licitação
+            </p>
+            <p className="mt-2 flex flex-wrap items-center gap-1 text-xs text-sidebar-foreground/60">
+              <Link href="/radar" className="hover:text-sidebar-foreground hover:underline">Radar</Link>
+              {cidadeUf && <><ChevronRight className="size-3" /> <span>{cidadeUf}</span></>}
+              {objetoCurto && <><ChevronRight className="size-3" /> <span className="truncate">{objetoCurto}{(ed?.objeto?.length ?? 0) > 48 ? "…" : ""}</span></>}
+            </p>
+            <h1 className="mt-1.5 text-xl font-bold leading-tight md:text-2xl">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão responsável"}</h1>
+            <p className="mt-1.5 max-w-4xl text-sm leading-relaxed text-sidebar-foreground/80 md:text-base">{ed?.objeto ?? lic.titulo ?? "Objeto não informado"}</p>
           </div>
-        </CardContent>
-      </Card>
+
+          {/* Faixa de metadados */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-white/10 pt-3 text-xs text-sidebar-foreground/80 md:text-sm">
+            {cidadeUf && <span><span className="text-sidebar-foreground/55">Cidade:</span> {cidadeUf}</span>}
+            {resumo?.identificacao.numero_compra && <span><span className="text-sidebar-foreground/55">Edital nº:</span> {resumo.identificacao.numero_compra}</span>}
+            {ed?.modalidade_nome && <span><span className="text-sidebar-foreground/55">Modalidade:</span> {ed.modalidade_nome}</span>}
+            {sessaoISO && <span><span className="text-sidebar-foreground/55">Sessão:</span> {dtBR(sessaoISO)}{diasSessao != null && diasSessao >= 0 ? ` (em ${diasSessao} dias)` : ""}</span>}
+            {portalLabel && <span><span className="text-sidebar-foreground/55">Portal:</span> {portalLabel}</span>}
+          </div>
+        </div>
+      </div>
+
+      {/* Toolbar operacional (monitorar / IA / pasta / excluir) */}
+      <div className="flex flex-wrap items-center gap-2">
+        <form action={monitorar}><input type="hidden" name="numero" value={lic.numero_controle_pncp} /><Button type="submit" size="sm" variant="outline"><Eye className="size-4" /> Monitorar</Button></form>
+        {hasAI ? (
+          <form action={analisarComIA}><input type="hidden" name="licitacao_id" value={lic.id} /><Button type="submit" size="sm"><Sparkles className="size-4" /> {p ? "Reanalisar com IA" : "Analisar com IA"}</Button></form>
+        ) : (
+          <Button asChild size="sm" variant="outline"><Link href="/configuracoes"><Sparkles className="size-4" /> Ligar IA (Configurações)</Link></Button>
+        )}
+        <PastaActions />
+        <form action={excluirLicitacao} className="ml-auto"><input type="hidden" name="id" value={lic.id} /><Button type="submit" size="sm" variant="ghost" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /> Excluir</Button></form>
+      </div>
+
+      {/* KPIs (visual do protótipo) */}
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4" data-testid="space-kpis">
+        <Card><CardContent className="p-4">
+          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Wallet className="size-3.5" /> Valor estimado</p>
+          <p className="mt-1 text-2xl font-bold leading-none">{brl(ed?.valor_estimado ?? null) ?? "—"}</p>
+          <p className="mt-1.5 text-xs text-muted-foreground">teto do órgão (PNCP)</p>
+        </CardContent></Card>
+        <Card><CardContent className="p-4">
+          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Flag className="size-3.5" /> Estágio</p>
+          <p className="mt-1 text-2xl font-bold leading-none">{encerrada ? "Encerrado" : "Edital aberto"}</p>
+          <p className="mt-1.5 text-xs text-muted-foreground">{ed?.situacao_nome ?? "situação no PNCP"}</p>
+        </CardContent></Card>
+        <Card><CardContent className="p-4">
+          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Clock className="size-3.5" /> Prazo p/ proposta</p>
+          <p className="mt-1 text-2xl font-bold leading-none">{diasPrazo == null ? "—" : encerrada ? "Encerrado" : `${diasPrazo} dias`}</p>
+          <p className="mt-1.5 text-xs text-muted-foreground">{encerramentoISO ? `encerra ${dtBR(encerramentoISO)}` : "prazo no edital"}</p>
+        </CardContent></Card>
+        <Card><CardContent className="p-4">
+          <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground"><Gauge className="size-3.5" /> Sua prontidão</p>
+          <p className="mt-1 text-2xl font-bold leading-none">{pct}%</p>
+          <p className="mt-1.5 text-xs text-muted-foreground">{atendeExig} de {totalExig} exigências · {statusEmpLabel}</p>
+        </CardContent></Card>
+      </div>
 
       <Tabs defaultValue="resumo">
         <div className="overflow-x-auto">
@@ -167,37 +234,31 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
           {/* RESUMO — determinístico do payload (sempre disponível, sem IA) */}
           <TabsContent value="resumo">
             {resumo ? (
-              <div className="space-y-4">
-                <Secao titulo="Identificação">
-                  <div className="col-span-2 sm:col-span-3"><Campo label="Objeto" value={resumo.identificacao.objeto} /></div>
-                  <Campo label="Nº controle PNCP" value={resumo.identificacao.numero_controle} />
-                  <Campo label="Nº da compra" value={resumo.identificacao.numero_compra} />
-                  <Campo label="Processo" value={resumo.identificacao.processo} />
-                  <Campo label="UASG / unidade" value={resumo.identificacao.uasg} />
-                  <Campo label="Instrumento" value={resumo.identificacao.tipo_instrumento} />
-                </Secao>
-                <Secao titulo="Órgão responsável">
-                  <Campo label="Órgão" value={resumo.orgao.razao_social} />
-                  <Campo label="Poder" value={resumo.orgao.poder} />
-                  <Campo label="Esfera" value={resumo.orgao.esfera} />
-                  <Campo label="Município/UF" value={resumo.orgao.municipio ? `${resumo.orgao.municipio}/${resumo.orgao.uf}` : null} />
-                  <Campo label="CAPAG" value={<Badge variant="muted">em ingestão</Badge>} />
-                </Secao>
-                <Secao titulo="Datas e prazos">
-                  <Campo label="Publicação" value={dtBR(resumo.datas.publicacao)} />
-                  <Campo label="Abertura de propostas" value={dtBR(resumo.datas.abertura)} />
-                  <Campo label="Encerramento" value={dtBR(resumo.datas.encerramento)} />
-                </Secao>
-                <Secao titulo="Modalidade, valores e amparo">
-                  <Campo label="Modalidade" value={resumo.modalidade.modalidade} />
-                  <Campo label="Modo de disputa" value={resumo.modalidade.modo_disputa} />
-                  <Campo label="Registro de preços (SRP)" value={resumo.modalidade.srp == null ? "—" : resumo.modalidade.srp ? "Sim" : "Não"} />
-                  <Campo label="Valor estimado" value={brl(resumo.valores.estimado)} />
-                  <Campo label="Valor homologado" value={brl(resumo.valores.homologado)} />
-                  <Campo label="Situação" value={resumo.situacao} />
-                  <div className="col-span-2 sm:col-span-3"><Campo label="Amparo legal" value={resumo.amparo_legal.nome} /></div>
-                  {resumo.info_complementar && <div className="col-span-2 sm:col-span-3"><Campo label="Informação complementar" value={resumo.info_complementar} /></div>}
-                </Secao>
+              <div className="space-y-4" data-testid="resumo-edital">
+                <div>
+                  <h2 className="text-lg font-bold leading-tight">Resumo do edital</h2>
+                  <p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico). O interpretativo com IA é opcional, sob a sua chave.</p>
+                </div>
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <CardKV icon={FileSearch} titulo="Identificação da licitação">
+                    <KV label="Objeto" value={resumo.identificacao.objeto} />
+                    <KV label="Número da licitação" value={resumo.identificacao.numero_compra ?? resumo.identificacao.numero_controle} />
+                    <KV label="Modalidade" value={resumo.modalidade.modalidade ? `${resumo.modalidade.modalidade}${resumo.situacao ? ` — ${resumo.situacao}` : ""}` : null} />
+                    <KV label="UASG / unidade" value={resumo.identificacao.uasg ? `${resumo.identificacao.uasg}${resumo.identificacao.unidade ? ` — ${resumo.identificacao.unidade}` : ""}` : resumo.identificacao.unidade} />
+                    <KV label="Portal de realização" value={portalLabel ?? resumo.identificacao.portal} />
+                    <KV label="Modo de disputa" value={resumo.modalidade.modo_disputa} />
+                    <KV label="Registro de preços (SRP)" value={resumo.modalidade.srp == null ? "—" : resumo.modalidade.srp ? "Sim" : "Não"} />
+                    <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
+                  </CardKV>
+                  <CardKV icon={Clock} titulo="Sessão pública">
+                    <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
+                    <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
+                    <KV label="Publicação no PNCP" value={dtBR(resumo.datas.publicacao)} />
+                    <KV label="Órgão" value={resumo.orgao.razao_social} />
+                    <KV label="Município/UF" value={resumo.orgao.municipio ? `${resumo.orgao.municipio}/${resumo.orgao.uf}` : null} />
+                    <KV label="Esclarecimentos / impugnação / cota ME-EPP" value={<Badge variant="muted">no texto do edital</Badge>} />
+                  </CardKV>
+                </div>
                 <Card><CardContent className="p-4">
                   <p className="text-sm font-semibold">Seções que dependem do texto do edital</p>
                   <p className="mt-1 text-xs text-muted-foreground">Habilitação específica, garantias, penalidades, prazos de recurso e análise crítica entram ao <strong>baixar o documento</strong> (PNCP <code>/arquivos</code>) e/ou via <strong>Analisar com IA</strong>. Não inventamos esse conteúdo.</p>
@@ -205,7 +266,15 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
                 </CardContent></Card>
                 {p?.resumo && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Resumo interpretativo (IA)</p></div><p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo}</p></CardContent></Card>}
               </div>
-            ) : <EmBreve icon={FileSearch} titulo="Resumo Executivo" motivo="Sem payload do edital para montar o resumo." />}
+            ) : (
+              <div className="space-y-4" data-testid="resumo-edital">
+                <div>
+                  <h2 className="text-lg font-bold leading-tight">Resumo do edital</h2>
+                  <p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico).</p>
+                </div>
+                <EmBreve icon={FileSearch} titulo="Baixar documento para detalhar" motivo="Ainda não há payload do PNCP desta licitação para montar o resumo. Baixe o documento do edital para detalhar identificação e sessão." />
+              </div>
+            )}
           </TabsContent>
 
           {/* EMPRESA × EDITAL — determinístico */}

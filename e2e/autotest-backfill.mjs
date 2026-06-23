@@ -37,11 +37,16 @@ try {
   await page.reload({ waitUntil: "networkidle" });
   const bodySantos = await page.locator("body").innerText();
   ok("Santos monitorado: chip 'pronta' (reuso, sem nova coleta)", bodySantos.includes("Santos") && bodySantos.includes("pronta"));
+  // Santos foi BACKFILLADO (histórico real no banco) — reuso, sem nova coleta.
+  const sTot = await adminQuery(`select count(*) n from raw_editais where cidade='Santos';`);
+  ok("Santos backfillado (histórico real no banco)", Number(sTot?.[0]?.n ?? 0) > 0, `santos_editais=${sTot?.[0]?.n}`);
+  // TRAVA DE LICITAÇÃO REAL: o Radar só mostra editais com prazo EM ABERTO. Se Santos não tem edital
+  // aberto do nicho agora, é VAZIO VERDADEIRO (não bug) — jamais mostra vencidos.
+  const sAb = await adminQuery(`select count(*) n from raw_editais where cidade='Santos' and segmentos && array['controle-de-pragas'] and valor_homologado is null and (data_encerramento >= now() or (data_encerramento is null and data_publicacao >= now() - interval '60 days'));`);
+  const nAb = Number(sAb?.[0]?.n ?? 0);
   const cardsSantos = await page.locator("[data-testid=edital-card]").count();
-  ok("Radar popula com editais de Santos", cardsSantos > 0, `${cardsSantos} cards`);
-  // confirma que os cards são de Santos (cidade no card)
-  const santosCount = await page.locator("text=Santos").count();
-  ok("cards mostram cidade Santos", santosCount > 1, `text=Santos count=${santosCount}; chips/cards`);
+  if (nAb > 0) ok("Radar mostra editais ABERTOS de Santos (trava real)", cardsSantos > 0, `abertos=${nAb} cards=${cardsSantos}`);
+  else ok("Radar: Santos sem edital aberto = vazio verdadeiro (trava não mostra vencidos)", cardsSantos === 0, `abertos=0 cards=${cardsSantos}`);
   const celula = await adminQuery(`select count(*) n from celula c join auth.users u on u.id=c.tenant_id where u.email='${email}' and c.codigo_ibge='3548500';`);
   ok("persistência: célula Santos criada", Number(celula?.[0]?.n ?? 0) === 1);
   await page.screenshot({ path: `${SHOTS}/BF-1-radar-santos.png`, fullPage: true });

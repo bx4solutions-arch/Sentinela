@@ -32,11 +32,11 @@ try {
   // Adicionar à análise → Pasta
   await page.locator("button:has-text('Adicionar à análise')").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
-  await page.waitForSelector("text=Identificação", { timeout: 10000 });
+  await page.waitForSelector("text=Identificação da licitação", { timeout: 10000 });
   const body = await page.locator("body").innerText();
 
-  ok("Resumo determinístico SEM IA (Identificação/Órgão/Datas)", body.includes("Identificação") && body.includes("Órgão responsável") && body.includes("Datas e prazos"));
-  ok("seção Modalidade/valores/amparo", body.includes("Modalidade, valores e amparo"));
+  ok("Resumo determinístico SEM IA (Identificação da licitação + Sessão pública)", body.includes("Identificação da licitação") && body.includes("Sessão pública") && /determin[íi]stico/i.test(body));
+  ok("Resumo traz Modalidade + Valor estimado (kv do PNCP)", body.includes("Modalidade") && body.includes("Valor estimado"));
   ok("dado REAL (não mock São Luís)", !/São Luís|SEMED|Dedetizadora Maranhense/i.test(body));
   // empresa × edital
   await page.locator("button[role=tab]:has-text('Empresa × Edital')").click();

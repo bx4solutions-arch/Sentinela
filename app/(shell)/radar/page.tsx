@@ -8,7 +8,7 @@ import { expandirBusca, ufDoTexto } from "@/lib/nichos";
 import { buscarPCA, buscarRecorrencia, buscarContratosVencendo, diasAteVencer, type PcaItem, type RecorrenciaItem, type ContratoVencendo, type Filtro } from "@/lib/antecipacao";
 import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
 import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
-import { dataBR } from "@/lib/utils";
+import { dataBR, nowISO, isoDiasAtras } from "@/lib/utils";
 import { monitorar, descartar, reverter, analisar, monitorarCidade, removerCidade } from "./actions";
 import { CityPicker } from "./city-picker";
 
@@ -59,21 +59,46 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   // UF da busca: explícita (?uf=), ou inferida do texto ("no Piauí"→PI), ou a UF da empresa.
   const ufBusca = busca ? (sp.uf || ufDoTexto(busca) || uf) : null;
 
-  let q = supabase.from("raw_editais").select(SELECT).is("valor_homologado", null);
+  // ===== TRAVA DE LICITAÇÃO REAL (participável): só prazo de proposta EM ABERTO =====
+  // aberto = encerramento no FUTURO; OU encerramento nulo MAS publicado há ≤60d (e não "morto").
+  // Nunca mostra edital com prazo vencido/encerrado nas listas de DESCOBERTA.
+  const AGORA = nowISO();
+  const CORTE_RECENTE = isoDiasAtras(60);
+  const MORTAS = '("Revogada","Anulada","Cancelada","Deserta","Fracassada")';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const aplicarTrava = (query: any) => query
+    .not("situacao_nome", "in", MORTAS)
+    .or(`data_encerramento.gte.${AGORA},and(data_encerramento.is.null,data_publicacao.gte.${CORTE_RECENTE})`);
+  const baseDescoberta = () => aplicarTrava(supabase.from("raw_editais").select(SELECT).is("valor_homologado", null));
+
+  let editais: Edital[];
   if (busca) {
     // Busca livre por nicho/objeto (SINÔNIMOS) numa UF — uf_sigla denormalizado (índice) + trigram objeto.
+    let q = baseDescoberta().eq("uf_sigla", ufBusca!);
     const termos = expandirBusca(busca);
     if (termos.length) q = q.or(termos.map((t) => `objeto.ilike.*${t}*`).join(","));
-    q = q.eq("uf_sigla", ufBusca!);
-    // abertas/em andamento: exclui mortas + mantém prazo futuro OU desconhecido (honesto)
-    q = q.not("situacao_nome", "in", '("Revogada","Anulada","Cancelada","Deserta","Fracassada")');
-    q = q.or(`data_encerramento.is.null,data_encerramento.gte.${new Date().toISOString()}`);
+    const { data } = await q.order("data_publicacao", { ascending: false }).limit(60);
+    editais = (data ?? []) as unknown as Edital[];
   } else {
-    q = q.overlaps("segmentos", segmentos);
-    q = usandoFallbackUf ? q.eq("uf_sigla", uf) : q.in("cidade", prontas);
+    // Prioriza a CIDADE MONITORADA do usuário (não enterrá-la no top-60 da UF inteira) — mas só quando
+    // ela está no escopo ativo: fallback de UF (whole state) OU explicitamente entre as cidades prontas.
+    // Se o usuário restringiu o monitoramento a outras cidades, não injetamos a cidade-sede aqui.
+    const cidadePrioritaria = company?.municipio && (usandoFallbackUf || prontas.includes(company.municipio)) ? company.municipio : null;
+    let cidadeRows: Edital[] = [];
+    if (cidadePrioritaria) {
+      const { data } = await baseDescoberta().overlaps("segmentos", segmentos)
+        .eq("cidade", cidadePrioritaria).eq("uf_sigla", uf)
+        .order("data_publicacao", { ascending: false }).limit(30);
+      cidadeRows = (data ?? []) as unknown as Edital[];
+    }
+    const escopo = usandoFallbackUf
+      ? baseDescoberta().overlaps("segmentos", segmentos).eq("uf_sigla", uf)
+      : baseDescoberta().overlaps("segmentos", segmentos).in("cidade", prontas);
+    const { data: restoData } = await escopo.order("data_publicacao", { ascending: false }).limit(60);
+    const resto = (restoData ?? []) as unknown as Edital[];
+    const jaTem = new Set(cidadeRows.map((e) => e.numero_controle_pncp));
+    editais = [...cidadeRows, ...resto.filter((e) => !jaTem.has(e.numero_controle_pncp))].slice(0, 60);
   }
-  const { data: rows } = await q.order("data_publicacao", { ascending: false }).limit(60);
-  const editais = (rows ?? []) as unknown as Edital[];
 
   // Sinal "órgão recorrente": órgãos com histórico homologado no nicho
   const orgaosVisiveis = [...new Set(editais.map((e) => e.cnpj_orgao).filter(Boolean) as string[])];
@@ -338,18 +363,25 @@ function AntecipacaoLista({ pca, rec, contratos, busca, uf, usandoFallbackUf }:
               </CardContent>
             </Card>
           ))}
-          {rec.map((r) => (
+          {rec.map((r) => {
+            // Antecipação = janela FUTURA prevista (não a data velha como se fosse a oportunidade).
+            // Heurística: último contrato + ~12 meses → próxima janela estimada.
+            const proximaJanela = r.data_publicacao
+              ? (() => { const d = new Date(r.data_publicacao!.slice(0, 10) + "T00:00:00"); d.setMonth(d.getMonth() + 12); return d.toLocaleDateString("pt-BR", { month: "2-digit", year: "numeric" }); })()
+              : null;
+            return (
             <Card key={r.numero_controle_pncp} data-testid="antecipacao-card">
               <CardContent className="p-4">
                 <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                  {proximaJanela && <Badge variant="secondary" className="gap-1"><CalendarClock className="size-3" /> próxima janela ~{proximaJanela}</Badge>}
                   <Badge variant="warning" className="gap-1"><Repeat className="size-3" /> recorrência</Badge>
-                  <Badge variant="muted">já contratou — tende a repetir</Badge>
+                  <Badge variant="muted">tende a repetir o ciclo</Badge>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                   <Building2 className="size-3.5" />
                   <span className="font-medium text-foreground">{r.orgao?.razao_social ?? "Órgão"}</span>
                   {r.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {r.cidade}</span>}
-                  <span className="ml-auto">{r.data_publicacao ? dataBR(r.data_publicacao.slice(0, 10)) : ""}</span>
+                  {r.data_publicacao && <span className="ml-auto">último em {dataBR(r.data_publicacao.slice(0, 10))}</span>}
                 </div>
                 <p className="mt-2 line-clamp-2 text-sm">{r.objeto}</p>
                 <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
@@ -358,7 +390,8 @@ function AntecipacaoLista({ pca, rec, contratos, busca, uf, usandoFallbackUf }:
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </>
       )}
     </div>

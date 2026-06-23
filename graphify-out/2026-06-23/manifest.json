@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "components/shell.tsx": {
-    "mtime": 1782178060.8541884,
-    "ast_hash": "4d2ecf11fd493e904c59e0c552e7f311",
+    "mtime": 1782237308.0200682,
+    "ast_hash": "c7fa2d4e916ce5a58dddc888531bb0d3",
     "semantic_hash": ""
   },
   "components/ui.tsx": {
@@ -275,7 +275,7 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782181979.7663827,
+    "mtime": 1782237558.1317747,
     "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782181965.3477223,
-    "ast_hash": "64bbd37f0895061bac9a902351219aff",
+    "mtime": 1782237536.1177185,
+    "ast_hash": "2d031756160b511ac8ed076b3552949d",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -1002,6 +1002,26 @@
   "lib/proposta.ts": {
     "mtime": 1782181667.5099778,
     "ast_hash": "155c3f477266f5beff6b64deaa29ee32",
+    "semantic_hash": ""
+  },
+  "app/(shell)/space/page.tsx": {
+    "mtime": 1782237505.5969653,
+    "ast_hash": "bf77710a7e915c3d07f1a1fdb22ef2e3",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-space.mjs": {
+    "mtime": 1782237411.0352147,
+    "ast_hash": "484345c4c8fa27cd349095649acc3c8a",
+    "semantic_hash": ""
+  },
+  "docs/prompt-auditoria-urgente-front.md": {
+    "mtime": 1782227698.088219,
+    "ast_hash": "c3cf11f147ea3adf3aab8e14a08065d9",
+    "semantic_hash": ""
+  },
+  "Print do prototipo do Space.jpg": {
+    "mtime": 1782237158.9407525,
+    "ast_hash": "a74c20ee68dcc03738c7d6f6ef3b02f2",
     "semantic_hash": ""
   }
 }

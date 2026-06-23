@@ -50,7 +50,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_page",
-      "community": 160,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -60,7 +60,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 160,
+      "community": 4,
       "norm_label": "loginpage()"
     },
     {
@@ -80,7 +80,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "configuracoes_actions_aiconfigview",
-      "community": 4,
+      "community": 3,
       "norm_label": "aiconfigview"
     },
     {
@@ -110,7 +110,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_config_form",
-      "community": 4,
+      "community": 3,
       "norm_label": "config-form.tsx"
     },
     {
@@ -120,7 +120,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "configuracoes_config_form_salvarbtn",
-      "community": 4,
+      "community": 3,
       "norm_label": "salvarbtn()"
     },
     {
@@ -160,7 +160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "consultor_page",
-      "community": 4,
+      "community": 164,
       "norm_label": "page.tsx"
     },
     {
@@ -170,7 +170,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "consultor_page_lic",
-      "community": 4,
+      "community": 164,
       "norm_label": "lic"
     },
     {
@@ -180,7 +180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "consultor_page_consultorpage",
-      "community": 160,
+      "community": 164,
       "norm_label": "consultorpage()"
     },
     {
@@ -190,7 +190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dados_reais_page",
-      "community": 4,
+      "community": 164,
       "norm_label": "page.tsx"
     },
     {
@@ -200,7 +200,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "dados_reais_page_etapas",
-      "community": 4,
+      "community": 164,
       "norm_label": "etapas"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dados_reais_page_op",
-      "community": 4,
+      "community": 164,
       "norm_label": "op"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dados_reais_page_brl",
-      "community": 4,
+      "community": 164,
       "norm_label": "brl()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dados_reais_page_kpi",
-      "community": 4,
+      "community": 164,
       "norm_label": "kpi()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "dados_reais_page_steps",
-      "community": 4,
+      "community": 164,
       "norm_label": "steps"
     },
     {
@@ -250,7 +250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "dados_reais_page_pipeline",
-      "community": 4,
+      "community": 164,
       "norm_label": "pipeline()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "dados_reais_page_dadosreaispage",
-      "community": 4,
+      "community": 164,
       "norm_label": "dadosreaispage()"
     },
     {
@@ -320,7 +320,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "dashboard_page_dashboardpage",
-      "community": 129,
+      "community": 165,
       "norm_label": "dashboardpage()"
     },
     {
@@ -330,7 +330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 6,
+      "community": 160,
       "norm_label": "actions.ts"
     },
     {
@@ -340,7 +340,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 6,
+      "community": 160,
       "norm_label": "slug()"
     },
     {
@@ -350,7 +350,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 6,
+      "community": 160,
       "norm_label": "adddocumento()"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 13,
+      "community": 160,
       "norm_label": "deletedocumento()"
     },
     {
@@ -390,7 +390,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "empresa_client_adddocform",
-      "community": 13,
+      "community": 4,
       "norm_label": "adddocform()"
     },
     {
@@ -400,7 +400,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "empresa_client_trocarempresabutton",
-      "community": 13,
+      "community": 4,
       "norm_label": "trocarempresabutton()"
     },
     {
@@ -410,7 +410,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_page",
-      "community": 13,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -420,7 +420,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "empresa_page_brl",
-      "community": 13,
+      "community": 165,
       "norm_label": "brl()"
     },
     {
@@ -430,7 +430,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "empresa_page_field",
-      "community": 13,
+      "community": 4,
       "norm_label": "field()"
     },
     {
@@ -440,7 +440,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "empresa_page_doc",
-      "community": 13,
+      "community": 4,
       "norm_label": "doc"
     },
     {
@@ -450,7 +450,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "empresa_page_empresapage",
-      "community": 30,
+      "community": 165,
       "norm_label": "empresapage()"
     },
     {
@@ -600,7 +600,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 3,
+      "community": 160,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -610,7 +610,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 3,
+      "community": 160,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -730,7 +730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_proposta_gerador",
-      "community": 4,
+      "community": 30,
       "norm_label": "proposta-gerador.tsx"
     },
     {
@@ -740,7 +740,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "id_proposta_gerador_decl",
-      "community": 4,
+      "community": 30,
       "norm_label": "decl"
     },
     {
@@ -750,7 +750,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "id_proposta_gerador_matrizitem",
-      "community": 4,
+      "community": 30,
       "norm_label": "matrizitem"
     },
     {
@@ -760,7 +760,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "id_proposta_gerador_propostagerador",
-      "community": 4,
+      "community": 30,
       "norm_label": "propostagerador()"
     },
     {
@@ -880,7 +880,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 160,
+      "community": 144,
       "norm_label": "analisar()"
     },
     {
@@ -960,7 +960,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "radar_page_radarpage",
-      "community": 129,
+      "community": 165,
       "norm_label": "radarpage()"
     },
     {
@@ -990,7 +990,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "roadmap_page",
-      "community": 4,
+      "community": 164,
       "norm_label": "page.tsx"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "roadmap_page_lentes",
-      "community": 4,
+      "community": 164,
       "norm_label": "lentes"
     },
     {
@@ -1010,8 +1010,48 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "roadmap_page_roadmappage",
-      "community": 4,
+      "community": 164,
       "norm_label": "roadmappage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "space_page",
+      "community": 164,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "brl()",
+      "file_type": "code",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "space_page_brl",
+      "community": 164,
+      "norm_label": "brl()"
+    },
+    {
+      "label": "Lic",
+      "file_type": "code",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "space_page_lic",
+      "community": 164,
+      "norm_label": "lic"
+    },
+    {
+      "label": "SpacePage()",
+      "file_type": "code",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "space_page_spacepage",
+      "community": 164,
+      "norm_label": "spacepage()"
     },
     {
       "label": "layout.tsx",
@@ -1300,7 +1340,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 160,
+      "community": 4,
       "norm_label": "shell.tsx"
     },
     {
@@ -1310,7 +1350,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 160,
+      "community": 4,
       "norm_label": "navitem"
     },
     {
@@ -1320,34 +1360,34 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 160,
+      "community": 4,
       "norm_label": "nav"
     },
     {
       "label": "TITLES",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 160,
+      "community": 4,
       "norm_label": "titles"
     },
     {
       "label": "NavLink()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L39",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 160,
+      "community": 4,
       "norm_label": "navlink()"
     },
     {
       "label": "Shell()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L53",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "components_shell_shell",
       "community": 160,
@@ -1390,7 +1430,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "components_ui_button",
-      "community": 4,
+      "community": 30,
       "norm_label": "button"
     },
     {
@@ -1400,7 +1440,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "components_ui_card",
-      "community": 4,
+      "community": 164,
       "norm_label": "card()"
     },
     {
@@ -1440,7 +1480,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "components_ui_cardcontent",
-      "community": 4,
+      "community": 164,
       "norm_label": "cardcontent()"
     },
     {
@@ -1490,7 +1530,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "components_ui_badgevariants",
-      "community": 4,
+      "community": 164,
       "norm_label": "badgevariants"
     },
     {
@@ -1500,7 +1540,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "components_ui_badge",
-      "community": 4,
+      "community": 164,
       "norm_label": "badge()"
     },
     {
@@ -2600,7 +2640,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "e2e_autotest_integracao_num",
-      "community": 30,
+      "community": 18,
       "norm_label": "num()"
     },
     {
@@ -3544,6 +3584,96 @@
       "norm_label": "ok()"
     },
     {
+      "label": "autotest-space.mjs",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_autotest_space",
+      "community": 166,
+      "norm_label": "autotest-space.mjs"
+    },
+    {
+      "label": "readEnv()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_readenv",
+      "community": 166,
+      "norm_label": "readenv()"
+    },
+    {
+      "label": "E",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_e",
+      "community": 166,
+      "norm_label": "e"
+    },
+    {
+      "label": "SB",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_sb",
+      "community": 166,
+      "norm_label": "sb"
+    },
+    {
+      "label": "H",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_h",
+      "community": 166,
+      "norm_label": "h"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_cleanup",
+      "community": 166,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "consoleErrors",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_consoleerrors",
+      "community": 166,
+      "norm_label": "consoleerrors"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_results",
+      "community": 166,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "e2e_autotest_space_ok",
+      "community": 166,
+      "norm_label": "ok()"
+    },
+    {
       "label": "autotest.mjs",
       "file_type": "code",
       "source_file": "e2e/autotest.mjs",
@@ -3627,7 +3757,7 @@
       "label": "summary",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "e2e_run_all_summary",
       "community": 137,
@@ -3637,7 +3767,7 @@
       "label": "t0",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "e2e_run_all_t0",
       "community": 137,
@@ -3647,7 +3777,7 @@
       "label": "total",
       "file_type": "code",
       "source_file": "e2e/run-all.mjs",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "e2e_run_all_total",
       "community": 137,
@@ -3790,7 +3920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_antecipacao",
-      "community": 129,
+      "community": 167,
       "norm_label": "antecipacao.ts"
     },
     {
@@ -3800,7 +3930,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_antecipacao_sb",
-      "community": 129,
+      "community": 167,
       "norm_label": "sb"
     },
     {
@@ -3810,7 +3940,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_antecipacao_pcaitem",
-      "community": 129,
+      "community": 167,
       "norm_label": "pcaitem"
     },
     {
@@ -3830,7 +3960,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "lib_antecipacao_filtro",
-      "community": 129,
+      "community": 167,
       "norm_label": "filtro"
     },
     {
@@ -3840,7 +3970,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_antecipacao_aplicarfiltro",
-      "community": 129,
+      "community": 165,
       "norm_label": "aplicarfiltro()"
     },
     {
@@ -3850,7 +3980,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "lib_antecipacao_buscarpca",
-      "community": 129,
+      "community": 165,
       "norm_label": "buscarpca()"
     },
     {
@@ -3860,7 +3990,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "lib_antecipacao_contratovencendo",
-      "community": 129,
+      "community": 167,
       "norm_label": "contratovencendo"
     },
     {
@@ -3870,7 +4000,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "lib_antecipacao_buscarcontratosvencendo",
-      "community": 129,
+      "community": 165,
       "norm_label": "buscarcontratosvencendo()"
     },
     {
@@ -3880,7 +4010,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "lib_antecipacao_buscarrecorrencia",
-      "community": 129,
+      "community": 165,
       "norm_label": "buscarrecorrencia()"
     },
     {
@@ -3900,7 +4030,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "lib_antecipacao_anooudata",
-      "community": 129,
+      "community": 167,
       "norm_label": "anooudata()"
     },
     {
@@ -3910,7 +4040,7 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "lib_antecipacao_diasatevencer",
-      "community": 129,
+      "community": 167,
       "norm_label": "diasatevencer()"
     },
     {
@@ -3920,7 +4050,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "lib_antecipacao_montarlinhadotempo",
-      "community": 129,
+      "community": 167,
       "norm_label": "montarlinhadotempo()"
     },
     {
@@ -4230,7 +4360,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 30,
+      "community": 165,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -4270,7 +4400,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 30,
+      "community": 165,
       "norm_label": "calcprontidao()"
     },
     {
@@ -4450,7 +4580,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_nichos",
-      "community": 129,
+      "community": 168,
       "norm_label": "nichos.ts"
     },
     {
@@ -4460,7 +4590,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_nichos_nicho_tokens",
-      "community": 129,
+      "community": 168,
       "norm_label": "nicho_tokens"
     },
     {
@@ -4470,7 +4600,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "lib_nichos_sinonimos",
-      "community": 129,
+      "community": 168,
       "norm_label": "sinonimos"
     },
     {
@@ -4480,7 +4610,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_nichos_tokensdossegmentos",
-      "community": 30,
+      "community": 168,
       "norm_label": "tokensdossegmentos()"
     },
     {
@@ -4490,7 +4620,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "lib_nichos_expandirbusca",
-      "community": 129,
+      "community": 165,
       "norm_label": "expandirbusca()"
     },
     {
@@ -4500,7 +4630,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_nichos_uf_por_nome",
-      "community": 129,
+      "community": 168,
       "norm_label": "uf_por_nome"
     },
     {
@@ -4510,7 +4640,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "lib_nichos_siglas",
-      "community": 129,
+      "community": 168,
       "norm_label": "siglas"
     },
     {
@@ -4520,7 +4650,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_nichos_semacento",
-      "community": 129,
+      "community": 168,
       "norm_label": "semacento()"
     },
     {
@@ -4530,7 +4660,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "lib_nichos_ufdotexto",
-      "community": 129,
+      "community": 168,
       "norm_label": "ufdotexto()"
     },
     {
@@ -4880,7 +5010,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_sinais",
-      "community": 144,
+      "community": 170,
       "norm_label": "sinais.ts"
     },
     {
@@ -4890,7 +5020,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_sinais_sinaltone",
-      "community": 144,
+      "community": 170,
       "norm_label": "sinaltone"
     },
     {
@@ -4900,7 +5030,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_sinais_sinal",
-      "community": 144,
+      "community": 170,
       "norm_label": "sinal"
     },
     {
@@ -4910,7 +5040,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_sinais_editalsinal",
-      "community": 144,
+      "community": 170,
       "norm_label": "editalsinal"
     },
     {
@@ -4930,7 +5060,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "lib_sinais_sinal_badge",
-      "community": 144,
+      "community": 170,
       "norm_label": "sinal_badge"
     },
     {
@@ -10874,6 +11004,56 @@
       "norm_label": "nao conectar (registro de disciplina)"
     },
     {
+      "label": "prompt-auditoria-urgente-front.md",
+      "file_type": "document",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_prompt_auditoria_urgente_front",
+      "community": 169,
+      "norm_label": "prompt-auditoria-urgente-front.md"
+    },
+    {
+      "label": "PROMPT URGENTE \u2014 AUDITORIA DO FRONT (a experi\u00eancia REAL est\u00e1 quebrada)",
+      "file_type": "document",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_prompt_auditoria_urgente_front_prompt_urgente_auditoria_do_front_a_experi\u00eancia_real_est\u00e1_quebrada",
+      "community": 169,
+      "norm_label": "prompt urgente \u2014 auditoria do front (a experiencia real esta quebrada)"
+    },
+    {
+      "label": "BUGS CONFIRMADOS (verificados no c\u00f3digo) \u2014 corrigir todos",
+      "file_type": "document",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_prompt_auditoria_urgente_front_bugs_confirmados_verificados_no_c\u00f3digo_corrigir_todos",
+      "community": 169,
+      "norm_label": "bugs confirmados (verificados no codigo) \u2014 corrigir todos"
+    },
+    {
+      "label": "DoD \u2014 provar a experi\u00eancia REAL (n\u00e3o o happy path)",
+      "file_type": "document",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "docs_prompt_auditoria_urgente_front_dod_provar_a_experi\u00eancia_real_n\u00e3o_o_happy_path",
+      "community": 169,
+      "norm_label": "dod \u2014 provar a experiencia real (nao o happy path)"
+    },
+    {
+      "label": "Entrega",
+      "file_type": "document",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "docs_prompt_auditoria_urgente_front_entrega",
+      "community": 169,
+      "norm_label": "entrega"
+    },
+    {
       "label": "prompt-bloco1-correcoes-r2.md",
       "file_type": "document",
       "source_file": "docs/prompt-bloco1-correcoes-r2.md",
@@ -15310,7 +15490,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 11,
       "norm_label": "irp - intencao de registro de precos",
       "id": "estudo_fontes_irp"
     },
@@ -15960,7 +16140,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "tela 4: esteira / acompanhamento",
       "id": "prd_tela4_esteira"
     },
@@ -15999,7 +16179,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "indice de iminencia",
       "id": "prd_indice_iminencia"
     },
@@ -19895,9 +20075,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "id_proposta_gerador",
-      "confidence_score": 1.0
+      "target": "id_proposta_gerador"
     },
     {
       "relation": "imports",
@@ -19906,9 +20086,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "id_proposta_gerador_propostagerador",
-      "confidence_score": 1.0
+      "target": "id_proposta_gerador_propostagerador"
     },
     {
       "relation": "imports_from",
@@ -20060,9 +20240,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_proposta",
-      "confidence_score": 1.0
+      "target": "lib_proposta"
     },
     {
       "relation": "imports",
@@ -20071,9 +20251,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_proposta_declaracoes_tipicas",
-      "confidence_score": 1.0
+      "target": "lib_proposta_declaracoes_tipicas"
     },
     {
       "relation": "imports",
@@ -20082,9 +20262,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_proposta_montarsecoes",
-      "confidence_score": 1.0
+      "target": "lib_proposta_montarsecoes"
     },
     {
       "relation": "imports_from",
@@ -20389,9 +20569,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui",
-      "confidence_score": 1.0
+      "target": "components_ui"
     },
     {
       "relation": "imports",
@@ -20400,9 +20580,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui_badge",
-      "confidence_score": 1.0
+      "target": "components_ui_badge"
     },
     {
       "relation": "imports",
@@ -20411,9 +20591,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui_button",
-      "confidence_score": 1.0
+      "target": "components_ui_button"
     },
     {
       "relation": "imports",
@@ -20422,9 +20602,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui_card",
-      "confidence_score": 1.0
+      "target": "components_ui_card"
     },
     {
       "relation": "imports",
@@ -20433,9 +20613,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui_cardcontent",
-      "confidence_score": 1.0
+      "target": "components_ui_cardcontent"
     },
     {
       "relation": "imports",
@@ -20444,9 +20624,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "components_ui_input",
-      "confidence_score": 1.0
+      "target": "components_ui_input"
     },
     {
       "relation": "contains",
@@ -20454,9 +20634,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_proposta_gerador_decl",
-      "confidence_score": 1.0
+      "target": "id_proposta_gerador_decl"
     },
     {
       "relation": "contains",
@@ -20464,9 +20644,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_proposta_gerador_matrizitem",
-      "confidence_score": 1.0
+      "target": "id_proposta_gerador_matrizitem"
     },
     {
       "relation": "contains",
@@ -20474,9 +20654,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_proposta_gerador_propostagerador",
-      "confidence_score": 1.0
+      "target": "id_proposta_gerador_propostagerador"
     },
     {
       "relation": "imports_from",
@@ -20485,9 +20665,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "lib_proposta",
-      "confidence_score": 1.0
+      "target": "lib_proposta"
     },
     {
       "relation": "imports",
@@ -20496,9 +20676,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "lib_proposta_secaoproposta",
-      "confidence_score": 1.0
+      "target": "lib_proposta_secaoproposta"
     },
     {
       "relation": "imports_from",
@@ -21821,6 +22001,146 @@
       "confidence_score": 1.0,
       "source": "roadmap_page",
       "target": "roadmap_page_roadmappage"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "components_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "components_ui_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "components_ui_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "components_ui_card",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "components_ui_cardcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "lib_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "lib_utils_databr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "space_page_brl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "space_page_lic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "space_page_spacepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "supabase_server",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "space_page",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/space/page.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "space_page_spacepage",
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "contains",
@@ -24561,9 +24881,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_cleanup",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_cleanup"
     },
     {
       "relation": "contains",
@@ -24571,9 +24891,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_consoleerrors",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_consoleerrors"
     },
     {
       "relation": "contains",
@@ -24581,9 +24901,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_e",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_e"
     },
     {
       "relation": "contains",
@@ -24591,9 +24911,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_h",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_h"
     },
     {
       "relation": "contains",
@@ -24601,9 +24921,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_ok",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_ok"
     },
     {
       "relation": "contains",
@@ -24611,9 +24931,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_readenv",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_readenv"
     },
     {
       "relation": "contains",
@@ -24621,9 +24941,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_results",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_results"
     },
     {
       "relation": "contains",
@@ -24631,9 +24951,9 @@
       "source_file": "e2e/autotest-proposta.mjs",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_autotest_proposta",
-      "target": "e2e_autotest_proposta_sb",
-      "confidence_score": 1.0
+      "target": "e2e_autotest_proposta_sb"
     },
     {
       "relation": "contains",
@@ -24898,6 +25218,86 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_consoleerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_h",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_readenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-space.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_autotest_space",
+      "target": "e2e_autotest_space_sb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "e2e/autotest.mjs",
       "source_location": "L20",
       "weight": 1.0,
@@ -25002,9 +25402,9 @@
       "source_file": "e2e/run-prod.mjs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_run_prod",
-      "target": "e2e_run_prod_log",
-      "confidence_score": 1.0
+      "target": "e2e_run_prod_log"
     },
     {
       "relation": "contains",
@@ -25012,9 +25412,9 @@
       "source_file": "e2e/run-prod.mjs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_run_prod",
-      "target": "e2e_run_prod_sleep",
-      "confidence_score": 1.0
+      "target": "e2e_run_prod_sleep"
     },
     {
       "relation": "contains",
@@ -25022,9 +25422,9 @@
       "source_file": "e2e/run-prod.mjs",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_run_prod",
-      "target": "e2e_run_prod_srv",
-      "confidence_score": 1.0
+      "target": "e2e_run_prod_srv"
     },
     {
       "relation": "contains",
@@ -25032,9 +25432,9 @@
       "source_file": "e2e/run-prod.mjs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_run_prod",
-      "target": "e2e_run_prod_up",
-      "confidence_score": 1.0
+      "target": "e2e_run_prod_up"
     },
     {
       "relation": "calls",
@@ -25043,9 +25443,9 @@
       "source_file": "e2e/run-prod.mjs",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_run_prod_up",
-      "target": "e2e_run_prod_sleep",
-      "confidence_score": 1.0
+      "target": "e2e_run_prod_sleep"
     },
     {
       "relation": "contains",
@@ -26388,9 +26788,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_preco",
-      "confidence_score": 1.0
+      "target": "lib_preco"
     },
     {
       "relation": "imports",
@@ -26399,9 +26799,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_preco_faixapreco",
-      "confidence_score": 1.0
+      "target": "lib_preco_faixapreco"
     },
     {
       "relation": "calls",
@@ -26420,9 +26820,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_dadosedital",
-      "confidence_score": 1.0
+      "target": "lib_proposta_dadosedital"
     },
     {
       "relation": "contains",
@@ -26430,9 +26830,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_dadosempresa",
-      "confidence_score": 1.0
+      "target": "lib_proposta_dadosempresa"
     },
     {
       "relation": "contains",
@@ -26440,9 +26840,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_declaracoes_tipicas",
-      "confidence_score": 1.0
+      "target": "lib_proposta_declaracoes_tipicas"
     },
     {
       "relation": "contains",
@@ -26450,9 +26850,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_fmtbrl",
-      "confidence_score": 1.0
+      "target": "lib_proposta_fmtbrl"
     },
     {
       "relation": "contains",
@@ -26460,9 +26860,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_montarsecoes",
-      "confidence_score": 1.0
+      "target": "lib_proposta_montarsecoes"
     },
     {
       "relation": "contains",
@@ -26470,9 +26870,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta",
-      "target": "lib_proposta_secaoproposta",
-      "confidence_score": 1.0
+      "target": "lib_proposta_secaoproposta"
     },
     {
       "relation": "calls",
@@ -26481,9 +26881,9 @@
       "source_file": "lib/proposta.ts",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_proposta_montarsecoes",
-      "target": "lib_proposta_fmtbrl",
-      "confidence_score": 1.0
+      "target": "lib_proposta_fmtbrl"
     },
     {
       "relation": "contains",
@@ -26884,9 +27284,9 @@
       "source_file": "package.json",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_docx",
-      "confidence_score": 1.0
+      "target": "package_dependencies_docx"
     },
     {
       "relation": "contains",
@@ -33039,6 +33439,46 @@
       "confidence_score": 1.0,
       "source": "docs_fontes_invent\u00e1rio",
       "target": "docs_fontes_camada_4_sob_demanda_por_c\u00e9lula_n\u00e3o_conectar_agora"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_prompt_auditoria_urgente_front",
+      "target": "docs_prompt_auditoria_urgente_front_prompt_urgente_auditoria_do_front_a_experi\u00eancia_real_est\u00e1_quebrada",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_prompt_auditoria_urgente_front_prompt_urgente_auditoria_do_front_a_experi\u00eancia_real_est\u00e1_quebrada",
+      "target": "docs_prompt_auditoria_urgente_front_bugs_confirmados_verificados_no_c\u00f3digo_corrigir_todos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "docs_prompt_auditoria_urgente_front_prompt_urgente_auditoria_do_front_a_experi\u00eancia_real_est\u00e1_quebrada",
+      "target": "docs_prompt_auditoria_urgente_front_dod_provar_a_experi\u00eancia_real_n\u00e3o_o_happy_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/prompt-auditoria-urgente-front.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "docs_prompt_auditoria_urgente_front_prompt_urgente_auditoria_do_front_a_experi\u00eancia_real_est\u00e1_quebrada",
+      "target": "docs_prompt_auditoria_urgente_front_entrega",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -39622,5 +40062,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0b842ae288f68dd3b0624f226208b755938092a4"
+  "built_at_commit": "1764e1df798beab8b749b08c511a98bbec37e393"
 }

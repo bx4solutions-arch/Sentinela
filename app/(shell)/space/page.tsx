@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Boxes, FileSearch, ArrowRight, Building2, MapPin } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Button, Badge } from "@/components/ui";
-import { dataBR } from "@/lib/utils";
+import { dataBR, diasAte } from "@/lib/utils";
 
 const brl = (n: number | null) =>
   !n ? null : new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
@@ -13,7 +13,8 @@ type Lic = {
   criado_em: string;
   raw_editais: {
     objeto: string | null; valor_estimado: number | null; situacao_nome: string | null;
-    modalidade_nome: string | null; cidade: string | null; orgao: { razao_social: string | null } | null;
+    modalidade_nome: string | null; cidade: string | null; data_encerramento: string | null;
+    orgao: { razao_social: string | null } | null;
   } | null;
 };
 
@@ -22,7 +23,7 @@ export default async function SpacePage() {
   // Reusa a query do Consultor (licitações em análise do tenant), enriquecida p/ os cards do Space.
   const { data } = await supabase
     .from("licitacao")
-    .select("id, titulo, criado_em, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, modalidade_nome, cidade, orgao:cnpj_orgao(razao_social))")
+    .select("id, titulo, criado_em, raw_editais:numero_controle_pncp(objeto, valor_estimado, situacao_nome, modalidade_nome, cidade, data_encerramento, orgao:cnpj_orgao(razao_social))")
     .order("criado_em", { ascending: false });
   const lics = (data ?? []) as unknown as Lic[];
 
@@ -54,6 +55,9 @@ export default async function SpacePage() {
           {lics.map((l) => {
             const ed = l.raw_editais;
             const valor = brl(ed?.valor_estimado ?? null);
+            // Item acompanhado que venceu NÃO some do Space — ganha o selo "Encerrada".
+            const dPrazo = diasAte(ed?.data_encerramento ?? null);
+            const encerrada = dPrazo != null && dPrazo < 0;
             return (
               <Link key={l.id} href={`/licitacao/${l.id}`} data-testid="space-card">
                 <Card className="transition hover:border-primary/40">
@@ -64,7 +68,7 @@ export default async function SpacePage() {
                         <span className="flex items-center gap-1"><Building2 className="size-3" /> {ed?.orgao?.razao_social ?? "Órgão"}</span>
                         {ed?.cidade && <span className="flex items-center gap-1"><MapPin className="size-3" /> {ed.cidade}</span>}
                         {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}</Badge>}
-                        {ed?.situacao_nome && <Badge variant="muted">{ed.situacao_nome}</Badge>}
+                        {encerrada ? <Badge variant="destructive" data-testid="space-encerrada">Encerrada</Badge> : ed?.situacao_nome && <Badge variant="muted">{ed.situacao_nome}</Badge>}
                       </div>
                       <p className="line-clamp-1 text-sm font-medium">{l.titulo || ed?.objeto}</p>
                     </div>
