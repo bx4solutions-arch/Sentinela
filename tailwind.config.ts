@@ -16,6 +16,14 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
+      // Piso de legibilidade do LicitaPro: text-xs sobe de 12px → 13px (mata o miúdo no atacado).
+      fontSize: {
+        xs: ["0.8125rem", { lineHeight: "1.1rem" }],
+      },
+      boxShadow: {
+        card: "0 4px 24px rgba(15, 76, 117, 0.06)",
+        cardhover: "0 8px 32px rgba(15, 76, 117, 0.12)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

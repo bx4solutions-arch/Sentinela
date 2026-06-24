@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LicitaPro - Dashboard Prestador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        petroleo: '#0F4C75',
+                        verde: '#2ECC71',
+                        laranja: '#FF7F32',
+                        vermelho: '#E74C3C',
+                        bgpage: '#F5F7FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        card: '0 4px 24px rgba(15, 76, 117, 0.06)',
+                        cardHover: '0 8px 32px rgba(15, 76, 117, 0.12)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #F5F7FA; -webkit-font-smoothing: antialiased; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 24px rgba(15, 76, 117, 0.06); border: 1px solid rgba(0,0,0,0.04); }
+        .card-hover { transition: all 0.2s ease; }
+        .card-hover:hover { box-shadow: 0 8px 32px rgba(15, 76, 117, 0.12); transform: translateY(-1px); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        @keyframes ring { from { stroke-dashoffset: 377; } }
+        @keyframes barGrow { from { height: 0; } }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+    <!-- TOPO -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-4 lg:px-8 h-[68px] flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-[10px] bg-petroleo flex items-center justify-center shadow-lg shadow-petroleo/20">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-semibold text-[15px] leading-none text-petroleo">LicitaPro</h1>
+                    <p class="text-[11px] text-gray-500 -mt-0.5">Prestador de Serviços</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 sm:gap-5">
+                <button id="notifBtn" class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F4C75" stroke-width="2">
+                        <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    <span class="absolute -top-0.5 -right-0.5 w-5 h-5 bg-laranja text-white text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
+                </button>
+                <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" class="w-9 h-9 rounded-full object-cover ring-2 ring-gray-100" alt="avatar">
+                    <div class="hidden sm:block">
+                        <p class="text-[14px] font-medium leading-none text-gray-900">Bione Silvausa</p>
+                        <p class="text-[12px] text-gray-500">ME - Limpeza e Conservação</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notificações dropdown -->
+        <div id="notifDrop" class="hidden absolute right-4 lg:right-8 top-[68px] w-[320px] card p-0 overflow-hidden z-50">
+            <div class="p-3 border-b bg-gray-50">
+                <p class="font-semibold text-sm">Notificações</p>
+            </div>
+            <div class="max-h-[300px] overflow-y-auto">
+                <div class="p-3 hover:bg-gray-50 border-b cursor-pointer">
+                    <p class="text-[13px] font-medium">CND Estadual vence amanhã</p>
+                    <p class="text-[12px] text-gray-500">Ação necessária para manter habilitação</p>
+                </div>
+                <div class="p-3 hover:bg-gray-50 border-b cursor-pointer">
+                    <p class="text-[13px] font-medium">Novo edital - Feira de Santana</p>
+                    <p class="text-[12px] text-gray-500">Fit de 92% com seu perfil</p>
+                </div>
+                <div class="p-3 hover:bg-gray-50 cursor-pointer">
+                    <p class="text-[13px] font-medium">Proposta Pregão 42/2026</p>
+                    <p class="text-[12px] text-gray-500">Resultado publicado</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="max-w-[1440px] mx-auto px-4 lg:px-8 py-6 lg:py-8">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+            
+            <!-- COLUNA ESQUERDA - 25% -->
+            <aside class="xl:col-span-3 space-y-5">
+                <!-- Score Prontidão -->
+                <div class="card p-6 card-hover">
+                    <div class="flex items-start justify-between mb-1">
+                        <h2 class="font-semibold text-gray-900">Score de Prontidão</h2>
+                        <span class="inline-flex items-center gap-1 text-[12px] font-semibold text-verde bg-green-50 px-2 py-1 rounded-full">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 17V7H7"/></svg>
+                            +3
+                        </span>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mt-5">
+                        <div class="relative w-[120px] h-[120px] shrink-0">
+                            <svg class="transform -rotate-90" width="120" height="120" viewBox="0 0 140 140">
+                                <circle cx="70" cy="70" r="58" stroke="#EEF2F6" stroke-width="12" fill="none"/>
+                                <circle id="scoreRing" cx="70" cy="70" r="58" stroke="#2ECC71" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="364.4" stroke-dashoffset="364.4" style="animation: ring 1.5s ease-out forwards;"/>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span class="text-[32px] font-bold text-petroleo leading-none" id="scoreNum">84</span>
+                                <span class="text-[13px] text-gray-500">/100</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[22px] font-semibold text-petroleo leading-tight">Pronto para licitar</p>
+                            <p class="text-[13px] text-gray-600 mt-1.5">Você está habilitado em 94% dos órgãos alvo</p>
+                            <div class="mt-3 flex items-center gap-1.5">
+                                <div class="w-2 h-2 rounded-full bg-verde animate-pulse"></div>
+                                <span class="text-[12px] font-medium text-verde">Status ativo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPIs Semáforo -->
+                <div class="card p-5">
+                    <h3 class="font-semibold text-[14px] mb-3.5">Documentação</h3>
+                    <div class="space-y-3">
+                        <!-- Certidões -->
+                        <div class="group relative pl-3.5 py-2.5 rounded-[10px] hover:bg-orange-50/50 transition cursor-pointer border-l-[3px] border-laranja">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-laranja"></span>
+                                        Certidões
+                                    </p>
+                                    <p class="text-[12px] text-gray-600 mt-0.5">5/6 verdes</p>
+                                </div>
+                                <span class="text-[11px] font-medium text-laranja bg-orange-50 px-2 py-0.5 rounded">3 dias</span>
+                            </div>
+                            <p class="text-[11px] text-laranja mt-1.5 font-medium">CND Estadual vence em 3 dias</p>
+                        </div>
+
+                        <!-- SICAF -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                SICAF
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">Nível II válido até 12/08/2026</p>
+                        </div>
+
+                        <!-- Atestados -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                Atestados
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">3 válidos até R$150mil</p>
+                        </div>
+
+                        <!-- Sanções -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                Sanções
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">CEIS/CNEP limpo</p>
+                        </div>
+                    </div>
+
+                    <button class="mt-4 w-full h-[42px] bg-petroleo hover:bg-[#0d4163] text-white font-medium text-[14px] rounded-[10px] transition flex items-center justify-center gap-2 shadow-lg shadow-petroleo/20">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        Renovar tudo
+                    </button>
+                </div>
+            </aside>
+
+            <!-- COLUNA CENTRO - 50% -->
+            <section class="xl:col-span-6 space-y-5">
+                <!-- Header Pipeline -->
+                <div class="card p-5 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-[18px] sm:text-[20px] font-semibold text-gray-900">Pipeline de Oportunidades</h2>
+                            <p class="text-[13px] text-gray-500 mt-0.5">Próximos 90 dias</p>
+                        </div>
+                        <div class="text-left sm:text-right">
+                            <p class="text-[12px] text-gray-500 uppercase tracking-wide font-medium">Valor estimado</p>
+                            <p class="text-[26px] font-bold text-petroleo leading-none mt-1">R$ 940.000</p>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico simples -->
+                    <div class="mt-6 grid grid-cols-3 gap-4 sm:gap-8 items-end h-[140px]">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer" style="height:0; animation: barGrow 1s 0.2s ease-out forwards;" data-value="420">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 420k</span>
+                                </div>
+                            </div>
+                            <span class="text-[13px] font-medium text-gray-700">jul</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer opacity-80" style="height:0; animation: barGrow 1s 0.4s ease-out forwards;" data-value="320">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 320k</span>
+                                </div>
+                            </div>
+                            <span class="text-[13px] font-medium text-gray-700">ago</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer opacity-60" style="height:0; animation: barGrow 1s 0.6s ease-out forwards;" data-value="200">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 200k</span>
+                                </div>
+                            <span class="text-[13px] font-medium text-gray-700">set</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oportunidades Quentes -->
+                <div>
+                    <div class="flex items-center justify-between mb-3.5">
+                        <h3 class="font-semibold text-[15px]">Oportunidades quentes</h3>
+                        <button class="text-[13px] text-petroleo font-medium hover:underline">Ver todas (12)</button>
+                    </div>
+
+                    <div class="space-y-3.5">
+                        <!-- Card 1 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="text-[12px] font-medium text-gray-500">Pref. Feira de Santana</span>
+                                        <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-verde bg-green-50 px-2 py-0.5 rounded-full">
+                                            <span class="w-1.5 h-1.5 bg-verde rounded-full"></span>
+                                            Histórico: ganhou 2x
+                                        </span>
+                                    </div>
+                                    <h4 class="font-semibold text-[16px] mt-1.5 text-gray-900">Limpeza predial - 12 meses</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                            Prev 05/07
+                                        </span>
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                            Pregão Eletrônico
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="shrink-0 text-right">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-green-50 border border-green-100">
+                                        <span class="text-[18px] font-bold text-verde leading-none">92%</span>
+                                        <span class="text-[10px] text-green-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="1">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8-4 8-11 8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                                <div class="ml-auto hidden sm:flex items-center gap-1.5 text-[12px] text-gray-500">
+                                    <span class="w-2 h-2 bg-verde rounded-full"></span>
+                                    Edital previsto
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[12px] font-medium text-gray-500">Pref. Sorocaba</span>
+                                    <h4 class="font-semibold text-[16px] mt-1 text-gray-900">Conservação de áreas verdes</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                            Prev 18/07
+                                        </span>
+                                        <span>Estimado R$ 280k</span>
+                                    </div>
+                                </div>
+                                <div class="shrink-0">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-green-50 border border-green-100">
+                                        <span class="text-[18px] font-bold text-verde leading-none">87%</span>
+                                        <span class="text-[10px] text-green-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[12px] font-medium text-gray-500">Estado BA</span>
+                                    <h4 class="font-semibold text-[16px] mt-1 text-gray-900">Serviços gerais - Secretarias</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                            Prev 02/08
+                                        </span>
+                                        <span>Concorrência</span>
+                                    </div>
+                                <div class="shrink-0">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-orange-50 border border-orange-100">
+                                        <span class="text-[18px] font-bold text-laranja leading-none">78%</span>
+                                        <span class="text-[10px] text-orange-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="3">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11 8 11 8-4 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLUNA DIREITA - 25% -->
+            <aside class="xl:col-span-3 space-y-5">
+                <!-- Ações de Hoje -->
+                <div class="card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-[15px]">Ações de Hoje</h3>
+                        <span class="text-[11px] font-medium bg-petroleo/10 text-petroleo px-2 py-1 rounded-full">3 pendentes</span>
+                    </div>
+                    
+                    <div class="space-y-3" id="todoList">
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="1">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-laranja flex items-center justify-center shrink-0 mt-0.5 transition bg-laranja/10">
+                                <span class="text-[12px] font-bold text-laranja">1</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Renovar CND Estadual</p>
+                                <p class="text-[12px] text-laranja mt-0.5 flex items-center gap-1">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    vence amanhã
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="2">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5 transition">
+                                <span class="text-[12px] font-bold text-gray-500">2</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Subir atestado novo</p>
+                                <p class="text-[12px] text-gray-500 mt-0.5">Contrato 2025 - Prefeitura</p>
+                            </div>
+                        </div>
+
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="3">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5 transition">
+                                <span class="text-[12px] font-bold text-gray-500">3</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Revisar proposta pregão 45/2026</p>
+                                <p class="text-[12px] text-gray-500 mt-0.5">Entrega até 14h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="card p-5">
+                    <h3 class="font-semibold text-[15px] mb-4">Performance</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-1.5">
+                                <p class="text-[13px] text-gray-600">Taxa habilitação</p>
+                                <p class="text-[13px] font-semibold">87%</p>
+                            </div>
+                            <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-verde rounded-full" style="width: 87%"></div>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1">últimos 6 meses</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-1">Tempo médio proposta</p>
+                            <p class="text-[22px] font-semibold text-petroleo leading-none">4h12</p>
+                            <p class="text-[11px] text-verde mt-1 flex items-center gap-1">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 7L7 17M7 7l10 10"/></svg>
+                                -18% vs trim anterior
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-2">Ticket médio</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="p-2.5 rounded-[10px] bg-green-50 border border-green-100">
+                                    <p class="text-[11px] text-green-700 font-medium">Ganho</p>
+                                    <p class="text-[16px] font-bold text-verde leading-tight">R$78mil</p>
+                                </div>
+                                <div class="p-2.5 rounded-[10px] bg-red-50 border border-red-100">
+                                    <p class="text-[11px] text-red-700 font-medium">Perdido</p>
+                                    <p class="text-[16px] font-bold text-vermelho leading-tight">R$142mil</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-2.5">Órgãos que pagam em dia</p>
+                            <div class="space-y-2.5">
+                                <div>
+                                    <div class="flex justify-between text-[12px] mb-1">
+                                        <span class="font-medium">Sorocaba</span>
+                                        <span class="text-gray-600">22 dias</span>
+                                    </div>
+                                    <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-verde rounded-full" style="width: 33%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[12px] mb-1">
+                                        <span class="font-medium">Bahia</span>
+                                        <span class="text-gray-600">67 dias</span>
+                                    </div>
+                                    <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-laranja rounded-full" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // Animar score
+        setTimeout(() => {
+            const ring = document.getElementById('scoreRing');
+            const offset = 364.4 * (1 - 0.84);
+            ring.style.strokeDashoffset = offset;
+        }, 300);
+
+        // Barras do gráfico
+        document.querySelectorAll('.bar').forEach(bar => {
+            const val = parseInt(bar.dataset.value);
+            const max = 420;
+            const height = (val / max) * 100;
+            bar.style.height = height + 'px';
+        });
+
+        // Notificações
+        const notifBtn = document.getElementById('notifBtn');
+        const notifDrop = document.getElementById('notifDrop');
+        notifBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notifDrop.classList.toggle('hidden');
+        });
+        document.addEventListener('click', () => notifDrop.classList.add('hidden'));
+
+        // Monitorar botões
+        document.querySelectorAll('.monitorBtn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
+                if (!isActive) {
+                    this.classList.add('active', 'bg-petroleo', 'text-white', 'border-petroleo');
+                    this.classList.remove('border-gray-300');
+                    this.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3" fill="white"/></svg> Monitorando`;
+                } else {
+                    this.classList.remove('active', 'bg-petroleo', 'text-white', 'border-petroleo');
+                    this.classList.add('border-gray-300');
+                    this.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11 8 11 8-4 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Monitorar`;
+                }
+            });
+        });
+
+        // Tarefas
+        document.querySelectorAll('.task').forEach(task => {
+            task.addEventListener('click', function() {
+                const check = this.querySelector('.task-check');
+                const num = check.querySelector('span');
+                const icon = check.querySelector('svg');
+                const text = this.querySelector('.task-text');
+                const isDone = check.classList.contains('done');
+
+                if (!isDone) {
+                    check.classList.add('done', 'bg-verde', 'border-verde');
+                    check.classList.remove('border-gray-300', 'border-laranja', 'bg-laranja/10');
+                    num.classList.add('hidden');
+                    icon.classList.remove('hidden');
+                    text.classList.add('line-through', 'text-gray-400');
+                } else {
+                    check.classList.remove('done', 'bg-verde', 'border-verde');
+                    check.classList.add('border-gray-300');
+                    num.classList.remove('hidden');
+                    icon.classList.add('hidden');
+                    text.classList.remove('line-through', 'text-gray-400');
+                }
+            });
+        });
+    </script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;var a=target.closest?target.closest("a[href]"):null;if(!a||!a.href||!/^https?:\/\//.test(a.href))return;if(a.href.replace(/#.*$/,"")===loc)return;var productId=extractProductId(target)||extractProductId(a);if(!productId)return;e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*")},true)})();</script></body>
+</html>

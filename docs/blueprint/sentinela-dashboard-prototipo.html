@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sentinela — Dashboard (alvo-pixel, sem verde)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy:#0F1729;--navy2:#16203a;--primary:#0B2D89;--blue:#3C83F6;--blue-soft:#e8f0fe;
+ --amber:#F59F0A;--amber-soft:#fef3e2;--red:#DC2626;--red-soft:#fdeaea;
+ --ink:#0f1b2d;--muted:#647089;--muted2:#8a95ab;--line:#e7ebf2;--bg:#f3f5f9;--card:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{background:var(--bg);color:var(--ink);font-size:13px}
+.app{display:grid;grid-template-columns:228px 1fr;min-height:100vh}
+/* sidebar */
+.side{background:var(--navy);color:#cfd6e6;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 18px 22px}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.brand b{color:#fff;font-size:15px;display:block;line-height:1.1}
+.brand span{font-size:11px;color:#8492b0}
+.nav{padding:0 10px;display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:9px;color:#aeb8d0;text-decoration:none;font-size:13.5px;font-weight:500}
+.nav a.on{background:var(--primary);color:#fff}
+.nav a:not(.on):hover{background:var(--navy2);color:#fff}
+.nav .ic{width:18px;text-align:center}
+.side .foot{margin-top:auto;padding:14px;border-top:1px solid #1e2840;font-size:11px}
+.side .foot .pln{color:#fff;font-weight:600}.side .foot .co{color:#8492b0;margin-top:2px}
+.bar{height:4px;background:#1e2840;border-radius:3px;margin:7px 0 10px;overflow:hidden}.bar i{display:block;height:100%;width:82%;background:var(--blue)}
+/* main */
+.main{display:flex;flex-direction:column;min-width:0}
+.top{display:flex;align-items:center;gap:14px;padding:14px 22px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top h1{font-size:16px;font-weight:700}.top .sub{font-size:11.5px;color:var(--muted)}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 12px;width:320px;color:var(--muted2);font-size:12.5px}
+.ico{width:34px;height:34px;border-radius:9px;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--muted);position:relative}
+.ico .dot{position:absolute;top:-3px;right:-3px;background:var(--amber);color:#3a2600;font-size:9px;font-weight:700;border-radius:10px;padding:1px 5px}
+.av{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+.wrap{padding:18px 22px;display:flex;flex-direction:column;gap:16px}
+/* thesis */
+.thesis{background:linear-gradient(100deg,var(--navy),var(--primary));color:#fff;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px}
+.thesis .t{font-size:14.5px;font-weight:600}.thesis .s{font-size:12px;color:#b9c6e8;margin-top:3px}
+.thesis .tag{margin-left:auto;background:#ffffff1a;border:1px solid #ffffff33;color:#cfe0ff;font-size:11px;font-weight:600;padding:5px 11px;border-radius:20px;white-space:nowrap}
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+.kpi .h{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);font-weight:500}
+.kpi .h .b{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.kpi .v{font-size:25px;font-weight:700;margin-top:7px;letter-spacing:-.5px}
+.kpi .d{font-size:11px;color:var(--muted2);margin-top:1px}
+.b-blue{background:var(--blue-soft);color:var(--blue)}.b-amber{background:var(--amber-soft);color:var(--amber)}.b-red{background:var(--red-soft);color:var(--red)}.b-navy{background:#e9edf8;color:var(--primary)}
+/* grid */
+.grid{display:grid;grid-template-columns:1.62fr 1fr;gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.card .hd{display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.card .hd b{font-size:13.5px;font-weight:700}.card .hd .lk{margin-left:auto;font-size:11.5px;color:var(--blue);font-weight:600;text-decoration:none}
+.card .hd .i{color:var(--primary)}
+/* atacar cards */
+.opp{display:flex;gap:13px;padding:13px;border:1px solid var(--line);border-radius:12px;margin-bottom:11px}
+.opp:last-child{margin-bottom:0}
+.ring{flex-shrink:0}
+.opp .info{min-width:0;flex:1}
+.opp .org{font-size:13.5px;font-weight:700;line-height:1.2}
+.opp .meta{font-size:11.5px;color:var(--muted);margin:3px 0 6px;display:flex;gap:10px;flex-wrap:wrap}
+.opp .meta .v{color:var(--primary);font-weight:700}
+.opp .obj{font-size:12px;color:#41506a;line-height:1.4;margin-bottom:9px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:7px}
+.c-navy{background:#e9edf8;color:var(--primary)}.c-amb{background:var(--amber-soft);color:#8a5a06}.c-blu{background:var(--blue-soft);color:#1d5fa5}.c-cap{background:#eef2f8;color:#445}
+.acts{display:flex;gap:8px}
+.btn{font-size:12px;font-weight:600;padding:7px 13px;border-radius:8px;border:1px solid var(--line);background:#fff;color:#3a465c;cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn.pri{background:var(--primary);border-color:var(--primary);color:#fff}
+/* right col modules */
+.pl-row{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:12.5px;border-bottom:1px solid #f1f3f8}
+.pl-row:last-child{border-bottom:0}
+.pl-dot{width:8px;height:8px;border-radius:50%}
+.pl-row .n{margin-left:auto;font-weight:700;background:#eef2f8;color:#445;border-radius:7px;padding:1px 9px;font-size:11.5px}
+.pl-row.act .n{background:var(--primary);color:#fff}
+.sig{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f1f3f8}
+.sig:last-child{border-bottom:0}
+.sig .sd{width:9px;height:9px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.sig .st{font-size:12px;line-height:1.35}.sig .sm{font-size:10.5px;color:var(--muted2);margin-top:1px}
+.strat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scard{border:1px solid var(--line);border-radius:10px;padding:11px}
+.scard .sv{font-size:22px;font-weight:700;color:var(--primary)}
+.scard .sl{font-size:11px;color:var(--muted);margin-top:1px;line-height:1.2}
+.scard.warn .sv{color:var(--amber)}
+/* bottom */
+.b3{display:grid;grid-template-columns:1.1fr 1.4fr 1fr;gap:16px}
+.donut{display:flex;align-items:center;gap:16px}
+.leg{font-size:12px}.leg .li{display:flex;align-items:center;gap:7px;margin-bottom:5px}.leg .d{width:9px;height:9px;border-radius:3px;background:var(--primary)}
+.spark{width:100%;height:90px}
+.prn{font-size:30px;font-weight:700;color:var(--red)}
+.empty{font-size:12px;color:var(--muted2);text-align:center;padding:18px;border:1px dashed var(--line);border-radius:10px}
+</style></head>
+<body><div class="app">
+
+ <aside class="side">
+  <div class="brand"><div class="logo">S</div><div><b>Sentinela</b><span>Inteligência Comercial</span></div></div>
+  <nav class="nav">
+   <a class="on">📊 Dashboard</a>
+   <a>🛰️ Radar</a>
+   <a>🗂️ Kanban</a>
+   <a>🏢 Minha Empresa</a>
+   <a>⚖️ Consultor</a>
+   <a>⚙️ Configurações</a>
+  </nav>
+  <div class="foot">
+   <div class="pln">Plano Profissional</div>
+   <div class="co">82% de uso</div><div class="bar"><i></i></div>
+   <div class="co">TN SANTOS CONTROLE DE PRAGAS</div>
+  </div>
+ </aside>
+
+ <div class="main">
+  <header class="top">
+   <div><h1>Dashboard</h1><div class="sub">Inteligência antecipada de oportunidades públicas · Santos/SP</div></div>
+   <div class="search">🔍 Buscar órgãos, objetos, cidades…</div>
+   <div class="ico">🔔<span class="dot">3</span></div>
+   <div class="ico">?</div>
+   <div class="av">TS</div>
+  </header>
+
+  <div class="wrap">
+
+   <div class="thesis">
+    <div><div class="t">O mercado avisa quando o edital sai. O Sentinela avisa antes.</div>
+    <div class="s">Sinais pré-edital (PCA → DFD → ETP → TR → Edital) + cruzamento com a sua empresa.</div></div>
+    <div class="tag">antecipação · ao vivo</div>
+   </div>
+
+   <div class="kpis">
+    <div class="kpi"><div class="h"><span class="b b-navy">◎</span>Editais abertos</div><div class="v">9</div><div class="d">Santos · controle de pragas</div></div>
+    <div class="kpi"><div class="h"><span class="b b-blue">✦</span>Novos 90d</div><div class="v">2</div><div class="d">↑ publicados recentes</div></div>
+    <div class="kpi"><div class="h"><span class="b b-navy">⚑</span>Iminência deserta</div><div class="v">2</div><div class="d">baixa concorrência</div></div>
+    <div class="kpi"><div class="h"><span class="b b-blue">◈</span>Antecedência méd.</div><div class="v">— </div><div class="d">com PCA/atas</div></div>
+    <div class="kpi"><div class="h"><span class="b b-amber">◷</span>Prontidão</div><div class="v" style="color:var(--red)">0%</div><div class="d">habilitação Lei 14.133</div></div>
+    <div class="kpi"><div class="h"><span class="b b-red">!</span>Ações urgentes</div><div class="v">0</div><div class="d">nada vencendo</div></div>
+   </div>
+
+   <div class="grid">
+    <div class="card">
+     <div class="hd"><span class="i">🔥</span><b>Atacar hoje</b><a class="lk">Ver Radar →</a></div>
+
+     <div class="opp">
+      <div class="ring">
+       <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#eef2f8" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#0B2D89" stroke-width="6" stroke-linecap="round" stroke-dasharray="150.7" stroke-dashoffset="15" transform="rotate(-90 28 28)"/><text x="28" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#0B2D89">90</text></svg>
+      </div>
+      <div class="info">
+       <div class="org">Município de Santos</div>
+       <div class="meta">📍 Santos/SP <span class="v">R$ 465 mil</span> · sessão 09/06 · Dispensa</div>
+       <div class="obj">Higienização e desinfecção de caixa d'água superior — Secretaria Municipal de Saúde.</div>
+       <div class="chips"><span class="chip c-amb">contrato recorrente</span><span class="chip c-blu">baixa concorrência</span><span class="chip c-cap">CAPAG B</span></div>
+       <div class="acts"><button class="btn">👁 Monitorar</button><button class="btn pri">✦ Analisar com IA</button></div>
+      </div>
+     </div>
+
+     <div class="opp">
+      <div class="ring">
+       <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#eef2f8" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#3C83F6" stroke-width="6" stroke-linecap="round" stroke-dasharray="150.7" stroke-dashoffset="77" transform="rotate(-90 28 28)"/><text x="28" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#3C83F6">49</text></svg>
+      </div>
+      <div class="info">
+       <div class="org">CAPEP-Saúde · Servidor Municipal de Santos</div>
+       <div class="meta">📍 Santos/SP <span class="v">R$ 8,7 mil</span> · sessão 29/04 · Pregão</div>
+       <div class="obj">Contratação de empresa especializada na prestação de serviços de desinsetização.</div>
+       <div class="chips"><span class="chip c-navy">recorrência anual</span><span class="chip c-cap">CAPAG B</span></div>
+       <div class="acts"><button class="btn">👁 Monitorar</button><button class="btn pri">✦ Analisar com IA</button></div>
+      </div>
+     </div>
+
+     <div class="opp">
+      <div class="ring">
+       <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#eef2f8" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-dasharray="150.7" stroke-dashoffset="98" transform="rotate(-90 28 28)"/><text x="28" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">35</text></svg>
+      </div>
+      <div class="info">
+       <div class="org">Município de Santos</div>
+       <div class="meta">📍 Santos/SP <span class="v">R$ 4,46 mi</span> · sessão 09/03 · Registro de Preços</div>
+       <div class="obj">Registro de preços para prestação de serviços de descupinização.</div>
+       <div class="chips"><span class="chip c-blu">valor alto</span><span class="chip c-cap">CAPAG B</span></div>
+       <div class="acts"><button class="btn">👁 Monitorar</button><button class="btn pri">✦ Analisar com IA</button></div>
+      </div>
+     </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+     <div class="card">
+      <div class="hd"><span class="i">⑃</span><b>Pipeline</b></div>
+      <div class="pl-row"><span class="pl-dot" style="background:#3C83F6"></span>Nova<span class="n">0</span></div>
+      <div class="pl-row"><span class="pl-dot" style="background:#0B2D89"></span>Monitorando<span class="n">0</span></div>
+      <div class="pl-row act"><span class="pl-dot" style="background:#7c3aed"></span>Preparação<span class="n">1</span></div>
+      <div class="pl-row"><span class="pl-dot" style="background:#0891b2"></span>Edital<span class="n">0</span></div>
+      <div class="pl-row"><span class="pl-dot" style="background:#94a3b8"></span>Resultado<span class="n">0</span></div>
+     </div>
+
+     <div class="card">
+      <div class="hd"><span class="i">📡</span><b>Sinais oficiais</b></div>
+      <div class="sig"><span class="sd" style="background:#0B2D89"></span><div><div class="st">PCA publicado — Município de Santos incluiu controle de pragas</div><div class="sm">hoje, 09:32</div></div></div>
+      <div class="sig"><span class="sd" style="background:#F59F0A"></span><div><div class="st">Contrato anterior vence em 74 dias (desinsetização escolar)</div><div class="sm">hoje, 08:41</div></div></div>
+      <div class="sig"><span class="sd" style="background:#3C83F6"></span><div><div class="st">ETP detectado — CAPEP-Saúde (controle de vetores)</div><div class="sm">ontem, 17:26</div></div></div>
+      <div class="sig"><span class="sd" style="background:#DC2626"></span><div><div class="st">Licitação fracassada — possível republicação</div><div class="sm">ontem, 10:12</div></div></div>
+     </div>
+
+     <div class="card">
+      <div class="hd"><span class="i">⚑</span><b>Oportunidades estratégicas</b></div>
+      <div class="strat">
+       <div class="scard warn"><div class="sv">2</div><div class="sl">iminência de deserta</div></div>
+       <div class="scard"><div class="sv">3</div><div class="sl">baixa concorrência</div></div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="b3">
+    <div class="card">
+     <div class="hd"><span class="i">◔</span><b>Abertos por segmento</b></div>
+     <div class="donut">
+      <svg width="92" height="92" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#eef2f8" stroke-width="6"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#0B2D89" stroke-width="6" stroke-dasharray="100 0" transform="rotate(-90 21 21)"/><text x="21" y="20" text-anchor="middle" font-size="5" fill="#647089">Total</text><text x="21" y="26" text-anchor="middle" font-size="8" font-weight="700" fill="#0f1b2d">9</text></svg>
+      <div class="leg"><div class="li"><span class="d"></span>Controle de pragas</div><div style="color:var(--muted);font-size:11px">100%</div></div>
+     </div>
+    </div>
+    <div class="card">
+     <div class="hd"><span class="i">📈</span><b>Editais publicados / mês</b></div>
+     <svg class="spark" viewBox="0 0 320 90" preserveAspectRatio="none">
+      <polyline fill="none" stroke="#3C83F6" stroke-width="2.5" points="6,80 58,80 110,40 162,40 214,80 266,45 314,45"/>
+      <circle cx="110" cy="40" r="3" fill="#3C83F6"/><circle cx="162" cy="40" r="3" fill="#3C83F6"/><circle cx="314" cy="45" r="3" fill="#0B2D89"/>
+     </svg>
+     <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted2);margin-top:4px"><span>jan</span><span>fev</span><span>mar</span><span>abr</span><span>mai</span><span>jun</span></div>
+    </div>
+    <div class="card">
+     <div class="hd"><span class="i">◷</span><b>Prontidão</b></div>
+     <div class="prn">0%</div><div style="font-size:11px;color:var(--muted)">habilitação obrigatória (1 de 6)</div>
+     <button class="btn pri" style="margin-top:11px;width:100%;justify-content:center">Completar documentos</button>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</div></body></html>

@@ -1,16 +1,16 @@
 # Graph Report - Sentinela-Licitação  (2026-06-23)
 
 ## Corpus Check
-- 200 files · ~592,163 words
+- 201 files · ~599,859 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1745 nodes · 2429 edges · 172 communities (134 shown, 38 thin omitted)
+- 1754 nodes · 2440 edges · 172 communities (134 shown, 38 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 56 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6085a52a`
+- Built from commit: `91126c5f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -222,20 +222,20 @@ Cohesion: 0.25
 Nodes (7): ENTREGA / EVIDÊNCIA (o que comprova 100%), PARTE 0 — Matar o mock DE VEZ, PARTE 1 — MATRIZ DE CONEXÕES (todo dado do front vem do back real), PARTE 2 — MATRIZ DE BOTÕES/AÇÕES (nada no lugar errado), PARTE 3 — AUTOTESTE E2E QUE PROVA (não seleciona), PROMPT — INTEGRAÇÃO BACK ↔ FRONT 100% SEM MOCK + PROVA DE CADA CONEXÃO E BOTÃO, Régua anti-falsa-confiança (a lição das vezes anteriores)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.23
-Nodes (12): Municipio, municipiosDaUf(), resolveMunicipio(), tituloCidade(), analisar(), descartar(), monitorar(), monitorarCidade() (+4 more)
+Cohesion: 0.20
+Nodes (8): dtBR(), dataBR(), diasAte(), isoDiasAtras(), nowISO(), pncpEditalUrl(), Lic, SpacePage()
 
 ### Community 4 - "Community 4"
 Cohesion: 0.11
-Nodes (28): Badge(), badgeVariants, Button, ButtonProps, buttonVariants, Card(), CardContent(), CardDescription() (+20 more)
+Nodes (27): NAV, NavItem, NavLink(), TITLES, Button, ButtonProps, buttonVariants, CardDescription() (+19 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.12
 Nodes (25): Agente Consultor de IA (Fornecedor), Agente Diário (Concierge de Retenção), BoaMargem (simulador de preço), Conceito de Célula (setor × região), Design System (tokens do MeuJurídico), Sentinela PRD + Blueprint, Eixo de Assinatura (alvo granular), Eixo de Ingestão/Cache (célula) (+17 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.13
-Nodes (21): addDocumento(), atualizarEmpresa(), deleteDocumento(), slug(), BrasilApiCnpj, consultarBrasilApi(), ConsultaResult, fmtCep() (+13 more)
+Cohesion: 0.10
+Nodes (27): addDocumento(), atualizarEmpresa(), deleteDocumento(), slug(), BrasilApiCnpj, consultarBrasilApi(), ConsultaResult, fmtCep() (+19 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.22
@@ -262,8 +262,8 @@ Cohesion: 0.05
 Nodes (36): 10. CATÁLOGO DE FEATURES (todas, priorizadas), 11. ROADMAP POR FASES, 12. MÉTRICAS DE SUCESSO, 13. RISCOS E RÉGUA, 14. Posicionamento (uma linha), 15. CONSOLIDADO v2 — DECISÕES INCORPORADAS, 16. ARQUITETURA DE DUAS CAMADAS — Radar (inteligência passiva) + Kanban (ação comercial), 1. Resumo executivo (+28 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.13
-Nodes (21): AddDocForm(), TrocarEmpresaButton(), brl(), Doc, EmpresaPage(), CERTIDAO_LABEL, CERTIDAO_TIPOS, diasAteVencer() (+13 more)
+Cohesion: 0.12
+Nodes (22): AddDocForm(), TrocarEmpresaButton(), brl(), Doc, EmpresaPage(), KanbanPage(), Oport, STAGES (+14 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.18
@@ -566,8 +566,8 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ### Community 129 - "Community 129"
-Cohesion: 0.24
-Nodes (10): DONUT_CORES, DonutDatum, DonutSegmento(), LineTendencia(), ringColor(), ScoreRing(), TrendDatum, useChartWidth() (+2 more)
+Cohesion: 0.23
+Nodes (12): DONUT_CORES, DonutDatum, DonutSegmento(), LineTendencia(), ringColor(), ScoreRing(), TrendDatum, useChartWidth() (+4 more)
 
 ### Community 130 - "Community 130"
 Cohesion: 0.20
@@ -622,8 +622,8 @@ Cohesion: 1.00
 Nodes (3): cenario(), get(), ufs_da_pagina()
 
 ### Community 144 - "Community 144"
-Cohesion: 0.09
-Nodes (32): DashboardPage(), anoOuData(), aplicarFiltro(), buscarContratosVencendo(), buscarPCA(), buscarRecorrencia(), ContratoVencendo, diasAteVencer() (+24 more)
+Cohesion: 0.10
+Nodes (31): DashboardPage(), anoOuData(), aplicarFiltro(), buscarContratosVencendo(), buscarPCA(), buscarRecorrencia(), ContratoVencendo, diasAteVencer() (+23 more)
 
 ### Community 145 - "Community 145"
 Cohesion: 0.14
@@ -659,15 +659,15 @@ Nodes (9): Honestidade / em ingestão (não forjado), Performance — busca naci
 
 ### Community 158 - "Community 158"
 Cohesion: 0.05
-Nodes (69): TabsList, TabsTrigger, AiConfigView, getAiConfig(), saveAiConfig(), ConfiguracoesPage(), addDocLicitacao(), Admin (+61 more)
+Nodes (71): Shell(), getAiConfig(), saveAiConfig(), ConfiguracoesPage(), addDocLicitacao(), Admin, analisarComIA(), carregarProfCtx() (+63 more)
 
 ### Community 159 - "Community 159"
 Cohesion: 0.20
 Nodes (5): consoleErrors, E, H, results, SB
 
 ### Community 160 - "Community 160"
-Cohesion: 0.09
-Nodes (34): Concorrente, ContratoAtual, inteligenciaMercado(), MercadoIntel, SB, buscarItem(), EditalCompleto, faixaItemCidade() (+26 more)
+Cohesion: 0.08
+Nodes (38): Concorrente, ContratoAtual, inteligenciaMercado(), MercadoIntel, SB, buscarItem(), EditalCompleto, faixaItemCidade() (+30 more)
 
 ### Community 161 - "Community 161"
 Cohesion: 0.22
@@ -682,8 +682,8 @@ Cohesion: 0.50
 Nodes (3): sleep(), srv, up()
 
 ### Community 164 - "Community 164"
-Cohesion: 0.14
-Nodes (18): NAV, NavItem, NavLink(), Shell(), TITLES, ConsultorPage(), descartarCard(), moverStage() (+10 more)
+Cohesion: 0.22
+Nodes (5): consoleErrors, E, H, results, SB
 
 ### Community 166 - "Community 166"
 Cohesion: 0.22
@@ -710,28 +710,28 @@ Cohesion: 0.18
 Nodes (5): consoleErrors, E, H, results, SB
 
 ### Community 172 - "Community 172"
-Cohesion: 0.25
-Nodes (3): Etapas, Op, STEPS
+Cohesion: 0.12
+Nodes (13): Badge(), badgeVariants, Card(), CardContent(), ConsultorPage(), Lic, Etapas, Op (+5 more)
 
 ## Knowledge Gaps
-- **850 isolated node(s):** `Lic`, `Etapas`, `Op`, `STEPS`, `MESES` (+845 more)
+- **854 isolated node(s):** `Lic`, `Etapas`, `Op`, `STEPS`, `MESES` (+849 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `createClient()` connect `Community 164` to `Community 160`, `Community 129`, `Community 3`, `Community 4`, `Community 6`, `Community 13`, `Community 144`, `Community 158`?**
+- **Why does `createClient()` connect `Community 158` to `Community 160`, `Community 129`, `Community 3`, `Community 6`, `Community 172`, `Community 13`, `Community 144`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **Why does `Sentinela PRD + Blueprint` connect `Community 5` to `Community 32`, `Community 33`, `Community 11`, `Community 14`, `Community 16`, `Community 19`, `Community 21`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `PCA — Plano de Contratações Anuais` connect `Community 132` to `Community 33`, `Community 11`, `Community 21`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `Sentinela (Product Under Development)` connect `Community 0` to `Community 132`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `Lic`, `Etapas`, `Op` to the rest of the system?**
-  _872 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _876 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.05189873417721519 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.11033681765389082 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10510510510510511 - nodes in this community are weakly interconnected._

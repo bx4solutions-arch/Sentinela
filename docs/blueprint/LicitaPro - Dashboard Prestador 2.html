@@ -1,0 +1,529 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LicitaPro - Dashboard Prestador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        petroleo: '#0F4C75',
+                        verde: '#2ECC71',
+                        laranja: '#FF7F32',
+                        vermelho: '#E74C3C',
+                        bgpage: '#F5F7FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        card: '0 4px 24px rgba(15, 76, 117, 0.06)',
+                        cardHover: '0 8px 32px rgba(15, 76, 117, 0.12)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #F5F7FA; -webkit-font-smoothing: antialiased; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 24px rgba(15, 76, 117, 0.06); border: 1px solid rgba(0,0,0,0.04); }
+        .card-hover { transition: all 0.2s ease; }
+        .card-hover:hover { box-shadow: 0 8px 32px rgba(15, 76, 117, 0.12); transform: translateY(-1px); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        @keyframes ring { from { stroke-dashoffset: 377; } }
+        @keyframes barGrow { from { height: 0; } }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, system-ui, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-right-0\.5{right:-0.125rem}.-top-0\.5{top:-0.125rem}.-top-7{top:-1.75rem}.left-1\/2{left:50%}.right-4{right:1rem}.top-0{top:0px}.top-\[68px\]{top:68px}.z-40{z-index:40}.z-50{z-index:50}.-mx-2\.5{margin-left:-0.625rem;margin-right:-0.625rem}.mx-auto{margin-left:auto;margin-right:auto}.-mt-0\.5{margin-top:-0.125rem}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-2\.5{margin-bottom:0.625rem}.mb-3\.5{margin-bottom:0.875rem}.mb-4{margin-bottom:1rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-2\.5{margin-top:0.625rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:0.375rem}.h-2{height:0.5rem}.h-3\.5{height:0.875rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-9{height:2.25rem}.h-\[100px\]{height:100px}.h-\[120px\]{height:120px}.h-\[140px\]{height:140px}.h-\[36px\]{height:36px}.h-\[42px\]{height:42px}.h-\[56px\]{height:56px}.h-\[68px\]{height:68px}.h-full{height:100%}.max-h-\[300px\]{max-height:300px}.w-1\.5{width:0.375rem}.w-2{width:0.5rem}.w-3\.5{width:0.875rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-9{width:2.25rem}.w-\[120px\]{width:120px}.w-\[320px\]{width:320px}.w-\[56px\]{width:56px}.w-full{width:100%}.w-px{width:1px}.min-w-0{min-width:0px}.max-w-\[1440px\]{max-width:1440px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-rotate-90{--tw-rotate:-90deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-\[10px\]{border-radius:10px}.rounded-\[12px\]{border-radius:12px}.rounded-\[9px\]{border-radius:9px}.rounded-full{border-radius:9999px}.rounded-t-\[10px\]{border-top-left-radius:10px;border-top-right-radius:10px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-\[3px\]{border-left-width:3px}.border-t{border-top-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-green-100{--tw-border-opacity:1;border-color:rgb(220 252 231 / var(--tw-border-opacity, 1))}.border-laranja{--tw-border-opacity:1;border-color:rgb(255 127 50 / var(--tw-border-opacity, 1))}.border-orange-100{--tw-border-opacity:1;border-color:rgb(255 237 213 / var(--tw-border-opacity, 1))}.border-red-100{--tw-border-opacity:1;border-color:rgb(254 226 226 / var(--tw-border-opacity, 1))}.border-verde{--tw-border-opacity:1;border-color:rgb(46 204 113 / var(--tw-border-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-laranja{--tw-bg-opacity:1;background-color:rgb(255 127 50 / var(--tw-bg-opacity, 1))}.bg-laranja\/10{background-color:rgb(255 127 50 / 0.1)}.bg-orange-50{--tw-bg-opacity:1;background-color:rgb(255 247 237 / var(--tw-bg-opacity, 1))}.bg-petroleo{--tw-bg-opacity:1;background-color:rgb(15 76 117 / var(--tw-bg-opacity, 1))}.bg-petroleo\/10{background-color:rgb(15 76 117 / 0.1)}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-verde{--tw-bg-opacity:1;background-color:rgb(46 204 113 / var(--tw-bg-opacity, 1))}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.from-petroleo{--tw-gradient-from:#0F4C75 var(--tw-gradient-from-position);--tw-gradient-to:rgb(15 76 117 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-\[\#2a6a96\]{--tw-gradient-to:#2a6a96 var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-0{padding:0px}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pl-3\.5{padding-left:0.875rem}.pt-3{padding-top:0.75rem}.text-left{text-align:left}.text-right{text-align:right}.font-sans{font-family:Inter, system-ui, sans-serif}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[15px\]{font-size:15px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[22px\]{font-size:22px}.text-\[26px\]{font-size:26px}.text-\[32px\]{font-size:32px}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-green-700{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.text-laranja{--tw-text-opacity:1;color:rgb(255 127 50 / var(--tw-text-opacity, 1))}.text-orange-700{--tw-text-opacity:1;color:rgb(194 65 12 / var(--tw-text-opacity, 1))}.text-petroleo{--tw-text-opacity:1;color:rgb(15 76 117 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.text-verde{--tw-text-opacity:1;color:rgb(46 204 113 / var(--tw-text-opacity, 1))}.text-vermelho{--tw-text-opacity:1;color:rgb(231 76 60 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.opacity-60{opacity:0.6}.opacity-80{opacity:0.8}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-petroleo\/20{--tw-shadow-color:rgb(15 76 117 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-gray-100{--tw-ring-opacity:1;--tw-ring-color:rgb(243 244 246 / var(--tw-ring-opacity, 1))}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-\[\#0d4163\]:hover{--tw-bg-opacity:1;background-color:rgb(13 65 99 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-100:hover{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.hover\:bg-orange-50\/50:hover{background-color:rgb(255 247 237 / 0.5)}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:block{display:block}.sm\:flex{display:flex}.sm\:w-\[72px\]{width:72px}.sm\:flex-none{flex:none}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-5{gap:1.25rem}.sm\:gap-8{gap:2rem}.sm\:p-6{padding:1.5rem}.sm\:text-right{text-align:right}.sm\:text-\[20px\]{font-size:20px}}@media (min-width: 1024px){.lg\:right-8{right:2rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:py-8{padding-top:2rem;padding-bottom:2rem}}@media (min-width: 1280px){.xl\:col-span-3{grid-column:span 3 / span 3}.xl\:col-span-6{grid-column:span 6 / span 6}.xl\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}</style></head>
+<body class="font-sans text-gray-800">
+    <!-- TOPO -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-4 lg:px-8 h-[68px] flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-[10px] bg-petroleo flex items-center justify-center shadow-lg shadow-petroleo/20">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-semibold text-[15px] leading-none text-petroleo">LicitaPro</h1>
+                    <p class="text-[11px] text-gray-500 -mt-0.5">Prestador de Serviços</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 sm:gap-5">
+                <button id="notifBtn" class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F4C75" stroke-width="2">
+                        <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                    <span class="absolute -top-0.5 -right-0.5 w-5 h-5 bg-laranja text-white text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
+                </button>
+                <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
+                <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&amp;h=80&amp;fit=crop&amp;crop=face" class="w-9 h-9 rounded-full object-cover ring-2 ring-gray-100" alt="avatar">
+                    <div class="hidden sm:block">
+                        <p class="text-[14px] font-medium leading-none text-gray-900">Bione Silvausa</p>
+                        <p class="text-[12px] text-gray-500">ME - Limpeza e Conservação</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notificações dropdown -->
+        <div id="notifDrop" class="hidden absolute right-4 lg:right-8 top-[68px] w-[320px] card p-0 overflow-hidden z-50">
+            <div class="p-3 border-b bg-gray-50">
+                <p class="font-semibold text-sm">Notificações</p>
+            </div>
+            <div class="max-h-[300px] overflow-y-auto">
+                <div class="p-3 hover:bg-gray-50 border-b cursor-pointer">
+                    <p class="text-[13px] font-medium">CND Estadual vence amanhã</p>
+                    <p class="text-[12px] text-gray-500">Ação necessária para manter habilitação</p>
+                </div>
+                <div class="p-3 hover:bg-gray-50 border-b cursor-pointer">
+                    <p class="text-[13px] font-medium">Novo edital - Feira de Santana</p>
+                    <p class="text-[12px] text-gray-500">Fit de 92% com seu perfil</p>
+                </div>
+                <div class="p-3 hover:bg-gray-50 cursor-pointer">
+                    <p class="text-[13px] font-medium">Proposta Pregão 42/2026</p>
+                    <p class="text-[12px] text-gray-500">Resultado publicado</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="max-w-[1440px] mx-auto px-4 lg:px-8 py-6 lg:py-8">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+            
+            <!-- COLUNA ESQUERDA - 25% -->
+            <aside class="xl:col-span-3 space-y-5">
+                <!-- Score Prontidão -->
+                <div class="card p-6 card-hover">
+                    <div class="flex items-start justify-between mb-1">
+                        <h2 class="font-semibold text-gray-900">Score de Prontidão</h2>
+                        <span class="inline-flex items-center gap-1 text-[12px] font-semibold text-verde bg-green-50 px-2 py-1 rounded-full">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 17V7H7"></path></svg>
+                            +3
+                        </span>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mt-5">
+                        <div class="relative w-[120px] h-[120px] shrink-0">
+                            <svg class="transform -rotate-90" width="120" height="120" viewBox="0 0 140 140">
+                                <circle cx="70" cy="70" r="58" stroke="#EEF2F6" stroke-width="12" fill="none"></circle>
+                                <circle id="scoreRing" cx="70" cy="70" r="58" stroke="#2ECC71" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="364.4" stroke-dashoffset="364.4" style="animation: 1.5s ease-out forwards ring; stroke-dashoffset: 58.304;"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span class="text-[32px] font-bold text-petroleo leading-none" id="scoreNum">84</span>
+                                <span class="text-[13px] text-gray-500">/100</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[22px] font-semibold text-petroleo leading-tight">Pronto para licitar</p>
+                            <p class="text-[13px] text-gray-600 mt-1.5">Você está habilitado em 94% dos órgãos alvo</p>
+                            <div class="mt-3 flex items-center gap-1.5">
+                                <div class="w-2 h-2 rounded-full bg-verde animate-pulse"></div>
+                                <span class="text-[12px] font-medium text-verde">Status ativo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPIs Semáforo -->
+                <div class="card p-5">
+                    <h3 class="font-semibold text-[14px] mb-3.5">Documentação</h3>
+                    <div class="space-y-3">
+                        <!-- Certidões -->
+                        <div class="group relative pl-3.5 py-2.5 rounded-[10px] hover:bg-orange-50/50 transition cursor-pointer border-l-[3px] border-laranja">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-laranja"></span>
+                                        Certidões
+                                    </p>
+                                    <p class="text-[12px] text-gray-600 mt-0.5">5/6 verdes</p>
+                                </div>
+                                <span class="text-[11px] font-medium text-laranja bg-orange-50 px-2 py-0.5 rounded">3 dias</span>
+                            </div>
+                            <p class="text-[11px] text-laranja mt-1.5 font-medium">CND Estadual vence em 3 dias</p>
+                        </div>
+
+                        <!-- SICAF -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                SICAF
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">Nível II válido até 12/08/2026</p>
+                        </div>
+
+                        <!-- Atestados -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                Atestados
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">3 válidos até R$150mil</p>
+                        </div>
+
+                        <!-- Sanções -->
+                        <div class="pl-3.5 py-2.5 rounded-[10px] hover:bg-gray-50 transition cursor-pointer border-l-[3px] border-verde">
+                            <p class="text-[13px] font-medium flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-verde"></span>
+                                Sanções
+                            </p>
+                            <p class="text-[12px] text-gray-600 mt-0.5">CEIS/CNEP limpo</p>
+                        </div>
+                    </div>
+
+                    <button class="mt-4 w-full h-[42px] bg-petroleo hover:bg-[#0d4163] text-white font-medium text-[14px] rounded-[10px] transition flex items-center justify-center gap-2 shadow-lg shadow-petroleo/20">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        Renovar tudo
+                    </button>
+                </div>
+            </aside>
+
+            <!-- COLUNA CENTRO - 50% -->
+            <section class="xl:col-span-6 space-y-5">
+                <!-- Header Pipeline -->
+                <div class="card p-5 sm:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-[18px] sm:text-[20px] font-semibold text-gray-900">Pipeline de Oportunidades</h2>
+                            <p class="text-[13px] text-gray-500 mt-0.5">Próximos 90 dias</p>
+                        </div>
+                        <div class="text-left sm:text-right">
+                            <p class="text-[12px] text-gray-500 uppercase tracking-wide font-medium">Valor estimado</p>
+                            <p class="text-[26px] font-bold text-petroleo leading-none mt-1">R$ 940.000</p>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico simples -->
+                    <div class="mt-6 grid grid-cols-3 gap-4 sm:gap-8 items-end h-[140px]">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer" style="height: 100px; animation: 1s ease-out 0.2s forwards barGrow;" data-value="420">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 420k</span>
+                                </div>
+                            </div>
+                            <span class="text-[13px] font-medium text-gray-700">jul</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer opacity-80" style="height: 76.190476px; animation: 1s ease-out 0.4s forwards barGrow;" data-value="320">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 320k</span>
+                                </div>
+                            </div>
+                            <span class="text-[13px] font-medium text-gray-700">ago</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full flex justify-center items-end h-[100px]">
+                                <div class="bar w-[56px] sm:w-[72px] bg-gradient-to-t from-petroleo to-[#2a6a96] rounded-t-[10px] relative group cursor-pointer opacity-60" style="height: 47.619048px; animation: 1s ease-out 0.6s forwards barGrow;" data-value="200">
+                                    <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[12px] font-semibold bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">R$ 200k</span>
+                                </div>
+                            <span class="text-[13px] font-medium text-gray-700">set</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oportunidades Quentes -->
+                <div>
+                    <div class="flex items-center justify-between mb-3.5">
+                        <h3 class="font-semibold text-[15px]">Oportunidades quentes</h3>
+                        <button class="text-[13px] text-petroleo font-medium hover:underline">Ver todas (12)</button>
+                    </div>
+
+                    <div class="space-y-3.5">
+                        <!-- Card 1 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="text-[12px] font-medium text-gray-500">Pref. Feira de Santana</span>
+                                        <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-verde bg-green-50 px-2 py-0.5 rounded-full">
+                                            <span class="w-1.5 h-1.5 bg-verde rounded-full"></span>
+                                            Histórico: ganhou 2x
+                                        </span>
+                                    </div>
+                                    <h4 class="font-semibold text-[16px] mt-1.5 text-gray-900">Limpeza predial - 12 meses</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            Prev 05/07
+                                        </span>
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                            Pregão Eletrônico
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="shrink-0 text-right">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-green-50 border border-green-100">
+                                        <span class="text-[18px] font-bold text-verde leading-none">92%</span>
+                                        <span class="text-[10px] text-green-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="1">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8-4 8-11 8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                                <div class="ml-auto hidden sm:flex items-center gap-1.5 text-[12px] text-gray-500">
+                                    <span class="w-2 h-2 bg-verde rounded-full"></span>
+                                    Edital previsto
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[12px] font-medium text-gray-500">Pref. Sorocaba</span>
+                                    <h4 class="font-semibold text-[16px] mt-1 text-gray-900">Conservação de áreas verdes</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            Prev 18/07
+                                        </span>
+                                        <span>Estimado R$ 280k</span>
+                                    </div>
+                                </div>
+                                <div class="shrink-0">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-green-50 border border-green-100">
+                                        <span class="text-[18px] font-bold text-verde leading-none">87%</span>
+                                        <span class="text-[10px] text-green-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="2">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card p-5 card-hover">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-[12px] font-medium text-gray-500">Estado BA</span>
+                                    <h4 class="font-semibold text-[16px] mt-1 text-gray-900">Serviços gerais - Secretarias</h4>
+                                    <div class="flex items-center gap-4 mt-2.5 text-[13px] text-gray-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            Prev 02/08
+                                        </span>
+                                        <span>Concorrência</span>
+                                    </div>
+                                <div class="shrink-0">
+                                    <div class="inline-flex flex-col items-center justify-center w-[56px] h-[56px] rounded-[12px] bg-orange-50 border border-orange-100">
+                                        <span class="text-[18px] font-bold text-laranja leading-none">78%</span>
+                                        <span class="text-[10px] text-orange-700 font-medium">FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2.5 mt-4">
+                                <button class="monitorBtn flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] border border-gray-300 text-[13px] font-medium hover:bg-gray-50 transition flex items-center justify-center gap-1.5" data-id="3">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11 8 11 8-4 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    Monitorar
+                                </button>
+                                <button class="flex-1 sm:flex-none h-[36px] px-4 rounded-[9px] bg-petroleo text-white text-[13px] font-medium hover:bg-[#0d4163] transition">Ver detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div></section>
+
+            <!-- COLUNA DIREITA - 25% -->
+            <aside class="xl:col-span-3 space-y-5">
+                <!-- Ações de Hoje -->
+                <div class="card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-[15px]">Ações de Hoje</h3>
+                        <span class="text-[11px] font-medium bg-petroleo/10 text-petroleo px-2 py-1 rounded-full">3 pendentes</span>
+                    </div>
+                    
+                    <div class="space-y-3" id="todoList">
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="1">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-laranja flex items-center justify-center shrink-0 mt-0.5 transition bg-laranja/10">
+                                <span class="text-[12px] font-bold text-laranja">1</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Renovar CND Estadual</p>
+                                <p class="text-[12px] text-laranja mt-0.5 flex items-center gap-1">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    vence amanhã
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="2">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5 transition">
+                                <span class="text-[12px] font-bold text-gray-500">2</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Subir atestado novo</p>
+                                <p class="text-[12px] text-gray-500 mt-0.5">Contrato 2025 - Prefeitura</p>
+                            </div>
+                        </div>
+
+                        <div class="task group flex items-start gap-3 p-2.5 -mx-2.5 rounded-[10px] hover:bg-gray-50 cursor-pointer" data-task="3">
+                            <div class="task-check w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 mt-0.5 transition">
+                                <span class="text-[12px] font-bold text-gray-500">3</span>
+                                <svg class="hidden w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="task-text text-[13px] font-medium leading-snug">Revisar proposta pregão 45/2026</p>
+                                <p class="text-[12px] text-gray-500 mt-0.5">Entrega até 14h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="card p-5">
+                    <h3 class="font-semibold text-[15px] mb-4">Performance</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-1.5">
+                                <p class="text-[13px] text-gray-600">Taxa habilitação</p>
+                                <p class="text-[13px] font-semibold">87%</p>
+                            </div>
+                            <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-verde rounded-full" style="width: 87%"></div>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-1">últimos 6 meses</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-1">Tempo médio proposta</p>
+                            <p class="text-[22px] font-semibold text-petroleo leading-none">4h12</p>
+                            <p class="text-[11px] text-verde mt-1 flex items-center gap-1">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 7L7 17M7 7l10 10"></path></svg>
+                                -18% vs trim anterior
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-2">Ticket médio</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="p-2.5 rounded-[10px] bg-green-50 border border-green-100">
+                                    <p class="text-[11px] text-green-700 font-medium">Ganho</p>
+                                    <p class="text-[16px] font-bold text-verde leading-tight">R$78mil</p>
+                                </div>
+                                <div class="p-2.5 rounded-[10px] bg-red-50 border border-red-100">
+                                    <p class="text-[11px] text-red-700 font-medium">Perdido</p>
+                                    <p class="text-[16px] font-bold text-vermelho leading-tight">R$142mil</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-[13px] text-gray-600 mb-2.5">Órgãos que pagam em dia</p>
+                            <div class="space-y-2.5">
+                                <div>
+                                    <div class="flex justify-between text-[12px] mb-1">
+                                        <span class="font-medium">Sorocaba</span>
+                                        <span class="text-gray-600">22 dias</span>
+                                    </div>
+                                    <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-verde rounded-full" style="width: 33%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[12px] mb-1">
+                                        <span class="font-medium">Bahia</span>
+                                        <span class="text-gray-600">67 dias</span>
+                                    </div>
+                                    <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-laranja rounded-full" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // Animar score
+        setTimeout(() => {
+            const ring = document.getElementById('scoreRing');
+            const offset = 364.4 * (1 - 0.84);
+            ring.style.strokeDashoffset = offset;
+        }, 300);
+
+        // Barras do gráfico
+        document.querySelectorAll('.bar').forEach(bar => {
+            const val = parseInt(bar.dataset.value);
+            const max = 420;
+            const height = (val / max) * 100;
+            bar.style.height = height + 'px';
+        });
+
+        // Notificações
+        const notifBtn = document.getElementById('notifBtn');
+        const notifDrop = document.getElementById('notifDrop');
+        notifBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notifDrop.classList.toggle('hidden');
+        });
+        document.addEventListener('click', () => notifDrop.classList.add('hidden'));
+
+        // Monitorar botões
+        document.querySelectorAll('.monitorBtn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
+                if (!isActive) {
+                    this.classList.add('active', 'bg-petroleo', 'text-white', 'border-petroleo');
+                    this.classList.remove('border-gray-300');
+                    this.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3" fill="white"/></svg> Monitorando`;
+                } else {
+                    this.classList.remove('active', 'bg-petroleo', 'text-white', 'border-petroleo');
+                    this.classList.add('border-gray-300');
+                    this.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11 8 11 8-4 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Monitorar`;
+                }
+            });
+        });
+
+        // Tarefas
+        document.querySelectorAll('.task').forEach(task => {
+            task.addEventListener('click', function() {
+                const check = this.querySelector('.task-check');
+                const num = check.querySelector('span');
+                const icon = check.querySelector('svg');
+                const text = this.querySelector('.task-text');
+                const isDone = check.classList.contains('done');
+
+                if (!isDone) {
+                    check.classList.add('done', 'bg-verde', 'border-verde');
+                    check.classList.remove('border-gray-300', 'border-laranja', 'bg-laranja/10');
+                    num.classList.add('hidden');
+                    icon.classList.remove('hidden');
+                    text.classList.add('line-through', 'text-gray-400');
+                } else {
+                    check.classList.remove('done', 'bg-verde', 'border-verde');
+                    check.classList.add('border-gray-300');
+                    num.classList.remove('hidden');
+                    icon.classList.add('hidden');
+                    text.classList.remove('line-through', 'text-gray-400');
+                }
+            });
+        });
+    </script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+
+</body></html>

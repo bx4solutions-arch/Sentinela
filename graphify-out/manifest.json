@@ -35,8 +35,8 @@
     "semantic_hash": "7b188344bfeabab322db1d80155fe456"
   },
   "app/(shell)/dashboard/page.tsx": {
-    "mtime": 1782177144.2976875,
-    "ast_hash": "dba22c2b8f9710c7cba53c8027d05711",
+    "mtime": 1782263197.7992759,
+    "ast_hash": "1849e5e44d03295f2114b49b211da28a",
     "semantic_hash": ""
   },
   "app/(shell)/empresa/actions.ts": {
@@ -135,9 +135,9 @@
     "semantic_hash": ""
   },
   "components/ui.tsx": {
-    "mtime": 1781979488.3176527,
-    "ast_hash": "b4fbb2ea0f478c6f49c9630ca77331cb",
-    "semantic_hash": "b4fbb2ea0f478c6f49c9630ca77331cb"
+    "mtime": 1782261453.4332936,
+    "ast_hash": "11475adc8cecfc512006996c47ffd1f1",
+    "semantic_hash": ""
   },
   "connectors/pncp/pncp-client.ts": {
     "mtime": 1781840888.7247593,
@@ -160,13 +160,13 @@
     "semantic_hash": "53ed74d556af55f9b8dfaaf0f9022f10"
   },
   "e2e/autotest-backfill.mjs": {
-    "mtime": 1782242257.0148978,
-    "ast_hash": "ef57f0c4620247ce099fcf4df6e87902",
+    "mtime": 1782262190.4768894,
+    "ast_hash": "c8d112ee1e61de5d0bd206563266f8b6",
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard.mjs": {
-    "mtime": 1782162789.6492596,
-    "ast_hash": "d734394ae2e19465b190200d3eae9f47",
+    "mtime": 1782263405.1726341,
+    "ast_hash": "ef4a863a4765019f162292c4c56c8929",
     "semantic_hash": ""
   },
   "e2e/autotest-frontend.mjs": {
@@ -350,9 +350,9 @@
     "semantic_hash": "fbd6f85c454bf9e632a270d2c114000e"
   },
   "tailwind.config.ts": {
-    "mtime": 1781981143.8172488,
-    "ast_hash": "2a4bf46d89b076201afc480f4fb0e219",
-    "semantic_hash": "2a4bf46d89b076201afc480f4fb0e219"
+    "mtime": 1782261445.4433146,
+    "ast_hash": "d292bcce8857b00cd32f7d9defa173b6",
+    "semantic_hash": ""
   },
   "tsconfig.json": {
     "mtime": 1781898225.0,
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782257847.434175,
-    "ast_hash": "855d0147c8004e8438a7a0234367d75b",
+    "mtime": 1782262293.3520892,
+    "ast_hash": "68b48fcdb57a40f86a96d3ac6cdf4ac1",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -875,8 +875,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-antecipacao.mjs": {
-    "mtime": 1782169202.2048497,
-    "ast_hash": "325bbc491199002a778e7e5c21eb7a01",
+    "mtime": 1782262175.0381975,
+    "ast_hash": "838688fc4cc50b2d0e2465f920d1a109",
     "semantic_hash": ""
   },
   "lib/antecipacao.ts": {
@@ -940,8 +940,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-sala.mjs": {
-    "mtime": 1782177224.3833933,
-    "ast_hash": "9737911bd367740d0b2d84b7fcfbceb5",
+    "mtime": 1782262328.401287,
+    "ast_hash": "0c5875506e269bf469cc325d87cda50b",
     "semantic_hash": ""
   },
   "lib/inteligencia.ts": {
@@ -1072,6 +1072,26 @@
   "e2e/fixtures/edital-fixture.pdf": {
     "mtime": 1782257741.4362004,
     "ast_hash": "1877d6dde6bbd4c4285d157df115dd46",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-dashboard-ui.mjs": {
+    "mtime": 1782264031.9992278,
+    "ast_hash": "b69c28077517374d6129adc138385a30",
+    "semantic_hash": ""
+  },
+  "docs/blueprint/LicitaPro - Dashboard Prestador 2.html": {
+    "mtime": 1782261206.5979962,
+    "ast_hash": "2a692cee97c627d92d22e5cb01bf282f",
+    "semantic_hash": ""
+  },
+  "docs/blueprint/LicitaPro - Dashboard Prestador 3.html": {
+    "mtime": 1782261206.6009858,
+    "ast_hash": "d04167534ee406ff43897673559ad909",
+    "semantic_hash": ""
+  },
+  "docs/blueprint/sentinela-dashboard-prototipo.html": {
+    "mtime": 1782261206.6041625,
+    "ast_hash": "d320640ed0afad8ac139b9d7e9996d4f",
     "semantic_hash": ""
   }
 }

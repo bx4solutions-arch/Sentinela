@@ -6,7 +6,9 @@
    (confirmado pelo usuário). Inter + radius 0.5rem. Ver docs/design-system.md. */
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    /* Design system LicitaPro — petróleo #0F4C75, âmbar #F59E0B, vermelho #E74C3C, bgpage #F5F7FA.
+       Regra de ouro: ZERO verde (success também é azul). */
+    --background: 214 33% 97%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -15,10 +17,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 224 85% 29%;
+    --primary: 204 77% 26%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 224 71% 40%;
+    --secondary: 204 71% 38%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
@@ -27,7 +29,7 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 73% 51%;
+    --destructive: 6 78% 57%;
     --destructive-foreground: 0 0% 100%;
 
     /* "success"/positivo SEM VERDE → azul de ação (#3C83F6). Regra do Bione: zero verde. */
@@ -42,9 +44,9 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 224 85% 29%;
+    --ring: 204 77% 26%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 96%;

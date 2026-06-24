@@ -87,7 +87,7 @@ try {
 
   // 2c) Linha do Tempo de Sinais no Dashboard (sinais reais)
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Atacar hoje", { timeout: 10000 });
+  await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
   const temTimeline = (await page.locator("[data-testid=linha-tempo-sinais]").count()) > 0;
   const sinais = await page.locator("[data-testid=sinal-item]").count();
   ok("Dashboard: Linha do Tempo de Sinais com itens reais (recorrência/PCA)", temTimeline && sinais >= 1, `sinais=${sinais}`);

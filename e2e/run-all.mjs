@@ -13,6 +13,7 @@ const SUITE = [
   "e2e/autotest-radar.mjs",
   "e2e/autotest-kanban.mjs",
   "e2e/autotest-dashboard.mjs",
+  "e2e/autotest-dashboard-ui.mjs", // Overhaul design system + Dashboard LicitaPro (desktop/mobile, zero verde)
   "e2e/autotest-frontend.mjs",
   "e2e/autotest-licitacao.mjs",
   "e2e/autotest-backfill.mjs",

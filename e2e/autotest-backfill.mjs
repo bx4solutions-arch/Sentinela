@@ -60,11 +60,11 @@ try {
   const cc = await adminQuery("select status from cidade_coletada where codigo_ibge='3500105';");
   ok("cidade nova enfileirada (pendente)", cc?.[0]?.status === "pendente", `status=${cc?.[0]?.status}`);
 
-  // Dashboard rico
+  // Dashboard rico (layout LicitaPro)
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Atacar hoje", { timeout: 10000 });
+  await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
   const dash = await page.locator("body").innerText();
-  ok("dashboard rico: KPIs + Atacar hoje + Abertos por segmento + Pipeline", dash.includes("Editais abertos") && dash.includes("Atacar hoje") && dash.includes("Abertos por segmento") && dash.includes("Pipeline"));
+  ok("dashboard rico: Prontidão + Pipeline + Oportunidades + Ações de hoje", dash.includes("Prontidão") && dash.includes("Pipeline") && dash.includes("Oportunidades") && dash.includes("Ações de hoje"));
   ok("dashboard sem banner mock", !dash.includes("ILUSTRATIVOS"));
   await page.screenshot({ path: `${SHOTS}/BF-2-dashboard-rico.png`, fullPage: true });
 

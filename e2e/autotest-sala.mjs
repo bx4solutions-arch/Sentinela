@@ -50,15 +50,15 @@ try {
   await page.click("button:has-text('Concluir')");
   await page.waitForURL("**/empresa", { timeout: 20000 });
 
-  // ---- DASHBOARD: Tarefas do dia ----
+  // ---- DASHBOARD: Ações de hoje (layout LicitaPro) ----
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Atacar hoje", { timeout: 10000 });
-  const temTarefas = (await page.locator("[data-testid=tarefas-do-dia]").count()) > 0;
-  const nTarefas = await page.locator("[data-testid=tarefa]").count();
-  ok("Dashboard: 'Tarefas do dia' com ações reais derivadas do dado", temTarefas && nTarefas >= 1, `tarefas=${nTarefas}`);
-  // grade dupla: Atacar hoje (Licitação do Dia) + Linha do Tempo (Antecipação)
+  await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
+  const temTarefas = (await page.locator("[data-testid=dashboard-acoes]").count()) > 0;
+  const nTarefas = await page.locator("[data-testid=dashboard-tarefa]").count();
+  ok("Dashboard: 'Ações de hoje' com ações reais derivadas do dado", temTarefas && nTarefas >= 1, `tarefas=${nTarefas}`);
+  // blocos: Oportunidades quentes (Radar) + Linha do Tempo (Antecipação)
   const body0 = await page.locator("body").innerText();
-  ok("Dashboard tem as 2 grades (Atacar hoje + Linha do Tempo de Sinais)", /Atacar hoje/.test(body0) && /Linha do Tempo de Sinais/.test(body0));
+  ok("Dashboard tem Oportunidades quentes + Linha do Tempo de Sinais", /Oportunidades quentes/.test(body0) && /Linha do Tempo de Sinais/.test(body0));
   await page.screenshot({ path: `${SHOTS}/dashboard-completo.png`, fullPage: true });
 
   // ---- SALA DE GUERRA: analisa um edital e abre a Inteligência ----

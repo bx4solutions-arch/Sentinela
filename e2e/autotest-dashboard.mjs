@@ -65,16 +65,23 @@ try {
   await page.locator("[data-testid=card-monitorar]").first().click();
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
 
-  // dashboard
+  // dashboard (layout LicitaPro)
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Atacar hoje", { timeout: 10000 });
+  await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
   const body = await page.locator("body").innerText();
 
   const db = await adminQuery("select count(*) n from raw_editais where segmentos && array['material-hospitalar'] and cidade='São Paulo' and valor_homologado is null;");
   const abertos = String(db?.[0]?.n ?? "0");
-  ok("dashboard KPI 'editais abertos' bate com o banco", body.includes(abertos), `banco=${abertos}`);
-  ok("dashboard mostra 'Monitorando' no funil", /Monitorando/.test(body));
-  ok("dashboard: 'Atacar hoje' com itens reais", (await page.locator("text=Atacar hoje").count()) > 0 && body.includes("Prontidão"));
+  ok("dashboard: nº de abertos do recorte bate com o banco", body.includes(abertos), `banco=${abertos}`);
+  ok("dashboard: 'Monitorando' (edital monitorado aparece)", /Monitorando/.test(body));
+  // blocos do layout LicitaPro presentes
+  ok("dashboard: Score de Prontidão + Pipeline + Oportunidades + Ações de hoje", (await page.locator("[data-testid=dashboard-score]").count()) > 0 && (await page.locator("[data-testid=dashboard-pipeline]").count()) > 0 && (await page.locator("[data-testid=dashboard-oportunidades]").count()) > 0 && (await page.locator("[data-testid=dashboard-acoes]").count()) > 0);
+  // score = % REAL do cofre (tenant novo sem certidões → 0/N exigências; prova que vem do cofre, não forjado)
+  const scoreTxt = await page.locator("[data-testid=dashboard-score]").innerText();
+  ok("dashboard: score = % do cofre (N de M exigências, fato não chance)", /\/100/.test(scoreTxt) && /\d+ de \d+ exig[êe]ncias/i.test(scoreTxt) && /fato, n[ãa]o chance/i.test(scoreTxt), scoreTxt.replace(/\n/g, " ").slice(0, 80));
+  // Performance cold-start SEM número forjado
+  const perfTxt = await page.locator("[data-testid=dashboard-performance]").innerText();
+  ok("dashboard: Performance cold-start honesta (sem número forjado)", /preenche com o uso/i.test(perfTxt) && !/\d+%|\d+h\d+|R\$\s?\d/.test(perfTxt), perfTxt.replace(/\n/g, " ").slice(0, 70));
   ok("dashboard: SEM banner mock", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
   ok("console: ZERO warning Recharts (-1)", rechartsWarnings.length === 0, rechartsWarnings.slice(0, 3).join(" | "));
