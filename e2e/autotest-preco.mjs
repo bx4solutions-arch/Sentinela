@@ -54,7 +54,7 @@ try {
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
-  await page.getByRole("tab", { name: "Inteligência" }).click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(600);
   const body = await page.locator("body").innerText();
   const temSemaforo = (await page.locator("[data-testid=cv-semaforo]").count()) > 0;

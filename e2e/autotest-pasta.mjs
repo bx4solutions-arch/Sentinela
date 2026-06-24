@@ -39,11 +39,11 @@ try {
   ok("Resumo traz Modalidade + Valor estimado (kv do PNCP)", body.includes("Modalidade") && body.includes("Valor estimado"));
   ok("dado REAL (não mock São Luís)", !/São Luís|SEMED|Dedetizadora Maranhense/i.test(body));
   // empresa × edital
-  await page.locator("button[role=tab]:has-text('Empresa × Edital')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(300);
   ok("Empresa × Edital determinístico (checklist + status)", (await page.locator("text=% pronto").count()) > 0);
   // veredito
-  await page.locator("button[role=tab]:has-text('Veredito')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(300);
   const bodyVer = await page.locator("body").innerText();
   ok("Veredito calibrado + disclaimer (sem IA)", bodyVer.includes("Veredito calibrado") && bodyVer.toLowerCase().includes("não é garantia"));

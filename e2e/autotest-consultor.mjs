@@ -53,7 +53,7 @@ try {
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
-  await page.getByRole("tab", { name: "Consultor IA" }).click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(500);
 
   const qa = await page.locator("[data-testid=consultor-qa]").count();

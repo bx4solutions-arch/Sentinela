@@ -29,3 +29,14 @@
 - Filtros do Radar (modalidade, faixa de valor, tipo de sinal) — hoje: nicho + cidade. Próximo incremento.
 - Pilar "Antecipação (PCA)" no Radar — PCA (17k) ainda não renderizado (dado fino p/ alguns nichos).
 - Worker de backfill em loop contínuo (hoje rodado `--once`; produção: `python3 worker/backfill_worker.py`).
+
+## Raio-X — fontes das próximas rodadas (probe 2026-06-23)
+
+**Siconfi/Tesouro (orçamento) — FUNCIONA ✅ (Round 3):**
+`GET https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo?an_exercicio=2025&nr_periodo=1&co_tipo_demonstrativo=RREO&id_ente={IBGE}`
+→ 200, JSON real por município (ex.: Santos 3548500 → "Prefeitura Municipal de Santos - SP", população, itens RREO). RGF análogo. Plano: fetch server-side por código IBGE + cache por município → §1 "O órgão" (orçamento/execução real). Disclaimer: saúde fiscal ≠ pontualidade.
+
+**CAPAG (nota) — endpoint a confirmar:** `ords/sadipem/tt/capag?id_ente=` retornou 404 (HTML). A nota CAPAG vem de outro dataset (sadipem/Tesouro Transparente) — achar o path correto na próxima rodada. Orçamento (RREO/RGF) já cobre §1 com dado real enquanto isso.
+
+**IRP (Intenção de Registro de Preços) — endpoint reachable (Round 2):**
+`GET https://pncp.gov.br/api/consulta/v1/contratacoes/proposta?dataFinal={hoje+}&codigoModalidadeContratacao={cod}` respondeu (422 só por validação de data: "Data Final deve ser >= data atual"). Próxima rodada: descobrir o código de modalidade do IRP + paginar + upsert → acende "IRP aberta — vai virar edital" no Radar e §2 do Raio-X.

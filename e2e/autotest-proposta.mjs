@@ -53,7 +53,7 @@ try {
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
-  await page.getByRole("tab", { name: "Proposta" }).click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(500);
 
   ok("Gerador de Proposta presente", (await page.locator("[data-testid=proposta-gerador]").count()) > 0);

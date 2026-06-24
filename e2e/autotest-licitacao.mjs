@@ -28,14 +28,15 @@ try {
   await page.locator("button:has-text('Adicionar à análise')").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
   ok("add à análise cria workspace (/licitacao/:id)", /\/licitacao\//.test(page.url()));
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   const body = await page.locator("body").innerText();
-  ok("workspace: abas reais (Resumo/Empresa×Edital/Veredito/Documentos)", body.includes("Resumo") && body.includes("Empresa × Edital") && body.includes("Veredito") && body.includes("Documentos"));
+  ok("workspace: Raio-X (relatório único) com seções Resumo Profundo/Você/Veredito/Documentos", (await page.locator("[data-testid=raiox-relatorio]").count()) > 0 && /raio-x/i.test(body) && body.includes("Resumo Profundo") && body.includes("Veredito") && body.includes("Documentos"));
   // IA INCLUSA (chave nossa, sem BYOK): "Analisar com IA" presente; "Ligar IA" não existe mais
   ok("IA inclusa: 'Analisar com IA' presente e sem 'Ligar IA'", (await page.locator("button:has-text('Analisar com IA')").count()) >= 1 && (await page.locator("text=Ligar IA").count()) === 0);
   await page.screenshot({ path: `${SHOTS}/licitacao-01.png`, fullPage: true });
 
   // aba Inteligência (Bloco 2): dado REAL (concorrentes/faixa) OU vazio honesto se o nicho/UF não tiver contrato
-  await page.locator("button[role=tab]:has-text('Inteligência')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(400);
   const bodyIntel = await page.locator("body").innerText();
   const intelReal = (await page.locator("[data-testid=sala-inteligencia]").count()) > 0;
@@ -43,7 +44,7 @@ try {
   ok("workspace: aba Inteligência (Mercado real OU vazio honesto)", intelReal || intelVazio);
 
   // volta pra Documentos e adiciona um doc
-  await page.locator("button[role=tab]:has-text('Documentos')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(300);
   await page.fill("input[name=nome]", "Edital (teste QA)");
   await page.click("button:has-text('Adicionar')");

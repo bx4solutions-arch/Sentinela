@@ -79,7 +79,7 @@ try {
   const lic = (await adminQuery(`insert into licitacao (id, tenant_id, numero_controle_pncp, titulo) values (gen_random_uuid(), '${tid}', '${numero}', 'QA upload') returning id;`))?.[0]?.id;
 
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
-  await page.locator("button[role=tab]:has-text('Resumo Profundo')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForSelector("[data-testid=profundo-tab]", { timeout: 10000 });
 
   // ===== LEGIBILIDADE (sem fonte miúda) =====
@@ -118,7 +118,7 @@ try {
   ok("persistência: extração do upload gravada (fonte=ia)", dbA?.[0]?.fonte === "ia", JSON.stringify(dbA?.[0]));
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
-  await page.locator("button[role=tab]:has-text('Resumo Profundo')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForSelector("[data-testid=profundo-conteudo]", { timeout: 15000 });
   const linhas = await adminQuery(`select count(*) n from analise a join licitacao l on l.id=a.licitacao_id where l.numero_controle_pncp='${numero}' and a.tipo='resumo_profundo';`);
   ok("cache: 2º acesso não duplica/rechama (1 linha)", Number(linhas?.[0]?.n ?? 0) === 1, `linhas=${linhas?.[0]?.n}`);

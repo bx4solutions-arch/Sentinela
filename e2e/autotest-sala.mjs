@@ -69,7 +69,7 @@ try {
   ok("Sala de Guerra abriu (/licitacao/<id>)", /\/licitacao\//.test(page.url()));
 
   // aba Inteligência
-  await page.getByRole("tab", { name: "Inteligência" }).click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(600);
   const temIntel = (await page.locator("[data-testid=sala-inteligencia]").count()) > 0;
   const temConcorrentes = (await page.locator("[data-testid=concorrentes]").count()) > 0;

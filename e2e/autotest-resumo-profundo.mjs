@@ -95,7 +95,7 @@ try {
   // HERMÉTICO + trava de custo: limpa o cache deste edital → tenant A faz 1 extração REAL (miss garantido).
   await adminQuery(`delete from analise where tipo='resumo_profundo' and licitacao_id in (select id from licitacao where numero_controle_pncp='${numero}');`);
 
-  await page.locator("button[role=tab]:has-text('Resumo Profundo')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForSelector("[data-testid=profundo-tab]", { timeout: 10000 });
   ok("IA inclusa: botão 'Gerar resumo profundo' presente (sem BYOK)", (await page.locator("[data-testid=gerar-profundo]").count()) > 0);
   await page.locator("[data-testid=gerar-profundo]").click();
@@ -109,7 +109,8 @@ try {
   const fonteA = await page.locator("[data-testid=profundo-fonte]").innerText();
   ok("extraído por IA (1ª vez, fonte=ia)", /IA/i.test(fonteA), fonteA);
   ok("honestidade: usa 'Não informado' onde o texto não diz (não forja)", /Não informado/i.test(tabHtml));
-  ok("CAPAG presente com disclaimer (saúde fiscal ≠ pontualidade)", (await page.locator("[data-testid=profundo-capag]").count()) > 0 && /não é garantia de pontualidade/i.test(tabTxt));
+  const orgaoTxt = await page.locator("[data-testid=raiox-orgao]").innerText().catch(() => "");
+  ok("CAPAG na seção 'O órgão' com disclaimer (saúde fiscal ≠ pontualidade)", (await page.locator("[data-testid=raiox-orgao]").count()) > 0 && /não é garantia de pontualidade/i.test(orgaoTxt), orgaoTxt.replace(/\n/g, " ").slice(0, 60));
   ok("Análise crítica com disclaimer (análise, não parecer)", /não um parecer jur[íi]dico/i.test(tabHtml));
   const mainHtml = await page.locator("main").innerHTML();
   ok("nada de verde no Resumo Profundo", !VERDE.test(mainHtml));
@@ -123,7 +124,7 @@ try {
   const urlA = page.url();
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.goto(urlA, { waitUntil: "networkidle" });
-  await page.locator("button[role=tab]:has-text('Resumo Profundo')").click();
+  await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForSelector("[data-testid=profundo-conteudo]", { timeout: 15000 });
   const linhasA = await adminQuery(`select count(*) n from analise a join licitacao l on l.id=a.licitacao_id where l.numero_controle_pncp='${numero}' and a.tipo='resumo_profundo';`);
   ok("cache: 2º acesso não rechama/duplica IA (1 linha p/ o edital)", Number(linhasA?.[0]?.n ?? 0) === 1, `linhas=${linhasA?.[0]?.n}`);
@@ -135,7 +136,7 @@ try {
   const licB = (await adminQuery(`insert into licitacao (id, tenant_id, numero_controle_pncp, titulo) values (gen_random_uuid(), '${tidB}', '${numero}', 'QA cache') returning id;`))?.[0]?.id;
   ok("tenant B: licitação do mesmo edital criada", !!licB, `licB=${licB} tidB=${tidB}`);
   await page2.goto(`${BASE}/licitacao/${licB}`, { waitUntil: "networkidle" });
-  await page2.locator("button[role=tab]:has-text('Resumo Profundo')").click();
+  await page2.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page2.waitForSelector("[data-testid=gerar-profundo]", { timeout: 10000 });
   await page2.locator("[data-testid=gerar-profundo]").click();
   await page2.waitForSelector("[data-testid=profundo-conteudo]", { timeout: 20000 });
