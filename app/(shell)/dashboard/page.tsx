@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Radar, Scale, FileText, AlertTriangle, CalendarClock, Clock, Sparkles, type LucideIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { diasAteVencer, statusCertidao } from "@/lib/certidoes";
@@ -68,11 +69,11 @@ export default async function DashboardPage() {
   const prontidaoLabel = pct >= 80 ? "Excelente" : pct >= 60 ? "Bom" : pct >= 40 ? "Atenção" : "Crítico";
 
   // ===== Ações urgentes (prazos reais) =====
-  const acoes: { tone: "danger" | "warn" | "ok" | ""; icon: string; iconBg: string; iconColor: string; b: string; sub: string; date: string; dateTone: "red" | "orange" | "ok" | ""; href: string }[] = [];
-  if (vencidosN > 0) acoes.push({ tone: "danger", icon: "!", iconBg: "var(--v2-red-soft)", iconColor: "var(--v2-red)", b: `${vencidosN} documento(s) vencido(s)`, sub: "Pode te inabilitar — renove já", date: "Renovar", dateTone: "red", href: "/empresa" });
-  if (criticos.length > 0) acoes.push({ tone: "warn", icon: "▤", iconBg: "var(--v2-yellow-soft)", iconColor: "#ca8a04", b: `${criticos.length} prazo(s) crítico(s)`, sub: "Documentos vencendo nos próximos 7 dias", date: fmtData(criticos[0].vencimento!), dateTone: "orange", href: "/empresa" });
-  if (docsVencendo - criticos.length > 0) acoes.push({ tone: "", icon: "▣", iconBg: "var(--v2-blue-soft)", iconColor: "var(--v2-blue)", b: `${docsVencendo} documento(s) vencendo`, sub: "Certidões e licenças vencem nos próximos 30 dias", date: "Ver docs", dateTone: "", href: "/empresa" });
-  if (abertos > 0) acoes.push({ tone: "ok", icon: "✓", iconBg: "var(--v2-green-soft)", iconColor: "#059669", b: `${abertos} licitação(ões) do seu nicho`, sub: temNicho ? `${segmentos.map((s) => SEG_LABEL[s] ?? s).join(", ")} · ${escopoLabel}` : "", date: "Analisar", dateTone: "ok", href: "/radar" });
+  const acoes: { tone: "danger" | "warn" | "ok" | ""; Icon: LucideIcon; iconBg: string; iconColor: string; b: string; sub: string; date: string; dateTone: "red" | "orange" | "ok" | ""; href: string }[] = [];
+  if (vencidosN > 0) acoes.push({ tone: "danger", Icon: AlertTriangle, iconBg: "var(--v2-red-soft)", iconColor: "var(--v2-red)", b: `${vencidosN} documento(s) vencido(s)`, sub: "Pode te inabilitar — renove já", date: "Renovar", dateTone: "red", href: "/empresa" });
+  if (criticos.length > 0) acoes.push({ tone: "warn", Icon: Clock, iconBg: "var(--v2-yellow-soft)", iconColor: "#ca8a04", b: `${criticos.length} prazo(s) crítico(s)`, sub: "Documentos vencendo nos próximos 7 dias", date: fmtData(criticos[0].vencimento!), dateTone: "orange", href: "/empresa" });
+  if (docsVencendo - criticos.length > 0) acoes.push({ tone: "", Icon: FileText, iconBg: "var(--v2-blue-soft)", iconColor: "var(--v2-blue)", b: `${docsVencendo} documento(s) vencendo`, sub: "Certidões e licenças vencem nos próximos 30 dias", date: "Ver docs", dateTone: "", href: "/empresa" });
+  if (abertos > 0) acoes.push({ tone: "ok", Icon: Sparkles, iconBg: "var(--v2-green-soft)", iconColor: "#059669", b: `${abertos} licitação(ões) do seu nicho`, sub: temNicho ? `${segmentos.map((s) => SEG_LABEL[s] ?? s).join(", ")} · ${escopoLabel}` : "", date: "Analisar", dateTone: "ok", href: "/radar" });
 
   // ===== Oportunidades recomendadas (3 quentes do recorte) =====
   let atacar: { numero_controle_pncp: string; objeto: string | null; valor_estimado: number | null; data_publicacao: string | null; cidade: string | null; orgao: { razao_social: string | null } | null }[] = [];
@@ -88,12 +89,12 @@ export default async function DashboardPage() {
   // Score = ESTIMATIVA (heurística de recência) — NUNCA "chance de ganhar".
   const score = (pub: string | null) => { if (!pub) return 70; const dias = Math.floor((agora.getTime() - new Date(pub).getTime()) / 86400000); return Math.max(60, 95 - Math.min(dias, 35)); };
 
-  const KPIS = [
-    { id: "oportunidades", icon: "⌕", bg: "#2563eb", label: "Oportunidades no Radar", value: String(abertos), sub: valorRadar > 0 ? `<b>${brlK(valorRadar)}</b><br>valor total estimado` : "valor estimado em ingestão" },
-    { id: "decidir", icon: "▣", bg: "#fbbf24", label: "Licitações para decidir", value: String(monitorando), sub: "monitorando · aguardando veredito" },
-    { id: "preparacao", icon: "▤", bg: "#22c55e", label: "Propostas em preparação", value: String(emPreparacao), sub: "em execução no kanban" },
-    { id: "prazos", icon: "!", bg: "#ef4444", label: "Prazos críticos", value: String(criticos.length), sub: "Documentos vencendo em ≤ 7 dias" },
-    { id: "docs", icon: "▦", bg: "#8b5cf6", label: "Documentos vencendo", value: String(docsVencendo), sub: "Itens vencendo nos próximos 30 dias" },
+  const KPIS: { id: string; Icon: LucideIcon; bg: string; label: string; value: string; sub: string }[] = [
+    { id: "oportunidades", Icon: Radar, bg: "#2563eb", label: "Oportunidades no Radar", value: String(abertos), sub: valorRadar > 0 ? `<b>${brlK(valorRadar)}</b><br>valor total estimado` : "valor estimado em ingestão" },
+    { id: "decidir", Icon: Scale, bg: "#fbbf24", label: "Licitações para decidir", value: String(monitorando), sub: "monitorando · aguardando veredito" },
+    { id: "preparacao", Icon: FileText, bg: "#22c55e", label: "Propostas em preparação", value: String(emPreparacao), sub: "em execução no kanban" },
+    { id: "prazos", Icon: AlertTriangle, bg: "#ef4444", label: "Prazos críticos", value: String(criticos.length), sub: "Documentos vencendo em ≤ 7 dias" },
+    { id: "docs", Icon: CalendarClock, bg: "#8b5cf6", label: "Documentos vencendo", value: String(docsVencendo), sub: "Itens vencendo nos próximos 30 dias" },
   ];
 
   return (
@@ -113,7 +114,7 @@ export default async function DashboardPage() {
         {KPIS.map((k) => (
           <div className="kpi" key={k.id} data-testid={`kpi-${k.id}`}>
             <div className="kpiTop">
-              <div className="kpiIcon" style={{ background: k.bg }}>{k.icon}</div>
+              <div className="kpiIcon" style={{ background: k.bg }}><k.Icon size={24} strokeWidth={2.2} /></div>
               <div><label>{k.label}</label><strong data-testid={`kpi-${k.id}-valor`}>{k.value}</strong></div>
             </div>
             <small dangerouslySetInnerHTML={{ __html: k.sub }} />
@@ -130,7 +131,7 @@ export default async function DashboardPage() {
             <div className="actionList">
               {acoes.map((a, i) => (
                 <Link key={i} href={a.href} className={`action ${a.tone}`} data-testid="acao-item" style={{ textDecoration: "none", color: "inherit" }}>
-                  <div className="circle" style={{ background: a.iconBg, color: a.iconColor }}>{a.icon}</div>
+                  <div className="circle" style={{ background: a.iconBg, color: a.iconColor }}><a.Icon size={20} /></div>
                   <div><b>{a.b}</b><span>{a.sub}</span></div>
                   <div className={`date ${a.dateTone}`} style={a.dateTone === "ok" ? { color: "#059669" } : undefined}>{a.date}</div>
                 </Link>
