@@ -10,7 +10,7 @@ import type { SecaoProposta } from "@/lib/proposta";
 import { melhorarSecaoProposta } from "./actions";
 
 type Decl = { id: string; titulo: string; texto: string };
-type MatrizItem = { label: string; exigencia: string; atendido: boolean; evidencia: string };
+type MatrizItem = { id: string; tipo: "certidao" | "declaracao"; label: string; exigencia: string; atendido: boolean; evidencia: string; declId?: string };
 type Timbre = { razao: string | null; cnpj: string | null; municipio: string | null; uf: string | null };
 type KitItem = { ordem: number; nome: string; status: string };
 type SecaoEdit = SecaoProposta & { _ia?: string | null };
@@ -195,18 +195,29 @@ export function PropostaGerador({ secoes: secoesIniciais, declaracoes, matriz, p
         </ul>
       </CardContent></Card>
 
-      {/* Matriz de atendimento */}
+      {/* Matriz de atendimento — amarra checklist → habilitação; declaração exigida → [Gerar] no documento */}
       <Card><CardContent className="p-4">
-        <p className="mb-2 text-sm font-semibold">Matriz de atendimento (item → exigência → evidência)</p>
+        <p className="mb-2 text-sm font-semibold">Matriz de atendimento (item → evidência → status)</p>
         <ul className="divide-y rounded-md border" data-testid="matriz-atendimento">
-          {matriz.map((m, i) => (
-            <li key={i} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
-              <Badge variant={m.atendido ? "success" : "destructive"}>{m.atendido ? "✓ atende" : "❌ pendente"}</Badge>
-              <span className="flex-1">{m.label}</span>
-              <span className="text-xs text-muted-foreground">{m.atendido ? m.evidencia : "providenciar"}</span>
-            </li>
-          ))}
+          {matriz.map((m) => {
+            const isDecl = m.tipo === "declaracao" && !!m.declId;
+            const atende = isDecl ? declSel.has(m.declId as string) : m.atendido;
+            return (
+              <li key={m.id} className="flex flex-wrap items-center gap-2 p-2.5 text-sm" data-testid="matriz-item" data-tipo={m.tipo}>
+                <Badge variant={atende ? "success" : "destructive"} data-testid="matriz-status">{atende ? "✓ atende" : "❌ falta"}</Badge>
+                <span className="min-w-0 flex-1">{m.label}</span>
+                {isDecl
+                  ? (atende
+                      ? <span className="text-xs text-muted-foreground" data-testid="matriz-no-doc">no documento ✓</span>
+                      : <Button type="button" size="sm" variant="outline" data-testid="matriz-gerar" onClick={() => setDeclSel((s) => new Set(s).add(m.declId as string))}><FileDown className="size-4" /> Gerar</Button>)
+                  : (m.atendido
+                      ? <span className="text-xs text-muted-foreground">{m.evidencia}</span>
+                      : <Button asChild size="sm" variant="outline" data-testid="matriz-anexar"><a href="/empresa">Anexar no cofre</a></Button>)}
+              </li>
+            );
+          })}
         </ul>
+        <p className="mt-2 text-xs text-muted-foreground">Declaração exigida → <strong>Gerar</strong> inclui o texto no documento. Certidão que falta → <strong>Anexar no cofre</strong> (não fabricamos certidão).</p>
       </CardContent></Card>
 
       <div className="flex flex-wrap items-center gap-2">

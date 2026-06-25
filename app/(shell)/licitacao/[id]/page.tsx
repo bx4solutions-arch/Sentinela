@@ -145,10 +145,13 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
     ...exigClassificadas.map((e, i) => ({ ordem: i + 1, nome: e.texto, status: CLASSE_META[e.classe].label })),
     ...itensStatus.map((it, i) => ({ ordem: exigClassificadas.length + i + 1, nome: it.label, status: ITEM_STATUS_META[it.st].label })),
   ];
-  const matrizProposta = itensStatus.map((it) => {
-    const atendido = it.st !== "ausente" && it.st !== "vencida";
-    return { label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
-  });
+  const matrizProposta = [
+    ...itensStatus.map((it) => {
+      const atendido = it.st !== "ausente" && it.st !== "vencida";
+      return { id: `cert-${it.key}`, tipo: "certidao" as const, label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
+    }),
+    ...DECLARACOES_TIPICAS.map((d) => ({ id: `decl-${d.id}`, tipo: "declaracao" as const, label: d.titulo, exigencia: "declaração (Lei 14.133 / LC 123)", atendido: true, evidencia: "gerada no documento", declId: d.id })),
+  ];
 
   // ---- Cabeçalho do Space (determinístico, visual do protótipo) ----
   const pncpUrl = pncpEditalUrl(lic.numero_controle_pncp);          // link OFICIAL do PNCP (corrige o bug do link_origem)

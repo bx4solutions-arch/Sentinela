@@ -134,6 +134,25 @@ try {
   ok("índice na ORDEM do edital (numerado 01., 02. …)", /KIT DE HABILITA/i.test(idx) && /\b01\./.test(idx), idx.split("\n").filter(Boolean).slice(0, 2).join(" | "));
   ok("confirmação 'Kit gerado' na UI", (await page.locator("[data-testid=kit-gerado]").count()) > 0);
 
+  // ===== Fatia 4 — Matriz [Gerar]: declaração exigida que falta → inclui no documento =====
+  await page.locator("[data-testid=toggle-decl]").first().click(); // desliga a 1ª declaração (idoneidade/"impeditivo")
+  const matrizGerar = page.locator("[data-testid=matriz-item][data-tipo=declaracao] [data-testid=matriz-gerar]");
+  ok("matriz: declaração desligada vira 'falta' + [Gerar]", (await matrizGerar.count()) >= 1, `gerar=${await matrizGerar.count()}`);
+
+  // DOCX SEM a declaração — prova o gap real
+  const [dlA] = await Promise.all([page.waitForEvent("download", { timeout: 15000 }), page.locator("[data-testid=gerar-docx]").click()]);
+  let xmlA = ""; try { xmlA = execFileSync("unzip", ["-p", await dlA.path(), "word/document.xml"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }); } catch { /* */ }
+  ok("matriz: declaração ausente NÃO está no DOCX (gap real)", !xmlA.includes("impeditivo"), `tinhaImpeditivo=${xmlA.includes("impeditivo")}`);
+
+  // clica [Gerar] na matriz → amarra checklist → documento
+  await matrizGerar.first().click();
+  ok("matriz: [Gerar] marca a declaração como 'no documento ✓'", (await page.locator("[data-testid=matriz-item][data-tipo=declaracao] [data-testid=matriz-no-doc]").count()) >= 1);
+
+  // DOCX agora COM a declaração — prova que [Gerar] injetou
+  const [dlB] = await Promise.all([page.waitForEvent("download", { timeout: 15000 }), page.locator("[data-testid=gerar-docx]").click()]);
+  let xmlB = ""; try { xmlB = execFileSync("unzip", ["-p", await dlB.path(), "word/document.xml"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }); } catch { /* */ }
+  ok("matriz [Gerar] INJETOU a declaração no DOCX (item → evidência → gerar)", xmlB.includes("impeditivo"), `agoraImpeditivo=${xmlB.includes("impeditivo")}`);
+
   const body = await page.locator("body").innerText();
   ok("Gate jurídico: peça processual travada + revisar antes de protocolar", /travado|travados/i.test(body) && /revise antes de protocolar/i.test(body));
   await page.screenshot({ path: `${SHOTS}/proposta-gerador.png`, fullPage: true });
