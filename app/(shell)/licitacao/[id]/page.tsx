@@ -625,7 +625,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         {/* ===== PREPARAR PROPOSTA ===== */}
         <section id="proposta" className="scroll-mt-16 space-y-3">
           <SecHead icon={FileText} title="Preparar proposta" q="Monte a proposta seção a seção + matriz de atendimento (item → evidência)." />
-          <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} />
+          <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} objeto={ed?.objeto ?? null} orgao={ed?.orgao?.razao_social ?? null} />
         </section>
 
         {/* ===== APOIO — plano, documentos, consultor, riscos ===== */}

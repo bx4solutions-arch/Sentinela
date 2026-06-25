@@ -150,7 +150,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "configuracoes_page_configuracoespage",
-      "community": 173,
+      "community": 177,
       "norm_label": "configuracoespage()"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 13,
+      "community": 6,
       "norm_label": "deletedocumento()"
     },
     {
@@ -690,7 +690,7 @@
       "source_location": "L163",
       "_origin": "ast",
       "id": "id_actions_adddoclicitacao",
-      "community": 3,
+      "community": 158,
       "norm_label": "adddoclicitacao()"
     },
     {
@@ -700,7 +700,7 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 3,
+      "community": 158,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -710,7 +710,7 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 3,
+      "community": 158,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -727,7 +727,7 @@
       "label": "Parecer",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "id_page_parecer",
       "community": 3,
@@ -737,7 +737,7 @@
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "id_page_brl",
       "community": 3,
@@ -747,17 +747,17 @@
       "label": "dtBR()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "id_page_dtbr",
-      "community": 3,
+      "community": 13,
       "norm_label": "dtbr()"
     },
     {
       "label": "Lic",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L36",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "id_page_lic",
       "community": 3,
@@ -767,7 +767,7 @@
       "label": "EmBreve()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "id_page_embreve",
       "community": 3,
@@ -777,7 +777,7 @@
       "label": "KV()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "id_page_kv",
       "community": 3,
@@ -787,7 +787,7 @@
       "label": "CardKV()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L50",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "id_page_cardkv",
       "community": 3,
@@ -797,7 +797,7 @@
       "label": "SecHead()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L54",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "id_page_sechead",
       "community": 3,
@@ -807,7 +807,7 @@
       "label": "LicitacaoPage()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L63",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "id_page_licitacaopage",
       "community": 3,
@@ -960,7 +960,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_actions",
-      "community": 172,
+      "community": 176,
       "norm_label": "actions.ts"
     },
     {
@@ -970,7 +970,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_actions_monitorarcidade",
-      "community": 172,
+      "community": 176,
       "norm_label": "monitorarcidade()"
     },
     {
@@ -980,7 +980,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "radar_actions_removercidade",
-      "community": 172,
+      "community": 176,
       "norm_label": "removercidade()"
     },
     {
@@ -990,7 +990,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "radar_actions_setstage",
-      "community": 172,
+      "community": 176,
       "norm_label": "setstage()"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "radar_actions_monitorar",
-      "community": 172,
+      "community": 176,
       "norm_label": "monitorar()"
     },
     {
@@ -1010,7 +1010,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "radar_actions_descartar",
-      "community": 172,
+      "community": 176,
       "norm_label": "descartar()"
     },
     {
@@ -1020,7 +1020,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 172,
+      "community": 176,
       "norm_label": "analisar()"
     },
     {
@@ -1030,7 +1030,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 172,
+      "community": 176,
       "norm_label": "reverter()"
     },
     {
@@ -1040,7 +1040,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_city_picker",
-      "community": 172,
+      "community": 176,
       "norm_label": "city-picker.tsx"
     },
     {
@@ -1050,7 +1050,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_city_picker_citypicker",
-      "community": 172,
+      "community": 176,
       "norm_label": "citypicker()"
     },
     {
@@ -1210,7 +1210,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "space_page_spacepage",
-      "community": 4,
+      "community": 172,
       "norm_label": "spacepage()"
     },
     {
@@ -1300,7 +1300,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "onboarding_actions_concluironboarding",
-      "community": 6,
+      "community": 176,
       "norm_label": "concluironboarding()"
     },
     {
@@ -1380,7 +1380,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 172,
+      "community": 6,
       "norm_label": "wizard()"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabslist"
     },
     {
@@ -1720,7 +1720,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "components_ui_tabstrigger",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabstrigger"
     },
     {
@@ -4254,6 +4254,146 @@
       "norm_label": "ok()"
     },
     {
+      "label": "autotest-sala-docs.mjs",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs",
+      "community": 180,
+      "norm_label": "autotest-sala-docs.mjs"
+    },
+    {
+      "label": "readEnv()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_readenv",
+      "community": 180,
+      "norm_label": "readenv()"
+    },
+    {
+      "label": "E",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_e",
+      "community": 180,
+      "norm_label": "e"
+    },
+    {
+      "label": "SB",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_sb",
+      "community": 180,
+      "norm_label": "sb"
+    },
+    {
+      "label": "H",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_h",
+      "community": 180,
+      "norm_label": "h"
+    },
+    {
+      "label": "adminQuery()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_adminquery",
+      "community": 180,
+      "norm_label": "adminquery()"
+    },
+    {
+      "label": "cleanup()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_cleanup",
+      "community": 180,
+      "norm_label": "cleanup()"
+    },
+    {
+      "label": "tenantIdPoll()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_tenantidpoll",
+      "community": 180,
+      "norm_label": "tenantidpoll()"
+    },
+    {
+      "label": "EXIGENCIAS",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_exigencias",
+      "community": 180,
+      "norm_label": "exigencias"
+    },
+    {
+      "label": "conteudo",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_conteudo",
+      "community": 180,
+      "norm_label": "conteudo"
+    },
+    {
+      "label": "CJSON",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_cjson",
+      "community": 180,
+      "norm_label": "cjson"
+    },
+    {
+      "label": "consoleErrors",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_consoleerrors",
+      "community": 180,
+      "norm_label": "consoleerrors"
+    },
+    {
+      "label": "results",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_results",
+      "community": 180,
+      "norm_label": "results"
+    },
+    {
+      "label": "ok()",
+      "file_type": "code",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "e2e_autotest_sala_docs_ok",
+      "community": 180,
+      "norm_label": "ok()"
+    },
+    {
       "label": "autotest-sala.mjs",
       "file_type": "code",
       "source_file": "e2e/autotest-sala.mjs",
@@ -4857,7 +4997,7 @@
       "label": "SUITE",
       "file_type": "code",
       "source_file": "e2e/groups.mjs",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "e2e_groups_suite",
       "community": 163,
@@ -5090,7 +5230,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "lib_ai_server_modelolabel",
-      "community": 158,
+      "community": 177,
       "norm_label": "modelolabel()"
     },
     {
@@ -5210,7 +5350,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "lib_antecipacao_sinallinha",
-      "community": 144,
+      "community": 129,
       "norm_label": "sinallinha"
     },
     {
@@ -5504,6 +5644,86 @@
       "norm_label": "decrypt()"
     },
     {
+      "label": "exigencias.ts",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_exigencias",
+      "community": 178,
+      "norm_label": "exigencias.ts"
+    },
+    {
+      "label": "ClasseExig",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "lib_exigencias_classeexig",
+      "community": 178,
+      "norm_label": "classeexig"
+    },
+    {
+      "label": "ExigClassificada",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "lib_exigencias_exigclassificada",
+      "community": 178,
+      "norm_label": "exigclassificada"
+    },
+    {
+      "label": "CLASSE_META",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_exigencias_classe_meta",
+      "community": 178,
+      "norm_label": "classe_meta"
+    },
+    {
+      "label": "declaracaoTipica()",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "lib_exigencias_declaracaotipica",
+      "community": 178,
+      "norm_label": "declaracaotipica()"
+    },
+    {
+      "label": "classificarExigencia()",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "lib_exigencias_classificarexigencia",
+      "community": 178,
+      "norm_label": "classificarexigencia()"
+    },
+    {
+      "label": "classificarExigencias()",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "lib_exigencias_classificarexigencias",
+      "community": 3,
+      "norm_label": "classificarexigencias()"
+    },
+    {
+      "label": "declaracoesExigidas()",
+      "file_type": "code",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "lib_exigencias_declaracoesexigidas",
+      "community": 178,
+      "norm_label": "declaracoesexigidas()"
+    },
+    {
       "label": "habilitacao.ts",
       "file_type": "code",
       "source_file": "lib/habilitacao.ts",
@@ -5600,7 +5820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_ibge",
-      "community": 172,
+      "community": 176,
       "norm_label": "ibge.ts"
     },
     {
@@ -5610,7 +5830,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_ibge_municipio",
-      "community": 172,
+      "community": 176,
       "norm_label": "municipio"
     },
     {
@@ -5620,7 +5840,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_ibge_municipiosdauf",
-      "community": 172,
+      "community": 144,
       "norm_label": "municipiosdauf()"
     },
     {
@@ -5630,7 +5850,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_ibge_titulocidade",
-      "community": 172,
+      "community": 176,
       "norm_label": "titulocidade()"
     },
     {
@@ -5640,7 +5860,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_ibge_resolvemunicipio",
-      "community": 172,
+      "community": 176,
       "norm_label": "resolvemunicipio()"
     },
     {
@@ -5700,7 +5920,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "lib_inteligencia_inteligenciamercado",
-      "community": 160,
+      "community": 3,
       "norm_label": "inteligenciamercado()"
     },
     {
@@ -5720,7 +5940,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaononicho",
-      "community": 160,
+      "community": 3,
       "norm_label": "gastoorgaononicho()"
     },
     {
@@ -5730,7 +5950,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaosnonicho",
-      "community": 160,
+      "community": 144,
       "norm_label": "gastoorgaosnonicho()"
     },
     {
@@ -6240,7 +6460,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_edital",
-      "community": 176,
+      "community": 158,
       "norm_label": "resumo-edital.ts"
     },
     {
@@ -6250,7 +6470,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_resumo_edital_poder",
-      "community": 176,
+      "community": 158,
       "norm_label": "poder"
     },
     {
@@ -6260,7 +6480,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_resumo_edital_esfera",
-      "community": 176,
+      "community": 158,
       "norm_label": "esfera"
     },
     {
@@ -6270,7 +6490,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_edital_resumoedital",
-      "community": 176,
+      "community": 158,
       "norm_label": "resumoedital"
     },
     {
@@ -6290,7 +6510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_profundo",
-      "community": 176,
+      "community": 158,
       "norm_label": "resumo-profundo.ts"
     },
     {
@@ -6300,7 +6520,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secaometa",
-      "community": 176,
+      "community": 158,
       "norm_label": "secaometa"
     },
     {
@@ -6310,7 +6530,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secoes",
-      "community": 176,
+      "community": 158,
       "norm_label": "secoes"
     },
     {
@@ -6320,7 +6540,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_resumo_profundo_resumoprofundo",
-      "community": 176,
+      "community": 158,
       "norm_label": "resumoprofundo"
     },
     {
@@ -6400,7 +6620,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 13,
+      "community": 6,
       "norm_label": "formatcnae()"
     },
     {
@@ -6720,7 +6940,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_utils_databr",
-      "community": 4,
+      "community": 13,
       "norm_label": "databr()"
     },
     {
@@ -6750,7 +6970,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_utils_diasate",
-      "community": 4,
+      "community": 3,
       "norm_label": "diasate()"
     },
     {
@@ -18419,7 +18639,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -18432,7 +18652,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -18835,7 +19055,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -22889,6 +23109,39 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_exigencias",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_exigencias_classe_meta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "lib_exigencias_classificarexigencias",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -23345,6 +23598,17 @@
       "weight": 1.0,
       "source": "id_page_licitacaopage",
       "target": "lib_consultor_consultarlicitacao"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "id_page_licitacaopage",
+      "target": "lib_exigencias_classificarexigencias"
     },
     {
       "relation": "calls",
@@ -28972,6 +29236,147 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_adminquery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_cjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_consoleerrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_conteudo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_exigencias",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_h",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_ok",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_readenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_sb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs",
+      "target": "e2e_autotest_sala_docs_tenantidpoll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/autotest-sala-docs.mjs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "e2e_autotest_sala_docs_tenantidpoll",
+      "target": "e2e_autotest_sala_docs_adminquery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "e2e/autotest-sala.mjs",
       "source_location": "L21",
       "weight": 1.0,
@@ -30422,6 +30827,109 @@
       "confidence_score": 1.0,
       "source": "lib_crypto_encrypt",
       "target": "lib_crypto_key"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_classe_meta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_classeexig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_classificarexigencia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_classificarexigencias",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_declaracaotipica",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_declaracoesexigidas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_exigencias_exigclassificada",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_proposta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_exigencias",
+      "target": "lib_proposta_declaracoes_tipicas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/exigencias.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "lib_exigencias_classificarexigencia",
+      "target": "lib_exigencias_declaracaotipica",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -35816,9 +36324,9 @@
       "source_file": "BLOQUEIOS.md",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
-      "target": "bloqueios_irp_inten\u00e7\u00e3o_de_registro_de_pre\u00e7os_bloqueado_sem_api_p\u00fablica_probe_2026_06_25_round_2",
-      "confidence_score": 1.0
+      "target": "bloqueios_irp_inten\u00e7\u00e3o_de_registro_de_pre\u00e7os_bloqueado_sem_api_p\u00fablica_probe_2026_06_25_round_2"
     },
     {
       "relation": "contains",
@@ -37166,9 +37674,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico",
-      "target": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela"
     },
     {
       "relation": "contains",
@@ -37176,9 +37684,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_contexto_executivo",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_contexto_executivo"
     },
     {
       "relation": "contains",
@@ -37186,9 +37694,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo"
     },
     {
       "relation": "contains",
@@ -37196,9 +37704,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual"
     },
     {
       "relation": "contains",
@@ -37206,9 +37714,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L193",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia"
     },
     {
       "relation": "contains",
@@ -37216,9 +37724,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L387",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_c_o_que_ignorar",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_parte_c_o_que_ignorar"
     },
     {
       "relation": "contains",
@@ -37226,9 +37734,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L406",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada"
     },
     {
       "relation": "contains",
@@ -37236,9 +37744,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L449",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_e_an\u00e1lise_de_risco_da_migra\u00e7\u00e3o",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_parte_e_an\u00e1lise_de_risco_da_migra\u00e7\u00e3o"
     },
     {
       "relation": "contains",
@@ -37246,9 +37754,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L462",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_resumo_executivo_para_o_bione",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_resumo_executivo_para_o_bione"
     },
     {
       "relation": "contains",
@@ -37256,9 +37764,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "target": "docs_inventario_meujuridico_dois_sistemas_visuais_coexistem_hoje",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_dois_sistemas_visuais_coexistem_hoje"
     },
     {
       "relation": "contains",
@@ -37266,9 +37774,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "target": "docs_inventario_meujuridico_qual_manda",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_qual_manda"
     },
     {
       "relation": "contains",
@@ -37276,9 +37784,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_1_stack_e_estrutura",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_a_1_stack_e_estrutura"
     },
     {
       "relation": "contains",
@@ -37286,9 +37794,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_2_design_tokens_comparativo_preciso",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_a_2_design_tokens_comparativo_preciso"
     },
     {
       "relation": "contains",
@@ -37296,9 +37804,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico"
     },
     {
       "relation": "contains",
@@ -37306,9 +37814,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L161",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas"
     },
     {
       "relation": "contains",
@@ -37316,9 +37824,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L178",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_5_brand_assets",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_a_5_brand_assets"
     },
     {
       "relation": "contains",
@@ -37326,9 +37834,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_admin_e_configura\u00e7\u00e3o",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_admin_e_configura\u00e7\u00e3o"
     },
     {
       "relation": "contains",
@@ -37336,9 +37844,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_base_de_conhecimento_6_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_base_de_conhecimento_6_componentes"
     },
     {
       "relation": "contains",
@@ -37346,9 +37854,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_cards_e_kpis_4_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_cards_e_kpis_4_componentes"
     },
     {
       "relation": "contains",
@@ -37356,9 +37864,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_documento_wizard_de_gera\u00e7\u00e3o_15_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_documento_wizard_de_gera\u00e7\u00e3o_15_componentes"
     },
     {
       "relation": "contains",
@@ -37366,9 +37874,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_intelig\u00eancia_e_ai_8_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_intelig\u00eancia_e_ai_8_componentes"
     },
     {
       "relation": "contains",
@@ -37376,9 +37884,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_layout_e_navega\u00e7\u00e3o_6_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_layout_e_navega\u00e7\u00e3o_6_componentes"
     },
     {
       "relation": "contains",
@@ -37386,9 +37894,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_score_e_conformidade_5_componentes",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_score_e_conformidade_5_componentes"
     },
     {
       "relation": "contains",
@@ -37396,9 +37904,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "target": "docs_inventario_meujuridico_espec\u00edficos_comprador_n\u00e3o_portar",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_espec\u00edficos_comprador_n\u00e3o_portar"
     },
     {
       "relation": "contains",
@@ -37406,9 +37914,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L163",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "target": "docs_inventario_meujuridico_port\u00e1veis_adapta\u00e7\u00e3o_moderada",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_port\u00e1veis_adapta\u00e7\u00e3o_moderada"
     },
     {
       "relation": "contains",
@@ -37416,9 +37924,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_1_l\u00e9xia_rag_jur\u00eddico_o_ativo_mais_valioso",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_1_l\u00e9xia_rag_jur\u00eddico_o_ativo_mais_valioso"
     },
     {
       "relation": "contains",
@@ -37426,9 +37934,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_2_motor_de_gera\u00e7\u00e3o_de_documentos",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_2_motor_de_gera\u00e7\u00e3o_de_documentos"
     },
     {
       "relation": "contains",
@@ -37436,9 +37944,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L272",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_3_motor_de_pesquisa_de_pre\u00e7os",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_3_motor_de_pesquisa_de_pre\u00e7os"
     },
     {
       "relation": "contains",
@@ -37446,9 +37954,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_4_busca_sem\u00e2ntica_embeddings",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_4_busca_sem\u00e2ntica_embeddings"
     },
     {
       "relation": "contains",
@@ -37456,9 +37964,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L312",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_5_agentes_sistema_multi_agente",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_5_agentes_sistema_multi_agente"
     },
     {
       "relation": "contains",
@@ -37466,9 +37974,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L341",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_6_score_de_conformidade_calcular_score_conformidade",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_6_score_de_conformidade_calcular_score_conformidade"
     },
     {
       "relation": "contains",
@@ -37476,9 +37984,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L354",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_7_workers_de_ingest\u00e3o",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_7_workers_de_ingest\u00e3o"
     },
     {
       "relation": "contains",
@@ -37486,9 +37994,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L368",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_8_templates_docs_documentos_reais_como_refer\u00eancia",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_b_8_templates_docs_documentos_reais_como_refer\u00eancia"
     },
     {
       "relation": "contains",
@@ -37496,9 +38004,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L408",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "target": "docs_inventario_meujuridico_o_que_o_sentinela_n\u00e3o_tem_e_o_meujur\u00eddico_entrega",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_o_que_o_sentinela_n\u00e3o_tem_e_o_meujur\u00eddico_entrega"
     },
     {
       "relation": "contains",
@@ -37506,9 +38014,9 @@
       "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
       "source_location": "L421",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "target": "docs_inventario_meujuridico_ordem_recomendada_de_migra\u00e7\u00e3o_quando_aprovado",
-      "confidence_score": 1.0
+      "target": "docs_inventario_meujuridico_ordem_recomendada_de_migra\u00e7\u00e3o_quando_aprovado"
     },
     {
       "relation": "contains",
@@ -45312,5 +45820,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cfcc77cb5d5bc377783631085bef483ad595af4f"
+  "built_at_commit": "9822363b901d4714da0065e1d0f3ba0b1b6533af"
 }

@@ -3,6 +3,7 @@
 // a Matriz de Atendimento liga item→evidência. Peça processual travada (gate).
 import { chromium } from "playwright";
 import { mkdirSync, readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 
 const BASE = "http://localhost:3001";
 const SHOTS = "e2e/shots";
@@ -61,6 +62,32 @@ try {
   ok("Proposta montada por SEÇÕES (pré-preenchidas)", secoes >= 4, `seções=${secoes}`);
   ok("Matriz de atendimento (item → evidência) presente", (await page.locator("[data-testid=matriz-atendimento]").count()) > 0);
 
+  // ===== Fatia 2 — editor por seção (editar · reordenar · adicionar · melhorar com IA) =====
+  const MARK = `QAEDIT${Date.now()}`;
+  const ta = page.locator("[data-testid=secao-textarea]");
+  ok("seções têm textarea EDITÁVEL", (await ta.count()) >= 4, `textareas=${await ta.count()}`);
+  // edita a 3ª seção (objeto) — permanece confirmada até a geração
+  await ta.nth(2).fill(`${MARK} conteudo reescrito pelo usuario`);
+
+  // reordenar (mover ↓ a 1ª seção troca a ordem dos títulos)
+  const titulo = () => page.locator("[data-testid=secao-proposta]").first().locator("p.font-semibold").first().innerText();
+  const tAntes = await titulo();
+  await page.locator("[data-testid=mover-baixo]").first().click();
+  const tDepois = await titulo();
+  ok("reordenar seção (mover ↓ muda a ordem)", tAntes !== tDepois, `antes="${tAntes}" depois="${tDepois}"`);
+
+  // adicionar seção (+1)
+  const nAntes = await page.locator("[data-testid=secao-proposta]").count();
+  await page.locator("[data-testid=add-secao]").click();
+  const nDepois = await page.locator("[data-testid=secao-proposta]").count();
+  ok("adicionar seção (+1)", nDepois === nAntes + 1, `${nAntes}→${nDepois}`);
+
+  // melhorar com IA — graceful: sucesso (reescreve) OU honesto "em ingestão" sem chave; nunca quebra
+  await page.locator("[data-testid=melhorar-ia]").first().click();
+  await page.waitForSelector("[data-testid=ia-status]", { timeout: 25000 });
+  const iaStatus = (await page.locator("[data-testid=ia-status]").first().innerText()).trim();
+  ok("melhorar com IA responde (sucesso ou honesto 'em ingestão')", iaStatus.length > 0, iaStatus.slice(0, 70));
+
   // confirmar/des-confirmar uma seção (interação real)
   await page.locator("[data-testid=confirmar-secao]").first().click();
   // preço definido pela empresa
@@ -76,6 +103,11 @@ try {
   const path = await download.path();
   ok("DOCX tem conteúdo (arquivo salvo)", !!path);
   ok("confirmação 'DOCX gerado' na UI", (await page.locator("[data-testid=docx-gerado]").count()) > 0);
+
+  // PROVA da edição: o texto reescrito pelo usuário foi INJETADO no DOCX (document.xml do .docx/zip)
+  let docXml = "";
+  try { docXml = execFileSync("unzip", ["-p", path, "word/document.xml"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }); } catch (e) { docXml = "ERRO_UNZIP:" + String(e).slice(0, 60); }
+  ok("edição do usuário INJETADA no DOCX (texto editado presente no document.xml)", docXml.includes(MARK), `markerNoDocx=${docXml.includes(MARK)}`);
 
   const body = await page.locator("body").innerText();
   ok("Gate jurídico: peça processual travada + revisar antes de protocolar", /travado|travados/i.test(body) && /revise antes de protocolar/i.test(body));

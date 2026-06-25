@@ -11,6 +11,24 @@ import { buildPromptProfundo, parseProfundo, profundoDeterministico, type Resumo
 
 type EditalCtx = { objeto: string | null; valor_estimado: number | null; modalidade_nome: string | null; orgao: { razao_social: string | null } | null };
 
+/** Melhora a redação de UMA seção da proposta com IA (BYOK). Sem chave → honesto "em ingestão",
+ *  não quebra. NUNCA inventa fato/número/prazo/preço — só reescreve com mais clareza/formalidade. */
+export async function melhorarSecaoProposta(input: { titulo: string; conteudo: string; objeto: string | null; orgao: string | null }): Promise<{ ok: boolean; texto?: string; motivo?: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { ok: false, motivo: "sessão expirada" };
+  if (!temIA()) return { ok: false, motivo: "IA indisponível no servidor (sem chave) — em ingestão." };
+  if (!input.conteudo.trim()) return { ok: false, motivo: "seção vazia" };
+  const system = "Você é redator técnico de propostas para licitações públicas brasileiras (Lei 14.133/2021). Reescreva o texto da seção com mais clareza e formalidade, SEM inventar fatos, números, prazos, quantidades ou compromissos que não estejam no texto original. Não inclua preço. Responda APENAS com o texto reescrito da seção, sem comentários nem títulos.";
+  const prompt = `Seção: ${input.titulo}\nObjeto da licitação: ${input.objeto ?? "—"}\nÓrgão: ${input.orgao ?? "—"}\n\nTexto atual:\n${input.conteudo}\n\nReescreva mantendo TODOS os dados factuais e sem adicionar informação nova.`;
+  try {
+    const texto = (await chamarIA({ system, prompt, maxTokens: 700 })).trim();
+    return texto ? { ok: true, texto } : { ok: false, motivo: "IA retornou vazio" };
+  } catch (e) {
+    return { ok: false, motivo: `falha na IA: ${String(e instanceof Error ? e.message : e).slice(0, 80)}` };
+  }
+}
+
 export async function analisarComIA(formData: FormData) {
   const licitacao_id = String(formData.get("licitacao_id") ?? "");
   if (!licitacao_id) return;
