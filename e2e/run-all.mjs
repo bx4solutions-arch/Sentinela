@@ -1,49 +1,23 @@
-// Runner agregador da suíte e2e — roda TODOS os autotests em sequência e falha
-// se qualquer um falhar. Régua: "rodar a suíte completa e colar a saída".
-// Uso: node e2e/run-all.mjs   (servidor em :3001)
-// CONFIÁVEL (recomendado): `node e2e/run-prod.mjs` roda contra um BUILD DE PRODUÇÃO — estável sob
-// carga (o dev server/Turbopack degrada com HMR após muitas rodadas e gera flake). Este runner tem
-// retry-once para flake residual.
+// Runner por LISTA — roda os testes passados como argumentos (ou a suíte inteira se nenhum),
+// cada um no seu próprio processo (memória liberada por teste), com retry-once p/ flake de carga.
+// Uso:
+//   node e2e/run-all.mjs                         # suíte inteira (precisa do servidor em :3001)
+//   node e2e/run-all.mjs e2e/autotest-radar.mjs  # só esses arquivos
+// CONFIÁVEL: orquestre via `node e2e/run-prod.mjs [--grupo=NOME]` (build 1x + servidor + grupos).
 import { spawnSync } from "node:child_process";
+import { SUITE } from "./groups.mjs";
 
-// Ordem: fluxo base (empresa/onboarding) primeiro, depois as telas.
-// tour.mjs é demo (não faz parte do DoD da suíte) → fora.
-const SUITE = [
-  "e2e/autotest.mjs",            // empresa / onboarding / trocar (fluxo base)
-  "e2e/autotest-radar.mjs",
-  "e2e/autotest-kanban.mjs",
-  "e2e/autotest-dashboard.mjs",
-  "e2e/autotest-dashboard-ui.mjs", // Overhaul design system + Dashboard LicitaPro (desktop/mobile, zero verde)
-  "e2e/autotest-frontend.mjs",
-  "e2e/autotest-licitacao.mjs",
-  "e2e/autotest-backfill.mjs",
-  "e2e/autotest-pasta.mjs",
-  "e2e/autotest-sinais.mjs",
-  "e2e/autotest-integracao.mjs",
-  "e2e/autotest-harvester.mjs",   // Camada 1 nacional + Teste de Aceitação nº1
-  "e2e/autotest-antecipacao.mjs", // Etapa 2: Antecipação (PCA + recorrência) + Linha do Tempo
-  "e2e/autotest-contratos.mjs",   // Bloco 1: Camada 2 (contrato vencendo + quem ganhou)
-  "e2e/autotest-sala.mjs",        // Bloco 2: Sala de Guerra (inteligência) + Dashboard (tarefas)
-  "e2e/autotest-pesquisa.mjs",    // Bloco 3: Pesquisa livre (concorrente/órgão/item)
-  "e2e/autotest-preco.mjs",       // Bloco 4/M2: Motor de Preço (faixa/CV/inexequibilidade)
-  "e2e/autotest-consultor.mjs",   // Bloco 5: Consultor determinístico citando Lei 14.133
-  "e2e/autotest-proposta.mjs",    // Bloco 6: Gerador de proposta seccionado + DOCX
-  "e2e/autotest-space.mjs",       // Sidebar "Space" + rota-lista /space (Espaço Inteligente)
-  "e2e/autotest-space-crm.mjs",   // Space CRM: cabeçalho + Resumo (visual protótipo) + link PNCP + trava real
-  "e2e/autotest-descoberta.mjs",  // Descoberta: recorte + escopo (cidade/estado/nacional) + Pesquisa completa
-  "e2e/autotest-exigencias.mjs",  // Space: aba Exigências (Checklist Vivo: nicho × cofre, tags azul/âmbar/vermelho)
-  "e2e/autotest-resumo-profundo.mjs", // IA inclusa (chave nossa, server-side) + Resumo Profundo 18 seções + cache
-  "e2e/autotest-resumo-upload.mjs", // Resumo Profundo: estado indisponível limpo + upload de PDF (caso Santos/BLL)
-];
+const args = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+const list = args.length ? args : SUITE;
 
 const summary = [];
 const t0 = Date.now();
-for (const file of SUITE) {
+for (const file of list) {
   console.log(`\n\n########## ${file} ##########`);
   const started = Date.now();
   let r = spawnSync("node", [file], { stdio: "inherit" });
   let retried = false;
-  // retry UMA vez: flake de carga (dev server sob 16 testes) passa no re-run; falha 2x = falha real.
+  // retry UMA vez: flake de carga passa no re-run; falha 2x = falha real.
   if (r.status !== 0) {
     console.log(`\n--- ${file} falhou; retry 1x (flake de carga?) ---`);
     retried = true;
@@ -54,12 +28,12 @@ for (const file of SUITE) {
 }
 
 const total = ((Date.now() - t0) / 1000).toFixed(1);
-console.log("\n\n================ SUÍTE COMPLETA ================");
+console.log("\n\n================ RESULTADO ================");
 let fails = 0;
 for (const s of summary) {
   console.log(`${s.passed ? "✅" : "❌"} ${s.file}  (${s.secs}s)${s.retried ? " [retry]" : ""}${s.passed ? "" : `  exit=${s.status}`}`);
   if (!s.passed) fails++;
 }
-console.log(`\n${summary.length} testes · ${total}s total`);
-console.log(fails ? `\n${fails} TESTE(S) FALHARAM` : "\nSUÍTE INTEIRA VERDE ✅");
+console.log(`\n${summary.length} teste(s) · ${total}s`);
+console.log(fails ? `\n${fails} TESTE(S) FALHARAM` : "\nTODOS VERDES ✅");
 process.exit(fails ? 1 : 0);
