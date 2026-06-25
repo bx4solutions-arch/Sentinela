@@ -37,6 +37,7 @@ export const GROUPS = {
     "e2e/autotest-exigencias.mjs",
     "e2e/autotest-proposta.mjs",
     "e2e/autotest-siconfi.mjs",
+    "e2e/autotest-gasto-orgao.mjs",
   ],
   ia: [ // Resumo Profundo — extração REAL (PNCP PDF + OpenAI): pesado e com deps externas → isolado
     "e2e/autotest-resumo-profundo.mjs",

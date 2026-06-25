@@ -54,6 +54,51 @@ async function fetchAno(ibge: string, ano: number): Promise<OrcamentoMunicipio |
   } catch { return null; }
 }
 
+// ---- Despesa por FUNÇÃO orçamentária (RREO Anexo 02) — contexto AMPLO (aproximação nicho→função) ----
+// Mapa nicho→função é APROXIMADO (a função engloba muito além do nicho) → sempre rotular "(aproximação)".
+const SEG_FUNCAO: Record<string, string> = {
+  "material-hospitalar": "Saúde", "controle-de-pragas": "Saúde", "medicamentos": "Saúde", "equipamentos-medicos": "Saúde",
+  "limpeza": "Urbanismo", "limpeza-conservacao": "Urbanismo", "conservacao": "Urbanismo", "coleta-residuos": "Gestão Ambiental",
+  "vigilancia": "Segurança Pública", "seguranca": "Segurança Pública",
+  "merenda": "Educação", "alimentacao-escolar": "Educação", "material-escolar": "Educação", "transporte-escolar": "Educação",
+  "material-de-expediente": "Administração", "ti": "Administração", "tecnologia": "Administração",
+  "obras": "Urbanismo", "engenharia": "Urbanismo", "pavimentacao": "Urbanismo",
+};
+export function funcaoDoSegmento(segmentos: string[] | null | undefined): string | null {
+  for (const s of segmentos ?? []) if (SEG_FUNCAO[s]) return SEG_FUNCAO[s];
+  return null;
+}
+
+export type DespesaFuncao = { funcao: string; dotacao: number | null; liquidada: number | null; exercicio: number; periodo: number };
+const cacheFuncao = new Map<string, { data: DespesaFuncao | null; at: number }>();
+
+async function fetchFuncaoAno(ibge: string, funcao: string, ano: number): Promise<DespesaFuncao | null> {
+  const url = `${BASE}?an_exercicio=${ano}&nr_periodo=6&co_tipo_demonstrativo=RREO&no_anexo=${encodeURIComponent("RREO-Anexo 02")}&id_ente=${ibge}`;
+  try {
+    const r = await fetch(url, { headers: UA, signal: AbortSignal.timeout(9000) });
+    if (!r.ok) return null;
+    const items = ((await r.json().catch(() => null) as { items?: SiconfiItem[] } | null)?.items ?? [])
+      .filter((x) => (x.conta || "").trim().toLowerCase() === funcao.toLowerCase());
+    if (!items.length) return null;
+    const col = (re: RegExp) => { const it = items.find((x) => re.test(x.coluna || "")); return it && it.valor != null ? Number(it.valor) : null; };
+    return { funcao, dotacao: col(/DOTA[ÇC][ÃA]O ATUALIZADA/i), liquidada: col(/LIQUIDADAS ATÉ O BIMESTRE/i), exercicio: Number(items[0].exercicio), periodo: Number(items[0].periodo) };
+  } catch { return null; }
+}
+
+/** Despesa liquidada do município na FUNÇÃO orçamentária (aproximação do nicho). Cacheado por IBGE+função. */
+export async function despesaPorFuncao(codigoIbge: string | null | undefined, funcao: string | null): Promise<DespesaFuncao | null> {
+  const ibge = (codigoIbge ?? "").trim();
+  if (!/^\d{7}$/.test(ibge) || !funcao) return null;
+  const key = `${ibge}|${funcao}`;
+  const hit = cacheFuncao.get(key);
+  if (hit && Date.now() - hit.at < (hit.data ? TTL_OK : TTL_NULL)) return hit.data;
+  const cy = new Date().getFullYear();
+  let data: DespesaFuncao | null = null;
+  for (const ano of [cy - 1, cy - 2]) { data = await fetchFuncaoAno(ibge, funcao, ano); if (data) break; }
+  cacheFuncao.set(key, { data, at: Date.now() });
+  return data;
+}
+
 /** Orçamento real do município (cacheado por IBGE). null = sem registro no Siconfi. */
 export async function orcamentoMunicipio(codigoIbge: string | null | undefined): Promise<OrcamentoMunicipio | null> {
   const ibge = (codigoIbge ?? "").trim();

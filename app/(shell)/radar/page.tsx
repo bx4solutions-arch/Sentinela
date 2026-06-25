@@ -4,7 +4,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, Badge, Button, Select, Input } from "@/components/ui";
 import { SEG_LABEL } from "@/lib/segmentos";
 import { municipiosDaUf } from "@/lib/ibge";
-import { expandirBusca, ufDoTexto } from "@/lib/nichos";
+import { expandirBusca, ufDoTexto, tokensDosSegmentos } from "@/lib/nichos";
+import { gastoOrgaosNoNicho } from "@/lib/inteligencia";
 import { buscarPCA, buscarRecorrencia, buscarContratosVencendo, diasAteVencer, type PcaItem, type RecorrenciaItem, type ContratoVencendo, type Filtro } from "@/lib/antecipacao";
 import { itensAplicaveis, statusItem } from "@/lib/habilitacao";
 import { sinaisEdital, SINAL_BADGE } from "@/lib/sinais";
@@ -146,6 +147,10 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const stageBy: Record<string, string> = {};
   for (const o of oports ?? []) stageBy[o.numero_controle_pncp] = o.stage;
   const visiveis = editais.filter((e) => stageBy[e.numero_controle_pncp] !== "descartado");
+
+  // Gasto de cada órgão visível NO NICHO do recorte (batch, 1 query) — muda conforme o segmento.
+  const cnpjsVisiveis = [...new Set(visiveis.map((e) => e.cnpj_orgao).filter(Boolean) as string[])];
+  const gastoByOrgao = await gastoOrgaosNoNicho(supabase, cnpjsVisiveis, tokensDosSegmentos(segmentos), 12);
 
   // Pilar 2 — Antecipação: PCA (planejado) + recorrência (homologados). Só busca se for a aba ativa.
   const filtro: Filtro = { busca, segmentos, uf, prontas, usandoFallbackUf, ufBusca: ufBusca ?? uf };
@@ -320,6 +325,11 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
                     <span className="ml-auto">{e.data_publicacao ? dataBR(e.data_publicacao.slice(0, 10)) : ""}</span>
                   </div>
                   <p className="mt-2 line-clamp-2 text-sm">{e.objeto}</p>
+                  {e.cnpj_orgao && gastoByOrgao[e.cnpj_orgao]?.total > 0 && (
+                    <p className="mt-1.5 text-xs text-primary" data-testid="card-gasto-nicho">
+                      Este órgão gastou <strong>{brl(gastoByOrgao[e.cnpj_orgao].total)}</strong> no seu nicho em 12m · {gastoByOrgao[e.cnpj_orgao].n} contrato(s)
+                    </p>
+                  )}
                   <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
                     <span className="font-semibold text-foreground">{valor ?? "Valor não informado"}</span>
                     {e.link_origem && <a href={e.link_origem} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline"><ExternalLink className="size-3" /> Origem</a>}

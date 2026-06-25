@@ -14,8 +14,9 @@ import { temIA } from "@/lib/ai-server";
 import { SECOES, NAO_INFO, type ResumoProfundo } from "@/lib/resumo-profundo";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { tokensDosSegmentos } from "@/lib/nichos";
-import { inteligenciaMercado } from "@/lib/inteligencia";
-import { orcamentoMunicipio } from "@/lib/siconfi";
+import { SEG_LABEL } from "@/lib/segmentos";
+import { inteligenciaMercado, gastoOrgaoNoNicho } from "@/lib/inteligencia";
+import { orcamentoMunicipio, despesaPorFuncao, funcaoDoSegmento } from "@/lib/siconfi";
 import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
 import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
@@ -110,6 +111,19 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   // §1 "O órgão paga?" — orçamento REAL do município (Siconfi/Tesouro), por código IBGE do payload. Cacheado.
   const codigoIbge = ((ed?.payload as Record<string, unknown> | null)?.unidadeOrgao as { codigoIbge?: string } | undefined)?.codigoIbge ?? null;
   const orcamento = await orcamentoMunicipio(codigoIbge);
+
+  // Quanto ESTE órgão gasta no SEU nicho: (1) gasto real PNCP (gold), (2) PCA planejado, (3) função orçamentária (aprox).
+  const gasto = await gastoOrgaoNoNicho(supabase, ed?.cnpj_orgao ?? null, intelTokens, 12);
+  const funcaoNicho = funcaoDoSegmento(company?.segmentos ?? []);
+  const despFuncao = await despesaPorFuncao(codigoIbge, funcaoNicho);
+  // PCA planejado do órgão no nicho (condicional — não inventa se não houver)
+  let pcaTotal = 0, pcaN = 0;
+  if (ed?.cnpj_orgao && intelTokens.length) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: pr } = await (supabase.from("raw_pca").select("valor_total").eq("cnpj_orgao", ed.cnpj_orgao).or(intelTokens.map((t) => `descricao_item.ilike.*${t}*`).join(",")) as any).limit(100);
+    for (const x of (pr ?? []) as { valor_total: number | null }[]) { if (x.valor_total) { pcaTotal += Number(x.valor_total) || 0; pcaN++; } }
+  }
+  const nichoLabel = (company?.segmentos ?? []).filter((s: string) => s !== "generico").map((s: string) => SEG_LABEL[s] ?? s).join(", ") || "seu nicho";
 
   // Consultor (Bloco 5) — determinístico, citando a Lei 14.133.
   const respostasConsultor = consultarLicitacao({
@@ -406,6 +420,27 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             )}
             {temExtracao && profundo?.secoes.orgao_capag && profundo.secoes.orgao_capag !== NAO_INFO && <p className="text-sm text-muted-foreground">{profundo.secoes.orgao_capag}</p>}
             <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Orçamento robusto indica <strong>saúde fiscal</strong> — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor. A nota CAPAG (dataset próprio do Tesouro) entra na sequência.</p>
+          </CardContent></Card>
+
+          {/* Quanto este órgão gasta NO SEU NICHO — 3 fontes (real → planejado → aproximação) */}
+          <Card data-testid="gasto-nicho"><CardContent className="space-y-3 p-4">
+            <p className="flex items-center gap-2 text-sm font-semibold"><DollarSign className="size-4 text-primary" /> Quanto este órgão gasta em {nichoLabel}</p>
+            {/* #1 GOLD — gasto histórico real (PNCP) */}
+            {gasto.temDado ? (
+              <div data-testid="gasto-real">
+                <p className="text-2xl font-bold leading-none text-primary">{brl(gasto.total)}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{ed?.orgao?.razao_social ?? "Este órgão"} comprou em <strong>{nichoLabel}</strong> nos últimos {gasto.meses} meses · {gasto.n} {gasto.fonte === "contratos" ? "contrato(s)" : "edital(is) homologado(s)"} · ticket médio {brl(gasto.ticketMedio)}</p>
+                <Badge variant="muted" className="mt-1">fonte: {gasto.fonte === "contratos" ? "contratos firmados (PNCP)" : "homologados (PNCP)"}</Badge>
+              </div>
+            ) : (
+              <p className="rounded-md border border-dashed p-3 text-sm text-muted-foreground" data-testid="gasto-sem-registro">Sem registro de compra desse nicho neste órgão (PNCP, últimos 12 meses). <strong>Não inventamos um valor.</strong></p>
+            )}
+            <div className="divide-y border-t pt-1">
+              <KV label="Planejado (PCA do órgão no nicho)" value={pcaN > 0 ? `${brl(pcaTotal)} · ${pcaN} item(ns)` : <Badge variant="muted">não declarado</Badge>} />
+              <KV label="Dotação reservada no edital" value={temExtracao ? "ver Resumo Profundo (texto do edital)" : <Badge variant="muted">não informado no edital</Badge>} />
+              <KV label={despFuncao ? `Função “${despFuncao.funcao}” (aproximação)` : "Função orçamentária"} value={despFuncao ? `${brl(despFuncao.liquidada)} liquidado/ano · exercício ${despFuncao.exercicio}` : <Badge variant="muted">{funcaoNicho ? "sem dado no Siconfi" : "em ingestão"}</Badge>} />
+            </div>
+            <p className="text-xs text-muted-foreground">“Orçamento de {nichoLabel}” <strong>não existe como número público fechado</strong>. Mostramos a melhor proxy real (gasto histórico do órgão), o planejado (PCA) e a função orçamentária — esta <strong>engloba muito além do nicho</strong> (aproximação).</p>
           </CardContent></Card>
         </section>
 

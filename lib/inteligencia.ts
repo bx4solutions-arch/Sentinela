@@ -59,3 +59,56 @@ export async function inteligenciaMercado(sb: SB, opts: { tokens: string[]; uf: 
 
   return { concorrentes, faixa, contratoAtual, amostra: rows.length };
 }
+
+// ---- Gasto do ÓRGÃO no NICHO (fonte GOLD: contratos firmados do PNCP, fallback homologados) ----
+export type GastoOrgaoNicho = {
+  total: number; n: number; ticketMedio: number | null;
+  fonte: "contratos" | "homologados" | null; meses: number; temDado: boolean;
+};
+
+/** Quanto ESTE órgão gastou no SEU nicho nos últimos `meses` (contratos firmados; fallback homologados).
+ *  É a melhor proxy real de "quanto ele compra disso". Sem registro → temDado=false (não forja). */
+export async function gastoOrgaoNoNicho(sb: SB, cnpjOrgao: string | null, tokens: string[], meses = 12): Promise<GastoOrgaoNicho> {
+  const vazio: GastoOrgaoNicho = { total: 0, n: 0, ticketMedio: null, fonte: null, meses, temDado: false };
+  if (!cnpjOrgao || !tokens.length) return vazio;
+  const desde = new Date(Date.now() - meses * 30 * 86400000).toISOString().slice(0, 10);
+  const orTokens = tokens.map((t) => `objeto.ilike.*${t}*`).join(",");
+
+  // 1) contratos FIRMADOS do órgão no nicho (gold)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data: cd } = await (sb.from("contratos").select("valor_global, data_assinatura, data_vigencia_inicio").eq("cnpj_orgao", cnpjOrgao).or(orTokens) as any).limit(500);
+  const contratos = ((cd ?? []) as { valor_global: number | null; data_assinatura: string | null; data_vigencia_inicio: string | null }[])
+    .filter((r) => { const d = (r.data_assinatura ?? r.data_vigencia_inicio ?? "").slice(0, 10); return d >= desde; });
+  if (contratos.length) {
+    const total = contratos.reduce((s, r) => s + (Number(r.valor_global) || 0), 0);
+    return { total, n: contratos.length, ticketMedio: contratos.length ? Math.round(total / contratos.length) : null, fonte: "contratos", meses, temDado: total > 0 };
+  }
+
+  // 2) fallback: editais HOMOLOGADOS do órgão no nicho (proxy de compra adjudicada)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data: hd } = await (sb.from("raw_editais").select("valor_homologado, data_publicacao").eq("cnpj_orgao", cnpjOrgao).not("valor_homologado", "is", null).or(orTokens) as any).limit(500);
+  const homol = ((hd ?? []) as { valor_homologado: number | null; data_publicacao: string | null }[])
+    .filter((r) => (r.data_publicacao ?? "").slice(0, 10) >= desde && (Number(r.valor_homologado) || 0) > 0);
+  if (homol.length) {
+    const total = homol.reduce((s, r) => s + (Number(r.valor_homologado) || 0), 0);
+    return { total, n: homol.length, ticketMedio: Math.round(total / homol.length), fonte: "homologados", meses, temDado: true };
+  }
+  return vazio;
+}
+
+/** Batch: gasto no nicho de VÁRIOS órgãos numa query só (p/ os cards do Radar). Map cnpj → {total, n}. */
+export async function gastoOrgaosNoNicho(sb: SB, cnpjs: string[], tokens: string[], meses = 12): Promise<Record<string, { total: number; n: number }>> {
+  const out: Record<string, { total: number; n: number }> = {};
+  if (!cnpjs.length || !tokens.length) return out;
+  const desde = new Date(Date.now() - meses * 30 * 86400000).toISOString().slice(0, 10);
+  const orTokens = tokens.map((t) => `objeto.ilike.*${t}*`).join(",");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await (sb.from("contratos").select("cnpj_orgao, valor_global, data_assinatura, data_vigencia_inicio").in("cnpj_orgao", cnpjs.slice(0, 60)).or(orTokens) as any).limit(2000);
+  for (const r of (data ?? []) as { cnpj_orgao: string | null; valor_global: number | null; data_assinatura: string | null; data_vigencia_inicio: string | null }[]) {
+    const d = (r.data_assinatura ?? r.data_vigencia_inicio ?? "").slice(0, 10);
+    if (!r.cnpj_orgao || d < desde) continue;
+    const o = (out[r.cnpj_orgao] ??= { total: 0, n: 0 });
+    o.total += Number(r.valor_global) || 0; o.n++;
+  }
+  return out;
+}
