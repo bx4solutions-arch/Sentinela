@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782391997.5718236,
-    "ast_hash": "fc2380a573d5c013b04430d478fb24e7",
+    "mtime": 1782396577.1408098,
+    "ast_hash": "a8e59905db9618fdbec1460414a027ea",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -1100,8 +1100,8 @@
     "semantic_hash": ""
   },
   "e2e/groups.mjs": {
-    "mtime": 1782358118.0824087,
-    "ast_hash": "ee0b9f728987aa2d1c40def3150b5990",
+    "mtime": 1782396652.7637756,
+    "ast_hash": "6f80eaeea87abbc80c00dad991914055",
     "semantic_hash": ""
   },
   "lib/siconfi.ts": {
@@ -1117,6 +1117,16 @@
   "docs/INVENTARIO-MEUJURIDICO.md": {
     "mtime": 1782391975.4645858,
     "ast_hash": "98a7ddfd03fdf584384171cfbf3dd283",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-sala-docs.mjs": {
+    "mtime": 1782396996.0778418,
+    "ast_hash": "a67ae6de5196d50c4832c5d33ae9400e",
+    "semantic_hash": ""
+  },
+  "lib/exigencias.ts": {
+    "mtime": 1782396544.5242293,
+    "ast_hash": "6ca70041cf89c4929cf026bbe498f35f",
     "semantic_hash": ""
   }
 }

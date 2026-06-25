@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782357741.772623,
-    "ast_hash": "0e9ae03541fa4f255211de9924ae93be",
+    "mtime": 1782391997.5718236,
+    "ast_hash": "fc2380a573d5c013b04430d478fb24e7",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -420,8 +420,8 @@
     "semantic_hash": "1797f72f4797fbd8aa3f959950311cc5"
   },
   "BLOQUEIOS.md": {
-    "mtime": 1782324580.168742,
-    "ast_hash": "3e0e3434b106f4cbc196601bf47695df",
+    "mtime": 1782392016.3333673,
+    "ast_hash": "d3582bb5b7524ee0837dde0e236125c7",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -1112,6 +1112,11 @@
   "e2e/autotest-gasto-orgao.mjs": {
     "mtime": 1782358111.4031298,
     "ast_hash": "88cb5e8a2d29f771a4473193bd6e12f0",
+    "semantic_hash": ""
+  },
+  "docs/INVENTARIO-MEUJURIDICO.md": {
+    "mtime": 1782391975.4645858,
+    "ast_hash": "98a7ddfd03fdf584384171cfbf3dd283",
     "semantic_hash": ""
   }
 }

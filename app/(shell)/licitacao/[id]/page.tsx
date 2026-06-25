@@ -20,6 +20,7 @@ import { orcamentoMunicipio, despesaPorFuncao, funcaoDoSegmento } from "@/lib/si
 import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
 import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
+import { classificarExigencias, CLASSE_META } from "@/lib/exigencias";
 import { PropostaGerador } from "./proposta-gerador";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo, gerarResumoProfundoUpload } from "./actions";
 import { monitorar } from "../../radar/actions";
@@ -137,6 +138,8 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
     { numero: lic.numero_controle_pncp, objeto: ed?.objeto ?? null, orgao: ed?.orgao?.razao_social ?? null, modalidade: ed?.modalidade_nome ?? null, numeroCompra: resumo?.identificacao.numero_compra ?? null },
     intel.faixa,
   );
+  // Checklist Inteligente: classifica as exigências ESPECÍFICAS extraídas do edital em estados acionáveis.
+  const exigClassificadas = classificarExigencias(profundo?.exigencias_especificas);
   const matrizProposta = itensStatus.map((it) => {
     const atendido = it.st !== "ausente" && it.st !== "vencida";
     return { label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
@@ -562,15 +565,23 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
               </ul>
             </CardContent></Card>
             <Card><CardContent className="p-4">
-              {profundo && profundo.exigencias_especificas.length > 0 ? (
+              {exigClassificadas.length > 0 ? (
                 <div data-testid="exig-especificas">
-                  <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted">extraídas do edital</Badge></div>
-                  <ul className="mt-2 space-y-1.5">
-                    {profundo.exigencias_especificas.map((e, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm"><Badge variant="outline">edital</Badge><span className="flex-1">{e}</span></li>
+                  <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted">{exigClassificadas.length} lidas do edital</Badge></div>
+                  <ul className="mt-2 divide-y rounded-md border">
+                    {exigClassificadas.map((e, i) => (
+                      <li key={i} className="flex flex-wrap items-center gap-x-3 gap-y-1 p-2.5 text-sm" data-testid="exig-item" data-classe={e.classe}>
+                        <Badge variant={e.geravel ? "default" : "outline"} data-testid={`exig-classe-${e.classe}`}>{CLASSE_META[e.classe].label}</Badge>
+                        <span className="min-w-0 flex-1">{e.texto}</span>
+                        {e.geravel
+                          ? <Button asChild size="sm" variant="outline" data-testid="exig-gerar"><Link href="#proposta">{e.acao}</Link></Button>
+                          : e.classe === "certidao"
+                            ? <Button asChild size="sm" variant="ghost"><Link href="/empresa">{e.acao}</Link></Button>
+                            : <span className="text-xs text-muted-foreground">{e.acao}</span>}
+                      </li>
                     ))}
                   </ul>
-                  <p className="mt-2 text-xs text-muted-foreground">Lidas do texto do edital no Resumo Profundo. Cruze com o seu cofre conforme aplicável.</p>
+                  <p className="mt-2 text-xs text-muted-foreground">Lidas do texto do edital (Resumo Profundo) e classificadas: <strong>declaração</strong> a gerar aqui, <strong>certidão</strong> no cofre, <strong>atestado/índice/vistoria</strong> a providenciar. Nada some sem você ver — o que não dá pra classificar fica como “verificar”, não inventamos estado.</p>
                 </div>
               ) : (
                 <>
