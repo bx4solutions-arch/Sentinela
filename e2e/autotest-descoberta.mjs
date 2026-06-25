@@ -70,6 +70,13 @@ try {
   ok("Descoberta: recorte traz oportunidades (cards > 0)", cardsCidade > 0, `cards=${cardsCidade}`);
   const contCidade = numDe(await page.locator("[data-testid=recorte-contagem]").innerText());
 
+  // ===== RADAR v2: hero + uploadZone honesta + filtros de ouro REAIS =====
+  ok("Radar v2: hero 'Radar de Oportunidades'", /Radar de Oportunidades/.test(await page.locator("main").innerText()));
+  ok("Radar v2: uploadZone 'Importar licitação' presente (estado honesto 'em ingestão')", (await page.locator("[data-testid=radar-upload]").count()) > 0 && /em ingest[ãa]o/i.test(await page.locator("[data-testid=radar-upload]").innerText()));
+  ok("Radar v2: filtros de ouro com 5 KPIs", (await page.locator("[data-testid=radar-filtros-ouro] .kpi").count()) === 5);
+  const filtroAbertas = numDe(await page.locator("[data-testid=filtro-abertas]").innerText());
+  ok("Radar v2: filtro 'Editais abertos' = total do recorte (real, não forjado)", filtroAbertas === contCidade, `filtro=${filtroAbertas} contagem=${contCidade}`);
+
   // sem vencidas no recorte
   const venc = await adminQuery(`select numero_controle_pncp from raw_editais where segmentos && array['material-hospitalar'] and cidade='São Paulo' and valor_homologado is null and data_encerramento is not null and data_encerramento < now() limit 120;`);
   const main1 = await page.locator("main").innerText();

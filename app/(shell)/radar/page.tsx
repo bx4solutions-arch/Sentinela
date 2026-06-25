@@ -147,6 +147,9 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const stageBy: Record<string, string> = {};
   for (const o of oports ?? []) stageBy[o.numero_controle_pncp] = o.stage;
   const visiveis = editais.filter((e) => stageBy[e.numero_controle_pncp] !== "descartado");
+  // Filtros de ouro (v2) — contagens REAIS do recorte (sem forjar).
+  const monitorandoN = Object.values(stageBy).filter((s) => s === "monitorando").length;
+  const descartadasN = Object.values(stageBy).filter((s) => s === "descartado").length;
 
   // Gasto de cada órgão visível NO NICHO do recorte (batch, 1 query) — muda conforme o segmento.
   const cnpjsVisiveis = [...new Set(visiveis.map((e) => e.cnpj_orgao).filter(Boolean) as string[])];
@@ -170,7 +173,33 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
   const municipios = await municipiosDaUf(uf);
 
   return (
-    <div className="space-y-4">
+    <div className="v2 space-y-4">
+      {/* Hero v2 */}
+      <div className="hero">
+        <div>
+          <h1>Radar de Oportunidades</h1>
+          <p>O Sentinela mostra o que combina com a sua empresa: editais abertos, contratos vencendo, recorrência e baixa concorrência — só do seu recorte ({segmentos.map((s) => SEG_LABEL[s] ?? s).join(", ")}).</p>
+        </div>
+      </div>
+
+      {/* Importar licitação — uploadZone v2 (estado honesto: backend de importação em ingestão) */}
+      <div className="uploadZone" data-testid="radar-upload">
+        <div>
+          <b>Tem um edital fora do radar?</b>
+          <span>A importação de PDF/anexos para criar a Pasta Inteligente automaticamente está <strong>em ingestão</strong>. Por enquanto, monitore ou analise os editais do seu recorte abaixo — eles já abrem o Space completo.</span>
+        </div>
+        <Badge variant="muted" data-testid="radar-upload-ingestao">Importar — em ingestão</Badge>
+      </div>
+
+      {/* Filtros de ouro — contagens REAIS do recorte */}
+      <div className="kpis" data-testid="radar-filtros-ouro">
+        <div className="kpi"><label>Editais abertos no recorte</label><strong data-testid="filtro-abertas">{totalRecorte}</strong><small>no escopo {ESCOPO_LABEL[escopo]}</small></div>
+        <div className="kpi"><label>Monitorando</label><strong data-testid="filtro-monitorando">{monitorandoN}</strong><small>na sua lista de acompanhamento</small></div>
+        <div className="kpi"><label>Órgãos recorrentes</label><strong data-testid="filtro-recorrentes">{recorrentes.size}</strong><small>com histórico no seu nicho</small></div>
+        <div className="kpi"><label>Descartadas por você</label><strong data-testid="filtro-descartadas">{descartadasN}</strong><small>fora do seu perfil</small></div>
+        <div className="kpi"><label>Cidades no recorte</label><strong data-testid="filtro-cidades">{cidadesMonitoradas.length}</strong><small>{coletando.length > 0 ? `${coletando.length} coletando` : "monitoradas"}</small></div>
+      </div>
+
       {/* Busca livre por nicho/objeto + UF (cruza o recorte; sinônimos) */}
       <Card>
         <CardContent className="p-4">
