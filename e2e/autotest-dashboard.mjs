@@ -107,8 +107,16 @@ try {
     ok("HOME: score rotulado 'estimativa' (não 'chance de ganhar')", /estimativa/i.test(oppTxt) && !/chance de ganhar/i.test(body));
   }
   ok("HOME: SEM banner mock/ilustrativo", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
-  ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
   await page.screenshot({ path: `${SHOTS}/dashboard-01.png`, fullPage: true });
+
+  // RESULTADO: clicar no CARD (corpo) abre a oportunidade no Space
+  if (cards > 0) {
+    await page.locator("[data-testid=opp-abrir]").first().click();
+    await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
+    ok("HOME: clicar no card abre a oportunidade no Space (/licitacao/:id)", /\/licitacao\/[0-9a-f-]+/.test(page.url()), page.url());
+    ok("HOME→Space: Raio-X renderiza após o clique", (await page.locator("[data-testid=raiox-relatorio]").count()) > 0);
+  }
+  ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
 } catch (e) {
   ok("FLUXO DASHBOARD", false, String(e));
   await page.screenshot({ path: `${SHOTS}/dashboard-ERRO.png`, fullPage: true }).catch(() => {});

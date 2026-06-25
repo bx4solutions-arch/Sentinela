@@ -167,21 +167,26 @@ export default async function DashboardPage() {
             {atacar.map((e, idx) => {
               const sc = score(e.data_publicacao);
               const mon = stageByNum[e.numero_controle_pncp] === "monitorando";
+              // 1 form por card (action=analisar → abre o Space). Corpo clicável = submit; Monitorar
+              // usa formAction p/ não aninhar forms. Clicar em qualquer lugar do card abre a oportunidade.
               return (
-                <div className={`opp${idx === 0 ? " hot" : ""}`} key={e.numero_controle_pncp} data-testid="oportunidade-card">
-                  <div className="oppTop">
-                    <div><h3>{e.orgao?.razao_social ?? "Órgão"}</h3><div className="loc">{e.cidade ?? "—"}</div></div>
-                    <div><div className="score" style={sc < 80 ? { borderColor: "var(--v2-orange)" } : undefined}>{sc}<small>/100</small></div><span className="scoreNote">estimativa</span></div>
-                  </div>
-                  <div className="obj">{e.objeto ?? "Edital do seu nicho"}</div>
-                  <div className="meta"><span>Valor estimado</span><span>{brl(e.valor_estimado)}</span><span>Prontidão</span><span>{pct}%</span><span>Próxima ação</span><span>Analisar</span></div>
+                <form action={analisar} className={`opp${idx === 0 ? " hot" : ""}`} key={e.numero_controle_pncp} data-testid="oportunidade-card">
+                  <input type="hidden" name="numero" value={e.numero_controle_pncp} />
+                  <button type="submit" className="oppBody" data-testid="opp-abrir" title="Abrir no Space">
+                    <div className="oppTop">
+                      <div><h3>{e.orgao?.razao_social ?? "Órgão"}</h3><div className="loc">{e.cidade ?? "—"}</div></div>
+                      <div><div className="score" style={sc < 80 ? { borderColor: "var(--v2-orange)" } : undefined}>{sc}<small>/100</small></div><span className="scoreNote">estimativa</span></div>
+                    </div>
+                    <div className="obj">{e.objeto ?? "Edital do seu nicho"}</div>
+                    <div className="meta"><span>Valor estimado</span><span>{brl(e.valor_estimado)}</span><span>Prontidão</span><span>{pct}%</span><span>Próxima ação</span><span>Analisar</span></div>
+                  </button>
                   <div className="oppBtns">
                     {mon
                       ? <span className="btn" style={{ cursor: "default" }}>👁 Monitorando</span>
-                      : <form action={monitorar}><input type="hidden" name="numero" value={e.numero_controle_pncp} /><button className="btn" type="submit" data-testid="opp-monitorar" style={{ width: "100%" }}>Monitorar</button></form>}
-                    <form action={analisar}><input type="hidden" name="numero" value={e.numero_controle_pncp} /><button className="btn blue" type="submit" data-testid="opp-analisar" style={{ width: "100%" }}>Analisar</button></form>
+                      : <button type="submit" formAction={monitorar} className="btn" data-testid="opp-monitorar">Monitorar</button>}
+                    <button type="submit" className="btn blue" data-testid="opp-analisar">Analisar</button>
                   </div>
-                </div>
+                </form>
               );
             })}
           </div>
