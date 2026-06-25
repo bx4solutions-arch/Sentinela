@@ -53,3 +53,6 @@ __pycache__/
 
 # Artefatos de autoteste (screenshots)
 e2e/shots/
+
+# viz gerado do graphify (1.4MB) — graph.json basta para as queries
+graphify-out/graph.html

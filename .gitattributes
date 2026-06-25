@@ -1,0 +1,3 @@
+# Stats de linguagem (GitHub Linguist): não contar artefatos gerados nem protótipos/docs
+graphify-out/** linguist-generated=true
+docs/**/*.html linguist-documentation=true
