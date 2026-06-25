@@ -262,6 +262,20 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         </CardContent></Card>
       </div>
 
+      {/* ===== Veredito v2 (workspaceHero) — estimativa calibrada, dado real do recorte ===== */}
+      <div className="v2" data-testid="space-veredito-v2">
+        <div className="verdict">
+          <div className="verdictCard">
+            <label>Veredito (estimativa)</label>
+            <b style={{ color: statusEmp === "apto" ? "#047857" : statusEmp === "ressalvas" ? "#ca8a04" : "var(--v2-red)" }}>
+              {statusEmp === "apto" ? "Forte candidato" : statusEmp === "ressalvas" ? "Participar com ressalvas" : "Atenção — habilitação incompleta"}
+            </b>
+          </div>
+          <div className="verdictCard"><label>Prontidão da empresa</label><b data-testid="veredito-prontidao">{pct}%</b></div>
+          <div className="verdictCard"><label>Risco principal</label><b>{faltam.length > 0 ? faltam[0].label : "Sem impedimento típico"}</b></div>
+        </div>
+      </div>
+
       {/* ===== RAIO-X: um relatório rolável (vale a pena? eu ganho? o órgão paga?) ===== */}
       <nav className="sticky top-0 z-20 -mx-4 flex gap-1 overflow-x-auto border-b bg-background/95 px-4 py-2 backdrop-blur md:mx-0 md:rounded-lg md:border" data-testid="raiox-nav">
         {NAV.map(([anchor, label]) => (

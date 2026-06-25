@@ -31,6 +31,10 @@ try {
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   const body = await page.locator("body").innerText();
   ok("workspace: Raio-X (relatório único) com seções Resumo Profundo/Você/Veredito/Documentos", (await page.locator("[data-testid=raiox-relatorio]").count()) > 0 && /raio-x/i.test(body) && body.includes("Resumo Profundo") && body.includes("Veredito") && body.includes("Documentos"));
+  // SPACE v2: fileira de veredito (workspaceHero) com dado real (Veredito · Prontidão % · Risco principal)
+  ok("Space v2: veredito com 3 cards (Veredito/Prontidão/Risco)", (await page.locator("[data-testid=space-veredito-v2] .verdictCard").count()) === 3);
+  const vTxt = await page.locator("[data-testid=space-veredito-v2]").innerText();
+  ok("Space v2: veredito rotulado 'estimativa' + prontidão % real (não chance forjada)", /estimativa/i.test(vTxt) && /\d+%/.test(await page.locator("[data-testid=veredito-prontidao]").innerText()) && /Risco principal/i.test(vTxt), vTxt.replace(/\n/g, " ").slice(0, 80));
   // IA INCLUSA (chave nossa, sem BYOK): "Analisar com IA" presente; "Ligar IA" não existe mais
   ok("IA inclusa: 'Analisar com IA' presente e sem 'Ligar IA'", (await page.locator("button:has-text('Analisar com IA')").count()) >= 1 && (await page.locator("text=Ligar IA").count()) === 0);
   await page.screenshot({ path: `${SHOTS}/licitacao-01.png`, fullPage: true });
