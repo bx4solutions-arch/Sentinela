@@ -106,6 +106,12 @@ try {
     ok("HOME: card traz órgão + objeto + valor reais", oppTxt.length > 20 && /R\$|—/.test(oppTxt), oppTxt.replace(/\n/g, " ").slice(0, 70));
     ok("HOME: score rotulado 'estimativa' (não 'chance de ganhar')", /estimativa/i.test(oppTxt) && !/chance de ganhar/i.test(body));
   }
+  // proporção: objeto longo NÃO estica o card — alturas uniformes (clamp de 3 linhas)
+  if (cards >= 2) {
+    const alturas = await page.locator("[data-testid=oportunidade-card]").evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().height)));
+    const dif = Math.max(...alturas) - Math.min(...alturas);
+    ok("HOME: cards com altura UNIFORME (objeto longo encoberto, não estica)", dif <= 8, `alturas=${alturas.join("/")} dif=${dif}`);
+  }
   ok("HOME: SEM banner mock/ilustrativo", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
   await page.screenshot({ path: `${SHOTS}/dashboard-01.png`, fullPage: true });
 
