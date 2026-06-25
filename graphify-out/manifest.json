@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782412475.2658677,
-    "ast_hash": "ceb56b567c15815453642bcf69b7c6cb",
+    "mtime": 1782415527.3128684,
+    "ast_hash": "d0cd48235f22cf54184c603031213580",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -1102,6 +1102,11 @@
   "docs/blueprint/sentinela_5_telas_conectadas_v2.html": {
     "mtime": 1782401855.0664718,
     "ast_hash": "4b0d09fa08c9c5f297e9384afed6d9e1",
+    "semantic_hash": ""
+  },
+  "app/(shell)/licitacao/[id]/raiox-nav.tsx": {
+    "mtime": 1782415514.7585244,
+    "ast_hash": "6364394ca3d9f71d6daa808063f2893d",
     "semantic_hash": ""
   }
 }

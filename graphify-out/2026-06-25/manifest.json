@@ -24,19 +24,9 @@
     "ast_hash": "10a3f10a271917ad736b810dce3bb2e9",
     "semantic_hash": ""
   },
-  "app/(shell)/consultor/page.tsx": {
-    "mtime": 1781985621.4861023,
-    "ast_hash": "4ebfa762b4c88bfdaa75364650ee5d26",
-    "semantic_hash": "4ebfa762b4c88bfdaa75364650ee5d26"
-  },
-  "app/(shell)/dados-reais/page.tsx": {
-    "mtime": 1781981124.876977,
-    "ast_hash": "7b188344bfeabab322db1d80155fe456",
-    "semantic_hash": "7b188344bfeabab322db1d80155fe456"
-  },
   "app/(shell)/dashboard/page.tsx": {
-    "mtime": 1782263197.7992759,
-    "ast_hash": "1849e5e44d03295f2114b49b211da28a",
+    "mtime": 1782406684.2337077,
+    "ast_hash": "c0e891f38a9c8ea632d04a6cbc17e71e",
     "semantic_hash": ""
   },
   "app/(shell)/empresa/actions.ts": {
@@ -75,8 +65,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782398544.335765,
-    "ast_hash": "7ac394117e60684129ffc5306c911d8d",
+    "mtime": 1782412475.2658677,
+    "ast_hash": "ceb56b567c15815453642bcf69b7c6cb",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -90,14 +80,9 @@
     "semantic_hash": ""
   },
   "app/(shell)/radar/page.tsx": {
-    "mtime": 1782357960.6455028,
-    "ast_hash": "34a6cca2460baa9aa45481d2183b4909",
+    "mtime": 1782413780.4956121,
+    "ast_hash": "ca3f61559796835618aafec81f90ce1f",
     "semantic_hash": ""
-  },
-  "app/(shell)/roadmap/page.tsx": {
-    "mtime": 1781902360.426614,
-    "ast_hash": "50737d527c5095bc5ac2b40223a31e28",
-    "semantic_hash": "50737d527c5095bc5ac2b40223a31e28"
   },
   "app/layout.tsx": {
     "mtime": 1781898620.9941795,
@@ -130,8 +115,8 @@
     "semantic_hash": ""
   },
   "components/shell.tsx": {
-    "mtime": 1782254181.0057867,
-    "ast_hash": "b7b400e12a40c00b01fe72213f7d1dc0",
+    "mtime": 1782412515.842142,
+    "ast_hash": "40010624a87acc7a6b58c3684b11de67",
     "semantic_hash": ""
   },
   "components/ui.tsx": {
@@ -160,18 +145,18 @@
     "semantic_hash": "53ed74d556af55f9b8dfaaf0f9022f10"
   },
   "e2e/autotest-backfill.mjs": {
-    "mtime": 1782262190.4768894,
-    "ast_hash": "c8d112ee1e61de5d0bd206563266f8b6",
+    "mtime": 1782409589.3152213,
+    "ast_hash": "df823671bf301b8fd7c3d5084538031f",
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard.mjs": {
-    "mtime": 1782263405.1726341,
-    "ast_hash": "ef4a863a4765019f162292c4c56c8929",
+    "mtime": 1782405580.8430572,
+    "ast_hash": "160b5138a001223b9aec7f16d47728b1",
     "semantic_hash": ""
   },
   "e2e/autotest-frontend.mjs": {
-    "mtime": 1782254283.1733263,
-    "ast_hash": "0b26c6fc40a0019a1f083ad357ab13ab",
+    "mtime": 1782412630.9165344,
+    "ast_hash": "c3a7119b602bf6f0e827c753b3cd8e40",
     "semantic_hash": ""
   },
   "e2e/autotest-kanban.mjs": {
@@ -180,8 +165,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-licitacao.mjs": {
-    "mtime": 1782323729.7561884,
-    "ast_hash": "7fad6cab16108d6f03391a373d5434bd",
+    "mtime": 1782412699.868461,
+    "ast_hash": "cd77100ac830b61796f23bdc7c3cb8f6",
     "semantic_hash": ""
   },
   "e2e/autotest-radar.mjs": {
@@ -875,8 +860,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-antecipacao.mjs": {
-    "mtime": 1782262175.0381975,
-    "ast_hash": "838688fc4cc50b2d0e2465f920d1a109",
+    "mtime": 1782409574.9119573,
+    "ast_hash": "c8347df166f8f93e60bc435ff9128aca",
     "semantic_hash": ""
   },
   "lib/antecipacao.ts": {
@@ -940,23 +925,13 @@
     "semantic_hash": ""
   },
   "e2e/autotest-sala.mjs": {
-    "mtime": 1782323114.7874336,
-    "ast_hash": "807c865d67d18eb1f2b13cb50e56c109",
+    "mtime": 1782409612.9524107,
+    "ast_hash": "0ca1b4dda9e47e543a0634c90de531a9",
     "semantic_hash": ""
   },
   "lib/inteligencia.ts": {
     "mtime": 1782357917.3958578,
     "ast_hash": "b078e20d7460d60846137cce40fc19ae",
-    "semantic_hash": ""
-  },
-  "app/(shell)/pesquisa/page.tsx": {
-    "mtime": 1782245450.9002879,
-    "ast_hash": "fd8f5d64d0d582f0b057c4a10a1a2053",
-    "semantic_hash": ""
-  },
-  "e2e/autotest-pesquisa.mjs": {
-    "mtime": 1782178316.7158666,
-    "ast_hash": "a1ab7570b73ea90dfa68d4526e2a6fce",
     "semantic_hash": ""
   },
   "lib/pesquisa.ts": {
@@ -965,18 +940,13 @@
     "semantic_hash": ""
   },
   "e2e/autotest-preco.mjs": {
-    "mtime": 1782323114.7722924,
-    "ast_hash": "f47f44d5e9c0972361e24aeb5a9beb92",
+    "mtime": 1782412685.1998775,
+    "ast_hash": "ad02070d3b8582b95f2ff87fda0bca02",
     "semantic_hash": ""
   },
   "lib/preco.ts": {
     "mtime": 1782178836.9692533,
     "ast_hash": "3bf1b9cc3e2b3203bef3bc5885f42c9e",
-    "semantic_hash": ""
-  },
-  "e2e/autotest-consultor.mjs": {
-    "mtime": 1782323114.7568893,
-    "ast_hash": "4db7d2d31e3403362c618ea995984313",
     "semantic_hash": ""
   },
   "lib/consultor.ts": {
@@ -1030,8 +1000,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-descoberta.mjs": {
-    "mtime": 1782402048.6189137,
-    "ast_hash": "335ffc4571864905eea307afbcae1404",
+    "mtime": 1782412669.8623867,
+    "ast_hash": "953c3a892bacc2f48b978870f4cec923",
     "semantic_hash": ""
   },
   "e2e/autotest-exigencias.mjs": {
@@ -1075,8 +1045,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard-ui.mjs": {
-    "mtime": 1782402117.5941155,
-    "ast_hash": "7673584f639261c21fb19f09933ef25d",
+    "mtime": 1782404307.621774,
+    "ast_hash": "ecb3fdf385d82dfe1668d61306c0d26d",
     "semantic_hash": ""
   },
   "docs/blueprint/LicitaPro - Dashboard Prestador 2.html": {
@@ -1100,8 +1070,8 @@
     "semantic_hash": ""
   },
   "e2e/groups.mjs": {
-    "mtime": 1782396652.7637756,
-    "ast_hash": "6f80eaeea87abbc80c00dad991914055",
+    "mtime": 1782412546.517167,
+    "ast_hash": "2a8180d4f69bac760f30d4d26c529f2b",
     "semantic_hash": ""
   },
   "lib/siconfi.ts": {

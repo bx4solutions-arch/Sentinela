@@ -25,6 +25,7 @@ import { PropostaGerador } from "./proposta-gerador";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo, gerarResumoProfundoUpload } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
+import { RaioxNav } from "./raiox-nav";
 
 type Parecer = {
   resumo?: string; riscos?: { nivel?: string; texto?: string }[];
@@ -287,11 +288,8 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
       </div>
 
       {/* ===== RAIO-X: um relatório rolável (vale a pena? eu ganho? o órgão paga?) ===== */}
-      <nav className="sticky top-0 z-20 -mx-4 flex gap-1 overflow-x-auto border-b bg-background/95 px-4 py-2 backdrop-blur md:mx-0 md:rounded-lg md:border" data-testid="raiox-nav">
-        {NAV.map(([anchor, label]) => (
-          <a key={anchor} href={`#${anchor}`} className="whitespace-nowrap rounded-md px-2.5 py-1 text-[13px] font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground">{label}</a>
-        ))}
-      </nav>
+      {/* Barra de abas v2 (scroll-spy) — destaca a seção visível, NÃO esconde conteúdo. */}
+      <RaioxNav nav={NAV} />
 
       <div className="space-y-8" data-testid="raiox-relatorio">
         {/* ===== RESUMO PROFUNDO (topo) ===== */}
