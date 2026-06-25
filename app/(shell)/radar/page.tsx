@@ -194,7 +194,7 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
       {/* Filtros de ouro — contagens REAIS do recorte */}
       <div className="kpis" data-testid="radar-filtros-ouro">
         <div className="kpi"><label>Editais abertos no recorte</label><strong data-testid="filtro-abertas">{totalRecorte}</strong><small>no escopo {ESCOPO_LABEL[escopo]}</small></div>
-        <div className="kpi"><label>Monitorando</label><strong data-testid="filtro-monitorando">{monitorandoN}</strong><small>na sua lista de acompanhamento</small></div>
+        <div className="kpi"><label>Acompanhando</label><strong data-testid="filtro-monitorando">{monitorandoN}</strong><small>na sua lista de monitoramento</small></div>
         <div className="kpi"><label>Órgãos recorrentes</label><strong data-testid="filtro-recorrentes">{recorrentes.size}</strong><small>com histórico no seu nicho</small></div>
         <div className="kpi"><label>Descartadas por você</label><strong data-testid="filtro-descartadas">{descartadasN}</strong><small>fora do seu perfil</small></div>
         <div className="kpi"><label>Cidades no recorte</label><strong data-testid="filtro-cidades">{cidadesMonitoradas.length}</strong><small>{coletando.length > 0 ? `${coletando.length} coletando` : "monitoradas"}</small></div>

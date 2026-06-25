@@ -70,7 +70,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "configuracoes_actions",
-      "community": 176,
+      "community": 4,
       "norm_label": "actions.ts"
     },
     {
@@ -90,7 +90,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "configuracoes_actions_getaiconfig",
-      "community": 176,
+      "community": 4,
       "norm_label": "getaiconfig()"
     },
     {
@@ -100,7 +100,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "configuracoes_actions_saveaiconfig",
-      "community": 176,
+      "community": 4,
       "norm_label": "saveaiconfig()"
     },
     {
@@ -150,118 +150,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "configuracoes_page_configuracoespage",
-      "community": 177,
+      "community": 4,
       "norm_label": "configuracoespage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "consultor_page",
-      "community": 4,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Lic",
-      "file_type": "code",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "consultor_page_lic",
-      "community": 4,
-      "norm_label": "lic"
-    },
-    {
-      "label": "ConsultorPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "consultor_page_consultorpage",
-      "community": 4,
-      "norm_label": "consultorpage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "dados_reais_page",
-      "community": 173,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Etapas",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "dados_reais_page_etapas",
-      "community": 173,
-      "norm_label": "etapas"
-    },
-    {
-      "label": "Op",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "dados_reais_page_op",
-      "community": 173,
-      "norm_label": "op"
-    },
-    {
-      "label": "BRL()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "dados_reais_page_brl",
-      "community": 173,
-      "norm_label": "brl()"
-    },
-    {
-      "label": "Kpi()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "dados_reais_page_kpi",
-      "community": 173,
-      "norm_label": "kpi()"
-    },
-    {
-      "label": "STEPS",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "dados_reais_page_steps",
-      "community": 173,
-      "norm_label": "steps"
-    },
-    {
-      "label": "Pipeline()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "dados_reais_page_pipeline",
-      "community": 173,
-      "norm_label": "pipeline()"
-    },
-    {
-      "label": "DadosReaisPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L57",
-      "_origin": "ast",
-      "id": "dados_reais_page_dadosreaispage",
-      "community": 173,
-      "norm_label": "dadosreaispage()"
     },
     {
       "label": "page.tsx",
@@ -270,57 +160,47 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_page",
-      "community": 129,
+      "community": 144,
       "norm_label": "page.tsx"
     },
     {
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L15",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "dashboard_page_brl",
-      "community": 129,
+      "community": 144,
       "norm_label": "brl()"
     },
     {
       "label": "brlK()",
       "file_type": "code",
       "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L16",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "dashboard_page_brlk",
-      "community": 129,
+      "community": 144,
       "norm_label": "brlk()"
     },
     {
-      "label": "MESES",
+      "label": "fmtData()",
       "file_type": "code",
       "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L17",
+      "source_location": "L13",
       "_origin": "ast",
-      "id": "dashboard_page_meses",
-      "community": 129,
-      "norm_label": "meses"
-    },
-    {
-      "label": "ProntidaoRing()",
-      "file_type": "code",
-      "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "dashboard_page_prontidaoring",
-      "community": 129,
-      "norm_label": "prontidaoring()"
+      "id": "dashboard_page_fmtdata",
+      "community": 144,
+      "norm_label": "fmtdata()"
     },
     {
       "label": "DashboardPage()",
       "file_type": "code",
       "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L36",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "dashboard_page_dashboardpage",
-      "community": 13,
+      "community": 144,
       "norm_label": "dashboardpage()"
     },
     {
@@ -330,7 +210,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 172,
+      "community": 13,
       "norm_label": "actions.ts"
     },
     {
@@ -340,7 +220,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 172,
+      "community": 13,
       "norm_label": "slug()"
     },
     {
@@ -350,7 +230,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 172,
+      "community": 13,
       "norm_label": "adddocumento()"
     },
     {
@@ -360,7 +240,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 172,
+      "community": 13,
       "norm_label": "deletedocumento()"
     },
     {
@@ -380,7 +260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_client",
-      "community": 4,
+      "community": 13,
       "norm_label": "client.tsx"
     },
     {
@@ -700,7 +580,7 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "id_actions_adddoclicitacao",
-      "community": 172,
+      "community": 3,
       "norm_label": "adddoclicitacao()"
     },
     {
@@ -710,7 +590,7 @@
       "source_location": "L196",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 172,
+      "community": 158,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -720,7 +600,7 @@
       "source_location": "L205",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 172,
+      "community": 158,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -830,7 +710,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_pasta_actions",
-      "community": 4,
+      "community": 3,
       "norm_label": "pasta-actions.tsx"
     },
     {
@@ -840,7 +720,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "id_pasta_actions_pastaactions",
-      "community": 4,
+      "community": 3,
       "norm_label": "pastaactions()"
     },
     {
@@ -850,7 +730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_proposta_gerador",
-      "community": 160,
+      "community": 4,
       "norm_label": "proposta-gerador.tsx"
     },
     {
@@ -860,7 +740,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "id_proposta_gerador_decl",
-      "community": 160,
+      "community": 4,
       "norm_label": "decl"
     },
     {
@@ -870,7 +750,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "id_proposta_gerador_matrizitem",
-      "community": 160,
+      "community": 4,
       "norm_label": "matrizitem"
     },
     {
@@ -880,7 +760,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "id_proposta_gerador_timbre",
-      "community": 160,
+      "community": 4,
       "norm_label": "timbre"
     },
     {
@@ -890,7 +770,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "id_proposta_gerador_kititem",
-      "community": 160,
+      "community": 4,
       "norm_label": "kititem"
     },
     {
@@ -900,7 +780,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "id_proposta_gerador_secaoedit",
-      "community": 160,
+      "community": 4,
       "norm_label": "secaoedit"
     },
     {
@@ -910,7 +790,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "id_proposta_gerador_linha",
-      "community": 160,
+      "community": 4,
       "norm_label": "linha"
     },
     {
@@ -920,7 +800,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "id_proposta_gerador_baixar",
-      "community": 160,
+      "community": 4,
       "norm_label": "baixar()"
     },
     {
@@ -930,88 +810,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "id_proposta_gerador_propostagerador",
-      "community": 160,
+      "community": 4,
       "norm_label": "propostagerador()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "pesquisa_page",
-      "community": 144,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "brl()",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "pesquisa_page_brl",
-      "community": 144,
-      "norm_label": "brl()"
-    },
-    {
-      "label": "UFS",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "pesquisa_page_ufs",
-      "community": 144,
-      "norm_label": "ufs"
-    },
-    {
-      "label": "SEG_KEYS",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "pesquisa_page_seg_keys",
-      "community": 144,
-      "norm_label": "seg_keys"
-    },
-    {
-      "label": "arr()",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "pesquisa_page_arr",
-      "community": 144,
-      "norm_label": "arr()"
-    },
-    {
-      "label": "numOrNull()",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "pesquisa_page_numornull",
-      "community": 144,
-      "norm_label": "numornull()"
-    },
-    {
-      "label": "SP",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "pesquisa_page_sp",
-      "community": 144,
-      "norm_label": "sp"
-    },
-    {
-      "label": "PesquisaPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "pesquisa_page_pesquisapage",
-      "community": 144,
-      "norm_label": "pesquisapage()"
     },
     {
       "label": "actions.ts",
@@ -1080,7 +880,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 172,
+      "community": 176,
       "norm_label": "analisar()"
     },
     {
@@ -1090,7 +890,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 172,
+      "community": 176,
       "norm_label": "reverter()"
     },
     {
@@ -1110,7 +910,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_city_picker_citypicker",
-      "community": 144,
+      "community": 176,
       "norm_label": "citypicker()"
     },
     {
@@ -1120,7 +920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_page",
-      "community": 144,
+      "community": 176,
       "norm_label": "page.tsx"
     },
     {
@@ -1130,7 +930,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "radar_page_brl",
-      "community": 144,
+      "community": 176,
       "norm_label": "brl()"
     },
     {
@@ -1140,7 +940,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "radar_page_ufs",
-      "community": 144,
+      "community": 176,
       "norm_label": "ufs"
     },
     {
@@ -1150,7 +950,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "radar_page_edital",
-      "community": 144,
+      "community": 176,
       "norm_label": "edital"
     },
     {
@@ -1160,7 +960,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "radar_page_escopo",
-      "community": 144,
+      "community": 176,
       "norm_label": "escopo"
     },
     {
@@ -1170,7 +970,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "radar_page_escopo_label",
-      "community": 144,
+      "community": 176,
       "norm_label": "escopo_label"
     },
     {
@@ -1187,51 +987,21 @@
       "label": "AntecipacaoLista()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/page.tsx",
-      "source_location": "L383",
+      "source_location": "L412",
       "_origin": "ast",
       "id": "radar_page_antecipacaolista",
-      "community": 144,
+      "community": 176,
       "norm_label": "antecipacaolista()"
     },
     {
       "label": "EmptyState()",
       "file_type": "code",
       "source_file": "app/(shell)/radar/page.tsx",
-      "source_location": "L476",
+      "source_location": "L505",
       "_origin": "ast",
       "id": "radar_page_emptystate",
-      "community": 144,
+      "community": 176,
       "norm_label": "emptystate()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "roadmap_page",
-      "community": 4,
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "LENTES",
-      "file_type": "code",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "roadmap_page_lentes",
-      "community": 4,
-      "norm_label": "lentes"
-    },
-    {
-      "label": "RoadmapPage()",
-      "file_type": "code",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "roadmap_page_roadmappage",
-      "community": 4,
-      "norm_label": "roadmappage()"
     },
     {
       "label": "page.tsx",
@@ -1440,7 +1210,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 13,
+      "community": 6,
       "norm_label": "wizard()"
     },
     {
@@ -1470,7 +1240,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_charts",
-      "community": 129,
+      "community": 144,
       "norm_label": "charts.tsx"
     },
     {
@@ -1480,7 +1250,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "components_charts_usechartwidth",
-      "community": 129,
+      "community": 144,
       "norm_label": "usechartwidth()"
     },
     {
@@ -1490,7 +1260,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "components_charts_ringcolor",
-      "community": 129,
+      "community": 144,
       "norm_label": "ringcolor()"
     },
     {
@@ -1500,7 +1270,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "components_charts_scorering",
-      "community": 129,
+      "community": 144,
       "norm_label": "scorering()"
     },
     {
@@ -1510,7 +1280,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "components_charts_donutdatum",
-      "community": 129,
+      "community": 144,
       "norm_label": "donutdatum"
     },
     {
@@ -1520,7 +1290,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "components_charts_donut_cores",
-      "community": 129,
+      "community": 144,
       "norm_label": "donut_cores"
     },
     {
@@ -1530,7 +1300,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "components_charts_donutsegmento",
-      "community": 129,
+      "community": 144,
       "norm_label": "donutsegmento()"
     },
     {
@@ -1540,7 +1310,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "components_charts_trenddatum",
-      "community": 129,
+      "community": 144,
       "norm_label": "trenddatum"
     },
     {
@@ -1550,7 +1320,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "components_charts_linetendencia",
-      "community": 129,
+      "community": 144,
       "norm_label": "linetendencia()"
     },
     {
@@ -1560,7 +1330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 172,
+      "community": 4,
       "norm_label": "shell.tsx"
     },
     {
@@ -1570,17 +1340,17 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 172,
+      "community": 4,
       "norm_label": "navitem"
     },
     {
       "label": "NAV",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 172,
+      "community": 4,
       "norm_label": "nav"
     },
     {
@@ -1590,24 +1360,24 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 172,
+      "community": 4,
       "norm_label": "titles"
     },
     {
       "label": "NavLink()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L41",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 172,
+      "community": 4,
       "norm_label": "navlink()"
     },
     {
       "label": "Shell()",
       "file_type": "code",
       "source_file": "components/shell.tsx",
-      "source_location": "L55",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "components_shell_shell",
       "community": 172,
@@ -1740,7 +1510,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 4,
+      "community": 176,
       "norm_label": "select"
     },
     {
@@ -2151,96 +1921,6 @@
       "_origin": "ast",
       "id": "e2e_autotest_backfill_ok",
       "community": 23,
-      "norm_label": "ok()"
-    },
-    {
-      "label": "autotest-consultor.mjs",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor",
-      "community": 148,
-      "norm_label": "autotest-consultor.mjs"
-    },
-    {
-      "label": "readEnv()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_readenv",
-      "community": 148,
-      "norm_label": "readenv()"
-    },
-    {
-      "label": "E",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_e",
-      "community": 148,
-      "norm_label": "e"
-    },
-    {
-      "label": "SB",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_sb",
-      "community": 148,
-      "norm_label": "sb"
-    },
-    {
-      "label": "H",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_h",
-      "community": 148,
-      "norm_label": "h"
-    },
-    {
-      "label": "cleanup()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_cleanup",
-      "community": 148,
-      "norm_label": "cleanup()"
-    },
-    {
-      "label": "consoleErrors",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_consoleerrors",
-      "community": 148,
-      "norm_label": "consoleerrors"
-    },
-    {
-      "label": "results",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_results",
-      "community": 148,
-      "norm_label": "results"
-    },
-    {
-      "label": "ok()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "e2e_autotest_consultor_ok",
-      "community": 148,
       "norm_label": "ok()"
     },
     {
@@ -3694,106 +3374,6 @@
       "norm_label": "ok()"
     },
     {
-      "label": "autotest-pesquisa.mjs",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa",
-      "community": 159,
-      "norm_label": "autotest-pesquisa.mjs"
-    },
-    {
-      "label": "readEnv()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_readenv",
-      "community": 159,
-      "norm_label": "readenv()"
-    },
-    {
-      "label": "E",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_e",
-      "community": 159,
-      "norm_label": "e"
-    },
-    {
-      "label": "SB",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_sb",
-      "community": 159,
-      "norm_label": "sb"
-    },
-    {
-      "label": "H",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_h",
-      "community": 159,
-      "norm_label": "h"
-    },
-    {
-      "label": "adminQuery()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_adminquery",
-      "community": 159,
-      "norm_label": "adminquery()"
-    },
-    {
-      "label": "cleanup()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_cleanup",
-      "community": 159,
-      "norm_label": "cleanup()"
-    },
-    {
-      "label": "consoleErrors",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_consoleerrors",
-      "community": 159,
-      "norm_label": "consoleerrors"
-    },
-    {
-      "label": "results",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_results",
-      "community": 159,
-      "norm_label": "results"
-    },
-    {
-      "label": "ok()",
-      "file_type": "code",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "e2e_autotest_pesquisa_ok",
-      "community": 159,
-      "norm_label": "ok()"
-    },
-    {
       "label": "autotest-preco.mjs",
       "file_type": "code",
       "source_file": "e2e/autotest-preco.mjs",
@@ -5057,7 +4637,7 @@
       "label": "SUITE",
       "file_type": "code",
       "source_file": "e2e/groups.mjs",
-      "source_location": "L50",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "e2e_groups_suite",
       "community": 163,
@@ -5290,7 +4870,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "lib_ai_server_modelolabel",
-      "community": 177,
+      "community": 158,
       "norm_label": "modelolabel()"
     },
     {
@@ -5600,7 +5180,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_certidoes_diasatevencer",
-      "community": 172,
+      "community": 13,
       "norm_label": "diasatevencer()"
     },
     {
@@ -5620,7 +5200,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_consultor",
-      "community": 182,
+      "community": 3,
       "norm_label": "consultor.ts"
     },
     {
@@ -5630,7 +5210,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_consultor_itemhab",
-      "community": 182,
+      "community": 3,
       "norm_label": "itemhab"
     },
     {
@@ -5640,7 +5220,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_consultor_respostaconsultor",
-      "community": 182,
+      "community": 3,
       "norm_label": "respostaconsultor"
     },
     {
@@ -5650,7 +5230,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_consultor_a",
-      "community": 182,
+      "community": 3,
       "norm_label": "a()"
     },
     {
@@ -5660,7 +5240,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "lib_consultor_consultarlicitacao",
-      "community": 182,
+      "community": 3,
       "norm_label": "consultarlicitacao()"
     },
     {
@@ -5670,7 +5250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_crypto",
-      "community": 176,
+      "community": 159,
       "norm_label": "crypto.ts"
     },
     {
@@ -5680,7 +5260,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_crypto_key",
-      "community": 176,
+      "community": 159,
       "norm_label": "key()"
     },
     {
@@ -5690,7 +5270,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_crypto_encrypt",
-      "community": 176,
+      "community": 159,
       "norm_label": "encrypt()"
     },
     {
@@ -5700,7 +5280,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_crypto_decrypt",
-      "community": 176,
+      "community": 159,
       "norm_label": "decrypt()"
     },
     {
@@ -5830,7 +5410,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 13,
+      "community": 6,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -5850,7 +5430,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_habilitacao_item_status_meta",
-      "community": 13,
+      "community": 3,
       "norm_label": "item_status_meta"
     },
     {
@@ -5870,7 +5450,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 13,
+      "community": 144,
       "norm_label": "calcprontidao()"
     },
     {
@@ -5900,7 +5480,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_ibge_municipiosdauf",
-      "community": 144,
+      "community": 176,
       "norm_label": "municipiosdauf()"
     },
     {
@@ -5930,7 +5510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_inteligencia",
-      "community": 3,
+      "community": 132,
       "norm_label": "inteligencia.ts"
     },
     {
@@ -5940,7 +5520,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_inteligencia_sb",
-      "community": 3,
+      "community": 132,
       "norm_label": "sb"
     },
     {
@@ -5950,7 +5530,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_inteligencia_concorrente",
-      "community": 3,
+      "community": 132,
       "norm_label": "concorrente"
     },
     {
@@ -5960,7 +5540,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_inteligencia_contratoatual",
-      "community": 3,
+      "community": 132,
       "norm_label": "contratoatual"
     },
     {
@@ -5970,7 +5550,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_inteligencia_mercadointel",
-      "community": 3,
+      "community": 132,
       "norm_label": "mercadointel"
     },
     {
@@ -5980,7 +5560,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "lib_inteligencia_inteligenciamercado",
-      "community": 3,
+      "community": 132,
       "norm_label": "inteligenciamercado()"
     },
     {
@@ -5990,7 +5570,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaonicho",
-      "community": 3,
+      "community": 132,
       "norm_label": "gastoorgaonicho"
     },
     {
@@ -6000,7 +5580,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaononicho",
-      "community": 3,
+      "community": 132,
       "norm_label": "gastoorgaononicho()"
     },
     {
@@ -6170,7 +5750,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_pesquisa",
-      "community": 144,
+      "community": 129,
       "norm_label": "pesquisa.ts"
     },
     {
@@ -6180,7 +5760,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_pesquisa_sb",
-      "community": 144,
+      "community": 129,
       "norm_label": "sb"
     },
     {
@@ -6190,7 +5770,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_pesquisa_modalidades",
-      "community": 144,
+      "community": 129,
       "norm_label": "modalidades"
     },
     {
@@ -6200,7 +5780,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "lib_pesquisa_situacoes",
-      "community": 144,
+      "community": 129,
       "norm_label": "situacoes"
     },
     {
@@ -6210,7 +5790,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_pesquisa_filtroscompleta",
-      "community": 144,
+      "community": 129,
       "norm_label": "filtroscompleta"
     },
     {
@@ -6220,7 +5800,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "lib_pesquisa_editalcompleto",
-      "community": 144,
+      "community": 129,
       "norm_label": "editalcompleto"
     },
     {
@@ -6230,7 +5810,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_pesquisa_resultadocompleta",
-      "community": 144,
+      "community": 129,
       "norm_label": "resultadocompleta"
     },
     {
@@ -6240,7 +5820,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "lib_pesquisa_pesquisacompleta",
-      "community": 144,
+      "community": 129,
       "norm_label": "pesquisacompleta()"
     },
     {
@@ -6250,7 +5830,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "lib_pesquisa_faixaitemcidade",
-      "community": 144,
+      "community": 132,
       "norm_label": "faixaitemcidade()"
     },
     {
@@ -6260,7 +5840,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_pesquisa_sodigitos",
-      "community": 144,
+      "community": 129,
       "norm_label": "sodigitos()"
     },
     {
@@ -6270,7 +5850,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "lib_pesquisa_vitoria",
-      "community": 144,
+      "community": 129,
       "norm_label": "vitoria"
     },
     {
@@ -6280,7 +5860,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "lib_pesquisa_vidaconcorrente",
-      "community": 144,
+      "community": 129,
       "norm_label": "vidaconcorrente"
     },
     {
@@ -6290,7 +5870,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "lib_pesquisa_vidadoconcorrente",
-      "community": 144,
+      "community": 129,
       "norm_label": "vidadoconcorrente()"
     },
     {
@@ -6300,7 +5880,7 @@
       "source_location": "L143",
       "_origin": "ast",
       "id": "lib_pesquisa_perfilorgao",
-      "community": 144,
+      "community": 129,
       "norm_label": "perfilorgao"
     },
     {
@@ -6310,7 +5890,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "lib_pesquisa_itemachado",
-      "community": 144,
+      "community": 129,
       "norm_label": "itemachado"
     },
     {
@@ -6320,7 +5900,7 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "lib_pesquisa_buscaritem",
-      "community": 144,
+      "community": 129,
       "norm_label": "buscaritem()"
     },
     {
@@ -6390,7 +5970,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_preco",
-      "community": 144,
+      "community": 132,
       "norm_label": "preco.ts"
     },
     {
@@ -6400,7 +5980,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_preco_semaforo",
-      "community": 144,
+      "community": 132,
       "norm_label": "semaforo"
     },
     {
@@ -6410,7 +5990,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_preco_faixapreco",
-      "community": 144,
+      "community": 132,
       "norm_label": "faixapreco"
     },
     {
@@ -6420,7 +6000,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "lib_preco_percentil",
-      "community": 144,
+      "community": 132,
       "norm_label": "percentil()"
     },
     {
@@ -6430,7 +6010,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "lib_preco_motorpreco",
-      "community": 144,
+      "community": 132,
       "norm_label": "motorpreco()"
     },
     {
@@ -6440,7 +6020,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "lib_preco_semaforo_label",
-      "community": 144,
+      "community": 132,
       "norm_label": "semaforo_label"
     },
     {
@@ -6520,7 +6100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_edital",
-      "community": 158,
+      "community": 148,
       "norm_label": "resumo-edital.ts"
     },
     {
@@ -6530,7 +6110,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_resumo_edital_poder",
-      "community": 158,
+      "community": 148,
       "norm_label": "poder"
     },
     {
@@ -6540,7 +6120,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_resumo_edital_esfera",
-      "community": 158,
+      "community": 148,
       "norm_label": "esfera"
     },
     {
@@ -6550,7 +6130,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_edital_resumoedital",
-      "community": 158,
+      "community": 148,
       "norm_label": "resumoedital"
     },
     {
@@ -6570,7 +6150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_profundo",
-      "community": 158,
+      "community": 148,
       "norm_label": "resumo-profundo.ts"
     },
     {
@@ -6580,7 +6160,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secaometa",
-      "community": 158,
+      "community": 148,
       "norm_label": "secaometa"
     },
     {
@@ -6590,7 +6170,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secoes",
-      "community": 158,
+      "community": 148,
       "norm_label": "secoes"
     },
     {
@@ -6600,7 +6180,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_resumo_profundo_resumoprofundo",
-      "community": 158,
+      "community": 148,
       "norm_label": "resumoprofundo"
     },
     {
@@ -6680,7 +6260,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 13,
+      "community": 6,
       "norm_label": "formatcnae()"
     },
     {
@@ -6830,7 +6410,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_sinais",
-      "community": 144,
+      "community": 176,
       "norm_label": "sinais.ts"
     },
     {
@@ -6840,7 +6420,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_sinais_sinaltone",
-      "community": 144,
+      "community": 176,
       "norm_label": "sinaltone"
     },
     {
@@ -6850,7 +6430,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_sinais_sinal",
-      "community": 144,
+      "community": 176,
       "norm_label": "sinal"
     },
     {
@@ -6860,7 +6440,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_sinais_editalsinal",
-      "community": 144,
+      "community": 176,
       "norm_label": "editalsinal"
     },
     {
@@ -6870,7 +6450,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "lib_sinais_sinaisedital",
-      "community": 144,
+      "community": 176,
       "norm_label": "sinaisedital()"
     },
     {
@@ -6880,7 +6460,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "lib_sinais_sinal_badge",
-      "community": 144,
+      "community": 176,
       "norm_label": "sinal_badge"
     },
     {
@@ -6890,7 +6470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "supabase_admin",
-      "community": 176,
+      "community": 158,
       "norm_label": "admin.ts"
     },
     {
@@ -6900,7 +6480,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "supabase_admin_createadminclient",
-      "community": 176,
+      "community": 158,
       "norm_label": "createadminclient()"
     },
     {
@@ -6970,7 +6550,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 3,
+      "community": 129,
       "norm_label": "utils.ts"
     },
     {
@@ -6990,7 +6570,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 3,
+      "community": 129,
       "norm_label": "brl()"
     },
     {
@@ -7000,7 +6580,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_utils_databr",
-      "community": 3,
+      "community": 13,
       "norm_label": "databr()"
     },
     {
@@ -7010,7 +6590,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "lib_utils_nowiso",
-      "community": 3,
+      "community": 129,
       "norm_label": "nowiso()"
     },
     {
@@ -7020,7 +6600,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "lib_utils_isodiasatras",
-      "community": 144,
+      "community": 129,
       "norm_label": "isodiasatras()"
     },
     {
@@ -17211,7 +16791,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "f0 \u2014 investigacao: cenario c foi falso negativo de ferramenta",
       "id": "f0_investigacao_falso_negativo"
     },
@@ -17224,7 +16804,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "catser \u2014 catalogo de servicos (compras governamentais)",
       "id": "concept_catser"
     },
@@ -17237,7 +16817,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "dado-limpo (editais + contratos + historico como materia-prima)",
       "id": "concept_dado_limpo"
     },
@@ -17250,7 +16830,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "f0 \u2014 relatorio de veredito \u00b7 controle-de-pragas \u00d7 sao luis/ma",
       "id": "f0_report"
     },
@@ -17263,7 +16843,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "pncp \u2014 portal nacional de contratacoes publicas",
       "id": "concept_pncp"
     },
@@ -17276,7 +16856,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 132,
+      "community": 33,
       "norm_label": "pca \u2014 plano de contratacoes anuais",
       "id": "concept_pca"
     },
@@ -17770,7 +17350,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 33,
       "norm_label": "irp - intencao de registro de precos",
       "id": "estudo_fontes_irp"
     },
@@ -18420,7 +18000,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 33,
       "norm_label": "tela 4: esteira / acompanhamento",
       "id": "prd_tela4_esteira"
     },
@@ -18459,7 +18039,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 33,
       "norm_label": "indice de iminencia",
       "id": "prd_indice_iminencia"
     },
@@ -18706,7 +18286,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 5,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -18719,7 +18299,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -18732,7 +18312,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -19135,7 +18715,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -20042,250 +19622,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "components_ui_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "consultor_page_consultorpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "consultor_page_lic"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "lib_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "supabase_server"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "consultor_page",
-      "target": "supabase_server_createclient"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/consultor/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "consultor_page_consultorpage",
-      "target": "supabase_server_createclient"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_brl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L57",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_dadosreaispage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_etapas"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_kpi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_op"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_pipeline"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dados-reais/page.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dados_reais_page",
-      "target": "dados_reais_page_steps"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
@@ -20470,21 +19806,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L16",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "dashboard_page_meses"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/dashboard/page.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "dashboard_page",
-      "target": "dashboard_page_prontidaoring"
+      "target": "dashboard_page_fmtdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -20782,6 +20108,17 @@
       "confidence_score": 1.0,
       "source": "dashboard_page_dashboardpage",
       "target": "dashboard_page_brlk"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/dashboard/page.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "dashboard_page_dashboardpage",
+      "target": "dashboard_page_fmtdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -24113,450 +23450,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_input"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "components_ui_select"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_buscaritem"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_faixaitemcidade"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_filtroscompleta"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_modalidades"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_perfilorgao"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_pesquisacompleta"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_situacoes"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_pesquisa_vidadoconcorrente"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_preco"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_preco_semaforo_label"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_segmentos"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_segmentos_seg_label"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "lib_utils_databr"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_arr"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_brl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_numornull"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_pesquisapage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_seg_keys"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_sp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "pesquisa_page_ufs"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "radar_actions"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "radar_actions_analisar"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "supabase_server"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page",
-      "target": "supabase_server_createclient"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L57",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "pesquisa_page_brl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "pesquisa_page_arr"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L46",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "pesquisa_page_numornull"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "lib_pesquisa_buscaritem"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "lib_pesquisa_faixaitemcidade"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "lib_pesquisa_pesquisacompleta"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "lib_pesquisa_vidadoconcorrente"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(shell)/pesquisa/page.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "source": "pesquisa_page_pesquisapage",
-      "target": "supabase_server_createclient"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(shell)/radar/actions.ts",
       "source_location": "L7",
       "weight": 1.0,
@@ -25625,81 +24518,6 @@
       "weight": 1.0,
       "source": "radar_page_radarpage",
       "target": "supabase_server_createclient"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "components_ui"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "components_ui_badge"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "components_ui_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "components_ui_card"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "components_ui_cardcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "roadmap_page_lentes"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(shell)/roadmap/page.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "roadmap_page",
-      "target": "roadmap_page_roadmappage"
     },
     {
       "relation": "imports_from",
@@ -27406,86 +26224,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_cleanup"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_consoleerrors"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_e"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_h"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_ok"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_readenv"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_results"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-consultor.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_consultor",
-      "target": "e2e_autotest_consultor_sb"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "e2e/autotest-contratos.mjs",
       "source_location": "L21",
       "weight": 1.0,
@@ -28845,96 +27583,6 @@
       "confidence_score": 1.0,
       "source": "e2e_autotest_pasta",
       "target": "e2e_autotest_pasta_sb"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_adminquery"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_cleanup"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_consoleerrors"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_e"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_h"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_ok"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_readenv"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_results"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "e2e/autotest-pesquisa.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "e2e_autotest_pesquisa",
-      "target": "e2e_autotest_pesquisa_sb"
     },
     {
       "relation": "contains",
@@ -46035,5 +44683,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e51a97808503ec157e740fe27346b5bea66c69d7"
+  "built_at_commit": "3b6a6c0c270b84193ff39a2acfb67a1c72209b12"
 }

@@ -9,10 +9,9 @@ export const GROUPS = {
     "e2e/autotest-integracao.mjs",
     "e2e/autotest-kanban.mjs",
   ],
-  descoberta: [ // radar (recorte/escopo) + pesquisa
+  descoberta: [ // radar (recorte/escopo) + busca fundida (a /pesquisa foi absorvida no Radar/Space)
     "e2e/autotest-radar.mjs",
     "e2e/autotest-descoberta.mjs",
-    "e2e/autotest-pesquisa.mjs",
   ],
   dados: [ // coleta nacional / antecipação / contratos / backfill por célula
     "e2e/autotest-harvester.mjs",
@@ -24,10 +23,9 @@ export const GROUPS = {
     "e2e/autotest-dashboard.mjs",
     "e2e/autotest-dashboard-ui.mjs",
   ],
-  inteligencia: [ // motor de preço / sala / concorrente / consultor
+  inteligencia: [ // motor de preço / sala (consultor foi absorvido no Space — prova em autotest-licitacao)
     "e2e/autotest-preco.mjs",
     "e2e/autotest-sala.mjs",
-    "e2e/autotest-consultor.mjs",
   ],
   raiox: [ // licitação (Raio-X) / exigências / siconfi / proposta / space — determinístico, leve
     "e2e/autotest-licitacao.mjs",

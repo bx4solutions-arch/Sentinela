@@ -262,17 +262,27 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         </CardContent></Card>
       </div>
 
-      {/* ===== Veredito v2 (workspaceHero) — estimativa calibrada, dado real do recorte ===== */}
+      {/* ===== workspaceHero v2 — veredito (estimativa) + ações (Gerar PDF · Descartar · Participar) ===== */}
       <div className="v2" data-testid="space-veredito-v2">
-        <div className="verdict">
-          <div className="verdictCard">
-            <label>Veredito (estimativa)</label>
-            <b style={{ color: statusEmp === "apto" ? "#047857" : statusEmp === "ressalvas" ? "#ca8a04" : "var(--v2-red)" }}>
-              {statusEmp === "apto" ? "Forte candidato" : statusEmp === "ressalvas" ? "Participar com ressalvas" : "Atenção — habilitação incompleta"}
-            </b>
+        <div className="workspaceHero">
+          <div className="titleRow">
+            <div><h1 style={{ fontSize: 20 }}>Veredito &amp; ação</h1><p>Decisão calibrada pela sua prontidão — estimativa, não promessa.</p></div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+              <a className="secondaryBtn" href="#proposta" data-testid="space-pdf">Gerar PDF</a>
+              <form action={excluirLicitacao}><input type="hidden" name="id" value={lic.id} /><button className="secondaryBtn" type="submit" data-testid="space-descartar">Descartar</button></form>
+              <Link className="primaryBtn" href="/kanban" data-testid="space-participar">Participar</Link>
+            </div>
           </div>
-          <div className="verdictCard"><label>Prontidão da empresa</label><b data-testid="veredito-prontidao">{pct}%</b></div>
-          <div className="verdictCard"><label>Risco principal</label><b>{faltam.length > 0 ? faltam[0].label : "Sem impedimento típico"}</b></div>
+          <div className="verdict">
+            <div className="verdictCard">
+              <label>Veredito (estimativa)</label>
+              <b style={{ color: statusEmp === "apto" ? "#047857" : statusEmp === "ressalvas" ? "#ca8a04" : "var(--v2-red)" }}>
+                {statusEmp === "apto" ? "Forte candidato" : statusEmp === "ressalvas" ? "Participar com ressalvas" : "Atenção — habilitação incompleta"}
+              </b>
+            </div>
+            <div className="verdictCard"><label>Prontidão da empresa</label><b data-testid="veredito-prontidao">{pct}%</b></div>
+            <div className="verdictCard"><label>Risco principal</label><b>{faltam.length > 0 ? faltam[0].label : "Sem impedimento típico"}</b></div>
+          </div>
         </div>
       </div>
 

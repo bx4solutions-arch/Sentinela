@@ -101,24 +101,20 @@ try {
   const contVolta = numDe(await page.locator("[data-testid=recorte-contagem]").innerText());
   ok("[Minha cidade] volta pro recorte (total = cidade)", contVolta === contCidade, `volta=${contVolta} cidade=${contCidade}`);
 
-  // ===== 3) PESQUISA COMPLETA — acha por qualquer campo =====
-  // cenário com dado (objeto medicamento + SP + Pregão eletrônico, abertas)
-  const mod = encodeURIComponent("Pregão - Eletrônico");
-  await page.goto(`${BASE}/pesquisa?modo=completa&enviado=1&objeto=medicamento&ufs=SP&mod=${mod}&abertas=1`, { waitUntil: "networkidle" });
-  await page.waitForSelector("[data-testid=form-completa]", { timeout: 10000 });
-  const temResultado = (await page.locator("[data-testid=completa-resultado]").count()) > 0;
-  const temVazio = (await page.locator("[data-testid=completa-vazio]").count()) > 0;
-  ok("Pesquisa completa: acha por objeto+UF+modalidade (ou vazio honesto)", temResultado || temVazio, `resultado=${temResultado} vazio=${temVazio}`);
-  ok("Pesquisa completa: retornou cards reais (cenário SP medicamento)", (await page.locator("[data-testid=completa-card]").count()) > 0, `cards=${await page.locator("[data-testid=completa-card]").count()}`);
-  // campos 'em breve' desabilitados (nunca botão que não faz nada)
-  ok("Pesquisa completa: campos sem dado = 'em breve' desabilitado", (await page.locator("[data-testid=form-completa] input[disabled]").count()) >= 1 && /em breve/i.test(await page.locator("[data-testid=form-completa]").innerText()));
-  await page.screenshot({ path: `${SHOTS}/desc-pesquisa.png`, fullPage: true });
+  // ===== 3) BUSCA por objeto FUNDIDA no RADAR (a /pesquisa foi absorvida) =====
+  // cenário com dado: medicamento em SP
+  await page.goto(`${BASE}/radar?q=medicamento&uf=SP`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-testid=radar-pilares]", { timeout: 10000 });
+  const buscaMain = await page.locator("main").innerText();
+  ok("Busca no Radar (objeto+UF): acha editais reais OU vazio honesto", (await page.locator("[data-testid=edital-card]").count()) > 0 || /vazio verdadeiro|Nenhum edital/i.test(buscaMain), `cards=${await page.locator("[data-testid=edital-card]").count()}`);
+  ok("Busca no Radar: confirma o termo + UF buscados", /medicamento/i.test(buscaMain) && /SP/.test(buscaMain));
+  await page.screenshot({ path: `${SHOTS}/desc-busca-radar.png`, fullPage: true });
 
-  // DoD multi-campo: Pregão + PI + vetor (resultado OU vazio verdadeiro — não falha por azar de dado)
-  await page.goto(`${BASE}/pesquisa?modo=completa&enviado=1&objeto=${encodeURIComponent("controle de vetores")}&ufs=PI&mod=${mod}&abertas=1`, { waitUntil: "networkidle" });
-  await page.waitForSelector("[data-testid=form-completa]", { timeout: 10000 });
-  const piOK = (await page.locator("[data-testid=completa-resultado]").count()) > 0 || (await page.locator("[data-testid=completa-vazio]").count()) > 0;
-  ok("Pesquisa completa: Pregão+PI+vetor renderiza (resultado ou vazio verdadeiro)", piOK);
+  // DoD multi-campo: vetor + PI (resultado OU vazio verdadeiro — não falha por azar de dado)
+  await page.goto(`${BASE}/radar?q=${encodeURIComponent("controle de vetores")}&uf=PI`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-testid=radar-pilares]", { timeout: 10000 });
+  const piMain = await page.locator("main").innerText();
+  ok("Busca no Radar: vetor+PI renderiza (resultado ou vazio verdadeiro)", (await page.locator("[data-testid=edital-card]").count()) > 0 || /vazio verdadeiro|Nenhum edital/i.test(piMain));
 
   // ===== sem verde + console limpo =====
   await page.goto(`${BASE}/radar?escopo=nacional`, { waitUntil: "networkidle" });

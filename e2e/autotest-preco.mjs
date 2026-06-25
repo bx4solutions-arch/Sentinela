@@ -74,12 +74,8 @@ try {
   }
   await page.screenshot({ path: `${SHOTS}/motor-preco-sala.png`, fullPage: true });
 
-  // Pesquisa item+cidade → faixa do item
-  await page.goto(`${BASE}/pesquisa?modo=item&q=${encodeURIComponent("medicamento")}&uf=SP`, { waitUntil: "networkidle" });
-  await page.waitForSelector("[data-testid=pesquisa-modos]", { timeout: 10000 });
-  const temFaixaItem = (await page.locator("[data-testid=faixa-item]").count()) > 0;
-  ok("Motor de preço na busca item+cidade (faixa do item)", temFaixaItem);
-  await page.screenshot({ path: `${SHOTS}/motor-preco-item.png`, fullPage: true });
+  // (A busca item+cidade da /pesquisa foi absorvida; o motor de preço já é provado no Space —
+  //  cv-semaforo/faixas-preco acima — então o cenário standalone foi removido com a rota.)
 
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
 } catch (e) {

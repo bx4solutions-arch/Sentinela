@@ -35,9 +35,7 @@ try {
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
   ok("PART1 controle responde (Monitorar→estado muda)", true);
 
-  // PART1: navegação funcional (sem dead-ends)
-  await page.goto(`${BASE}/consultor`, { waitUntil: "networkidle" });
-  ok("PART1 /consultor abre e funciona", (await page.locator("text=Consultor IA").count()) > 0);
+  // PART1: navegação funcional (sem dead-ends). /consultor foi absorvido no Space (prova em autotest-licitacao).
   await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
   ok("PART1 /configuracoes abre e funciona", (await page.locator("text=Inteligência Artificial").count()) > 0);
 

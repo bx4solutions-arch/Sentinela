@@ -350,8 +350,8 @@
     "semantic_hash": "fbd6f85c454bf9e632a270d2c114000e"
   },
   "tailwind.config.ts": {
-    "mtime": 1782261445.4433146,
-    "ast_hash": "d292bcce8857b00cd32f7d9defa173b6",
+    "mtime": 1782402017.5972953,
+    "ast_hash": "3fec9310cb78a1362be6f7a0132c9aab",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -1010,8 +1010,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-space.mjs": {
-    "mtime": 1782237411.0352147,
-    "ast_hash": "484345c4c8fa27cd349095649acc3c8a",
+    "mtime": 1782402048.6441665,
+    "ast_hash": "c71a75e8a4b79c19171e2ee7fedf0db7",
     "semantic_hash": ""
   },
   "docs/prompt-auditoria-urgente-front.md": {
@@ -1025,23 +1025,23 @@
     "semantic_hash": ""
   },
   "e2e/autotest-space-crm.mjs": {
-    "mtime": 1782241449.4840589,
-    "ast_hash": "be35da1fb4b8cbe7e89c59031bc30b2f",
+    "mtime": 1782402048.6526546,
+    "ast_hash": "e68e4dd725c6bae6527755d0f484ff65",
     "semantic_hash": ""
   },
   "e2e/autotest-descoberta.mjs": {
-    "mtime": 1782246237.41112,
-    "ast_hash": "7dc11d9edf3ef6dd3eb3c0fde86cc9f1",
+    "mtime": 1782402048.6189137,
+    "ast_hash": "335ffc4571864905eea307afbcae1404",
     "semantic_hash": ""
   },
   "e2e/autotest-exigencias.mjs": {
-    "mtime": 1782323114.7620485,
-    "ast_hash": "0c221ce37903331082e6f1e218311c5f",
+    "mtime": 1782402048.6142461,
+    "ast_hash": "648afac0d7d425adab70f633dfbb1e63",
     "semantic_hash": ""
   },
   "e2e/autotest-resumo-profundo.mjs": {
-    "mtime": 1782324499.7987976,
-    "ast_hash": "565abb84feb40b85963efc20aff0ed69",
+    "mtime": 1782402048.6352282,
+    "ast_hash": "2cb10f6746d2dcb85cfb280f7b6cb55b",
     "semantic_hash": ""
   },
   "lib/ai-server.ts": {
@@ -1065,8 +1065,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-resumo-upload.mjs": {
-    "mtime": 1782323114.796335,
-    "ast_hash": "bbc450cf90587fdca3e6dcef3d603e39",
+    "mtime": 1782402048.6298807,
+    "ast_hash": "b2590324dbafc753d8c31683ba638933",
     "semantic_hash": ""
   },
   "e2e/fixtures/edital-fixture.pdf": {
@@ -1075,8 +1075,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard-ui.mjs": {
-    "mtime": 1782264031.9992278,
-    "ast_hash": "b69c28077517374d6129adc138385a30",
+    "mtime": 1782402117.5941155,
+    "ast_hash": "7673584f639261c21fb19f09933ef25d",
     "semantic_hash": ""
   },
   "docs/blueprint/LicitaPro - Dashboard Prestador 2.html": {
@@ -1095,8 +1095,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-siconfi.mjs": {
-    "mtime": 1782355231.0929499,
-    "ast_hash": "68bb4c3ede8e1f1e75fe5a10da5c0150",
+    "mtime": 1782402048.6482513,
+    "ast_hash": "a19060a8e81388ab440c6b9268a4f373",
     "semantic_hash": ""
   },
   "e2e/groups.mjs": {
@@ -1110,8 +1110,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-gasto-orgao.mjs": {
-    "mtime": 1782358111.4031298,
-    "ast_hash": "88cb5e8a2d29f771a4473193bd6e12f0",
+    "mtime": 1782402048.6242,
+    "ast_hash": "36a30974f214d02143a4725660aa718a",
     "semantic_hash": ""
   },
   "docs/INVENTARIO-MEUJURIDICO.md": {
@@ -1120,13 +1120,18 @@
     "semantic_hash": ""
   },
   "e2e/autotest-sala-docs.mjs": {
-    "mtime": 1782396996.0778418,
-    "ast_hash": "a67ae6de5196d50c4832c5d33ae9400e",
+    "mtime": 1782402048.640114,
+    "ast_hash": "e6b860e0598af0352cdbff61aaf62fea",
     "semantic_hash": ""
   },
   "lib/exigencias.ts": {
     "mtime": 1782396544.5242293,
     "ast_hash": "6ca70041cf89c4929cf026bbe498f35f",
+    "semantic_hash": ""
+  },
+  "docs/blueprint/sentinela_5_telas_conectadas_v2.html": {
+    "mtime": 1782401855.0664718,
+    "ast_hash": "4b0d09fa08c9c5f297e9384afed6d9e1",
     "semantic_hash": ""
   }
 }

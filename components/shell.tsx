@@ -27,15 +27,12 @@ const NAV: NavItem[] = [
 const TITLES: { test: (p: string) => boolean; title: string; sub: string }[] = [
   { test: (p) => p.startsWith("/dashboard"), title: "Dashboard Sentinela", sub: "Inteligência antecipada de oportunidades públicas" },
   { test: (p) => p.startsWith("/radar"), title: "Radar de Sinais", sub: "Sinais multi-fonte priorizados — 5 a 15 por dia" },
-  { test: (p) => p.startsWith("/space"), title: "Espaço Inteligente", sub: "As licitações que você acompanha — cada uma abre o seu Space" },
-  { test: (p) => p.startsWith("/pesquisa"), title: "Pesquisa livre", sub: "Por órgão · item + cidade · concorrente por CNPJ" },
+  { test: (p) => p.startsWith("/space"), title: "Licitações", sub: "As licitações que você acompanha — cada uma abre o seu Space" },
   { test: (p) => p.startsWith("/kanban"), title: "Kanban Comercial", sub: "Seu funil de oportunidades — da monitoração ao resultado" },
   { test: (p) => p.startsWith("/licitacao"), title: "Pasta Inteligente da Licitação", sub: "Documentos, análise e decisão num só lugar" },
-  { test: (p) => p.startsWith("/consultor"), title: "Consultor IA", sub: "Converse sobre cada licitação com o contexto da pasta" },
   { test: (p) => p.startsWith("/configuracoes"), title: "Configurações", sub: "Inteligência Artificial inclusa (gerenciada pela Sentinela)" },
   { test: (p) => p.startsWith("/empresa"), title: "Minha Empresa", sub: "Raio-X por CNPJ, certidões e Vigia de Documentos" },
   { test: (p) => p.startsWith("/onboarding"), title: "Configurar empresa", sub: "Raio-X por CNPJ" },
-  { test: (p) => p.startsWith("/roadmap"), title: "Em breve", sub: "Funcionalidade no roadmap" },
 ];
 
 function NavLink({ item, active }: { item: NavItem; active: boolean }) {
@@ -62,7 +59,7 @@ export function Shell({
   companyName: string | null;
 }) {
   const pathname = usePathname();
-  const isActive = (href: string) => pathname === href || (href !== "/roadmap" && pathname.startsWith(href + "/"));
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const meta = TITLES.find((t) => t.test(pathname)) ?? { title: "Sentinela", sub: "" };
   const display = companyName ?? "Configure sua empresa";
   const initials = (companyName ?? userEmail ?? "S")
@@ -88,7 +85,7 @@ export function Shell({
           <Progress value={82} className="mt-2 bg-sidebar-foreground/15" />
           <div className="mt-1 flex items-center justify-between">
             <span className="text-sidebar-foreground/60">82% de uso</span>
-            <Link href="/roadmap" className="font-medium text-sidebar-foreground/90 hover:underline">Ver planos</Link>
+            <Link href="/configuracoes" className="font-medium text-sidebar-foreground/90 hover:underline">Ver planos</Link>
           </div>
         </div>
 
