@@ -10,7 +10,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_actions",
-      "community": 172,
+      "community": 160,
       "norm_label": "actions.ts"
     },
     {
@@ -20,7 +20,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "login_actions_traduzerro",
-      "community": 172,
+      "community": 160,
       "norm_label": "traduzerro()"
     },
     {
@@ -30,7 +30,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "login_actions_authenticate",
-      "community": 172,
+      "community": 160,
       "norm_label": "authenticate()"
     },
     {
@@ -40,7 +40,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "login_actions_signout",
-      "community": 172,
+      "community": 160,
       "norm_label": "signout()"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_actions",
-      "community": 13,
+      "community": 6,
       "norm_label": "actions.ts"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "empresa_actions_slug",
-      "community": 13,
+      "community": 6,
       "norm_label": "slug()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "empresa_actions_adddocumento",
-      "community": 13,
+      "community": 6,
       "norm_label": "adddocumento()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 13,
+      "community": 6,
       "norm_label": "deletedocumento()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_client",
-      "community": 13,
+      "community": 4,
       "norm_label": "client.tsx"
     },
     {
@@ -270,7 +270,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "empresa_client_adddocform",
-      "community": 13,
+      "community": 4,
       "norm_label": "adddocform()"
     },
     {
@@ -280,7 +280,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "empresa_client_trocarempresabutton",
-      "community": 13,
+      "community": 4,
       "norm_label": "trocarempresabutton()"
     },
     {
@@ -420,7 +420,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shell_layout",
-      "community": 172,
+      "community": 160,
       "norm_label": "layout.tsx"
     },
     {
@@ -430,7 +430,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "shell_layout_shelllayout",
-      "community": 172,
+      "community": 160,
       "norm_label": "shelllayout()"
     },
     {
@@ -460,7 +460,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "id_actions_melhorarsecaoproposta",
-      "community": 177,
+      "community": 158,
       "norm_label": "melhorarsecaoproposta()"
     },
     {
@@ -470,7 +470,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "id_actions_analisarcomia",
-      "community": 177,
+      "community": 158,
       "norm_label": "analisarcomia()"
     },
     {
@@ -590,7 +590,7 @@
       "source_location": "L196",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 158,
+      "community": 3,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -600,7 +600,7 @@
       "source_location": "L205",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 158,
+      "community": 3,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -617,7 +617,7 @@
       "label": "Parecer",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "id_page_parecer",
       "community": 3,
@@ -627,7 +627,7 @@
       "label": "brl()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "id_page_brl",
       "community": 3,
@@ -637,7 +637,7 @@
       "label": "dtBR()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "id_page_dtbr",
       "community": 3,
@@ -647,7 +647,7 @@
       "label": "Lic",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "id_page_lic",
       "community": 3,
@@ -657,7 +657,7 @@
       "label": "EmBreve()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L40",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "id_page_embreve",
       "community": 3,
@@ -667,7 +667,7 @@
       "label": "KV()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L48",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "id_page_kv",
       "community": 3,
@@ -677,7 +677,7 @@
       "label": "CardKV()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L51",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "id_page_cardkv",
       "community": 3,
@@ -687,7 +687,7 @@
       "label": "SecHead()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L55",
+      "source_location": "L56",
       "_origin": "ast",
       "id": "id_page_sechead",
       "community": 3,
@@ -697,7 +697,7 @@
       "label": "LicitacaoPage()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
-      "source_location": "L64",
+      "source_location": "L65",
       "_origin": "ast",
       "id": "id_page_licitacaopage",
       "community": 3,
@@ -730,7 +730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_proposta_gerador",
-      "community": 4,
+      "community": 178,
       "norm_label": "proposta-gerador.tsx"
     },
     {
@@ -740,7 +740,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "id_proposta_gerador_decl",
-      "community": 4,
+      "community": 178,
       "norm_label": "decl"
     },
     {
@@ -750,7 +750,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "id_proposta_gerador_matrizitem",
-      "community": 4,
+      "community": 178,
       "norm_label": "matrizitem"
     },
     {
@@ -760,7 +760,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "id_proposta_gerador_timbre",
-      "community": 4,
+      "community": 178,
       "norm_label": "timbre"
     },
     {
@@ -770,7 +770,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "id_proposta_gerador_kititem",
-      "community": 4,
+      "community": 178,
       "norm_label": "kititem"
     },
     {
@@ -780,7 +780,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "id_proposta_gerador_secaoedit",
-      "community": 4,
+      "community": 178,
       "norm_label": "secaoedit"
     },
     {
@@ -790,7 +790,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "id_proposta_gerador_linha",
-      "community": 4,
+      "community": 178,
       "norm_label": "linha"
     },
     {
@@ -800,7 +800,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "id_proposta_gerador_baixar",
-      "community": 4,
+      "community": 178,
       "norm_label": "baixar()"
     },
     {
@@ -810,8 +810,28 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "id_proposta_gerador_propostagerador",
-      "community": 4,
+      "community": 178,
       "norm_label": "propostagerador()"
+    },
+    {
+      "label": "raiox-nav.tsx",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/raiox-nav.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "id_raiox_nav",
+      "community": 3,
+      "norm_label": "raiox-nav.tsx"
+    },
+    {
+      "label": "RaioxNav()",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/raiox-nav.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "id_raiox_nav_raioxnav",
+      "community": 3,
+      "norm_label": "raioxnav()"
     },
     {
       "label": "actions.ts",
@@ -1010,7 +1030,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "space_page",
-      "community": 4,
+      "community": 129,
       "norm_label": "page.tsx"
     },
     {
@@ -1020,7 +1040,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "space_page_brl",
-      "community": 4,
+      "community": 129,
       "norm_label": "brl()"
     },
     {
@@ -1030,7 +1050,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "space_page_lic",
-      "community": 4,
+      "community": 129,
       "norm_label": "lic"
     },
     {
@@ -1040,7 +1060,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "space_page_spacepage",
-      "community": 4,
+      "community": 129,
       "norm_label": "spacepage()"
     },
     {
@@ -1140,7 +1160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "onboarding_page",
-      "community": 172,
+      "community": 176,
       "norm_label": "page.tsx"
     },
     {
@@ -1150,7 +1170,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "onboarding_page_onboardingpage",
-      "community": 172,
+      "community": 176,
       "norm_label": "onboardingpage()"
     },
     {
@@ -1210,7 +1230,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 6,
+      "community": 13,
       "norm_label": "wizard()"
     },
     {
@@ -1240,7 +1260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_charts",
-      "community": 144,
+      "community": 173,
       "norm_label": "charts.tsx"
     },
     {
@@ -1250,7 +1270,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "components_charts_usechartwidth",
-      "community": 144,
+      "community": 173,
       "norm_label": "usechartwidth()"
     },
     {
@@ -1260,7 +1280,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "components_charts_ringcolor",
-      "community": 144,
+      "community": 173,
       "norm_label": "ringcolor()"
     },
     {
@@ -1270,7 +1290,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "components_charts_scorering",
-      "community": 144,
+      "community": 173,
       "norm_label": "scorering()"
     },
     {
@@ -1280,7 +1300,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "components_charts_donutdatum",
-      "community": 144,
+      "community": 173,
       "norm_label": "donutdatum"
     },
     {
@@ -1290,7 +1310,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "components_charts_donut_cores",
-      "community": 144,
+      "community": 173,
       "norm_label": "donut_cores"
     },
     {
@@ -1300,7 +1320,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "components_charts_donutsegmento",
-      "community": 144,
+      "community": 173,
       "norm_label": "donutsegmento()"
     },
     {
@@ -1310,7 +1330,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "components_charts_trenddatum",
-      "community": 144,
+      "community": 173,
       "norm_label": "trenddatum"
     },
     {
@@ -1320,7 +1340,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "components_charts_linetendencia",
-      "community": 144,
+      "community": 173,
       "norm_label": "linetendencia()"
     },
     {
@@ -1330,7 +1350,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_shell",
-      "community": 4,
+      "community": 160,
       "norm_label": "shell.tsx"
     },
     {
@@ -1340,7 +1360,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_shell_navitem",
-      "community": 4,
+      "community": 160,
       "norm_label": "navitem"
     },
     {
@@ -1350,7 +1370,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "components_shell_nav",
-      "community": 4,
+      "community": 160,
       "norm_label": "nav"
     },
     {
@@ -1360,7 +1380,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "components_shell_titles",
-      "community": 4,
+      "community": 160,
       "norm_label": "titles"
     },
     {
@@ -1380,7 +1400,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "components_shell_shell",
-      "community": 172,
+      "community": 160,
       "norm_label": "shell()"
     },
     {
@@ -1510,7 +1530,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 176,
+      "community": 4,
       "norm_label": "select"
     },
     {
@@ -1540,7 +1560,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 4,
+      "community": 3,
       "norm_label": "tabslist"
     },
     {
@@ -4860,7 +4880,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "lib_ai_server_temia",
-      "community": 177,
+      "community": 158,
       "norm_label": "temia()"
     },
     {
@@ -4880,7 +4900,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_ai_server_chamaria",
-      "community": 177,
+      "community": 158,
       "norm_label": "chamaria()"
     },
     {
@@ -4910,7 +4930,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_antecipacao_pcaitem",
-      "community": 144,
+      "community": 176,
       "norm_label": "pcaitem"
     },
     {
@@ -4960,7 +4980,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "lib_antecipacao_contratovencendo",
-      "community": 144,
+      "community": 176,
       "norm_label": "contratovencendo"
     },
     {
@@ -5350,7 +5370,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "lib_exigencias_classificarexigencias",
-      "community": 178,
+      "community": 3,
       "norm_label": "classificarexigencias()"
     },
     {
@@ -5410,7 +5430,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 6,
+      "community": 13,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -5430,7 +5450,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_habilitacao_item_status_meta",
-      "community": 3,
+      "community": 13,
       "norm_label": "item_status_meta"
     },
     {
@@ -5450,7 +5470,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 144,
+      "community": 13,
       "norm_label": "calcprontidao()"
     },
     {
@@ -5590,7 +5610,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaosnonicho",
-      "community": 144,
+      "community": 132,
       "norm_label": "gastoorgaosnonicho()"
     },
     {
@@ -5750,7 +5770,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_pesquisa",
-      "community": 129,
+      "community": 132,
       "norm_label": "pesquisa.ts"
     },
     {
@@ -5760,7 +5780,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_pesquisa_sb",
-      "community": 129,
+      "community": 132,
       "norm_label": "sb"
     },
     {
@@ -5770,7 +5790,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_pesquisa_modalidades",
-      "community": 129,
+      "community": 132,
       "norm_label": "modalidades"
     },
     {
@@ -5780,7 +5800,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "lib_pesquisa_situacoes",
-      "community": 129,
+      "community": 132,
       "norm_label": "situacoes"
     },
     {
@@ -5790,7 +5810,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_pesquisa_filtroscompleta",
-      "community": 129,
+      "community": 132,
       "norm_label": "filtroscompleta"
     },
     {
@@ -5800,7 +5820,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "lib_pesquisa_editalcompleto",
-      "community": 129,
+      "community": 132,
       "norm_label": "editalcompleto"
     },
     {
@@ -5810,7 +5830,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_pesquisa_resultadocompleta",
-      "community": 129,
+      "community": 132,
       "norm_label": "resultadocompleta"
     },
     {
@@ -5840,7 +5860,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_pesquisa_sodigitos",
-      "community": 129,
+      "community": 132,
       "norm_label": "sodigitos()"
     },
     {
@@ -5850,7 +5870,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "lib_pesquisa_vitoria",
-      "community": 129,
+      "community": 132,
       "norm_label": "vitoria"
     },
     {
@@ -5860,7 +5880,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "lib_pesquisa_vidaconcorrente",
-      "community": 129,
+      "community": 132,
       "norm_label": "vidaconcorrente"
     },
     {
@@ -5870,7 +5890,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "lib_pesquisa_vidadoconcorrente",
-      "community": 129,
+      "community": 132,
       "norm_label": "vidadoconcorrente()"
     },
     {
@@ -5880,7 +5900,7 @@
       "source_location": "L143",
       "_origin": "ast",
       "id": "lib_pesquisa_perfilorgao",
-      "community": 129,
+      "community": 132,
       "norm_label": "perfilorgao"
     },
     {
@@ -5890,7 +5910,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "lib_pesquisa_itemachado",
-      "community": 129,
+      "community": 132,
       "norm_label": "itemachado"
     },
     {
@@ -5900,7 +5920,7 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "lib_pesquisa_buscaritem",
-      "community": 129,
+      "community": 132,
       "norm_label": "buscaritem()"
     },
     {
@@ -6260,7 +6280,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 6,
+      "community": 13,
       "norm_label": "formatcnae()"
     },
     {
@@ -6530,7 +6550,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "supabase_server",
-      "community": 172,
+      "community": 144,
       "norm_label": "server.ts"
     },
     {
@@ -6540,7 +6560,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "supabase_server_createclient",
-      "community": 172,
+      "community": 176,
       "norm_label": "createclient()"
     },
     {
@@ -6610,7 +6630,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_utils_diasate",
-      "community": 3,
+      "community": 129,
       "norm_label": "diasate()"
     },
     {
@@ -16791,7 +16811,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "f0 \u2014 investigacao: cenario c foi falso negativo de ferramenta",
       "id": "f0_investigacao_falso_negativo"
     },
@@ -16804,7 +16824,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "catser \u2014 catalogo de servicos (compras governamentais)",
       "id": "concept_catser"
     },
@@ -16817,7 +16837,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "dado-limpo (editais + contratos + historico como materia-prima)",
       "id": "concept_dado_limpo"
     },
@@ -16830,7 +16850,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "f0 \u2014 relatorio de veredito \u00b7 controle-de-pragas \u00d7 sao luis/ma",
       "id": "f0_report"
     },
@@ -16843,7 +16863,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "pncp \u2014 portal nacional de contratacoes publicas",
       "id": "concept_pncp"
     },
@@ -16856,7 +16876,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 174,
       "norm_label": "pca \u2014 plano de contratacoes anuais",
       "id": "concept_pca"
     },
@@ -18286,7 +18306,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 21,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -19808,9 +19828,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page",
-      "target": "dashboard_page_fmtdata",
-      "confidence_score": 1.0
+      "target": "dashboard_page_fmtdata"
     },
     {
       "relation": "imports_from",
@@ -20116,9 +20136,9 @@
       "source_file": "app/(shell)/dashboard/page.tsx",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_page_dashboardpage",
-      "target": "dashboard_page_fmtdata",
-      "confidence_score": 1.0
+      "target": "dashboard_page_fmtdata"
     },
     {
       "relation": "calls",
@@ -22547,6 +22567,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "id_raiox_nav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "id_page",
+      "target": "id_raiox_nav_raioxnav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -23445,6 +23487,16 @@
       "confidence_score": 1.0,
       "source": "id_proposta_gerador",
       "target": "lib_proposta_secaoproposta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/raiox-nav.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "id_raiox_nav",
+      "target": "id_raiox_nav_raioxnav",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -44683,5 +44735,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3b6a6c0c270b84193ff39a2acfb67a1c72209b12"
+  "built_at_commit": "42f7782e0bc95ead396103500b6617b096b27fd1"
 }
