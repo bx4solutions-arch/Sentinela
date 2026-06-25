@@ -2,23 +2,37 @@
 
 import { useState } from "react";
 import { Document, Packer, Paragraph, TextRun, HeadingLevel } from "docx";
-import { FileDown, Check, CircleAlert, FileText, Sparkles, ArrowUp, ArrowDown, Plus, Trash2 } from "lucide-react";
+import { jsPDF } from "jspdf";
+import JSZip from "jszip";
+import { FileDown, Check, CircleAlert, FileText, Sparkles, ArrowUp, ArrowDown, Plus, Trash2, FileType, Package } from "lucide-react";
 import { Card, CardContent, Badge, Button, Input } from "@/components/ui";
 import type { SecaoProposta } from "@/lib/proposta";
 import { melhorarSecaoProposta } from "./actions";
 
 type Decl = { id: string; titulo: string; texto: string };
 type MatrizItem = { label: string; exigencia: string; atendido: boolean; evidencia: string };
+type Timbre = { razao: string | null; cnpj: string | null; municipio: string | null; uf: string | null };
+type KitItem = { ordem: number; nome: string; status: string };
 type SecaoEdit = SecaoProposta & { _ia?: string | null };
+type Linha = { h?: string; p?: string; b?: boolean };
 
-export function PropostaGerador({ secoes: secoesIniciais, declaracoes, matriz, proponente, objeto = null, orgao = null }: {
+function baixar(blob: Blob, nome: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = nome; a.click();
+  URL.revokeObjectURL(url);
+}
+
+export function PropostaGerador({ secoes: secoesIniciais, declaracoes, matriz, proponente, objeto = null, orgao = null, timbre, kit = [] }: {
   secoes: SecaoProposta[]; declaracoes: Decl[]; matriz: MatrizItem[]; proponente: string; objeto?: string | null; orgao?: string | null;
+  timbre?: Timbre; kit?: KitItem[];
 }) {
   const [secoes, setSecoes] = useState<SecaoEdit[]>(secoesIniciais.map((s) => ({ ...s })));
   const [confirmadas, setConfirmadas] = useState<Set<string>>(new Set(secoesIniciais.map((s) => s.id)));
   const [declSel, setDeclSel] = useState<Set<string>>(new Set(declaracoes.map((d) => d.id)));
   const [preco, setPreco] = useState("");
   const [gerado, setGerado] = useState(false);
+  const [pdfGerado, setPdfGerado] = useState(false);
+  const [kitGerado, setKitGerado] = useState(false);
   const [iaLoad, setIaLoad] = useState<string | null>(null);
   const [novoN, setNovoN] = useState(0);
 
@@ -56,37 +70,78 @@ export function PropostaGerador({ secoes: secoesIniciais, declaracoes, matriz, p
     }
   }
 
-  async function gerarDocx() {
-    const kids: Paragraph[] = [];
-    const H = (t: string) => new Paragraph({ text: t, heading: HeadingLevel.HEADING_2, spacing: { before: 240, after: 80 } });
-    const P = (t: string) => new Paragraph({ children: [new TextRun(t)], spacing: { after: 60 } });
+  // Montagem única do documento (timbre + seções confirmadas + declarações) — usada por DOCX e PDF.
+  function montarLinhas(): Linha[] {
+    const out: Linha[] = [];
+    out.push({ p: timbre?.razao ?? proponente, b: true });
+    const ident = [timbre?.cnpj ? `CNPJ ${timbre.cnpj}` : null, [timbre?.municipio, timbre?.uf].filter(Boolean).join("/")].filter(Boolean).join(" · ");
+    if (ident) out.push({ p: ident });
+    out.push({ p: "" });
     for (const s of secoes) {
       if (!confirmadas.has(s.id)) continue;
-      kids.push(H(s.titulo));
-      for (const linha of s.conteudo.split("\n")) kids.push(P(linha));
-      if (s.precoEditavel && preco.trim()) kids.push(P(`Valor da proposta: ${preco.trim()} (definido pela empresa).`));
+      out.push({ h: s.titulo });
+      for (const linha of s.conteudo.split("\n")) out.push({ p: linha });
+      if (s.precoEditavel && preco.trim()) out.push({ p: `Valor da proposta: ${preco.trim()} (definido pela empresa).` });
     }
     const decls = declaracoes.filter((d) => declSel.has(d.id));
-    if (decls.length) {
-      kids.push(H("Declarações"));
-      for (const d of decls) { kids.push(new Paragraph({ children: [new TextRun({ text: d.titulo, bold: true })] })); kids.push(P(d.texto)); }
-    }
-    kids.push(new Paragraph({ text: "", spacing: { before: 240 } }));
-    kids.push(P(`${proponente}`));
-    kids.push(P("Documento gerado pelo Sentinela — referência operacional; revise antes de protocolar. Não inclui peça processual."));
+    if (decls.length) { out.push({ h: "Declarações" }); for (const d of decls) { out.push({ p: `${d.titulo}:`, b: true }); out.push({ p: d.texto }); } }
+    out.push({ p: "" });
+    out.push({ p: proponente, b: true });
+    out.push({ p: "Documento gerado pelo Sentinela — referência operacional; revise antes de protocolar. Não inclui peça processual." });
+    return out;
+  }
 
+  async function docxBlob(): Promise<Blob> {
+    const kids: Paragraph[] = [];
+    for (const l of montarLinhas()) {
+      if (l.h) kids.push(new Paragraph({ text: l.h, heading: HeadingLevel.HEADING_2, spacing: { before: 240, after: 80 } }));
+      else kids.push(new Paragraph({ children: [new TextRun({ text: l.p ?? "", bold: !!l.b })], spacing: { after: 60 } }));
+    }
     const doc = new Document({ sections: [{ children: kids }] });
-    const blob = await Packer.toBlob(doc);
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a"); a.href = url; a.download = "proposta-sentinela.docx"; a.click();
-    URL.revokeObjectURL(url); setGerado(true);
+    return Packer.toBlob(doc);
+  }
+
+  async function gerarDocx() { baixar(await docxBlob(), "proposta-sentinela.docx"); setGerado(true); }
+
+  function gerarPdf() {
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+    const M = 48, W = 595 - M * 2; let y = M;
+    const escreve = (txt: string, size: number, bold: boolean, gap: number) => {
+      doc.setFont("helvetica", bold ? "bold" : "normal"); doc.setFontSize(size);
+      for (const pt of doc.splitTextToSize(txt || " ", W) as string[]) {
+        if (y > 790) { doc.addPage(); y = M; }
+        doc.text(pt, M, y); y += size + gap;
+      }
+    };
+    for (const l of montarLinhas()) { if (l.h) { y += 6; escreve(l.h, 13, true, 6); } else escreve(l.p ?? "", 11, !!l.b, 4); }
+    doc.save("proposta-sentinela.pdf");
+    setPdfGerado(true);
+  }
+
+  async function baixarKit() {
+    const zip = new JSZip();
+    const idx = [
+      "KIT DE HABILITAÇÃO — índice (ordem do edital)",
+      `Proponente: ${timbre?.razao ?? proponente}${timbre?.cnpj ? ` · CNPJ ${timbre.cnpj}` : ""}`,
+      "",
+      ...(kit.length ? kit.map((k) => `${String(k.ordem).padStart(2, "0")}. ${k.nome} — [${k.status}]`) : ["(checklist indisponível)"]),
+      "",
+      "Anexe os documentos do seu cofre NESTA ORDEM. Itens marcados como falta/ausente devem ser providenciados antes do protocolo.",
+      "Documento operacional — revise antes de protocolar. Não inclui peça processual (impugnação/recurso).",
+    ].join("\n");
+    zip.file("00-INDICE.txt", idx);
+    zip.file("01-proposta.docx", await docxBlob());
+    zip.file("LEIA-ME.txt", "Gerado pelo Sentinela. Confira cada item do índice e anexe as evidências na ordem indicada. A ordem segue o edital. Peça processual não incluída.");
+    baixar(await zip.generateAsync({ type: "blob" }), "kit-habilitacao-sentinela.zip");
+    setKitGerado(true);
   }
 
   return (
     <div className="space-y-3" data-testid="proposta-gerador">
       <Card><CardContent className="p-4">
         <div className="flex items-center gap-2"><FileText className="size-4 text-primary" /><p className="text-sm font-semibold">Gerador de Proposta — seção por seção</p></div>
-        <p className="mt-1 text-xs text-muted-foreground">Cada seção é pré-preenchida com seus dados reais. <strong>Edite</strong>, use <strong>“melhorar com IA”</strong>, <strong>reordene</strong> ou <strong>adicione</strong> seções. <strong>Confirme</strong> as que entram → <strong>Gere o DOCX</strong>. O <strong>preço é você quem define</strong>. Peça processual não é gerada.</p>
+        <p className="mt-1 text-xs text-muted-foreground">Cada seção é pré-preenchida com seus dados reais. <strong>Edite</strong>, use <strong>“melhorar com IA”</strong>, <strong>reordene</strong> ou <strong>adicione</strong> seções. <strong>Confirme</strong> as que entram → gere <strong>DOCX/PDF no timbre</strong> ou baixe o <strong>Kit de Habilitação (ZIP)</strong>. O <strong>preço é você quem define</strong>. Peça processual não é gerada.</p>
+        {timbre?.razao && <p className="mt-2 rounded border bg-muted/40 px-2 py-1 text-xs text-foreground" data-testid="timbre-preview">Timbre: <strong>{timbre.razao}</strong>{timbre.cnpj ? ` · CNPJ ${timbre.cnpj}` : ""}{timbre.municipio ? ` · ${timbre.municipio}${timbre.uf ? `/${timbre.uf}` : ""}` : ""}</p>}
       </CardContent></Card>
 
       {secoes.map((s, i) => {
@@ -156,7 +211,13 @@ export function PropostaGerador({ secoes: secoesIniciais, declaracoes, matriz, p
 
       <div className="flex flex-wrap items-center gap-2">
         <Button type="button" onClick={gerarDocx} data-testid="gerar-docx"><FileDown className="size-4" /> Gerar proposta (DOCX)</Button>
+        <Button type="button" variant="outline" onClick={gerarPdf} data-testid="gerar-pdf"><FileType className="size-4" /> Gerar PDF</Button>
+        <Button type="button" variant="outline" onClick={baixarKit} data-testid="baixar-kit"><Package className="size-4" /> Kit de Habilitação (ZIP)</Button>
+      </div>
+      <div className="flex flex-wrap items-center gap-3">
         {gerado && <span className="text-xs text-muted-foreground" data-testid="docx-gerado">DOCX gerado e baixado ✓</span>}
+        {pdfGerado && <span className="text-xs text-muted-foreground" data-testid="pdf-gerado">PDF gerado e baixado ✓</span>}
+        {kitGerado && <span className="text-xs text-muted-foreground" data-testid="kit-gerado">Kit (ZIP) gerado e baixado ✓</span>}
       </div>
       <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Documento operacional — <strong>revise antes de protocolar</strong>. Não é peça jurídica; impugnação/recurso ficam travados. A IA <strong>melhora a redação, não inventa fato</strong>; sem chave configurada fica “em ingestão”.</p>
     </div>

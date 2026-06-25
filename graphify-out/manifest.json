@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782397351.4894903,
-    "ast_hash": "daaa666d14f7bfd54efb4007b3ffbcca",
+    "mtime": 1782398158.9948041,
+    "ast_hash": "eccac85f04115841a9dfd044a406acdf",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -285,8 +285,8 @@
     "semantic_hash": "722b5c5d86acfa0ac5cf229371b84fdc"
   },
   "package.json": {
-    "mtime": 1782253707.6081345,
-    "ast_hash": "17d5a5013b231db1742b6f8591ec4da6",
+    "mtime": 1782398053.159078,
+    "ast_hash": "f2e31fc9d5497876d1b1b3b822e50a8f",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -985,13 +985,13 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/proposta-gerador.tsx": {
-    "mtime": 1782397775.4863126,
-    "ast_hash": "63afa98b8db47d996c31c6426cb64bd0",
+    "mtime": 1782398140.181941,
+    "ast_hash": "b9141a92cfd4ec8967635e092e1751ab",
     "semantic_hash": ""
   },
   "e2e/autotest-proposta.mjs": {
-    "mtime": 1782397451.8282125,
-    "ast_hash": "f24cfd8b2b6eb4eb3c3876a7fa5f4d4c",
+    "mtime": 1782398212.4273446,
+    "ast_hash": "28ccd237c2009a7af2b32765ecd1c164",
     "semantic_hash": ""
   },
   "e2e/run-prod.mjs": {

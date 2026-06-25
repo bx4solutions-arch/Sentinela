@@ -109,6 +109,31 @@ try {
   try { docXml = execFileSync("unzip", ["-p", path, "word/document.xml"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }); } catch (e) { docXml = "ERRO_UNZIP:" + String(e).slice(0, 60); }
   ok("edição do usuário INJETADA no DOCX (texto editado presente no document.xml)", docXml.includes(MARK), `markerNoDocx=${docXml.includes(MARK)}`);
 
+  // ===== Fatia 3 — timbre + PDF + Kit de Habilitação (ZIP ordenado + índice) =====
+  ok("timbre da empresa no DOCX (cabeçalho de identificação)", docXml.includes("CNPJ"), `temCNPJ=${docXml.includes("CNPJ")}`);
+  ok("timbre-preview visível na UI", (await page.locator("[data-testid=timbre-preview]").count()) > 0);
+
+  // PDF real
+  const [dlPdf] = await Promise.all([
+    page.waitForEvent("download", { timeout: 15000 }),
+    page.locator("[data-testid=gerar-pdf]").click(),
+  ]);
+  ok("EXPORTA PDF real (download .pdf)", dlPdf.suggestedFilename().endsWith(".pdf"), `arquivo=${dlPdf.suggestedFilename()}`);
+  ok("confirmação 'PDF gerado' na UI", (await page.locator("[data-testid=pdf-gerado]").count()) > 0);
+
+  // Kit de Habilitação (ZIP)
+  const [dlZip] = await Promise.all([
+    page.waitForEvent("download", { timeout: 15000 }),
+    page.locator("[data-testid=baixar-kit]").click(),
+  ]);
+  ok("Kit de Habilitação exporta ZIP (.zip)", dlZip.suggestedFilename().endsWith(".zip"), `arquivo=${dlZip.suggestedFilename()}`);
+  const zpath = await dlZip.path();
+  let zlist = ""; try { zlist = execFileSync("unzip", ["-l", zpath], { encoding: "utf8" }); } catch (e) { zlist = "ERRO:" + String(e).slice(0, 50); }
+  ok("ZIP contém índice + proposta", zlist.includes("00-INDICE.txt") && zlist.includes("01-proposta.docx"), zlist.replace(/\s+/g, " ").slice(0, 110));
+  let idx = ""; try { idx = execFileSync("unzip", ["-p", zpath, "00-INDICE.txt"], { encoding: "utf8" }); } catch { /* */ }
+  ok("índice na ORDEM do edital (numerado 01., 02. …)", /KIT DE HABILITA/i.test(idx) && /\b01\./.test(idx), idx.split("\n").filter(Boolean).slice(0, 2).join(" | "));
+  ok("confirmação 'Kit gerado' na UI", (await page.locator("[data-testid=kit-gerado]").count()) > 0);
+
   const body = await page.locator("body").innerText();
   ok("Gate jurídico: peça processual travada + revisar antes de protocolar", /travado|travados/i.test(body) && /revise antes de protocolar/i.test(body));
   await page.screenshot({ path: `${SHOTS}/proposta-gerador.png`, fullPage: true });

@@ -140,6 +140,11 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   );
   // Checklist Inteligente: classifica as exigências ESPECÍFICAS extraídas do edital em estados acionáveis.
   const exigClassificadas = classificarExigencias(profundo?.exigencias_especificas);
+  // Kit de Habilitação — índice na ORDEM do edital: específicas extraídas primeiro, depois habilitação típica.
+  const kitProposta = [
+    ...exigClassificadas.map((e, i) => ({ ordem: i + 1, nome: e.texto, status: CLASSE_META[e.classe].label })),
+    ...itensStatus.map((it, i) => ({ ordem: exigClassificadas.length + i + 1, nome: it.label, status: ITEM_STATUS_META[it.st].label })),
+  ];
   const matrizProposta = itensStatus.map((it) => {
     const atendido = it.st !== "ausente" && it.st !== "vencida";
     return { label: it.label, exigencia: it.orgao, atendido, evidencia: atendido ? "documento na ficha" : "—" };
@@ -625,7 +630,7 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         {/* ===== PREPARAR PROPOSTA ===== */}
         <section id="proposta" className="scroll-mt-16 space-y-3">
           <SecHead icon={FileText} title="Preparar proposta" q="Monte a proposta seção a seção + matriz de atendimento (item → evidência)." />
-          <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} objeto={ed?.objeto ?? null} orgao={ed?.orgao?.razao_social ?? null} />
+          <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} objeto={ed?.objeto ?? null} orgao={ed?.orgao?.razao_social ?? null} timbre={{ razao: company?.razao_social ?? null, cnpj: company?.cnpj ?? null, municipio: company?.municipio ?? null, uf: company?.uf ?? null }} kit={kitProposta} />
         </section>
 
         {/* ===== APOIO — plano, documentos, consultor, riscos ===== */}

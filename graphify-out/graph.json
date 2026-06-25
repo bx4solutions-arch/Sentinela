@@ -50,7 +50,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_page",
-      "community": 4,
+      "community": 172,
       "norm_label": "page.tsx"
     },
     {
@@ -60,7 +60,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 4,
+      "community": 172,
       "norm_label": "loginpage()"
     },
     {
@@ -150,7 +150,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "configuracoes_page_configuracoespage",
-      "community": 177,
+      "community": 158,
       "norm_label": "configuracoespage()"
     },
     {
@@ -180,7 +180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "consultor_page_consultorpage",
-      "community": 172,
+      "community": 4,
       "norm_label": "consultorpage()"
     },
     {
@@ -190,7 +190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dados_reais_page",
-      "community": 174,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -200,7 +200,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "dados_reais_page_etapas",
-      "community": 174,
+      "community": 4,
       "norm_label": "etapas"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dados_reais_page_op",
-      "community": 174,
+      "community": 4,
       "norm_label": "op"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dados_reais_page_brl",
-      "community": 174,
+      "community": 4,
       "norm_label": "brl()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dados_reais_page_kpi",
-      "community": 174,
+      "community": 4,
       "norm_label": "kpi()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "dados_reais_page_steps",
-      "community": 174,
+      "community": 4,
       "norm_label": "steps"
     },
     {
@@ -250,7 +250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "dados_reais_page_pipeline",
-      "community": 174,
+      "community": 4,
       "norm_label": "pipeline()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "dados_reais_page_dadosreaispage",
-      "community": 174,
+      "community": 4,
       "norm_label": "dadosreaispage()"
     },
     {
@@ -320,7 +320,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "dashboard_page_dashboardpage",
-      "community": 144,
+      "community": 129,
       "norm_label": "dashboardpage()"
     },
     {
@@ -370,7 +370,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "empresa_actions_atualizarempresa",
-      "community": 13,
+      "community": 6,
       "norm_label": "atualizarempresa()"
     },
     {
@@ -380,7 +380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "empresa_client",
-      "community": 4,
+      "community": 13,
       "norm_label": "client.tsx"
     },
     {
@@ -420,7 +420,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "empresa_page_brl",
-      "community": 13,
+      "community": 129,
       "norm_label": "brl()"
     },
     {
@@ -450,7 +450,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "empresa_page_empresapage",
-      "community": 13,
+      "community": 129,
       "norm_label": "empresapage()"
     },
     {
@@ -580,7 +580,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "id_actions_melhorarsecaoproposta",
-      "community": 177,
+      "community": 158,
       "norm_label": "melhorarsecaoproposta()"
     },
     {
@@ -590,7 +590,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "id_actions_analisarcomia",
-      "community": 177,
+      "community": 158,
       "norm_label": "analisarcomia()"
     },
     {
@@ -700,7 +700,7 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "id_actions_adddoclicitacao",
-      "community": 3,
+      "community": 172,
       "norm_label": "adddoclicitacao()"
     },
     {
@@ -710,7 +710,7 @@
       "source_location": "L196",
       "_origin": "ast",
       "id": "id_actions_deletedoclicitacao",
-      "community": 3,
+      "community": 172,
       "norm_label": "deletedoclicitacao()"
     },
     {
@@ -720,7 +720,7 @@
       "source_location": "L205",
       "_origin": "ast",
       "id": "id_actions_excluirlicitacao",
-      "community": 3,
+      "community": 172,
       "norm_label": "excluirlicitacao()"
     },
     {
@@ -830,7 +830,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_pasta_actions",
-      "community": 3,
+      "community": 4,
       "norm_label": "pasta-actions.tsx"
     },
     {
@@ -840,7 +840,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "id_pasta_actions_pastaactions",
-      "community": 3,
+      "community": 4,
       "norm_label": "pastaactions()"
     },
     {
@@ -850,47 +850,87 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_proposta_gerador",
-      "community": 4,
+      "community": 160,
       "norm_label": "proposta-gerador.tsx"
     },
     {
       "label": "Decl",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
-      "source_location": "L10",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "id_proposta_gerador_decl",
-      "community": 4,
+      "community": 160,
       "norm_label": "decl"
     },
     {
       "label": "MatrizItem",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "id_proposta_gerador_matrizitem",
-      "community": 4,
+      "community": 160,
       "norm_label": "matrizitem"
+    },
+    {
+      "label": "Timbre",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_timbre",
+      "community": 160,
+      "norm_label": "timbre"
+    },
+    {
+      "label": "KitItem",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_kititem",
+      "community": 160,
+      "norm_label": "kititem"
     },
     {
       "label": "SecaoEdit",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
-      "source_location": "L12",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "id_proposta_gerador_secaoedit",
-      "community": 4,
+      "community": 160,
       "norm_label": "secaoedit"
+    },
+    {
+      "label": "Linha",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_linha",
+      "community": 160,
+      "norm_label": "linha"
+    },
+    {
+      "label": "baixar()",
+      "file_type": "code",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "id_proposta_gerador_baixar",
+      "community": 160,
+      "norm_label": "baixar()"
     },
     {
       "label": "PropostaGerador()",
       "file_type": "code",
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
-      "source_location": "L14",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "id_proposta_gerador_propostagerador",
-      "community": 3,
+      "community": 160,
       "norm_label": "propostagerador()"
     },
     {
@@ -900,7 +940,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "pesquisa_page",
-      "community": 160,
+      "community": 144,
       "norm_label": "page.tsx"
     },
     {
@@ -910,7 +950,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "pesquisa_page_brl",
-      "community": 160,
+      "community": 144,
       "norm_label": "brl()"
     },
     {
@@ -920,7 +960,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "pesquisa_page_ufs",
-      "community": 160,
+      "community": 144,
       "norm_label": "ufs"
     },
     {
@@ -930,7 +970,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "pesquisa_page_seg_keys",
-      "community": 160,
+      "community": 144,
       "norm_label": "seg_keys"
     },
     {
@@ -940,7 +980,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "pesquisa_page_arr",
-      "community": 160,
+      "community": 144,
       "norm_label": "arr()"
     },
     {
@@ -950,7 +990,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "pesquisa_page_numornull",
-      "community": 160,
+      "community": 144,
       "norm_label": "numornull()"
     },
     {
@@ -960,7 +1000,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "pesquisa_page_sp",
-      "community": 160,
+      "community": 144,
       "norm_label": "sp"
     },
     {
@@ -970,7 +1010,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "pesquisa_page_pesquisapage",
-      "community": 160,
+      "community": 144,
       "norm_label": "pesquisapage()"
     },
     {
@@ -980,7 +1020,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_actions",
-      "community": 172,
+      "community": 176,
       "norm_label": "actions.ts"
     },
     {
@@ -1010,7 +1050,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "radar_actions_setstage",
-      "community": 172,
+      "community": 176,
       "norm_label": "setstage()"
     },
     {
@@ -1020,7 +1060,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "radar_actions_monitorar",
-      "community": 172,
+      "community": 176,
       "norm_label": "monitorar()"
     },
     {
@@ -1030,7 +1070,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "radar_actions_descartar",
-      "community": 172,
+      "community": 176,
       "norm_label": "descartar()"
     },
     {
@@ -1040,7 +1080,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 172,
+      "community": 176,
       "norm_label": "analisar()"
     },
     {
@@ -1050,7 +1090,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 172,
+      "community": 176,
       "norm_label": "reverter()"
     },
     {
@@ -1070,7 +1110,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_city_picker_citypicker",
-      "community": 176,
+      "community": 144,
       "norm_label": "citypicker()"
     },
     {
@@ -1680,7 +1720,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "components_ui_input",
-      "community": 4,
+      "community": 13,
       "norm_label": "input"
     },
     {
@@ -1700,7 +1740,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 4,
+      "community": 176,
       "norm_label": "select"
     },
     {
@@ -1730,7 +1770,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabslist"
     },
     {
@@ -1740,7 +1780,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "components_ui_tabstrigger",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabstrigger"
     },
     {
@@ -5240,7 +5280,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "lib_ai_server_temia",
-      "community": 177,
+      "community": 158,
       "norm_label": "temia()"
     },
     {
@@ -5260,7 +5300,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_ai_server_chamaria",
-      "community": 177,
+      "community": 158,
       "norm_label": "chamaria()"
     },
     {
@@ -5550,7 +5590,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "lib_certidoes_statuscertidao",
-      "community": 13,
+      "community": 129,
       "norm_label": "statuscertidao()"
     },
     {
@@ -5580,7 +5620,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_consultor",
-      "community": 3,
+      "community": 182,
       "norm_label": "consultor.ts"
     },
     {
@@ -5590,7 +5630,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_consultor_itemhab",
-      "community": 3,
+      "community": 182,
       "norm_label": "itemhab"
     },
     {
@@ -5600,7 +5640,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_consultor_respostaconsultor",
-      "community": 3,
+      "community": 182,
       "norm_label": "respostaconsultor"
     },
     {
@@ -5610,7 +5650,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_consultor_a",
-      "community": 3,
+      "community": 182,
       "norm_label": "a()"
     },
     {
@@ -5620,7 +5660,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "lib_consultor_consultarlicitacao",
-      "community": 3,
+      "community": 182,
       "norm_label": "consultarlicitacao()"
     },
     {
@@ -5750,7 +5790,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_habilitacao",
-      "community": 13,
+      "community": 129,
       "norm_label": "habilitacao.ts"
     },
     {
@@ -5760,7 +5800,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_habilitacao_checklistitem",
-      "community": 13,
+      "community": 129,
       "norm_label": "checklistitem"
     },
     {
@@ -5770,7 +5810,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_habilitacao_base",
-      "community": 13,
+      "community": 129,
       "norm_label": "base"
     },
     {
@@ -5780,7 +5820,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_habilitacao_setoriais",
-      "community": 13,
+      "community": 129,
       "norm_label": "setoriais"
     },
     {
@@ -5790,7 +5830,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_habilitacao_itensaplicaveis",
-      "community": 6,
+      "community": 129,
       "norm_label": "itensaplicaveis()"
     },
     {
@@ -5800,7 +5840,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "lib_habilitacao_itemstatus",
-      "community": 13,
+      "community": 129,
       "norm_label": "itemstatus"
     },
     {
@@ -5810,7 +5850,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_habilitacao_item_status_meta",
-      "community": 13,
+      "community": 129,
       "norm_label": "item_status_meta"
     },
     {
@@ -5820,7 +5860,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "lib_habilitacao_statusitem",
-      "community": 13,
+      "community": 129,
       "norm_label": "statusitem()"
     },
     {
@@ -5830,7 +5870,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 13,
+      "community": 129,
       "norm_label": "calcprontidao()"
     },
     {
@@ -5860,7 +5900,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_ibge_municipiosdauf",
-      "community": 176,
+      "community": 144,
       "norm_label": "municipiosdauf()"
     },
     {
@@ -5890,7 +5930,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_inteligencia",
-      "community": 160,
+      "community": 3,
       "norm_label": "inteligencia.ts"
     },
     {
@@ -5900,7 +5940,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_inteligencia_sb",
-      "community": 160,
+      "community": 3,
       "norm_label": "sb"
     },
     {
@@ -5910,7 +5950,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_inteligencia_concorrente",
-      "community": 160,
+      "community": 3,
       "norm_label": "concorrente"
     },
     {
@@ -5920,7 +5960,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_inteligencia_contratoatual",
-      "community": 160,
+      "community": 3,
       "norm_label": "contratoatual"
     },
     {
@@ -5930,7 +5970,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_inteligencia_mercadointel",
-      "community": 160,
+      "community": 3,
       "norm_label": "mercadointel"
     },
     {
@@ -5940,7 +5980,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "lib_inteligencia_inteligenciamercado",
-      "community": 160,
+      "community": 3,
       "norm_label": "inteligenciamercado()"
     },
     {
@@ -5950,7 +5990,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaonicho",
-      "community": 160,
+      "community": 3,
       "norm_label": "gastoorgaonicho"
     },
     {
@@ -5960,7 +6000,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaononicho",
-      "community": 160,
+      "community": 3,
       "norm_label": "gastoorgaononicho()"
     },
     {
@@ -5970,7 +6010,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaosnonicho",
-      "community": 160,
+      "community": 144,
       "norm_label": "gastoorgaosnonicho()"
     },
     {
@@ -6130,7 +6170,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_pesquisa",
-      "community": 160,
+      "community": 144,
       "norm_label": "pesquisa.ts"
     },
     {
@@ -6140,7 +6180,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_pesquisa_sb",
-      "community": 160,
+      "community": 144,
       "norm_label": "sb"
     },
     {
@@ -6150,7 +6190,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_pesquisa_modalidades",
-      "community": 160,
+      "community": 144,
       "norm_label": "modalidades"
     },
     {
@@ -6160,7 +6200,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "lib_pesquisa_situacoes",
-      "community": 160,
+      "community": 144,
       "norm_label": "situacoes"
     },
     {
@@ -6170,7 +6210,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_pesquisa_filtroscompleta",
-      "community": 160,
+      "community": 144,
       "norm_label": "filtroscompleta"
     },
     {
@@ -6180,7 +6220,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "lib_pesquisa_editalcompleto",
-      "community": 160,
+      "community": 144,
       "norm_label": "editalcompleto"
     },
     {
@@ -6190,7 +6230,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_pesquisa_resultadocompleta",
-      "community": 160,
+      "community": 144,
       "norm_label": "resultadocompleta"
     },
     {
@@ -6200,7 +6240,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "lib_pesquisa_pesquisacompleta",
-      "community": 160,
+      "community": 144,
       "norm_label": "pesquisacompleta()"
     },
     {
@@ -6210,7 +6250,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "lib_pesquisa_faixaitemcidade",
-      "community": 160,
+      "community": 144,
       "norm_label": "faixaitemcidade()"
     },
     {
@@ -6220,7 +6260,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_pesquisa_sodigitos",
-      "community": 160,
+      "community": 144,
       "norm_label": "sodigitos()"
     },
     {
@@ -6230,7 +6270,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "lib_pesquisa_vitoria",
-      "community": 160,
+      "community": 144,
       "norm_label": "vitoria"
     },
     {
@@ -6240,7 +6280,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "lib_pesquisa_vidaconcorrente",
-      "community": 160,
+      "community": 144,
       "norm_label": "vidaconcorrente"
     },
     {
@@ -6250,7 +6290,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "lib_pesquisa_vidadoconcorrente",
-      "community": 160,
+      "community": 144,
       "norm_label": "vidadoconcorrente()"
     },
     {
@@ -6260,7 +6300,7 @@
       "source_location": "L143",
       "_origin": "ast",
       "id": "lib_pesquisa_perfilorgao",
-      "community": 160,
+      "community": 144,
       "norm_label": "perfilorgao"
     },
     {
@@ -6270,7 +6310,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "lib_pesquisa_itemachado",
-      "community": 160,
+      "community": 144,
       "norm_label": "itemachado"
     },
     {
@@ -6280,7 +6320,7 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "lib_pesquisa_buscaritem",
-      "community": 160,
+      "community": 144,
       "norm_label": "buscaritem()"
     },
     {
@@ -6350,7 +6390,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_preco",
-      "community": 160,
+      "community": 144,
       "norm_label": "preco.ts"
     },
     {
@@ -6360,7 +6400,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_preco_semaforo",
-      "community": 160,
+      "community": 144,
       "norm_label": "semaforo"
     },
     {
@@ -6370,7 +6410,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_preco_faixapreco",
-      "community": 160,
+      "community": 144,
       "norm_label": "faixapreco"
     },
     {
@@ -6380,7 +6420,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "lib_preco_percentil",
-      "community": 160,
+      "community": 144,
       "norm_label": "percentil()"
     },
     {
@@ -6390,7 +6430,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "lib_preco_motorpreco",
-      "community": 160,
+      "community": 144,
       "norm_label": "motorpreco()"
     },
     {
@@ -6400,7 +6440,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "lib_preco_semaforo_label",
-      "community": 160,
+      "community": 144,
       "norm_label": "semaforo_label"
     },
     {
@@ -6480,7 +6520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_edital",
-      "community": 158,
+      "community": 174,
       "norm_label": "resumo-edital.ts"
     },
     {
@@ -6490,7 +6530,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_resumo_edital_poder",
-      "community": 158,
+      "community": 174,
       "norm_label": "poder"
     },
     {
@@ -6500,7 +6540,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_resumo_edital_esfera",
-      "community": 158,
+      "community": 174,
       "norm_label": "esfera"
     },
     {
@@ -6510,7 +6550,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_edital_resumoedital",
-      "community": 158,
+      "community": 174,
       "norm_label": "resumoedital"
     },
     {
@@ -6530,7 +6570,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_resumo_profundo",
-      "community": 158,
+      "community": 174,
       "norm_label": "resumo-profundo.ts"
     },
     {
@@ -6540,7 +6580,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secaometa",
-      "community": 158,
+      "community": 174,
       "norm_label": "secaometa"
     },
     {
@@ -6550,7 +6590,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_resumo_profundo_secoes",
-      "community": 158,
+      "community": 174,
       "norm_label": "secoes"
     },
     {
@@ -6560,7 +6600,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_resumo_profundo_resumoprofundo",
-      "community": 158,
+      "community": 174,
       "norm_label": "resumoprofundo"
     },
     {
@@ -6740,7 +6780,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "lib_siconfi_funcaodosegmento",
-      "community": 3,
+      "community": 181,
       "norm_label": "funcaodosegmento()"
     },
     {
@@ -6930,7 +6970,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 4,
+      "community": 3,
       "norm_label": "utils.ts"
     },
     {
@@ -6950,7 +6990,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 4,
+      "community": 3,
       "norm_label": "brl()"
     },
     {
@@ -6960,7 +7000,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_utils_databr",
-      "community": 4,
+      "community": 3,
       "norm_label": "databr()"
     },
     {
@@ -6970,7 +7010,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "lib_utils_nowiso",
-      "community": 160,
+      "community": 3,
       "norm_label": "nowiso()"
     },
     {
@@ -6980,7 +7020,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "lib_utils_isodiasatras",
-      "community": 160,
+      "community": 144,
       "norm_label": "isodiasatras()"
     },
     {
@@ -6990,7 +7030,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_utils_diasate",
-      "community": 4,
+      "community": 3,
       "norm_label": "diasate()"
     },
     {
@@ -7294,10 +7334,30 @@
       "norm_label": "docx"
     },
     {
-      "label": "lucide-react",
+      "label": "jspdf",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L24",
+      "_origin": "ast",
+      "id": "package_dependencies_jspdf",
+      "community": 1,
+      "norm_label": "jspdf"
+    },
+    {
+      "label": "jszip",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "package_dependencies_jszip",
+      "community": 1,
+      "norm_label": "jszip"
+    },
+    {
+      "label": "lucide-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "package_dependencies_lucide_react",
       "community": 1,
@@ -7307,7 +7367,7 @@
       "label": "next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "package_dependencies_next",
       "community": 1,
@@ -7317,7 +7377,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "package_dependencies_react",
       "community": 1,
@@ -7327,7 +7387,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "package_dependencies_react_dom",
       "community": 1,
@@ -7337,7 +7397,7 @@
       "label": "recharts",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "package_dependencies_recharts",
       "community": 1,
@@ -7347,7 +7407,7 @@
       "label": "tailwind-merge",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "package_dependencies_tailwind_merge",
       "community": 1,
@@ -7357,7 +7417,7 @@
       "label": "unpdf",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "package_dependencies_unpdf",
       "community": 1,
@@ -7367,7 +7427,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "package_devdependencies",
       "community": 1,
@@ -7377,7 +7437,7 @@
       "label": "@types/node",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "package_devdependencies_types_node",
       "community": 1,
@@ -7387,7 +7447,7 @@
       "label": "@types/react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "package_devdependencies_types_react",
       "community": 1,
@@ -7397,7 +7457,7 @@
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "package_devdependencies_types_react_dom",
       "community": 1,
@@ -7407,7 +7467,7 @@
       "label": "autoprefixer",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "package_devdependencies_autoprefixer",
       "community": 1,
@@ -7417,7 +7477,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "package_devdependencies_eslint",
       "community": 1,
@@ -7427,7 +7487,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "package_devdependencies_eslint_config_next",
       "community": 1,
@@ -7437,7 +7497,7 @@
       "label": "playwright",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "package_devdependencies_playwright",
       "community": 1,
@@ -7447,7 +7507,7 @@
       "label": "postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "package_devdependencies_postcss",
       "community": 1,
@@ -7457,7 +7517,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss",
       "community": 1,
@@ -7467,7 +7527,7 @@
       "label": "tailwindcss-animate",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss_animate",
       "community": 1,
@@ -7477,7 +7537,7 @@
       "label": "typescript",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "package_devdependencies_typescript",
       "community": 1,
@@ -17710,7 +17770,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 11,
       "norm_label": "irp - intencao de registro de precos",
       "id": "estudo_fontes_irp"
     },
@@ -18360,7 +18420,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "tela 4: esteira / acompanhamento",
       "id": "prd_tela4_esteira"
     },
@@ -18399,7 +18459,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 5,
       "norm_label": "indice de iminencia",
       "id": "prd_indice_iminencia"
     },
@@ -18646,7 +18706,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 21,
       "norm_label": "fonte: ceis/cnep (sancoes)",
       "id": "prd_ceis_cnep"
     },
@@ -21989,9 +22049,9 @@
       "source_file": "app/(shell)/licitacao/[id]/actions.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_actions",
-      "target": "id_actions_melhorarsecaoproposta",
-      "confidence_score": 1.0
+      "target": "id_actions_melhorarsecaoproposta"
     },
     {
       "relation": "contains",
@@ -22325,9 +22385,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_actions",
-      "confidence_score": 1.0
+      "target": "id_actions"
     },
     {
       "relation": "calls",
@@ -22369,9 +22429,9 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_actions_melhorarsecaoproposta",
-      "confidence_score": 1.0
+      "target": "id_actions_melhorarsecaoproposta"
     },
     {
       "relation": "calls",
@@ -23951,11 +24011,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_baixar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "id_proposta_gerador",
       "target": "id_proposta_gerador_decl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_kititem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_linha",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23983,8 +24073,18 @@
       "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_proposta_gerador",
-      "target": "id_proposta_gerador_secaoedit",
+      "target": "id_proposta_gerador_secaoedit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(shell)/licitacao/[id]/proposta-gerador.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "id_proposta_gerador",
+      "target": "id_proposta_gerador_timbre",
       "confidence_score": 1.0
     },
     {
@@ -32760,6 +32860,26 @@
       "confidence_score": 1.0,
       "source": "package_dependencies",
       "target": "package_dependencies_docx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_jspdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_jszip",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -45915,5 +46035,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a5877561b14a1ce8cf2ad68731164cadac5e47a9"
+  "built_at_commit": "0d06011ff5b76072ec1857c4c9044108012facc3"
 }
