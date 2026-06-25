@@ -129,7 +129,8 @@
 .v2 .secondaryBtn{height:38px;border:1px solid var(--v2-line-2);background:#fff;color:#0f172a;border-radius:10px;padding:0 13px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 .v2 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:22px}
 .v2 .kpi{background:#fff;border:1px solid var(--v2-line);border-radius:14px;padding:18px;box-shadow:0 8px 26px rgba(15,23,42,.04)}
-.v2 .kpiTop{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.v2 .kpiTop{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.v2 .kpi label{min-height:2.6em}
 .v2 .kpiIcon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;flex-shrink:0}
 .v2 .kpi label{display:block;color:var(--v2-muted);font-size:13px;font-weight:600}
 .v2 .kpi strong{font-size:28px;letter-spacing:-.04em}
