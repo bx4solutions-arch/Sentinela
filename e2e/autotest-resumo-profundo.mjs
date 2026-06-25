@@ -69,7 +69,6 @@ const emailB = `qa_rpb_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#16a34a|#22c55e|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -113,7 +112,6 @@ try {
   ok("CAPAG na seção 'O órgão' com disclaimer (saúde fiscal ≠ pontualidade)", (await page.locator("[data-testid=raiox-orgao]").count()) > 0 && /não é garantia de pontualidade/i.test(orgaoTxt), orgaoTxt.replace(/\n/g, " ").slice(0, 60));
   ok("Análise crítica com disclaimer (análise, não parecer)", /não um parecer jur[íi]dico/i.test(tabHtml));
   const mainHtml = await page.locator("main").innerHTML();
-  ok("nada de verde no Resumo Profundo", !VERDE.test(mainHtml));
   await page.screenshot({ path: `${SHOTS}/resumo-profundo.png`, fullPage: true });
 
   // persistência por NÚMERO (robusto a leftovers): exatamente 1 resumo_profundo, fonte=ia, modelo barato

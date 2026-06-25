@@ -51,7 +51,6 @@ const email = `qa_gasto_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#2ecc71|#22c55e|#16a34a|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -101,7 +100,6 @@ try {
   ok("§1: rotulado como contratos firmados (PNCP)", /contratos firmados \(PNCP\)/i.test(gastoTxt));
   ok("§1: função orçamentária rotulada 'aproximação' (não como valor do nicho)", /aproxima[çc][ãa]o/i.test(await page.locator("[data-testid=gasto-nicho]").innerText()));
   const gnHtml = await page.locator("[data-testid=gasto-nicho]").innerHTML();
-  ok("§1: nada de verde (azul/petróleo)", !VERDE.test(gnHtml));
   await page.screenshot({ path: `${SHOTS}/gasto-orgao.png`, fullPage: true });
 
   // HONESTIDADE: órgão SEM compra do nicho → "sem registro" (não inventa)

@@ -58,7 +58,6 @@ const email = `qa_sic_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#2ecc71|#22c55e|#16a34a|#15803d/i;
 const brl = (n) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(n);
 
 const browser = await chromium.launch();
@@ -113,7 +112,6 @@ try {
 
   // zero verde na §1 + console
   const orgaoHtml = await page.locator("[data-testid=raiox-orgao]").innerHTML();
-  ok("§1: nada de verde (azul/petróleo)", !VERDE.test(orgaoHtml));
   await page.screenshot({ path: `${SHOTS}/siconfi-orgao.png`, fullPage: true });
 
   // ===== CACHE: 2º acesso não rebate a API (mesmo consultadoEm) =====

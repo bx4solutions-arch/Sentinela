@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sentinela — 5 Telas Conectadas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f172a;
+  --navy-2:#111c33;
+  --blue:#0b2d89;
+  --blue-2:#123aa3;
+  --blue-soft:#dbeafe;
+  --blue-border:#93c5fd;
+  --yellow-soft:#fff7d6;
+  --yellow-border:#facc15;
+  --green:#10b981;
+  --green-soft:#d1fae5;
+  --green-border:#6ee7b7;
+  --orange:#f59e0b;
+  --red:#ef4444;
+  --red-soft:#fee2e2;
+  --purple:#8b5cf6;
+  --purple-soft:#ede9fe;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --line:#e2e8f0;
+  --line-2:#cbd5e1;
+  --text:#0f172a;
+  --muted:#64748b;
+  --muted-2:#94a3b8;
+  --radius:16px;
+  --shadow:0 14px 35px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font-family:inherit}
+.app{display:flex;min-height:100vh}
+.sidebar{width:270px;background:var(--navy);color:#cbd5e1;display:flex;flex-direction:column;flex-shrink:0;border-right:1px solid rgba(255,255,255,.08);position:sticky;top:0;height:100vh}
+.logoArea{height:82px;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{width:42px;height:42px;border-radius:12px;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.brand b{display:block;color:#fff;font-size:18px;letter-spacing:-.02em}
+.brand span{display:block;color:#8fa3c7;font-size:11px;margin-top:2px}
+.navTitle{font-size:12px;color:#8793aa;font-weight:700;padding:24px 20px 9px}
+.nav{display:flex;flex-direction:column;padding:0 10px;gap:4px}
+.nav a{height:46px;border-radius:11px;color:#cbd5e1;text-decoration:none;display:flex;align-items:center;gap:12px;padding:0 12px;font-size:15px;font-weight:600;cursor:pointer}
+.nav a.active{background:var(--blue);color:#fff}
+.nav a:hover{background:#17233d;color:#fff}
+.nav svg{width:19px;height:19px;stroke:currentColor}
+.nav .badge{margin-left:auto;background:#1e293b;color:#cbd5e1;border-radius:999px;padding:2px 7px;font-size:11px}
+.spacer{flex:1}
+.profile{margin:0 14px 16px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
+.profileBox{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:#111c33;border:1px solid rgba(255,255,255,.07)}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.profile b{display:block;color:#fff;font-size:13px}
+.profile span{display:block;color:#8fa3c7;font-size:11px;margin-top:2px}
+.main{flex:1;min-width:0}
+.topbar{height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 28px;gap:18px;position:sticky;top:0;z-index:20}
+.topbar .page{font-size:16px;font-weight:700;color:#0f172a}
+.topbar .divider{width:1px;height:28px;background:var(--line)}
+.topbar .search{margin-left:auto;width:420px;position:relative}
+.search input{width:100%;height:40px;border:1px solid var(--line-2);border-radius:10px;padding:0 14px 0 38px;font-size:14px;background:#fff}
+.search svg{position:absolute;left:13px;top:10px;width:18px;height:18px;color:#64748b}
+.iconBtn{width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#0f172a;display:flex;align-items:center;justify-content:center;position:relative}
+.iconBtn .dot{position:absolute;right:7px;top:7px;width:8px;height:8px;background:var(--red);border-radius:50%}
+.userBubble{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.content{padding:30px 34px 44px}
+.hero{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:20px}
+.hero h1{font-size:30px;letter-spacing:-.04em;margin-bottom:5px}
+.hero p{font-size:16px;color:var(--muted);line-height:1.45}
+.primaryBtn{height:46px;border:0;background:var(--blue);color:#fff;border-radius:10px;padding:0 18px;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 8px 18px rgba(11,45,137,.2);cursor:pointer;white-space:nowrap}
+.secondaryBtn{height:38px;border:1px solid var(--line-2);background:#fff;color:#0f172a;border-radius:10px;padding:0 13px;font-size:13px;font-weight:800;cursor:pointer}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:22px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 8px 26px rgba(15,23,42,.04)}
+.kpiTop{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kpiIcon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
+.kpi label{display:block;color:var(--muted);font-size:13px;font-weight:600}
+.kpi strong{font-size:28px;letter-spacing:-.04em}
+.kpi small{display:block;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.45}
+.grid{display:grid;grid-template-columns:1.05fr .9fr;gap:18px;margin-bottom:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+.panelHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:14px}
+.panelHead h2{font-size:18px;letter-spacing:-.02em}
+.panelHead p{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.4}
+.link{font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;cursor:pointer}
+.actionList{display:flex;flex-direction:column;gap:11px}
+.action{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.action.danger{background:#fffafa;border-color:#fecaca}
+.action.warn{background:#fffdf5;border-color:#fde68a}
+.action.ok{background:#f7fffb;border-color:#a7f3d0}
+.circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800}
+.action b{display:block;font-size:14px}
+.action span{display:block;margin-top:4px;color:var(--muted);font-size:12.5px}
+.date{font-weight:800;font-size:13px;color:#0f172a;text-align:right}
+.date.red{color:var(--red)}
+.date.orange{color:var(--orange)}
+.oppGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.opp{border:1px solid var(--line);border-radius:15px;padding:15px;background:#fff;position:relative}
+.opp.hot{border-color:#fcd34d;background:#fffdf6}
+.oppTop{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px}
+.opp h3{font-size:15px;line-height:1.28}
+.loc{font-size:12px;color:var(--blue);font-weight:700;margin-top:3px}
+.score{width:52px;height:52px;border-radius:50%;border:5px solid var(--green);display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:17px;font-weight:800;line-height:.9;flex-shrink:0}
+.score small{font-size:9px;color:var(--muted);font-weight:700}
+.obj{font-size:13px;color:#334155;font-weight:600;line-height:1.35;margin:10px 0 12px}
+.meta{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:12px}
+.meta span:nth-child(odd){color:var(--muted);font-weight:600}
+.meta span:nth-child(even){font-weight:800;text-align:right}
+.oppBtns{display:grid;grid-template-columns:1fr 1fr;margin-top:13px;gap:8px}
+.btn{height:34px;border-radius:9px;border:1px solid var(--line-2);background:#fff;color:#0f172a;font-weight:800;font-size:12px;cursor:pointer}
+.btn.blue{background:var(--blue);border-color:var(--blue);color:#fff}
+.companyGrid{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center}
+.readiness{width:145px;height:145px;border-radius:50%;background:conic-gradient(var(--green) 0 78%,#e5e7eb 78% 100%);display:flex;align-items:center;justify-content:center;position:relative;margin:auto}
+.readiness:before{content:"";position:absolute;inset:17px;border-radius:50%;background:#fff}
+.readiness div{position:relative;z-index:1;text-align:center}
+.readiness strong{display:block;font-size:34px}
+.readiness span{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.docRows{display:flex;flex-direction:column;gap:9px}
+.docRow{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f1f5f9;padding-bottom:9px;font-size:13px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px}
+.docRow b{font-size:13px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th{font-size:11px;color:var(--muted);text-align:left;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line);padding:10px 8px}
+.table td{border-bottom:1px solid #f1f5f9;padding:12px 8px;vertical-align:top;line-height:1.35}
+.table b{display:block}
+.status{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}
+.status.blue{background:var(--blue-soft);color:var(--blue)}
+.status.yellow{background:var(--yellow-soft);color:#a16207}
+.status.green{background:var(--green-soft);color:#047857}
+.status.red{background:var(--red-soft);color:var(--red)}
+.status.purple{background:var(--purple-soft);color:var(--purple)}
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:16px;overflow:auto}
+.tab{height:36px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 12px;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer;color:#475569}
+.tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.screen{display:none}
+.screen.active{display:block}
+.workspaceHero{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+.titleRow{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.titleRow h1{font-size:25px;letter-spacing:-.03em}
+.titleRow p{margin-top:6px;color:var(--muted);line-height:1.45}
+.verdict{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+.verdictCard{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.verdictCard label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px}
+.verdictCard b{font-size:18px}
+.split{display:grid;grid-template-columns:1fr 360px;gap:18px}
+.docList{display:flex;flex-direction:column;gap:10px}
+.docCard{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.docCard b{display:block}
+.docCard span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.checkList{display:flex;flex-direction:column;gap:8px}
+.checkItem{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.checkBox{width:18px;height:18px;border-radius:5px;border:1.8px solid var(--line-2)}
+.checkBox.ok{background:var(--green);border-color:var(--green)}
+.checkItem b{font-size:13px}
+.checkItem span{font-size:12px;color:var(--muted)}
+.kanban{display:grid;grid-template-columns:repeat(5,minmax(250px,1fr));gap:14px;overflow:auto;padding-bottom:8px}
+.column{border:1px solid var(--line);border-radius:16px;background:#f8fbff;min-height:520px;overflow:hidden}
+.colHead{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:800;border-bottom:1px solid var(--line)}
+.colHead.yellow{background:var(--yellow-soft);border-color:var(--yellow-border)}
+.colHead.blue{background:var(--blue-soft);border-color:var(--blue-border)}
+.colHead.green{background:var(--green-soft);border-color:var(--green-border)}
+.colHead.red{background:var(--red-soft);border-color:#fecaca}
+.colHead.purple{background:var(--purple-soft);border-color:#ddd6fe}
+.count{background:#fff;border-radius:999px;padding:3px 8px;font-size:12px;color:#64748b}
+.kCard{background:#fff;border:1px solid var(--line);border-radius:14px;margin:12px;padding:14px;box-shadow:0 8px 18px rgba(15,23,42,.05)}
+.kCard h3{font-size:15px;margin-bottom:4px}
+.kCard p{font-size:13px;color:var(--muted);line-height:1.4}
+.kCard .meta{margin-top:12px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{display:block;font-size:12px;color:var(--muted);font-weight:800;margin-bottom:7px}
+.field input,.field select{width:100%;height:42px;border:1px solid var(--line-2);border-radius:10px;padding:0 12px;background:#fff;font-size:14px}
+.tagList{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:#eef2ff;color:var(--blue);border:1px solid #bfdbfe;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
+
+.keywordBox{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;margin-top:12px}
+.keywordHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px}
+.keywordHead b{font-size:14px}
+.keywordInput{display:flex;gap:8px;margin-top:10px}
+.keywordInput input{flex:1;height:38px;border:1px solid var(--line-2);border-radius:10px;padding:0 12px}
+.kw{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#eff6ff;color:var(--blue);border:1px solid #bfdbfe;font-size:12px;font-weight:800;margin:4px 5px 4px 0}
+.kw button{border:0;background:transparent;color:var(--blue);font-weight:900;cursor:pointer}
+.uploadZone{border:1.5px dashed var(--blue-border);background:#f8fbff;border-radius:16px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.uploadZone b{display:block;font-size:15px}
+.uploadZone span{display:block;color:var(--muted);font-size:13px;margin-top:4px;line-height:1.4}
+.emptyState{border:1.5px dashed var(--line-2);border-radius:16px;background:#fbfdff;padding:26px;text-align:center;color:var(--muted)}
+.emptyState b{display:block;color:var(--text);font-size:16px;margin-bottom:5px}
+.skeleton{height:12px;border-radius:999px;background:linear-gradient(90deg,#e2e8f0,#f8fafc,#e2e8f0);background-size:200% 100%;animation:pulse 1.4s infinite}
+@keyframes pulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.scoreNote{display:block;font-size:10px;color:var(--muted);font-weight:800;text-align:center;margin-top:2px}
+.warningStrip{display:flex;align-items:center;gap:9px;border:1px solid #fde68a;background:#fffdf5;color:#92400e;border-radius:12px;padding:10px 12px;font-size:12.5px;font-weight:800;margin-bottom:14px}
+.orgStats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.orgStat{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fff}
+.orgStat label{display:block;color:var(--muted);font-size:12px;font-weight:800;margin-bottom:6px}
+.orgStat b{font-size:18px}
+
+@media(max-width:1280px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .grid,.bottom,.split{grid-template-columns:1fr}
+  .oppGrid,.grid-3,.verdict{grid-template-columns:1fr}
+  .topbar .search{width:300px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logoArea">
+      <div class="logo">S</div>
+      <div class="brand"><b>Sentinela</b><span>Inteligência em Licitações</span></div>
+    </div>
+
+    <div class="navTitle">Navegação</div>
+    <nav class="nav">
+      <a class="active" data-screen="dashboard">⌂ Dashboard</a>
+      <a data-screen="radar">⌕ Radar <span class="badge">128</span></a>
+      <a data-screen="spaces">▤ Licitações</a>
+      <a data-screen="company">▦ Minha Empresa</a>
+      <a data-screen="kanban">▥ Kanban</a>
+    </nav>
+
+    <div class="spacer"></div>
+    <div class="profile">
+      <div class="profileBox">
+        <div class="avatar">BI</div>
+        <div><b>Bione Silva</b><span>Administrador</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <span style="font-size:22px;color:#0f172a">◫</span>
+      <div class="divider"></div>
+      <div class="page" id="pageTitle">Dashboard</div>
+      <div class="search">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.3-4.3"/><circle cx="10.5" cy="10.5" r="7.5"/></svg>
+        <input placeholder="Buscar licitação, órgão, número..." />
+      </div>
+      <button class="iconBtn">🔔<span class="dot"></span></button>
+      <div class="userBubble">BI</div>
+    </header>
+
+    <section class="content">
+<input id="fileInput" type="file" multiple accept=".pdf,.doc,.docx,.zip,.xlsx" style="display:none" onchange="showScreen('spaces')">
+      <!-- TELA 1 -->
+      <div id="dashboard" class="screen active">
+        <div class="hero">
+          <div>
+            <h1>Bom dia, Bione 👋</h1>
+            <p>Aqui está o que precisa da sua atenção hoje para não perder prazo, documento ou oportunidade.</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end"><button class="secondaryBtn" onclick="document.getElementById('fileInput').click()">⇧ Importar edital</button><button class="primaryBtn" onclick="showScreen('spaces')">＋ Analisar Licitação</button></div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><div class="kpiTop"><div class="kpiIcon" style="background:#2563eb">⌕</div><div><label>Oportunidades no Radar</label><strong>128</strong></div></div><small><b>R$ 24.530.000,00</b><br>valor total estimado</small></div>
+          <div class="kpi"><div class="kpiTop"><div class="kpiIcon" style="background:#fbbf24">▣</div><div><label>Licitações para decidir</label><strong>7</strong></div></div><small><b>R$ 3.128.000,00</b><br>aguardando veredito</small></div>
+          <div class="kpi"><div class="kpiTop"><div class="kpiIcon" style="background:#22c55e">▤</div><div><label>Propostas em preparação</label><strong>5</strong></div></div><small><b>R$ 1.890.000,00</b><br>em execução no kanban</small></div>
+          <div class="kpi"><div class="kpiTop"><div class="kpiIcon" style="background:#ef4444">!</div><div><label>Prazos críticos</label><strong>3</strong></div></div><small>Itens vencendo nos próximos 7 dias</small></div>
+          <div class="kpi"><div class="kpiTop"><div class="kpiIcon" style="background:#8b5cf6">▦</div><div><label>Documentos vencendo</label><strong>12</strong></div></div><small>Itens vencendo nos próximos 30 dias</small></div>
+        </div>
+
+        <div class="grid">
+          <div class="panel">
+            <div class="panelHead"><div><h2>Ações urgentes</h2><p>O que precisa ser feito agora.</p></div><a class="link">Ver todas</a></div>
+            <div class="actionList">
+              <div class="action danger"><div class="circle" style="background:var(--red-soft);color:var(--red)">!</div><div><b>Impugnação vence amanhã</b><span>PE 15/2025 — Prefeitura de Campinas</span></div><div class="date red">24/05/2025</div></div>
+              <div class="action warn"><div class="circle" style="background:var(--yellow-soft);color:#ca8a04">▤</div><div><b>Proposta para finalizar</b><span>PE 32/2025 — Ministério da Educação</span></div><div class="date orange">26/05/2025</div></div>
+              <div class="action"><div class="circle" style="background:var(--blue-soft);color:var(--blue)">▣</div><div><b>12 documentos vencendo</b><span>Certidões e licenças vencem nos próximos 30 dias</span></div><div class="date">Ver docs</div></div>
+              <div class="action ok"><div class="circle" style="background:var(--green-soft);color:#059669">✓</div><div><b>Nova licitação recomendada</b><span>Concorrência 08/2025 — Governo do Estado SP</span></div><div class="date" style="color:#059669">Analisar</div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panelHead"><div><h2>Status da minha empresa</h2><p>Prontidão para participar sem cair na habilitação.</p></div><a class="link" onclick="showScreen('company')">Ver detalhes</a></div>
+            <div class="companyGrid">
+              <div class="readiness"><div><strong>78%</strong><span>Bom</span></div></div>
+              <div class="docRows">
+                <div class="docRow"><span><i class="dot" style="background:var(--green)"></i>Em dia</span><b>45</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--orange)"></i>Vencendo em até 30 dias</span><b>8</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--red)"></i>Vencidos</span><b>3</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--muted-2)"></i>Não enviados</span><b>12</b></div>
+                <button class="primaryBtn" onclick="showScreen('company')" style="width:100%;justify-content:center;margin-top:10px">Atualizar documentos</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="warningStrip">⚠ Scores de chance são estimativas em calibração. Prontidão documental é fato; chance de vitória depende de histórico e backtest.</div>
+        <div class="panel">
+          <div class="panelHead"><div><h2>Oportunidades recomendadas</h2><p>Prioridade baseada em valor, chance, prontidão e risco.</p></div><a class="link" onclick="showScreen('radar')">Ver radar</a></div>
+          <div class="oppGrid">
+            <div class="opp hot"><div class="oppTop"><div><h3>Prefeitura de São Luís/MA</h3><div class="loc">Controle de pragas em escolas</div></div><div><div class="score">89<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Contrato anterior vencendo + recorrência no nicho da empresa.</div><div class="meta"><span>Valor estimado</span><span>R$ 420 mil</span><span>Prontidão</span><span>82%</span><span>Próxima ação</span><span>Analisar</span></div><div class="oppBtns"><button class="btn">Descartar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+            <div class="opp"><div class="oppTop"><div><h3>Ministério da Educação</h3><div class="loc">Serviços de controle de pragas</div></div><div><div class="score">82<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Edital publicado, prazo curto e documentação parcialmente pronta.</div><div class="meta"><span>Valor estimado</span><span>R$ 850 mil</span><span>Prontidão</span><span>74%</span><span>Próxima ação</span><span>Checklist</span></div><div class="oppBtns"><button class="btn">Monitorar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+            <div class="opp"><div class="oppTop"><div><h3>Governo do Estado SP</h3><div class="loc">Limpeza e conservação</div></div><div><div class="score" style="border-color:var(--orange)">76<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Baixa concorrência histórica, mas exige atenção no preço.</div><div class="meta"><span>Valor estimado</span><span>R$ 2,3 mi</span><span>Prontidão</span><span>68%</span><span>Próxima ação</span><span>Preço</span></div><div class="oppBtns"><button class="btn">Descartar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TELA 2 RADAR -->
+      <div id="radar" class="screen">
+        <div class="hero"><div><h1>Radar de Oportunidades</h1><p>O sistema mostra o que combina com sua empresa: editais publicados, contratos vencendo, recorrência e baixa concorrência.</p></div><button class="primaryBtn">＋ Nova busca</button></div>
+        <div class="uploadZone"><div><b>Tem um edital fora do radar?</b><span>Suba PDF, ZIP, anexos ou documentos baixados de qualquer portal. A IA cria a Pasta Inteligente e faz a análise.</span></div><button class="primaryBtn" onclick="document.getElementById('fileInput').click()">⇧ Importar licitação</button></div>
+        <div class="kpis">
+          <div class="kpi"><label>Vai nascer e eu ganho</label><strong>18</strong><small>Contrato vencendo + empresa apta</small></div>
+          <div class="kpi"><label>Baixa concorrência</label><strong>9</strong><small>Histórico com poucos participantes</small></div>
+          <div class="kpi"><label>Preço que ganha</label><strong>14</strong><small>Faixa histórica compatível</small></div>
+          <div class="kpi"><label>Editais publicados</label><strong>32</strong><small>Novos no seu nicho</small></div>
+          <div class="kpi"><label>Descartadas pela IA</label><strong>71</strong><small>Fora do seu perfil</small></div>
+        </div>
+        <div class="panel">
+          <div class="panelHead"><div><h2>Oportunidades qualificadas</h2><p>Não é lista de edital. É lista priorizada por chance, prontidão e preço.</p></div></div>
+          <div class="oppGrid">
+            <div class="opp hot"><div class="oppTop"><div><h3>SEMED São Luís/MA</h3><div class="loc">Contrato vencendo em 74 dias</div></div><div><div class="score">91<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Dedetização de escolas municipais. Histórico recorrente e fornecedor anterior identificado.</div><div class="meta"><span>Valor provável</span><span>R$ 420 mil</span><span>Filtro ouro</span><span>Vai nascer</span><span>Prontidão</span><span>82%</span></div><div class="oppBtns"><button class="btn">Monitorar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+            <div class="opp"><div class="oppTop"><div><h3>Hospital Municipal GO</h3><div class="loc">Baixa concorrência histórica</div></div><div><div class="score">84<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Controle de vetores em unidade hospitalar. Exige licença técnica e atestado específico.</div><div class="meta"><span>Valor provável</span><span>R$ 680 mil</span><span>Filtro ouro</span><span>Baixa concorrência</span><span>Prontidão</span><span>74%</span></div><div class="oppBtns"><button class="btn">Descartar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+            <div class="opp"><div class="oppTop"><div><h3>Câmara de Natal/RN</h3><div class="loc">Preço histórico favorável</div></div><div><div class="score" style="border-color:var(--orange)">77<small>/100</small></div><span class="scoreNote">estimativa</span></div></div><div class="obj">Sanitização e limpeza. Último preço indica margem possível, mas risco jurídico médio.</div><div class="meta"><span>Valor provável</span><span>R$ 180 mil</span><span>Filtro ouro</span><span>Preço que ganha</span><span>Prontidão</span><span>88%</span></div><div class="oppBtns"><button class="btn">Monitorar</button><button class="btn blue" onclick="showScreen('spaces')">Analisar</button></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <table class="table">
+            <thead><tr><th>Origem</th><th>Oportunidade</th><th>Órgão</th><th>Valor</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr><td><span class="status yellow">Contrato vencendo</span></td><td><b>Controle de pragas em escolas</b></td><td>Prefeitura de São Luís/MA</td><td>R$ 420 mil</td><td><span class="status blue">Analisar</span></td></tr>
+              <tr><td><span class="status green">Edital publicado</span></td><td><b>Limpeza predial</b></td><td>Governo do Estado SP</td><td>R$ 2,3 mi</td><td><span class="status blue">Analisar</span></td></tr>
+              <tr><td><span class="status purple">Recorrência</span></td><td><b>Manutenção de ar-condicionado</b></td><td>Secretaria de Educação/PI</td><td>R$ 310 mil</td><td><span class="status blue">Monitorar</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid">
+          <div class="panel">
+            <div class="panelHead"><div><h2>Estado honesto — em ingestão</h2><p>Quando o recorte ainda está processando, a tela deve assumir isso sem inventar dado.</p></div></div>
+            <div class="docRows">
+              <div class="skeleton" style="width:84%"></div>
+              <div class="skeleton" style="width:68%"></div>
+              <div class="skeleton" style="width:92%"></div>
+            </div>
+            <p style="margin-top:14px;color:var(--muted);font-size:13px">Ingestão em andamento: PNCP + contratos + histórico do nicho. Última atualização: agora.</p>
+          </div>
+          <div class="panel">
+            <div class="panelHead"><div><h2>Estado honesto — sem registro</h2><p>Quando não houver dado real, mostrar vazio útil e próxima ação.</p></div></div>
+            <div class="emptyState"><b>Nenhum contrato vencendo encontrado neste recorte</b><span>Amplie cidades, adicione palavras-chave ou importe um edital manualmente.</span><br><br><button class="secondaryBtn">Editar recorte</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TELA 3 SPACE -->
+      <div id="spaces" class="screen">
+        <div class="workspaceHero">
+          <div class="titleRow">
+            <div>
+              <h1>PE 32/2025 — Controle de Pragas</h1>
+              <p>Ministério da Educação · Valor estimado R$ 850.000,00 · Abertura em 6 dias · 18 documentos analisados pela IA</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+              <button class="secondaryBtn">Gerar PDF</button>
+              <button class="secondaryBtn">Descartar</button>
+              <button class="primaryBtn" onclick="showScreen('kanban')">Participar</button>
+            </div>
+          </div>
+          <div class="verdict">
+            <div class="verdictCard"><label>Veredito IA</label><b style="color:#ca8a04">Participar com ressalvas</b></div>
+            <div class="verdictCard"><label>Prontidão da empresa</label><b>74%</b></div>
+            <div class="verdictCard"><label>Risco principal</label><b>Atestado técnico específico</b></div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active">Resumo Executivo</button>
+          <button class="tab">Minha Empresa x Edital</button>
+          <button class="tab">Checklist</button>
+          <button class="tab">Criador de Documentos</button>
+          <button class="tab">Preços e Histórico</button>
+          <button class="tab active" style="background:#ecfdf5;color:#047857;border-color:#6ee7b7">Órgão</button>
+          <button class="tab">Concorrentes</button>
+          <button class="tab">Consultor IA</button>
+        </div>
+
+        <div class="split">
+          <div>
+            <div class="panel">
+              <div class="panelHead"><div><h2>Resumo Executivo da Licitação</h2><p>A IA leu edital, TR, anexos, contrato e modelo de proposta.</p></div></div>
+              <div class="grid-3">
+                <div class="verdictCard"><label>O que está sendo contratado</label><b>Serviços contínuos de controle de pragas em unidades públicas</b></div>
+                <div class="verdictCard"><label>Complexidade</label><b>Média</b></div>
+                <div class="verdictCard"><label>Prazo crítico</label><b style="color:var(--red)">Impugnação em 24h</b></div>
+              </div>
+              <br>
+              <table class="table">
+                <tbody>
+                  <tr><td><b>Exigência crítica</b></td><td>Atestado compatível com unidades escolares ou públicas.</td></tr>
+                  <tr><td><b>Preço histórico</b></td><td>Último contrato semelhante: R$ 788.000,00. Preço atual subiu 7,8%.</td></tr>
+                  <tr><td><b>Fornecedor anterior</b></td><td>Sanitiza Norte Ltda · sem sanção CEIS/CNEP encontrada.</td></tr>
+                  <tr><td><b>Pegadinha</b></td><td>Prazo de execução curto e exigência de licença sanitária válida até o fim do contrato.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="panel">
+              <div class="panelHead"><div><h2>Órgão — ele compra e tem dinheiro?</h2><p>Raio-X do comprador: gasto no nicho, saúde fiscal, histórico e recorrência.</p></div></div>
+              <div class="orgStats">
+                <div class="orgStat"><label>Gasto no nicho</label><b>R$ 2,4 mi</b></div>
+                <div class="orgStat"><label>CAPAG / saúde fiscal</label><b style="color:#047857">B</b></div>
+                <div class="orgStat"><label>Contratações similares</label><b>11</b></div>
+                <div class="orgStat"><label>Recompra média</label><b>13 meses</b></div>
+              </div>
+              <table class="table">
+                <tbody>
+                  <tr><td><b>Histórico do órgão</b></td><td>Compra recorrente em controle de pragas e serviços continuados.</td></tr>
+                  <tr><td><b>Fornecedor anterior</b></td><td>Sanitiza Norte Ltda · contrato anterior R$ 788.000,00.</td></tr>
+                  <tr><td><b>Risco financeiro</b></td><td>Sem alerta crítico. Conferir execução orçamentária antes da proposta final.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="panel">
+              <div class="panelHead"><div><h2>Criador de Documentos</h2><p>Documentos detectados automaticamente a partir do edital.</p></div><a class="link">Gerar todos</a></div>
+              <div class="docList">
+                <div class="docCard"><div><b>Proposta Comercial</b><span>8 seções · modelo do edital detectado</span></div><span class="status yellow">Precisa revisar</span></div>
+                <div class="docCard"><div><b>Declaração de inexistência de fato impeditivo</b><span>Gerada com dados da empresa</span></div><span class="status green">Pronta</span></div>
+                <div class="docCard"><div><b>Pedido de esclarecimento</b><span>Sugerido por risco no item 7.3</span></div><span class="status red">Urgente</span></div>
+              </div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="panel">
+              <div class="panelHead"><div><h2>Checklist Inteligente</h2><p>O que pode inabilitar ou atrasar.</p></div></div>
+              <div class="checkList">
+                <div class="checkItem"><div class="checkBox ok"></div><div><b>CND Federal</b><br><span>Válida</span></div><span class="status green">ok</span></div>
+                <div class="checkItem"><div class="checkBox ok"></div><div><b>FGTS</b><br><span>Válido</span></div><span class="status green">ok</span></div>
+                <div class="checkItem"><div class="checkBox"></div><div><b>Licença Sanitária</b><br><span>Vence em 43 dias</span></div><span class="status yellow">atenção</span></div>
+                <div class="checkItem"><div class="checkBox"></div><div><b>Atestado compatível</b><br><span>Não localizado</span></div><span class="status red">risco</span></div>
+                <div class="checkItem"><div class="checkBox"></div><div><b>Modelo de proposta</b><br><span>Gerar e revisar</span></div><span class="status blue">ação</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panelHead"><div><h2>Consultor IA</h2><p>Pergunte sobre esta licitação.</p></div></div>
+              <textarea style="width:100%;height:110px;border:1px solid var(--line-2);border-radius:12px;padding:12px;resize:none" placeholder="Ex: Meu atestado serve para essa licitação?"></textarea>
+              <button class="primaryBtn" style="width:100%;margin-top:10px">Perguntar</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- TELA 4 MINHA EMPRESA -->
+      <div id="company" class="screen">
+        <div class="hero"><div><h1>Minha Empresa / Prontidão</h1><p>Cofre inteligente da empresa. Tudo que será cruzado com cada edital antes de decidir participar.</p></div><button class="primaryBtn">＋ Adicionar documento</button></div>
+        <div class="grid">
+          <div class="panel">
+            <div class="panelHead"><div><h2>Dados da empresa</h2><p>Base usada pela IA para comparar contra cada licitação.</p></div></div>
+            <div class="formGrid">
+              <div class="field"><label>CNPJ</label><input value="00.000.000/0001-00"></div>
+              <div class="field"><label>Razão social</label><input value="Dedetizadora Maranhense Ltda"></div>
+              <div class="field"><label>CNAE principal</label><input value="8122-2/00 — Imunização e controle de pragas urbanas"></div>
+              <div class="field"><label>Porte</label><input value="Empresa de Pequeno Porte"></div>
+            </div>
+            <br>
+            <div class="field"><label>Nichos ativos</label><div class="tagList"><span class="tag">Controle de pragas</span><span class="tag">Sanitização</span><span class="tag">Limpeza técnica</span><span class="tag">+ adicionar</span></div></div>
+            <div class="keywordBox">
+              <div class="keywordHead"><b>Monitoramento de nicho — palavras-chave</b><button class="secondaryBtn">Sugerir com IA</button></div>
+              <p style="color:var(--muted);font-size:13px;line-height:1.45;margin-bottom:8px">Essas palavras ampliam o radar para objetos escritos de formas diferentes. Ex: “controle de pragas” também aparece como dedetização, desinsetização, controle de vetores.</p>
+              <div>
+                <span class="kw">controle de pragas <button>×</button></span>
+                <span class="kw">dedetização <button>×</button></span>
+                <span class="kw">desinsetização <button>×</button></span>
+                <span class="kw">desratização <button>×</button></span>
+                <span class="kw">controle de vetores <button>×</button></span>
+                <span class="kw">sanitização <button>×</button></span>
+              </div>
+              <div class="keywordInput"><input placeholder="Adicionar palavra-chave..."><button class="btn blue">Adicionar</button></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panelHead"><div><h2>Prontidão geral</h2><p>Capacidade atual para participar das oportunidades quentes.</p></div></div>
+            <div class="companyGrid">
+              <div class="readiness"><div><strong>78%</strong><span>Bom</span></div></div>
+              <div class="docRows">
+                <div class="docRow"><span><i class="dot" style="background:var(--green)"></i>Certidões em dia</span><b>8/9</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--orange)"></i>Licenças vencendo</span><b>2</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--red)"></i>Atestados pendentes</span><b>1</b></div>
+                <div class="docRow"><span><i class="dot" style="background:var(--blue)"></i>Portais cadastrados</span><b>6</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panelHead"><div><h2>Documentos e habilitação</h2><p>O sistema alerta vencimento e cruza cada documento com edital.</p></div></div>
+          <table class="table">
+            <thead><tr><th>Documento</th><th>Status</th><th>Vencimento</th><th>Impacto</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr><td><b>CND Federal</b>Receita/PGFN</td><td><span class="status green">Válida</span></td><td>104 dias</td><td>Obrigatória</td><td><span class="status blue">Ver</span></td></tr>
+              <tr><td><b>Licença Sanitária Municipal</b>Manual</td><td><span class="status yellow">Vence breve</span></td><td>43 dias</td><td>Crítica para pragas</td><td><span class="status blue">Atualizar</span></td></tr>
+              <tr><td><b>Atestado escolas públicas</b>Manual</td><td><span class="status red">Ausente</span></td><td>—</td><td>Pode inabilitar</td><td><span class="status blue">Cadastrar</span></td></tr>
+              <tr><td><b>FGTS</b>Automático</td><td><span class="status green">Válido</span></td><td>65 dias</td><td>Obrigatório</td><td><span class="status blue">Ver</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TELA 5 KANBAN -->
+      <div id="kanban" class="screen">
+        <div class="hero"><div><h1>Kanban de Execução</h1><p>Somente licitações que você decidiu trabalhar entram aqui. É o CRM operacional da venda ao governo.</p></div><button class="primaryBtn">＋ Novo processo</button></div>
+        <div class="kanban">
+          <div class="column"><div class="colHead yellow">Em análise <span class="count">3</span></div>
+            <div class="kCard"><h3>PE 32/2025</h3><p>Controle de pragas — Ministério da Educação</p><div class="meta"><span>Valor</span><span>R$ 850 mil</span><span>Risco</span><span>Atestado</span></div></div>
+            <div class="kCard"><h3>PE 45/2025</h3><p>Material de limpeza — Prefeitura de SP</p><div class="meta"><span>Valor</span><span>R$ 1,25 mi</span><span>Prazo</span><span>5 dias</span></div></div>
+          </div>
+          <div class="column"><div class="colHead blue">Preparação documental <span class="count">2</span></div>
+            <div class="kCard"><h3>Conc. 08/2025</h3><p>Limpeza e conservação — Governo SP</p><div class="meta"><span>Prontidão</span><span>68%</span><span>Ação</span><span>Licença</span></div></div>
+          </div>
+          <div class="column"><div class="colHead purple">Proposta em montagem <span class="count">5</span></div>
+            <div class="kCard"><h3>PE 15/2025</h3><p>Campinas — controle de vetores</p><div class="meta"><span>Prazo</span><span>Amanhã</span><span>Status</span><span>Impugnação</span></div></div>
+          </div>
+          <div class="column"><div class="colHead red">Sessão / habilitação <span class="count">2</span></div>
+            <div class="kCard"><h3>PE 09/2025</h3><p>Hospital municipal — sanitização</p><div class="meta"><span>Fase</span><span>Habilitação</span><span>Risco</span><span>Baixo</span></div></div>
+          </div>
+          <div class="column"><div class="colHead green">Resultado / contrato <span class="count">1</span></div>
+            <div class="kCard"><h3>PE 04/2025</h3><p>Serviços de dedetização — Câmara</p><div class="meta"><span>Status</span><span>Ganhou</span><span>Contrato</span><span>Gerar</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script>
+const titles = {
+  dashboard:'Dashboard',
+  radar:'Radar de Oportunidades',
+  spaces:'Licitações / Pasta Inteligente',
+  company:'Minha Empresa',
+  kanban:'Kanban'
+};
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active', a.dataset.screen===id));
+  document.getElementById('pageTitle').textContent = titles[id] || 'Sentinela';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click',()=>showScreen(a.dataset.screen));
+});
+document.querySelectorAll('.keywordInput .btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const input = btn.parentElement.querySelector('input');
+    if(!input.value.trim()) return;
+    const span = document.createElement('span');
+    span.className = 'kw';
+    span.innerHTML = input.value.trim() + ' <button>×</button>';
+    btn.parentElement.previousElementSibling.appendChild(span);
+    input.value = '';
+  });
+});
+</script>
+</body>
+</html>

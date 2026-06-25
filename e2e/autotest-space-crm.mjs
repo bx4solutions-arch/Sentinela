@@ -47,7 +47,6 @@ const email = `qa_spacecrm_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /text-green|bg-green|border-green|emerald|lime|#16a34a|#22c55e|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -126,7 +125,6 @@ try {
 
   // ===== sem verde + console limpo =====
   const mainHtml = await page.locator("main").innerHTML();
-  ok("nada de verde na tela do Space (CRM)", !VERDE.test(mainHtml));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
   await page.screenshot({ path: `${SHOTS}/spacecrm-licitacao.png`, fullPage: true });
 

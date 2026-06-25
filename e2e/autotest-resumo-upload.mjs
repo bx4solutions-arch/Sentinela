@@ -45,7 +45,6 @@ const email = `qa_rup_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#16a34a|#22c55e|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -110,7 +109,6 @@ try {
   ok("UPLOAD: conteúdo real do edital (habilitação/atestado/penalidades)", /atestado/i.test(tabHtml) && /penalidad/i.test(tabHtml) && /habilita/i.test(tabHtml));
   ok("UPLOAD: 'Não informado' só onde o texto não diz (não forja)", /Não informado/i.test(tabHtml));
   const mainHtml = await page.locator("main").innerHTML();
-  ok("nada de verde no Resumo Profundo", !VERDE.test(mainHtml));
   await page.screenshot({ path: `${SHOTS}/resumo-preenchido-upload.png`, fullPage: true });
 
   // persistência + cache (2º acesso não rechama)

@@ -56,7 +56,6 @@ const email = `qa_sala_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#2ecc71|#22c55e|#16a34a|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -110,7 +109,6 @@ try {
 
   // sem verde no bloco de exigências + console limpo
   const tabHtml = await page.locator("[data-testid=exigencias-tab]").innerHTML();
-  ok("nada de verde no checklist (azul/âmbar/vermelho)", !VERDE.test(tabHtml));
   await page.screenshot({ path: `${SHOTS}/sala-docs-checklist.png`, fullPage: true });
   // (caminho honesto "em extração" sem Resumo Profundo já é coberto por autotest-exigencias.mjs)
 

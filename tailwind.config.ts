@@ -36,6 +36,7 @@ const config: Config = {
         destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
         success: { DEFAULT: "hsl(var(--success))", foreground: "hsl(var(--success-foreground))" },
         warning: { DEFAULT: "hsl(var(--warning))", foreground: "hsl(var(--warning-foreground))" },
+        purple: { DEFAULT: "hsl(var(--purple))", foreground: "hsl(var(--purple-foreground))" },
         neutral: { DEFAULT: "hsl(var(--neutral))", foreground: "hsl(var(--neutral-foreground))" },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

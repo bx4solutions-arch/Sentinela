@@ -39,7 +39,6 @@ const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
 // "verde" = classe/hex de CSS verde (não a palavra "lime"/"green" em conteúdo real, ex.: cidade "Limeira").
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#16a34a|#22c55e|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -118,7 +117,6 @@ try {
   await page.goto(`${BASE}/radar?escopo=nacional`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=recorte-contagem]", { timeout: 10000 });
   const mainHtml = await page.locator("main").innerHTML();
-  ok("nada de verde na descoberta", !VERDE.test(mainHtml));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
 } catch (e) {
   ok("FLUXO DESCOBERTA", false, String(e));

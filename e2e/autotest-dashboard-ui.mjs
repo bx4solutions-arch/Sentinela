@@ -23,14 +23,12 @@ async function cleanup(email) {
   const list = await (await fetch(`${SB}/auth/v1/admin/users`, { headers: H })).json();
   for (const u of list.users || []) if (u.email === email && u.email.endsWith("@sentinela.test")) await fetch(`${SB}/auth/v1/admin/users/${u.id}`, { method: "DELETE", headers: H });
 }
-// "verde" = classe/hex de CSS verde (não a palavra em conteúdo real, ex.: cidade "Limeira").
-const VERDE_G = /(?:bg|text|border|ring|from|to|via|fill|stroke)-(?:green|emerald|lime)-\d|bg-verde|text-verde|border-verde|#2ecc71|#22c55e|#16a34a|#15803d/gi;
-
+// Verde LIBERADO no design v2 (Opção A) — a régua "zero verde" foi removida na Etapa 0.
 const email = `qa_dashui_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-let verdeCount = 0, perfForjado = "";
+let perfForjado = "";
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
@@ -71,13 +69,6 @@ try {
   if (perfNums) perfForjado = perfNums[0];
   await page.screenshot({ path: `${SHOTS}/dashboard-desktop.png`, fullPage: true }); // ainda no /dashboard
 
-  // ZERO verde em TODO o app (dashboard + radar + space)
-  for (const rota of ["/dashboard", "/radar"]) {
-    await page.goto(`${BASE}${rota}`, { waitUntil: "networkidle" });
-    const html = await page.content();
-    verdeCount += (html.match(VERDE_G) || []).length;
-  }
-
   // ===== HERANÇA do design system: Radar legível (piso text-xs = 13px) + screenshot =====
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.waitForSelector("text=Sinais do seu recorte", { timeout: 10000 });
@@ -91,11 +82,7 @@ try {
   await page.waitForSelector("[data-testid=space-cabecalho]", { timeout: 10000 });
   const h1Px = await page.locator("[data-testid=space-cabecalho] h1").evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
   ok("HERANÇA: Space com título grande (órgão ≥ 24px)", h1Px >= 24, `h1=${h1Px}px`);
-  const spaceHtml = await page.content();
-  verdeCount += (spaceHtml.match(VERDE_G) || []).length;
   await page.screenshot({ path: `${SHOTS}/space-ds.png`, fullPage: true });
-
-  ok("ZERO verde (classe CSS) em todo o app (dashboard+radar+space)", verdeCount === 0, `matches=${verdeCount}`);
 
   // ===== MOBILE (resize) =====
   await page.setViewportSize({ width: 390, height: 844 });
@@ -117,7 +104,7 @@ try {
 }
 
 console.log("\n===== AUTOTESTE DASHBOARD UI (design system + LicitaPro desktop/mobile) =====");
-console.log(`>> contagem de verde (classe CSS): ${verdeCount} · número forjado na Performance: ${perfForjado || "0"}`);
+console.log(`>> número forjado na Performance: ${perfForjado || "0"}`);
 let fail = 0;
 for (const r of results) { console.log(`${r.pass ? "✅" : "❌"} ${r.name}${r.extra ? "  — " + r.extra : ""}`); if (!r.pass) fail++; }
 console.log(fail ? `\n${fail} FALHA(S)` : "\nTODOS PASSARAM");

@@ -6,10 +6,12 @@
    (confirmado pelo usuário). Inter + radius 0.5rem. Ver docs/design-system.md. */
 @layer base {
   :root {
-    /* Design system LicitaPro — petróleo #0F4C75, âmbar #F59E0B, vermelho #E74C3C, bgpage #F5F7FA.
-       Regra de ouro: ZERO verde (success também é azul). */
-    --background: 214 33% 97%;
-    --foreground: 222 47% 11%;
+    /* Design system v2 "5 Telas Conectadas" (docs/blueprint/sentinela_5_telas_conectadas_v2.html).
+       Opção A / verde LIBERADO. Paleta: primary royal #0b2d89 · success emerald #10b981 ·
+       warning amber #f59e0b · danger #ef4444 · purple #8b5cf6 · bg slate #f8fafc · line #e2e8f0 ·
+       texto/sidebar slate-900 #0f172a · radius 16px. */
+    --background: 210 40% 98%;          /* #f8fafc */
+    --foreground: 222 47% 11%;          /* #0f172a */
 
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -17,36 +19,39 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 204 77% 26%;
+    --primary: 224 85% 29%;             /* #0b2d89 royal */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 204 71% 38%;
+    --secondary: 224 80% 35%;           /* #123aa3 blue-2 */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 47%;    /* #64748b slate-500 */
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
 
-    --destructive: 6 78% 57%;
+    --destructive: 0 84% 60%;           /* #ef4444 */
     --destructive-foreground: 0 0% 100%;
 
-    /* "success"/positivo SEM VERDE → azul de ação (#3C83F6). Regra do Bione: zero verde. */
-    --success: 217 91% 60%;
+    /* success = VERDE emerald (#10b981) — verde liberado no v2. */
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 38 92% 50%;              /* #f59e0b */
     --warning-foreground: 0 0% 100%;
+
+    --purple: 258 90% 66%;              /* #8b5cf6 accent */
+    --purple-foreground: 0 0% 100%;
 
     --neutral: 215 14% 64%;
     --neutral-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
+    --border: 214 32% 91%;              /* #e2e8f0 slate-200 */
     --input: 214 32% 91%;
-    --ring: 204 77% 26%;
+    --ring: 224 85% 29%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;                     /* 16px */
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 96%;
@@ -73,12 +78,14 @@
     --muted-foreground: 215 20% 65%;
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 96%;
-    --destructive: 0 73% 51%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 96%;
-    --success: 217 91% 60%;
+    --success: 160 70% 45%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
+    --purple: 258 90% 70%;
+    --purple-foreground: 0 0% 100%;
     --neutral: 215 14% 45%;
     --neutral-foreground: 0 0% 100%;
     --border: 217 33% 17%;

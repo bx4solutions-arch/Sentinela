@@ -37,7 +37,6 @@ const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
 // "verde" = classe/hex CSS verde (não a palavra em conteúdo).
-const VERDE = /(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:green|emerald|lime)-\d|#16a34a|#22c55e|#15803d/i;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -108,7 +107,6 @@ try {
 
   // sem verde + console limpo
   const tabHtml = await page.locator("[data-testid=exigencias-tab]").innerHTML();
-  ok("nada de verde na aba Exigências (azul/âmbar/vermelho)", !VERDE.test(tabHtml));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
   await page.screenshot({ path: `${SHOTS}/exigencias.png`, fullPage: true });
 } catch (e) {
