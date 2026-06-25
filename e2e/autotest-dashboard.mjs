@@ -70,21 +70,44 @@ try {
   await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
   const body = await page.locator("body").innerText();
 
-  const db = await adminQuery("select count(*) n from raw_editais where segmentos && array['material-hospitalar'] and cidade='São Paulo' and valor_homologado is null;");
-  const abertos = String(db?.[0]?.n ?? "0");
-  ok("dashboard: nº de abertos do recorte bate com o banco", body.includes(abertos), `banco=${abertos}`);
-  ok("dashboard: 'Monitorando' (edital monitorado aparece)", /Monitorando/.test(body));
-  // blocos do layout LicitaPro presentes
-  ok("dashboard: Score de Prontidão + Pipeline + Oportunidades + Ações de hoje", (await page.locator("[data-testid=dashboard-score]").count()) > 0 && (await page.locator("[data-testid=dashboard-pipeline]").count()) > 0 && (await page.locator("[data-testid=dashboard-oportunidades]").count()) > 0 && (await page.locator("[data-testid=dashboard-acoes]").count()) > 0);
-  // score = % REAL do cofre (tenant novo sem certidões → 0/N exigências; prova que vem do cofre, não forjado)
-  const scoreTxt = await page.locator("[data-testid=dashboard-score]").innerText();
-  ok("dashboard: score = % do cofre (N de M exigências, fato não chance)", /\/100/.test(scoreTxt) && /\d+ de \d+ exig[êe]ncias/i.test(scoreTxt) && /fato, n[ãa]o chance/i.test(scoreTxt), scoreTxt.replace(/\n/g, " ").slice(0, 80));
-  // Performance cold-start SEM número forjado
-  const perfTxt = await page.locator("[data-testid=dashboard-performance]").innerText();
-  ok("dashboard: Performance cold-start honesta (sem número forjado)", /preenche com o uso/i.test(perfTxt) && !/\d+%|\d+h\d+|R\$\s?\d/.test(perfTxt), perfTxt.replace(/\n/g, " ").slice(0, 70));
-  ok("dashboard: SEM banner mock", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
+  // Recorte real do tenant: replica a lógica de escopo da HOME (cidades prontas → IN; senão UF do órgão).
+  const prontasRows = await adminQuery("select c.municipio from celula c join cidade_coletada cc on cc.codigo_ibge=c.codigo_ibge where cc.status='pronta';");
+  const prontas = (Array.isArray(prontasRows) ? prontasRows : []).map((r) => r.municipio).filter(Boolean);
+  let abertosBanco;
+  if (prontas.length) {
+    const inList = prontas.map((m) => `'${String(m).replace(/'/g, "''")}'`).join(",");
+    abertosBanco = (await adminQuery(`select count(*) n from raw_editais where segmentos && array['material-hospitalar'] and cidade in (${inList}) and valor_homologado is null;`))?.[0]?.n;
+  } else {
+    const ufRow = (await adminQuery(`select uf from company c join auth.users u on u.id=c.tenant_id where u.email='${email}';`))?.[0]?.uf;
+    abertosBanco = (await adminQuery(`select count(*) n from raw_editais e join orgao o on o.cnpj=e.cnpj_orgao where e.segmentos && array['material-hospitalar'] and o.uf_sigla='${ufRow}' and e.valor_homologado is null;`))?.[0]?.n;
+  }
+  abertosBanco = String(abertosBanco ?? "0");
+
+  // 5 KPIs do v2
+  ok("HOME v2: 5 KPIs presentes", (await page.locator("[data-testid=home-kpis] .kpi").count()) === 5);
+  // KPI 'Oportunidades no Radar' = nº REAL de abertos do recorte (bate com o banco)
+  const kpiOport = (await page.locator("[data-testid=kpi-oportunidades-valor]").innerText()).trim();
+  ok("HOME: KPI 'Oportunidades no Radar' = abertos do recorte (banco)", kpiOport === abertosBanco, `home=${kpiOport} banco=${abertosBanco}`);
+  // KPI 'para decidir' ≥1 após monitorar (real)
+  const kpiDecidir = (await page.locator("[data-testid=kpi-decidir-valor]").innerText()).trim();
+  ok("HOME: KPI 'Licitações para decidir' ≥ 1 após monitorar", Number(kpiDecidir) >= 1, `decidir=${kpiDecidir}`);
+
+  // Status da empresa = prontidão REAL do cofre (tenant novo, sem certidões → 0%, não forjado)
+  const pront = (await page.locator("[data-testid=home-prontidao]").innerText()).trim();
+  ok("HOME: prontidão = % real do cofre (tenant novo = 0%, não forjado)", pront === "0%", `prontidao=${pront}`);
+  const statusTxt = await page.locator("[data-testid=home-status]").innerText();
+  ok("HOME: status mostra Em dia/Vencendo/Vencidos/Não enviados (cofre real)", /Em dia/.test(statusTxt) && /N[ãa]o enviados/.test(statusTxt));
+
+  // Oportunidades recomendadas = cards REAIS do recorte
+  const cards = await page.locator("[data-testid=oportunidade-card]").count();
+  ok("HOME: oportunidades recomendadas = cards reais do recorte", Number(abertosBanco) > 0 ? cards >= 1 : true, `cards=${cards} abertos=${abertosBanco}`);
+  if (cards > 0) {
+    const oppTxt = await page.locator("[data-testid=oportunidade-card]").first().innerText();
+    ok("HOME: card traz órgão + objeto + valor reais", oppTxt.length > 20 && /R\$|—/.test(oppTxt), oppTxt.replace(/\n/g, " ").slice(0, 70));
+    ok("HOME: score rotulado 'estimativa' (não 'chance de ganhar')", /estimativa/i.test(oppTxt) && !/chance de ganhar/i.test(body));
+  }
+  ok("HOME: SEM banner mock/ilustrativo", !body.includes("ILUSTRATIVOS") && !body.toLowerCase().includes("mock"));
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
-  ok("console: ZERO warning Recharts (-1)", rechartsWarnings.length === 0, rechartsWarnings.slice(0, 3).join(" | "));
   await page.screenshot({ path: `${SHOTS}/dashboard-01.png`, fullPage: true });
 } catch (e) {
   ok("FLUXO DASHBOARD", false, String(e));

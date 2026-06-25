@@ -28,7 +28,6 @@ const email = `qa_dashui_${Date.now()}@sentinela.test`;
 const consoleErrors = [];
 const results = [];
 const ok = (n, c, x = "") => results.push({ name: n, pass: !!c, extra: x });
-let perfForjado = "";
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
@@ -51,23 +50,17 @@ try {
   await page.click("button:has-text('Concluir')");
   await page.waitForURL("**/empresa", { timeout: 20000 });
 
-  // ===== DESKTOP =====
+  // ===== DESKTOP — HOME v2 =====
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
-  const sb = await page.locator("[data-testid=dashboard-score]").boundingBox();
-  const pb = await page.locator("[data-testid=dashboard-pipeline]").boundingBox();
-  const ab = await page.locator("[data-testid=dashboard-acoes]").boundingBox();
-  ok("DESKTOP: layout 3 colunas (Prontidão | Pipeline | Ações lado a lado)", sb.x < pb.x && pb.x < ab.x && Math.abs(sb.y - pb.y) < 240, `x: ${Math.round(sb.x)}/${Math.round(pb.x)}/${Math.round(ab.x)}`);
-  ok("DESKTOP: barra de ação mobile OCULTA", !(await page.locator("[data-testid=dashboard-mobile-acao]").isVisible()));
-
-  // honestidade: Pipeline (estimativa real OU em ingestão) e Performance cold-start sem número forjado
-  const pipeTxt = await page.locator("[data-testid=dashboard-pipeline]").innerText();
-  ok("Pipeline honesto (estimativa real OU 'em ingestão', nunca forjado)", /estimativa/i.test(pipeTxt) || /em ingest[ãa]o/i.test(pipeTxt), pipeTxt.replace(/\n/g, " ").slice(0, 70));
-  const perfTxt = await page.locator("[data-testid=dashboard-performance]").innerText();
-  const perfNums = perfTxt.replace(/CAPAG/g, "").match(/\d+%|\d+h\d+|R\$\s?\d|\b\d+ dias\b/);
-  ok("Performance cold-start SEM número forjado", !perfNums && /preenche com o uso/i.test(perfTxt), perfNums ? `forjado=${perfNums[0]}` : "ok");
-  if (perfNums) perfForjado = perfNums[0];
-  await page.screenshot({ path: `${SHOTS}/dashboard-desktop.png`, fullPage: true }); // ainda no /dashboard
+  ok("DESKTOP: HOME v2 com 5 KPIs", (await page.locator("[data-testid=home-kpis] .kpi").count()) === 5, `kpis=${await page.locator("[data-testid=home-kpis] .kpi").count()}`);
+  const ab = await page.locator("[data-testid=home-acoes]").boundingBox();
+  const stb = await page.locator("[data-testid=home-status]").boundingBox();
+  ok("DESKTOP: Ações urgentes | Status da empresa lado a lado", ab.x < stb.x && Math.abs(ab.y - stb.y) < 220, `x: ${Math.round(ab.x)}/${Math.round(stb.x)}`);
+  // honestidade: warning de score = estimativa em calibração
+  const warnTxt = await page.locator("[data-testid=home-warning]").innerText();
+  ok("HOME honesta: score rotulado 'estimativa' em calibração", /estimativa/i.test(warnTxt), warnTxt.slice(0, 60));
+  await page.screenshot({ path: `${SHOTS}/dashboard-desktop.png`, fullPage: true });
 
   // ===== HERANÇA do design system: Radar legível (piso text-xs = 13px) + screenshot =====
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
@@ -88,10 +81,9 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
-  const sb2 = await page.locator("[data-testid=dashboard-score]").boundingBox();
-  const pb2 = await page.locator("[data-testid=dashboard-pipeline]").boundingBox();
-  ok("MOBILE: blocos empilham (Pipeline abaixo da Prontidão)", pb2.y > sb2.y + 50, `y: ${Math.round(sb2.y)}→${Math.round(pb2.y)}`);
-  ok("MOBILE: barra de ação fixa no rodapé VISÍVEL", await page.locator("[data-testid=dashboard-mobile-acao]").isVisible());
+  const ab2 = await page.locator("[data-testid=home-acoes]").boundingBox();
+  const stb2 = await page.locator("[data-testid=home-status]").boundingBox();
+  ok("MOBILE: panels empilham (Status abaixo de Ações urgentes)", stb2.y > ab2.y + 50, `y: ${Math.round(ab2.y)}→${Math.round(stb2.y)}`);
   await page.screenshot({ path: `${SHOTS}/dashboard-mobile.png`, fullPage: true });
 
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
@@ -103,8 +95,7 @@ try {
   await cleanup(email);
 }
 
-console.log("\n===== AUTOTESTE DASHBOARD UI (design system + LicitaPro desktop/mobile) =====");
-console.log(`>> número forjado na Performance: ${perfForjado || "0"}`);
+console.log("\n===== AUTOTESTE DASHBOARD UI (HOME v2 desktop/mobile + herança DS) =====");
 let fail = 0;
 for (const r of results) { console.log(`${r.pass ? "✅" : "❌"} ${r.name}${r.extra ? "  — " + r.extra : ""}`); if (!r.pass) fail++; }
 console.log(fail ? `\n${fail} FALHA(S)` : "\nTODOS PASSARAM");
