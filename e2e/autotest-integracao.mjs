@@ -83,14 +83,16 @@ try {
   ok("DESCARTAR: edital some do Radar", await untilGone(page.locator(`text=${numD}`)));
 
   // ---- KANBAN: o monitorado aparece e move pro registro CERTO ----
+  // (stage=monitorando renderiza na coluna "Preparação documental" do board v2 — prova o CARD, não o empty-state)
   await page.goto(`${BASE}/kanban`, { waitUntil: "networkidle" });
-  ok("KANBAN mostra o edital monitorado", (await page.locator("text=Monitorando").count()) > 0);
+  await page.waitForSelector("[data-testid=kanban-board]", { timeout: 10000 });
+  ok("KANBAN mostra o edital monitorado", (await page.locator("[data-testid=coluna-monitorando] [data-testid=kanban-card]").count()) >= 1);
   await page.locator("button[aria-label='Avançar etapa']").first().click();
   const kanDb = await aqUntil(`select stage from oportunidade o join auth.users u on u.id=o.tenant_id where u.email='${t1}' and o.numero_controle_pncp='${numM}';`, (r) => r?.[0]?.stage === "preparacao");
   ok("KANBAN mover muda o registro CERTO (X→preparacao)", kanDb?.[0]?.stage === "preparacao");
 
-  // ---- CONFIGURAÇÕES: IA INCLUSA (sem BYOK / sem campo de chave) ----
-  await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
+  // ---- CONFIGURAÇÕES: IA INCLUSA (sem BYOK / sem campo de chave) — aba IA do hub ----
+  await page.goto(`${BASE}/configuracoes?tab=ia`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=config-ia]", { timeout: 10000 });
   ok("CONFIG é IA inclusa (sem campo de chave / sem BYOK)", (await page.locator("#apiKey").count()) === 0 && (await page.locator("[data-testid=config-seguranca]").count()) > 0);
 

@@ -35,11 +35,21 @@ try {
   await page.waitForSelector("text=Monitorando", { timeout: 10000 });
   ok("PART1 controle responde (Monitorar→estado muda)", true);
 
-  // PART1: navegação funcional (sem dead-ends). /consultor foi absorvido no Space (prova em autotest-licitacao).
+  // PART1: /configuracoes agora é HUB DE ABAS (Perfil da Empresa · Identidade · Base de Conhecimento · IA · Monitoramento).
   await page.goto(`${BASE}/configuracoes`, { waitUntil: "networkidle" });
-  ok("PART1 /configuracoes abre e funciona", (await page.locator("text=Inteligência Artificial").count()) > 0);
+  const tabsHub = await page.locator("[data-testid=config-tabs]").count();
+  const tabIds = await page.locator("[data-testid=tab-perfil-empresa], [data-testid=tab-identidade], [data-testid=tab-conhecimento], [data-testid=tab-ia], [data-testid=tab-monitoramento]").count();
+  ok("PART1 /configuracoes é hub de abas (5 abas)", tabsHub > 0 && tabIds === 5, `${tabIds}/5 abas`);
+  // aba default = Perfil da Empresa renderiza o MESMO painel de /empresa (dados reais)
+  ok("PART1 aba Perfil da Empresa mostra dados reais da empresa", (await page.locator("[data-testid=empresa-painel]").count()) > 0 && (await page.locator("text=Vigia de documentos").count()) > 0);
+  await page.screenshot({ path: `${SHOTS}/config-hub.png`, fullPage: true });
+  // /empresa continua funcionando (mesmo painel, sem órfã/Frankenstein)
+  await page.goto(`${BASE}/empresa`, { waitUntil: "networkidle" });
+  ok("PART1 /empresa segue funcionando (mesmo painel extraído)", (await page.locator("[data-testid=empresa-painel]").count()) > 0);
 
-  // PART2: IA INCLUSA (chave nossa, server-side) — Configurações é informativo, SEM BYOK/sem campo de chave
+  // PART2: aba IA — IA INCLUSA (chave nossa, server-side), SEM BYOK/sem campo de chave
+  await page.goto(`${BASE}/configuracoes?tab=ia`, { waitUntil: "networkidle" });
+  ok("PART2 /configuracoes abre a aba IA", (await page.locator("text=Inteligência Artificial").count()) > 0);
   ok("PART2 Configurações = IA inclusa (sem campo de chave / sem BYOK)", (await page.locator("[data-testid=config-ia]").count()) > 0 && (await page.locator("#apiKey").count()) === 0);
   ok("PART2 status da IA exibido", (await page.locator("[data-testid=ia-status-on], [data-testid=ia-status-off]").count()) > 0);
   const cfgHtml = await page.content();

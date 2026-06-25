@@ -209,3 +209,29 @@ export function Separator({ className, orientation = "horizontal" }: { className
     />
   );
 }
+
+/* ---------------- Textarea ---------------- */
+export const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
+  ({ className, ...props }, ref) => (
+    <textarea
+      ref={ref}
+      className={cn(
+        "flex min-h-[80px] w-full rounded-md border border-input bg-card px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+Textarea.displayName = "Textarea";
+
+/* ---------------- Switch (nativo, form-friendly: checkbox estilizado como toggle) ---------------- */
+export function Switch({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <label className={cn("relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center", className)}>
+      <input type="checkbox" role="switch" className="peer sr-only" {...props} />
+      <span className="absolute inset-0 rounded-full bg-muted transition-colors peer-checked:bg-primary peer-focus-visible:ring-2 peer-focus-visible:ring-ring" />
+      <span className="absolute left-0.5 size-4 rounded-full bg-white shadow transition-transform peer-checked:translate-x-4" />
+    </label>
+  );
+}

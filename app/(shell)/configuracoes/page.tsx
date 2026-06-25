@@ -1,8 +1,35 @@
-import { Sparkles, Lock } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, Lock, Building2, Palette, BookOpen, Activity, Settings } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, Badge } from "@/components/ui";
 import { temIA } from "@/lib/ai-server";
+import { EmpresaPainel } from "@/components/empresa-painel";
 
-export default async function ConfiguracoesPage() {
+// Hub de Configurações (portado do MeuJurídico, adaptado ao licitante) — server-rendered por ?tab=.
+// Abas: Perfil da Empresa (reusa EmpresaPainel) · Identidade Visual · Base de Conhecimento · IA · Monitoramento.
+const TABS = [
+  { id: "perfil-empresa", label: "Perfil da Empresa", icon: Building2 },
+  { id: "identidade", label: "Identidade Visual", icon: Palette },
+  { id: "conhecimento", label: "Base de Conhecimento", icon: BookOpen },
+  { id: "ia", label: "Inteligência Artificial", icon: Sparkles },
+  { id: "monitoramento", label: "Monitoramento", icon: Activity },
+] as const;
+type TabId = (typeof TABS)[number]["id"];
+const IDS = TABS.map((t) => t.id) as readonly string[];
+
+function EmConstrucao({ titulo, etapa }: { titulo: string; etapa: string }) {
+  return (
+    <Card className="border-dashed">
+      <CardContent className="flex flex-col items-center gap-2 p-8 text-center">
+        <div className="grid size-11 place-items-center rounded-full bg-muted text-muted-foreground"><Settings className="size-5" /></div>
+        <p className="text-sm font-semibold">{titulo}</p>
+        <Badge variant="muted">em construção · {etapa}</Badge>
+        <p className="max-w-md text-xs text-muted-foreground">Esta aba entra com dado real na {etapa}. Por ora, as abas Perfil da Empresa e Inteligência Artificial já estão funcionais.</p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function AbaIA() {
   const ligada = temIA();
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -36,6 +63,43 @@ export default async function ConfiguracoesPage() {
           </p>
         </CardContent>
       </Card>
+    </div>
+  );
+}
+
+export default async function ConfiguracoesPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
+  const sp = await searchParams;
+  const tab: TabId = (IDS.includes(sp.tab ?? "") ? sp.tab : "perfil-empresa") as TabId;
+
+  return (
+    <div className="space-y-5">
+      {/* Nav de abas (server-rendered por ?tab=) */}
+      <div className="flex flex-wrap items-center gap-1 border-b" data-testid="config-tabs">
+        {TABS.map((t) => {
+          const ativo = tab === t.id;
+          return (
+            <Link
+              key={t.id}
+              href={`/configuracoes?tab=${t.id}`}
+              data-testid={`tab-${t.id}`}
+              className={`flex items-center gap-1.5 border-b-2 px-4 py-2.5 text-xs font-medium transition-colors ${
+                ativo ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <t.icon className="size-3.5" /> {t.label}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Conteúdo da aba ativa */}
+      <div data-testid={`tabpanel-${tab}`}>
+        {tab === "perfil-empresa" && <EmpresaPainel />}
+        {tab === "ia" && <AbaIA />}
+        {tab === "identidade" && <EmConstrucao titulo="Identidade Visual da empresa" etapa="Etapa 2" />}
+        {tab === "conhecimento" && <EmConstrucao titulo="Base de Conhecimento jurídica" etapa="Etapa 3" />}
+        {tab === "monitoramento" && <EmConstrucao titulo="Monitoramento" etapa="próxima leva" />}
+      </div>
     </div>
   );
 }

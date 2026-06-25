@@ -34,6 +34,7 @@ export async function addDocumento(formData: FormData): Promise<void> {
       { onConflict: "company_id,tipo" }
     );
   revalidatePath("/empresa");
+  revalidatePath("/configuracoes");
 }
 
 export async function deleteDocumento(formData: FormData): Promise<void> {
@@ -42,6 +43,7 @@ export async function deleteDocumento(formData: FormData): Promise<void> {
   const supabase = await createClient();
   await supabase.from("documento").delete().eq("id", id);
   revalidatePath("/empresa");
+  revalidatePath("/configuracoes");
 }
 
 /** "Atualizar": re-consulta a BrasilAPI pelo MESMO CNPJ (não perde nada). */
@@ -56,4 +58,5 @@ export async function atualizarEmpresa(): Promise<void> {
     .update({ ...raioxToCompanyRow(res.data), atualizado_em: new Date().toISOString() })
     .eq("cnpj", company.cnpj);
   revalidatePath("/empresa");
+  revalidatePath("/configuracoes");
 }
