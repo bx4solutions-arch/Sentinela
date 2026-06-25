@@ -2,9 +2,10 @@
 // Cada teste aparece em EXATAMENTE um grupo (a união = a suíte inteira, sem duplicar).
 // Rodar um grupo isolado evita o run-inteiro morrer (OOM): `node e2e/run-prod.mjs --grupo=raiox`.
 export const GROUPS = {
-  empresa: [ // cofre / onboarding / config / integração / funil
+  empresa: [ // cofre / onboarding / config / identidade / integração / funil
     "e2e/autotest.mjs",
     "e2e/autotest-frontend.mjs",
+    "e2e/autotest-identidade.mjs",
     "e2e/autotest-sinais.mjs",
     "e2e/autotest-integracao.mjs",
     "e2e/autotest-kanban.mjs",

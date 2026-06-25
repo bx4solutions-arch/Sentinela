@@ -2,7 +2,9 @@ import Link from "next/link";
 import { Sparkles, Lock, Building2, Palette, BookOpen, Activity, Settings } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, Badge } from "@/components/ui";
 import { temIA } from "@/lib/ai-server";
+import { createClient } from "@/lib/supabase/server";
 import { EmpresaPainel } from "@/components/empresa-painel";
+import { IdentidadeForm } from "@/components/identidade/identidade-form";
 
 // Hub de Configurações (portado do MeuJurídico, adaptado ao licitante) — server-rendered por ?tab=.
 // Abas: Perfil da Empresa (reusa EmpresaPainel) · Identidade Visual · Base de Conhecimento · IA · Monitoramento.
@@ -67,6 +69,20 @@ function AbaIA() {
   );
 }
 
+async function AbaIdentidade() {
+  const supabase = await createClient();
+  const { data: company } = await supabase.from("company").select("*").maybeSingle();
+  if (!company) {
+    return (
+      <Card className="mx-auto max-w-md p-6 text-center">
+        <p className="text-sm font-semibold">Configure sua empresa primeiro</p>
+        <p className="mt-1 text-xs text-muted-foreground">A Identidade Visual usa os dados da empresa (CNPJ, razão social). Faça o Raio-X em <Link href="/onboarding" className="text-primary hover:underline">Onboarding</Link>.</p>
+      </Card>
+    );
+  }
+  return <IdentidadeForm company={company} />;
+}
+
 export default async function ConfiguracoesPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const sp = await searchParams;
   const tab: TabId = (IDS.includes(sp.tab ?? "") ? sp.tab : "perfil-empresa") as TabId;
@@ -96,7 +112,7 @@ export default async function ConfiguracoesPage({ searchParams }: { searchParams
       <div data-testid={`tabpanel-${tab}`}>
         {tab === "perfil-empresa" && <EmpresaPainel />}
         {tab === "ia" && <AbaIA />}
-        {tab === "identidade" && <EmConstrucao titulo="Identidade Visual da empresa" etapa="Etapa 2" />}
+        {tab === "identidade" && <AbaIdentidade />}
         {tab === "conhecimento" && <EmConstrucao titulo="Base de Conhecimento jurídica" etapa="Etapa 3" />}
         {tab === "monitoramento" && <EmConstrucao titulo="Monitoramento" etapa="próxima leva" />}
       </div>
