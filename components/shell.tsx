@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard, Radar, KanbanSquare, Building2, MessagesSquare, Settings,
+  LayoutDashboard, Radar, KanbanSquare, Building2, Settings,
   ShieldCheck, Search, HelpCircle, LogOut, Bell, Boxes,
 } from "lucide-react";
 import { Progress } from "@/components/ui";
@@ -12,15 +12,15 @@ import { cn } from "@/lib/utils";
 
 type NavItem = { href: string; label: string; icon: React.ElementType; roadmap?: boolean };
 
-// Menu do kickoff (Bloco 1). Itens "roadmap" são stubs por enquanto.
+// Menu alinhado ao v2 "5 Telas Conectadas": Dashboard · Radar · Licitações(Space) · Minha Empresa · Kanban.
+// Pesquisa (fundida na busca do Radar) e Consultor (vai pro Space na Etapa 3) saíram do menu — as rotas
+// seguem vivas até serem reabsorvidas/deletadas no cleanup final. + Configurações (utilitário).
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/radar", label: "Radar", icon: Radar },
-  { href: "/space", label: "Space", icon: Boxes },
-  { href: "/pesquisa", label: "Pesquisa", icon: Search },
-  { href: "/kanban", label: "Kanban", icon: KanbanSquare },
+  { href: "/space", label: "Licitações", icon: Boxes },
   { href: "/empresa", label: "Minha Empresa", icon: Building2 },
-  { href: "/consultor", label: "Consultor", icon: MessagesSquare },
+  { href: "/kanban", label: "Kanban", icon: KanbanSquare },
   { href: "/configuracoes", label: "Configurações", icon: Settings },
 ];
 

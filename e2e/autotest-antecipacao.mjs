@@ -85,13 +85,13 @@ try {
   ok("pilar Antecipação tem linguagem calibrada (probabilidade, não promessa)", /probabilidade, não promessa/i.test(body));
   await page.screenshot({ path: `${SHOTS}/antecipacao-PI.png`, fullPage: true });
 
-  // 2c) Linha do Tempo de Sinais no Dashboard (sinais reais)
-  await page.goto(`${BASE}/dashboard`, { waitUntil: "networkidle" });
-  await page.waitForSelector("[data-testid=dashboard-root]", { timeout: 10000 });
-  const temTimeline = (await page.locator("[data-testid=linha-tempo-sinais]").count()) > 0;
-  const sinais = await page.locator("[data-testid=sinal-item]").count();
-  ok("Dashboard: Linha do Tempo de Sinais com itens reais (recorrência/PCA)", temTimeline && sinais >= 1, `sinais=${sinais}`);
-  await page.screenshot({ path: `${SHOTS}/dashboard-linha-tempo.png`, fullPage: true });
+  // 2c) Sinais de antecipação agora vivem no RADAR (pilar Antecipação) — migraram da HOME v2 p/ cá.
+  await page.goto(`${BASE}/radar?pilar=antecipacao`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-testid=radar-pilares]", { timeout: 10000 });
+  const body2 = await page.locator("body").innerText();
+  const sinais = await page.locator("[data-testid=antecipacao-card]").count();
+  ok("Radar/Antecipação: sinais reais do recorte (PCA/recorrência/contrato) OU vazio honesto", sinais >= 1 || /vazio verdadeiro|em ingest[ãa]o|Sem sinais de antecipa/i.test(body2), `sinais=${sinais}`);
+  await page.screenshot({ path: `${SHOTS}/antecipacao-recorte.png`, fullPage: true });
 
   ok("console sem erros", consoleErrors.length === 0, consoleErrors.slice(0, 4).join(" | "));
 } catch (e) {
