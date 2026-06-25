@@ -40,3 +40,21 @@
 
 **IRP (Intenção de Registro de Preços) — endpoint reachable (Round 2):**
 `GET https://pncp.gov.br/api/consulta/v1/contratacoes/proposta?dataFinal={hoje+}&codigoModalidadeContratacao={cod}` respondeu (422 só por validação de data: "Data Final deve ser >= data atual"). Próxima rodada: descobrir o código de modalidade do IRP + paginar + upsert → acende "IRP aberta — vai virar edital" no Radar e §2 do Raio-X.
+
+## IRP (Intenção de Registro de Preços) — BLOQUEADO: sem API pública (probe 2026-06-25, Round 2)
+
+Sondagem fechada nas DUAS fontes nacionais de dados abertos. **Nenhuma expõe IRP:**
+- **PNCP consulta** (`GET /api/consulta/v3/api-docs`, 200): paths = `/v1/pca`, `/v1/orgaos/{cnpj}/compras`,
+  `/v1/instrumentoscobranca`, `/v1/contratos`, `/v1/contratacoes/{publicacao,proposta,atualizacao}`,
+  `/v1/atas`. O api-docs **não menciona "irp" nem "intenção"**. (IRP não é modalidade de contratação.)
+- **Compras.gov Dados Abertos** (`GET https://dadosabertos.compras.gov.br/v3/api-docs`, 200, 77 paths):
+  módulos = usuarios, autenticacao, modulo-uasg, modulo-servico, modulo-pgc, modulo-pesquisa-preco,
+  modulo-ocds, modulo-material, modulo-legado, modulo-indicadores, modulo-fornecedor, modulo-contratos,
+  modulo-contratacoes, **modulo-arp** (Atas de Registro de Preço = RESULTADO, não a intenção), alice.
+  **Nenhum módulo IRP/intenção.**
+
+Conclusão: o IRP (fase pré-edital) é operado no **sistema transacional do Compras.gov/SIASG** (requer
+login/UASG) — **não há endpoint público de consulta**. Coletar exigiria sessão autenticada por órgão
+(fora do princípio "nacional, 1 API cada" e do escopo "sem scrapers de portal"). **Roadmap.**
+Decisão: NÃO forjar IRP. §2 do Raio-X mantém o IRP rotulado "roadmap · fonte não pública" (honesto).
+Sinais de antecipação que JÁ temos e seguem reais: **PCA** (raw_pca) + **contrato vencendo** (recompra).

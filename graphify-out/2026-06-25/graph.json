@@ -80,7 +80,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "configuracoes_actions_aiconfigview",
-      "community": 173,
+      "community": 4,
       "norm_label": "aiconfigview"
     },
     {
@@ -160,7 +160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "consultor_page",
-      "community": 4,
+      "community": 172,
       "norm_label": "page.tsx"
     },
     {
@@ -170,7 +170,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "consultor_page_lic",
-      "community": 4,
+      "community": 172,
       "norm_label": "lic"
     },
     {
@@ -190,7 +190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dados_reais_page",
-      "community": 174,
+      "community": 4,
       "norm_label": "page.tsx"
     },
     {
@@ -200,7 +200,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "dados_reais_page_etapas",
-      "community": 174,
+      "community": 4,
       "norm_label": "etapas"
     },
     {
@@ -210,7 +210,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dados_reais_page_op",
-      "community": 174,
+      "community": 4,
       "norm_label": "op"
     },
     {
@@ -220,7 +220,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dados_reais_page_brl",
-      "community": 174,
+      "community": 4,
       "norm_label": "brl()"
     },
     {
@@ -230,7 +230,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "dados_reais_page_kpi",
-      "community": 174,
+      "community": 4,
       "norm_label": "kpi()"
     },
     {
@@ -240,7 +240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "dados_reais_page_steps",
-      "community": 174,
+      "community": 4,
       "norm_label": "steps"
     },
     {
@@ -250,7 +250,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "dados_reais_page_pipeline",
-      "community": 174,
+      "community": 4,
       "norm_label": "pipeline()"
     },
     {
@@ -260,7 +260,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "dados_reais_page_dadosreaispage",
-      "community": 174,
+      "community": 4,
       "norm_label": "dadosreaispage()"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "empresa_actions_deletedocumento",
-      "community": 13,
+      "community": 6,
       "norm_label": "deletedocumento()"
     },
     {
@@ -400,7 +400,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "empresa_client_trocarempresabutton",
-      "community": 13,
+      "community": 4,
       "norm_label": "trocarempresabutton()"
     },
     {
@@ -820,7 +820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_pasta_actions",
-      "community": 3,
+      "community": 4,
       "norm_label": "pasta-actions.tsx"
     },
     {
@@ -830,7 +830,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "id_pasta_actions_pastaactions",
-      "community": 3,
+      "community": 4,
       "norm_label": "pastaactions()"
     },
     {
@@ -870,7 +870,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "id_proposta_gerador_propostagerador",
-      "community": 3,
+      "community": 4,
       "norm_label": "propostagerador()"
     },
     {
@@ -960,7 +960,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_actions",
-      "community": 172,
+      "community": 165,
       "norm_label": "actions.ts"
     },
     {
@@ -970,7 +970,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_actions_monitorarcidade",
-      "community": 172,
+      "community": 165,
       "norm_label": "monitorarcidade()"
     },
     {
@@ -980,7 +980,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "radar_actions_removercidade",
-      "community": 172,
+      "community": 165,
       "norm_label": "removercidade()"
     },
     {
@@ -990,7 +990,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "radar_actions_setstage",
-      "community": 172,
+      "community": 165,
       "norm_label": "setstage()"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "radar_actions_monitorar",
-      "community": 172,
+      "community": 165,
       "norm_label": "monitorar()"
     },
     {
@@ -1010,7 +1010,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "radar_actions_descartar",
-      "community": 172,
+      "community": 165,
       "norm_label": "descartar()"
     },
     {
@@ -1020,7 +1020,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "radar_actions_analisar",
-      "community": 172,
+      "community": 165,
       "norm_label": "analisar()"
     },
     {
@@ -1030,7 +1030,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "radar_actions_reverter",
-      "community": 172,
+      "community": 165,
       "norm_label": "reverter()"
     },
     {
@@ -1040,7 +1040,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "radar_city_picker",
-      "community": 172,
+      "community": 165,
       "norm_label": "city-picker.tsx"
     },
     {
@@ -1050,7 +1050,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "radar_city_picker_citypicker",
-      "community": 172,
+      "community": 144,
       "norm_label": "citypicker()"
     },
     {
@@ -1380,7 +1380,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "onboarding_wizard_wizard",
-      "community": 172,
+      "community": 6,
       "norm_label": "wizard()"
     },
     {
@@ -1540,7 +1540,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "components_shell_navlink",
-      "community": 172,
+      "community": 4,
       "norm_label": "navlink()"
     },
     {
@@ -1680,7 +1680,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_select",
-      "community": 4,
+      "community": 165,
       "norm_label": "select"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "components_ui_tabslist",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabslist"
     },
     {
@@ -1720,7 +1720,7 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "components_ui_tabstrigger",
-      "community": 3,
+      "community": 4,
       "norm_label": "tabstrigger"
     },
     {
@@ -5420,7 +5420,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_consultor",
-      "community": 3,
+      "community": 174,
       "norm_label": "consultor.ts"
     },
     {
@@ -5430,7 +5430,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_consultor_itemhab",
-      "community": 3,
+      "community": 174,
       "norm_label": "itemhab"
     },
     {
@@ -5440,7 +5440,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_consultor_respostaconsultor",
-      "community": 3,
+      "community": 174,
       "norm_label": "respostaconsultor"
     },
     {
@@ -5450,7 +5450,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_consultor_a",
-      "community": 3,
+      "community": 174,
       "norm_label": "a()"
     },
     {
@@ -5460,7 +5460,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "lib_consultor_consultarlicitacao",
-      "community": 3,
+      "community": 174,
       "norm_label": "consultarlicitacao()"
     },
     {
@@ -5590,7 +5590,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "lib_habilitacao_calcprontidao",
-      "community": 3,
+      "community": 13,
       "norm_label": "calcprontidao()"
     },
     {
@@ -5600,7 +5600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_ibge",
-      "community": 172,
+      "community": 165,
       "norm_label": "ibge.ts"
     },
     {
@@ -5610,7 +5610,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_ibge_municipio",
-      "community": 172,
+      "community": 165,
       "norm_label": "municipio"
     },
     {
@@ -5620,7 +5620,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_ibge_municipiosdauf",
-      "community": 172,
+      "community": 165,
       "norm_label": "municipiosdauf()"
     },
     {
@@ -5630,7 +5630,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_ibge_titulocidade",
-      "community": 172,
+      "community": 165,
       "norm_label": "titulocidade()"
     },
     {
@@ -5640,7 +5640,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_ibge_resolvemunicipio",
-      "community": 172,
+      "community": 165,
       "norm_label": "resolvemunicipio()"
     },
     {
@@ -5720,7 +5720,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaononicho",
-      "community": 160,
+      "community": 3,
       "norm_label": "gastoorgaononicho()"
     },
     {
@@ -5730,7 +5730,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "lib_inteligencia_gastoorgaosnonicho",
-      "community": 160,
+      "community": 144,
       "norm_label": "gastoorgaosnonicho()"
     },
     {
@@ -5760,7 +5760,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_llm_providers",
-      "community": 177,
+      "community": 4,
       "norm_label": "providers"
     },
     {
@@ -6170,7 +6170,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_proposta",
-      "community": 178,
+      "community": 3,
       "norm_label": "proposta.ts"
     },
     {
@@ -6180,7 +6180,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_proposta_secaoproposta",
-      "community": 178,
+      "community": 4,
       "norm_label": "secaoproposta"
     },
     {
@@ -6190,7 +6190,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "lib_proposta_dadosempresa",
-      "community": 178,
+      "community": 3,
       "norm_label": "dadosempresa"
     },
     {
@@ -6200,7 +6200,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "lib_proposta_dadosedital",
-      "community": 178,
+      "community": 3,
       "norm_label": "dadosedital"
     },
     {
@@ -6210,7 +6210,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "lib_proposta_fmtbrl",
-      "community": 178,
+      "community": 3,
       "norm_label": "fmtbrl()"
     },
     {
@@ -6220,7 +6220,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "lib_proposta_declaracoes_tipicas",
-      "community": 178,
+      "community": 3,
       "norm_label": "declaracoes_tipicas"
     },
     {
@@ -6230,7 +6230,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "lib_proposta_montarsecoes",
-      "community": 178,
+      "community": 3,
       "norm_label": "montarsecoes()"
     },
     {
@@ -6400,7 +6400,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "lib_segmentos_formatcnae",
-      "community": 13,
+      "community": 6,
       "norm_label": "formatcnae()"
     },
     {
@@ -6500,7 +6500,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "lib_siconfi_funcaodosegmento",
-      "community": 3,
+      "community": 181,
       "norm_label": "funcaodosegmento()"
     },
     {
@@ -6690,7 +6690,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 4,
+      "community": 172,
       "norm_label": "utils.ts"
     },
     {
@@ -6710,7 +6710,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_utils_brl",
-      "community": 4,
+      "community": 172,
       "norm_label": "brl()"
     },
     {
@@ -6720,7 +6720,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_utils_databr",
-      "community": 4,
+      "community": 3,
       "norm_label": "databr()"
     },
     {
@@ -6750,7 +6750,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "lib_utils_diasate",
-      "community": 4,
+      "community": 3,
       "norm_label": "diasate()"
     },
     {
@@ -9854,16 +9854,6 @@
       "norm_label": "raio-x \u2014 fontes das proximas rodadas (probe 2026-06-23)"
     },
     {
-      "label": "IRP (Inten\u00e7\u00e3o de Registro de Pre\u00e7os) \u2014 BLOQUEADO: sem API p\u00fablica (probe 2026-06-25, Round 2)",
-      "file_type": "document",
-      "source_file": "BLOQUEIOS.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "bloqueios_irp_inten\u00e7\u00e3o_de_registro_de_pre\u00e7os_bloqueado_sem_api_p\u00fablica_probe_2026_06_25_round_2",
-      "community": 107,
-      "norm_label": "irp (intencao de registro de precos) \u2014 bloqueado: sem api publica (probe 2026-06-25, round 2)"
-    },
-    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -11312,366 +11302,6 @@
       "id": "docs_05_uiux_remodelagem_5_sequ\u00eancia_dos_mockups_alvo_pixel_pr\u00f3xima_etapa_ap\u00f3s_aprovar_esta_arquitetura",
       "community": 67,
       "norm_label": "5. sequencia dos mockups (alvo-pixel \u2014 proxima etapa, apos aprovar esta arquitetura)"
-    },
-    {
-      "label": "INVENTARIO-MEUJURIDICO.md",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico",
-      "community": 165,
-      "norm_label": "inventario-meujuridico.md"
-    },
-    {
-      "label": "INVENT\u00c1RIO \u2014 MeuJur\u00eddico.ai \u2192 Sentinela",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "community": 165,
-      "norm_label": "inventario \u2014 meujuridico.ai \u2192 sentinela"
-    },
-    {
-      "label": "CONTEXTO EXECUTIVO",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_contexto_executivo",
-      "community": 165,
-      "norm_label": "contexto executivo"
-    },
-    {
-      "label": "\u26a0\ufe0f DECIS\u00c3O CR\u00cdTICA DE DESIGN \u2014 LEIA ANTES DE TUDO",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "community": 165,
-      "norm_label": "\u26a0\ufe0f decisao critica de design \u2014 leia antes de tudo"
-    },
-    {
-      "label": "Dois sistemas visuais coexistem hoje",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_dois_sistemas_visuais_coexistem_hoje",
-      "community": 165,
-      "norm_label": "dois sistemas visuais coexistem hoje"
-    },
-    {
-      "label": "Qual manda?",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_qual_manda",
-      "community": 165,
-      "norm_label": "qual manda?"
-    },
-    {
-      "label": "PARTE A \u2014 INVENT\u00c1RIO VISUAL",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L62",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "community": 165,
-      "norm_label": "parte a \u2014 inventario visual"
-    },
-    {
-      "label": "A.1 Stack e estrutura",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L64",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_a_1_stack_e_estrutura",
-      "community": 165,
-      "norm_label": "a.1 stack e estrutura"
-    },
-    {
-      "label": "A.2 Design tokens \u2014 comparativo preciso",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L81",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_a_2_design_tokens_comparativo_preciso",
-      "community": 165,
-      "norm_label": "a.2 design tokens \u2014 comparativo preciso"
-    },
-    {
-      "label": "A.3 Invent\u00e1rio de componentes MeuJur\u00eddico",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L94",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "community": 165,
-      "norm_label": "a.3 inventario de componentes meujuridico"
-    },
-    {
-      "label": "Layout e navega\u00e7\u00e3o (6 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L96",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_layout_e_navega\u00e7\u00e3o_6_componentes",
-      "community": 165,
-      "norm_label": "layout e navegacao (6 componentes)"
-    },
-    {
-      "label": "Cards e KPIs (4 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L106",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_cards_e_kpis_4_componentes",
-      "community": 165,
-      "norm_label": "cards e kpis (4 componentes)"
-    },
-    {
-      "label": "Intelig\u00eancia e AI (8 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L114",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_intelig\u00eancia_e_ai_8_componentes",
-      "community": 165,
-      "norm_label": "inteligencia e ai (8 componentes)"
-    },
-    {
-      "label": "Documento \u2014 wizard de gera\u00e7\u00e3o (15 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L126",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_documento_wizard_de_gera\u00e7\u00e3o_15_componentes",
-      "community": 165,
-      "norm_label": "documento \u2014 wizard de geracao (15 componentes)"
-    },
-    {
-      "label": "Score e conformidade (5 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L139",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_score_e_conformidade_5_componentes",
-      "community": 165,
-      "norm_label": "score e conformidade (5 componentes)"
-    },
-    {
-      "label": "Admin e configura\u00e7\u00e3o",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L148",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_admin_e_configura\u00e7\u00e3o",
-      "community": 165,
-      "norm_label": "admin e configuracao"
-    },
-    {
-      "label": "Base de conhecimento (6 componentes)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L152",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_base_de_conhecimento_6_componentes",
-      "community": 165,
-      "norm_label": "base de conhecimento (6 componentes)"
-    },
-    {
-      "label": "A.4 Telas/p\u00e1ginas do MeuJur\u00eddico (35 p\u00e1ginas)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L161",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "community": 165,
-      "norm_label": "a.4 telas/paginas do meujuridico (35 paginas)"
-    },
-    {
-      "label": "Port\u00e1veis (adapta\u00e7\u00e3o moderada)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L163",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_port\u00e1veis_adapta\u00e7\u00e3o_moderada",
-      "community": 165,
-      "norm_label": "portaveis (adaptacao moderada)"
-    },
-    {
-      "label": "Espec\u00edficos comprador (n\u00e3o portar)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L173",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_espec\u00edficos_comprador_n\u00e3o_portar",
-      "community": 165,
-      "norm_label": "especificos comprador (nao portar)"
-    },
-    {
-      "label": "A.5 Brand assets",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L178",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_a_5_brand_assets",
-      "community": 165,
-      "norm_label": "a.5 brand assets"
-    },
-    {
-      "label": "PARTE B \u2014 INVENT\u00c1RIO DE INTELIG\u00caNCIA",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L193",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "community": 165,
-      "norm_label": "parte b \u2014 inventario de inteligencia"
-    },
-    {
-      "label": "B.1 L\u00e9xia \u2014 RAG jur\u00eddico (o ativo mais valioso)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L195",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_1_l\u00e9xia_rag_jur\u00eddico_o_ativo_mais_valioso",
-      "community": 165,
-      "norm_label": "b.1 lexia \u2014 rag juridico (o ativo mais valioso)"
-    },
-    {
-      "label": "B.2 Motor de gera\u00e7\u00e3o de documentos",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L231",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_2_motor_de_gera\u00e7\u00e3o_de_documentos",
-      "community": 165,
-      "norm_label": "b.2 motor de geracao de documentos"
-    },
-    {
-      "label": "B.3 Motor de pesquisa de pre\u00e7os",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L272",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_3_motor_de_pesquisa_de_pre\u00e7os",
-      "community": 165,
-      "norm_label": "b.3 motor de pesquisa de precos"
-    },
-    {
-      "label": "B.4 Busca sem\u00e2ntica / embeddings",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L297",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_4_busca_sem\u00e2ntica_embeddings",
-      "community": 165,
-      "norm_label": "b.4 busca semantica / embeddings"
-    },
-    {
-      "label": "B.5 Agentes (sistema multi-agente)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L312",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_5_agentes_sistema_multi_agente",
-      "community": 165,
-      "norm_label": "b.5 agentes (sistema multi-agente)"
-    },
-    {
-      "label": "B.6 Score de conformidade (calcular-score-conformidade)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L341",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_6_score_de_conformidade_calcular_score_conformidade",
-      "community": 165,
-      "norm_label": "b.6 score de conformidade (calcular-score-conformidade)"
-    },
-    {
-      "label": "B.7 Workers de ingest\u00e3o",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L354",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_7_workers_de_ingest\u00e3o",
-      "community": 165,
-      "norm_label": "b.7 workers de ingestao"
-    },
-    {
-      "label": "B.8 TEMPLATES DOCS (documentos reais como refer\u00eancia)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L368",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_b_8_templates_docs_documentos_reais_como_refer\u00eancia",
-      "community": 165,
-      "norm_label": "b.8 templates docs (documentos reais como referencia)"
-    },
-    {
-      "label": "PARTE C \u2014 O QUE IGNORAR",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L387",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_parte_c_o_que_ignorar",
-      "community": 165,
-      "norm_label": "parte c \u2014 o que ignorar"
-    },
-    {
-      "label": "PARTE D \u2014 RECOMENDA\u00c7\u00c3O PRIORIZADA",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L406",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "community": 165,
-      "norm_label": "parte d \u2014 recomendacao priorizada"
-    },
-    {
-      "label": "O que o Sentinela n\u00e3o tem e o MeuJur\u00eddico entrega",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L408",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_o_que_o_sentinela_n\u00e3o_tem_e_o_meujur\u00eddico_entrega",
-      "community": 165,
-      "norm_label": "o que o sentinela nao tem e o meujuridico entrega"
-    },
-    {
-      "label": "Ordem recomendada de migra\u00e7\u00e3o (quando aprovado)",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L421",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_ordem_recomendada_de_migra\u00e7\u00e3o_quando_aprovado",
-      "community": 165,
-      "norm_label": "ordem recomendada de migracao (quando aprovado)"
-    },
-    {
-      "label": "PARTE E \u2014 AN\u00c1LISE DE RISCO DA MIGRA\u00c7\u00c3O",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L449",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_parte_e_an\u00e1lise_de_risco_da_migra\u00e7\u00e3o",
-      "community": 165,
-      "norm_label": "parte e \u2014 analise de risco da migracao"
-    },
-    {
-      "label": "RESUMO EXECUTIVO PARA O BIONE",
-      "file_type": "document",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L462",
-      "_origin": "ast",
-      "id": "docs_inventario_meujuridico_resumo_executivo_para_o_bione",
-      "community": 165,
-      "norm_label": "resumo executivo para o bione"
     },
     {
       "label": "PLANO-MIGRACAO-MEUJURIDICO-SENTINELA.md",
@@ -17665,7 +17295,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "fonte: querido diario (okbr)",
       "id": "mapa_fontes_querido_diario"
     },
@@ -17743,7 +17373,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "validacao v5: cobertura querido diario",
       "id": "mapa_fontes_v5"
     },
@@ -18419,7 +18049,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 1 \u2014 radar inteligente (passivo)",
       "id": "sentinela_prd_blueprint_radar_camada"
     },
@@ -18432,7 +18062,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "camada 2 \u2014 kanban comercial (intencional)",
       "id": "sentinela_prd_blueprint_kanban_camada"
     },
@@ -18835,7 +18465,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 16,
       "norm_label": "radar de sinais (renomeado de radar pca)",
       "id": "sentinela_ui_brief_radar_sinais"
     },
@@ -18926,7 +18556,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 14,
       "norm_label": "querido diario api",
       "id": "sentinela_validacao_workorder_querido_diario_api"
     },
@@ -22957,9 +22587,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_inteligencia_gastoorgaononicho"
+      "target": "lib_inteligencia_gastoorgaononicho",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23122,9 +22752,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_segmentos"
+      "target": "lib_segmentos",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23133,9 +22763,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_segmentos_seg_label"
+      "target": "lib_segmentos_seg_label",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -23155,9 +22785,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_siconfi_despesaporfuncao"
+      "target": "lib_siconfi_despesaporfuncao",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23166,9 +22796,9 @@
       "source_file": "app/(shell)/licitacao/[id]/page.tsx",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "id_page",
-      "target": "lib_siconfi_funcaodosegmento"
+      "target": "lib_siconfi_funcaodosegmento",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -24775,9 +24405,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_inteligencia"
+      "target": "lib_inteligencia",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -24786,9 +24416,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_inteligencia_gastoorgaosnonicho"
+      "target": "lib_inteligencia_gastoorgaosnonicho",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -24819,9 +24449,9 @@
       "source_file": "app/(shell)/radar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "radar_page",
-      "target": "lib_nichos_tokensdossegmentos"
+      "target": "lib_nichos_tokensdossegmentos",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -27630,9 +27260,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_adminquery"
+      "target": "e2e_autotest_gasto_orgao_adminquery",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27640,9 +27270,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_cleanup"
+      "target": "e2e_autotest_gasto_orgao_cleanup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27650,9 +27280,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L51",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_consoleerrors"
+      "target": "e2e_autotest_gasto_orgao_consoleerrors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27660,9 +27290,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_desde"
+      "target": "e2e_autotest_gasto_orgao_desde",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27670,9 +27300,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_e"
+      "target": "e2e_autotest_gasto_orgao_e",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27680,9 +27310,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_h"
+      "target": "e2e_autotest_gasto_orgao_h",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27690,9 +27320,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L41",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_intde"
+      "target": "e2e_autotest_gasto_orgao_intde",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27700,9 +27330,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L42",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_nde"
+      "target": "e2e_autotest_gasto_orgao_nde",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27710,9 +27340,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_ok"
+      "target": "e2e_autotest_gasto_orgao_ok",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27720,9 +27350,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_readenv"
+      "target": "e2e_autotest_gasto_orgao_readenv",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27730,9 +27360,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L52",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_results"
+      "target": "e2e_autotest_gasto_orgao_results",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27740,9 +27370,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_sb"
+      "target": "e2e_autotest_gasto_orgao_sb",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27750,9 +27380,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_tenantidpoll"
+      "target": "e2e_autotest_gasto_orgao_tenantidpoll",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27760,9 +27390,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L46",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_tok_sql"
+      "target": "e2e_autotest_gasto_orgao_tok_sql",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27770,9 +27400,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L45",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao",
-      "target": "e2e_autotest_gasto_orgao_tokens"
+      "target": "e2e_autotest_gasto_orgao_tokens",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -27781,9 +27411,9 @@
       "source_file": "e2e/autotest-gasto-orgao.mjs",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "e2e_autotest_gasto_orgao_tenantidpoll",
-      "target": "e2e_autotest_gasto_orgao_adminquery"
+      "target": "e2e_autotest_gasto_orgao_adminquery",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30580,9 +30210,9 @@
       "source_file": "lib/inteligencia.ts",
       "source_location": "L64",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_inteligencia",
-      "target": "lib_inteligencia_gastoorgaonicho"
+      "target": "lib_inteligencia_gastoorgaonicho",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30590,9 +30220,9 @@
       "source_file": "lib/inteligencia.ts",
       "source_location": "L71",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_inteligencia",
-      "target": "lib_inteligencia_gastoorgaononicho"
+      "target": "lib_inteligencia_gastoorgaononicho",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30600,9 +30230,9 @@
       "source_file": "lib/inteligencia.ts",
       "source_location": "L100",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_inteligencia",
-      "target": "lib_inteligencia_gastoorgaosnonicho"
+      "target": "lib_inteligencia_gastoorgaosnonicho",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31658,9 +31288,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L73",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_cachefuncao"
+      "target": "lib_siconfi_cachefuncao",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31668,9 +31298,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L72",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_despesafuncao"
+      "target": "lib_siconfi_despesafuncao",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31678,9 +31308,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L89",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_despesaporfuncao"
+      "target": "lib_siconfi_despesaporfuncao",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31698,9 +31328,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L75",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_fetchfuncaoano"
+      "target": "lib_siconfi_fetchfuncaoano",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31708,9 +31338,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L67",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_funcaodosegmento"
+      "target": "lib_siconfi_funcaodosegmento",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31738,9 +31368,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L59",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi",
-      "target": "lib_siconfi_seg_funcao"
+      "target": "lib_siconfi_seg_funcao",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -31791,9 +31421,9 @@
       "source_file": "lib/siconfi.ts",
       "source_location": "L97",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_siconfi_despesaporfuncao",
-      "target": "lib_siconfi_fetchfuncaoano"
+      "target": "lib_siconfi_fetchfuncaoano",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -35814,16 +35444,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "BLOQUEIOS.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "source": "bloqueios_bloqueios_sess\u00f5es_aut\u00f4nomas",
-      "target": "bloqueios_irp_inten\u00e7\u00e3o_de_registro_de_pre\u00e7os_bloqueado_sem_api_p\u00fablica_probe_2026_06_25_round_2",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "BLOQUEIOS.md",
       "source_location": "L14",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -37159,356 +36779,6 @@
       "confidence_score": 1.0,
       "source": "docs_05_uiux_remodelagem_3_invent\u00e1rio_de_telas_estrutura_deles_nosso_conte\u00fado",
       "target": "docs_05_uiux_remodelagem_f_configura\u00e7\u00f5es_ia"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico",
-      "target": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_contexto_executivo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L62",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L193",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L387",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_c_o_que_ignorar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L406",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L449",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_parte_e_an\u00e1lise_de_risco_da_migra\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L462",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_invent\u00e1rio_meujur\u00eddico_ai_sentinela",
-      "target": "docs_inventario_meujuridico_resumo_executivo_para_o_bione",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "target": "docs_inventario_meujuridico_dois_sistemas_visuais_coexistem_hoje",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L38",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_decis\u00e3o_cr\u00edtica_de_design_leia_antes_de_tudo",
-      "target": "docs_inventario_meujuridico_qual_manda",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L64",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_1_stack_e_estrutura",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L81",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_2_design_tokens_comparativo_preciso",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L94",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L161",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L178",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_a_invent\u00e1rio_visual",
-      "target": "docs_inventario_meujuridico_a_5_brand_assets",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L148",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_admin_e_configura\u00e7\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L152",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_base_de_conhecimento_6_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L106",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_cards_e_kpis_4_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L126",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_documento_wizard_de_gera\u00e7\u00e3o_15_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L114",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_intelig\u00eancia_e_ai_8_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L96",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_layout_e_navega\u00e7\u00e3o_6_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L139",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_3_invent\u00e1rio_de_componentes_meujur\u00eddico",
-      "target": "docs_inventario_meujuridico_score_e_conformidade_5_componentes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L173",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "target": "docs_inventario_meujuridico_espec\u00edficos_comprador_n\u00e3o_portar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L163",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_a_4_telas_p\u00e1ginas_do_meujur\u00eddico_35_p\u00e1ginas",
-      "target": "docs_inventario_meujuridico_port\u00e1veis_adapta\u00e7\u00e3o_moderada",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L195",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_1_l\u00e9xia_rag_jur\u00eddico_o_ativo_mais_valioso",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L231",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_2_motor_de_gera\u00e7\u00e3o_de_documentos",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L272",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_3_motor_de_pesquisa_de_pre\u00e7os",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L297",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_4_busca_sem\u00e2ntica_embeddings",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L312",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_5_agentes_sistema_multi_agente",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L341",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_6_score_de_conformidade_calcular_score_conformidade",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L354",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_7_workers_de_ingest\u00e3o",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L368",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_b_invent\u00e1rio_de_intelig\u00eancia",
-      "target": "docs_inventario_meujuridico_b_8_templates_docs_documentos_reais_como_refer\u00eancia",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L408",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "target": "docs_inventario_meujuridico_o_que_o_sentinela_n\u00e3o_tem_e_o_meujur\u00eddico_entrega",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/INVENTARIO-MEUJURIDICO.md",
-      "source_location": "L421",
-      "weight": 1.0,
-      "source": "docs_inventario_meujuridico_parte_d_recomenda\u00e7\u00e3o_priorizada",
-      "target": "docs_inventario_meujuridico_ordem_recomendada_de_migra\u00e7\u00e3o_quando_aprovado",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -45312,5 +44582,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cfcc77cb5d5bc377783631085bef483ad595af4f"
+  "built_at_commit": "721eb29be1f3f689b2929de2ce5d2e1bd2b1c9ad"
 }

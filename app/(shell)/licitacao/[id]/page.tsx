@@ -458,9 +458,9 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
             )}
             <div className="divide-y">
               <KV label="Plano de Contratações Anual (PCA)" value={<Badge variant="muted">em ingestão</Badge>} />
-              <KV label="IRP — Intenção de Registro de Preços" value={<Badge variant="muted">em ingestão</Badge>} />
+              <KV label="IRP — Intenção de Registro de Preços" value={<Badge variant="muted">roadmap · fonte não pública</Badge>} />
             </div>
-            <p className="text-xs text-muted-foreground">PCA e IRP (sinais pré-edital) acendem com a coleta dessas fontes do PNCP — próxima rodada.</p>
+            <p className="text-xs text-muted-foreground">O <strong>PCA</strong> (plano de contratações) acende com a coleta do plano. O <strong>IRP</strong> é o sinal pré-edital mais forte, mas <strong>não há API pública de consulta</strong> (vive no sistema transacional do Compras.gov) — roadmap, não inventamos.</p>
           </CardContent></Card>
         </section>
 
