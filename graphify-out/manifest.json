@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782323446.0574799,
-    "ast_hash": "ba31dad907da2a261f083770743f57af",
+    "mtime": 1782355140.7298498,
+    "ast_hash": "8820a5d7b5fc0f2e53af18112dd7ca4a",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -810,8 +810,8 @@
     "semantic_hash": ""
   },
   "e2e/run-all.mjs": {
-    "mtime": 1782262293.3520892,
-    "ast_hash": "68b48fcdb57a40f86a96d3ac6cdf4ac1",
+    "mtime": 1782356306.6345396,
+    "ast_hash": "72aa2291be51c1754be36e3ee3ec76a3",
     "semantic_hash": ""
   },
   "docs/00-PLANO-MESTRE-CONSTRUCAO.md": {
@@ -995,8 +995,8 @@
     "semantic_hash": ""
   },
   "e2e/run-prod.mjs": {
-    "mtime": 1782181150.8373978,
-    "ast_hash": "552bbec32776c0502a524ef47092b802",
+    "mtime": 1782356920.7014403,
+    "ast_hash": "56bcb04b056c7ed65cb74073e9acf8d5",
     "semantic_hash": ""
   },
   "lib/proposta.ts": {
@@ -1092,6 +1092,21 @@
   "docs/blueprint/sentinela-dashboard-prototipo.html": {
     "mtime": 1782261206.6041625,
     "ast_hash": "d320640ed0afad8ac139b9d7e9996d4f",
+    "semantic_hash": ""
+  },
+  "e2e/autotest-siconfi.mjs": {
+    "mtime": 1782355231.0929499,
+    "ast_hash": "68bb4c3ede8e1f1e75fe5a10da5c0150",
+    "semantic_hash": ""
+  },
+  "e2e/groups.mjs": {
+    "mtime": 1782356913.087822,
+    "ast_hash": "93cb0ce6d296565f56ba05e6818d366c",
+    "semantic_hash": ""
+  },
+  "lib/siconfi.ts": {
+    "mtime": 1782355082.3928359,
+    "ast_hash": "48d0ba615f0e97eb1962f842dc89a137",
     "semantic_hash": ""
   }
 }

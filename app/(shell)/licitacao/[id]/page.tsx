@@ -15,6 +15,7 @@ import { SECOES, NAO_INFO, type ResumoProfundo } from "@/lib/resumo-profundo";
 import { itensAplicaveis, statusItem, calcProntidao, ITEM_STATUS_META } from "@/lib/habilitacao";
 import { tokensDosSegmentos } from "@/lib/nichos";
 import { inteligenciaMercado } from "@/lib/inteligencia";
+import { orcamentoMunicipio } from "@/lib/siconfi";
 import { SEMAFORO_LABEL } from "@/lib/preco";
 import { consultarLicitacao } from "@/lib/consultor";
 import { montarSecoes, DECLARACOES_TIPICAS } from "@/lib/proposta";
@@ -105,6 +106,10 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   // Inteligência Comercial & de Mercado (Bloco 2) — quem ganha o nicho, faixa praticada, fornecedor atual do órgão.
   const intelTokens = tokensDosSegmentos(company?.segmentos?.length ? company.segmentos : []);
   const intel = await inteligenciaMercado(supabase, { tokens: intelTokens, uf: ed?.uf_sigla ?? null, cnpjOrgao: ed?.cnpj_orgao ?? null });
+
+  // §1 "O órgão paga?" — orçamento REAL do município (Siconfi/Tesouro), por código IBGE do payload. Cacheado.
+  const codigoIbge = ((ed?.payload as Record<string, unknown> | null)?.unidadeOrgao as { codigoIbge?: string } | undefined)?.codigoIbge ?? null;
+  const orcamento = await orcamentoMunicipio(codigoIbge);
 
   // Consultor (Bloco 5) — determinístico, citando a Lei 14.133.
   const respostasConsultor = consultarLicitacao({
@@ -375,15 +380,32 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
 
         {/* ===== §1 O ÓRGÃO — ele paga? (CAPAG + orçamento) ===== */}
         <section id="orgao" className="scroll-mt-16 space-y-3">
-          <SecHead n={1} icon={Landmark} title="O órgão — ele paga?" q="Capacidade de pagamento (CAPAG) e orçamento do ente — fonte Tesouro/Siconfi." />
+          <SecHead n={1} icon={Landmark} title="O órgão — ele paga?" q="Orçamento e execução do ente (Siconfi/Tesouro) + capacidade fiscal." />
           <Card data-testid="raiox-orgao"><CardContent className="space-y-2 p-4">
-            <div className="flex flex-wrap items-center gap-2"><span className="text-sm font-semibold">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão"}</span>{cidadeUf && <Badge variant="muted">{cidadeUf}</Badge>}</div>
-            <div className="divide-y">
-              <KV label="Nota CAPAG (Tesouro)" value={<Badge variant="muted">em ingestão</Badge>} />
-              <KV label="Orçamento / execução (Siconfi RREO-RGF)" value={<Badge variant="muted">em ingestão</Badge>} />
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão"}</span>
+              {cidadeUf && <Badge variant="muted">{cidadeUf}</Badge>}
+              {orcamento?.porte && <Badge variant="secondary" data-testid="orgao-porte">porte {orcamento.porte}</Badge>}
             </div>
+            {orcamento ? (
+              <>
+                <div className="divide-y" data-testid="orgao-orcamento">
+                  <KV label="Orçamento previsto (ano)" value={brl(orcamento.receitaPrevista)} />
+                  <KV label="Receita realizada (até o período)" value={orcamento.receitaRealizada != null ? `${brl(orcamento.receitaRealizada)}${orcamento.execucaoReceitaPct != null ? ` · ${orcamento.execucaoReceitaPct}% da previsão` : ""}` : "—"} />
+                  <KV label="Despesa liquidada (até o período)" value={brl(orcamento.despesaLiquidada)} />
+                  <KV label="População" value={orcamento.populacao != null ? new Intl.NumberFormat("pt-BR").format(orcamento.populacao) : "—"} />
+                  <KV label="Nota CAPAG (capacidade de pagamento)" value={<Badge variant="muted">em ingestão</Badge>} />
+                </div>
+                <p className="text-xs text-muted-foreground" data-testid="siconfi-fonte">Fonte: {orcamento.fonte} · consultado <span data-testid="siconfi-consultado">{orcamento.consultadoEm.slice(0, 19).replace("T", " ")} UTC</span></p>
+              </>
+            ) : (
+              <div className="divide-y">
+                <KV label="Orçamento / execução (Siconfi)" value={<Badge variant="muted">sem registro no Siconfi</Badge>} />
+                <KV label="Nota CAPAG (Tesouro)" value={<Badge variant="muted">em ingestão</Badge>} />
+              </div>
+            )}
             {temExtracao && profundo?.secoes.orgao_capag && profundo.secoes.orgao_capag !== NAO_INFO && <p className="text-sm text-muted-foreground">{profundo.secoes.orgao_capag}</p>}
-            <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ CAPAG mede a <strong>saúde fiscal</strong> do ente — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor. Integração Siconfi por código IBGE entra na próxima rodada.</p>
+            <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Orçamento robusto indica <strong>saúde fiscal</strong> — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor. A nota CAPAG (dataset próprio do Tesouro) entra na sequência.</p>
           </CardContent></Card>
         </section>
 

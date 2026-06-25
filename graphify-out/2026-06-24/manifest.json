@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "app/(shell)/licitacao/[id]/page.tsx": {
-    "mtime": 1782257673.381209,
-    "ast_hash": "0e10ca745db12dee98d5a3c0c1207ec8",
+    "mtime": 1782323446.0574799,
+    "ast_hash": "ba31dad907da2a261f083770743f57af",
     "semantic_hash": ""
   },
   "app/(shell)/radar/actions.ts": {
@@ -180,8 +180,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-licitacao.mjs": {
-    "mtime": 1782254300.4355445,
-    "ast_hash": "c310b44b376320de5fb92e5b6f9c3bc7",
+    "mtime": 1782323729.7561884,
+    "ast_hash": "7fad6cab16108d6f03391a373d5434bd",
     "semantic_hash": ""
   },
   "e2e/autotest-radar.mjs": {
@@ -420,8 +420,8 @@
     "semantic_hash": "1797f72f4797fbd8aa3f959950311cc5"
   },
   "BLOQUEIOS.md": {
-    "mtime": 1782176142.1635334,
-    "ast_hash": "3d81ae8134a621f08c78a1e233cac559",
+    "mtime": 1782324580.168742,
+    "ast_hash": "3e0e3434b106f4cbc196601bf47695df",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-pasta.mjs": {
-    "mtime": 1782242239.6925886,
-    "ast_hash": "1827388d0bd89d71485147c7f3d7f1f9",
+    "mtime": 1782323114.7770107,
+    "ast_hash": "a58004e09332e733de75e4a90478baa5",
     "semantic_hash": ""
   },
   "lib/resumo-edital.ts": {
@@ -940,8 +940,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-sala.mjs": {
-    "mtime": 1782262328.401287,
-    "ast_hash": "0c5875506e269bf469cc325d87cda50b",
+    "mtime": 1782323114.7874336,
+    "ast_hash": "807c865d67d18eb1f2b13cb50e56c109",
     "semantic_hash": ""
   },
   "lib/inteligencia.ts": {
@@ -965,8 +965,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-preco.mjs": {
-    "mtime": 1782179009.758146,
-    "ast_hash": "a613786eae106b960dc78d76b1297853",
+    "mtime": 1782323114.7722924,
+    "ast_hash": "f47f44d5e9c0972361e24aeb5a9beb92",
     "semantic_hash": ""
   },
   "lib/preco.ts": {
@@ -975,8 +975,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-consultor.mjs": {
-    "mtime": 1782180186.2433028,
-    "ast_hash": "6eaf66d4f9a769979a21dc9cd728c378",
+    "mtime": 1782323114.7568893,
+    "ast_hash": "4db7d2d31e3403362c618ea995984313",
     "semantic_hash": ""
   },
   "lib/consultor.ts": {
@@ -990,8 +990,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-proposta.mjs": {
-    "mtime": 1782181826.9135602,
-    "ast_hash": "210e0fe7aeb96bbec20733db3b645f7c",
+    "mtime": 1782323114.7813923,
+    "ast_hash": "d9179cb8b8ef17c25c9a349484d27f3f",
     "semantic_hash": ""
   },
   "e2e/run-prod.mjs": {
@@ -1035,13 +1035,13 @@
     "semantic_hash": ""
   },
   "e2e/autotest-exigencias.mjs": {
-    "mtime": 1782250280.073668,
-    "ast_hash": "049dcc4fa07f161f0d962f1185a3c0ae",
+    "mtime": 1782323114.7620485,
+    "ast_hash": "0c221ce37903331082e6f1e218311c5f",
     "semantic_hash": ""
   },
   "e2e/autotest-resumo-profundo.mjs": {
-    "mtime": 1782255504.0958922,
-    "ast_hash": "d5f17703a12f4e888878804db533965d",
+    "mtime": 1782324499.7987976,
+    "ast_hash": "565abb84feb40b85963efc20aff0ed69",
     "semantic_hash": ""
   },
   "lib/ai-server.ts": {
@@ -1065,8 +1065,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-resumo-upload.mjs": {
-    "mtime": 1782257947.502734,
-    "ast_hash": "f4eb20602e9b6c5c15073366f87662ac",
+    "mtime": 1782323114.796335,
+    "ast_hash": "bbc450cf90587fdca3e6dcef3d603e39",
     "semantic_hash": ""
   },
   "e2e/fixtures/edital-fixture.pdf": {
