@@ -25,6 +25,10 @@ export function endpointFor(provider: Provider, model: string): string {
 
 export type CompleteArgs = { provider: Provider; model: string; apiKey: string; system?: string; prompt: string; maxTokens?: number };
 
+// Teto de tempo da chamada à IA. Sem isto, um provedor que pendura travava a server action
+// indefinidamente (ex.: Resumo Profundo nunca renderizava). Estoura → throw → o chamador degrada.
+const AI_TIMEOUT_MS = 60_000;
+
 export async function complete({ provider, model, apiKey, system, prompt, maxTokens = 1500 }: CompleteArgs): Promise<string> {
   if (provider === "mock") {
     return JSON.stringify({
@@ -39,6 +43,7 @@ export async function complete({ provider, model, apiKey, system, prompt, maxTok
       method: "POST",
       headers: { "x-api-key": apiKey, "anthropic-version": "2023-06-01", "content-type": "application/json" },
       body: JSON.stringify({ model, max_tokens: maxTokens, system, messages: [{ role: "user", content: prompt }] }),
+      signal: AbortSignal.timeout(AI_TIMEOUT_MS),
     });
     if (!r.ok) throw new Error(`Anthropic ${r.status}: ${(await r.text()).slice(0, 200)}`);
     const j = await r.json();
@@ -49,6 +54,7 @@ export async function complete({ provider, model, apiKey, system, prompt, maxTok
       method: "POST",
       headers: { authorization: `Bearer ${apiKey}`, "content-type": "application/json" },
       body: JSON.stringify({ model, max_tokens: maxTokens, messages: [...(system ? [{ role: "system", content: system }] : []), { role: "user", content: prompt }] }),
+      signal: AbortSignal.timeout(AI_TIMEOUT_MS),
     });
     if (!r.ok) throw new Error(`OpenAI ${r.status}: ${(await r.text()).slice(0, 200)}`);
     const j = await r.json();
@@ -59,6 +65,7 @@ export async function complete({ provider, model, apiKey, system, prompt, maxTok
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ systemInstruction: system ? { parts: [{ text: system }] } : undefined, contents: [{ parts: [{ text: prompt }] }] }),
+    signal: AbortSignal.timeout(AI_TIMEOUT_MS),
   });
   if (!r.ok) throw new Error(`Google ${r.status}: ${(await r.text()).slice(0, 200)}`);
   const j = await r.json();
