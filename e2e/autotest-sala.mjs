@@ -69,6 +69,8 @@ try {
 
   // aba Inteligência
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  // aba Preços e Histórico: inteligência de mercado/faixa vive aqui
+  await page.locator("[data-testid=raiox-tab-precos]").click();
   await page.waitForTimeout(600);
   const temIntel = (await page.locator("[data-testid=sala-inteligencia]").count()) > 0;
   const temConcorrentes = (await page.locator("[data-testid=concorrentes]").count()) > 0;

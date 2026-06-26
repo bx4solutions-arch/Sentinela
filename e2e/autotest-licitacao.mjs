@@ -36,7 +36,8 @@ try {
   const vTxt = await page.locator("[data-testid=space-veredito-v2]").innerText();
   ok("Space v2: veredito rotulado 'estimativa' + prontidão % real (não chance forjada)", /estimativa/i.test(vTxt) && /\d+%/.test(await page.locator("[data-testid=veredito-prontidao]").innerText()) && /Risco principal/i.test(vTxt), vTxt.replace(/\n/g, " ").slice(0, 80));
   ok("Space v2: workspaceHero com ações Gerar PDF · Descartar · Participar", (await page.locator("[data-testid=space-pdf]").count()) > 0 && (await page.locator("[data-testid=space-descartar]").count()) > 0 && (await page.locator("[data-testid=space-participar]").count()) > 0);
-  // Consultor ABSORVIDO no Space (rota /consultor deletada): seção consultor presente, cita a Lei 14.133
+  // Consultor ABSORVIDO no Space (aba Consultor IA): seção consultor presente, cita a Lei 14.133
+  await page.locator("[data-testid=raiox-tab-consultor]").click(); await page.waitForTimeout(250);
   ok("Space: Consultor IA absorvido (seção presente, cita Lei 14.133)", (await page.locator("[data-testid=consultor]").count()) > 0 && /14\.133/.test(await page.locator("[data-testid=consultor]").innerText()));
   // Concorrentes ABSORVIDO no Space (rota /pesquisa deletada): seção concorrentes presente OU vazio honesto
   ok("Space: Concorrentes absorvido (seção presente OU vazio honesto)", (await page.locator("[data-testid=concorrentes]").count()) > 0 || /em ingest[ãa]o|sem concorrente|sem dado/i.test(body));
@@ -55,6 +56,8 @@ try {
   // volta pra Documentos e adiciona um doc
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(300);
+  // aba Criador de Documentos: onde fica "Documentos do processo"
+  await page.locator("[data-testid=raiox-tab-criador]").click(); await page.waitForTimeout(250);
   await page.fill("input[name=nome]", "Edital (teste QA)");
   await page.click("button:has-text('Adicionar')");
   await page.waitForSelector("text=Edital (teste QA)", { timeout: 10000 });

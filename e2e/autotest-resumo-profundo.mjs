@@ -98,8 +98,16 @@ try {
   await page.waitForSelector("[data-testid=profundo-tab]", { timeout: 10000 });
   ok("IA inclusa: botão 'Gerar resumo profundo' presente (sem BYOK)", (await page.locator("[data-testid=gerar-profundo]").count()) > 0);
   await page.locator("[data-testid=gerar-profundo]").click();
-  // a extração baixa o PDF + chama a IA — pode levar dezenas de segundos
-  await page.waitForSelector("[data-testid=profundo-conteudo]", { timeout: 90000 });
+  // A extração tenta o PDF no PNCP + chama a IA (pode levar dezenas de segundos). MUITOS editais
+  // (dispensas/avisos) NÃO têm o PDF no PNCP: o produto degrada honestamente p/ "indisponível" e oferece
+  // UPLOAD. O teste é robusto aos dois caminhos — se o PNCP não tiver o PDF, envia o fixture e prova a
+  // extração REAL pela MESMA pipeline (upsert em licitacao_id,tipo → não duplica a linha do cache).
+  await page.waitForSelector("[data-testid=profundo-conteudo], [data-testid=profundo-indisponivel]", { timeout: 90000 });
+  if ((await page.locator("[data-testid=profundo-conteudo]").count()) === 0) {
+    await page.setInputFiles("[data-testid=input-pdf]", "e2e/fixtures/edital-fixture.pdf");
+    await page.locator("[data-testid=enviar-pdf]").click();
+    await page.waitForSelector("[data-testid=profundo-conteudo]", { timeout: 90000 });
+  }
 
   const nSecoes = await page.locator("[data-testid=profundo-secao]").count();
   ok("Resumo Profundo: 18 seções renderizadas", nSecoes === 18, `secoes=${nSecoes}`);

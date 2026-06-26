@@ -30,13 +30,13 @@ try {
 
   // kanban
   await page.goto(`${BASE}/kanban`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Monitorando", { timeout: 10000 });
-  ok("kanban: card promovido aparece (coluna Monitorando)", (await page.locator("button[aria-label='Avançar etapa']").count()) >= 1);
+  await page.waitForSelector("[data-testid=kanban-board]", { timeout: 10000 });
+  ok("kanban: card promovido aparece no board", (await page.locator("button[aria-label='Avançar etapa']").count()) >= 1);
 
-  // KANBAN v2: hero + board de 5 colunas da jornada + card estilo v2 com dado real
+  // KANBAN v2 (fiel à maquete): hero + 5 colunas da jornada + card estilo v2 com dado real
   ok("kanban v2: hero 'Kanban de Execução'", /Kanban de Execução/.test(await page.locator("main").innerText()));
   ok("kanban v2: board com as 5 colunas da jornada", (await page.locator("[data-testid=kanban-board] .column").count()) === 5);
-  ok("kanban v2: colunas nomeadas (Em análise … Resultado / Contrato)", (await page.locator("[data-testid=coluna-nova]").count()) > 0 && (await page.locator("[data-testid=coluna-resultado]").count()) > 0 && /Em análise/.test(await page.locator("[data-testid=coluna-nova]").innerText()) && /Resultado \/ Contrato/.test(await page.locator("[data-testid=coluna-resultado]").innerText()));
+  ok("kanban v2: colunas do modelo (Em análise … Resultado / contrato)", (await page.locator("[data-testid=coluna-nova]").count()) > 0 && (await page.locator("[data-testid=coluna-resultado]").count()) > 0 && /Em análise/.test(await page.locator("[data-testid=coluna-nova]").innerText()) && /Resultado \/ contrato/.test(await page.locator("[data-testid=coluna-resultado]").innerText()) && /Preparação documental/.test(await page.locator("[data-testid=coluna-monitorando]").innerText()));
   ok("kanban v2: card v2 do edital promovido presente (órgão + objeto reais)", (await page.locator("[data-testid=kanban-card]").count()) >= 1 && (await page.locator("[data-testid=coluna-monitorando] [data-testid=kanban-card]").count()) >= 1);
   const cardTxt = await page.locator("[data-testid=coluna-monitorando] [data-testid=kanban-card]").first().innerText();
   ok("kanban v2: card mostra conteúdo real (não placeholder)", cardTxt.trim().length > 10 && !/lorem|placeholder|exemplo/i.test(cardTxt), cardTxt.replace(/\n/g, " ").slice(0, 70));

@@ -95,6 +95,7 @@ try {
 
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  await page.locator("[data-testid=raiox-tab-orgao]").click(); await page.waitForTimeout(250);
   await page.waitForSelector("[data-testid=raiox-orgao]", { timeout: 10000 });
 
   ok("§1 'O órgão' com orçamento REAL renderizado (Siconfi)", (await page.locator("[data-testid=orgao-orcamento]").count()) > 0);
@@ -117,6 +118,7 @@ try {
   // ===== CACHE: 2º acesso não rebate a API (mesmo consultadoEm) =====
   await page.goto(`${BASE}/radar`, { waitUntil: "networkidle" });
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
+  await page.locator("[data-testid=raiox-tab-orgao]").click(); await page.waitForTimeout(250);
   await page.waitForSelector("[data-testid=siconfi-consultado]", { timeout: 15000 });
   const consultado2 = await page.locator("[data-testid=siconfi-consultado]").innerText();
   ok("CACHE por município: 2º acesso NÃO rebate a API (mesmo consultadoEm)", consultado1 === consultado2, `1=${consultado1} 2=${consultado2}`);

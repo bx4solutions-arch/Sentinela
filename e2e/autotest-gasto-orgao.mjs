@@ -88,6 +88,7 @@ try {
 
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  await page.locator("[data-testid=raiox-tab-orgao]").click(); await page.waitForTimeout(250);
   ok("§1: card 'Quanto este órgão gasta no seu nicho' presente", (await page.locator("[data-testid=gasto-nicho]").count()) > 0);
   ok("§1: gasto REAL (gold) renderizado", (await page.locator("[data-testid=gasto-real]").count()) > 0);
 
@@ -110,6 +111,7 @@ try {
     const numero2 = (await adminQuery(`select numero_controle_pncp from raw_editais where cnpj_orgao='${semCand.cnpj_orgao}' limit 1;`))?.[0]?.numero_controle_pncp;
     const lic2 = (await adminQuery(`insert into licitacao (id, tenant_id, numero_controle_pncp, titulo) values (gen_random_uuid(), '${tid}', '${numero2}', 'QA gasto vazio') returning id;`))?.[0]?.id;
     await page.goto(`${BASE}/licitacao/${lic2}`, { waitUntil: "networkidle" });
+    await page.locator("[data-testid=raiox-tab-orgao]").click(); await page.waitForTimeout(250);
     await page.waitForSelector("[data-testid=gasto-nicho]", { timeout: 15000 });
     ok("HONESTO: órgão sem compra do nicho → 'sem registro' (não forja)", (await page.locator("[data-testid=gasto-sem-registro]").count()) > 0);
   } else {

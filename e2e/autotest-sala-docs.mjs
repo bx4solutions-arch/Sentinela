@@ -86,6 +86,7 @@ try {
 
   await page.goto(`${BASE}/licitacao/${lic}`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  await page.locator("[data-testid=raiox-tab-checklist]").click(); await page.waitForTimeout(250);
   await page.waitForSelector("[data-testid=exig-especificas]", { timeout: 10000 });
 
   const nItens = await page.locator("[data-testid=exig-item]").count();

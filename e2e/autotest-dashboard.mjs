@@ -71,7 +71,10 @@ try {
   const body = await page.locator("body").innerText();
 
   // Recorte real do tenant: replica a lógica de escopo da HOME (cidades prontas → IN; senão UF do órgão).
-  const prontasRows = await adminQuery("select c.municipio from celula c join cidade_coletada cc on cc.codigo_ibge=c.codigo_ibge where cc.status='pronta';");
+  // IMPORTANTE: `celula` é tenant-scoped (RLS tenant_id=auth.uid()). A HOME só vê as células DO PRÓPRIO tenant,
+  // então a referência precisa filtrar por tenant_id — senão agrega células de OUTROS tenants (ex.: uma célula
+  // "Santos" de outro tenant inflava o recorte p/ São Paulo+Santos e divergia do que a HOME mostra).
+  const prontasRows = await adminQuery(`select c.municipio from celula c join cidade_coletada cc on cc.codigo_ibge=c.codigo_ibge join auth.users u on u.id=c.tenant_id where cc.status='pronta' and u.email='${email}';`);
   const prontas = (Array.isArray(prontasRows) ? prontasRows : []).map((r) => r.municipio).filter(Boolean);
   let abertosBanco;
   if (prontas.length) {

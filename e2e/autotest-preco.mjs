@@ -55,6 +55,8 @@ try {
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  // aba Preços e Histórico: motor de preço + inexequibilidade vivem aqui
+  await page.locator("[data-testid=raiox-tab-precos]").click();
   await page.waitForTimeout(600);
   const body = await page.locator("body").innerText();
   const temSemaforo = (await page.locator("[data-testid=cv-semaforo]").count()) > 0;

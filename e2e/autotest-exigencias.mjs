@@ -74,6 +74,7 @@ try {
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
+  await page.locator("[data-testid=raiox-tab-checklist]").click(); await page.waitForTimeout(250);
   await page.waitForSelector("[data-testid=exigencias-tab]", { timeout: 10000 });
 
   ok("Exigências: barra de contagem (você tem · vencendo · falta)", (await page.locator("[data-testid=exigencias-contagem]").count()) > 0);

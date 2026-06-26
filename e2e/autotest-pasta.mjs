@@ -42,9 +42,9 @@ try {
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
   await page.waitForTimeout(300);
   ok("Empresa × Edital determinístico (checklist + status)", (await page.locator("text=% pronto").count()) > 0);
-  // veredito
+  // veredito (aba Minha Empresa x Edital)
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
-  await page.waitForTimeout(300);
+  await page.locator("[data-testid=raiox-tab-empresa-edital]").click(); await page.waitForTimeout(300);
   const bodyVer = await page.locator("body").innerText();
   ok("Veredito calibrado + disclaimer (sem IA)", bodyVer.includes("Veredito calibrado") && bodyVer.toLowerCase().includes("não é garantia"));
   // botões reais/desabilitados

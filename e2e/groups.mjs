@@ -4,6 +4,7 @@
 export const GROUPS = {
   empresa: [ // cofre / onboarding / config / identidade / integração / funil
     "e2e/autotest.mjs",
+    "e2e/autotest-navegacao.mjs",
     "e2e/autotest-frontend.mjs",
     "e2e/autotest-identidade.mjs",
     "e2e/autotest-conhecimento.mjs",

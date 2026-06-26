@@ -55,7 +55,8 @@ try {
   await page.locator("[data-testid=card-analisar]").first().click();
   await page.waitForURL(/\/licitacao\/[0-9a-f-]+/, { timeout: 15000 });
   await page.waitForSelector("[data-testid=raiox-relatorio]", { timeout: 15000 });
-  await page.waitForTimeout(500);
+  // aba Criador de Documentos: onde vive o gerador de proposta
+  await page.locator("[data-testid=raiox-tab-criador]").click(); await page.waitForTimeout(400);
 
   ok("Gerador de Proposta presente", (await page.locator("[data-testid=proposta-gerador]").count()) > 0);
   const secoes = await page.locator("[data-testid=secao-proposta]").count();
