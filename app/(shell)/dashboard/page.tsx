@@ -36,12 +36,20 @@ export default async function DashboardPage() {
   // ===== Oportunidades abertas no recorte + valor estimado total (REAL) =====
   let abertos = 0, valorRadar = 0;
   if (temNicho) {
+    // Contagem EXATA do recorte (count=exact). Antes usava-se rows.length de um SELECT com .limit(1000),
+    // que CAPAVA o KPI em 1000 (e o supabase-js também limita a 1000 por padrão) — subcontava recortes grandes.
+    const selCount = usaCidades
+      ? supabase.from("raw_editais").select("*", { count: "exact", head: true }).in("cidade", prontas)
+      : supabase.from("raw_editais").select("orgao:cnpj_orgao!inner(uf_sigla)", { count: "exact", head: true }).eq("orgao.uf_sigla", uf!);
+    const { count } = await selCount.overlaps("segmentos", segmentos).is("valor_homologado", null);
+    abertos = count ?? 0;
+    // Valor estimado total: soma sobre amostra (rótulo "estimado"). O count acima é exato; a soma é aproximada
+    // quando o recorte passa de 1000 (somar tudo exigiria agregação server-side — fora de escopo aqui).
     const selV = usaCidades
       ? supabase.from("raw_editais").select("valor_estimado").in("cidade", prontas)
       : supabase.from("raw_editais").select("valor_estimado, orgao:cnpj_orgao!inner(uf_sigla)").eq("orgao.uf_sigla", uf!);
     const { data: vd } = await selV.overlaps("segmentos", segmentos).is("valor_homologado", null).limit(1000);
     const rows = (vd ?? []) as { valor_estimado: number | null }[];
-    abertos = rows.length;
     valorRadar = rows.reduce((s, r) => s + (Number(r.valor_estimado) || 0), 0);
   }
 

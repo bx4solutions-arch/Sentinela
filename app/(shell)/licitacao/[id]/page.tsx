@@ -25,7 +25,7 @@ import { PropostaGerador } from "./proposta-gerador";
 import { addDocLicitacao, deleteDocLicitacao, excluirLicitacao, analisarComIA, gerarResumoProfundo, gerarResumoProfundoUpload } from "./actions";
 import { monitorar } from "../../radar/actions";
 import { PastaActions } from "./pasta-actions";
-import { RaioxNav } from "./raiox-nav";
+import { SpaceTabs, type SpaceTab } from "./space-tabs";
 
 type Parecer = {
   resumo?: string; riscos?: { nivel?: string; texto?: string }[];
@@ -172,10 +172,445 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
   const faltaN = itensStatus.filter((i) => i.st === "ausente" || i.st === "vencida").length;
   const objetoCurto = (ed?.objeto ?? lic.titulo ?? "").slice(0, 48);
 
-  // Navegação do relatório (âncoras das seções)
-  const NAV: [string, string][] = [
-    ["resumo-profundo", "Resumo Profundo"], ["orgao", "O órgão"], ["intencao", "A intenção"],
-    ["mercado", "Mercado"], ["voce", "Você"], ["veredito", "Veredito"], ["proposta", "Proposta"],
+  // ============== CONTEÚDO DAS 8 ABAS (fiéis à maquete v2 — cada clique TROCA a tela) ==============
+
+  // 1) RESUMO EXECUTIVO — Resumo Profundo (18 seções) + resumo determinístico do PNCP
+  const nodeResumo = (
+    <>
+      <section className="space-y-4" data-testid="profundo-tab">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="text-xl font-bold leading-tight">Resumo Profundo do edital</h2>
+            <p className="text-sm text-muted-foreground">As 18 seções extraídas do PDF real do edital. Cada campo é o que está no texto — ou “{NAO_INFO}”. Não inventamos.</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "—"}</span>
+            {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}{ed?.situacao_nome ? ` · ${ed.situacao_nome}` : ""}</Badge>}
+            {sessaoISO && <span>sessão {dtBR(sessaoISO)}</span>}
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {hasAI ? (
+            <form action={gerarResumoProfundo}><input type="hidden" name="licitacao_id" value={lic.id} />
+              <Button type="submit" size="sm" data-testid="gerar-profundo"><Sparkles className="size-4" /> {temExtracao ? "Regerar resumo profundo" : "Gerar resumo profundo (PNCP)"}</Button>
+            </form>
+          ) : (
+            <Badge variant="muted" data-testid="profundo-ia-off">IA temporariamente indisponível — mostrando o determinístico</Badge>
+          )}
+          {profundo && <Badge variant="muted" data-testid="profundo-fonte">{profundo.fonte === "ia" ? `extraído por IA (${profundo.modelo})` : profundo.fonte === "cache" ? "reaproveitado do cache (sem novo custo)" : "documento ainda não extraído"}</Badge>}
+          <Badge variant="muted">Exportar (.docx / e-mail / imprimir) — em breve</Badge>
+        </div>
+
+        {!temExtracao ? (
+          <div className="space-y-4" data-testid="profundo-indisponivel">
+            <div className="rounded-lg border border-warning/30 bg-warning/10 p-4">
+              <p className="flex items-center gap-2 text-sm font-semibold"><FileText className="size-4" /> Documento do edital ainda não extraído</p>
+              <p className="mt-1 text-sm text-muted-foreground">{profundo?.aviso ?? (hasAI ? "Clique em “Gerar resumo profundo (PNCP)” para tentar o documento no PNCP. Se o edital estiver só no portal de origem, baixe lá e envie o PDF." : "A IA está temporariamente indisponível. O resumo determinístico do PNCP segue abaixo.")}</p>
+            </div>
+            {hasAI && (
+              <Card><CardContent className="space-y-3 p-4">
+                <p className="text-sm font-semibold">Como obter o documento</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {portalUrl && (
+                    <Button asChild size="sm" data-testid="baixar-portal-origem">
+                      <a href={portalUrl} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Baixar no portal de origem{portalLabel ? ` (${portalLabel})` : ""}</a>
+                    </Button>
+                  )}
+                  <span className="text-xs text-muted-foreground">o edital costuma ficar no portal de origem (BLL/Compras) — baixe e envie aqui</span>
+                </div>
+                <form action={gerarResumoProfundoUpload} className="flex flex-wrap items-center gap-2 rounded-md border bg-muted/30 p-3" data-testid="form-upload-edital">
+                  <input type="hidden" name="licitacao_id" value={lic.id} />
+                  <input type="file" name="pdf" accept="application/pdf,.pdf" required data-testid="input-pdf"
+                    className="text-sm file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-foreground" />
+                  <Button type="submit" size="sm" variant="outline" data-testid="enviar-pdf"><FileDown className="size-4" /> Extrair do PDF enviado</Button>
+                </form>
+                <p className="text-xs text-muted-foreground">A captura automática do portal de origem (BLL/Compras) é roadmap — cada portal é uma integração própria. Por ora, o upload manual já desbloqueia a extração completa.</p>
+              </CardContent></Card>
+            )}
+            {resumo && (
+              <CardKV icon={FileSearch} titulo="Resumo determinístico (PNCP)">
+                <KV label="Objeto" value={resumo.identificacao.objeto} />
+                <KV label="Órgão" value={resumo.orgao.razao_social} />
+                <KV label="Modalidade" value={resumo.modalidade.modalidade} />
+                <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
+                <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
+                <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
+                <KV label="Amparo legal" value={resumo.amparo_legal.nome} />
+              </CardKV>
+            )}
+            <p className="text-xs text-muted-foreground">As 18 seções (habilitação, atestado, prazos, penalidades, análise crítica…) aparecem aqui após a extração real do PDF.</p>
+          </div>
+        ) : (
+          <div className="space-y-4" data-testid="profundo-conteudo">
+            {profundo.aviso && <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">{profundo.aviso}</p>}
+            <div className="space-y-2">
+              {SECOES.map((sec) => {
+                const val = profundo.secoes[sec.key] || NAO_INFO;
+                const vazio = val === NAO_INFO;
+                const borda = sec.tom === "vermelho" ? "border-destructive/40" : sec.tom === "ambar" ? "border-warning/40" : "";
+                return (
+                  <details key={sec.key} className={`rounded-lg border ${borda} bg-card`} data-testid="profundo-secao">
+                    <summary className="flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm font-medium">
+                      {sec.tom === "vermelho" && <span className="text-destructive">●</span>}
+                      {sec.tom === "ambar" && <span className="text-warning">●</span>}
+                      <span className="flex-1">{sec.titulo}</span>
+                      {vazio && <Badge variant="muted">{NAO_INFO}</Badge>}
+                    </summary>
+                    <div className={`border-t px-4 py-3 text-sm ${sec.tom === "vermelho" ? "bg-destructive/5" : sec.tom === "ambar" ? "bg-warning/5" : ""}`}>
+                      <p className="whitespace-pre-line text-muted-foreground">{val}</p>
+                      {sec.key === "analise_critica" && <p className="mt-2 text-xs text-muted-foreground">⚠️ É uma <strong>análise</strong> (apoio à decisão), <strong>não um parecer jurídico</strong>.</p>}
+                      {sec.key === "atestado" && profundo.exigencias_especificas.length > 0 && (
+                        <ul className="mt-2 list-disc space-y-0.5 pl-5">{profundo.exigencias_especificas.map((e, i) => <li key={i}>{e}</li>)}</ul>
+                      )}
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </section>
+
+      {resumo ? (
+        <div className="space-y-4" data-testid="resumo-edital">
+          <div>
+            <h2 className="text-lg font-bold leading-tight">Resumo do edital</h2>
+            <p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico). O interpretativo com IA é opcional.</p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <CardKV icon={FileSearch} titulo="Identificação da licitação">
+              <KV label="Objeto" value={resumo.identificacao.objeto} />
+              <KV label="Número da licitação" value={resumo.identificacao.numero_compra ?? resumo.identificacao.numero_controle} />
+              <KV label="Modalidade" value={resumo.modalidade.modalidade ? `${resumo.modalidade.modalidade}${resumo.situacao ? ` — ${resumo.situacao}` : ""}` : null} />
+              <KV label="UASG / unidade" value={resumo.identificacao.uasg ? `${resumo.identificacao.uasg}${resumo.identificacao.unidade ? ` — ${resumo.identificacao.unidade}` : ""}` : resumo.identificacao.unidade} />
+              <KV label="Portal de realização" value={portalLabel ?? resumo.identificacao.portal} />
+              <KV label="Modo de disputa" value={resumo.modalidade.modo_disputa} />
+              <KV label="Registro de preços (SRP)" value={resumo.modalidade.srp == null ? "—" : resumo.modalidade.srp ? "Sim" : "Não"} />
+              <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
+            </CardKV>
+            <CardKV icon={Clock} titulo="Sessão pública">
+              <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
+              <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
+              <KV label="Publicação no PNCP" value={dtBR(resumo.datas.publicacao)} />
+              <KV label="Órgão" value={resumo.orgao.razao_social} />
+              <KV label="Município/UF" value={resumo.orgao.municipio ? `${resumo.orgao.municipio}/${resumo.orgao.uf}` : null} />
+              <KV label="Esclarecimentos / impugnação / cota ME-EPP" value={<Badge variant="muted">no texto do edital</Badge>} />
+            </CardKV>
+          </div>
+          {p?.resumo && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Resumo interpretativo (IA)</p></div><p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo}</p></CardContent></Card>}
+        </div>
+      ) : (
+        <div className="space-y-4" data-testid="resumo-edital">
+          <div><h2 className="text-lg font-bold leading-tight">Resumo do edital</h2><p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico).</p></div>
+          <EmBreve icon={FileSearch} titulo="Baixar documento para detalhar" motivo="Ainda não há payload do PNCP desta licitação para montar o resumo." />
+        </div>
+      )}
+    </>
+  );
+
+  // 2) MINHA EMPRESA x EDITAL — comparação Lei 14.133 + veredito calibrado + plano de ação
+  const nodeEmpresaEdital = (
+    <>
+      <Card><CardContent className="p-4">
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-semibold">{company?.razao_social ?? "Sua empresa"} × Edital</p>
+          <Badge variant={statusEmp === "apto" ? "success" : statusEmp === "nao_apto" ? "destructive" : "warning"}>{statusEmpLabel}</Badge>
+          <Badge variant="muted">{pct}% pronto</Badge>
+        </div>
+        <ul className="mt-3 divide-y rounded-md border">
+          {itensStatus.map((it) => { const m = ITEM_STATUS_META[it.st]; return (
+            <li key={it.key} className="flex items-center gap-3 p-2.5"><Badge variant={m.badge}>{m.label}</Badge><span className="flex-1 text-sm">{it.label}</span><span className="text-xs text-muted-foreground">{it.orgao}</span></li>);
+          })}
+        </ul>
+        {faltam.length > 0 && <p className="mt-2 text-sm text-destructive">Faltam {faltam.length} documento(s): {faltam.map((f) => f.label).join(", ")}.</p>}
+      </CardContent></Card>
+
+      <Card><CardContent className="p-4">
+        <div className="flex flex-wrap items-center gap-2"><Gauge className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito calibrado</p>
+          <Badge variant="secondary">probabilidade {prob}</Badge><Badge variant="muted">{pct}% pronto</Badge></div>
+        <p className="mt-2 text-sm font-medium">{recomendacao}</p>
+        <Progress value={pct} className="mt-2" />
+        <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Recomendação calibrada (probabilística) com base na sua prontidão documental — <strong>não é garantia de resultado</strong>. Decisão e responsabilidade são suas.</p>
+      </CardContent></Card>
+      {p?.veredito && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito interpretativo (IA)</p></div>
+        <p className="text-sm font-medium">{p.veredito.recomendacao}</p><p className="text-sm text-muted-foreground">{p.veredito.justificativa}</p></CardContent></Card>}
+
+      <Card><CardContent className="p-4">
+        <p className="mb-2 text-sm font-semibold">Plano de ação</p>
+        {faltam.length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Habilitação típica completa. Acompanhe os prazos do edital.</p> : (
+          <ul className="space-y-2">{faltam.map((f) => (
+            <li key={f.key} className="flex items-center gap-2 rounded-md border p-2.5 text-sm"><span className="size-2 rounded-full bg-destructive" /><span className="flex-1">Providenciar <strong>{f.label}</strong> ({f.orgao})</span><Button asChild size="sm" variant="ghost"><Link href="/empresa">Resolver</Link></Button></li>))}
+          </ul>)}
+      </CardContent></Card>
+    </>
+  );
+
+  // 3) CHECKLIST — o que pode inabilitar ou atrasar (cofre × exigências + específicas do edital)
+  const nodeChecklist = (
+    <div className="space-y-4" data-testid="exigencias-tab">
+      <SecHead icon={Gauge} title="Checklist Inteligente" q="O que pode inabilitar ou atrasar — suas certidões cruzadas com a habilitação exigida." />
+      <div className="flex flex-wrap items-center gap-2" data-testid="exigencias-contagem">
+        <Badge variant="default">✓ {temN} você tem</Badge>
+        <Badge variant="warning">⚠ {venceN} vencendo</Badge>
+        <Badge variant="destructive">✕ {faltaN} falta</Badge>
+        <span className="ml-auto text-xs text-muted-foreground">{pct}% pronto · {atendeExig} de {totalExig} exigências</span>
+      </div>
+      <Card><CardContent className="p-0">
+        <ul className="divide-y">
+          {itensStatus.map((it) => {
+            const venc = docByTipo[it.key]?.vencimento ?? null;
+            const d = diasAte(venc);
+            const tag = it.st === "valida" ? { v: "default" as const, t: "✓ você tem" }
+              : it.st === "a_renovar" ? { v: "warning" as const, t: d != null ? `⚠ vence em ${d}d` : "⚠ vencendo" }
+              : it.st === "vencida" ? { v: "destructive" as const, t: "✕ vencida" }
+              : { v: "destructive" as const, t: "✕ falta" };
+            const acao = it.st === "valida" ? "Ver no cofre" : it.st === "ausente" ? "Anexar" : "Renovar";
+            return (
+              <li key={it.key} className="flex flex-wrap items-center gap-x-3 gap-y-1.5 p-3" data-testid="exigencia-item">
+                <Badge variant={tag.v} data-testid={`tag-${it.st}`}>{tag.t}</Badge>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium">{it.label}</p>
+                  <p className="text-xs text-muted-foreground">Fonte: habilitação típica · Lei 14.133 · emissor: {it.orgao}{venc ? ` · vence ${dtBR(venc)}` : ""}</p>
+                </div>
+                {it.st !== "valida" && sessaoISO && <span className="text-xs text-muted-foreground">resolver até a sessão {dtBR(sessaoISO)}</span>}
+                <Button asChild size="sm" variant={it.st === "valida" ? "ghost" : "outline"}><Link href="/empresa">{acao}</Link></Button>
+              </li>
+            );
+          })}
+        </ul>
+      </CardContent></Card>
+      <Card><CardContent className="p-4">
+        {exigClassificadas.length > 0 ? (
+          <div data-testid="exig-especificas">
+            <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted">{exigClassificadas.length} lidas do edital</Badge></div>
+            <ul className="mt-2 divide-y rounded-md border">
+              {exigClassificadas.map((e, i) => (
+                <li key={i} className="flex flex-wrap items-center gap-x-3 gap-y-1 p-2.5 text-sm" data-testid="exig-item" data-classe={e.classe}>
+                  <Badge variant={e.geravel ? "default" : "outline"} data-testid={`exig-classe-${e.classe}`}>{CLASSE_META[e.classe].label}</Badge>
+                  <span className="min-w-0 flex-1">{e.texto}</span>
+                  {e.geravel
+                    ? <Button asChild size="sm" variant="outline" data-testid="exig-gerar"><Link href="#proposta">{e.acao}</Link></Button>
+                    : e.classe === "certidao"
+                      ? <Button asChild size="sm" variant="ghost"><Link href="/empresa">{e.acao}</Link></Button>
+                      : <span className="text-xs text-muted-foreground">{e.acao}</span>}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-muted-foreground">Lidas do texto do edital (Resumo Profundo) e classificadas: <strong>declaração</strong> a gerar aqui, <strong>certidão</strong> no cofre, <strong>atestado/índice/vistoria</strong> a providenciar. Nada some sem você ver — o que não dá pra classificar fica como “verificar”, não inventamos estado.</p>
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted" data-testid="exig-em-extracao">em extração</Badge></div>
+            <p className="mt-1 text-xs text-muted-foreground">As exigências do <strong>texto do edital</strong> (ex.: <em>atestado ≥ 100.000 m²</em>, índices contábeis, vistoria, amostra) entram ao gerar o <strong>Resumo Profundo</strong>. <strong>Não inventamos exigência que não lemos.</strong></p>
+          </>
+        )}
+      </CardContent></Card>
+      <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Prontidão é <strong>fato</strong> (cofre × habilitação típica da Lei 14.133), <strong>não “chance de ganhar”</strong>. O checklist se ajusta quando as exigências específicas forem extraídas.</p>
+    </div>
+  );
+
+  // 4) CRIADOR DE DOCUMENTOS — gerador de proposta por seção + documentos do processo
+  const nodeCriador = (
+    <>
+      <SecHead icon={FileText} title="Criador de Documentos" q="Monte a proposta seção a seção + matriz de atendimento (item → evidência)." />
+      <section id="proposta" className="scroll-mt-16 space-y-3">
+        <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} objeto={ed?.objeto ?? null} orgao={ed?.orgao?.razao_social ?? null} timbre={{ razao: company?.razao_social ?? null, cnpj: company?.cnpj ?? null, municipio: company?.municipio ?? null, uf: company?.uf ?? null }} kit={kitProposta} />
+      </section>
+
+      <Card><CardContent className="p-4">
+        <div className="mb-3 flex items-center gap-2"><FileText className="size-4 text-primary" /><p className="text-sm font-semibold">Documentos do processo</p></div>
+        {(docs ?? []).length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum documento ainda.</p> : (
+          <ul className="mb-3 divide-y rounded-md border">{(docs ?? []).map((d) => (
+            <li key={d.id} className="flex items-center gap-3 p-3"><FileText className="size-4 text-muted-foreground" /><span className="min-w-0 flex-1 truncate text-sm font-medium">{d.tipo_label}</span><Badge variant="muted">{d.tipo}</Badge>
+              <form action={deleteDocLicitacao}><input type="hidden" name="id" value={d.id} /><input type="hidden" name="licitacao_id" value={lic.id} /><button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button></form>
+            </li>))}
+          </ul>)}
+        <form action={addDocLicitacao} className="flex flex-col gap-2 rounded-md border bg-muted/30 p-3 sm:flex-row"><input type="hidden" name="licitacao_id" value={lic.id} /><Input name="nome" placeholder="Nome do documento (ex.: Edital, TR, ETP)" required className="flex-1" /><Button type="submit"><Plus className="size-4" /> Adicionar</Button></form>
+      </CardContent></Card>
+    </>
+  );
+
+  // 5) PREÇOS E HISTÓRICO — fornecedor atual + motor de preço (faixa/CV/inexequibilidade)
+  const temPrecoHist = intel.contratoAtual.length > 0 || intel.faixa;
+  const nodePrecos = (
+    <>
+      <SecHead n={3} icon={History} title="Preços e Histórico" q="Já rolou esse objeto? Quem fornece hoje? Qual faixa ganha?" />
+      {temPrecoHist ? (
+        <div className="space-y-4" data-testid="sala-inteligencia">
+          <Card><CardContent className="p-4">
+            <div className="mb-2 flex items-center gap-2"><DollarSign className="size-4 text-primary" /><p className="text-sm font-semibold">Quem fornece hoje (contrato vigente)</p></div>
+            {intel.contratoAtual.length === 0 ? (
+              <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contrato vigente desse órgão no seu nicho na base atual (em ingestão).</p>
+            ) : (
+              <ul className="divide-y rounded-md border" data-testid="contrato-atual">
+                {intel.contratoAtual.map((c, i) => (
+                  <li key={i} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
+                    <Badge variant="warning">{c.dias != null ? `vence em ${c.dias}d` : "vigente"}</Badge>
+                    <span className="font-medium">{c.nome ?? "Fornecedor"}</span>
+                    <span className="text-xs text-muted-foreground">{c.objeto?.slice(0, 60)}</span>
+                    <span className="ml-auto font-semibold">{brl(c.valor) ?? "—"}</span>
+                  </li>))}
+              </ul>
+            )}
+            <p className="mt-2 text-xs text-muted-foreground">O contrato atual vencendo é a <strong>janela de entrada</strong>: o órgão tende a relicitar o objeto.</p>
+          </CardContent></Card>
+
+          {intel.faixa && (
+            <Card><CardContent className="p-4">
+              <div className="space-y-2" data-testid="faixa-valor">
+                <div className="flex flex-wrap items-center gap-2">
+                  <DollarSign className="size-4 text-primary" />
+                  <p className="text-sm font-semibold">Motor de preço — quanto cobrar</p>
+                  <Badge variant={intel.faixa.semaforo === "verde" ? "success" : intel.faixa.semaforo === "amarelo" ? "warning" : "destructive"} data-testid="cv-semaforo">CV {(intel.faixa.cv * 100).toFixed(0)}% · {SEMAFORO_LABEL[intel.faixa.semaforo]}</Badge>
+                  <span className="ml-auto text-xs text-muted-foreground">{intel.faixa.n} contratos</span>
+                </div>
+                {intel.faixa.confiavel ? (
+                  <div className="grid grid-cols-3 gap-2 text-center text-sm" data-testid="faixas-preco">
+                    <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Vencedora</p><p className="font-semibold">{brl(intel.faixa.vencedora)}</p></div>
+                    <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Segura</p><p className="font-semibold">{brl(intel.faixa.segura)}</p></div>
+                    <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Agressiva</p><p className="font-semibold">{brl(intel.faixa.agressiva)}</p></div>
+                  </div>
+                ) : (
+                  <p className="rounded border border-warning/40 bg-warning/10 px-2 py-1 text-xs" data-testid="recusa-honesta">⚠️ {intel.faixa.motivoRecusa}</p>
+                )}
+                <p className="text-xs text-muted-foreground">Piso de inexequibilidade (ref.): abaixo de <strong>{brl(intel.faixa.pisoInexequivel)}</strong> há risco de desclassificação (Lei 14.133, art. 59). Faixa observada {brl(intel.faixa.min)}–{brl(intel.faixa.max)} · mediana {brl(intel.faixa.mediana)}.</p>
+              </div>
+              <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Referência de <strong>contratos firmados</strong> (PNCP), <strong>não recomendação de preço — a empresa decide</strong>. Resultado por item/lances (deserta, nº participantes) entra com a coleta de resultados (em ingestão).</p>
+            </CardContent></Card>
+          )}
+        </div>
+      ) : <EmBreve icon={DollarSign} titulo="Preços e histórico (passado e preço)" motivo="Sem contratos do seu nicho nesta UF na base atual. Acende conforme a coleta de contratos avança (em ingestão)." />}
+    </>
+  );
+
+  // 6) ÓRGÃO — ele paga? (orçamento Siconfi + gasto no nicho) + a intenção (PCA/IRP/contrato vencendo)
+  const nodeOrgao = (
+    <>
+      <SecHead n={1} icon={Landmark} title="O órgão — ele paga?" q="Orçamento e execução do ente (Siconfi/Tesouro) + capacidade fiscal." />
+      <Card data-testid="raiox-orgao"><CardContent className="space-y-2 p-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-semibold">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão"}</span>
+          {cidadeUf && <Badge variant="muted">{cidadeUf}</Badge>}
+          {orcamento?.porte && <Badge variant="secondary" data-testid="orgao-porte">porte {orcamento.porte}</Badge>}
+        </div>
+        {orcamento ? (
+          <>
+            <div className="divide-y" data-testid="orgao-orcamento">
+              <KV label="Orçamento previsto (ano)" value={brl(orcamento.receitaPrevista)} />
+              <KV label="Receita realizada (até o período)" value={orcamento.receitaRealizada != null ? `${brl(orcamento.receitaRealizada)}${orcamento.execucaoReceitaPct != null ? ` · ${orcamento.execucaoReceitaPct}% da previsão` : ""}` : "—"} />
+              <KV label="Despesa liquidada (até o período)" value={brl(orcamento.despesaLiquidada)} />
+              <KV label="População" value={orcamento.populacao != null ? new Intl.NumberFormat("pt-BR").format(orcamento.populacao) : "—"} />
+              <KV label="Nota CAPAG (capacidade de pagamento)" value={<Badge variant="muted">em ingestão</Badge>} />
+            </div>
+            <p className="text-xs text-muted-foreground" data-testid="siconfi-fonte">Fonte: {orcamento.fonte} · consultado <span data-testid="siconfi-consultado">{orcamento.consultadoEm.slice(0, 19).replace("T", " ")} UTC</span></p>
+          </>
+        ) : (
+          <div className="divide-y">
+            <KV label="Orçamento / execução (Siconfi)" value={<Badge variant="muted">sem registro no Siconfi</Badge>} />
+            <KV label="Nota CAPAG (Tesouro)" value={<Badge variant="muted">em ingestão</Badge>} />
+          </div>
+        )}
+        {temExtracao && profundo?.secoes.orgao_capag && profundo.secoes.orgao_capag !== NAO_INFO && <p className="text-sm text-muted-foreground">{profundo.secoes.orgao_capag}</p>}
+        <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Orçamento robusto indica <strong>saúde fiscal</strong> — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor. A nota CAPAG (dataset próprio do Tesouro) entra na sequência.</p>
+      </CardContent></Card>
+
+      <Card data-testid="gasto-nicho"><CardContent className="space-y-3 p-4">
+        <p className="flex items-center gap-2 text-sm font-semibold"><DollarSign className="size-4 text-primary" /> Quanto este órgão gasta em {nichoLabel}</p>
+        {gasto.temDado ? (
+          <div data-testid="gasto-real">
+            <p className="text-2xl font-bold leading-none text-primary">{brl(gasto.total)}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{ed?.orgao?.razao_social ?? "Este órgão"} comprou em <strong>{nichoLabel}</strong> nos últimos {gasto.meses} meses · {gasto.n} {gasto.fonte === "contratos" ? "contrato(s)" : "edital(is) homologado(s)"} · ticket médio {brl(gasto.ticketMedio)}</p>
+            <Badge variant="muted" className="mt-1">fonte: {gasto.fonte === "contratos" ? "contratos firmados (PNCP)" : "homologados (PNCP)"}</Badge>
+          </div>
+        ) : (
+          <p className="rounded-md border border-dashed p-3 text-sm text-muted-foreground" data-testid="gasto-sem-registro">Sem registro de compra desse nicho neste órgão (PNCP, últimos 12 meses). <strong>Não inventamos um valor.</strong></p>
+        )}
+        <div className="divide-y border-t pt-1">
+          <KV label="Planejado (PCA do órgão no nicho)" value={pcaN > 0 ? `${brl(pcaTotal)} · ${pcaN} item(ns)` : <Badge variant="muted">não declarado</Badge>} />
+          <KV label="Dotação reservada no edital" value={temExtracao ? "ver Resumo Profundo (texto do edital)" : <Badge variant="muted">não informado no edital</Badge>} />
+          <KV label={despFuncao ? `Função “${despFuncao.funcao}” (aproximação)` : "Função orçamentária"} value={despFuncao ? `${brl(despFuncao.liquidada)} liquidado/ano · exercício ${despFuncao.exercicio}` : <Badge variant="muted">{funcaoNicho ? "sem dado no Siconfi" : "em ingestão"}</Badge>} />
+        </div>
+        <p className="text-xs text-muted-foreground">“Orçamento de {nichoLabel}” <strong>não existe como número público fechado</strong>. Mostramos a melhor proxy real (gasto histórico do órgão), o planejado (PCA) e a função orçamentária — esta <strong>engloba muito além do nicho</strong> (aproximação).</p>
+      </CardContent></Card>
+
+      <SecHead n={2} icon={CalendarClock} title="A intenção — vai nascer?" q="PCA, IRP e contrato vigente vencendo — a janela de entrada. Probabilidade, não promessa." />
+      <Card data-testid="raiox-intencao"><CardContent className="space-y-2 p-4">
+        {intel.contratoAtual.length > 0 ? (
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            <Badge variant="warning">{intel.contratoAtual[0].dias != null ? `contrato vence em ${intel.contratoAtual[0].dias}d` : "contrato vigente"}</Badge>
+            <span>O órgão tem contrato no seu nicho — <strong>janela de relicitação</strong> quando vencer.</span>
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground">Sem contrato vigente do órgão no seu nicho na base atual.</p>
+        )}
+        <div className="divide-y">
+          <KV label="Plano de Contratações Anual (PCA)" value={<Badge variant="muted">em ingestão</Badge>} />
+          <KV label="IRP — Intenção de Registro de Preços" value={<Badge variant="muted">roadmap · fonte não pública</Badge>} />
+        </div>
+        <p className="text-xs text-muted-foreground">O <strong>PCA</strong> (plano de contratações) acende com a coleta do plano. O <strong>IRP</strong> é o sinal pré-edital mais forte, mas <strong>não há API pública de consulta</strong> (vive no sistema transacional do Compras.gov) — roadmap, não inventamos.</p>
+      </CardContent></Card>
+    </>
+  );
+
+  // 7) CONCORRENTES — quem costuma aparecer no seu nicho nesta UF
+  const nodeConcorrentes = (
+    <>
+      <SecHead icon={Building2} title="Concorrentes" q="Quem mais costuma fornecer esse objeto na sua UF." />
+      <Card><CardContent className="p-4">
+        <div className="mb-2 flex items-center gap-2"><Building2 className="size-4 text-primary" /><p className="text-sm font-semibold">Seus concorrentes no nicho ({ed?.uf_sigla ?? "UF"})</p></div>
+        {intel.concorrentes.length === 0 ? (
+          <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contratos do nicho nesta UF na base atual (em ingestão).</p>
+        ) : (
+          <ul className="divide-y rounded-md border" data-testid="concorrentes">
+            {intel.concorrentes.map((c) => (
+              <li key={c.ni} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
+                <span className="font-medium">{c.nome ?? c.ni}</span>
+                <Badge variant="secondary">{c.n} contrato{c.n > 1 ? "s" : ""}</Badge>
+                <span className="ml-auto text-xs text-muted-foreground">total {brl(c.valorTotal)}</span>
+              </li>))}
+          </ul>
+        )}
+        <p className="mt-2 text-xs text-muted-foreground">Concorrência observada em <strong>contratos firmados</strong> (PNCP) no seu nicho/UF. Resultado por sessão (nº participantes, lances) entra com a coleta de resultados (em ingestão).</p>
+      </CardContent></Card>
+    </>
+  );
+
+  // 8) CONSULTOR IA — determinístico, citando a Lei 14.133 + riscos
+  const nodeConsultor = (
+    <>
+      <div className="space-y-3" data-testid="consultor">
+        <SecHead icon={MessagesSquare} title="Consultor IA" q="Habilitação & participação — respostas determinísticas citando a Lei 14.133." />
+        <Card><CardContent className="p-4">
+          <div className="flex items-center gap-2"><MessagesSquare className="size-4 text-primary" /><p className="text-sm font-semibold">Consultor — habilitação & participação</p></div>
+          <p className="mt-1 text-xs text-muted-foreground">Respostas <strong>determinísticas</strong> com base na sua ficha × habilitação típica, <strong>citando a Lei 14.133</strong>.</p>
+        </CardContent></Card>
+        {respostasConsultor.map((r, i) => (
+          <Card key={i} data-testid="consultor-qa"><CardContent className="p-4">
+            <p className="text-sm font-semibold">{r.pergunta}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{r.resposta}</p>
+            <div className="mt-2 flex items-center gap-2">
+              <Badge variant={r.tom === "ok" ? "success" : r.tom === "alerta" ? "destructive" : "muted"}>{r.tom === "ok" ? "ok" : r.tom === "alerta" ? "atenção" : "info"}</Badge>
+              <span className="text-xs text-muted-foreground" data-testid="consultor-fonte">Fonte: {r.fonte}</span>
+            </div>
+          </CardContent></Card>
+        ))}
+        <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Orientação informativa baseada na habilitação típica — <strong>não é parecer jurídico</strong>. Peça processual (impugnação/recurso) fica <strong>travada</strong> (exige validação jurídica).</p>
+      </div>
+
+      {(p?.riscos?.length ?? 0) > 0 ? <Card><CardContent className="space-y-2 p-4"><p className="text-sm font-semibold">Riscos & pegadinhas (IA)</p>{p!.riscos!.map((r, i) => (<div key={i} className="flex items-start gap-2 text-sm"><Badge variant={r.nivel === "vermelho" ? "destructive" : "warning"}>{r.nivel}</Badge><span>{r.texto}</span></div>))}</CardContent></Card>
+        : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo="A análise de riscos do texto do edital entra via Analisar com IA / Resumo Profundo." />}
+    </>
+  );
+
+  const tabs: SpaceTab[] = [
+    { key: "resumo", label: "Resumo Executivo", node: nodeResumo },
+    { key: "empresa-edital", label: "Minha Empresa x Edital", node: nodeEmpresaEdital },
+    { key: "checklist", label: "Checklist", node: nodeChecklist },
+    { key: "criador", label: "Criador de Documentos", node: nodeCriador },
+    { key: "precos", label: "Preços e Histórico", node: nodePrecos },
+    { key: "orgao", label: "Órgão", verde: true, node: nodeOrgao },
+    { key: "concorrentes", label: "Concorrentes", node: nodeConcorrentes },
+    { key: "consultor", label: "Consultor IA", node: nodeConsultor },
   ];
 
   return (
@@ -287,422 +722,8 @@ export default async function LicitacaoPage({ params }: { params: Promise<{ id: 
         </div>
       </div>
 
-      {/* ===== RAIO-X: um relatório rolável (vale a pena? eu ganho? o órgão paga?) ===== */}
-      {/* Barra de abas v2 (scroll-spy) — destaca a seção visível, NÃO esconde conteúdo. */}
-      <RaioxNav nav={NAV} />
-
-      <div className="space-y-8" data-testid="raiox-relatorio">
-        {/* ===== RESUMO PROFUNDO (topo) ===== */}
-        <section id="resumo-profundo" className="scroll-mt-16 space-y-4" data-testid="profundo-tab">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h2 className="text-xl font-bold leading-tight">Resumo Profundo do edital</h2>
-              <p className="text-sm text-muted-foreground">As 18 seções extraídas do PDF real do edital. Cada campo é o que está no texto — ou “{NAO_INFO}”. Não inventamos.</p>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">{brl(ed?.valor_estimado ?? null) ?? "—"}</span>
-              {ed?.modalidade_nome && <Badge variant="outline">{ed.modalidade_nome}{ed?.situacao_nome ? ` · ${ed.situacao_nome}` : ""}</Badge>}
-              {sessaoISO && <span>sessão {dtBR(sessaoISO)}</span>}
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            {hasAI ? (
-              <form action={gerarResumoProfundo}><input type="hidden" name="licitacao_id" value={lic.id} />
-                <Button type="submit" size="sm" data-testid="gerar-profundo"><Sparkles className="size-4" /> {temExtracao ? "Regerar resumo profundo" : "Gerar resumo profundo (PNCP)"}</Button>
-              </form>
-            ) : (
-              <Badge variant="muted" data-testid="profundo-ia-off">IA temporariamente indisponível — mostrando o determinístico</Badge>
-            )}
-            {profundo && <Badge variant="muted" data-testid="profundo-fonte">{profundo.fonte === "ia" ? `extraído por IA (${profundo.modelo})` : profundo.fonte === "cache" ? "reaproveitado do cache (sem novo custo)" : "documento ainda não extraído"}</Badge>}
-            <Badge variant="muted">Exportar (.docx / e-mail / imprimir) — em breve</Badge>
-          </div>
-
-          {!temExtracao ? (
-            <div className="space-y-4" data-testid="profundo-indisponivel">
-              <div className="rounded-lg border border-warning/30 bg-warning/10 p-4">
-                <p className="flex items-center gap-2 text-sm font-semibold"><FileText className="size-4" /> Documento do edital ainda não extraído</p>
-                <p className="mt-1 text-sm text-muted-foreground">{profundo?.aviso ?? (hasAI ? "Clique em “Gerar resumo profundo (PNCP)” para tentar o documento no PNCP. Se o edital estiver só no portal de origem, baixe lá e envie o PDF." : "A IA está temporariamente indisponível. O resumo determinístico do PNCP segue abaixo.")}</p>
-              </div>
-              {hasAI && (
-                <Card><CardContent className="space-y-3 p-4">
-                  <p className="text-sm font-semibold">Como obter o documento</p>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {portalUrl && (
-                      <Button asChild size="sm" data-testid="baixar-portal-origem">
-                        <a href={portalUrl} target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> Baixar no portal de origem{portalLabel ? ` (${portalLabel})` : ""}</a>
-                      </Button>
-                    )}
-                    <span className="text-xs text-muted-foreground">o edital costuma ficar no portal de origem (BLL/Compras) — baixe e envie aqui</span>
-                  </div>
-                  <form action={gerarResumoProfundoUpload} className="flex flex-wrap items-center gap-2 rounded-md border bg-muted/30 p-3" data-testid="form-upload-edital">
-                    <input type="hidden" name="licitacao_id" value={lic.id} />
-                    <input type="file" name="pdf" accept="application/pdf,.pdf" required data-testid="input-pdf"
-                      className="text-sm file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-foreground" />
-                    <Button type="submit" size="sm" variant="outline" data-testid="enviar-pdf"><FileDown className="size-4" /> Extrair do PDF enviado</Button>
-                  </form>
-                  <p className="text-xs text-muted-foreground">A captura automática do portal de origem (BLL/Compras) é roadmap — cada portal é uma integração própria. Por ora, o upload manual já desbloqueia a extração completa.</p>
-                </CardContent></Card>
-              )}
-              {resumo && (
-                <CardKV icon={FileSearch} titulo="Resumo determinístico (PNCP)">
-                  <KV label="Objeto" value={resumo.identificacao.objeto} />
-                  <KV label="Órgão" value={resumo.orgao.razao_social} />
-                  <KV label="Modalidade" value={resumo.modalidade.modalidade} />
-                  <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
-                  <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
-                  <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
-                  <KV label="Amparo legal" value={resumo.amparo_legal.nome} />
-                </CardKV>
-              )}
-              <p className="text-xs text-muted-foreground">As 18 seções (habilitação, atestado, prazos, penalidades, análise crítica…) aparecem aqui após a extração real do PDF.</p>
-            </div>
-          ) : (
-            <div className="space-y-4" data-testid="profundo-conteudo">
-              {profundo.aviso && <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">{profundo.aviso}</p>}
-              <div className="space-y-2">
-                {SECOES.map((sec) => {
-                  const val = profundo.secoes[sec.key] || NAO_INFO;
-                  const vazio = val === NAO_INFO;
-                  const borda = sec.tom === "vermelho" ? "border-destructive/40" : sec.tom === "ambar" ? "border-warning/40" : "";
-                  return (
-                    <details key={sec.key} className={`rounded-lg border ${borda} bg-card`} data-testid="profundo-secao">
-                      <summary className="flex cursor-pointer items-center gap-2 px-4 py-2.5 text-sm font-medium">
-                        {sec.tom === "vermelho" && <span className="text-destructive">●</span>}
-                        {sec.tom === "ambar" && <span className="text-warning">●</span>}
-                        <span className="flex-1">{sec.titulo}</span>
-                        {vazio && <Badge variant="muted">{NAO_INFO}</Badge>}
-                      </summary>
-                      <div className={`border-t px-4 py-3 text-sm ${sec.tom === "vermelho" ? "bg-destructive/5" : sec.tom === "ambar" ? "bg-warning/5" : ""}`}>
-                        <p className="whitespace-pre-line text-muted-foreground">{val}</p>
-                        {sec.key === "analise_critica" && <p className="mt-2 text-xs text-muted-foreground">⚠️ É uma <strong>análise</strong> (apoio à decisão), <strong>não um parecer jurídico</strong>.</p>}
-                        {sec.key === "atestado" && profundo.exigencias_especificas.length > 0 && (
-                          <ul className="mt-2 list-disc space-y-0.5 pl-5">{profundo.exigencias_especificas.map((e, i) => <li key={i}>{e}</li>)}</ul>
-                        )}
-                      </div>
-                    </details>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* ===== RESUMO determinístico do edital ===== */}
-        <section id="resumo" className="scroll-mt-16 space-y-4">
-          {resumo ? (
-            <div className="space-y-4" data-testid="resumo-edital">
-              <div>
-                <h2 className="text-lg font-bold leading-tight">Resumo do edital</h2>
-                <p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico). O interpretativo com IA é opcional.</p>
-              </div>
-              <div className="grid gap-4 lg:grid-cols-2">
-                <CardKV icon={FileSearch} titulo="Identificação da licitação">
-                  <KV label="Objeto" value={resumo.identificacao.objeto} />
-                  <KV label="Número da licitação" value={resumo.identificacao.numero_compra ?? resumo.identificacao.numero_controle} />
-                  <KV label="Modalidade" value={resumo.modalidade.modalidade ? `${resumo.modalidade.modalidade}${resumo.situacao ? ` — ${resumo.situacao}` : ""}` : null} />
-                  <KV label="UASG / unidade" value={resumo.identificacao.uasg ? `${resumo.identificacao.uasg}${resumo.identificacao.unidade ? ` — ${resumo.identificacao.unidade}` : ""}` : resumo.identificacao.unidade} />
-                  <KV label="Portal de realização" value={portalLabel ?? resumo.identificacao.portal} />
-                  <KV label="Modo de disputa" value={resumo.modalidade.modo_disputa} />
-                  <KV label="Registro de preços (SRP)" value={resumo.modalidade.srp == null ? "—" : resumo.modalidade.srp ? "Sim" : "Não"} />
-                  <KV label="Valor estimado" value={brl(resumo.valores.estimado)} />
-                </CardKV>
-                <CardKV icon={Clock} titulo="Sessão pública">
-                  <KV label="Data da sessão" value={dtBR(resumo.datas.abertura)} />
-                  <KV label="Encerramento de propostas" value={dtBR(resumo.datas.encerramento)} />
-                  <KV label="Publicação no PNCP" value={dtBR(resumo.datas.publicacao)} />
-                  <KV label="Órgão" value={resumo.orgao.razao_social} />
-                  <KV label="Município/UF" value={resumo.orgao.municipio ? `${resumo.orgao.municipio}/${resumo.orgao.uf}` : null} />
-                  <KV label="Esclarecimentos / impugnação / cota ME-EPP" value={<Badge variant="muted">no texto do edital</Badge>} />
-                </CardKV>
-              </div>
-              {p?.resumo && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Resumo interpretativo (IA)</p></div><p className="whitespace-pre-line text-sm text-muted-foreground">{p.resumo}</p></CardContent></Card>}
-            </div>
-          ) : (
-            <div className="space-y-4" data-testid="resumo-edital">
-              <div><h2 className="text-lg font-bold leading-tight">Resumo do edital</h2><p className="text-sm text-muted-foreground">Montado direto do PNCP (determinístico).</p></div>
-              <EmBreve icon={FileSearch} titulo="Baixar documento para detalhar" motivo="Ainda não há payload do PNCP desta licitação para montar o resumo." />
-            </div>
-          )}
-        </section>
-
-        {/* ===== §1 O ÓRGÃO — ele paga? (CAPAG + orçamento) ===== */}
-        <section id="orgao" className="scroll-mt-16 space-y-3">
-          <SecHead n={1} icon={Landmark} title="O órgão — ele paga?" q="Orçamento e execução do ente (Siconfi/Tesouro) + capacidade fiscal." />
-          <Card data-testid="raiox-orgao"><CardContent className="space-y-2 p-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm font-semibold">{ed?.orgao?.razao_social ?? resumo?.orgao.razao_social ?? "Órgão"}</span>
-              {cidadeUf && <Badge variant="muted">{cidadeUf}</Badge>}
-              {orcamento?.porte && <Badge variant="secondary" data-testid="orgao-porte">porte {orcamento.porte}</Badge>}
-            </div>
-            {orcamento ? (
-              <>
-                <div className="divide-y" data-testid="orgao-orcamento">
-                  <KV label="Orçamento previsto (ano)" value={brl(orcamento.receitaPrevista)} />
-                  <KV label="Receita realizada (até o período)" value={orcamento.receitaRealizada != null ? `${brl(orcamento.receitaRealizada)}${orcamento.execucaoReceitaPct != null ? ` · ${orcamento.execucaoReceitaPct}% da previsão` : ""}` : "—"} />
-                  <KV label="Despesa liquidada (até o período)" value={brl(orcamento.despesaLiquidada)} />
-                  <KV label="População" value={orcamento.populacao != null ? new Intl.NumberFormat("pt-BR").format(orcamento.populacao) : "—"} />
-                  <KV label="Nota CAPAG (capacidade de pagamento)" value={<Badge variant="muted">em ingestão</Badge>} />
-                </div>
-                <p className="text-xs text-muted-foreground" data-testid="siconfi-fonte">Fonte: {orcamento.fonte} · consultado <span data-testid="siconfi-consultado">{orcamento.consultadoEm.slice(0, 19).replace("T", " ")} UTC</span></p>
-              </>
-            ) : (
-              <div className="divide-y">
-                <KV label="Orçamento / execução (Siconfi)" value={<Badge variant="muted">sem registro no Siconfi</Badge>} />
-                <KV label="Nota CAPAG (Tesouro)" value={<Badge variant="muted">em ingestão</Badge>} />
-              </div>
-            )}
-            {temExtracao && profundo?.secoes.orgao_capag && profundo.secoes.orgao_capag !== NAO_INFO && <p className="text-sm text-muted-foreground">{profundo.secoes.orgao_capag}</p>}
-            <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Orçamento robusto indica <strong>saúde fiscal</strong> — <strong>não é garantia de pontualidade</strong> de pagamento ao fornecedor. A nota CAPAG (dataset próprio do Tesouro) entra na sequência.</p>
-          </CardContent></Card>
-
-          {/* Quanto este órgão gasta NO SEU NICHO — 3 fontes (real → planejado → aproximação) */}
-          <Card data-testid="gasto-nicho"><CardContent className="space-y-3 p-4">
-            <p className="flex items-center gap-2 text-sm font-semibold"><DollarSign className="size-4 text-primary" /> Quanto este órgão gasta em {nichoLabel}</p>
-            {/* #1 GOLD — gasto histórico real (PNCP) */}
-            {gasto.temDado ? (
-              <div data-testid="gasto-real">
-                <p className="text-2xl font-bold leading-none text-primary">{brl(gasto.total)}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{ed?.orgao?.razao_social ?? "Este órgão"} comprou em <strong>{nichoLabel}</strong> nos últimos {gasto.meses} meses · {gasto.n} {gasto.fonte === "contratos" ? "contrato(s)" : "edital(is) homologado(s)"} · ticket médio {brl(gasto.ticketMedio)}</p>
-                <Badge variant="muted" className="mt-1">fonte: {gasto.fonte === "contratos" ? "contratos firmados (PNCP)" : "homologados (PNCP)"}</Badge>
-              </div>
-            ) : (
-              <p className="rounded-md border border-dashed p-3 text-sm text-muted-foreground" data-testid="gasto-sem-registro">Sem registro de compra desse nicho neste órgão (PNCP, últimos 12 meses). <strong>Não inventamos um valor.</strong></p>
-            )}
-            <div className="divide-y border-t pt-1">
-              <KV label="Planejado (PCA do órgão no nicho)" value={pcaN > 0 ? `${brl(pcaTotal)} · ${pcaN} item(ns)` : <Badge variant="muted">não declarado</Badge>} />
-              <KV label="Dotação reservada no edital" value={temExtracao ? "ver Resumo Profundo (texto do edital)" : <Badge variant="muted">não informado no edital</Badge>} />
-              <KV label={despFuncao ? `Função “${despFuncao.funcao}” (aproximação)` : "Função orçamentária"} value={despFuncao ? `${brl(despFuncao.liquidada)} liquidado/ano · exercício ${despFuncao.exercicio}` : <Badge variant="muted">{funcaoNicho ? "sem dado no Siconfi" : "em ingestão"}</Badge>} />
-            </div>
-            <p className="text-xs text-muted-foreground">“Orçamento de {nichoLabel}” <strong>não existe como número público fechado</strong>. Mostramos a melhor proxy real (gasto histórico do órgão), o planejado (PCA) e a função orçamentária — esta <strong>engloba muito além do nicho</strong> (aproximação).</p>
-          </CardContent></Card>
-        </section>
-
-        {/* ===== §2 A INTENÇÃO — vai nascer (de novo)? (PCA + IRP + contrato vencendo) ===== */}
-        <section id="intencao" className="scroll-mt-16 space-y-3">
-          <SecHead n={2} icon={CalendarClock} title="A intenção — vai nascer?" q="PCA, IRP e contrato vigente vencendo — a janela de entrada. Probabilidade, não promessa." />
-          <Card data-testid="raiox-intencao"><CardContent className="space-y-2 p-4">
-            {intel.contratoAtual.length > 0 ? (
-              <div className="flex flex-wrap items-center gap-2 text-sm">
-                <Badge variant="warning">{intel.contratoAtual[0].dias != null ? `contrato vence em ${intel.contratoAtual[0].dias}d` : "contrato vigente"}</Badge>
-                <span>O órgão tem contrato no seu nicho — <strong>janela de relicitação</strong> quando vencer.</span>
-              </div>
-            ) : (
-              <p className="text-sm text-muted-foreground">Sem contrato vigente do órgão no seu nicho na base atual.</p>
-            )}
-            <div className="divide-y">
-              <KV label="Plano de Contratações Anual (PCA)" value={<Badge variant="muted">em ingestão</Badge>} />
-              <KV label="IRP — Intenção de Registro de Preços" value={<Badge variant="muted">roadmap · fonte não pública</Badge>} />
-            </div>
-            <p className="text-xs text-muted-foreground">O <strong>PCA</strong> (plano de contratações) acende com a coleta do plano. O <strong>IRP</strong> é o sinal pré-edital mais forte, mas <strong>não há API pública de consulta</strong> (vive no sistema transacional do Compras.gov) — roadmap, não inventamos.</p>
-          </CardContent></Card>
-        </section>
-
-        {/* ===== §3–5 MERCADO — o passado, a concorrência e o preço ===== */}
-        <section id="mercado" className="scroll-mt-16 space-y-3">
-          <SecHead n={3} icon={History} title="O mercado — passado, concorrência e preço" q="Já rolou esse objeto? Quem costuma aparecer? Qual faixa ganha?" />
-          {(intel.contratoAtual.length > 0 || intel.concorrentes.length > 0 || intel.faixa) ? (
-            <div className="space-y-4" data-testid="sala-inteligencia">
-              <Card><CardContent className="p-4">
-                <div className="mb-2 flex items-center gap-2"><DollarSign className="size-4 text-primary" /><p className="text-sm font-semibold">Quem fornece hoje (contrato vigente)</p></div>
-                {intel.contratoAtual.length === 0 ? (
-                  <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contrato vigente desse órgão no seu nicho na base atual (em ingestão).</p>
-                ) : (
-                  <ul className="divide-y rounded-md border" data-testid="contrato-atual">
-                    {intel.contratoAtual.map((c, i) => (
-                      <li key={i} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
-                        <Badge variant="warning">{c.dias != null ? `vence em ${c.dias}d` : "vigente"}</Badge>
-                        <span className="font-medium">{c.nome ?? "Fornecedor"}</span>
-                        <span className="text-xs text-muted-foreground">{c.objeto?.slice(0, 60)}</span>
-                        <span className="ml-auto font-semibold">{brl(c.valor) ?? "—"}</span>
-                      </li>))}
-                  </ul>
-                )}
-                <p className="mt-2 text-xs text-muted-foreground">O contrato atual vencendo é a <strong>janela de entrada</strong>: o órgão tende a relicitar o objeto.</p>
-              </CardContent></Card>
-
-              <Card><CardContent className="p-4">
-                <div className="mb-2 flex items-center gap-2"><Building2 className="size-4 text-primary" /><p className="text-sm font-semibold">Seus concorrentes no nicho ({ed?.uf_sigla ?? "UF"})</p></div>
-                {intel.concorrentes.length === 0 ? (
-                  <p className="rounded-md border border-dashed p-3 text-center text-xs text-muted-foreground">Sem contratos do nicho nesta UF na base atual.</p>
-                ) : (
-                  <ul className="divide-y rounded-md border" data-testid="concorrentes">
-                    {intel.concorrentes.map((c) => (
-                      <li key={c.ni} className="flex flex-wrap items-center gap-2 p-2.5 text-sm">
-                        <span className="font-medium">{c.nome ?? c.ni}</span>
-                        <Badge variant="secondary">{c.n} contrato{c.n > 1 ? "s" : ""}</Badge>
-                        <span className="ml-auto text-xs text-muted-foreground">total {brl(c.valorTotal)}</span>
-                      </li>))}
-                  </ul>
-                )}
-                {intel.faixa && (
-                  <div className="mt-3 space-y-2 rounded-md border bg-muted/30 p-3" data-testid="faixa-valor">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <DollarSign className="size-4 text-primary" />
-                      <p className="text-sm font-semibold">Motor de preço — quanto cobrar</p>
-                      <Badge variant={intel.faixa.semaforo === "verde" ? "success" : intel.faixa.semaforo === "amarelo" ? "warning" : "destructive"} data-testid="cv-semaforo">CV {(intel.faixa.cv * 100).toFixed(0)}% · {SEMAFORO_LABEL[intel.faixa.semaforo]}</Badge>
-                      <span className="ml-auto text-xs text-muted-foreground">{intel.faixa.n} contratos</span>
-                    </div>
-                    {intel.faixa.confiavel ? (
-                      <div className="grid grid-cols-3 gap-2 text-center text-sm" data-testid="faixas-preco">
-                        <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Vencedora</p><p className="font-semibold">{brl(intel.faixa.vencedora)}</p></div>
-                        <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Segura</p><p className="font-semibold">{brl(intel.faixa.segura)}</p></div>
-                        <div className="rounded-md border bg-card p-2"><p className="text-xs uppercase text-muted-foreground">Agressiva</p><p className="font-semibold">{brl(intel.faixa.agressiva)}</p></div>
-                      </div>
-                    ) : (
-                      <p className="rounded border border-warning/40 bg-warning/10 px-2 py-1 text-xs" data-testid="recusa-honesta">⚠️ {intel.faixa.motivoRecusa}</p>
-                    )}
-                    <p className="text-xs text-muted-foreground">Piso de inexequibilidade (ref.): abaixo de <strong>{brl(intel.faixa.pisoInexequivel)}</strong> há risco de desclassificação (Lei 14.133, art. 59). Faixa observada {brl(intel.faixa.min)}–{brl(intel.faixa.max)} · mediana {brl(intel.faixa.mediana)}.</p>
-                  </div>
-                )}
-                <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Referência de <strong>contratos firmados</strong> (PNCP), <strong>não recomendação de preço — a empresa decide</strong>. Resultado por item/lances (deserta, nº participantes) entra com a coleta de resultados (em ingestão).</p>
-              </CardContent></Card>
-            </div>
-          ) : <EmBreve icon={DollarSign} titulo="Mercado (passado, concorrência, preço)" motivo="Sem contratos do seu nicho nesta UF na base atual. Acende conforme a coleta de contratos avança (em ingestão)." />}
-        </section>
-
-        {/* ===== §6 VOCÊ — prontidão (cofre × exigências) ===== */}
-        <section id="voce" className="scroll-mt-16 space-y-3">
-          <SecHead n={6} icon={Gauge} title="Você — está habilitado?" q="Suas certidões e documentos cruzados com a habilitação exigida (Checklist Vivo)." />
-          <div className="space-y-4" data-testid="exigencias-tab">
-            <div className="flex flex-wrap items-center gap-2" data-testid="exigencias-contagem">
-              <Badge variant="default">✓ {temN} você tem</Badge>
-              <Badge variant="warning">⚠ {venceN} vencendo</Badge>
-              <Badge variant="destructive">✕ {faltaN} falta</Badge>
-              <span className="ml-auto text-xs text-muted-foreground">{pct}% pronto · {atendeExig} de {totalExig} exigências</span>
-            </div>
-            <Card><CardContent className="p-0">
-              <ul className="divide-y">
-                {itensStatus.map((it) => {
-                  const venc = docByTipo[it.key]?.vencimento ?? null;
-                  const d = diasAte(venc);
-                  const tag = it.st === "valida" ? { v: "default" as const, t: "✓ você tem" }
-                    : it.st === "a_renovar" ? { v: "warning" as const, t: d != null ? `⚠ vence em ${d}d` : "⚠ vencendo" }
-                    : it.st === "vencida" ? { v: "destructive" as const, t: "✕ vencida" }
-                    : { v: "destructive" as const, t: "✕ falta" };
-                  const acao = it.st === "valida" ? "Ver no cofre" : it.st === "ausente" ? "Anexar" : "Renovar";
-                  return (
-                    <li key={it.key} className="flex flex-wrap items-center gap-x-3 gap-y-1.5 p-3" data-testid="exigencia-item">
-                      <Badge variant={tag.v} data-testid={`tag-${it.st}`}>{tag.t}</Badge>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium">{it.label}</p>
-                        <p className="text-xs text-muted-foreground">Fonte: habilitação típica · Lei 14.133 · emissor: {it.orgao}{venc ? ` · vence ${dtBR(venc)}` : ""}</p>
-                      </div>
-                      {it.st !== "valida" && sessaoISO && <span className="text-xs text-muted-foreground">resolver até a sessão {dtBR(sessaoISO)}</span>}
-                      <Button asChild size="sm" variant={it.st === "valida" ? "ghost" : "outline"}><Link href="/empresa">{acao}</Link></Button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </CardContent></Card>
-            <Card><CardContent className="p-4">
-              {exigClassificadas.length > 0 ? (
-                <div data-testid="exig-especificas">
-                  <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted">{exigClassificadas.length} lidas do edital</Badge></div>
-                  <ul className="mt-2 divide-y rounded-md border">
-                    {exigClassificadas.map((e, i) => (
-                      <li key={i} className="flex flex-wrap items-center gap-x-3 gap-y-1 p-2.5 text-sm" data-testid="exig-item" data-classe={e.classe}>
-                        <Badge variant={e.geravel ? "default" : "outline"} data-testid={`exig-classe-${e.classe}`}>{CLASSE_META[e.classe].label}</Badge>
-                        <span className="min-w-0 flex-1">{e.texto}</span>
-                        {e.geravel
-                          ? <Button asChild size="sm" variant="outline" data-testid="exig-gerar"><Link href="#proposta">{e.acao}</Link></Button>
-                          : e.classe === "certidao"
-                            ? <Button asChild size="sm" variant="ghost"><Link href="/empresa">{e.acao}</Link></Button>
-                            : <span className="text-xs text-muted-foreground">{e.acao}</span>}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-2 text-xs text-muted-foreground">Lidas do texto do edital (Resumo Profundo) e classificadas: <strong>declaração</strong> a gerar aqui, <strong>certidão</strong> no cofre, <strong>atestado/índice/vistoria</strong> a providenciar. Nada some sem você ver — o que não dá pra classificar fica como “verificar”, não inventamos estado.</p>
-                </div>
-              ) : (
-                <>
-                  <div className="flex flex-wrap items-center gap-2"><FileSearch className="size-4 text-primary" /><p className="text-sm font-semibold">Exigências específicas deste edital</p><Badge variant="muted" data-testid="exig-em-extracao">em extração</Badge></div>
-                  <p className="mt-1 text-xs text-muted-foreground">As exigências do <strong>texto do edital</strong> (ex.: <em>atestado ≥ 100.000 m²</em>, índices contábeis, vistoria, amostra) entram ao gerar o <strong>Resumo Profundo</strong>. <strong>Não inventamos exigência que não lemos.</strong></p>
-                </>
-              )}
-            </CardContent></Card>
-            {/* Empresa × Edital — checklist completo Lei 14.133 */}
-            <Card><CardContent className="p-4">
-              <div className="flex items-center gap-2">
-                <p className="text-sm font-semibold">{company?.razao_social ?? "Sua empresa"} × Edital</p>
-                <Badge variant={statusEmp === "apto" ? "success" : statusEmp === "nao_apto" ? "destructive" : "warning"}>{statusEmpLabel}</Badge>
-                <Badge variant="muted">{pct}% pronto</Badge>
-              </div>
-              <ul className="mt-3 divide-y rounded-md border">
-                {itensStatus.map((it) => { const m = ITEM_STATUS_META[it.st]; return (
-                  <li key={it.key} className="flex items-center gap-3 p-2.5"><Badge variant={m.badge}>{m.label}</Badge><span className="flex-1 text-sm">{it.label}</span><span className="text-xs text-muted-foreground">{it.orgao}</span></li>);
-                })}
-              </ul>
-              {faltam.length > 0 && <p className="mt-2 text-sm text-destructive">Faltam {faltam.length} documento(s): {faltam.map((f) => f.label).join(", ")}.</p>}
-            </CardContent></Card>
-            <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Prontidão é <strong>fato</strong> (cofre × habilitação típica da Lei 14.133), <strong>não “chance de ganhar”</strong>. O checklist se ajusta quando as exigências específicas forem extraídas.</p>
-          </div>
-        </section>
-
-        {/* ===== §7 VEREDITO — vale entrar? ===== */}
-        <section id="veredito" className="scroll-mt-16 space-y-3">
-          <SecHead n={7} icon={Scale} title="Veredito — vale entrar?" q="Recomendação calibrada pela sua prontidão. Estimativa, não promessa." />
-          <Card><CardContent className="p-4">
-            <div className="flex flex-wrap items-center gap-2"><Gauge className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito calibrado</p>
-              <Badge variant="secondary">probabilidade {prob}</Badge><Badge variant="muted">{pct}% pronto</Badge></div>
-            <p className="mt-2 text-sm font-medium">{recomendacao}</p>
-            <Progress value={pct} className="mt-2" />
-            <p className="mt-2 rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">⚠️ Recomendação calibrada (probabilística) com base na sua prontidão documental — <strong>não é garantia de resultado</strong>. Decisão e responsabilidade são suas.</p>
-          </CardContent></Card>
-          {p?.veredito && <Card><CardContent className="p-4"><div className="mb-1 flex items-center gap-2"><Sparkles className="size-4 text-primary" /><p className="text-sm font-semibold">Veredito interpretativo (IA)</p></div>
-            <p className="text-sm font-medium">{p.veredito.recomendacao}</p><p className="text-sm text-muted-foreground">{p.veredito.justificativa}</p></CardContent></Card>}
-        </section>
-
-        {/* ===== PREPARAR PROPOSTA ===== */}
-        <section id="proposta" className="scroll-mt-16 space-y-3">
-          <SecHead icon={FileText} title="Preparar proposta" q="Monte a proposta seção a seção + matriz de atendimento (item → evidência)." />
-          <PropostaGerador secoes={secoesProposta} declaracoes={DECLARACOES_TIPICAS} matriz={matrizProposta} proponente={company?.razao_social ?? "Proponente"} objeto={ed?.objeto ?? null} orgao={ed?.orgao?.razao_social ?? null} timbre={{ razao: company?.razao_social ?? null, cnpj: company?.cnpj ?? null, municipio: company?.municipio ?? null, uf: company?.uf ?? null }} kit={kitProposta} />
-        </section>
-
-        {/* ===== APOIO — plano, documentos, consultor, riscos ===== */}
-        <section id="apoio" className="scroll-mt-16 space-y-4">
-          <SecHead icon={MessagesSquare} title="Apoio à execução" q="Plano de ação, documentos do processo, consultor (Lei 14.133) e riscos." />
-
-          <Card><CardContent className="p-4">
-            <p className="mb-2 text-sm font-semibold">Plano de ação</p>
-            {faltam.length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Habilitação típica completa. Acompanhe os prazos do edital.</p> : (
-              <ul className="space-y-2">{faltam.map((f) => (
-                <li key={f.key} className="flex items-center gap-2 rounded-md border p-2.5 text-sm"><span className="size-2 rounded-full bg-destructive" /><span className="flex-1">Providenciar <strong>{f.label}</strong> ({f.orgao})</span><Button asChild size="sm" variant="ghost"><Link href="/empresa">Resolver</Link></Button></li>))}
-              </ul>)}
-          </CardContent></Card>
-
-          <Card><CardContent className="p-4">
-            <div className="mb-3 flex items-center gap-2"><FileText className="size-4 text-primary" /><p className="text-sm font-semibold">Documentos do processo</p></div>
-            {(docs ?? []).length === 0 ? <p className="rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Nenhum documento ainda.</p> : (
-              <ul className="mb-3 divide-y rounded-md border">{(docs ?? []).map((d) => (
-                <li key={d.id} className="flex items-center gap-3 p-3"><FileText className="size-4 text-muted-foreground" /><span className="min-w-0 flex-1 truncate text-sm font-medium">{d.tipo_label}</span><Badge variant="muted">{d.tipo}</Badge>
-                  <form action={deleteDocLicitacao}><input type="hidden" name="id" value={d.id} /><input type="hidden" name="licitacao_id" value={lic.id} /><button type="submit" aria-label="Remover" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-destructive"><Trash2 className="size-4" /></button></form>
-                </li>))}
-              </ul>)}
-            <form action={addDocLicitacao} className="flex flex-col gap-2 rounded-md border bg-muted/30 p-3 sm:flex-row"><input type="hidden" name="licitacao_id" value={lic.id} /><Input name="nome" placeholder="Nome do documento (ex.: Edital, TR, ETP)" required className="flex-1" /><Button type="submit"><Plus className="size-4" /> Adicionar</Button></form>
-          </CardContent></Card>
-
-          <div className="space-y-3" data-testid="consultor">
-            <Card><CardContent className="p-4">
-              <div className="flex items-center gap-2"><MessagesSquare className="size-4 text-primary" /><p className="text-sm font-semibold">Consultor — habilitação & participação</p></div>
-              <p className="mt-1 text-xs text-muted-foreground">Respostas <strong>determinísticas</strong> com base na sua ficha × habilitação típica, <strong>citando a Lei 14.133</strong>.</p>
-            </CardContent></Card>
-            {respostasConsultor.map((r, i) => (
-              <Card key={i} data-testid="consultor-qa"><CardContent className="p-4">
-                <p className="text-sm font-semibold">{r.pergunta}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{r.resposta}</p>
-                <div className="mt-2 flex items-center gap-2">
-                  <Badge variant={r.tom === "ok" ? "success" : r.tom === "alerta" ? "destructive" : "muted"}>{r.tom === "ok" ? "ok" : r.tom === "alerta" ? "atenção" : "info"}</Badge>
-                  <span className="text-xs text-muted-foreground" data-testid="consultor-fonte">Fonte: {r.fonte}</span>
-                </div>
-              </CardContent></Card>
-            ))}
-            <p className="rounded border border-warning/30 bg-warning/10 px-2 py-1 text-xs text-foreground">Orientação informativa baseada na habilitação típica — <strong>não é parecer jurídico</strong>. Peça processual (impugnação/recurso) fica <strong>travada</strong> (exige validação jurídica).</p>
-          </div>
-
-          {(p?.riscos?.length ?? 0) > 0 ? <Card><CardContent className="space-y-2 p-4"><p className="text-sm font-semibold">Riscos & pegadinhas (IA)</p>{p!.riscos!.map((r, i) => (<div key={i} className="flex items-start gap-2 text-sm"><Badge variant={r.nivel === "vermelho" ? "destructive" : "warning"}>{r.nivel}</Badge><span>{r.texto}</span></div>))}</CardContent></Card>
-            : <EmBreve icon={Scale} titulo="Riscos & Pegadinhas" motivo="A análise de riscos do texto do edital entra via Analisar com IA / Resumo Profundo." />}
-        </section>
-      </div>
+      {/* ===== RAIO-X em ABAS (fiel à maquete v2 — cada clique troca a tela) ===== */}
+      <SpaceTabs items={tabs} />
 
       <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground"><Lock className="size-3" /> Peça processual (impugnação/recurso) fica travada — exige validação jurídica. Veredito/chance é estimativa, não promessa.</p>
     </div>

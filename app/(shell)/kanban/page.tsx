@@ -10,10 +10,10 @@ import { moverStage, descartarCard } from "./actions";
 // contrato do banco/moverStage — NÃO mudam. Só o rótulo/cor seguem o blueprint v2.
 const STAGES = [
   { key: "nova", label: "Em análise", cor: "yellow" },
-  { key: "monitorando", label: "Monitorando", cor: "blue" },
-  { key: "preparacao", label: "Preparação", cor: "purple" },
-  { key: "edital", label: "Em disputa", cor: "red" },
-  { key: "resultado", label: "Resultado / Contrato", cor: "green" },
+  { key: "monitorando", label: "Preparação documental", cor: "blue" },
+  { key: "preparacao", label: "Proposta em montagem", cor: "purple" },
+  { key: "edital", label: "Sessão / habilitação", cor: "red" },
+  { key: "resultado", label: "Resultado / contrato", cor: "green" },
 ];
 
 type Oport = {
