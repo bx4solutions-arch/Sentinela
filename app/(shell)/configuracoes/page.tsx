@@ -5,6 +5,7 @@ import { temIA } from "@/lib/ai-server";
 import { createClient } from "@/lib/supabase/server";
 import { EmpresaPainel } from "@/components/empresa-painel";
 import { IdentidadeForm } from "@/components/identidade/identidade-form";
+import { MonitoramentoPainel } from "@/components/monitoramento-painel";
 import { statsConhecimento, listarFontes, buscarConhecimento } from "@/lib/conhecimento";
 import { Search, Scale, Wifi } from "lucide-react";
 
@@ -146,6 +147,21 @@ async function AbaConhecimento({ kq }: { kq?: string }) {
   );
 }
 
+async function AbaMonitoramento() {
+  const supabase = await createClient();
+  const [{ data: company }, { data: celulas }] = await Promise.all([
+    supabase.from("company").select("uf, segmentos").maybeSingle(),
+    supabase.from("celula").select("id, nivel, codigo_ibge, municipio, uf, segmentos").order("criado_em", { ascending: true }),
+  ]);
+  return (
+    <MonitoramentoPainel
+      ufEmpresa={company?.uf ?? "SP"}
+      segmentosSugeridos={(company?.segmentos as string[]) ?? []}
+      celulas={celulas ?? []}
+    />
+  );
+}
+
 export default async function ConfiguracoesPage({ searchParams }: { searchParams: Promise<{ tab?: string; kq?: string }> }) {
   const sp = await searchParams;
   const tab: TabId = (IDS.includes(sp.tab ?? "") ? sp.tab : "perfil-empresa") as TabId;
@@ -177,7 +193,7 @@ export default async function ConfiguracoesPage({ searchParams }: { searchParams
         {tab === "ia" && <AbaIA />}
         {tab === "identidade" && <AbaIdentidade />}
         {tab === "conhecimento" && <AbaConhecimento kq={sp.kq} />}
-        {tab === "monitoramento" && <EmConstrucao titulo="Monitoramento" etapa="próxima leva" />}
+        {tab === "monitoramento" && <AbaMonitoramento />}
       </div>
     </div>
   );

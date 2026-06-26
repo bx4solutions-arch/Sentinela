@@ -48,6 +48,21 @@ export default async function RadarPage({ searchParams }: { searchParams: Promis
 
   // Células do tenant + status de coleta
   const { data: celulas } = await supabase.from("celula").select("codigo_ibge, municipio");
+
+  // EXIGE o filtro: sem escopo definido, não mostra fallback — pede pra definir.
+  if (!celulas || celulas.length === 0) {
+    return (
+      <Card className="mx-auto max-w-md">
+        <CardContent className="flex flex-col items-center gap-3 p-8 text-center" data-testid="radar-sem-escopo">
+          <div className="grid size-11 place-items-center rounded-full bg-primary/10 text-primary"><MapPin className="size-5" /></div>
+          <p className="text-sm font-semibold">Defina onde você quer licitação</p>
+          <p className="text-xs text-muted-foreground">O Radar só traz licitações da <strong>região</strong> e do <strong>segmento</strong> que você escolher. Configure seu escopo para começar.</p>
+          <Link href="/configuracoes?tab=monitoramento"><Button size="sm"><Plus className="size-4" /> Definir escopo</Button></Link>
+        </CardContent>
+      </Card>
+    );
+  }
+
   const codigos = (celulas ?? []).map((c) => c.codigo_ibge);
   let coletas: { codigo_ibge: string; status: string }[] = [];
   if (codigos.length) {
