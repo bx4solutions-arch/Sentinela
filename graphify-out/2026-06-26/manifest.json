@@ -10,9 +10,9 @@
     "semantic_hash": "7bf44b747fc4d091b7122559f14d9800"
   },
   "app/(shell)/configuracoes/actions.ts": {
-    "mtime": 1782428977.5483139,
-    "ast_hash": "ed9aca32b886361c754ceb6215d61b11",
-    "semantic_hash": ""
+    "mtime": 1781985835.4510071,
+    "ast_hash": "10294bf80db29ba4643512183f7757a6",
+    "semantic_hash": "10294bf80db29ba4643512183f7757a6"
   },
   "app/(shell)/configuracoes/config-form.tsx": {
     "mtime": 1781986284.7118006,
@@ -20,13 +20,13 @@
     "semantic_hash": "03655cef84b96cffa54d446a81e39e46"
   },
   "app/(shell)/configuracoes/page.tsx": {
-    "mtime": 1782435761.5214672,
-    "ast_hash": "b1d722dccda83f54470d7b94c6eb6206",
+    "mtime": 1782419419.1776013,
+    "ast_hash": "6313d251f4bb9be2021101e2018594af",
     "semantic_hash": ""
   },
   "app/(shell)/dashboard/page.tsx": {
-    "mtime": 1782483013.3788285,
-    "ast_hash": "a1ebf91a9c84a451270d0d6a1f3676ca",
+    "mtime": 1782406684.2337077,
+    "ast_hash": "c0e891f38a9c8ea632d04a6cbc17e71e",
     "semantic_hash": ""
   },
   "app/(shell)/empresa/actions.ts": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-dashboard.mjs": {
-    "mtime": 1782484037.8605065,
-    "ast_hash": "dec57609b670d4dc3853a87ae54e416b",
+    "mtime": 1782405580.8430572,
+    "ast_hash": "160b5138a001223b9aec7f16d47728b1",
     "semantic_hash": ""
   },
   "e2e/autotest-frontend.mjs": {
@@ -260,7 +260,7 @@
     "semantic_hash": "1527b941945f84062a640ff7da7ff536"
   },
   "next-env.d.ts": {
-    "mtime": 1782429290.8598282,
+    "mtime": 1782358134.1546476,
     "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
@@ -1010,8 +1010,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-resumo-profundo.mjs": {
-    "mtime": 1782483074.8623397,
-    "ast_hash": "fc6388549d1ac16d03867129fe2c5b77",
+    "mtime": 1782402048.6352282,
+    "ast_hash": "2cb10f6746d2dcb85cfb280f7b6cb55b",
     "semantic_hash": ""
   },
   "lib/ai-server.ts": {
@@ -1070,8 +1070,8 @@
     "semantic_hash": ""
   },
   "e2e/groups.mjs": {
-    "mtime": 1782435729.3127918,
-    "ast_hash": "1d66b3b171ec4e578f404c8e07ec0573",
+    "mtime": 1782412546.517167,
+    "ast_hash": "2a8180d4f69bac760f30d4d26c529f2b",
     "semantic_hash": ""
   },
   "lib/siconfi.ts": {
@@ -1112,56 +1112,6 @@
   "components/empresa-painel.tsx": {
     "mtime": 1782419326.66135,
     "ast_hash": "b91287e4d18f4afd797c127ab4150e2c",
-    "semantic_hash": ""
-  },
-  ".mcp.json": {
-    "mtime": 1782438896.1035097,
-    "ast_hash": "09632616535a6bd9f2d288ec623e5ad3",
-    "semantic_hash": ""
-  },
-  "clear_next.js": {
-    "mtime": 1782440981.9523883,
-    "ast_hash": "911246255157d624af140459c01754eb",
-    "semantic_hash": ""
-  },
-  "components/identidade/identidade-form.tsx": {
-    "mtime": 1782429085.8534145,
-    "ast_hash": "7bc822423ce03882538a160efb72a5c1",
-    "semantic_hash": ""
-  },
-  "e2e/autotest-conhecimento.mjs": {
-    "mtime": 1782435709.8803654,
-    "ast_hash": "d0d75fe0846dd29a8c23dd96a6ad480a",
-    "semantic_hash": ""
-  },
-  "e2e/autotest-identidade.mjs": {
-    "mtime": 1782429225.7409189,
-    "ast_hash": "878150d0d8d4dd7eb17495b61a926f57",
-    "semantic_hash": ""
-  },
-  "lib/conhecimento.ts": {
-    "mtime": 1782435532.8171816,
-    "ast_hash": "e6995fc4b7c7a4defc0f43b25a3f3a67",
-    "semantic_hash": ""
-  },
-  "lib/embeddings.ts": {
-    "mtime": 1782435498.261215,
-    "ast_hash": "70b380b6f4df4d1962770f1b015701e4",
-    "semantic_hash": ""
-  },
-  "supabase/migrations/0017_company_identidade.sql": {
-    "mtime": 1782426604.5185478,
-    "ast_hash": "ebb4ac00b9b035a77ff833255b0fac4d",
-    "semantic_hash": ""
-  },
-  "supabase/migrations/0018_pgvector_lexia.sql": {
-    "mtime": 1782432836.9761705,
-    "ast_hash": "9f8aef7c1788af30565fc23ad12e7c67",
-    "semantic_hash": ""
-  },
-  "supabase/migrations/0019_knowledge_base.sql": {
-    "mtime": 1782432878.5780241,
-    "ast_hash": "98598265180f5c59704acc4063d7e139",
     "semantic_hash": ""
   }
 }

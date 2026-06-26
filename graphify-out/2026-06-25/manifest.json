@@ -50,9 +50,9 @@
     "semantic_hash": "cd066065c95831f9daf11bd2d308a34d"
   },
   "app/(shell)/kanban/page.tsx": {
-    "mtime": 1781983603.7318952,
-    "ast_hash": "ffbd049cf23bc35a8b60c9b1cda7c193",
-    "semantic_hash": "ffbd049cf23bc35a8b60c9b1cda7c193"
+    "mtime": 1782416780.3038697,
+    "ast_hash": "097a6e462d713fc9e3ca0c097700ae4c",
+    "semantic_hash": ""
   },
   "app/(shell)/layout.tsx": {
     "mtime": 1781976092.4885821,
@@ -160,8 +160,8 @@
     "semantic_hash": ""
   },
   "e2e/autotest-kanban.mjs": {
-    "mtime": 1782083770.0799804,
-    "ast_hash": "86487e814851467df504fefe3e0381d2",
+    "mtime": 1782416806.6972146,
+    "ast_hash": "b19f9ff5b1e6ada53889fe4386fa20ff",
     "semantic_hash": ""
   },
   "e2e/autotest-licitacao.mjs": {
