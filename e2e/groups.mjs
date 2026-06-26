@@ -6,6 +6,7 @@ export const GROUPS = {
     "e2e/autotest.mjs",
     "e2e/autotest-frontend.mjs",
     "e2e/autotest-identidade.mjs",
+    "e2e/autotest-conhecimento.mjs",
     "e2e/autotest-sinais.mjs",
     "e2e/autotest-integracao.mjs",
     "e2e/autotest-kanban.mjs",
