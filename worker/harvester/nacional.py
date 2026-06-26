@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
 """
-HARVESTER NACIONAL (Camada 1 — Descoberta) — metadado de TODOS os editais novos do Brasil.
+HARVESTER POR CÉLULA (Camada 1 — Descoberta) — metadado dos editais novos das CIDADES ATIVAS.
 
-Probe (worker/harvester/PROBE-NACIONAL.md): /contratacoes/publicacao aceita consulta NACIONAL
-por data; `codigoModalidadeContratacao` é OBRIGATÓRIO. Eixo de iteração = (janela × modalidade 1..14).
-NÃO itera município (5570) nem UF (27): puxa o Brasil inteiro por data.
+Princípio do projeto (régua): ingestão por célula = setor × região. NUNCA dump nacional.
+O escopo vem de `cidade_coletada` (status='pronta') via worker/harvester/scope.py.
+Eixo de iteração = (cidade ativa × janela × modalidade 1..14), com filtro server-side
+`codigoMunicipioIbge` — só vem o que a cidade pediu. Sem célula ativa → NADA é coletado
+(o servidor nasce vazio). Toda gravação atravessa a guarda de escopo (defesa em profundidade).
+
+[Histórico] Este worker já fez crawl NACIONAL por data (sem filtro de município), o que
+estourou a cota com ~86k editais de cidades sem célula. Isso foi REVERTIDO: agora é por-cidade.
 
 - SÓ metadado (KB por edital). NÃO baixa documento (Camada 3 é on-demand no clique).
 - UPSERT DIRETO no Supabase (raw_editais on_conflict=numero_controle_pncp; orgao on_conflict=cnpj).
   Idempotente: re-rodar não duplica. JSONL é só log/debug opcional.
 - Retry/backoff + checkpoint por fatia (retoma de onde parou).
 - CANARY: valida presença dos campos críticos; se o PNCP mudar/renomear schema, ALERTA
-  (o risco real é falha silenciosa, não tamanho). Grava _canary_nacional.json.
+  (o risco real é falha silenciosa). Grava _canary_nacional.json.
 
 Uso:
-  python3 worker/harvester/nacional.py                      # delta do dia (ontem→hoje)
-  python3 worker/harvester/nacional.py --dias 30            # backfill: últimos 30 dias
+  python3 worker/harvester/nacional.py                      # delta do dia (ontem→hoje), só células ativas
+  python3 worker/harvester/nacional.py --dias 30            # backfill: últimos 30 dias, só células ativas
   python3 worker/harvester/nacional.py --inicio 20260401 --fim 20260622
   python3 worker/harvester/nacional.py --loop               # contínuo (worker local/dev; sleep 6h)
   python3 worker/harvester/nacional.py --reset-checkpoint   # ignora checkpoint
@@ -34,6 +39,8 @@ from pathlib import Path
 
 import requests
 
+import scope as escopo  # guarda de células ativas (mesmo diretório)
+
 BASE = "https://pncp.gov.br/api/consulta/v1"
 PATH = "/contratacoes/publicacao"
 UA = "Sentinela/1.0 (pesquisa institucional; contato bionicaosilva@gmail.com)"
@@ -46,6 +53,7 @@ MODALIDADES = list(range(1, 15))  # 1..14 (enum oficial). Algumas dão 204/0 —
 TAM_PAGINA = 50                   # probe: 5 dá 400; 50 funciona
 MAX_RETRIES = 6
 JANELA_DIAS = 7                   # fatia temporal (checkpointável)
+BACKFILL_DIAS = 365               # unidade 'pendente' (cliente novo) puxa 1 ano de histórico
 BATCH = 500                       # upsert em lotes
 CANARY_MAX_MISS_RATE = 0.02       # >2% de um campo crítico ausente => alerta
 
@@ -204,44 +212,73 @@ def save_ck(done):
     CK_PATH.write_text(json.dumps(sorted(done), ensure_ascii=False))
 
 
-def run_range(rest, key, inicio, fim, done):
-    """Itera (janela × modalidade) nacionalmente. Upsert direto. Checkpoint por fatia."""
+def run_range(rest, key, inicio, fim, done, unidades, esc, backfill_inicio=None):
+    """Itera (unidade ativa × janela × modalidade). Unidade = cidade (codigoMunicipioIbge)
+    ou estado (uf), filtro server-side. Guarda 2D região×segmento antes de gravar.
+
+    Janela por unidade: 'pendente' (cliente novo) puxa desde backfill_inicio; 'pronta' usa
+    o delta [inicio..fim]. Checkpoint por fatia (slug inclui nível+chave da unidade).
+    """
     canary = {"total": 0, "miss": {c: 0 for c in CRITICOS}, "ufs": {}}
     total_editais = 0
-    for di, df in janelas(inicio, fim, JANELA_DIAS):
-        for mod in MODALIDADES:
-            slug = f"ed|{mod}|{di}|{df}"
-            if slug in done:
-                continue
-            pagina, total_paginas = 1, 1
-            itens_fatia = []
-            while pagina <= total_paginas:
-                params = {"dataInicial": di, "dataFinal": df,
-                          "codigoModalidadeContratacao": mod,
-                          "pagina": pagina, "tamanhoPagina": TAM_PAGINA}
-                d = get(params)
-                if not d or not d.get("data"):
-                    break
-                total_paginas = d.get("totalPaginas") or 1
-                itens_fatia.extend(d["data"])
-                pagina += 1
-                time.sleep(0.2)
-            if itens_fatia:
-                # CANARY: presença dos campos críticos + diversidade de UF
-                for e in itens_fatia:
-                    canary["total"] += 1
-                    for c in CRITICOS:
-                        if not getpath(e, c):
-                            canary["miss"][c] += 1
-                    uf = getpath(e, "unidadeOrgao.ufSigla") or "?"
-                    canary["ufs"][uf] = canary["ufs"].get(uf, 0) + 1
-                ed_rows, orgaos = to_rows(itens_fatia)
-                upsert(rest, key, "orgao", list(orgaos.values()), "cnpj")
-                upsert(rest, key, "raw_editais", ed_rows, "numero_controle_pncp")
-                total_editais += len(ed_rows)
-                log(f"  {slug}: {len(ed_rows)} editais (UFs={len(canary['ufs'])})")
-            done.add(slug)
-            save_ck(done)
+    rejeitados = 0
+    for u in unidades:
+        if u.get("nivel") == "estado":
+            chave = u.get("uf")
+            regiao_param = {"uf": chave}                 # ← trava de estado (server-side)
+            rotulo = f"uf:{chave}"
+        else:
+            chave = str(u.get("codigo_ibge"))
+            regiao_param = {"codigoMunicipioIbge": chave}  # ← trava de cidade (server-side)
+            rotulo = u.get("municipio") or chave
+        u_inicio = backfill_inicio if (u.get("status") == "pendente" and backfill_inicio) else inicio
+        for di, df in janelas(u_inicio, fim, JANELA_DIAS):
+            for mod in MODALIDADES:
+                slug = f"ed|{u.get('nivel')}:{chave}|{mod}|{di}|{df}"
+                if slug in done:
+                    continue
+                pagina, total_paginas = 1, 1
+                itens_fatia = []
+                while pagina <= total_paginas:
+                    params = {"dataInicial": di, "dataFinal": df,
+                              "codigoModalidadeContratacao": mod,
+                              **regiao_param,
+                              "pagina": pagina, "tamanhoPagina": TAM_PAGINA}
+                    d = get(params)
+                    if not d or not d.get("data"):
+                        break
+                    total_paginas = d.get("totalPaginas") or 1
+                    itens_fatia.extend(d["data"])
+                    pagina += 1
+                    time.sleep(0.2)
+                # GUARDA 2D: descarta item fora de região OU fora de segmento ativo.
+                # (região é redundante com o filtro server-side; segmento é o corte de cota.)
+                if itens_fatia:
+                    antes = len(itens_fatia)
+                    itens_fatia = [e for e in itens_fatia if esc.aceita(
+                        ibge=getpath(e, "unidadeOrgao.codigoIbge"),
+                        uf=getpath(e, "unidadeOrgao.ufSigla"),
+                        nome=getpath(e, "unidadeOrgao.municipioNome"),
+                        segmentos_edital=classificar(e.get("objetoCompra")))]
+                    rejeitados += antes - len(itens_fatia)
+                if itens_fatia:
+                    # CANARY: presença dos campos críticos (falha silenciosa é o risco real)
+                    for e in itens_fatia:
+                        canary["total"] += 1
+                        for c in CRITICOS:
+                            if not getpath(e, c):
+                                canary["miss"][c] += 1
+                        uf = getpath(e, "unidadeOrgao.ufSigla") or "?"
+                        canary["ufs"][uf] = canary["ufs"].get(uf, 0) + 1
+                    ed_rows, orgaos = to_rows(itens_fatia)
+                    upsert(rest, key, "orgao", list(orgaos.values()), "cnpj")
+                    upsert(rest, key, "raw_editais", ed_rows, "numero_controle_pncp")
+                    total_editais += len(ed_rows)
+                    log(f"  {rotulo} {slug}: {len(ed_rows)} editais")
+                done.add(slug)
+                save_ck(done)
+    if rejeitados:
+        log(f"⚠️  guarda de escopo rejeitou {rejeitados} editais fora de célula ativa")
     return total_editais, canary
 
 
@@ -254,10 +291,9 @@ def escrever_canary(canary, inicio, fim):
         detalhes[c] = {"miss": miss, "rate": round(rate, 4)}
         if tot >= 100 and rate > CANARY_MAX_MISS_RATE:
             alerta = True
-    # canary extra: nacional saudável traz MUITAS UFs; pouca diversidade = suspeito
+    # Coleta por célula traz POUCAS UFs (1 por cidade) — isso é o esperado, não alarma.
+    # O canary aqui só vigia falha silenciosa de schema (campo crítico ausente).
     n_ufs = len([u for u in canary["ufs"] if u != "?"])
-    if tot >= 500 and n_ufs < 5:
-        alerta = True
     out = {
         "janela": f"{inicio}..{fim}",
         "total_editais": tot,
@@ -286,6 +322,19 @@ def main():
     args = ap.parse_args()
 
     rest, key = load_env()
+
+    # ESCOPO = células ativas (fonte da verdade: cidade_coletada status='pronta').
+    # Cada unidade é cidade OU estado, com segmentos. Sem unidade → servidor nasce vazio.
+    unidades = escopo.carregar_unidades(rest, key)
+    if not unidades:
+        log("Nenhuma célula ativa (cidade_coletada status='pronta' vazia). Nada a coletar. Saindo.")
+        return
+    esc = escopo.Escopo(unidades)
+    log("Escopo ativo: " + ", ".join(
+        f"[{u.get('nivel')}]{u.get('municipio') or u.get('uf')}"
+        f"{'/' + ','.join(u['segmentos']) if u.get('segmentos') else '/(todos)'}"
+        for u in unidades))
+
     hoje = dt.date.today()
     fim = args.fim or hoje.strftime("%Y%m%d")
     if args.inicio:
@@ -299,11 +348,16 @@ def main():
         CK_PATH.unlink()
 
     while True:
+        backfill_inicio = (hoje - dt.timedelta(days=BACKFILL_DIAS - 1)).strftime("%Y%m%d")
+        n_pend = sum(1 for u in unidades if u.get("status") == "pendente")
         done = load_ck()
-        log(f"== Harvester nacional: {inicio}..{fim} (janela {JANELA_DIAS}d × {len(MODALIDADES)} modalidades) ==")
+        log(f"== Harvester por célula: delta {inicio}..{fim} "
+            f"({len(unidades)} unidade(s), {n_pend} em backfill desde {backfill_inicio}) ==")
         t0 = time.time()
-        total, canary = run_range(rest, key, inicio, fim, done)
+        total, canary = run_range(rest, key, inicio, fim, done, unidades, esc, backfill_inicio)
         escrever_canary(canary, inicio, fim)
+        # 1ª coleta dos novos concluída → vira 'pronta' (radar passa a exibir como recorte preciso)
+        escopo.promover_pendentes(rest, key)
         log(f"== concluído: {total} editais em {time.time()-t0:.0f}s ==")
         if not args.loop:
             break

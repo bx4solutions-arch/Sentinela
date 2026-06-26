@@ -17,6 +17,8 @@ from pathlib import Path
 
 import requests
 
+import scope as escopo  # guarda de células ativas (mesmo diretório)
+
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "worker" / "harvester" / "pncp_data"
 BATCH = 1000
@@ -81,6 +83,13 @@ def upsert(base, key, table, rows, on_conflict):
 def main():
     base, key = load_env()
 
+    # ESCOPO = células ativas (cidade_coletada status='pronta'). Sem célula → nada entra.
+    unidades = escopo.carregar_unidades(base, key)
+    if not unidades:
+        sys.exit("Nenhuma célula ativa (cidade_coletada status='pronta'). Nada a carregar.")
+    esc = escopo.Escopo(unidades)
+    print(f"Escopo ativo: {len(unidades)} unidade(s) — só região×segmento dentro do escopo será gravado.")
+
     # --- orgao: base do _orgaos.json, enriquecido pelo 1º edital de cada cnpj ---
     orgaos = json.loads((DATA / "_orgaos.json").read_text())
     enrich = {}
@@ -109,7 +118,11 @@ def main():
             "uf_sigla": ex.get("uf_sigla"),
             "codigo_ibge": ex.get("codigo_ibge"),
         })
-    print(f"orgao: {len(orgao_rows)} linhas")
+    # orgao não tem segmento → guarda só por REGIÃO
+    n0 = len(orgao_rows)
+    orgao_rows = [o for o in orgao_rows
+                  if esc.em_regiao(ibge=o.get("codigo_ibge"), uf=o.get("uf_sigla"), nome=o.get("cidade"))]
+    print(f"orgao: {len(orgao_rows)} linhas no escopo ({n0 - len(orgao_rows)} fora-de-escopo rejeitadas)")
     upsert(base, key, "orgao", orgao_rows, "cnpj")
 
     # --- raw_editais ---
@@ -133,7 +146,14 @@ def main():
             "link_origem": e.get("linkSistemaOrigem"),
             "payload": e,
         })
-    print(f"raw_editais: {len(ed_rows)} linhas")
+    # raw_editais: guarda 2D região×segmento (ibge/uf do payload, segmentos classificados)
+    n0 = len(ed_rows)
+    ed_rows = [r for r in ed_rows if esc.aceita(
+        ibge=(r.get("payload", {}).get("unidadeOrgao") or {}).get("codigoIbge"),
+        uf=(r.get("payload", {}).get("unidadeOrgao") or {}).get("ufSigla"),
+        nome=r.get("cidade"),
+        segmentos_edital=r.get("segmentos"))]
+    print(f"raw_editais: {len(ed_rows)} linhas no escopo ({n0 - len(ed_rows)} fora-de-escopo rejeitadas)")
     upsert(base, key, "raw_editais", ed_rows, "numero_controle_pncp")
 
     # --- raw_pca ---
@@ -153,7 +173,10 @@ def main():
             "data_desejada": date_only(p.get("dataDesejada")),
             "payload": p,
         })
-    print(f"raw_pca: {len(pca_rows)} linhas")
+    # raw_pca não tem ibge/uf na linha → guarda por nome da cidade × segmento
+    n0 = len(pca_rows)
+    pca_rows = [r for r in pca_rows if esc.aceita(nome=r.get("cidade"), segmentos_edital=r.get("segmentos"))]
+    print(f"raw_pca: {len(pca_rows)} linhas no escopo ({n0 - len(pca_rows)} fora-de-escopo rejeitadas)")
     upsert(base, key, "raw_pca", pca_rows, "id")
 
     print("OK — ingestão concluída.")
