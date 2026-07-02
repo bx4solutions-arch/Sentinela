@@ -27,11 +27,17 @@ Next.js 16 + React 19 + TypeScript + Tailwind v4 + lucide-react + d3-geo (front)
 ## Telas prontas (mock, TS 0 erros)
 Login+recuperação · Shell (sidebar ordem oficial + topbar + guard + menu perfil c/ ID SNT-XXXXXX + logout) · Página Inicial (Alvos Quentes) · Raio-X do Órgão (semáforo = menor dos 3 sub-scores + Contatos Estratégicos) · Pesquisar Licitações · Radar (+ modal Converse com Radar, 3 modos) · Minhas Licitações (Cards/Tabela/Kanban drag; modal Processo Externo manual + Análise por IA) · Minha Empresa (5 abas; Portais = filtro de origem via PNCP) · Agenda Fácil · Pesquisa de Preços (2 vertentes, filtros funcionais) · Análise de Concorrente (radar + Processos ganhos + Consultar empresa/habilitação) · PCA (status/movimentação + gráfico interativo + mapa BR por UF d3-geo) · Contratos e Atas (Vencendo + Meus contratos + Minhas atas) · Uso de IA.
 
-## Próxima tela
-Item 12 — **Organização** (Geral / CNPJs / Membros RBAC / Assinatura). Última do MVP visual. Pedir modelo antes.
+## Estado pós-Fase A (02/07/2026 — ver docs/TDR-sentinela.md e docs/RELATORIO-TESTES-FASE-A.md)
+- Git: repo `bx4solutions-arch/Sentinela`, branch **fase-a-cowork** (o main contém um projeto ANTIGO diferente — não mergear sem decisão).
+- Migrations 17–22 aplicadas (ente canônico+índices, eventos, agent_runs+memorias, uso_ia+cota, helpers em app_privado, watchdog de runs órfãos).
+- `lib/agent/` funcional: tools (contrato Zod+registry: buscar_licitacoes, raio_x_orgao) · providers multi-IA (AIProvider único; anthropic/openai/gemini; AI_PROVIDER/AI_MODEL) · runtime (loop tool-calling, cota, memórias, guardrail emendas). Rotas: `/api/agent` (JSON+SSE) e `/api/tools/[nome]`.
+- Widgets extraídos em `components/widgets/` + registry (alvo, licitacao_card, tabela, metric, gauge, sub_score, eixo_real).
+- Backfill canônico COMPLETO: licitacoes.codigo_ibge 189/189; orgaos.ente_id em 49 órgãos; janela do harvester restaurada pra 3.
+- Testes: docs/RELATORIO-TESTES-FASE-A.md (31 PASS; suíte em scripts/teste-unitario-fase-a.mjs). E2E local: `npm run dev` + `node scripts/teste-fase-a.mjs http://localhost:3000 --agent` (pendente — rodar na máquina).
+- Regra nova (TDR): **telas consomem as tools via /api/tools, nunca PostgREST direto do browser.**
 
-## Depois das telas
-Refinar + **conectar o Supabase ao front** (extrair `<LicitacaoCard>` compartilhado; harvester PNCP; extração de contatos do edital).
+## Próximo passo — Fase B (autorizada, aguardando E2E verde)
+Ordem: página/painel Agente (modelos = prints CLEATUS já aprovados) → SSE visual → renderização de blocos {widget, props} via registry → estado vazio com sugestões → histórico de threads (agent_runs) → fluxo read-only com as 2 tools. Uma camada por vez, aprovação antes de avançar.
 
 ## Pesquisa estratégica (docs/)
 `Sprint1-GovCon-AI-EUA.docx`, `cobertura-vs-licinexus.md`, `engenharia-reversa-cleatus.md`, `PRD-*.md`. Tese: Sentinela é **Decision Intelligence + Service-as-Software + Agentic OS**, não "mais uma plataforma de licitação".
