@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta oficial Sentinela */
+  --color-violeta: #5b21b6;
+  --color-indigo-deep: #1e1b4b;
+  --color-indigo-2: #15123a;
+  --color-roxo: #7c3aed;
+  --color-laranja: #ff6600;        /* laranja oficial (FedEx) — aprovado pelo Bione */
+  --color-laranja-hover: #e65c00;
+  --color-appbg: #eef2f7;
+  --color-ink: #0f172a;
+  --color-cinza: #64748b;
+  --color-borda: #e7ecf3;
+  --color-verde: #16a34a;
+  --color-amarelo: #f59e0b;
+  --color-vermelho: #dc2626;
+
+  --font-display: var(--font-sora), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-appbg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}

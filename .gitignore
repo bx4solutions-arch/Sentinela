@@ -1,0 +1,30 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# env — NUNCA commitar credenciais
+.env
+.env.local
+.env*.local
+
+# debug / misc
+npm-debug.log*
+.DS_Store
+*.pem
+/coverage
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+# build artifacts do typecheck
+*.tsbuildinfo
